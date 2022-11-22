@@ -1,0 +1,36 @@
+.header__dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown-btn-text {
+    color: white;
+    font: var(--font-text-regular);
+
+}
+
+.dropdown-content {
+    left: -42px;
+    top: 30px;
+    background-color: white;
+    position: absolute;
+    list-style-type: none;
+    font: var(--font-text-bold);
+    margin: 0;
+    padding: 5px;
+    border-radius: 10px 0 0 10px;
+}
+
+.dropdown-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.dropdown-btn img {
+    filter: invert(100);
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+}
