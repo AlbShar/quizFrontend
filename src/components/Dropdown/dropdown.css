@@ -13,19 +13,23 @@
 }
 
 .dropdown-content {
-    left: -42px;
+    left: -9px;
     top: 30px;
     background-color: white;
     position: absolute;
     list-style-type: none;
     font: var(--font-text-bold);
     margin: 0;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 10px 0 0 10px;
 }
 
 .dropdown-item:not(:last-child) {
     margin-bottom: 10px;
+}
+
+.dropdown-item {
+    font: var(--font-text-regular);
 }
 
 .dropdown-btn img {

@@ -2,21 +2,28 @@ import React, { useState } from "react";
 import "./dropdown.css";
 import chevrondown from "../../images/icons/chevrondown.png";
 
-const Dropdown = () => {
-    const [isActive, setActive] = useState(false);
+const Dropdown = ({ selected, setSelected }) => {
+  const [isActive, setActive] = useState(false);
+  const languages = ["Русский", "English", "Chinese", "Franch"];
 
   return (
     <div className="header__dropdown dropdown">
-        <div className="dropdown-btn" onClick={() => setActive(!isActive)}> 
-            <span className="dropdown-btn-text" >Русский</span>
-            <img src={chevrondown} />
-        </div>
-        {isActive && (<ul className="dropdown-content">
-            <li className="dropdown-item ">Русский</li>
-            <li className="dropdown-item ">Английский</li>
-            <li className="dropdown-item ">Китайский</li>
-            <li className="dropdown-item ">Французский</li>
-        </ul>)}
+      <div className="dropdown-btn" onClick={() => setActive(!isActive)}>
+        <span className="dropdown-btn-text">{selected}</span>
+        <img src={chevrondown} />
+      </div>
+      {isActive && (
+        <ul className="dropdown-content">
+          {languages.map((language) => {
+            return (
+              <li className="dropdown-item" onClick={e => {
+                setSelected(language);
+                setActive(false)
+              }}>{language}</li>
+            )
+          })}
+        </ul>
+      )}
     </div>
   );
 };

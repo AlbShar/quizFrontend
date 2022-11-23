@@ -1,0 +1,20 @@
+.frontend-test__info {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px 12px;
+    background-color: var(--color-call-action-info);
+}
+
+.frontend-test__info-item {
+    color: white;
+    font: var(--font-little-text-bold);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.frontend-test__info-img {
+    width: 18px;
+    height: 18px;
+}

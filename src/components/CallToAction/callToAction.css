@@ -1,0 +1,24 @@
+.frontend-test__title {
+    font: var(--font-h1);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.frontend-test {
+    max-width: 100%;
+    background-color: var(--color-call-action);
+    padding: 16px;
+    margin-top: 40px;
+}
+
+.frontend-test__subtitle {
+    font: var(--font-text-regular);
+    color: white;
+}
+
+@media screen and (max-width: 459.8px) {
+    .frontend-test__title {
+        font: var(--font-h4);
+    }
+}
