@@ -29,6 +29,7 @@ body {
   --font-text-bold: 700 16px/var(--line-height-text) var(--font-family-default);
   --font-little-text-regular: 400 14px/var(--line-height-little-text)  var(--font-family-default);
   --font-little-text-bold: 700 14px/var(--line-height-little-text) var(--font-family-default);
+  --font-button: 700 16px/24px var(--font-family-default);
   --font-h1: 800 48px/60px var(--font-family-default);
   --font-h4: 800 24px/36px var(--font-family-default);
   --font-h5: 800 20px/32px var(--font-family-default);

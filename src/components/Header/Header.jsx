@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from "../Container/Container";
 import "./header.css";
 import logo from "../../images/logo.png";
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 
 
 const Header = () => {

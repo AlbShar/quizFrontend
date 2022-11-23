@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./dropdown.css";
-import chevrondown from "../../images/icons/chevrondown.png";
+import chevrondown from "../../../images/icons/chevrondown.png";
 
 const Dropdown = ({ selected, setSelected }) => {
   const [isActive, setActive] = useState(false);
@@ -9,7 +9,7 @@ const Dropdown = ({ selected, setSelected }) => {
   return (
     <div className="header__dropdown dropdown">
       <div className="dropdown-btn" onClick={() => setActive(!isActive)}>
-        <span className="dropdown-btn-text">{selected}</span>
+        <span className="dropdown-btn-text">{localStorage.getItem('language') || selected}</span>
         <img src={chevrondown} />
       </div>
       {isActive && (
@@ -18,7 +18,8 @@ const Dropdown = ({ selected, setSelected }) => {
             return (
               <li className="dropdown-item" onClick={e => {
                 setSelected(language);
-                setActive(false)
+                setActive(false);
+                localStorage.setItem('language', language);
               }}>{language}</li>
             )
           })}

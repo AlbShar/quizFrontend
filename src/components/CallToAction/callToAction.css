@@ -1,5 +1,5 @@
 .frontend-test__title {
-    font: var(--font-h1);
+    font: var(--font-h4);
     color: white;
     margin: 0;
     padding: 0;
@@ -17,8 +17,8 @@
     color: white;
 }
 
-@media screen and (max-width: 459.8px) {
+@media screen and (min-width: 459.8px) {
     .frontend-test__title {
-        font: var(--font-h4);
+        font: var(--font-h1);
     }
 }
