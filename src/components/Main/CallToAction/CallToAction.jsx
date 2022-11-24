@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./callToAction.css";
 import InfoTest from './InfoTest/InfoTest';
-import Button from '../UI/Button/Button';
-const CallToAction = () => {
+import Button from '../../UI/Button/Button';
+
+const CallToAction = (props) => {
     return (
         <div className='frontend-test'>
-            <h1 className='frontend-test__title'>Тест для Frontend разработчиков</h1>
-            <InfoTest/>
-            <p className='frontend-test__subtitle'>Добро пожаловать на сайт по проверке знаний Frontend разработчиков. Просим Вас перед началом теста убедиться, что Вас ничего не отвлекает.</p>
-            <p className='frontend-test__subtitle'>Тест будет состоять из 40 вопросов. На его прохождение у Вас будет 60 минут. После его прохождения вы получите результаты тестирования и советы по тому, какие темы Вам нужно подтянуть в сфере Frontend разработки.</p>
-            <Button value={'Начать тест'}/>
+            <h1 className='frontend-test__title'>{props.props.title}</h1>
+            <InfoTest time={props.props.time} dif={props.props.dif} question={props.props.question}/>
+            <p className='frontend-test__subtitle'>{props.props.subtitle1}</p>
+            <p className='frontend-test__subtitle'>{props.props.subtitle2}</p>
+            <Button value={props.props.start}/>
         </div>
     );
 };

@@ -1,12 +1,12 @@
 import React from "react";
 import Container from "../Container/Container";
-import CallToAction from "../CallToAction/CallToAction";
+import CallToAction from "./CallToAction/CallToAction";
 import "./main.css";
 
-const Main = () => {
+const Main = (props) => {
   return (
     <main className="main">
-      <Container content={<CallToAction />}>
+      <Container content={<CallToAction props={props}/>}>
       </Container>
     </main>
   );

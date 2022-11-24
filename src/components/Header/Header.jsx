@@ -12,7 +12,7 @@ const Header = () => {
         return (
           <div className="header__content">
             <img src={logo} alt="logo" className="logo" />
-            <Dropdown selected={selected} setSelected={setSelected}/>
+            <Dropdown  selected={selected} setSelected={setSelected}/>
           </div>
         );
       };
