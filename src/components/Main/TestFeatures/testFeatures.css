@@ -1,4 +1,9 @@
+.test-features {
+    background-color: #fff;
+}
 .test-features__title {
+    box-sizing: border-box;
+    width: 100%;
     background-color: var(--color-title-background);
     font: var(--font-little-text-regular);
     color: #fff;
@@ -6,6 +11,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px 0;
+    margin: 0;
 }
 
 .test-features__img {
@@ -17,4 +23,13 @@
 
 .test-features__text {
     font: var(--font-little-text-regular);
+    margin: 0;
+    padding: 10px 0;
+}
+
+
+@media screen and (min-width: 459.8px) {
+    .test-features__text {
+        padding: 20px 40px;
+    }
 }
