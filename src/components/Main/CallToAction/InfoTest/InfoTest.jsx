@@ -3,12 +3,16 @@ import "./infotest.css";
 import clock from "../../../../images/icons/clock.png";
 import helpcircle from "../../../../images/icons/helpcircle.png";
 import barchart from "../../../../images/icons/barchart.png";
+import { useTranslation } from "react-i18next";
 
-const InfoTest = (props) => {
+
+const InfoTest = () => {
+  const { t } = useTranslation();
+
   const objInfo = {
-    [props.time]: clock,
-    [props.question]: helpcircle,
-    [props.dif]: barchart,
+    [t("40_мин")]: clock,
+    [t("Возрастающая_сложность")]: helpcircle,
+    [t("40_вопросов")]: barchart,
   };
 
   return (

@@ -3,10 +3,10 @@ import Container from "../Container/Container";
 import CallToAction from "./CallToAction/CallToAction";
 import "./main.css";
 
-const Main = (props) => {
+const Main = () => {
   return (
     <main className="main">
-      <Container content={<CallToAction props={props}/>}>
+      <Container content={<CallToAction/>}>
       </Container>
     </main>
   );
