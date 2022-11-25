@@ -1,0 +1,20 @@
+.test-features__title {
+    background-color: var(--color-title-background);
+    font: var(--font-little-text-regular);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.test-features__img {
+    display: block;
+    width: 100%;
+    max-width: 1129px;
+    margin: 0 auto;
+}
+
+.test-features__text {
+    font: var(--font-little-text-regular);
+}
