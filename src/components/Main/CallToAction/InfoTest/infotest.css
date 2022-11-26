@@ -42,4 +42,8 @@
         content: "/";
         left: 12px;
     }
+
+    .frontend-test__info-item {
+        font: var(--font-text-bold);
+    }
 }
