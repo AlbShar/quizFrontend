@@ -1,8 +1,9 @@
 import React from "react";
 import Container from "../Container/Container";
 import "./header.css";
-import logo from "../../images/logo.png";
 import Dropdown from "./Dropdown/Dropdown";
+import Logo from "../UI/Logo/Logo";
+
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
       <Container>
         {
           <div className="header__content">
-            <img src={logo} alt="logo" className="logo" />
+            <Logo className="header__logo"/>
             <Dropdown />
           </div>
         }
