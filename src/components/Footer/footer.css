@@ -41,19 +41,42 @@
     align-items: center;
 }
 
-@media screen and (min-width: 1123.8px) {
+@media screen and (min-width: 767.8px) {
     .footer__list {
         display: flex;
-        justify-content: space-between;
-    }
-
-    .footer__logo {
-        margin-right: 60px;
+        justify-content: flex-start;
     }
 
     .footer__list-item:not(:last-child), .footer__network-img:not(:last-child) {
         margin: 0 28px 0 0;
     }
+
+    .footer__bottom {
+        justify-content: flex-start;
+    }
+
+    .footer__payment-img:not(:last-child) {
+        margin: 0 50px 0 0;
+    }
+
+    
+}
+
+@media screen and (min-width: 1123.8px) {
+    
+
+    .footer__network-img {
+        width: 24px;
+        height: 24px;
+    }
+
+    
+
+    .footer__logo {
+        margin-right: 60px;
+    }
+
+    
 
     .footer__bottom, .footer__list {
         margin: 0;

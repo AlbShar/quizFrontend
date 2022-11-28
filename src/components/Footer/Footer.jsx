@@ -88,7 +88,7 @@ const Footer = () => {
         {iconsBottomFooter.map((icon, index) => {
               return (
                   <img
-                    className="footer__network-img"
+                    className="footer__payment-img"
                     src={icon.src}
                     alt={icon.alt}
                     key={index + 1}
