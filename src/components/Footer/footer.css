@@ -40,3 +40,26 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media screen and (min-width: 1123.8px) {
+    .footer__list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer__logo {
+        margin-right: 60px;
+    }
+
+    .footer__list-item:not(:last-child), .footer__network-img:not(:last-child) {
+        margin: 0 28px 0 0;
+    }
+
+    .footer__bottom, .footer__list {
+        margin: 0;
+    }
+
+    .footer {
+        padding: 16px 16px 32px 16px;
+    }
+}

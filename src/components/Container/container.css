@@ -4,3 +4,12 @@
     margin: 0 auto;
     padding: 0 5px;
 }
+
+@media screen and (min-width: 1123.8px) {
+    .footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}

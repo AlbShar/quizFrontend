@@ -9,8 +9,12 @@ import youtube from "../../images/icons/youtube.png";
 import mastercard from "../../images/icons/mastercard.png";
 import fondy from "../../images/icons/fondy.png";
 import visa from "../../images/icons/visa.png";
+import { useTranslation } from "react-i18next";
+
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const iconsTopFooter = [
     {
       src: facebook,
@@ -35,9 +39,9 @@ const Footer = () => {
   ];
 
   const infoMiddleFooter = [
-    "О нас",
-    "Восстаовить мой результат",
-    "Политика конфиденциальности",
+    t("О_нас"),
+    t("Восстаовить"),
+    t("Политика")
   ];
 
   const iconsBottomFooter = [
