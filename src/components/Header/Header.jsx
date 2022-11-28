@@ -1,23 +1,21 @@
 import React from "react";
 import Container from "../Container/Container";
 import "./header.css";
-import logo from "../../images/logo.png";
 import Dropdown from "./Dropdown/Dropdown";
+import Logo from "../UI/Logo/Logo";
 
 
 const Header = () => {
-    const getHeaderContent = () => {
-        return (
-          <div className="header__content">
-            <img src={logo} alt="logo" className="logo" />
-            <Dropdown />
-          </div>
-        );
-      };
-
   return (
     <header className="header">
-      <Container content={getHeaderContent()} />
+      <Container>
+        {
+          <div className="header__content">
+            <Logo className="header__logo"/>
+            <Dropdown />
+          </div>
+        }
+      </Container>
     </header>
   );
 };

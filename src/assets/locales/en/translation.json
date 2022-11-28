@@ -5,7 +5,18 @@
     "Возрастающая_сложность": "Increasing complexity",
     "Добро_пожаловать": "Welcome to the site for checking the knowledge of Frontend developers. We ask you to make sure that nothing distracts you before starting the test.",
     "Тест_будет": "The test will consist of 40 questions. You will have 60 minutes to complete it. After passing it, you will receive test results and advice on what topics you need to improve in the field of Frontend development.",
-    "Начать_тест": "Start test"
+    "Начать_тест": "Start test",
+    "Особенности_теста": "Test features",
+    "Цель_теста": "Purpose of the test",
+    "Результаты_теста": "Test results",
+    "Вопросы_тест": "Questions for the test: how many should there be?",
+    "Тест_состоит": "The test consists of 40 questions, which can be used by both beginners and experienced Frontend developers to assess their knowledge skills. This test will allow novice developers to prepare for interviews, and more experienced professionals to check their level of knowledge. The database contains about 300 questions, which are taken from real interviews, as well as from open sources on the Internet. Of these, the program will randomly select 40 questions of various topics. Questions are divided into groups: 1) HTML, CSS (10 questions), 2) JS (20 questions) 3) React (20 questions). In order to pass the test, you need to answer 85% of the questions correctly (34 questions). After passing the test, you will find out which areas of Frontend development you need to improve.",
+    "Данный_тест": "This test can be used for a variety of purposes, including: - Preparing for interviews; - Evaluation of the candidate when applying for the position of Frontend developer; - Assessment of own knowledge and skills in the field of Frontend development;",
+    "Основная_цель": "The main purpose of testing is not only to determine the knowledge and skills of a person in the field of Frontend development, but also to determine the skills in which a person excels or needs additional attention. This test helps to determine abilities in the following areas: - Layout (HTML, CSS); - Knowledge of native Javascript programming language; - Knowledge of the React library;",
+    "Для_оценки": "To assess knowledge, the required number of questions should be in the range from 30 to 50. A smaller number of questions does not make it possible to accurately assess the level of knowledge of a person. Therefore, tests popular on the Internet for 3, 5 or 10 questions cannot give an accurate assessment. Using more than 50 questions for the test increases the duration of the test, which further entails a loss of concentration. Therefore, the optimal range is from 30 to 50 questions. Therefore, this site uses 40 questions.",
+    "О_нас": "About Us",
+    "Восстаовить": "Restore My Score",
+    "Политика": "Privacy Policy"
 
 }
   

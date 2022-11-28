@@ -1,6 +1,9 @@
 .header {
     background-color: #252B58;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .header__content {
@@ -10,7 +13,3 @@
     
 }
 
-.logo {
-    width: 140px;
-    height: 68px;
-}
