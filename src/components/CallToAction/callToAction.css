@@ -9,7 +9,7 @@
     max-width: 100%;
     background-color: var(--color-call-action);
     padding: 16px;
-    margin: 100px 0 13px 0;
+    margin: 34px 0 13px 0;
 }
 
 .frontend-test__subtitle {
@@ -23,7 +23,7 @@
     }
 
     .frontend-test {
-        margin: 108px 0 32px 0;
+        margin: 40px 0 32px 0;
     }
 
     .frontend-test__subtitle {

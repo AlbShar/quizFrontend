@@ -1,6 +1,6 @@
 import React from "react";
-import image from "../../../images/image.png";
-import img from "../../../images/img.png";
+import image from "../../images/image.png";
+import img from "../../images/img.png";
 import "./testFeatures.css";
 import { useTranslation } from "react-i18next";
   

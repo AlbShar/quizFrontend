@@ -28,6 +28,7 @@
 .footer__list-item {
     color: var(--color-footer-content);
     font: var(--font-little-text-regular);
+    text-decoration: none;
 }
 
 .footer__list-item:not(:last-child) {
@@ -58,25 +59,17 @@
     .footer__payment-img:not(:last-child) {
         margin: 0 50px 0 0;
     }
-
-    
 }
 
 @media screen and (min-width: 1123.8px) {
-    
-
     .footer__network-img {
         width: 24px;
         height: 24px;
     }
-
     
-
     .footer__logo {
         margin-right: 60px;
     }
-
-    
 
     .footer__bottom, .footer__list {
         margin: 0;

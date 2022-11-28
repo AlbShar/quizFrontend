@@ -1,8 +1,8 @@
 import React from "react";
 import "./infotest.css";
-import clock from "../../../../images/icons/clock.png";
-import helpcircle from "../../../../images/icons/helpcircle.png";
-import barchart from "../../../../images/icons/barchart.png";
+import clock from "../../../images/icons/clock.png";
+import helpcircle from "../../../images/icons/helpcircle.png";
+import barchart from "../../../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
 
 

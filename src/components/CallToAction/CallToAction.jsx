@@ -2,7 +2,7 @@ import React from 'react';
 import "./callToAction.css";
 import InfoTest from './InfoTest/InfoTest';
 import { useTranslation } from "react-i18next";
-import Button from '../../UI/Button/Button';
+import Button from '../UI/Button/Button';
 
 const CallToAction = () => {
     const { t } = useTranslation();
