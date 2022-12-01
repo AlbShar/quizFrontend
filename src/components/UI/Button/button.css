@@ -1,5 +1,5 @@
 .btn {
-    padding: 12px 80px;
+     padding: 8px 33px; 
     background-color: var(--color-button);
     border: none;
     font: var(--font-button);
@@ -10,4 +10,11 @@
 .btn__link {
     color: white;
     text-decoration: none;
+}
+
+
+@media screen and (min-width: 767.8px) {
+    .btn {
+      padding: 12px 80px; 
+    }
 }

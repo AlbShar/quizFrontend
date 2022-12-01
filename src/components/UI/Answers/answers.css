@@ -1,0 +1,15 @@
+.list-answers {
+    margin: 0;
+    padding: 0;
+}
+
+.list-answers__item {
+    list-style-type: none;
+    border: 1px solid var(--color-border-answer);
+    padding: 7px;
+    font: var(--font-little-text-bold);
+}
+
+.list-answers__item:not(:last-child) {
+    margin-bottom: 10px;
+}

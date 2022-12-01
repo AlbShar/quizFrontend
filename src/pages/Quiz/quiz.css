@@ -1,0 +1,10 @@
+.quiz {
+    background-color: #fff;
+    padding: 0 8px 47px 8px;
+}
+.quiz-btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 32px;
+}

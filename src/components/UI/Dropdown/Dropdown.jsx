@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import "./dropdown.css";
 import chevrondown from "../../../images/icons/chevrondown.png";
 import i18next from "i18next";
-import { useTranslation } from "react-i18next";
 
 const Dropdown = () => {
   const [selected, setSelected] = useState('Русский');
-  const { t } = useTranslation();
   const [isActive, setActive] = useState(false);
   const languages = ["Русский", "English", "Deutsch"];
   const mapLanguage = {

@@ -1,0 +1,22 @@
+.question__title {
+    font: var(--font-little-text-bold);
+    margin-bottom: 20px;
+}
+
+.question {
+    padding-bottom: 14px;
+}
+
+.question__wrapper-img {
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: #DFE4E9;
+    border-radius: 5px;
+    max-width: 540px;
+}
+
+.question__img {
+    width: 100%;
+    border-radius: 5px;
+
+}

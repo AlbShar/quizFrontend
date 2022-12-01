@@ -27,3 +27,5 @@ root.render(
   </React.StrictMode>
 );
 
+
+// firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase
