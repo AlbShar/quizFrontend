@@ -10,7 +10,7 @@ import mastercard from "../../images/icons/mastercard.png";
 import fondy from "../../images/icons/fondy.png";
 import visa from "../../images/icons/visa.png";
 import { useTranslation } from "react-i18next";
-
+import { Outlet, Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -39,9 +39,9 @@ const Footer = () => {
   ];
 
   const infoMiddleFooter = [
-    t("О_нас"),
-    t("Восстаовить"),
-    t("Политика")
+    { text: t("Сообщить"), link: "/reportbug" },
+    { text: t("Восстановить"), link: "/reestablish" },
+    { text: t("Политика"), link: "/politics" },
   ];
 
   const iconsBottomFooter = [
@@ -74,27 +74,31 @@ const Footer = () => {
           </article>
         </section>
         <section className="footer__middle">
-          <ul className="footer__list">
-            {infoMiddleFooter.map((item, index) => {
-              return (
-                <li key={index + 1} className="footer__list-item">
-                  {item}
-                </li>
-              );
-            })}
-          </ul>
+          <nav>
+            <ul className="footer__list">
+              {infoMiddleFooter.map((item, index) => {
+                return (
+                  <>
+                    <li key={index + 1} className="footer__list-item">
+                      <Link className="footer__list-item" to={item.link}>{item.text}</Link>
+                    </li>
+                  </>
+                );
+              })}
+            </ul>
+          </nav>
         </section>
         <section className="footer__bottom">
-        {iconsBottomFooter.map((icon, index) => {
-              return (
-                  <img
-                    className="footer__payment-img"
-                    src={icon.src}
-                    alt={icon.alt}
-                    key={index + 1}
-                  />
-              );
-            })}
+          {iconsBottomFooter.map((icon, index) => {
+            return (
+              <img
+                className="footer__payment-img"
+                src={icon.src}
+                alt={icon.alt}
+                key={index + 1}
+              />
+            );
+          })}
         </section>
       </Container>
     </footer>

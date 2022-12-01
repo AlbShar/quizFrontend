@@ -2,7 +2,8 @@ import React from 'react';
 import "./callToAction.css";
 import InfoTest from './InfoTest/InfoTest';
 import { useTranslation } from "react-i18next";
-import Button from '../../UI/Button/Button';
+import Button from '../UI/Button/Button';
+
 
 const CallToAction = () => {
     const { t } = useTranslation();
@@ -12,7 +13,7 @@ const CallToAction = () => {
             <InfoTest/>
             <p className='frontend-test__subtitle'>{t("Добро_пожаловать")}</p>
             <p className='frontend-test__subtitle'>{t("Тест_будет")}</p>
-            <Button value={t("Начать_тест")}/>
+            <Button value={t("Начать_тест")}/>             
         </div>
     );
 };

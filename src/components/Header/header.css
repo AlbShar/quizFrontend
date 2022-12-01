@@ -1,9 +1,10 @@
 .header {
     background-color: #252B58;
     width: 100%;
-    position: fixed;
+    margin: 0 0 34px 0;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
 }
 
 .header__content {
@@ -13,3 +14,9 @@
     
 }
 
+
+@media screen and (min-width: 459.8px) {
+    .header {
+        margin: 0 0 40px 0;
+    }
+}

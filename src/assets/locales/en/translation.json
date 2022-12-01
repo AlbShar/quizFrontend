@@ -14,7 +14,7 @@
     "Данный_тест": "This test can be used for a variety of purposes, including: - Preparing for interviews; - Evaluation of the candidate when applying for the position of Frontend developer; - Assessment of own knowledge and skills in the field of Frontend development;",
     "Основная_цель": "The main purpose of testing is not only to determine the knowledge and skills of a person in the field of Frontend development, but also to determine the skills in which a person excels or needs additional attention. This test helps to determine abilities in the following areas: - Layout (HTML, CSS); - Knowledge of native Javascript programming language; - Knowledge of the React library;",
     "Для_оценки": "To assess knowledge, the required number of questions should be in the range from 30 to 50. A smaller number of questions does not make it possible to accurately assess the level of knowledge of a person. Therefore, tests popular on the Internet for 3, 5 or 10 questions cannot give an accurate assessment. Using more than 50 questions for the test increases the duration of the test, which further entails a loss of concentration. Therefore, the optimal range is from 30 to 50 questions. Therefore, this site uses 40 questions.",
-    "О_нас": "About Us",
+    "Сообщить": "Report a bug",
     "Восстаовить": "Restore My Score",
     "Политика": "Privacy Policy"
 

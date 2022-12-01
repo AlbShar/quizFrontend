@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../Container/Container";
 import "./header.css";
-import Dropdown from "./Dropdown/Dropdown";
+import Dropdown from "../UI/Dropdown/Dropdown";
 import Logo from "../UI/Logo/Logo";
 
 
