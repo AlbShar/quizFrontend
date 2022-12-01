@@ -30,3 +30,11 @@
         font: var(--font-text-regular);
     }
 }
+
+@media screen and (min-width: 767.8px) {
+
+    .frontend-test {
+        padding: 16px 16px 16px 40px;
+    }
+
+}

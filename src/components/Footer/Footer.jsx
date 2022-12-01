@@ -39,7 +39,7 @@ const Footer = () => {
   ];
 
   const infoMiddleFooter = [
-    { text: t("Контакты"), link: "/contacts" },
+    { text: t("Сообщить"), link: "/reportbug" },
     { text: t("Восстановить"), link: "/reestablish" },
     { text: t("Политика"), link: "/politics" },
   ];

@@ -1,7 +1,7 @@
-.test-features {
+.features {
     background-color: #fff;
 }
-.test-features__title {
+.features__title {
     box-sizing: border-box;
     width: 100%;
     background-color: var(--color-title-background);
@@ -15,14 +15,14 @@
     text-align: center;
 }
 
-.test-features__img {
+.features__img {
     display: block;
     width: 100%;
     max-width: 1129px;
     margin: 13px auto 0 auto;
 }
 
-.test-features__text {
+.features__text {
     font: var(--font-little-text-regular);
     margin: 0;
     padding: 10px;
@@ -31,22 +31,19 @@
 
 
 @media screen and (min-width: 459.8px) {
-    .test-features__text {
-        padding: 20px 40px;
-    }
 
-    .test-features__title {
+    .features__title {
         font: var(--font-h4);
         justify-content: flex-start;
         padding: 10px 0 10px 40px;
     }
 
-    .test-features__text {
+    .features__text {
         font: var(--font-text-regular);
         padding: 20px 40px;
     }
 
-    .test-features__img {
+    .features__img {
         margin: 26px auto 0 auto;
     }
     

@@ -1,17 +1,18 @@
 import React from "react";
 import Container from "../../components/Container/Container";
-import CallToAction from "../../components/CallToAction/CallToAction";
 import Features from "../../components/Features/Features";
+import "./reportBug.css";
 
-const Homepage = () => {
+const Contacts = () => {
   return (
     <main style={{ flex: "1 1 auto" }}>
       <Container>
-        <CallToAction />
-        <Features pageName="Homepage"/>
+        <h1 className="report-bug__title">Нашли ошибку на сайте или в тесте?</h1>
+        <Features pageName="ReportBug"/>
+
       </Container>
     </main>
   );
 };
 
-export default Homepage;
+export default Contacts;
