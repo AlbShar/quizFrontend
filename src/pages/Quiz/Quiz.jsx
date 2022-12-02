@@ -7,7 +7,9 @@ import BackBtn from "../../components/UI/BackBtn/BackBtn";
 import "./quiz.css";
 import Answers from "../../components/UI/Answers/Answers";
 import Quiestion from "../../components/Quiestion/Quiestion";
-
+import QuantityQuestions from "../../components/QuantityQuestions/QuantityQuestions";
+import Timer from "../../components/Timer/Timer";
+import ScrollBar from "../../components/ScrollBar/ScrollBar";
 const Quiz = () => {
   // useEffect(() => {
   //     onValue(reference, (snapshot) => {
@@ -19,6 +21,11 @@ const Quiz = () => {
     <main style={{ flex: "1 1 auto" }}>
       <Container>
         <section className="quiz">
+          <ScrollBar/>
+          <article className="quiz-top">
+          <QuantityQuestions />
+            <Timer />
+          </article>
           <Quiestion />
           <Answers />
           <article className="quiz-btns">

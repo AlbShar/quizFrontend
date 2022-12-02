@@ -10,10 +10,12 @@ body {
  background-color: var(--color-main-background); 
   --color-footer: #1C232E;
   --color-back-btn: #81868C;
+  --color-quantity-questions: #81868C;
   --color-footer-content: #81868C;
   --color-main-background: #DFE4E9;
   --color-border-answer: #DFE4E9;
   --color-button: #6768D7;
+  --color-scroll-bar: #6768D7;
   --color-title-background: #6768D7;
   --color-7: #0CD3FF;
   --color-call-action: #29316D;

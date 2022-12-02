@@ -1,0 +1,9 @@
+.timer {
+    font: var(--font-little-text-regular);
+}
+
+@media screen and (min-width: 767.8px) {
+    .timer {
+        font: var(--font-text-regular);
+    }
+}
