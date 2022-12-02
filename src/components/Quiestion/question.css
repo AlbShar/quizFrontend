@@ -1,0 +1,16 @@
+.question__title {
+    font: var(--font-little-text-bold);
+    margin-bottom: 20px;
+}
+
+.question {
+    padding-bottom: 14px;
+}
+
+
+
+@media screen and (min-width: 767.8px) {
+    .question__title {
+        font: var(--font-text-bold);
+    }
+}

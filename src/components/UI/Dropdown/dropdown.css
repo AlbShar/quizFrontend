@@ -8,7 +8,7 @@
 
 .dropdown-btn-text {
     color: white;
-    font: var(--font-text-regular);
+    font: var(--font-little-text-bold);
 
 }
 
@@ -37,4 +37,10 @@
     width: 12px;
     height: 12px;
     margin-left: 4px;
+}
+
+@media screen and (min-width: 767.8px) {
+    .dropdown-btn-text {
+        font: var(--font-text-bold);
+    }
 }
