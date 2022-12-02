@@ -5,11 +5,14 @@
     font: var(--font-button);
     text-transform: uppercase;
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 
 .btn__link {
     color: white;
     text-decoration: none;
+
 }
 
 

@@ -1,14 +1,8 @@
-.quantity-questions {
+.quantity {
     font: var(--font-h4);
-    position: relative;
 }
 
-.quantity-questions::after {
-    position: absolute;
-    content: "/ 40";
-    top: 6px;
-    left: 112px;
+.quantity-all {
     font: var(--font-text-regular);
     color: var(--color-quantity-questions);
-    width: 40px;
 }

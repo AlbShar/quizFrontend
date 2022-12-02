@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { reference } from "../../index";
 import { onValue } from "firebase/database";
 import Container from "../../components/Container/Container";
@@ -10,7 +10,10 @@ import Quiestion from "../../components/Quiestion/Quiestion";
 import QuantityQuestions from "../../components/QuantityQuestions/QuantityQuestions";
 import Timer from "../../components/Timer/Timer";
 import ScrollBar from "../../components/ScrollBar/ScrollBar";
+
 const Quiz = () => {
+  const [numbQuestion, setNumbQuestion] = useState(1);
+
   // useEffect(() => {
   //     onValue(reference, (snapshot) => {
   //         const data = snapshot.val();
@@ -21,16 +24,16 @@ const Quiz = () => {
     <main style={{ flex: "1 1 auto" }}>
       <Container>
         <section className="quiz">
-          <ScrollBar/>
+          <ScrollBar numbQuestion={numbQuestion}/>
           <article className="quiz-top">
-          <QuantityQuestions />
+            <QuantityQuestions numbQuestion={numbQuestion}/>
             <Timer />
           </article>
           <Quiestion />
           <Answers />
           <article className="quiz-btns">
             <BackBtn />
-            <Button value="Принять" />
+            <Button currentPage="Quiz" numbQuestion={numbQuestion} setNumbQuestion={setNumbQuestion}/>
           </article>
         </section>
       </Container>
