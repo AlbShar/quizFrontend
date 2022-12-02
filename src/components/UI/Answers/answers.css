@@ -12,6 +12,7 @@
     padding: 7px;
     font: var(--font-little-text-bold);
     max-width: 540px;
+    cursor: pointer;
 }
 
 .list-answers__item:not(:last-child) {
