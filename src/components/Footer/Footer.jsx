@@ -10,7 +10,7 @@ import mastercard from "../../images/icons/mastercard.png";
 import fondy from "../../images/icons/fondy.png";
 import visa from "../../images/icons/visa.png";
 import { useTranslation } from "react-i18next";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();

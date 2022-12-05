@@ -8,20 +8,17 @@ import Quiz from "./pages/Quiz/Quiz";
 
 function App() {
   return (
-      <BrowserRouter>
-      <Header />
-        <Routes>
-          <Route path="/" element={<Homepage />}/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route path="/" element={<Homepage />}>
+            <Route index element={<Footer />} />
+          </Route>
           <Route path="reportbug" element={<ReportBug />} />
           <Route path="quiz" element={<Quiz />} />
-        </Routes>
-        <Footer/>
-      </BrowserRouter>
-    // <>
-    //   <Header />
-    //   <Main/>
-    //   <Footer/>
-    // </>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

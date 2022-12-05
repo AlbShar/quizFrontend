@@ -11,27 +11,18 @@
     border: 1px solid var(--color-border-answer);
     padding: 7px;
     font: var(--font-little-text-bold);
-    max-width: 540px;
+    /* max-width: 540px; */
     cursor: pointer;
+}
+
+.list-answers__item-active {
+    border: 2px solid rgb(103, 104, 215);
 }
 
 .list-answers__item:not(:last-child) {
     margin-bottom: 10px;
 }
-.wrapper-img {
-    align-items: center;
-    box-sizing: border-box;
-    padding: 8px;
-    background-color: #DFE4E9;
-    border-radius: 5px;
-    max-width: 540px;
-    margin-bottom: 14px;
-}
 
-.img {
-    width: 100%;
-    border-radius: 5px;
-}
 
 @media screen and (min-width: 767.8px) {
     .list-answers__item {
@@ -46,12 +37,12 @@
     .wrapper-img {
         display: flex;
         align-items: center;
-        flex-basis: 48%;
+        flex-basis: 55%;
         margin-bottom: 0;
     }
-    .list-answers {
-        flex-basis: 48%;
-    }
+     .list-answers {
+        flex-basis: auto;
+    } 
 
     .list-answers__item:not(:last-child) {
         margin-bottom: 20px;

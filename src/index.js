@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import './i18nextInit';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVNDua7phkjh4mSytFaX6CTuJsImD6Od8",
@@ -17,8 +17,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app)
-export const reference = ref(db, "questions/question1/name"); 
+export const db = getDatabase(app)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
