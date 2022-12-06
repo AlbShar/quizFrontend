@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./button.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ref, set } from "firebase/database";
+import { ref, set, push } from "firebase/database";
 import { onValue } from "firebase/database";
 import { db } from "../../../index";
 
@@ -12,6 +12,8 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestions = Object.entries(snapshot.val()).length;
   });
+  const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
+  
 
   /*
   Get totalPoints
@@ -25,8 +27,11 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
 
   const getContentForBtnHomePage = () => {
     return (
-      <button className="btn">
-        <Link className="btn__link" to="quiz">
+      <button className="btn" onClick={() => setUniqueIdUser(uniqueIdUser * Math.random())}>
+        <Link
+          className="btn__link"
+          to="quiz"
+        >
           {t("Начать_тест")}
         </Link>
       </button>
@@ -34,7 +39,16 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
   };
 
   const getContentForBtnQuiz = () => {
-    const sendDataDb = (numbQuestion, question, userAnswer, theme) => {
+    let referenceUserAnswers = ref(db, `userAnswers1${uniqueIdUser}/answer${numbQuestion}`);
+    const answerId = push(referenceUserAnswers).key;
+
+    const sendDataDb = (
+      numbQuestion,
+      question,
+      userAnswer,
+      theme
+    ) => {
+
       let rightAnswerDb;
       onValue(
         ref(db, `questions/question${numbQuestion}/rightAnswer`),
@@ -42,7 +56,8 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
           rightAnswerDb = snapshot.val();
         }
       );
-      set(ref(db, `userAnswers/answer${numbQuestion}`), {
+      set(referenceUserAnswers, {
+        id: answerId,
         question: question,
         userAnswer: userAnswer,
         theme: theme,
@@ -65,7 +80,12 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
                   ? totalQuestions
                   : numbQuestion + 1
               );
-              sendDataDb(numbQuestion, question, asnwerItem.textContent, theme);
+              sendDataDb(
+                numbQuestion,
+                question,
+                asnwerItem.textContent,
+                theme
+              );
             } else {
               return false;
             }
