@@ -8,14 +8,15 @@ const Quiestion = ({ numbQuestion }) => {
   const reference = ref(db, `questions/question${numbQuestion}`);
   let isImg;
   let titleQuestion;
-  onValue(reference, (snapshot) => {
-    const db = snapshot.val();
-    titleQuestion = db.name;
-    isImg = db.isImg;
-  });
+  
 
   useEffect(() => {
+    onValue(reference, (snapshot) => {
+      const db = snapshot.val();
+      titleQuestion = db.name;
+      isImg = db.isImg;
       document.querySelector(".question__title").textContent = titleQuestion;
+    });
   });
 
   return (

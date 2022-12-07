@@ -1,5 +1,5 @@
 .btn {
-     padding: 8px 33px; 
+    padding: 8px 33px; 
     background-color: var(--color-button);
     border: none;
     font: var(--font-button);
@@ -15,6 +15,26 @@
 
 }
 
+.back-btn {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    border: none;
+    background-color: transparent;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.back-btn__img {
+    width: 24px;
+    height: 24px;
+}
+
+.back-btn__text {
+    font: var(--font-button);
+    color: var(--color-back-btn); 
+    text-transform: uppercase;
+}
 
 @media screen and (min-width: 767.8px) {
     .btn {

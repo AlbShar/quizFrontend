@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Container from "../../components/Container/Container";
 import Button from "../../components/UI/Button/Button";
-import BackBtn from "../../components/UI/BackBtn/BackBtn";
 import "./quiz.css";
 import Answers from "../../components/UI/Answers/Answers";
 import Quiestion from "../../components/Quiestion/Quiestion";
@@ -11,7 +10,6 @@ import ScrollBar from "../../components/ScrollBar/ScrollBar";
 
 const Quiz = () => {
   const [numbQuestion, setNumbQuestion] = useState(1);
-
 
   return (
     <main style={{ flex: "1 1 auto" }}>
@@ -24,10 +22,7 @@ const Quiz = () => {
           </article>
           <Quiestion numbQuestion={numbQuestion}/>
           <Answers numbQuestion={numbQuestion}/>
-          <article className="quiz-btns">
-            <BackBtn />
             <Button currentPage="Quiz" numbQuestion={numbQuestion} setNumbQuestion={setNumbQuestion}/>
-          </article>
         </section>
       </Container>
     </main>
