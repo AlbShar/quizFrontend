@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import ShowNotification from "../ShowNotification/ShowNotification";
 import "./timer.css";
 
 const Timer = () => {
-  let leftSeconds = 7200; // seconds
+  let leftSeconds = 3; // seconds
   const [hours, setHours] = useState("02");
   const [minutes, setMinutes] = useState("00");
   const [seconds, setSeconds] = useState("00");
@@ -18,9 +19,9 @@ const Timer = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => getTime(leftSeconds >= 1 ? leftSeconds-- : 0), 1000);
-    return () => clearInterval(interval);
-  }, []);
+      const interval = setInterval(() => getTime(leftSeconds >= 1 ? leftSeconds-- : 0), 1000);
+      return () => clearInterval(interval); 
+  }, []); 
 
   return (
     <div className="timer">
@@ -29,6 +30,7 @@ const Timer = () => {
       <span>{minutes}</span>
       <span>:</span>
       <span>{seconds}</span>
+      {(hours === '00' && minutes === '00' && seconds === '00') && <ShowNotification/>}
     </div>
   );
 };
