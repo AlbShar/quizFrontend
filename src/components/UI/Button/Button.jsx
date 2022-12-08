@@ -10,10 +10,18 @@ import arrowleft from "../../../images/icons/arrowleft.png";
 const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
   const { t } = useTranslation();
   let totalQuestions;
+  let timeQuestion;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestions = Object.entries(snapshot.val()).length;
   });
   const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+
+  const getTimeQuestion = () => {
+    timeQuestion = ((Date.now() - questionStartTime)/1000).toFixed(2);
+    setQuestionStartTime(Date.now());
+  };
+
 
   /*
   Get totalPoints
@@ -27,14 +35,16 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
 
   const getContentForBtnHomePage = () => {
     return (
-      <button
-        className="btn"
-        onClick={() => setUniqueIdUser(uniqueIdUser * Math.random())}
-      >
-        <Link className="btn__link" to="quiz">
+      <Link className="btn__link" to="quiz" >
+        <button className="btn"
+          onClick={() => {
+            setUniqueIdUser(uniqueIdUser * Math.random());
+            setQuestionStartTime(Date.now());
+          }}
+        >
           {t("Начать_тест")}
-        </Link>
-      </button>
+        </button>
+      </Link>
     );
   };
 
@@ -46,7 +56,13 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
     const answerId = push(referenceUserAnswers).key;
     const answersItem = document.querySelectorAll(".list-answers__item");
 
-    const sendDataDb = (numbQuestion, question, userAnswer, theme) => {
+    const sendDataDb = (
+      numbQuestion,
+      question,
+      userAnswer,
+      theme,
+      timeQuestion
+    ) => {
       let rightAnswerDb;
       onValue(
         ref(db, `questions/question${numbQuestion}/rightAnswer`),
@@ -60,6 +76,7 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
         userAnswer: userAnswer,
         theme: theme,
         point: rightAnswerDb === userAnswer ? 1 : 0,
+        time: timeQuestion,
       });
     };
 
@@ -74,12 +91,10 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
               if (answerItem.textContent === previousAnswerUser) {
                 answerItem.classList.add("list-answers__item-active");
               }
-            }, 0)
-            
+            }, 0);
           });
         }
       );
-
     };
 
     return (
@@ -105,7 +120,8 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
               document.querySelector(".quantity__theme").textContent;
             const question =
               document.querySelector(".question__title").textContent;
-              
+              getTimeQuestion();
+
             answersItem.forEach((asnwerItem) => {
               if (asnwerItem.classList.contains("list-answers__item-active")) {
                 setNumbQuestion(
@@ -117,15 +133,15 @@ const Button = ({ currentPage, numbQuestion, setNumbQuestion }) => {
                   numbQuestion,
                   question,
                   asnwerItem.textContent,
-                  theme
+                  theme,
+                  timeQuestion
                 );
               } else {
                 return false;
               }
               if (numbQuestion >= 2) {
-                document.querySelector('.back-btn').style.display = 'flex';
+                document.querySelector(".back-btn").style.display = "flex";
               }
-  
             });
           }}
         >
