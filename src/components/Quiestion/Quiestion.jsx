@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
 import "./question.css";
-import { db } from "../../index";
-import { ref } from "firebase/database";
-import { onValue } from "firebase/database";
+import { getNameQuestion } from "../../index";
 
-const Quiestion = ({ numbQuestion }) => {
-  const reference = ref(db, `questions/question${numbQuestion}`);
+const Quiestion = ({ currentQuestionNumb }) => {
   let isImg;
-  let titleQuestion;
-  
 
+  // useEffect(() => {
+  //   onValue(reference, (snapshot) => {
+  //     const db = snapshot.val();
+  //     titleQuestion = db.name;
+  //     isImg = db.isImg;
+  //     document.querySelector(".question__title").textContent = titleQuestion;
+  //   });
+  // });
   useEffect(() => {
-    onValue(reference, (snapshot) => {
-      const db = snapshot.val();
-      titleQuestion = db.name;
-      isImg = db.isImg;
-      document.querySelector(".question__title").textContent = titleQuestion;
-    });
+    getNameQuestion(currentQuestionNumb).then(nameQuestion => {
+      document.querySelector(".question__title").textContent = nameQuestion;
+    })
   });
 
   return (
     <article className="question">
-      <h2 className="question__title"></h2>
+      <h2 className="question__title"></h2> 
       {isImg && (
         <div className="wrapper-img">
           <img src={isImg} alt="Код на JS" className="img" />

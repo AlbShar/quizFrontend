@@ -3,7 +3,7 @@ import ShowNotification from "../ShowNotification/ShowNotification";
 import "./timer.css";
 
 const Timer = () => {
-  let leftSeconds = 3; // seconds
+  let leftSeconds = 7200; // seconds
   const [hours, setHours] = useState("02");
   const [minutes, setMinutes] = useState("00");
   const [seconds, setSeconds] = useState("00");

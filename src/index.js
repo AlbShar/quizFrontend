@@ -5,6 +5,8 @@ import App from "./App";
 import "./i18nextInit";
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { ref } from "firebase/database";
+import { onValue } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVNDua7phkjh4mSytFaX6CTuJsImD6Od8",
@@ -18,9 +20,61 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+const db = getDatabase(app);
 
+const getTotalQuestionsNumb = () => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(ref(db, `questions`), (snapshot) => {
+        const totalQuestionsNumb = Object.entries(snapshot.val()).length;
+        resolve(totalQuestionsNumb);
+      });
+    })
+  )
+};
 
+const getThemeQuestion = (currentQuestionNumb) => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `questions/question${currentQuestionNumb}/theme`),
+        (snapshot) => {
+          const themQuestion = snapshot.val();
+          resolve(themQuestion);
+        }
+      );
+    })
+  )
+};
+
+const getNameQuestion = (currentQuestionNumb) => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `questions/question${currentQuestionNumb}/name`),
+        (snapshot) => {
+          const nameQuestion = snapshot.val();
+          resolve(nameQuestion);
+        }
+      );
+    })
+  )
+};
+
+  
+ const getTotalPoints = () => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `userAnswers`),
+        (snapshot) => {
+          const answersUser = Object.values(snapshot.val());
+          resolve(answersUser.map(answerUser => answerUser.point).reduce((sum, current) => sum + current, 0))
+        }
+      );
+    })
+  )
+ };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,5 +82,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion };
 
 // firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase

@@ -9,7 +9,7 @@ const ShowNotification = () => {
         <span className="notification__close" onClick={() => {
             document.querySelector(".notification-wrapper").style.display = 'none';
         }}>✖</span>
-        <span className="notification__text">Продолжайте решать тест дальше. В связи с тем, что время закончилось из Вашего результат вычтется 3 балла.</span>
+        <span className="notification__text">Продолжайте решать тест дальше. В связи с тем, что время закончилось из Вашего результата вычтется 3 балла.</span>
       </div>
     </div>
   );

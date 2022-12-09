@@ -9,24 +9,24 @@ import Timer from "../../components/Timer/Timer";
 import ScrollBar from "../../components/ScrollBar/ScrollBar";
 
 const Quiz = () => {
-  const [numbQuestion, setNumbQuestion] = useState(1);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
 
 
   return (
     <main style={{ flex: "1 1 auto" }}>
       <Container>
         <section className="quiz">
-          <ScrollBar numbQuestion={numbQuestion} />
+          <ScrollBar currentQuestionNumb={currentQuestionNumb} />
           <article className="quiz-top">
-            <QuantityQuestions numbQuestion={numbQuestion} />
+            <QuantityQuestions currentQuestionNumb={currentQuestionNumb} />
             <Timer />
           </article>
-          <Quiestion numbQuestion={numbQuestion} />
-          <Answers numbQuestion={numbQuestion} />
+          <Quiestion currentQuestionNumb={currentQuestionNumb} />
+          <Answers currentQuestionNumb={currentQuestionNumb} />
           <Button
             currentPage="Quiz"
-            numbQuestion={numbQuestion}
-            setNumbQuestion={setNumbQuestion}
+            currentQuestionNumb={currentQuestionNumb}
+            setCurrentQuestionNumb={setCurrentQuestionNumb}
           />
         </section>
       </Container>

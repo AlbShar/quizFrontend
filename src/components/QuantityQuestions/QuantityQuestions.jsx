@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
 import "./quantityQuestions.css";
-import { db } from "../../index";
-import { ref } from "firebase/database";
-import { onValue } from "firebase/database";
+import { getTotalQuestionsNumb, getThemeQuestion } from "../../index.js";
 
-const QuantityQuestions = ({ numbQuestion }) => {
+const QuantityQuestions = ({ currentQuestionNumb }) => {
   useEffect(() => {
-    onValue(ref(db, `questions`), (snapshot) => {
-      let totalQuestions = Object.entries(snapshot.val()).length;
-      document.querySelector(".quantity-all").textContent = totalQuestions;
+    getTotalQuestionsNumb().then((totalQuestionsNumb) => {
+      document.querySelector(".quantity-all").textContent = totalQuestionsNumb;
     });
-
-    onValue(ref(db, `questions/question${numbQuestion}/theme`), (snapshot) => {
-      let themQuestion = snapshot.val();
-      document.querySelector(".quantity__theme").textContent = `${themQuestion}`;
-    });
-  });
+    getThemeQuestion(currentQuestionNumb).then(theme => {
+      document.querySelector(".quantity__theme").textContent = theme;
+    })
+  }, []);
   return (
     <h2 className="quantity">
-      Вопрос {numbQuestion}
+      Вопрос {currentQuestionNumb}
       <span className="quantity-all">0</span>
       <span className="quantity__theme">0</span>
     </h2>
