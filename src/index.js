@@ -61,6 +61,7 @@ const getNameQuestion = (currentQuestionNumb) => {
   )
 };
 
+
   
  const getTotalPoints = () => {
   return (
@@ -82,6 +83,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion };
+export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion, };
 
 // firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase

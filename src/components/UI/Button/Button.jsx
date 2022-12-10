@@ -7,7 +7,6 @@ import { onValue } from "firebase/database";
 import { db } from "../../../index";
 import arrowleft from "../../../images/icons/arrowleft.png";
 import { getTotalQuestionsNumb } from "../../../index";
-import { useEffect } from "react";
 
 const Button = ({
   currentPage,
@@ -43,7 +42,7 @@ const Button = ({
     );
 
     const getTimeQuestion = () => {
-      timeQuestion = (((Date.now() - questionStartTime) / 1000).toFixed(2));
+      timeQuestion = ((Date.now() - questionStartTime) / 1000).toFixed(2);
       setQuestionStartTime(Date.now());
     };
 
@@ -76,23 +75,25 @@ const Button = ({
       });
     };
 
-    const highlightPreviousAnswer = (currentQuestionNumb) => {
-      onValue(
-        ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
-        (snapshot) => {
-          let previousAnswerUser = snapshot.val().userAnswer;
-          document
-            .querySelectorAll(".list-answers__item")
-            .forEach((answerItem) => {
-              setTimeout(() => {
-                answerItem.classList.remove('list-answers__item-active')
-                if (answerItem.textContent === previousAnswerUser) {
-                  answerItem.classList.add("list-answers__item-active");
-                }
-              }, 1);
-            });
-        }
-      );
+    const highlightPreviousAnswer = () => {
+        onValue(
+          ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
+          (snapshot) => {
+             setTimeout(() => {
+              document
+                .querySelectorAll(".list-answers__item")
+                .forEach((answerItem) => {
+                  if (answerItem.textContent === snapshot.val().userAnswer) {
+                    answerItem.classList.add("list-answers__item-active");
+                    console.log('add')
+                  }
+                });
+            }, 1);     
+    
+          }, {
+            onlyOnce: true
+          }
+        ); 
     };
 
     return (
@@ -103,7 +104,7 @@ const Button = ({
             onClick={(e) => {
               setCurrentQuestionNumb(--currentQuestionNumb);
               e.target.closest(".back-btn").style.display = "none";
-              highlightPreviousAnswer(currentQuestionNumb);
+              highlightPreviousAnswer();
             }}
           >
             <img className="back-btn__img" src={arrowleft} alt="Кнопка назад" />
@@ -120,7 +121,8 @@ const Button = ({
               document.querySelector(".question__title").textContent;
             getTimeQuestion();
 
-            document.querySelectorAll(".list-answers__item")
+            document
+              .querySelectorAll(".list-answers__item")
               .forEach((asnwerItem) => {
                 if (
                   asnwerItem.classList.contains("list-answers__item-active")

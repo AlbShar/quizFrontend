@@ -6,15 +6,17 @@ import { onValue } from "firebase/database";
 
 const Answers = ({ currentQuestionNumb }) => {
   const [answers, setAnswers] = useState([]);
-  
+
   useEffect(() => {
     document.querySelectorAll('.list-answers__item').forEach(answerItem => {
-      answerItem.classList.remove("list-answers__item-active");
+      if (answerItem.classList.contains("list-answers__item-active")) {
+        answerItem.classList.remove("list-answers__item-active");
+        console.log('delete')  
+      }
     })
     onValue(ref(db, `answers/answer${currentQuestionNumb}`), (snapshot) => {
       const answersDB = Object.entries(snapshot.val());
       setAnswers(answersDB.map((item) => item.join(". ")));
-      
     });
   }, [currentQuestionNumb]);
 

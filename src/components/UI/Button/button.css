@@ -9,12 +9,6 @@
     text-decoration: none;
 }
 
-.btn__link {
-    color: white;
-    text-decoration: none;
-
-}
-
 .back-btn {
     display: flex;
     align-items: center;
@@ -23,7 +17,16 @@
     background-color: transparent;
     gap: 8px;
     cursor: pointer;
+
 }
+
+.btn__link {
+    color: white;
+    text-decoration: none;
+
+}
+
+
 
 .back-btn__img {
     width: 24px;
