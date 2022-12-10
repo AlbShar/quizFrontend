@@ -7,6 +7,7 @@ import { onValue } from "firebase/database";
 import { db } from "../../../index";
 import arrowleft from "../../../images/icons/arrowleft.png";
 import { getTotalQuestionsNumb } from "../../../index";
+import { useEffect } from "react";
 
 const Button = ({
   currentPage,
@@ -17,11 +18,7 @@ const Button = ({
 
   const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
-  const [timeQuestion, setTimeQuestion] = useState(0);
-  const getTimeQuestion = () => {
-    setTimeQuestion(((Date.now() - questionStartTime) / 1000).toFixed(2));
-    setQuestionStartTime(Date.now());
-  };
+  let timeQuestion;
 
   const getBtnHomePage = () => {
     return (
@@ -44,6 +41,11 @@ const Button = ({
       db,
       `user${uniqueIdUser}/answer${currentQuestionNumb}`
     );
+
+    const getTimeQuestion = () => {
+      timeQuestion = (((Date.now() - questionStartTime) / 1000).toFixed(2));
+      setQuestionStartTime(Date.now());
+    };
 
     const setUniqueIdAnswer = () => {
       const answerId = push(referenceUserAnswers).key;
@@ -79,13 +81,16 @@ const Button = ({
         ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
         (snapshot) => {
           let previousAnswerUser = snapshot.val().userAnswer;
-          document.querySelectorAll(".list-answers__item").forEach((answerItem) => {
-            setTimeout(() => {
-              if (answerItem.textContent === previousAnswerUser) {
-                answerItem.classList.add("list-answers__item-active");
-              }
-            }, 0);
-          });
+          document
+            .querySelectorAll(".list-answers__item")
+            .forEach((answerItem) => {
+              setTimeout(() => {
+                answerItem.classList.remove('list-answers__item-active')
+                if (answerItem.textContent === previousAnswerUser) {
+                  answerItem.classList.add("list-answers__item-active");
+                }
+              }, 1);
+            });
         }
       );
     };
@@ -115,29 +120,32 @@ const Button = ({
               document.querySelector(".question__title").textContent;
             getTimeQuestion();
 
-            document.querySelectorAll(".list-answers__item").forEach((asnwerItem) => {
-              if (asnwerItem.classList.contains("list-answers__item-active")) {
-                getTotalQuestionsNumb().then((totalQuestionsNumb) => {
-                  setCurrentQuestionNumb(
-                    currentQuestionNumb === totalQuestionsNumb
-                      ? totalQuestionsNumb
-                      : currentQuestionNumb + 1
+            document.querySelectorAll(".list-answers__item")
+              .forEach((asnwerItem) => {
+                if (
+                  asnwerItem.classList.contains("list-answers__item-active")
+                ) {
+                  getTotalQuestionsNumb().then((totalQuestionsNumb) => {
+                    setCurrentQuestionNumb(
+                      currentQuestionNumb === totalQuestionsNumb
+                        ? totalQuestionsNumb
+                        : currentQuestionNumb + 1
+                    );
+                  });
+                  sendDataDb(
+                    currentQuestionNumb,
+                    question,
+                    asnwerItem.textContent,
+                    theme,
+                    timeQuestion
                   );
-                });
-                sendDataDb(
-                  currentQuestionNumb,
-                  question,
-                  asnwerItem.textContent,
-                  theme,
-                  timeQuestion
-                );
-              } else {
-                return false;
-              }
-              if (currentQuestionNumb >= 2) {
-                document.querySelector(".back-btn").style.display = "flex";
-              }
-            });
+                } else {
+                  return false;
+                }
+                if (currentQuestionNumb >= 2) {
+                  document.querySelector(".back-btn").style.display = "flex";
+                }
+              });
           }}
         >
           Принять
@@ -147,11 +155,7 @@ const Button = ({
   };
 
   return (
-    <>
-      {currentPage === "Homepage"
-        ? getBtnHomePage()
-        : getBtnsQuizPage()}
-    </>
+    <>{currentPage === "Homepage" ? getBtnHomePage() : getBtnsQuizPage()}</>
   );
 };
 
