@@ -13,7 +13,7 @@ const CallToAction = () => {
             <InfoTest/>
             <p className='frontend-test__subtitle'>{t("Добро_пожаловать")}</p>
             <p className='frontend-test__subtitle'>{t("Тест_будет")}</p>
-            <Button value={t("Начать_тест")}/>             
+            <Button currentPage="Homepage"/>             
         </div>
     );
 };

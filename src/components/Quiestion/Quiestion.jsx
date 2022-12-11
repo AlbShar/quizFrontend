@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./question.css";
+import { getNameQuestion, getImageSrc } from "../../index";
 
-const Quiestion = () => {
+const Quiestion = ({ currentQuestionNumb }) => {
+
+  useEffect(() => {
+    const wrapperImg = document.querySelector('.wrapper-img');
+    getNameQuestion(currentQuestionNumb).then(nameQuestion => {
+      document.querySelector(".question__title").textContent = nameQuestion;
+    })
+    getImageSrc(currentQuestionNumb).then(imgSrc => {
+      wrapperImg.style.display = 'block';
+      document.querySelector('.img').src = imgSrc;
+    }).catch(() => {
+      wrapperImg.style.display = 'none';
+    })
+  });
+
   return (
     <article className="question">
-      <h2 className="question__title">Что выведет код?</h2>
-      
+      <h2 className="question__title"></h2> 
+        <div className="wrapper-img">
+          <img alt="Код на JS" className="img" />
+        </div>
     </article>
   );
 };
