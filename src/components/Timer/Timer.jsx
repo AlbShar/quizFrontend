@@ -19,6 +19,9 @@ const Timer = () => {
   };
 
   useEffect(() => {
+    if (localStorage.getItem('penalty-points')) {
+      localStorage.removeItem('penalty-points');
+    }
       const interval = setInterval(() => getTime(leftSeconds >= 1 ? leftSeconds-- : 0), 1000);
       return () => clearInterval(interval); 
   }, []); 

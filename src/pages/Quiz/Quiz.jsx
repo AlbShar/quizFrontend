@@ -11,7 +11,6 @@ import ScrollBar from "../../components/ScrollBar/ScrollBar";
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
 
-
   return (
     <main style={{ flex: "1 1 auto" }}>
       <Container>

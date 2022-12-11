@@ -18,6 +18,7 @@ const firebaseConfig = {
   messagingSenderId: "598479422146",
   appId: "1:598479422146:web:812463d02e2684ad0bf15b",
 };
+// const uniqueIdUser = document.querySelector('.btn').dataset.userId;
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -60,8 +61,6 @@ const getNameQuestion = (currentQuestionNumb) => {
     })
   )
 };
-
-
   
  const getTotalPoints = () => {
   return (

@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./showNotification.css";
 
 const ShowNotification = () => {
+  useEffect(() => {
+    localStorage.setItem('penalty-points', '3')
+  })
   return (
     <div className="notification-wrapper">
       <div className="notification">

@@ -3,16 +3,7 @@ import "./question.css";
 import { getNameQuestion, getImageSrc } from "../../index";
 
 const Quiestion = ({ currentQuestionNumb }) => {
-  let isImg;
 
-  // useEffect(() => {
-  //   onValue(reference, (snapshot) => {
-  //     const db = snapshot.val();
-  //     titleQuestion = db.name;
-  //     isImg = db.isImg;
-  //     document.querySelector(".question__title").textContent = titleQuestion;
-  //   });
-  // });
   useEffect(() => {
     const wrapperImg = document.querySelector('.wrapper-img');
     getNameQuestion(currentQuestionNumb).then(nameQuestion => {
