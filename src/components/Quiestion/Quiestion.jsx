@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./question.css";
-import { getNameQuestion } from "../../index";
+import { getNameQuestion, getImageSrc } from "../../index";
 
 const Quiestion = ({ currentQuestionNumb }) => {
   let isImg;
@@ -14,19 +14,24 @@ const Quiestion = ({ currentQuestionNumb }) => {
   //   });
   // });
   useEffect(() => {
+    const wrapperImg = document.querySelector('.wrapper-img');
     getNameQuestion(currentQuestionNumb).then(nameQuestion => {
       document.querySelector(".question__title").textContent = nameQuestion;
+    })
+    getImageSrc(currentQuestionNumb).then(imgSrc => {
+      wrapperImg.style.display = 'block';
+      document.querySelector('.img').src = imgSrc;
+    }).catch(() => {
+      wrapperImg.style.display = 'none';
     })
   });
 
   return (
     <article className="question">
       <h2 className="question__title"></h2> 
-      {isImg && (
         <div className="wrapper-img">
-          <img src={isImg} alt="Код на JS" className="img" />
+          <img alt="Код на JS" className="img" />
         </div>
-      )}
     </article>
   );
 };

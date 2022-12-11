@@ -77,12 +77,30 @@ const getNameQuestion = (currentQuestionNumb) => {
   )
  };
 
+ const getImageSrc = (currentQuestionNumb) => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `questions/question${currentQuestionNumb}/img`),
+        (snapshot) => {
+          const imgSrc = snapshot.val();
+          if (imgSrc) {
+            resolve(imgSrc);
+          } else {
+            reject(imgSrc)
+          }
+        }
+      );
+    })
+  )
+ };
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion, };
+export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion, getImageSrc};
 
 // firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase
