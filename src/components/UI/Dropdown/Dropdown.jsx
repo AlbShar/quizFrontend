@@ -28,6 +28,7 @@ const Dropdown = () => {
                 i18next.changeLanguage(mapLanguage[language]);
                 setActive(false);
                 localStorage.setItem('language', language);
+                document.querySelector('html').setAttribute('lang', localStorage.getItem('i18nextLng'))
                 
               }}>{language}</li>
             )
