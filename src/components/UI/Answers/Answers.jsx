@@ -11,10 +11,9 @@ const Answers = ({ currentQuestionNumb }) => {
     document.querySelectorAll('.list-answers__item').forEach(answerItem => {
       if (answerItem.classList.contains("list-answers__item-active")) {
         answerItem.classList.remove("list-answers__item-active");
-        console.log('delete')  
       }
     })
-    onValue(ref(db, `answers/answer${currentQuestionNumb}`), (snapshot) => {
+    onValue(ref(db, `answers/answers${currentQuestionNumb}`), (snapshot) => {
       const answersDB = Object.entries(snapshot.val());
       setAnswers(answersDB.map((item) => item.join(". ")));
     });

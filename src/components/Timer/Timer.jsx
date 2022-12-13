@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import ShowNotification from "../ShowNotification/ShowNotification";
 import "./timer.css";
 
-export let leftSeconds = 7200; // seconds
+export let deadline = 7200; // seconds
 
 const Timer = () => {
+  let leftSeconds = deadline;
   const [hours, setHours] = useState("02");
   const [minutes, setMinutes] = useState("00");
   const [seconds, setSeconds] = useState("00");

@@ -85,7 +85,6 @@ const Button = ({
                 .forEach((answerItem) => {
                   if (answerItem.textContent === snapshot.val().userAnswer) {
                     answerItem.classList.add("list-answers__item-active");
-                    console.log('add')
                   }
                 });
             }, 1);     

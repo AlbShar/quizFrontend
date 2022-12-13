@@ -5,7 +5,7 @@ import helpcircle from "../../../images/icons/helpcircle.png";
 import barchart from "../../../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
 import { getTotalQuestionsNumb } from "../../../index";
-import { leftSeconds } from "../../Timer/Timer";
+import { deadline } from "../../Timer/Timer";
 
 const InfoTest = () => {
   const { t } = useTranslation();
@@ -20,11 +20,11 @@ const InfoTest = () => {
           ".frontend-test__info-text"
         ).textContent = `${totalQuestionsNumb} ${t("Вопросов")}`;
       
-      // We paste leftSeconds(total seconds for passing the test) at InfoTest component
+      // We paste deadline(total seconds for passing the test) at InfoTest component
       document
         .querySelectorAll(".frontend-test__info-item")[0]
         .querySelector(".frontend-test__info-text").textContent = `${
-        leftSeconds / 60
+          deadline / 60
       } ${t("Время")}`;
     });
   });

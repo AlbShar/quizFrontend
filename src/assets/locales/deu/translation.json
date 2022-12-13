@@ -4,7 +4,7 @@
     "Вопросов": "Fragen",
     "Возрастающая_сложность": "Steigende Komplexität",
     "Добро_пожаловать": "Willkommen auf der Seite zum Überprüfen des Wissens von Frontend-Entwicklern. Wir bitten Sie, darauf zu achten, dass Sie durch nichts abgelenkt werden, bevor Sie mit dem Test beginnen.",
-    "Тест_будет": "Der Test besteht aus 40 Fragen. Dafür haben Sie 60 Minuten Zeit. Nach bestandener Prüfung erhalten Sie Testergebnisse und Hinweise, in welchen Themen Sie sich im Bereich Frontend-Entwicklung verbessern müssen.",
+    "Тест_будет": "Um den Test erfolgreich zu bestehen, müssen Sie 85 % der Fragen richtig beantworten. Wenn Sie die vorgegebene Zeit nicht einhalten, wird Ihr Ergebnis um 3 Punkte reduziert. Nach bestandener Prüfung erhalten Sie die Ergebnisse und Hinweise, welche Themen Sie im Bereich Frontend-Entwicklung verbessern müssen.",
     "Начать_тест": "Test starten",
     "Особенности_теста": "Testfunktionen",
     "Цель_теста": "Zweck des Tests",
