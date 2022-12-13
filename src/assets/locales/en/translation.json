@@ -1,7 +1,7 @@
 {
     "Тест_для_Frontend_разработчиков": "Test for Frontend Developers",
-    "40_мин": "40 min",
-    "40_вопросов": "40 questions",
+    "Время": "min",
+    "Вопросов": "questions",
     "Возрастающая_сложность": "Increasing complexity",
     "Добро_пожаловать": "Welcome to the site for checking the knowledge of Frontend developers. We ask you to make sure that nothing distracts you before starting the test.",
     "Тест_будет": "The test will consist of 40 questions. You will have 60 minutes to complete it. After passing it, you will receive test results and advice on what topics you need to improve in the field of Frontend development.",
