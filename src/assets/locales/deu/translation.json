@@ -16,7 +16,11 @@
     "Для_оценки": "Zur Wissenseinschätzung sollte die erforderliche Anzahl an Fragen im Bereich von 30 bis 50 liegen. Eine geringere Anzahl an Fragen erlaubt keine genaue Einschätzung des Wissensstandes einer Person. Daher können im Internet beliebte Tests für 3, 5 oder 10 Fragen keine genaue Einschätzung geben. Die Verwendung von mehr als 50 Fragen für den Test verlängert die Testdauer, was einen weiteren Konzentrationsverlust zur Folge hat. Daher liegt der optimale Bereich zwischen 30 und 50 Fragen. Daher verwendet diese Seite 40 Fragen.",
     "Сообщить": "Melde einen technischen Fehler",
     "Восстаовить": "Mein Ergebnis wiederherstellen",
-    "Политика": "Datenschutzrichtlinie"
+    "Политика": "Datenschutzrichtlinie",
+    "Если_вы_нашли_ошибку": "Wenn Sie einen Fehler auf der Website finden, können Sie uns kontaktieren, indem Sie eine E-Mail an test@mail.com senden. Fügen Sie der Nachricht einen Screenshot des Fehlers bei und beschreiben Sie detailliert, unter welchen Umständen und auf welchem ​​Gerät der Fehler aufgetreten ist. Bitte versuchen Sie, in Ihrem Schreiben so klar und spezifisch wie möglich zu sein.",
+    "Нашли_ошибку": "Fehler auf der Seite oder im Test gefunden?"
+
+
 
 
 }

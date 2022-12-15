@@ -67,15 +67,35 @@
         height: 24px;
     }
     
-    .footer__logo {
-        margin-right: 60px;
-    }
-
     .footer__bottom, .footer__list {
         margin: 0;
     }
 
     .footer {
         padding: 16px 16px 32px 16px;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer__logo {
+        order: 1;
+        margin: 0;
+    }
+
+    .footer__networks {
+        order: 3;
+    }
+
+    .footer__list {
+        order: 2;
+    }
+
+    .footer__bottom {
+        order: 4;
     }
 }

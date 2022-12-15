@@ -53,9 +53,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
+        <section className="wrapper">
         <section className="footer__top">
           <Logo className="footer__logo" />
-          <article className="footer__networks">
+        </section>
+        <article className="footer__networks">
             {iconsTopFooter.map((icon, index) => {
               return (
                 <a
@@ -72,7 +74,6 @@ const Footer = () => {
               );
             })}
           </article>
-        </section>
         <section className="footer__middle">
           <nav>
             <ul className="footer__list">
@@ -100,6 +101,8 @@ const Footer = () => {
             );
           })}
         </section>
+        </section>
+
       </Container>
     </footer>
   );

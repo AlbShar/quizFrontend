@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Homepage />} />
           <Route index element={<Footer />} />
+          <Route path="reportbug" element={<ReportBug />}/>
         </Route>
-        <Route path="reportbug" element={<ReportBug />} />
         <Route path="quiz" element={<Quiz />} />
       </Routes>
     </BrowserRouter>

@@ -12,7 +12,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
 }
 
 .frontend-test__info-item:not(:last-child) {
@@ -22,6 +21,7 @@
 .frontend-test__info-img {
     width: 18px;
     height: 18px;
+    margin: 0 8px 0 0;
 }
 
 @media screen and (min-width: 459.8px) {

@@ -16,7 +16,11 @@
     "Для_оценки": "To assess knowledge, the required number of questions should be in the range from 30 to 50. A smaller number of questions does not make it possible to accurately assess the level of knowledge of a person. Therefore, tests popular on the Internet for 3, 5 or 10 questions cannot give an accurate assessment. Using more than 50 questions for the test increases the duration of the test, which further entails a loss of concentration. Therefore, the optimal range is from 30 to 50 questions. Therefore, this site uses 40 questions.",
     "Сообщить": "Report a bug",
     "Восстаовить": "Restore My Score",
-    "Политика": "Privacy Policy"
+    "Политика": "Privacy Policy",
+    "Если_вы_нашли_ошибку": "If you find an error on the site, you can contact us by sending an email to test@mail.com. Attach a screenshot of the error to the message and describe in detail under what circumstances and on which device the error occurred. Please try to be as clear and specific as possible in your letter.",
+    "Нашли_ошибку": "Found an error on the site or in the test?"
+
+
 
 }
   
