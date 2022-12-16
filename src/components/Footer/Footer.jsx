@@ -54,10 +54,8 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <section className="wrapper">
-        <section className="footer__top">
-          <Logo className="footer__logo" />
-        </section>
-        <article className="footer__networks">
+            <Logo className="footer__logo" />
+          <article className="footer__networks">
             {iconsTopFooter.map((icon, index) => {
               return (
                 <a
@@ -74,35 +72,36 @@ const Footer = () => {
               );
             })}
           </article>
-        <section className="footer__middle">
-          <nav>
-            <ul className="footer__list">
-              {infoMiddleFooter.map((item, index) => {
-                return (
-                  <>
-                    <li key={index + 1} className="footer__list-item">
-                      <Link className="footer__list-item" to={item.link}>{item.text}</Link>
-                    </li>
-                  </>
-                );
-              })}
-            </ul>
-          </nav>
+          <section className="footer__middle">
+            <nav>
+              <ul className="footer__list">
+                {infoMiddleFooter.map((item, index) => {
+                  return (
+                    <>
+                      <li key={index + 1} className="footer__list-item">
+                        <Link className="footer__list-link" to={item.link}>
+                          {item.text}
+                        </Link>
+                      </li>
+                    </>
+                  );
+                })}
+              </ul>
+            </nav>
+          </section>
+          <section className="footer__bottom">
+            {iconsBottomFooter.map((icon, index) => {
+              return (
+                <img
+                  className="footer__payment-img"
+                  src={icon.src}
+                  alt={icon.alt}
+                  key={index + 1}
+                />
+              );
+            })}
+          </section>
         </section>
-        <section className="footer__bottom">
-          {iconsBottomFooter.map((icon, index) => {
-            return (
-              <img
-                className="footer__payment-img"
-                src={icon.src}
-                alt={icon.alt}
-                key={index + 1}
-              />
-            );
-          })}
-        </section>
-        </section>
-
       </Container>
     </footer>
   );
