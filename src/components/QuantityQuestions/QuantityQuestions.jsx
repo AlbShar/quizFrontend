@@ -10,7 +10,7 @@ const QuantityQuestions = ({ currentQuestionNumb }) => {
     getThemeQuestion(currentQuestionNumb).then(theme => {
       document.querySelector(".quantity__theme").textContent = theme;
     })
-  }, []);
+  }, [currentQuestionNumb]);
   return (
     <h2 className="quantity">
       Вопрос {currentQuestionNumb}

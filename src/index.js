@@ -42,6 +42,7 @@ const getThemeQuestion = (currentQuestionNumb) => {
         (snapshot) => {
           const themQuestion = snapshot.val();
           resolve(themQuestion);
+          console.log(themQuestion)
         }
       );
     })
