@@ -11,7 +11,7 @@ const TestFeatures = ({pageName}) => {
     if (document.querySelector('#reportBugText')) {
       document.querySelector('#reportBugText').innerHTML = JSON.parse(JSON.stringify(t("Если_вы_нашли_ошибку")));
     } else if (document.querySelector('#generalInfoTestText')) {
-      document.querySelector('#generalInfoTestText').innerHTML = JSON.parse(JSON.stringify(t("Тест_состоит")));
+      document.querySelector('#generalInfoTestText').innerHTML = JSON.parse(JSON.stringify(t("Данный_тест")));
 
     }
   })
@@ -33,8 +33,12 @@ const TestFeatures = ({pageName}) => {
       text: '',
     },
     {
+      title: t("Как_проходить"),
+      text: t("Пройти_тест"),
+    },
+    {
       title: t("Результаты_теста"),
-      text: t("Основная_цель"),
+      text: t("После_прохождения"),
     },
   ];
 

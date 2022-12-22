@@ -84,11 +84,10 @@
     }
 
     .footer__list-item:not(:last-child) {
-        margin: 0 5px 0 0;
+        margin: 0 10px 0 0;
     }
 
     .footer__list-item {
-        flex-basis: 33.33%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -114,7 +113,6 @@
     .footer__logo {
         order: -1;
         margin-right: 10px;
-
     }
 
     .footer__list {
@@ -149,15 +147,11 @@
         flex-direction: row;
     }
 
-    .footer__list-item {
-        flex-basis: 33.333%;
-    }
-
     .footer__list-item:not(:last-child) {
         margin: 0;
     }
 
-    .footer__list-item:first-child {
+    .footer__list-item {
         padding: 10px;
     }
 
@@ -168,6 +162,11 @@
 
     .footer__payment-img:not(:last-child) {
         margin: 0 10px 0 0;
+    }
+
+    .footer__logo {
+        width: 113px;
+        height: 55px;
 
     }
 
