@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Container/Container";
+import Container from "../Container";
 import Logo from "../UI/Logo/Logo";
 import "./footer.css";
 import facebook from "../../images/icons/facebook.png";

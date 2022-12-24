@@ -77,6 +77,18 @@ const getNameQuestion = (currentQuestionNumb) => {
   )
  };
 
+ const checkIsImgAlt = (item, index) => {
+  try {
+    if (!item.alt) {
+      throw new Error(
+        `В массиве infoTestBlock(элемент №${index + 1}) пустое поле alt`
+      );
+    }
+  } catch (e) {
+    console.error(e);
+  }
+ };
+
  const getImageSrc = (currentQuestionNumb) => {
   return (
     new Promise(function (resolve, reject) {
@@ -101,6 +113,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion, getImageSrc};
+export { db, getTotalQuestionsNumb, getThemeQuestion, getNameQuestion, getImageSrc, checkIsImgAlt};
 
 // firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase

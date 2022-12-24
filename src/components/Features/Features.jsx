@@ -5,6 +5,7 @@ import "./Features.css";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { TitleFeature } from "../styles/TitleFeature.styled";
+import { ImgStyled } from "../styles/Img.Styled";
 
 const TestFeatures = ({pageName}) => {
   const { t } = useTranslation();
@@ -51,13 +52,7 @@ const TestFeatures = ({pageName}) => {
         return (
           <section key={index + 1} className="features">
             <TitleFeature>{feature.title}</TitleFeature>
-            {!!feature.img && (
-              <img
-                src={feature.img}
-                alt={feature.alt}
-                className="features__img"
-              />
-            )}
+            {!!feature.img && <ImgStyled src={feature.img} alt={feature.alt}/>}
             <p id={feature.id} className="features__text">{feature.text}</p>
           </section>
         );

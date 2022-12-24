@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Container/Container";
+import Container from "../Container";
 import "./header.css";
 import Dropdown from "../UI/Dropdown/Dropdown";
 import Logo from "../UI/Logo/Logo";

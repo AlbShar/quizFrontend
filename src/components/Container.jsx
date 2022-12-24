@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerStyled } from '../styles/Container.styled';
+import { ContainerStyled } from './styles/Container.styled';
 
 const Container = ({children}) => {
     return (

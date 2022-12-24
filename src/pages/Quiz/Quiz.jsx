@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Container from "../../components/Container/Container";
+import Container from "../../components/Container";
 import Button from "../../components/UI/Button/Button";
 import "./quiz.css";
 import Answers from "../../components/UI/Answers/Answers";
@@ -7,6 +7,7 @@ import Quiestion from "../../components/Quiestion/Quiestion";
 import QuantityQuestions from "../../components/QuantityQuestions/QuantityQuestions";
 import Timer from "../../components/Timer/Timer";
 import ScrollBar from "../../components/ScrollBar/ScrollBar";
+import { GlobalStyles } from "../../components/styles/Global";
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
@@ -14,6 +15,7 @@ const Quiz = () => {
   return (
     <main style={{ flex: "1 1 auto" }}>
       <Container>
+        <GlobalStyles/>
         <section className="quiz">
           <ScrollBar currentQuestionNumb={currentQuestionNumb} />
           <article className="quiz-top">

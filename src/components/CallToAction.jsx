@@ -1,18 +1,16 @@
 import React from 'react';
-import InfoTest from '../InfoTest/InfoTest';
+import InfoTest from './InfoTest';
 import { useTranslation } from "react-i18next";
-import Button from '../UI/Button/Button';
-import { Title } from '../styles/Title.styled';
-import { CallToActionStyled } from '../styles/CallToAction.styled';
-import { Text } from '../styles/Text.styled';
-import { GlobalStyles } from '../styles/Global';
+import Button from './UI/Button/Button';
+import { Title } from './styles/Title.styled';
+import { CallToActionStyled } from './styles/CallToAction.styled';
+import { Text } from './styles/Text.styled';
 
 
 const CallToAction = () => {
     const { t } = useTranslation();
     return (
-        <CallToActionStyled>
-            <GlobalStyles/>
+        <CallToActionStyled id="CallToAction">
             <Title homepage>{t("Тест_для_Frontend_разработчиков")}</Title>
             <InfoTest/>
             <Text>{t("Добро_пожаловать")}</Text>
@@ -24,4 +22,3 @@ const CallToAction = () => {
 
 export default CallToAction;
 
-// https://codesandbox.io/s/zw8kylol8m?file=/src/index.tsx:561-578
