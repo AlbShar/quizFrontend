@@ -6,6 +6,7 @@ import barchart from "../../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
 import { getTotalQuestionsNumb } from "../../index";
 import { deadline } from "../Timer/Timer";
+import { List } from "../styles/List.styled";
 
 const InfoTest = () => {
   const { t } = useTranslation();
@@ -48,7 +49,7 @@ const InfoTest = () => {
   ];
 
   return (
-    <ul className="frontend-test__info">
+    <List>
       {infoTestBlock.map((item, index) => {
         try {
           if (!item.alt) {
@@ -70,7 +71,7 @@ const InfoTest = () => {
           </li>
         );
       })}
-    </ul>
+    </List>
   );
 };
 

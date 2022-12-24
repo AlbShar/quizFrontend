@@ -5,12 +5,14 @@ import Button from '../UI/Button/Button';
 import { Title } from '../styles/Title.styled';
 import { CallToActionStyled } from '../styles/CallToAction.styled';
 import { Text } from '../styles/Text.styled';
+import { GlobalStyles } from '../styles/Global';
 
 
 const CallToAction = () => {
     const { t } = useTranslation();
     return (
         <CallToActionStyled>
+            <GlobalStyles/>
             <Title homepage>{t("Тест_для_Frontend_разработчиков")}</Title>
             <InfoTest/>
             <Text>{t("Добро_пожаловать")}</Text>

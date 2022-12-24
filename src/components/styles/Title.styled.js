@@ -1,5 +1,6 @@
 import styled  from 'styled-components';
 
+
 const Title = styled.h1`
     font: var(--font-title4);
     color: ${({homepage}) => homepage ? "white" : "black"};
