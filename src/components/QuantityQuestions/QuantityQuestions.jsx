@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./quantityQuestions.css";
 import { getTotalQuestionsNumb, getThemeQuestion } from "../../index.js";
+import { Title } from '../styles/Title.styled';
+
 
 const QuantityQuestions = ({ currentQuestionNumb }) => {
   useEffect(() => {
@@ -12,11 +14,11 @@ const QuantityQuestions = ({ currentQuestionNumb }) => {
     })
   }, [currentQuestionNumb]);
   return (
-    <h2 className="quantity">
+    <Title>
       Вопрос {currentQuestionNumb}
       <span className="quantity-all">0</span>
       <span className="quantity__theme">0</span>
-    </h2>
+    </Title>
   );
 };
 

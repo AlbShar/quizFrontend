@@ -1,5 +1,5 @@
 .quantity {
-    font: var(--font-h4);
+    font: var(--font-title4);
 }
 
 .quantity-all, .quantity__theme {

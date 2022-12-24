@@ -34,7 +34,7 @@
 
 .notification__title {
     margin-top: 0;
-    font: var(--font-h4);
+    font: var(--font-title4);
 }
 
 .notification__text {

@@ -1,5 +1,5 @@
 .frontend-test__title {
-    font: var(--font-h4);
+    font: var(--font-title4);
     color: white;
     margin: 0;
     padding: 0;
@@ -19,11 +19,11 @@
 
 @media screen and (min-width: 459.8px) {
     .frontend-test__title {
-        font: var(--font-h1);
+        font: var(--font-title1);
     }
 
     .frontend-test {
-        margin: 40px 0 32px 0;
+        margin: 0 0 32px 0;
     }
 
     .frontend-test__subtitle {

@@ -33,7 +33,7 @@
 @media screen and (min-width: 459.8px) {
 
     .features__title {
-        font: var(--font-h4);
+        font: var(--font-title4);
         justify-content: flex-start;
         padding: 10px 0 10px 40px;
     }

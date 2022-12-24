@@ -1,10 +1,10 @@
 .report-bug__title {
-    font: var(--font-h4);
+    font: var(--font-title4);
     margin-top: 0;
 }
 
 @media screen and (min-width: 767.8px) {
     .report-bug__title {
-        font: var(--font-h1);
+        font: var(--font-title1);
     }
 }

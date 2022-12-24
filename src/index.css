@@ -33,11 +33,11 @@ body {
   --font-little-text-regular: 400 14px/var(--line-height-little-text)  var(--font-family-default);
   --font-little-text-bold: 700 14px/var(--line-height-little-text) var(--font-family-default);
   --font-button: 700 16px/24px var(--font-family-default);
-  --font-h1: 800 48px/60px var(--font-family-default);
-  --font-h2: 800 40px/48px var(--font-family-default);
-  --font-h3: 800 32px/42px var(--font-family-default);
-  --font-h4: 800 24px/36px var(--font-family-default);
-  --font-h5: 800 20px/32px var(--font-family-default);
+  --font-title1: 800 48px/60px var(--font-family-default);
+  --font-title2: 800 40px/48px var(--font-family-default);
+  --font-title3: 800 32px/42px var(--font-family-default);
+  --font-title4: 800 24px/36px var(--font-family-default);
+  --font-title5: 800 20px/32px var(--font-family-default);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
