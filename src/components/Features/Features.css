@@ -1,19 +1,6 @@
 .features {
     background-color: #fff;
 }
-.features__title {
-    box-sizing: border-box;
-    width: 100%;
-    background-color: var(--color-title-background);
-    font: var(--font-little-text-regular);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin: 0;
-    text-align: center;
-}
 
 .features__img {
     display: block;
@@ -32,11 +19,6 @@
 
 @media screen and (min-width: 459.8px) {
 
-    .features__title {
-        font: var(--font-title4);
-        justify-content: flex-start;
-        padding: 10px 0 10px 40px;
-    }
 
     .features__text {
         font: var(--font-text-regular);

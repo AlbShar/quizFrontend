@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "./infotest.css";
-import clock from "../../../images/icons/clock.png";
-import helpcircle from "../../../images/icons/helpcircle.png";
-import barchart from "../../../images/icons/barchart.png";
+import clock from "../../images/icons/clock.png";
+import helpcircle from "../../images/icons/helpcircle.png";
+import barchart from "../../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
-import { getTotalQuestionsNumb } from "../../../index";
-import { deadline } from "../../Timer/Timer";
+import { getTotalQuestionsNumb } from "../../index";
+import { deadline } from "../Timer/Timer";
 
 const InfoTest = () => {
   const { t } = useTranslation();

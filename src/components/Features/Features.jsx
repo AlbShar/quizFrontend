@@ -4,6 +4,7 @@ import mistake from "../../images/mistake.jpg";
 import "./Features.css";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { TitleFeature } from "../styles/TitleFeature.styled";
 
 const TestFeatures = ({pageName}) => {
   const { t } = useTranslation();
@@ -49,7 +50,7 @@ const TestFeatures = ({pageName}) => {
       {currentFeatures.map((feature, index) => {
         return (
           <section key={index + 1} className="features">
-            <h1 className="features__title">{feature.title}</h1>
+            <TitleFeature>{feature.title}</TitleFeature>
             {!!feature.img && (
               <img
                 src={feature.img}

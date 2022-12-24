@@ -1,21 +1,22 @@
 import React from 'react';
-import "./callToAction.css";
-import InfoTest from './InfoTest/InfoTest';
+import InfoTest from '../InfoTest/InfoTest';
 import { useTranslation } from "react-i18next";
 import Button from '../UI/Button/Button';
 import { Title } from '../styles/Title.styled';
+import { CallToActionStyled } from '../styles/CallToAction.styled';
+import { Text } from '../styles/Text.styled';
 
 
 const CallToAction = () => {
     const { t } = useTranslation();
     return (
-        <div className='frontend-test'>
+        <CallToActionStyled>
             <Title homepage>{t("Тест_для_Frontend_разработчиков")}</Title>
             <InfoTest/>
-            <p className='frontend-test__subtitle'>{t("Добро_пожаловать")}</p>
-            <p className='frontend-test__subtitle'>{t("Тест_будет")}</p>
+            <Text>{t("Добро_пожаловать")}</Text>
+            <Text>{t("Тест_будет")}</Text>
             <Button currentPage="Homepage"/>             
-        </div>
+        </CallToActionStyled>
     );
 };
 
