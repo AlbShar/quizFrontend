@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../Container";
-import Logo from "../UI/Logo/Logo";
+import Logo from "../Logo";
 import "./footer.css";
 import facebook from "../../images/icons/facebook.png";
 import instagram from "../../images/icons/instagram.png";
@@ -54,7 +54,7 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <section className="wrapper">
-            <Logo className="footer__logo" />
+            <Logo location='footer' />
           <article className="footer__networks">
             {iconsTopFooter.map((icon, index) => {
               return (

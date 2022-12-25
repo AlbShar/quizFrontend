@@ -8,7 +8,7 @@ import { deadline } from "./Timer/Timer";
 import { List } from "./styles/List.styled";
 import { ListItem } from "./styles/ListItem.styled";
 import Navigator from "./Navigator";
-import { ImgStyled } from "./styles/Img.Styled";
+import { IconStyled } from "./styles/Img.Styled";
 
 const InfoTest = () => {
   const { t } = useTranslation();
@@ -51,7 +51,7 @@ const InfoTest = () => {
           checkIsImgAlt(item, index);
           return (
             <ListItem key={index + 1}>
-              <ImgStyled icon src={item.srcIcon} alt={item.alt}/>
+              <IconStyled src={item.srcIcon} alt={item.alt}/>
               <span>{item.text}</span>
             </ListItem>
           );

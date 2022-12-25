@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
-const ImgStyled = styled.img`
+const ImageStyled = styled.img`
   display: block;
-  width: ${({icon}) => icon ? "18px" : "100%" };
-  max-width: ${({icon}) => icon ? "" : "1129px"};
-  height: ${({icon}) => icon ? "18px" : ""} ;
-  margin: ${({icon}) => icon ? "0 8px 0 0" : "13px auto 0 auto"} ;
+  width: 100%;
+  max-width: 1129px;
+  margin: 13px auto 0 auto;
 
   @media screen and (min-width: 459.8px) {
-    margin: ${({icon}) => icon ? "" : "26px auto 0 auto"} ;
+    margin: 26px auto 0 auto;
 }
 `;
 
-export { ImgStyled };
+const LogoImage = styled.img`
+  width: ${({location}) => location === 'header' ? '140px' : "86px"};
+  height: ${({location}) => location === 'header' ? '68px' : "42px"};
+`;
+
+const IconStyled = styled(ImageStyled)`
+  width: 18px;
+  height: 18px;
+  margin: 0 8px 0 0;
+`;
+
+export { ImageStyled, IconStyled, LogoImage };

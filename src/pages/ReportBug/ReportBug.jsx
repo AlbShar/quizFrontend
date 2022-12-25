@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/Container";
-import Features from "../../components/Features/Features";
+import Features from "../../components/Features";
 import "./reportBug.css";
 import { useTranslation } from "react-i18next";
 import { GlobalStyles } from "../../components/styles/Global";
@@ -14,7 +14,7 @@ const Contacts = () => {
     <main style={{ flex: "1 1 auto" }}>
       <Container>
         <GlobalStyles/>
-        <Title>{t("Нашли_ошибку")}</Title>
+        <Title page="reportBug">{t("Нашли_ошибку")}</Title>
         <Features pageName="ReportBug"/>
       </Container>
     </main>
