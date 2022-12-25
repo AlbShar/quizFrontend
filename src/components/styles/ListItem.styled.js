@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 const ListItem = styled.li`
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+`;
+
+const ListItemInfoBlock = styled.li`
   color: white;
   font: var(--font-little-text-bold);
   display: flex;
@@ -18,11 +24,11 @@ const ListItem = styled.li`
       margin: 0 30px 0 0;
     }
     &:not(:last-child):after {
-        position: relative;
-        content: "/";
-        left: 12px;
+      position: relative;
+      content: "/";
+      left: 12px;
     }
   }
 `;
 
-export { ListItem };
+export { ListItem, ListItemInfoBlock };

@@ -5,8 +5,8 @@ import barchart from "../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
 import { getTotalQuestionsNumb, checkIsImgAlt } from "../index";
 import { deadline } from "./Timer/Timer";
-import { List } from "./styles/List.styled";
-import { ListItem } from "./styles/ListItem.styled";
+import { ListInfoBlock } from "./styles/List.styled";
+import { ListItemInfoBlock } from "./styles/ListItem.styled";
 import Navigator from "./Navigator";
 import { IconStyled } from "./styles/Img.Styled";
 
@@ -46,17 +46,17 @@ const InfoTest = () => {
 
   return (
     <Navigator>
-      <List>
+      <ListInfoBlock>
         {infoTestBlock.map((item, index) => {
           checkIsImgAlt(item, index);
           return (
-            <ListItem key={index + 1}>
+            <ListItemInfoBlock key={index + 1}>
               <IconStyled src={item.srcIcon} alt={item.alt}/>
               <span>{item.text}</span>
-            </ListItem>
+            </ListItemInfoBlock>
           );
         })}
-      </List>
+      </ListInfoBlock>
     </Navigator>
   );
 };

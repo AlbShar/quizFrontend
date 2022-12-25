@@ -11,6 +11,11 @@ import fondy from "../../images/icons/fondy.png";
 import visa from "../../images/icons/visa.png";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { FooterStyled } from "../styles/Footer.Styled";
+import { NavStyled } from "../styles/Nav.styled";
+import { List } from "../styles/List.styled";
+import { ListItem } from "../styles/ListItem.styled";
+import {SectionNetworksStyled, SectionItems, SectionPaymentStyled} from "../styles/Section.styled";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -51,59 +56,61 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer">
-      <Container>
-        <section className="wrapper">
-            <Logo location='footer' />
-          <article className="footer__networks">
-            {iconsTopFooter.map((icon, index) => {
-              return (
-                <a
-                  className="footer__network-link"
-                  href={icon.url}
-                  key={index + 1}
-                >
-                  <img
-                    className="footer__network-img"
-                    src={icon.src}
-                    alt={icon.alt}
-                  />
-                </a>
-              );
-            })}
-          </article>
-          <section className="footer__middle">
-            <nav>
-              <ul className="footer__list">
-                {infoMiddleFooter.map((item, index) => {
-                  return (
-                    <>
-                      <li key={index + 1} className="footer__list-item">
-                        <Link className="footer__list-link" to={item.link}>
-                          {item.text}
-                        </Link>
-                      </li>
-                    </>
-                  );
-                })}
-              </ul>
-            </nav>
-          </section>
-          <section className="footer__bottom">
-            {iconsBottomFooter.map((icon, index) => {
-              return (
-                <img
-                  className="footer__payment-img"
-                  src={icon.src}
-                  alt={icon.alt}
-                  key={index + 1}
-                />
-              );
-            })}
-          </section>
-        </section>
+    <FooterStyled>
+      <Container flex={true} widthFlexStart="459.8">
+        <Logo location="footer" />
+        <SectionNetworksStyled>
+          <NavStyled>
+            <List>
+              {iconsTopFooter.map((icon, index) => {
+                return (
+                  <ListItem>
+                    <a
+                      className="footer__network-link"
+                      href={icon.url}
+                      key={index + 1}
+                    >
+                      <img
+                        className="footer__network-img"
+                        src={icon.src}
+                        alt={icon.alt}
+                      />
+                    </a>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </NavStyled>
+        </SectionNetworksStyled>
+        <SectionItems>
+          <NavStyled>
+            <ul className="footer__list">
+              {infoMiddleFooter.map((item, index) => {
+                return (
+                    <li key={index + 1} className="footer__list-item">
+                      <Link className="footer__list-link" to={item.link}>
+                        {item.text}
+                      </Link>
+                    </li>
+                );
+              })}
+            </ul>
+          </NavStyled>
+        </SectionItems>
+        <SectionPaymentStyled>
+          {iconsBottomFooter.map((icon, index) => {
+            return (
+              <img
+                className="footer__payment-img"
+                src={icon.src}
+                alt={icon.alt}
+                key={index + 1}
+              />
+            );
+          })}
+        </SectionPaymentStyled>
       </Container>
-    </footer>
+    </FooterStyled>
   );
 };
 

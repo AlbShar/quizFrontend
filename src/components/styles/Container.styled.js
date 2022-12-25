@@ -6,13 +6,22 @@ const ContainerStyled = styled.div`
   margin: 0 auto;
   padding: 0 5px;
 
-  ${function ({ flex }) {
-    if (flex) {
+  ${function ({ flex, widthFlexStart }) {
+    if (flex && !widthFlexStart) {
       return `
             display: flex;
             justify-content: space-between;
             align-items: center;
             `;
+    } else {
+      return `
+      @media screen and (min-width: ${widthFlexStart}px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      `
     }
   }}
 `;
