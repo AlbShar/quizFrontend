@@ -4,17 +4,18 @@ import CallToAction from "../../components/CallToAction";
 import Features from "../../components/Features";
 import Footer from "../../components/Footer/Footer";
 import { GlobalStyles } from "../../components/styles/Global";
+import { StyledMain } from "../Main.Styled";
 
 const Homepage = () => {
   return (
-    <main style={{ flex: "1 1 auto" }}>
+    <StyledMain>
       <Container flex={false}>
         <GlobalStyles/>
         <CallToAction />
         <Features pageName="Homepage"/>
       </Container>
       <Footer/>
-    </main>
+    </StyledMain>
   );
 };
 

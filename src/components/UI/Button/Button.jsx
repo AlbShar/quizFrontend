@@ -115,9 +115,9 @@ const Button = ({
           className="btn"
           onClick={() => {
             const theme =
-              document.querySelector(".quantity__theme").textContent;
+              document.querySelector("#themeQuestion").textContent;
             const question =
-              document.querySelector(".question__title").textContent;
+              document.querySelector("#questionName").textContent;
             getTimeQuestion();
 
             document

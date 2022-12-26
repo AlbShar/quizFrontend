@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from "../images/logo.png";
-import { LogoImage } from './styles/Img.Styled';
+import { StyledImg } from './styles/Logo.Styled';
 
-const Logo = ({location}) => {
+const Logo = ({header}) => {
     return (
-        <LogoImage src={logo} alt="logo" location={location}/>
+        <StyledImg src={logo} alt="logo" header={header}/>
     );
 };
 

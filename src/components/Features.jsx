@@ -3,10 +3,7 @@ import image from "../images/image.png";
 import mistake from "../images/mistake.jpg";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { TitleFeature } from "./styles/TitleFeature.styled";
-import { ImageStyled } from "./styles/Img.Styled";
-import { TextBlack } from "./styles/Text.styled";
-import { SectionStyled } from "./styles/Section.styled";
+import { StyledFeatureSection, StyledH2, StyledP, StyledImg } from "./styles/Features.Styled";
 
 const TestFeatures = ({ pageName }) => {
   const { t } = useTranslation();
@@ -55,11 +52,11 @@ const TestFeatures = ({ pageName }) => {
     <>
       {currentFeatures.map((feature, index) => {
         return (
-          <SectionStyled key={index + 1}>
-            <TitleFeature>{feature.title}</TitleFeature>
-            {!!feature.img && <ImageStyled src={feature.img} alt={feature.alt} />}
-            <TextBlack id={feature.id}>{feature.text}</TextBlack>
-          </SectionStyled>
+          <StyledFeatureSection key={index + 1}>
+            <StyledH2>{feature.title}</StyledH2>
+            {!!feature.img && <StyledImg src={feature.img} alt={feature.alt} />}
+            <StyledP id={feature.id}>{feature.text}</StyledP>
+          </StyledFeatureSection>
         );
       })}
     </>

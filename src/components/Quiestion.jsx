@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import "./question.css";
-import { getNameQuestion, getImageSrc } from "../../index";
-import { Title } from "../styles/Title.styled";
+import { getNameQuestion, getImageSrc } from "../index";
+import { StyledH2, StyledArticleQuestion, StyledDiv, StyledImg  } from "./styles/Question.Styled";
 
 const Quiestion = ({ currentQuestionNumb }) => {
 
@@ -19,13 +18,13 @@ const Quiestion = ({ currentQuestionNumb }) => {
   });
 
   return (
-    <article className="question">
-      <Title as="h2" id="questionTitle">
-        <div className="wrapper-img">
-          <img alt="Код на JS" className="img" />
-        </div>
-      </Title>
-    </article>
+    <StyledArticleQuestion>
+      <StyledH2 id="questionTitle">
+        <StyledDiv>
+          <StyledImg alt="Код на JS" />
+        </StyledDiv>
+      </StyledH2>
+    </StyledArticleQuestion>
   );
 };
 
