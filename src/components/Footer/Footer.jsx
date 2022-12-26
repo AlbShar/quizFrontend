@@ -14,13 +14,16 @@ import { Link } from "react-router-dom";
 import { FooterStyled } from "../styles/Footer.Styled";
 import { NavStyled } from "../styles/Nav.styled";
 import { List } from "../styles/List.styled";
-import { ListItem } from "../styles/ListItem.styled";
+import { ListItem, ListItemFooter } from "../styles/ListItem.styled";
 import {SectionNetworksStyled, SectionItems, SectionPaymentStyled} from "../styles/Section.styled";
+import { ListFooter } from "../styles/List.styled";
+import { LinkStyled } from "../styles/Link.styled";
+import { IconFooterPaymentStyled, IconFooterNetworkStyled } from "../styles/Img.Styled";
 
 const Footer = () => {
   const { t } = useTranslation();
 
-  const iconsTopFooter = [
+  const iconsNetworks = [
     {
       src: facebook,
       alt: "Открыть сайт в facebook",
@@ -49,7 +52,7 @@ const Footer = () => {
     { text: t("Политика"), link: "/politics" },
   ];
 
-  const iconsBottomFooter = [
+  const iconsPayments = [
     { src: visa, alt: "Иконка visa" },
     { src: mastercard, alt: "Иконка mastercard" },
     { src: fondy, alt: "Иконка fondy" },
@@ -57,25 +60,23 @@ const Footer = () => {
 
   return (
     <FooterStyled>
-      <Container flex={true} widthFlexStart="459.8">
+      <Container flex={true} widthFlexStart="767.8">
         <Logo location="footer" />
         <SectionNetworksStyled>
           <NavStyled>
             <List>
-              {iconsTopFooter.map((icon, index) => {
+              {iconsNetworks.map((icon, index) => {
                 return (
                   <ListItem>
-                    <a
-                      className="footer__network-link"
+                    <LinkStyled
                       href={icon.url}
                       key={index + 1}
                     >
-                      <img
-                        className="footer__network-img"
+                      <IconFooterNetworkStyled
                         src={icon.src}
                         alt={icon.alt}
                       />
-                    </a>
+                    </LinkStyled>
                   </ListItem>
                 );
               })}
@@ -84,24 +85,23 @@ const Footer = () => {
         </SectionNetworksStyled>
         <SectionItems>
           <NavStyled>
-            <ul className="footer__list">
+            <ListFooter>
               {infoMiddleFooter.map((item, index) => {
                 return (
-                    <li key={index + 1} className="footer__list-item">
+                    <ListItemFooter key={index + 1}>
                       <Link className="footer__list-link" to={item.link}>
                         {item.text}
                       </Link>
-                    </li>
+                    </ListItemFooter>
                 );
               })}
-            </ul>
+            </ListFooter>
           </NavStyled>
         </SectionItems>
         <SectionPaymentStyled>
-          {iconsBottomFooter.map((icon, index) => {
+          {iconsPayments.map((icon, index) => {
             return (
-              <img
-                className="footer__payment-img"
+              <IconFooterPaymentStyled
                 src={icon.src}
                 alt={icon.alt}
                 key={index + 1}

@@ -15,6 +15,7 @@ const ContainerStyled = styled.div`
             `;
     } else {
       return `
+      position: relative;
       @media screen and (min-width: ${widthFlexStart}px) {
         display: flex;
         justify-content: space-between;

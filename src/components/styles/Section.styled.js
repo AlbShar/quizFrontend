@@ -11,8 +11,9 @@ const SectionItems = styled.section`
 const SectionNetworksStyled = styled.section`
   display: inline-block;
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 10px;
+  
   @media screen and (min-width: 767.8px) {
     display: flex;
     align-items: center;

@@ -31,4 +31,31 @@ const ListItemInfoBlock = styled.li`
   }
 `;
 
-export { ListItem, ListItemInfoBlock };
+const ListItemFooter = styled.li`
+  text-align: left;
+
+  &:not(:last-child) {
+    margin: 0 0 12px 0;
+  }
+
+  @media screen and (min-width: 767.8px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin: 0 10px 0 0;
+    }
+
+    @media screen and (min-width: 1023.8px) {
+      padding: 10px;
+
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+  }
+`;
+
+export { ListItem, ListItemInfoBlock, ListItemFooter };

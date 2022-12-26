@@ -22,4 +22,20 @@ const ListInfoBlock = styled(List)`
   }
 `;
 
-export { ListInfoBlock, List };
+const ListFooter = styled.ul`
+  list-style-type: none;
+  padding: 0;
+
+  @media screen and (min-width: 767.8px) {
+    order: 2;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    margin: 0;
+  }
+
+`;
+
+export { ListInfoBlock, List, ListFooter };
