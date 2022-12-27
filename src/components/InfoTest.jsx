@@ -4,7 +4,7 @@ import helpcircle from "../images/icons/helpcircle.png";
 import barchart from "../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
 import { getTotalQuestionsNumb, checkIsImgAlt } from "../index";
-import { deadline } from "./Timer/Timer";
+import { deadline } from "./Timer";
 import { StyledUl, StyledImg, StyledLi } from "./styles/InfoTest.styled";
 
 const InfoTest = () => {

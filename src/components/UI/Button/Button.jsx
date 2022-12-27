@@ -7,6 +7,8 @@ import { onValue } from "firebase/database";
 import { db } from "../../../index";
 import arrowleft from "../../../images/icons/arrowleft.png";
 import { getTotalQuestionsNumb } from "../../../index";
+import { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan } from "./Button.Styled";
+
 
 const Button = ({
   currentPage,
@@ -14,6 +16,7 @@ const Button = ({
   setCurrentQuestionNumb,
 }) => {
   const { t } = useTranslation();
+  const answersItem = document.querySelectorAll('#answersAll ul li');
 
   const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
@@ -22,15 +25,14 @@ const Button = ({
   const getBtnHomePage = () => {
     return (
       <Link className="btn__link" to="quiz">
-        <button
-          className="btn"
+        <StyledButton
           onClick={() => {
             setUniqueIdUser(uniqueIdUser * Math.random());
             setQuestionStartTime(Date.now());
           }}
         >
           {t("Начать_тест")}
-        </button>
+        </StyledButton>
       </Link>
     );
   };
@@ -80,11 +82,10 @@ const Button = ({
           ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
           (snapshot) => {
              setTimeout(() => {
-              document
-                .querySelectorAll(".list-answers__item")
-                .forEach((answerItem) => {
+              answersItem.forEach((answerItem) => {
                   if (answerItem.textContent === snapshot.val().userAnswer) {
-                    answerItem.classList.add("list-answers__item-active");
+                    answerItem.style.border = '2px solid rgb(103, 104, 215)';
+                    answerItem.setAttribute('data-useranswer', true);
                   }
                 });
             }, 1);     
@@ -96,23 +97,21 @@ const Button = ({
     };
 
     return (
-      <article className="quiz-btns">
+      <StyledArticle>
         {!(currentQuestionNumb === 1) && (
-          <button
-            className="back-btn"
+          <StyledButtonBack id="BtnBack"
             onClick={(e) => {
               setCurrentQuestionNumb(--currentQuestionNumb);
-              e.target.closest(".back-btn").style.display = "none";
+              e.target.closest("#BtnBack").style.display = "none";
               highlightPreviousAnswer();
             }}
           >
-            <img className="back-btn__img" src={arrowleft} alt="Кнопка назад" />
-            <span className="back-btn__text">Назад</span>
-          </button>
+            <StyledImg src={arrowleft} alt="Кнопка назад" />
+            <StyledSpan>Назад</StyledSpan>
+          </StyledButtonBack>
         )}
 
-        <button
-          className="btn"
+        <StyledButton
           onClick={() => {
             const theme =
               document.querySelector("#themeQuestion").textContent;
@@ -120,12 +119,8 @@ const Button = ({
               document.querySelector("#questionName").textContent;
             getTimeQuestion();
 
-            document
-              .querySelectorAll(".list-answers__item")
-              .forEach((asnwerItem) => {
-                if (
-                  asnwerItem.classList.contains("list-answers__item-active")
-                ) {
+            answersItem.forEach((asnwerItem) => {
+                if (asnwerItem.dataset.useranswer) {
                   getTotalQuestionsNumb().then((totalQuestionsNumb) => {
                     setCurrentQuestionNumb(
                       currentQuestionNumb === totalQuestionsNumb
@@ -144,14 +139,14 @@ const Button = ({
                   return false;
                 }
                 if (currentQuestionNumb >= 2) {
-                  document.querySelector(".back-btn").style.display = "flex";
+                  document.querySelector("#BtnBack").style.display = "flex";
                 }
               });
           }}
         >
           Принять
-        </button>
-      </article>
+        </StyledButton>
+      </StyledArticle>
     );
   };
 

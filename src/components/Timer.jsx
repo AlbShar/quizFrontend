@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ShowNotification from "../ShowNotification/ShowNotification";
-import "./timer.css";
+import Notification from "./Notification";
+import { StyledDivTimer } from "./styles/Timer.Styled";
 
-export let deadline = 7200; // seconds
+export const deadline = 7200; // seconds
 
 const Timer = () => {
   let leftSeconds = deadline;
@@ -29,14 +29,14 @@ const Timer = () => {
   }, []); 
 
   return (
-    <div className="timer">
+    <StyledDivTimer>
       <span>{hours}</span>
       <span>:</span>
       <span>{minutes}</span>
       <span>:</span>
       <span>{seconds}</span>
-      {(hours === '00' && minutes === '00' && seconds === '00') && <ShowNotification/>}
-    </div>
+      {(hours === '00' && minutes === '00' && seconds === '00') && <Notification/>}
+    </StyledDivTimer>
   );
 };
 

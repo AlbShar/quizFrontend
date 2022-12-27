@@ -16,13 +16,25 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledDiv = styled.div`
-  align-items: center;
-  box-sizing: border-box;
-  padding: 8px;
-  background-color: #dfe4e9;
-  border-radius: 5px;
-  max-width: 100%;
-  margin-bottom: 14px;
+align-items: center;
+box-sizing: border-box;
+padding: 8px;
+background-color: #dfe4e9;
+border-radius: 5px;
+max-width: 100%;
+margin-bottom: 14px;
+
+  @media screen and (min-width: 767.8px) {
+    display: flex;
+    align-items: center;
+    flex-basis: 55%;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1123.8px) {
+    flex-basis: 48%;
+    padding: 8px;
+  }
 `;
 
 const StyledImg = styled.img`

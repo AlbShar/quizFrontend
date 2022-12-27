@@ -42,7 +42,6 @@ const getThemeQuestion = (currentQuestionNumb) => {
         (snapshot) => {
           const themQuestion = snapshot.val();
           resolve(themQuestion);
-          console.log(themQuestion)
         }
       );
     })
@@ -99,7 +98,7 @@ const getNameQuestion = (currentQuestionNumb) => {
           if (imgSrc) {
             resolve(imgSrc);
           } else {
-            reject(imgSrc)
+            reject()
           }
         }
       );

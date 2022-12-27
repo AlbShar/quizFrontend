@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./Container";
-import Dropdown from "./UI/Dropdown/Dropdown";
+import Dropdown from "./UI/Dropdown";
 import Logo from "./Logo";
 import { Outlet } from "react-router-dom";
 import { HeaderStyled } from "./styles/Header.Styled";

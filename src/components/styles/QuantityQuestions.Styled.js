@@ -23,7 +23,7 @@ const StyledSpanThemeQuestion = styled(StyledSpanQuestionQuantity)`
     position: absolute;
     content: "/";
     bottom: 0;
-    left: 3px;
+    left: -27px;
 }
 `
 
