@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/UI/Button/Button";
-import "./quiz.css";
 import Answers from "../../components/UI/Answers";
 import Quiestion from "../../components/Quiestion";
 import QuantityQuestions from "../../components/QuantityQuestions";
@@ -9,6 +8,7 @@ import Timer from "../../components/Timer";
 import ScrollBar from "../../components/ScrollBar";
 import { GlobalStyles } from "../../components/styles/Global";
 import { StyledMain } from "../Main.Styled";
+import { StyledSection, StyledArticle } from "./Quiz.Styled";
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
@@ -17,12 +17,12 @@ const Quiz = () => {
     <StyledMain>
       <Container>
         <GlobalStyles/>
-        <section className="quiz" id="quiz">
+        <StyledSection id="quiz">
           <ScrollBar currentQuestionNumb={currentQuestionNumb} />
-          <article className="quiz-top">
+          <StyledArticle>
             <QuantityQuestions currentQuestionNumb={currentQuestionNumb} />
             <Timer />
-          </article>
+          </StyledArticle>
           <Quiestion currentQuestionNumb={currentQuestionNumb} />
           <Answers currentQuestionNumb={currentQuestionNumb} />
           <Button
@@ -30,7 +30,7 @@ const Quiz = () => {
             currentQuestionNumb={currentQuestionNumb}
             setCurrentQuestionNumb={setCurrentQuestionNumb}
           />
-        </section>
+        </StyledSection>
       </Container>
     </StyledMain>
   );

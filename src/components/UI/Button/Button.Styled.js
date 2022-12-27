@@ -15,6 +15,12 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledButtonQuiz = styled(StyledButton)`
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
 const StyledButtonBack = styled.button`
   display: flex;
   align-items: center;
@@ -26,12 +32,14 @@ const StyledButtonBack = styled.button`
 `;
 
 const StyledArticle = styled.article`
+  position: relative;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   gap: 40px;
   margin-top: 32px;
   max-width: 540px;
+  padding: 5px;
 
   @media screen and (min-width: 768.8px) {
     max-width: 100%;
@@ -49,4 +57,11 @@ const StyledSpan = styled.span`
   text-transform: uppercase;
 `;
 
-export { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan };
+export {
+  StyledButton,
+  StyledArticle,
+  StyledButtonBack,
+  StyledImg,
+  StyledSpan,
+  StyledButtonQuiz,
+};

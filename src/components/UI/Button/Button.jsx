@@ -7,7 +7,7 @@ import { onValue } from "firebase/database";
 import { db } from "../../../index";
 import arrowleft from "../../../images/icons/arrowleft.png";
 import { getTotalQuestionsNumb } from "../../../index";
-import { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan } from "./Button.Styled";
+import { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan, StyledButtonQuiz } from "./Button.Styled";
 
 
 const Button = ({
@@ -111,7 +111,7 @@ const Button = ({
           </StyledButtonBack>
         )}
 
-        <StyledButton
+        <StyledButtonQuiz
           onClick={() => {
             const theme =
               document.querySelector("#themeQuestion").textContent;
@@ -145,7 +145,7 @@ const Button = ({
           }}
         >
           Принять
-        </StyledButton>
+        </StyledButtonQuiz>
       </StyledArticle>
     );
   };
