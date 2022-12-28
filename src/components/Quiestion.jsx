@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getNameQuestion, getImageSrc } from "../index";
+import { insertNameQuestionQuiz, insertImageQuiz } from "../index";
 import {
   StyledH2,
   StyledArticleQuestion,
@@ -9,19 +9,8 @@ import {
 
 const Quiestion = ({ currentQuestionNumb }) => {
   useEffect(() => {
-    const wrapperImg = document.querySelector("#WrapperImg");
-
-    getNameQuestion(currentQuestionNumb).then((nameQuestion) => {
-      document.querySelector("#questionTitle").textContent = nameQuestion;
-    });
-    getImageSrc(currentQuestionNumb)
-      .then((imgSrc) => {
-        wrapperImg.style.display = "block";
-        document.querySelector("#imgQuestion").src = imgSrc;
-      })
-      .catch(() => {
-        wrapperImg.style.display = "none";
-      });
+    insertNameQuestionQuiz(currentQuestionNumb, '#questionTitle');
+    insertImageQuiz(currentQuestionNumb, "#WrapperImg", "#imgQuestion");
   });
 
   return (

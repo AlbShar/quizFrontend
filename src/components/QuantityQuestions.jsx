@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import { getTotalQuestionsNumb, getThemeQuestion } from "../index.js";
+import { insertThemeQuestionQuiz, insertTotalQuestionNumbQuiz } from "../index.js";
 import { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity } from "./styles/QuantityQuestions.Styled";
 
 
 const QuantityQuestions = ({ currentQuestionNumb }) => {
   useEffect(() => {
-    getTotalQuestionsNumb().then((totalQuestionsNumb) => {
-      document.querySelector("#totalQuestionQuantity").textContent = totalQuestionsNumb;
-    });
-    getThemeQuestion(currentQuestionNumb).then(theme => {
-      document.querySelector("#themeQuestion").textContent = theme;
-    })
+    insertTotalQuestionNumbQuiz("#totalQuestionQuantity");
+    insertThemeQuestionQuiz(currentQuestionNumb, "#themeQuestion")
   }, [currentQuestionNumb]);
   return (
     <StyledH1 id="questionName">

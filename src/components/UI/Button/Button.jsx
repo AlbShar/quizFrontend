@@ -22,7 +22,7 @@ const Button = ({
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   let timeQuestion;
 
-  const getBtnHomePage = () => {
+  const btnHomePage = () => {
     return (
       <Link className="btn__link" to="quiz">
         <StyledButton
@@ -37,7 +37,7 @@ const Button = ({
     );
   };
 
-  const getBtnsQuizPage = () => {
+  const btnsQuizPage = () => {
     let referenceUserAnswers = ref(
       db,
       `user${uniqueIdUser}/answer${currentQuestionNumb}`
@@ -151,7 +151,7 @@ const Button = ({
   };
 
   return (
-    <>{currentPage === "Homepage" ? getBtnHomePage() : getBtnsQuizPage()}</>
+    <>{currentPage === "Homepage" ? btnHomePage() : btnsQuizPage()}</>
   );
 };
 

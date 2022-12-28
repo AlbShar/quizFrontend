@@ -3,21 +3,24 @@ import image from "../images/image.png";
 import mistake from "../images/mistake.jpg";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { StyledFeatureSection, StyledH2, StyledP, StyledImg } from "./styles/Features.Styled";
+import {
+  StyledFeatureSection,
+  StyledH2,
+  StyledP,
+  StyledImg,
+} from "./styles/Features.Styled";
+import { convertJSONToText } from "..";
 
 const TestFeatures = ({ pageName }) => {
   const { t } = useTranslation();
+  const dataArray = [
+    { selector: "#reportBugText", json: t("Если_вы_нашли_ошибку") },
+    { selector: "#generalInfoTestText", json: t("Данный_тест") },
+  ];
   useEffect(() => {
-    if (document.querySelector("#reportBugText")) {
-      document.querySelector("#reportBugText").innerHTML = JSON.parse(
-        JSON.stringify(t("Если_вы_нашли_ошибку"))
-      );
-    } else if (document.querySelector("#generalInfoTestText")) {
-      document.querySelector("#generalInfoTestText").innerHTML = JSON.parse(
-        JSON.stringify(t("Данный_тест"))
-      );
-    }
+    convertJSONToText(dataArray);
   });
+  
   const featuresReport = [
     {
       title: t("Сообщить"),

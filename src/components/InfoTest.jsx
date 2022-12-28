@@ -3,24 +3,13 @@ import clock from "../images/icons/clock.png";
 import helpcircle from "../images/icons/helpcircle.png";
 import barchart from "../images/icons/barchart.png";
 import { useTranslation } from "react-i18next";
-import { getTotalQuestionsNumb, checkIsImgAlt } from "../index";
-import { deadline } from "./Timer";
+import { checkIsImgAlt, insertDataInfoTest } from "../index";
 import { StyledUl, StyledImg, StyledLi } from "./styles/InfoTest.styled";
 
 const InfoTest = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation( );
   useEffect(() => {
-    // We get totalQuestionsNumb from DB and paste at InfoTest component
-    getTotalQuestionsNumb().then((totalQuestionsNumb) => {
-      const textListItems = document.querySelector("#CallToAction ul").querySelectorAll('span');
-
-      textListItems[textListItems.length - 1].textContent = `${totalQuestionsNumb} ${t("Вопросов")}`;
-
-      // We paste deadline(total seconds for passing the test) at InfoTest component
-      textListItems[0].textContent = `${
-        deadline / 60
-      } ${t("Время")}`;
-    });
+    insertDataInfoTest(t("Вопросов"), t("Время"), "#CallToAction ul", 'span');
   });
 
   const infoTestBlock = [
