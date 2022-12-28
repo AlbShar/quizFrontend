@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 const StyledUl = styled.ul`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   box-sizing: border-box;
   list-style-type: none;
   margin: 26px 0 0 0;
@@ -10,11 +12,12 @@ const StyledUl = styled.ul`
   background-color: var(--color-call-action-info);
 
   @media screen and (min-width: 459.8px) {
-    display: flex;
-    align-items: center;
     max-width: 685px;
     padding: 24px;
+    flex-direction: row;
+
   }
+
 `;
 
 const StyledImg = styled.img`
@@ -40,12 +43,15 @@ const StyledLi = styled.li`
     &:not(:last-child) {
       margin: 0 30px 0 0;
     }
+
     &:not(:last-child):after {
       position: relative;
       content: "/";
       left: 12px;
     }
+
   }
+
 `;
 
 export { StyledUl, StyledImg, StyledLi };

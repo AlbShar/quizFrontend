@@ -8,14 +8,17 @@ import { StyledMain } from "../Main.Styled";
 
 const Homepage = () => {
   return (
+    <>
+    <GlobalStyles/>
     <StyledMain>
       <Container flex={false}>
-        <GlobalStyles/>
         <CallToAction />
         <Features pageName="Homepage"/>
       </Container>
-      <Footer/>
     </StyledMain>
+    <Footer/>
+
+    </>
   );
 };
 

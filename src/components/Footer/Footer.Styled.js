@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
+  box-sizing: border-box;
   background-color: var(--color-footer);
   padding: 16px 16px 48px 16px;
 
@@ -9,7 +10,7 @@ const StyledFooter = styled.footer`
   }
 
   @media screen and (min-width: 1023.8px) {
-    padding: 16px 16px 32px 16px;
+    padding: 10px;
     margin: 30px 0 0 0;
   }
 `;
@@ -70,7 +71,7 @@ const StyledSectionNetworks = styled.section`
     align-items: center;
     justify-content: space-between;
     position: relative;
-    margin: 0 10px 20px 0;
+    margin: 0 0 20px 11px;
     order: 3;
     height: 100px;
   }
@@ -96,6 +97,7 @@ const StyledSectionPayment = styled.section`
   @media screen and (min-width: 1023.8px) {
     margin: 0;
     flex-direction: row;
+    flex: 0 1 auto;
   }
 `;
 
@@ -111,6 +113,7 @@ const StyledUl = styled.ul`
     order: 2;
     display: flex;
     justify-content: flex-start;
+    gap: 10px;
   }
 
   @media screen and (min-width: 1023.8px) {
@@ -123,6 +126,7 @@ const StyledUlNetworks = styled.ul`
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  justify-content: flex-start;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -150,14 +154,13 @@ const StyledLi = styled.li`
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0px;
 
     &:not(:last-child) {
-      margin: 0 10px 0 0;
+      margin: 0;
     }
-
+    
     @media screen and (min-width: 1023.8px) {
-      padding: 10px;
-
       &:not(:last-child) {
         margin: 0;
       }

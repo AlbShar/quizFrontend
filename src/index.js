@@ -165,5 +165,3 @@ root.render(
   </React.StrictMode>
 );
 export { db, getTotalQuestionsNumb, getThemeQuestion, insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
-
-// firebase tutorial - https://www.youtube.com/watch?v=pP7quzFmWBY&ab_channel=Firebase

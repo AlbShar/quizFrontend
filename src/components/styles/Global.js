@@ -6,7 +6,8 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
+      document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)}px;
   }
   
   div#root {
@@ -16,6 +17,13 @@ html {
   }
 
 body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflowY:  hidden;
+  height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
+    document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)}px;
+
     background-color: var(--color-main-background); 
     --color-footer: #1C232E;
     --color-back-btn: #81868C;
@@ -30,10 +38,6 @@ body {
     --color-call-action: #29316D;
     --color-call-action-info: #3E457B;
     --color-header: #252B58;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
     --font-family-default: "Inter", "Arial", sans-serif;
     --line-height-text: 24px;
     --line-height-little-text: 22px;

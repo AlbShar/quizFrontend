@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledFlexWrapper = styled.div`
+  gap: ${({gap}) => gap ? (gap + 'px') : ""};
   ${function ({ widthFlexStart }) {
     if (!widthFlexStart) {
       return `
