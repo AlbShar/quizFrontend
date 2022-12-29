@@ -4,10 +4,11 @@ import "./index.css";
 import App from "./App";
 import "./i18nextInit";
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, set, push } from "firebase/database";
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import { deadline } from "./components/Timer";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVNDua7phkjh4mSytFaX6CTuJsImD6Od8",
@@ -90,6 +91,75 @@ const convertJSONToText = (dataArray) => {
 
 //#region Functions for Quizpage
 
+const getRightAnswerDB = (currentQuestionNumb) => {
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `questions/question${currentQuestionNumb}/rightAnswer`),
+        (snapshot) => {
+          const rightAnswerDb = snapshot.val();
+          resolve(rightAnswerDb);
+        }
+      );
+    })
+  )
+
+}
+
+const sendDataDb = (
+  currentQuestionNumb,
+  selectorQuestion,
+  userAnswer,
+  selectorTheme,
+  timeQuestion,
+  uniqueIdUser
+) => {
+  const theme =
+  document.querySelector(selectorTheme).textContent;
+const question =
+  document.querySelector(selectorQuestion).textContent;
+
+  let referenceUserAnswers = ref(
+    db,
+    `user${uniqueIdUser}/answer${currentQuestionNumb}`
+  );
+
+  getRightAnswerDB(currentQuestionNumb).then(rightAnswerDb => {
+    set(referenceUserAnswers, {
+      id: push(referenceUserAnswers).key,
+      question: question,
+      userAnswer: userAnswer,
+      theme: theme,
+      point: rightAnswerDb === userAnswer ? 1 : 0,
+      time: timeQuestion,
+    });
+  })
+};
+
+const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnswers) => {
+  onValue(
+    ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
+    (snapshot) => {
+       setTimeout(() => {
+        document.querySelectorAll(selectorAnswers).forEach((answerItem) => {
+            if (answerItem.textContent === snapshot.val().userAnswer) {
+              answerItem.style.border = '2px solid rgb(103, 104, 215)';
+              answerItem.setAttribute('data-useranswer', true);
+            }
+          });
+      }, 1);     
+
+    }, {
+      onlyOnce: true
+    }
+  ); 
+};
+
+    
+
+
+
+
 const insertTotalQuestionNumbQuiz = (selector) => {
   getTotalQuestionsNumb().then(totalQuestionsNumb => {
     document.querySelector(selector).textContent = totalQuestionsNumb;
@@ -164,4 +234,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getThemeQuestion, insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
+export { db, getTotalQuestionsNumb, getThemeQuestion, highlightPreviousAnswer, sendDataDb,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
