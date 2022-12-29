@@ -35,7 +35,7 @@ const Button = ({
   const btnsQuizPage = () => {
     const answersItem = document.querySelectorAll('#answersAll ul li');
     let timeQuestion;
-    const getTimeQuestion = () => {
+    const setTimeQuestion = () => {
       timeQuestion = ((Date.now() - questionStartTime) / 1000).toFixed(2);
       setQuestionStartTime(Date.now());
     };
@@ -57,7 +57,7 @@ const Button = ({
 
         <StyledButtonQuiz
           onClick={() => {
-            getTimeQuestion();
+            setTimeQuestion();
             answersItem.forEach((asnwerItem) => {
                 if (asnwerItem.dataset.useranswer) {
                   setCurrentQuestionNumb(currentQuestionNumb + 1);
@@ -75,7 +75,7 @@ const Button = ({
               });
           }}
         >
-          Принять
+          {t("Принять")}
         </StyledButtonQuiz>
       </StyledArticle>
     );

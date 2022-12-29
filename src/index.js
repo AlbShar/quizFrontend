@@ -37,11 +37,26 @@ const getTotalQuestionsNumb = () => {
   )
 };
 
-const getThemeQuestion = async (currentQuestionNumb) => {
+const getAnswersDb = (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');;
+
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(ref(db, `answers/answers${currentQuestionNumb}/${lang}`), (snapshot) => {
+        const answersDB = Object.entries(snapshot.val());
+        resolve(answersDB.map((item) => item.join(". ")));
+      });    
+    })
+  )
+};
+
+const getThemeQuestion = (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');;
+
   return (
     new Promise(function (resolve, reject) {
       onValue(
-        ref(db, `questions/question${currentQuestionNumb}/theme`),
+        ref(db, `questions/question${currentQuestionNumb}/${lang}/theme`),
         (snapshot) => {
           const themQuestion = snapshot.val();
           resolve(themQuestion);
@@ -51,7 +66,24 @@ const getThemeQuestion = async (currentQuestionNumb) => {
   )
 };
 
-const getTotalPoints = () => {
+const getNameQuestion = (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');;
+
+  return (
+    new Promise(function (resolve, reject) {
+      onValue(
+        ref(db, `questions/question${currentQuestionNumb}/${lang}/name`),
+        (snapshot) => {
+          const nameQuestion = snapshot.val();
+          resolve(nameQuestion);
+        }
+      );
+    
+    })
+  )
+}
+
+const getTotalPointsDB = () => {
   return (
     new Promise(function (resolve, reject) {
       onValue(
@@ -90,6 +122,18 @@ const convertJSONToText = (dataArray) => {
 //#endregion
 
 //#region Functions for Quizpage
+
+const removeAttributesAnswers = (selectorAnswers) => {
+  const answersItem = document.querySelectorAll(selectorAnswers);
+
+  answersItem.forEach(answerItem => {
+    if (answerItem.dataset.useranswer) {
+      answerItem.style='';
+      answerItem.removeAttribute('data-useranswer');
+    }
+  })
+
+}
 
 const getRightAnswerDB = (currentQuestionNumb) => {
   return (
@@ -155,11 +199,6 @@ const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnsw
   ); 
 };
 
-    
-
-
-
-
 const insertTotalQuestionNumbQuiz = (selector) => {
   getTotalQuestionsNumb().then(totalQuestionsNumb => {
     document.querySelector(selector).textContent = totalQuestionsNumb;
@@ -205,14 +244,20 @@ const insertThemeQuestionQuiz = (currentQuestionNumb, selector) => {
 };
 
 const insertNameQuestionQuiz = (currentQuestionNumb, selector) => {
-  onValue(
-    ref(db, `questions/question${currentQuestionNumb}/name`),
-    (snapshot) => {
-      const nameQuestion = snapshot.val();
-      document.querySelector(selector).textContent = nameQuestion;
-    }
-  );
+  getNameQuestion(currentQuestionNumb).then(nameQuestion => {
+    document.querySelector(selector).textContent = nameQuestion;
+  })
 };
+
+const setAttributesUserAnswer = (e, selectorAnswers, cssBorder, nameDataAtrr) => {
+  document.querySelectorAll(selectorAnswers).forEach((item) => {
+    item.style = '';
+    item.removeAttribute(nameDataAtrr);
+  });
+  e.target.style.border = cssBorder;
+  e.target.setAttribute(nameDataAtrr, true);
+};
+
 
 //#endregion
 
@@ -234,4 +279,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getThemeQuestion, highlightPreviousAnswer, sendDataDb,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
+export { db, getTotalQuestionsNumb, getAnswersDb, removeAttributesAnswers, setAttributesUserAnswer, getThemeQuestion, highlightPreviousAnswer, sendDataDb,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
