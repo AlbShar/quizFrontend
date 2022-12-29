@@ -18,9 +18,7 @@
     "Восстановить": "Mein Ergebnis wiederherstellen",
     "Политика": "Datenschutzrichtlinie",
     "Если_вы_нашли_ошибку": "Wenn Sie einen Fehler auf der Website finden, melden Sie ihn bitte. Erstellen Sie dazu ein Issue mit einem ausführlichen Kommentar auf der <a target=\"_blank\" href=\"https://github.com/AlbShar/quizFrontend/issues\">GitHub</a>. Hängen Sie einen Screenshot mit einem Fehler an und beschreiben Sie detailliert, unter welchen Umständen der Fehler aufgetreten ist.",
-    "Нашли_ошибку": "Fehler auf der Seite oder im Test gefunden?"
-
-
-
-
+    "Нашли_ошибку": "Fehler auf der Seite oder im Test gefunden?",
+    "Принять": "Akzeptieren",
+    "Вопрос": "Frage"
 }

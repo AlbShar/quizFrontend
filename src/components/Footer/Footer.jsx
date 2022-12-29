@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../Container/Container";
-import Logo from "../UI/Logo/Logo";
+import Container from "../Container";
+import Logo from "../Logo";
 import "./footer.css";
 import facebook from "../../images/icons/facebook.png";
 import instagram from "../../images/icons/instagram.png";
@@ -11,11 +11,25 @@ import fondy from "../../images/icons/fondy.png";
 import visa from "../../images/icons/visa.png";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import {
+  StyledFooter,
+  StyledImgNetworks,
+  StyledImgPayment,
+  StyledSectionNetworks,
+  StyledSectionPayment,
+  StyledUlNetworks,
+  StyledLiNetworks,
+  StyledSection,
+  StyledLi,
+  StyledUl,
+  StyledA
+} from "./Footer.Styled";
+import { StyledFlexWrapper } from "../styles/FlexWrapper.Styled";
 
 const Footer = () => {
   const { t } = useTranslation();
 
-  const iconsTopFooter = [
+  const iconsNetworks = [
     {
       src: facebook,
       alt: "Открыть сайт в facebook",
@@ -44,66 +58,61 @@ const Footer = () => {
     { text: t("Политика"), link: "/politics" },
   ];
 
-  const iconsBottomFooter = [
+  const iconsPayments = [
     { src: visa, alt: "Иконка visa" },
     { src: mastercard, alt: "Иконка mastercard" },
     { src: fondy, alt: "Иконка fondy" },
   ];
 
   return (
-    <footer className="footer">
+    <StyledFooter>
       <Container>
-        <section className="wrapper">
-            <Logo className="footer__logo" />
-          <article className="footer__networks">
-            {iconsTopFooter.map((icon, index) => {
-              return (
-                <a
-                  className="footer__network-link"
-                  href={icon.url}
-                  key={index + 1}
-                >
-                  <img
-                    className="footer__network-img"
-                    src={icon.src}
-                    alt={icon.alt}
-                  />
-                </a>
-              );
-            })}
-          </article>
-          <section className="footer__middle">
-            <nav>
-              <ul className="footer__list">
-                {infoMiddleFooter.map((item, index) => {
+        <StyledFlexWrapper widthFlexStart="767.8" gap='15'>
+          <Logo location="footer" />
+          <StyledSectionNetworks>
+            <nav >
+              <StyledUlNetworks>
+                {iconsNetworks.map((icon, index) => {
                   return (
-                    <>
-                      <li key={index + 1} className="footer__list-item">
-                        <Link className="footer__list-link" to={item.link}>
-                          {item.text}
-                        </Link>
-                      </li>
-                    </>
+                    <StyledLiNetworks>
+                      <StyledA href={icon.url} key={index + 1}>
+                        <StyledImgNetworks src={icon.src} alt={icon.alt} />
+                      </StyledA>
+                    </StyledLiNetworks>
                   );
                 })}
-              </ul>
+              </StyledUlNetworks>
             </nav>
-          </section>
-          <section className="footer__bottom">
-            {iconsBottomFooter.map((icon, index) => {
+          </StyledSectionNetworks>
+          <StyledSection>
+            <nav>
+              <StyledUl>
+                {infoMiddleFooter.map((item, index) => {
+                  return (
+                    <StyledLi key={index + 1}>
+                      <Link className="footer__list-link" to={item.link}>
+                        {item.text}
+                      </Link>
+                    </StyledLi>
+                  );
+                })}
+              </StyledUl>
+            </nav>
+          </StyledSection>
+          <StyledSectionPayment>
+            {iconsPayments.map((icon, index) => {
               return (
-                <img
-                  className="footer__payment-img"
+                <StyledImgPayment
                   src={icon.src}
                   alt={icon.alt}
                   key={index + 1}
                 />
               );
             })}
-          </section>
-        </section>
+          </StyledSectionPayment>
+        </StyledFlexWrapper>
       </Container>
-    </footer>
+    </StyledFooter>
   );
 };
 

@@ -1,20 +1,23 @@
 import React from "react";
-import Container from "../../components/Container/Container";
-import Features from "../../components/Features/Features";
-import "./reportBug.css";
+import Container from "../../components/Container";
+import Features from "../../components/Features";
 import { useTranslation } from "react-i18next";
+import { GlobalStyles } from "../../components/styles/Global";
+import { StyledH1 } from "./H1.Styled";
+import { StyledMain } from "../Main.Styled";
 
 
 const Contacts = () => {
   const { t } = useTranslation();
 
   return (
-    <main style={{ flex: "1 1 auto" }}>
+    <StyledMain>
       <Container>
-        <h1 className="report-bug__title">{t("Нашли_ошибку")}</h1>
+        <GlobalStyles/>
+        <StyledH1>{t("Нашли_ошибку")}</StyledH1>
         <Features pageName="ReportBug"/>
       </Container>
-    </main>
+    </StyledMain>
   );
 };
 
