@@ -26,35 +26,31 @@ const db = getDatabase(app);
 
 
 //#region Functions to get Data from DB(Firebase)
-const getTotalQuestionsNumb = () => {  
-  return (
-    new Promise(function (resolve, reject) {
+const getTotalQuestionsNumb = async () => {  
+  return await new Promise(function (resolve, reject) {
       onValue(ref(db, `questions`), (snapshot) => {
         const totalQuestionsNumb = Object.entries(snapshot.val()).length;
         resolve(totalQuestionsNumb);
       });
     })
-  )
 };
 
-const getAnswersDb = (currentQuestionNumb) => {
+
+
+const getAnswersDb = async (currentQuestionNumb) => {
   let lang = localStorage.getItem('i18nextLng');;
 
-  return (
-    new Promise(function (resolve, reject) {
+  return await new Promise(function (resolve, reject) {
       onValue(ref(db, `answers/answers${currentQuestionNumb}/${lang}`), (snapshot) => {
         const answersDB = Object.entries(snapshot.val());
         resolve(answersDB.map((item) => item.join(". ")));
       });    
     })
-  )
 };
 
-const getThemeQuestion = (currentQuestionNumb) => {
-  let lang = localStorage.getItem('i18nextLng');;
-
-  return (
-    new Promise(function (resolve, reject) {
+const getThemeQuestion = async (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');
+  return await new Promise(function (resolve, reject) {
       onValue(
         ref(db, `questions/question${currentQuestionNumb}/${lang}/theme`),
         (snapshot) => {
@@ -63,14 +59,11 @@ const getThemeQuestion = (currentQuestionNumb) => {
         }
       );
     })
-  )
 };
 
-const getNameQuestion = (currentQuestionNumb) => {
-  let lang = localStorage.getItem('i18nextLng');;
-
-  return (
-    new Promise(function (resolve, reject) {
+const getNameQuestion = async (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');
+  return await new Promise(function (resolve, reject) {
       onValue(
         ref(db, `questions/question${currentQuestionNumb}/${lang}/name`),
         (snapshot) => {
@@ -78,9 +71,8 @@ const getNameQuestion = (currentQuestionNumb) => {
           resolve(nameQuestion);
         }
       );
-    
     })
-  )
+
 }
 
 const getTotalPointsDB = () => {
@@ -99,14 +91,13 @@ const getTotalPointsDB = () => {
 //#endregion
 
 //#region  Functions for Homepage
-const insertDataInfoTest = (textQuestions, textTime, ...selectors) => {
-  getTotalQuestionsNumb().then(totalQuestionsNumb => {
-    const textListItems = document.querySelector(selectors[0]).querySelectorAll(selectors[1]);
-
-    textListItems[textListItems.length - 1].textContent = `${totalQuestionsNumb} ${textQuestions}`;
-    // We paste deadline(total seconds for passing the test) at InfoTest component
-    textListItems[0].textContent = `${deadline / 60} ${textTime}`;
-  })
+const insertDataInfoTest = async (textQuestions, textTime, ...selectors) => {
+  const textListItems = document.querySelector(selectors[0]).querySelectorAll(selectors[1]);
+  let totalQuestionsNumb = await getTotalQuestionsNumb();
+  
+  textListItems[textListItems.length - 1].textContent = `${totalQuestionsNumb} ${textQuestions}`;
+  // We paste deadline(total seconds for passing the test) at InfoTest component
+  textListItems[0].textContent = `${deadline / 60} ${textTime}`;
 };
 
 // We use the function, when there is html tags in JSON.
@@ -135,22 +126,23 @@ const removeAttributesAnswers = (selectorAnswers) => {
 
 }
 
-const getRightAnswerDB = (currentQuestionNumb) => {
-  return (
-    new Promise(function (resolve, reject) {
+const getRightAnswerDB = async (currentQuestionNumb) => {
+  let lang = localStorage.getItem('i18nextLng');
+
+  const rightAnswer = await new Promise(function (resolve, reject) {
       onValue(
-        ref(db, `questions/question${currentQuestionNumb}/rightAnswer`),
+        ref(db, `questions/question${currentQuestionNumb}/${lang}/rightAnswer`),
         (snapshot) => {
           const rightAnswerDb = snapshot.val();
           resolve(rightAnswerDb);
         }
       );
-    })
-  )
+    });
 
+    return rightAnswer;
 }
 
-const sendDataDb = (
+const sendDataDb = async (
   currentQuestionNumb,
   selectorQuestion,
   userAnswer,
@@ -158,26 +150,20 @@ const sendDataDb = (
   timeQuestion,
   uniqueIdUser
 ) => {
-  const theme =
-  document.querySelector(selectorTheme).textContent;
-const question =
-  document.querySelector(selectorQuestion).textContent;
+  const theme = document.querySelector(selectorTheme).textContent;
+  const question = document.querySelector(selectorQuestion).textContent;
 
-  let referenceUserAnswers = ref(
-    db,
-    `user${uniqueIdUser}/answer${currentQuestionNumb}`
-  );
+  let referenceUserAnswers = ref(db,`user${uniqueIdUser}/answer${currentQuestionNumb}`);
+  const rightAnswer = await getRightAnswerDB(currentQuestionNumb);
 
-  getRightAnswerDB(currentQuestionNumb).then(rightAnswerDb => {
-    set(referenceUserAnswers, {
-      id: push(referenceUserAnswers).key,
-      question: question,
-      userAnswer: userAnswer,
-      theme: theme,
-      point: rightAnswerDb === userAnswer ? 1 : 0,
-      time: timeQuestion,
-    });
-  })
+  set(referenceUserAnswers, {
+    id: push(referenceUserAnswers).key,
+    question: question,
+    userAnswer: userAnswer,
+    theme: theme,
+    point: rightAnswer === userAnswer ? 1 : 0,
+    time: timeQuestion,
+  });
 };
 
 const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnswers) => {
@@ -199,10 +185,9 @@ const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnsw
   ); 
 };
 
-const insertTotalQuestionNumbQuiz = (selector) => {
-  getTotalQuestionsNumb().then(totalQuestionsNumb => {
-    document.querySelector(selector).textContent = totalQuestionsNumb;
-  })
+const insertTotalQuestionNumbQuiz = async (selector) => {
+  let totalQuestionsNumb = await getTotalQuestionsNumb();
+  document.querySelector(selector).textContent = totalQuestionsNumb;
 };
 
 const insertImageQuiz = (currentQuestionNumb, selectorWrapperImg, selectorImg) => {
@@ -222,8 +207,8 @@ const insertImageQuiz = (currentQuestionNumb, selectorWrapperImg, selectorImg) =
   );
  };
 
-const setWidthScrollBar = (currentQuestionNumb, selectorQuiz, selectorScrollBar) => {
-  getTotalQuestionsNumb().then(totalQuestionsNumb => {
+const setWidthScrollBar = async (currentQuestionNumb, selectorQuiz, selectorScrollBar) => {
+  const totalQuestionsNumb = await getTotalQuestionsNumb();
     const quiz = document.querySelector(selectorQuiz);
     const widthContainer =
       quiz.clientWidth -
@@ -234,19 +219,17 @@ const setWidthScrollBar = (currentQuestionNumb, selectorQuiz, selectorScrollBar)
       currentQuestionNumb * valueWidthScroll
     }px`;
 
-  })
 };
 
-const insertThemeQuestionQuiz = (currentQuestionNumb, selector) => {
-  getThemeQuestion(currentQuestionNumb).then(themeQuestion => {
-    document.querySelector(selector).textContent =  themeQuestion;  
-  });
+const insertThemeQuestionQuiz = async (currentQuestionNumb, selector) => {
+  const nameThemeQuestion = await getThemeQuestion(currentQuestionNumb);
+  document.querySelector(selector).textContent =  nameThemeQuestion
 };
 
-const insertNameQuestionQuiz = (currentQuestionNumb, selector) => {
-  getNameQuestion(currentQuestionNumb).then(nameQuestion => {
-    document.querySelector(selector).textContent = nameQuestion;
-  })
+const insertNameQuestionQuiz = async (currentQuestionNumb, selector) => {
+  let nameQuestion = await getNameQuestion(currentQuestionNumb);
+  document.querySelector(selector).textContent = nameQuestion;
+
 };
 
 const setAttributesUserAnswer = (e, selectorAnswers, cssBorder, nameDataAtrr) => {
