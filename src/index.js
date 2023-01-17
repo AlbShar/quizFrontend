@@ -147,7 +147,6 @@ const sendDataDb = async (
   selectorQuestion,
   userAnswer,
   selectorTheme,
-  timeQuestion,
   uniqueIdUser
 ) => {
   const theme = document.querySelector(selectorTheme).textContent;
@@ -162,7 +161,6 @@ const sendDataDb = async (
     userAnswer: userAnswer,
     theme: theme,
     point: rightAnswer === userAnswer ? 1 : 0,
-    time: timeQuestion,
   });
 };
 

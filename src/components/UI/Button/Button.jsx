@@ -3,8 +3,12 @@ import "./button.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import arrowleft from "../../../images/icons/arrowleft.png";
-import { sendDataDb, highlightPreviousAnswer } from "../../../index";
+import { sendDataDb, highlightPreviousAnswer, getTotalQuestionsNumb } from "../../../index";
 import { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan, StyledButtonQuiz } from "./Button.Styled";
+import { ref } from "firebase/database";
+import { onValue } from "firebase/database";
+import { db } from "../../../index";
+
 
 
 const Button = ({
@@ -13,20 +17,22 @@ const Button = ({
   setCurrentQuestionNumb,
 }) => {
   const { t } = useTranslation();
-
   const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
-  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+  let totalQuestionsNumbers;
+  onValue(ref(db, `questions`), (snapshot) => {
+    totalQuestionsNumbers = Object.entries(snapshot.val()).length;
+  });
 
-  const btnHomePage = () => {
+
+  const btnLinkToPage = (pageTo, text) => {
     return (
-      <Link className="btn__link" to="quiz">
+      <Link className="btn__link" to={pageTo}>
         <StyledButton
           onClick={() => {
             setUniqueIdUser(uniqueIdUser * Math.random());
-            setQuestionStartTime(Date.now());
           }}
         >
-          {t("Начать_тест")}
+          {text}
         </StyledButton>
       </Link>
     );
@@ -34,11 +40,7 @@ const Button = ({
 
   const btnsQuizPage = () => {
     const answersItem = document.querySelectorAll('#answersAll ul li');
-    let timeQuestion;
-    const setTimeQuestion = () => {
-      timeQuestion = ((Date.now() - questionStartTime) / 1000).toFixed(2);
-      setQuestionStartTime(Date.now());
-    };
+
 
     return (
       <StyledArticle>
@@ -54,19 +56,18 @@ const Button = ({
             <StyledSpan>Назад</StyledSpan>
           </StyledButtonBack>
         )}
-
-        <StyledButtonQuiz
+          {
+          totalQuestionsNumbers === currentQuestionNumb ? btnLinkToPage('/contact', 'Закончить тест') : 
+          <StyledButtonQuiz
           onClick={() => {
-            setTimeQuestion();
             answersItem.forEach((asnwerItem) => {
                 if (asnwerItem.dataset.useranswer) {
-                  setCurrentQuestionNumb(currentQuestionNumb + 1);
+                  setCurrentQuestionNumb(currentQuestionNumb+1);
                   sendDataDb(
                     currentQuestionNumb,
                     "#questionTitle",
                     asnwerItem.textContent,
                     "#themeQuestion",
-                    timeQuestion,
                     uniqueIdUser
                   );
                 } else {
@@ -77,12 +78,13 @@ const Button = ({
         >
           {t("Принять")}
         </StyledButtonQuiz>
+        }
       </StyledArticle>
     );
   };
 
   return (
-    <>{currentPage === "Homepage" ? btnHomePage() : btnsQuizPage()}</>
+    <>{currentPage === "Homepage" ? btnLinkToPage('quiz', t("Начать_тест")) : btnsQuizPage()}</>
   );
 };
 
