@@ -26,6 +26,14 @@ const db = getDatabase(app);
 
 
 //#region Functions to get Data from DB(Firebase)
+// const getTotalQuestionsNumb = async () => {  
+//   return await new Promise(function (resolve, reject) {
+//       onValue(ref(db, `questions`), (snapshot) => {
+//         const totalQuestionsNumb = Object.entries(snapshot.val()).length;
+//         resolve(totalQuestionsNumb);
+//       });
+//     })
+// };
 const getTotalQuestionsNumb = async () => {  
   return await new Promise(function (resolve, reject) {
       onValue(ref(db, `questions`), (snapshot) => {

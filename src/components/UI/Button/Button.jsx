@@ -24,7 +24,7 @@ const Button = ({
   });
 
 
-  const btnLinkToPage = (pageTo, text) => {
+  const btnLinkToPage = (pageTo, text, action) => {
     return (
       <Link className="btn__link" to={pageTo}>
         <StyledButton
@@ -84,7 +84,7 @@ const Button = ({
   };
 
   return (
-    <>{currentPage === "Homepage" ? btnLinkToPage('quiz', t("Начать_тест")) : btnsQuizPage()}</>
+    <>{currentPage === "Homepage" ? btnLinkToPage('quiz', t("Начать_тест"), ) : btnsQuizPage()}</>
   );
 };
 
