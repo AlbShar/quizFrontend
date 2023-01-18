@@ -3,7 +3,7 @@ import "./button.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import arrowleft from "../../../images/icons/arrowleft.png";
-import { sendDataDb, highlightPreviousAnswer, getTotalQuestionsNumb } from "../../../index";
+import { sendDataDb, highlightPreviousAnswer } from "../../../index";
 import { StyledButton, StyledArticle, StyledButtonBack, StyledImg, StyledSpan, StyledButtonQuiz } from "./Button.Styled";
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
@@ -12,7 +12,9 @@ import { db } from "../../../index";
 
 
 const Button = ({
-  currentPage,
+  type,
+  goToPage,
+  textBtn,
   currentQuestionNumb,
   setCurrentQuestionNumb,
 }) => {
@@ -24,15 +26,15 @@ const Button = ({
   });
 
 
-  const btnLinkToPage = (pageTo, text, action) => {
+  const btnLinkToPage = (pageTo, text) => {
     return (
-      <Link className="btn__link" to={pageTo}>
+      <Link className="btn__link" to={pageTo ? pageTo : goToPage}>
         <StyledButton
           onClick={() => {
             setUniqueIdUser(uniqueIdUser * Math.random());
           }}
         >
-          {text}
+          {text ? text : textBtn}
         </StyledButton>
       </Link>
     );
@@ -84,7 +86,7 @@ const Button = ({
   };
 
   return (
-    <>{currentPage === "Homepage" ? btnLinkToPage('quiz', t("Начать_тест"), ) : btnsQuizPage()}</>
+    <>{type === "Link" ? btnLinkToPage() : btnsQuizPage()}</>
   );
 };
 

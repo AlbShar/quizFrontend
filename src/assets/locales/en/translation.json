@@ -20,6 +20,14 @@
     "Если_вы_нашли_ошибку": "If you find an error on the site, please report it. To do this, create an Issue with a detailed comment on the <a target=\"_blank\" href=\"https://github.com/AlbShar/quizFrontend/issues\">GitHub</a>. Attach a screenshot with an error and describe in detail under what circumstances the error occurred.",
     "Нашли_ошибку": "Found an error on the site or in the test?",
     "Принять": "Accept",
-    "Вопрос": "Question"
+    "Вопрос": "Question",
+    "Прекрасная_работа": "Great job!",
+    "Учли_ваши_результаты": "We have already taken into account your answers, it remains to fill out a small form. Your data is absolutely confidential and is used only for the most objective validation of the result.",
+    "Ваше_имя": "Your name",
+    "Возраст": "Age",
+    "Пол": "Gender",
+    "Получить_результат": "Get result"
+
+
 }
   
