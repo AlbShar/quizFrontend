@@ -238,8 +238,6 @@ const insertImageQuiz = (currentQuestionNumb, selectorWrapperImg, selectorImg) =
   );
  };
 
- 
-
 const setWidthScrollBar = async (currentQuestionNumb, selectorQuiz, selectorScrollBar) => {
   const totalQuestionsNumb = await getTotalQuestionsNumb();
     const quiz = document.querySelector(selectorQuiz);

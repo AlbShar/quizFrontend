@@ -26,7 +26,6 @@ const Button = ({
   pageName
 }) => {
   const { t } = useTranslation();
-  // const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
@@ -41,7 +40,6 @@ const Button = ({
           console.log('btn')
           switch(currentPageName ? currentPageName : pageName) {
             case 'homepage':
-              // setUniqueIdUser(uniqueIdUser * Math.random());
               const uniqueIdUser = (Date.now() * Math.random()).toFixed(0);
               localStorage.setItem('uniqueIdUser', uniqueIdUser);
               console.log(uniqueIdUser);

@@ -14,7 +14,10 @@ import {
   StyledSelect,
   StyledInputRadio,
   StyledImgGender,
-  StyledDivWrapperGender
+  StyledDivWrapperGender,
+  StyledSpanGender,
+  StyledLabelGender,
+  StyledOption
 } from "./Contact.styled";
 import manavatar from "../../images/icons/manavatar.png";
 import womanavatar from "../../images/icons/womanavatar.png";
@@ -45,6 +48,12 @@ const Contact = () => {
                         type="text"
                         id="username"
                         name="username"
+                        onClick={(e) => {
+                          e.target.previousElementSibling.style.color = `#6768d7`;
+                        }}
+                        onBlur={(e) => {
+                          e.target.previousElementSibling.style.color = `#81868C`;
+                        }}
                       />
                     </label>
                   </StyledPForm>
@@ -56,15 +65,28 @@ const Contact = () => {
                         type="email"
                         id="useremail"
                         name="useremail"
+                        onClick={(e) => {
+                          e.target.previousElementSibling.style.color = `#6768d7`;
+                        }}
+                        onBlur={(e) => {
+                          e.target.previousElementSibling.style.color = `#81868C`;
+                        }}
                       />
                     </label>
                   </StyledPForm>
                   <StyledPForm>
                     <label htmlFor="username">
                       <StyledSpan>{t("Возраст")}</StyledSpan>
-                      <StyledSelect>
-                        <option disabled>Выберите Ваш возраст</option>
-                        <option value="<18"> меньше 18 </option>
+                      <StyledSelect onClick={(e) => {
+                          e.target.previousElementSibling.style.color = `#6768d7`;
+                          e.target.style.outline = `1px solid #6768d7`;
+                        }}
+                        onBlur={(e) => {
+                          e.target.previousElementSibling.style.color = `#81868C`;
+                          e.target.style.outline = `1px solid #81868C`;
+                        }}>
+                        <option disabled selected="selected">Возраст</option>
+                        <option value="<18"> &lt; 18 </option>
                         <option value="19-25">19-25</option>
                         <option value="26-35">26-35</option>
                         <option value="36-50">36-50</option>
@@ -72,30 +94,27 @@ const Contact = () => {
                       </StyledSelect>
                     </label>
                   </StyledPForm>
-                </StyledFieldset>
-                <StyledFieldset>
                   <StyledDivWrapperGender>
-                    <span style={{font: 'var(--font-text-bold)'}}>Gender</span>
-                    <label>
+                    <StyledSpanGender>{t("Пол")}</StyledSpanGender>
+                    <StyledLabelGender>
                       <StyledInputRadio
                         name="gender"
                         id="userman"
                         value="man"
                       />
                       <StyledImgGender src={manavatar} />
-                    </label>
-                    <label>
+                    </StyledLabelGender>
+                    <StyledLabelGender>
                       <StyledInputRadio
                         name="gender"
                         id="userwoman"
                         value="woman"
                       />
                       <StyledImgGender src={womanavatar} />
-                    </label>
+                    </StyledLabelGender>
                   </StyledDivWrapperGender>
                 </StyledFieldset>
                 <Button
-                  
                   type="Link"
                   goToPage="/results"
                   textBtn={t("Получить_результат")}
