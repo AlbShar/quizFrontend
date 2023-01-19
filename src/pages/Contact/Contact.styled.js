@@ -63,7 +63,6 @@ const StyledSpan = styled.span`
   z-index: 2;
   background-color: white;
   color: #81868C;
-}
 `;
 
 const StyledPForm = styled.p`

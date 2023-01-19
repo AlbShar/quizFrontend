@@ -63,7 +63,7 @@ const Contact = () => {
                     <label htmlFor="username">
                       <StyledSpan>{t("Возраст")}</StyledSpan>
                       <StyledSelect>
-                        <option> </option>
+                        <option disabled>Выберите Ваш возраст</option>
                         <option value="<18"> меньше 18 </option>
                         <option value="19-25">19-25</option>
                         <option value="26-35">26-35</option>

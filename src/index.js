@@ -150,7 +150,7 @@ const getRightAnswerDB = async (currentQuestionNumb) => {
     return rightAnswer;
 }
 
-const sendDataDb = async (
+const sendUserAnswerDB = async (
   currentQuestionNumb,
   selectorQuestion,
   userAnswer,
@@ -170,6 +170,31 @@ const sendDataDb = async (
     theme: theme,
     point: rightAnswer === userAnswer ? 1 : 0,
   });
+};
+
+const sendUserInfoDB = async (
+  uniqueIdUser
+) => {
+  const userName = document.querySelector('#username').value;
+  const userEmail = document.querySelector('#useremail').value;
+  const userAge = document.querySelector('select').value;
+  const userGender = document.querySelector('#userman').checked ? 'man' : document.querySelector('#userwoman').checked ? 'woman' : null;
+
+  const referenceUserAnswers = ref(db,`user${uniqueIdUser}`);
+  set(referenceUserAnswers, {
+    name: userName,
+    email: userEmail,
+    age: userAge,
+    gender: userGender,
+  });
+};
+
+const checkIsUserData = () => {
+  const userName = document.querySelector('#username').value;
+  const userEmail = document.querySelector('#useremail').value;
+  const userAge = document.querySelector('select').value;
+  const userGender = document.querySelector('#userman').checked ? 'man' : document.querySelector('#userwoman').checked ? 'woman' : null;
+  return (userName && userEmail && userAge && userGender) ? true : false;
 };
 
 const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnswers) => {
@@ -212,6 +237,8 @@ const insertImageQuiz = (currentQuestionNumb, selectorWrapperImg, selectorImg) =
     }
   );
  };
+
+ 
 
 const setWidthScrollBar = async (currentQuestionNumb, selectorQuiz, selectorScrollBar) => {
   const totalQuestionsNumb = await getTotalQuestionsNumb();
@@ -268,4 +295,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getAnswersDb, removeAttributesAnswers, setAttributesUserAnswer, getThemeQuestion, highlightPreviousAnswer, sendDataDb,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
+export { db, getTotalQuestionsNumb, getAnswersDb, checkIsUserData, sendUserInfoDB, removeAttributesAnswers, setAttributesUserAnswer, getThemeQuestion, highlightPreviousAnswer, sendUserAnswerDB,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
