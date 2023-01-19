@@ -13,7 +13,7 @@ const CallToAction = () => {
             <InfoTest/>
             <StyledP>{t("Добро_пожаловать")}</StyledP>
             <StyledP>{t("Тест_будет")}</StyledP>
-            <Button type="Link" goToPage='quiz' textBtn="Начать тест"/>             
+            <Button type="Link" goToPage='quiz' textBtn="Начать тест" pageName='homepage'/>             
         </StyledCallToAction>
     );
 };

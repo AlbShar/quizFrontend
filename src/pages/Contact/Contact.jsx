@@ -95,9 +95,11 @@ const Contact = () => {
                   </StyledDivWrapperGender>
                 </StyledFieldset>
                 <Button
+                  
                   type="Link"
-                  goToPage="results"
+                  goToPage="/results"
                   textBtn={t("Получить_результат")}
+                  pageName='contact'
                 />
               </form>
             </article>

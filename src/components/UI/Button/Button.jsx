@@ -23,45 +23,57 @@ const Button = ({
   textBtn,
   currentQuestionNumb,
   setCurrentQuestionNumb,
+  pageName
 }) => {
   const { t } = useTranslation();
-  const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
+  // const [uniqueIdUser, setUniqueIdUser] = useState(`${Date.now()}`);
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
-  const btnLinkToPage = (pageTo, text) => {
+  const btnLinkToPage = (pageTo, text, currentPageName) => {
     return (
       <Link
         className="btn__link"
         to={pageTo ? pageTo : goToPage}
         onClick={(e) => {
-          if (checkIsUserData()) {
-            console.log(uniqueIdUser)
-            sendUserInfoDB(uniqueIdUser);
-          } else {
-            e.preventDefault();
-            alert('Заполните данные');
-          }
-          if (totalQuestionsNumbers === currentQuestionNumb) {
-            const answersItem = document.querySelectorAll("#answersAll ul li");
-            answersItem.forEach((asnwerItem) => {
-              if (asnwerItem.dataset.useranswer) {
-                setCurrentQuestionNumb(currentQuestionNumb + 1);
-                sendUserAnswerDB(
-                  currentQuestionNumb,
-                  "#questionTitle",
-                  asnwerItem.textContent,
-                  "#themeQuestion",
-                  uniqueIdUser
-                );
-              } else {
-                return false;
+          console.log('btn')
+          switch(currentPageName ? currentPageName : pageName) {
+            case 'homepage':
+              // setUniqueIdUser(uniqueIdUser * Math.random());
+              const uniqueIdUser = (Date.now() * Math.random()).toFixed(0);
+              localStorage.setItem('uniqueIdUser', uniqueIdUser);
+              console.log(uniqueIdUser);
+            break;
+
+            case 'quiz':
+              if (totalQuestionsNumbers === currentQuestionNumb) {
+                const answersItem = document.querySelectorAll("#answersAll ul li");
+                answersItem.forEach((asnwerItem) => {
+                  if (asnwerItem.dataset.useranswer) {
+                    sendUserAnswerDB(
+                      currentQuestionNumb,
+                      "#questionTitle",
+                      asnwerItem.textContent,
+                      "#themeQuestion",
+                      localStorage.getItem('uniqueIdUser')
+                    );
+                    setCurrentQuestionNumb(currentQuestionNumb + 1);
+                  } else {
+                    return false;
+                  }
+                });
               }
-            });
-          } else {
-            setUniqueIdUser(uniqueIdUser * Math.random());
+            break;
+
+            case 'contact':
+              if (checkIsUserData()) {
+                sendUserInfoDB(localStorage.getItem('uniqueIdUser'));
+              } else {
+                e.preventDefault();
+              }
+            break;
           }
         }}
       >
@@ -80,7 +92,7 @@ const Button = ({
               setCurrentQuestionNumb(--currentQuestionNumb);
               e.target.closest("#BtnBack").style.display = "none";
               highlightPreviousAnswer(
-                uniqueIdUser,
+                localStorage.getItem('uniqueIdUser'),
                 currentQuestionNumb,
                 "#answersAll ul li"
               );
@@ -91,7 +103,7 @@ const Button = ({
           </StyledButtonBack>
         )}
         {totalQuestionsNumbers === currentQuestionNumb ? (
-          btnLinkToPage("/contact", "Закончить тест")
+          btnLinkToPage("/contact", "Закончить тест", 'quiz')
         ) : (
           <StyledButtonQuiz
             onClick={() => {
@@ -105,7 +117,7 @@ const Button = ({
                     "#questionTitle",
                     asnwerItem.textContent,
                     "#themeQuestion",
-                    uniqueIdUser
+                    localStorage.getItem('uniqueIdUser')
                   );
                 } else {
                   return false;

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import "./i18nextInit";
 import { initializeApp } from "firebase/app";
-import { getDatabase, set, push } from "firebase/database";
+import { getDatabase, set, push, update } from "firebase/database";
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import { deadline } from "./components/Timer";
@@ -180,8 +180,8 @@ const sendUserInfoDB = async (
   const userAge = document.querySelector('select').value;
   const userGender = document.querySelector('#userman').checked ? 'man' : document.querySelector('#userwoman').checked ? 'woman' : null;
 
-  const referenceUserAnswers = ref(db,`user${uniqueIdUser}`);
-  set(referenceUserAnswers, {
+  const referenceUserAnswers = ref(db,`user${uniqueIdUser}/userInfo`);
+  update(referenceUserAnswers, {
     name: userName,
     email: userEmail,
     age: userAge,
