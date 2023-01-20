@@ -3,7 +3,7 @@ import "./button.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import arrowleft from "../../../images/icons/arrowleft.png";
-import { sendUserAnswerDB, highlightPreviousAnswer, checkIsUserData, sendUserInfoDB } from "../../../index";
+import { sendUserAnswerDB, highlightPreviousAnswer, checkIsUserData, sendUserInfoDB, createIdUser, getIdUser } from "../../../index";
 import {
   StyledButton,
   StyledArticle,
@@ -16,6 +16,7 @@ import {
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import { db } from "../../../index";
+
 
 const Button = ({
   type,
@@ -40,9 +41,7 @@ const Button = ({
           console.log('btn')
           switch(currentPageName ? currentPageName : pageName) {
             case 'homepage':
-              const uniqueIdUser = (Date.now() * Math.random()).toFixed(0);
-              localStorage.setItem('uniqueIdUser', uniqueIdUser);
-              console.log(uniqueIdUser);
+              createIdUser();
             break;
 
             case 'quiz':
@@ -55,7 +54,7 @@ const Button = ({
                       "#questionTitle",
                       asnwerItem.textContent,
                       "#themeQuestion",
-                      localStorage.getItem('uniqueIdUser')
+                      getIdUser()
                     );
                     setCurrentQuestionNumb(currentQuestionNumb + 1);
                   } else {
@@ -67,7 +66,7 @@ const Button = ({
 
             case 'contact':
               if (checkIsUserData()) {
-                sendUserInfoDB(localStorage.getItem('uniqueIdUser'));
+                sendUserInfoDB(getIdUser());
               } else {
                 e.preventDefault();
               }
@@ -90,7 +89,7 @@ const Button = ({
               setCurrentQuestionNumb(--currentQuestionNumb);
               e.target.closest("#BtnBack").style.display = "none";
               highlightPreviousAnswer(
-                localStorage.getItem('uniqueIdUser'),
+                getIdUser(),
                 currentQuestionNumb,
                 "#answersAll ul li"
               );
@@ -115,7 +114,7 @@ const Button = ({
                     "#questionTitle",
                     asnwerItem.textContent,
                     "#themeQuestion",
-                    localStorage.getItem('uniqueIdUser')
+                    getIdUser()
                   );
                 } else {
                   return false;

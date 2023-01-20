@@ -26,6 +26,7 @@ const db = getDatabase(app);
 
 
 //#region Functions to get Data from DB(Firebase)
+
 // const getTotalQuestionsNumb = async () => {  
 //   return await new Promise(function (resolve, reject) {
 //       onValue(ref(db, `questions`), (snapshot) => {
@@ -43,7 +44,15 @@ const getTotalQuestionsNumb = async () => {
     })
 };
 
+const getAllTestedUsers = () => {
+  return new Promise(function (resolve, reject) {
+    onValue(ref(db, `users`), (snapshot) => {
+      const AllTestedUsers = Object.entries(snapshot.val()).length;
+      resolve(AllTestedUsers);
+    });
+  })
 
+}
 
 const getAnswersDb = async (currentQuestionNumb) => {
   let lang = localStorage.getItem('i18nextLng');;
@@ -118,6 +127,21 @@ const convertJSONToText = (dataArray) => {
     }
   })
 };
+
+const getIdUser = () => {
+  return localStorage.getItem('idUser');
+};
+
+const createIdUser = () => {
+  const idUser = push(ref(db, `users/user`)).key;
+  localStorage.setItem('idUser', idUser);
+};
+
+const setQuiantiyTestedUsers = async (selectorQuantityTestedUsers) => {
+  const quiantiyAllUsers = await getAllTestedUsers();
+  document.querySelector(selectorQuantityTestedUsers).textContent = quiantiyAllUsers;
+}
+
 //#endregion
 
 //#region Functions for Quizpage
@@ -155,16 +179,15 @@ const sendUserAnswerDB = async (
   selectorQuestion,
   userAnswer,
   selectorTheme,
-  uniqueIdUser
+  idUser
 ) => {
   const theme = document.querySelector(selectorTheme).textContent;
   const question = document.querySelector(selectorQuestion).textContent;
 
-  let referenceUserAnswers = ref(db,`user${uniqueIdUser}/answer${currentQuestionNumb}`);
+  let referenceUserAnswers = ref(db,`users/user${idUser}/answers/answer${currentQuestionNumb}`);
   const rightAnswer = await getRightAnswerDB(currentQuestionNumb);
 
   set(referenceUserAnswers, {
-    id: push(referenceUserAnswers).key,
     question: question,
     userAnswer: userAnswer,
     theme: theme,
@@ -173,14 +196,14 @@ const sendUserAnswerDB = async (
 };
 
 const sendUserInfoDB = async (
-  uniqueIdUser
+  idUser
 ) => {
   const userName = document.querySelector('#username').value;
   const userEmail = document.querySelector('#useremail').value;
   const userAge = document.querySelector('select').value;
   const userGender = document.querySelector('#userman').checked ? 'man' : document.querySelector('#userwoman').checked ? 'woman' : null;
 
-  const referenceUserAnswers = ref(db,`user${uniqueIdUser}/userInfo`);
+  const referenceUserAnswers = ref(db,`users/user${idUser}/userInfo`);
   update(referenceUserAnswers, {
     name: userName,
     email: userEmail,
@@ -197,9 +220,9 @@ const checkIsUserData = () => {
   return (userName && userEmail && userAge && userGender) ? true : false;
 };
 
-const highlightPreviousAnswer = (uniqueIdUser, currentQuestionNumb, selectorAnswers) => {
+const highlightPreviousAnswer = (idUser, currentQuestionNumb, selectorAnswers) => {
   onValue(
-    ref(db, `user${uniqueIdUser}/answer${currentQuestionNumb}`),
+    ref(db, `user${idUser}/answer${currentQuestionNumb}`),
     (snapshot) => {
        setTimeout(() => {
         document.querySelectorAll(selectorAnswers).forEach((answerItem) => {
@@ -275,6 +298,19 @@ const setAttributesUserAnswer = (e, selectorAnswers, cssBorder, nameDataAtrr) =>
 
 //#endregion
 
+//#region Functions for Contact page
+const setAnimateInputAndText = (e, colorFocus) => {
+  e.target.style.transition = 'all ease 0.3s';
+  e.target.style.borderColor = colorFocus;
+  e.target.previousElementSibling.style.color = colorFocus;
+}
+
+const clearAnimateInputAndText = (e, colorInitial) => {
+  e.target.style.borderColor = colorInitial;
+  e.target.previousElementSibling.style.color = colorInitial;
+}
+
+//#endregion
  const checkIsImgAlt = (item, index) => {
   try {
     if (!item.alt) {
@@ -293,4 +329,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
-export { db, getTotalQuestionsNumb, getAnswersDb, checkIsUserData, sendUserInfoDB, removeAttributesAnswers, setAttributesUserAnswer, getThemeQuestion, highlightPreviousAnswer, sendUserAnswerDB,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
+export { db, getTotalQuestionsNumb, setQuiantiyTestedUsers, getAllTestedUsers, setAnimateInputAndText, clearAnimateInputAndText, getIdUser, createIdUser,  getAnswersDb, checkIsUserData, sendUserInfoDB, removeAttributesAnswers, setAttributesUserAnswer, getThemeQuestion, highlightPreviousAnswer, sendUserAnswerDB,  insertDataInfoTest, convertJSONToText, insertNameQuestionQuiz, setWidthScrollBar, insertImageQuiz, insertTotalQuestionNumbQuiz, checkIsImgAlt, insertThemeQuestionQuiz};
