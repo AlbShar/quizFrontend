@@ -222,7 +222,7 @@ const checkIsUserData = () => {
 
 const highlightPreviousAnswer = (idUser, currentQuestionNumb, selectorAnswers) => {
   onValue(
-    ref(db, `user${idUser}/answer${currentQuestionNumb}`),
+    ref(db, `users/user${idUser}/answers/answer${currentQuestionNumb}`),
     (snapshot) => {
        setTimeout(() => {
         document.querySelectorAll(selectorAnswers).forEach((answerItem) => {
@@ -322,6 +322,7 @@ const clearAnimateInputAndText = (e, colorInitial) => {
     console.error(e);
   }
  };
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -87,7 +87,7 @@ const Button = ({
             id="BtnBack"
             onClick={(e) => {
               setCurrentQuestionNumb(--currentQuestionNumb);
-              e.target.closest("#BtnBack").style.display = "none";
+              // e.target.closest("#BtnBack").style.display = "none";
               highlightPreviousAnswer(
                 getIdUser(),
                 currentQuestionNumb,

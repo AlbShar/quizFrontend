@@ -11,7 +11,7 @@ import { StyledMain } from "../Main.Styled";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(34);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
 
   return (
     <StyledMain>
