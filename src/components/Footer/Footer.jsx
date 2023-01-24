@@ -74,8 +74,8 @@ const Footer = () => {
               <StyledUlNetworks>
                 {iconsNetworks.map((icon, index) => {
                   return (
-                    <StyledLiNetworks>
-                      <StyledA href={icon.url} key={index + 1}>
+                    <StyledLiNetworks key={index + 1}>
+                      <StyledA href={icon.url} >
                         <StyledImgNetworks src={icon.src} alt={icon.alt} />
                       </StyledA>
                     </StyledLiNetworks>

@@ -35,7 +35,7 @@ const db = getDatabase(app);
 //     })
 //  }
 // catch(error) {
-// console.log(error);
+// console.error(error);
 //}
 // };
 const getTotalQuestionsNumb = async () => {
@@ -47,7 +47,7 @@ const getTotalQuestionsNumb = async () => {
       });
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -74,7 +74,7 @@ const getAnswersDb = async (currentQuestionNumb) => {
       );
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -91,7 +91,7 @@ const getThemeQuestion = async (currentQuestionNumb) => {
       );
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -108,7 +108,7 @@ const getNameQuestion = async (currentQuestionNumb) => {
       );
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -140,7 +140,7 @@ const insertDataInfoTest = async (textQuestions, textTime, ...selectors) => {
     // We paste deadline(total seconds for passing the test) at InfoTest component
     textListItems[0].textContent = `${deadline / 60} ${textTime}`;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -170,7 +170,7 @@ const setQuiantiyTestedUsers = async (selectorQuantityTestedUsers) => {
     document.querySelector(selectorQuantityTestedUsers).textContent =
       quiantiyAllUsers;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -205,7 +205,7 @@ const getRightAnswerDB = async (currentQuestionNumb) => {
 
     return rightAnswer;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -233,7 +233,7 @@ const sendUserAnswerDB = async (
       point: rightAnswer === userAnswer ? 1 : 0,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -256,7 +256,7 @@ const sendUserInfoDB = async (idUser) => {
       gender: userGender,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -300,7 +300,7 @@ const insertTotalQuestionNumbQuiz = async (selector) => {
     let totalQuestionsNumb = await getTotalQuestionsNumb();
     document.querySelector(selector).textContent = totalQuestionsNumb;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -309,20 +309,25 @@ const insertImageQuiz = (
   selectorWrapperImg,
   selectorImg
 ) => {
-  const wrapperImg = document.querySelector(selectorWrapperImg);
-
-  onValue(
-    ref(db, `questions/question${currentQuestionNumb}/img`),
-    (snapshot) => {
-      const imgSrc = snapshot.val();
-      if (imgSrc) {
-        wrapperImg.style.display = "block";
-        document.querySelector(selectorImg).src = imgSrc;
-      } else {
-        wrapperImg.style.display = "none";
+  try{
+    const wrapperImg = document.querySelector(selectorWrapperImg);
+    onValue(
+      ref(db, `questions/question${currentQuestionNumb}/img`),
+      (snapshot) => {
+        const imgSrc = snapshot.val();
+        if (imgSrc) {
+          wrapperImg.style.display = "block";
+          document.querySelector(selectorImg).src = imgSrc;
+        } else {
+          wrapperImg.style.display = "none";
+        }
       }
-    }
-  );
+    );
+  }
+  catch(error) {
+    console.error(error)
+  }
+
 };
 
 const setWidthScrollBar = async (
@@ -342,7 +347,7 @@ const setWidthScrollBar = async (
       currentQuestionNumb * valueWidthScroll
     }px`;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -351,7 +356,7 @@ const insertThemeQuestionQuiz = async (currentQuestionNumb, selector) => {
     const nameThemeQuestion = await getThemeQuestion(currentQuestionNumb);
     document.querySelector(selector).textContent = nameThemeQuestion;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -360,7 +365,7 @@ const insertNameQuestionQuiz = async (currentQuestionNumb, selector) => {
     let nameQuestion = await getNameQuestion(currentQuestionNumb);
     document.querySelector(selector).textContent = nameQuestion;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
