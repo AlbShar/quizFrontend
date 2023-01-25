@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Notification from "./Notification";
-import { StyledDivTimer } from "./styles/Timer.Styled";
+import { StyledDivTimer, StyledButtonPause } from "./styles/Timer.Styled";
+import { useTranslation } from "react-i18next";
+
 
 export const deadline = 7200; // seconds
 
 const Timer = () => {
+  const { t } = useTranslation( );
+
   let [timeLeft, setTimeLeft] = useState(deadline)
   const getFullNumb = (numb) => {
     return `${numb}`.length === 1 ? `0${numb}` : numb;
@@ -24,33 +28,38 @@ const Timer = () => {
       localStorage.removeItem("penalty-points");
     }
     const interval = setInterval(() => {
-      let isNotification = document.querySelector('#notification') ? true : false;
-        (isCounting) && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
+      let isNotification = document.querySelector('#notification') ? getComputedStyle(document.querySelector('#notification')).display === 'block' : false;
+      if ((isNotification === false) && (isCounting === false)) {
+        setIsCounting(!isCounting);
+      } 
+      (isCounting) && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
+
     }, 1000);
     return () => clearInterval(interval);
   }, [timeLeft, isCounting]);
 
   return (
     <StyledDivTimer>
+      <span>
       <span>{hours}</span>
       <span>:</span>
       <span>{minutes}</span>
       <span>:</span>
       <span>{seconds}</span>
+      </span>
       {hours === "00" && minutes === "00" && seconds === "00" && (
         <Notification
-          title="К сожалению, Ваше время вышло! 😔"
-          subTitle="Продолжайте решать тест дальше. В связи с тем, что время закончилось из Вашего результата вычтется 3 балла."
+          title={t("Заголовок1_вышло_время")}
+          subTitle={t("Заголовок2_вышло_время")}
         />
       )}
       {!isCounting && (
         <Notification
-          title="Выполнение теста приостановлено"
-          subTitle="Вы можете покинуть эту страницу и продолжить тест в другое время. Ваш прогресс будет сохранен."
-          isCounting={isCounting} setIsCounting={setIsCounting}
+          title={t("Заголовок1_пауза")}
+          subTitle={t("Заголовок2_пауза")}
         />
       )}
-      <button onClick={pauseTimer}>Приостановить тест</button>
+      <StyledButtonPause onClick={pauseTimer}>{t("Пауза")}</StyledButtonPause>
     </StyledDivTimer>
   );
 };
