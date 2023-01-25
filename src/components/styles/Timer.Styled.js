@@ -2,10 +2,6 @@ import styled from "styled-components";
 
 const StyledDivTimer = styled.div`
   font: var(--font-little-text-regular);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
 
   @media screen and (min-width: 459.8px) {
@@ -23,11 +19,12 @@ const StyledButtonPause = styled.button`
   background-color: transparent;
   border: 1px solid var(--color-border-answer);
   cursor: pointer;
-  margin: 5px 0 0 0;
+  margin: 0 0 0 5px;
 
   @media screen and (min-width: 459.8px) {
     margin: 0 0 0 10px;
   }
+  
 
   &:hover {
     border: 1px solid #6768d7;

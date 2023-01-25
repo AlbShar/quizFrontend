@@ -1,7 +1,11 @@
 import React, {useEffect} from "react";
 import { StyleDivNotification, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose } from "./styles/Notification.Styled";
+import {StyledButtonModal} from "./styles/Notification.Styled";
 
 const ShowNotification = ({title, subTitle}) => {
+  const hideNotification = (selector) => {
+    document.querySelector(selector).style.display = 'none';
+  };
   useEffect(() => {
     localStorage.setItem('penalty-points', '3')
   })
@@ -10,9 +14,12 @@ const ShowNotification = ({title, subTitle}) => {
       <StyledDivWrapper>
         <StyledH1 className="notification__title">{title}</StyledH1>
         <StyledSpanClose className="notification__close" onClick={() => {
-            document.querySelector("#notification").style.display = 'none';
+           hideNotification('#notification');
         }}>✖</StyledSpanClose>
         <StyledSpan className="notification__text">{subTitle}</StyledSpan>
+        <StyledButtonModal onClick={() => {
+           hideNotification('#notification');
+        }}>Продолжить</StyledButtonModal>
       </StyledDivWrapper>
     </StyleDivNotification>
   );

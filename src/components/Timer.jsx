@@ -3,13 +3,12 @@ import Notification from "./Notification";
 import { StyledDivTimer, StyledButtonPause } from "./styles/Timer.Styled";
 import { useTranslation } from "react-i18next";
 
-
 export const deadline = 7200; // seconds
 
 const Timer = () => {
-  const { t } = useTranslation( );
+  const { t } = useTranslation();
 
-  let [timeLeft, setTimeLeft] = useState(deadline)
+  let [timeLeft, setTimeLeft] = useState(deadline);
   const getFullNumb = (numb) => {
     return `${numb}`.length === 1 ? `0${numb}` : numb;
   };
@@ -28,12 +27,14 @@ const Timer = () => {
       localStorage.removeItem("penalty-points");
     }
     const interval = setInterval(() => {
-      let isNotification = document.querySelector('#notification') ? getComputedStyle(document.querySelector('#notification')).display === 'block' : false;
-      if ((isNotification === false) && (isCounting === false)) {
+      let isNotification = document.querySelector("#notification")
+        ? getComputedStyle(document.querySelector("#notification")).display ===
+          "block"
+        : false;
+      if (isNotification === false && isCounting === false) {
         setIsCounting(!isCounting);
-      } 
-      (isCounting) && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
-
+      }
+      isCounting && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
     }, 1000);
     return () => clearInterval(interval);
   }, [timeLeft, isCounting]);
@@ -41,11 +42,11 @@ const Timer = () => {
   return (
     <StyledDivTimer>
       <span>
-      <span>{hours}</span>
-      <span>:</span>
-      <span>{minutes}</span>
-      <span>:</span>
-      <span>{seconds}</span>
+        <span>{hours}</span>
+        <span>:</span>
+        <span>{minutes}</span>
+        <span>:</span>
+        <span>{seconds}</span>
       </span>
       {hours === "00" && minutes === "00" && seconds === "00" && (
         <Notification

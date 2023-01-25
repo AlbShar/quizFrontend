@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import {StyledButton} from "../UI/Button/Button.Styled";
+
 
 const StyleDivNotification = styled.div`
   position: fixed;
@@ -12,6 +14,15 @@ const StyleDivNotification = styled.div`
   padding-top: 15px;
 `;
 
+const StyledButtonModal = styled(StyledButton)`
+  margin: 20px 0 0 0;
+  display: block;
+
+  @media screen and (min-width: 767.8px) {
+    padding: 12px 30px;
+  }
+`;
+
 const StyledDivWrapper = styled.div`
   box-sizing: border-box;
   position: absolute;
@@ -20,7 +31,7 @@ const StyledDivWrapper = styled.div`
   background-color: white;
   margin: 0 auto;
   width: 90%;
-  max-width: 900px;
+  max-width: 700px;
   height: auto;
   top: 50%;
   left: 50%;
@@ -43,4 +54,4 @@ const StyledSpanClose = styled.span`
   right: 20px;
 `;
 
-export { StyleDivNotification, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose };
+export { StyleDivNotification, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal };
