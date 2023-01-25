@@ -16,7 +16,7 @@ const StyledArticle = styled.article`
   align-items: center;
   max-width: 540px;
 
-  @media screen and (min-width: 768.8px) {
+  @media screen and (min-width: 459.8px) {
     max-width: 100%;
   }
 `;

@@ -5,6 +5,8 @@ const StyledH1 = styled.h1`
   color: black;
   padding: 0;
   margin: 20px 0;
+  position: relative;
+}
 
   @media screen and (min-width: 459.8px) {
     font: var(--font-title4);
@@ -14,17 +16,17 @@ const StyledH1 = styled.h1`
 const StyledSpanQuestionQuantity = styled.span`
   font: var(--font-text-regular);
   color: var(--color-quantity-questions);
-  position: relative;
-  padding-left: 10px;
+  padding: 0 0 0 5px;
 `;
 
 const StyledSpanThemeQuestion = styled(StyledSpanQuestionQuantity)`
-  &::before {
-    position: absolute;
-    content: "/";
-    bottom: 0;
-    left: -27px;
-}
+  display: block;
+  padding:0;
+
+  @media screen and (min-width: 459.8px) {
+    display: inline;
+    padding: 0 0 0 10px;
+  }
 `
 
 export { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity };

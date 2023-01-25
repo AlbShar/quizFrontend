@@ -27,7 +27,14 @@
     "Возраст": "Alter",
     "Пол": "Geschlecht",
     "Получить_результат": "Ergebnis abrufen",
-    "Протестировано": "Insgesamt getestet"
+    "Протестировано": "Insgesamt getestet",
+    "Пауза": "Pause",
+    "Заголовок1_вышло_время": "Ihre Zeit ist leider abgelaufen!",
+    "Заголовок2_вышло_время": "Lösen Sie den Test weiter. Da die Zeit abgelaufen ist, wird Ihr Ergebnis verringert.",
+    "Заголовок1_пауза": "Testausführung wurde ausgesetzt",
+    "Заголовок2_пауза": "Sie können eine kurze Pause einlegen und den Test später fortsetzen."
+
+
 
 
 }
