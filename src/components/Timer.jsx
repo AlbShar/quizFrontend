@@ -3,7 +3,7 @@ import Notification from "./Notification";
 import { StyledDivTimer, StyledButtonPause } from "./styles/Timer.Styled";
 import { useTranslation } from "react-i18next";
 
-export const deadline = 7200; // seconds
+export const deadline = 7500; // seconds
 
 const Timer = () => {
   const { t } = useTranslation();
