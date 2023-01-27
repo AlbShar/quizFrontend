@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db, removeAttributesAnswers, setAttributesUserAnswer, getAnswersDb } from "../../index";
-import { ref } from "firebase/database";
-import { onValue } from "firebase/database";
+import { removeAttributesAnswers, setAttributesUserAnswer, getAnswersDb } from "../../index";
 import {StyledArticle, StyledUl, StyledLi} from "../styles/Answers.Styled"
 
 
