@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Notification from "./Notification";
+import Modal from "../UI/Modal/Modal";
 import { StyledDivTimer, StyledButtonPause } from "./styles/Timer.Styled";
 import { useTranslation } from "react-i18next";
 
@@ -49,13 +49,13 @@ const Timer = () => {
         <span>{seconds}</span>
       </span>
       {hours === "00" && minutes === "00" && seconds === "00" && (
-        <Notification
+        <Modal
           title={t("Заголовок1_вышло_время")}
           subTitle={t("Заголовок2_вышло_время")}
         />
       )}
       {!isCounting && (
-        <Notification
+        <Modal
           title={t("Заголовок1_пауза")}
           subTitle={t("Заголовок2_пауза")}
         />

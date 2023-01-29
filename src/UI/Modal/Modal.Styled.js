@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import {StyledButton} from "../UI/Button/Button.Styled";
+import {StyledButton} from "../Button/Button.Styled";
 
 
-const StyleDivNotification = styled.div`
+const StyleDivModal = styled.div`
   position: fixed;
   z-index: 2;
   top: 0;
@@ -54,4 +54,4 @@ const StyledSpanClose = styled.span`
   right: 20px;
 `;
 
-export { StyleDivNotification, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal };
+export { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal };
