@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/Container";
-import CallToAction from "../../components/CallToAction";
+import { CallToAction } from "../../modules/CallToAction/index";
 import Features from "../../components/Features";
 import Footer from "../../components/Footer/Footer";
 import { GlobalStyles } from "../../components/styles/Global";

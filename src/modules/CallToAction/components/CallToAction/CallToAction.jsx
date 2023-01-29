@@ -1,12 +1,12 @@
 import React from 'react';
-import InfoTest from './InfoTest';
+import InfoTest from '../InfoTest/InfoTest';
 import { useTranslation } from "react-i18next";
-import LinkBtn from '../UI/LinkBtn/LinkBtn';
-import { createIdUser } from '../index';
-import { StyledCallToAction, StyledH1, StyledP } from './styles/CallToAction.styled';
+import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
+import { createIdUser } from '../../helpers/createIdUser';
+import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
 
-
-const CallToAction = () => {
+// eslint-disable-next-line
+export const CallToAction = () => {
     const { t } = useTranslation();
     return (
         <StyledCallToAction id="CallToAction">
@@ -19,5 +19,4 @@ const CallToAction = () => {
     );
 };
 
-// export default CallToAction;
 
