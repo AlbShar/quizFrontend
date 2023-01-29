@@ -6,7 +6,7 @@ const Modal = ({title, subTitle}) => {
     document.querySelector(selector).style.display = 'none';
   };
 
-  // удалить этот хук и переместить логику в компонент Timer
+  // удалить этот хук и переместить логику в компонент Timer!
   useEffect(() => {
     localStorage.setItem('penalty-points', '3')
   })
