@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import chevrondown from "../../images/icons/chevrondown.png";
+import chevrondown from "../../icons/chevrondown.png";
 import i18next from "i18next";
 import {
   StyleDivDropdown,
@@ -8,7 +8,7 @@ import {
   StyledLi,
   StyledImg,
   StyledSpan,
-} from "../styles/Dropdown.Styled";
+} from "./Dropdown.Styled";
 
 const Dropdown = () => {
   const [selected, setSelected] = useState("Русский");

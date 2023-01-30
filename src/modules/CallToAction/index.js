@@ -1,2 +1,2 @@
 
-export {CallToAction} from "./components/CallToAction/CallToAction";
+export {CallToAction} from "./CallToAction/CallToAction";

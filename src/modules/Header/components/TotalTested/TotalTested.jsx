@@ -1,6 +1,6 @@
 import React from 'react';
-import { setQuiantiyTestedUsers } from '../index';
-import { StyledSpanText, StyledSpanNumber, StyledDivWrapper } from "./styles/TotalTested.styled";
+import { setQuiantiyTestedUsers } from '../../helpers/setQuiantiyTestedUsers';
+import { StyledSpanText, StyledSpanNumber, StyledDivWrapper } from "./TotalTested.styled";
 import { useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 

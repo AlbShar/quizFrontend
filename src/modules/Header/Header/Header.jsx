@@ -1,11 +1,11 @@
 import React from "react";
-import Container from "./Container";
-import Dropdown from "./UI/Dropdown";
-import Logo from "./Logo";
+import Container from "../../../components/Container";
+import Dropdown from "../UI/Dropdown/Dropdown";
+import Logo from "../../../components/Logo";
 import { Outlet } from "react-router-dom";
-import { HeaderStyled } from "./styles/Header.Styled";
-import { StyledFlexWrapper } from "./styles/FlexWrapper.Styled";
-import TotalTested from "./TotalTested";
+import { HeaderStyled } from "./Header.Styled";
+import { StyledFlexWrapper } from "../../../components/styles/FlexWrapper.Styled";
+import TotalTested from "../components/TotalTested/TotalTested";
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
       <HeaderStyled>
         <Container>
           <StyledFlexWrapper>
-            <Logo header />
+            <Logo head />
             <StyledFlexWrapper gap="48">
               <TotalTested />
               <Dropdown />
@@ -25,5 +25,4 @@ const Header = () => {
     </>
   );
 };
-
-export default Header;
+ export default Header;
