@@ -1,10 +1,10 @@
 import React from "react";
-import image from "../images/image.png";
+// import image from "../images/image.png";
 import mistake from "../images/mistake.jpg";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import {
-  StyledFeatureSection,
+  StyledFeatureArticle,
   StyledH2,
   StyledP,
   StyledImg,
@@ -33,7 +33,7 @@ const TestFeatures = ({ pageName }) => {
   const featuresHomepage = [
     {
       title: t("Особенности_теста"),
-      img: image,
+      img: mistake,
       id: "generalInfoTestText",
       alt: "Парень ищет верный ответ",
       text: "",
@@ -55,11 +55,11 @@ const TestFeatures = ({ pageName }) => {
     <>
       {currentFeatures.map((feature, index) => {
         return (
-          <StyledFeatureSection key={index + 1}>
+          <StyledFeatureArticle key={index + 1}>
             <StyledH2>{feature.title}</StyledH2>
             {!!feature.img && <StyledImg src={feature.img} alt={feature.alt} />}
             <StyledP id={feature.id}>{feature.text}</StyledP>
-          </StyledFeatureSection>
+          </StyledFeatureArticle>
         );
       })}
     </>

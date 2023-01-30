@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledFeatureSection = styled.section`
+const StyledFeatureArticle = styled.article`
   background-color: #fff;
 `;
 
@@ -46,4 +46,4 @@ const StyledImg = styled.img`
   }
 `;
 
-export {StyledFeatureSection, StyledH2, StyledP, StyledImg}
+export {StyledFeatureArticle, StyledH2, StyledP, StyledImg}
