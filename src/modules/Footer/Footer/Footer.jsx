@@ -1,14 +1,14 @@
 import React from "react";
-import Container from "../Container";
-import Logo from "../Logo";
+import Container from "../../../components/Container";
+import Logo from "../../../components/Logo";
 import "./footer.css";
-import facebook from "../../images/icons/facebook.png";
-import instagram from "../../images/icons/instagram.png";
-import twitter from "../../images/icons/twitter.png";
-import youtube from "../../images/icons/youtube.png";
-import mastercard from "../../images/icons/mastercard.png";
-import fondy from "../../images/icons/fondy.png";
-import visa from "../../images/icons/visa.png";
+import facebook from "../icons/facebook.png";
+import instagram from "../icons/instagram.png";
+import twitter from "../icons/twitter.png";
+import youtube from "../icons/youtube.png";
+import mastercard from "../icons/mastercard.png";
+import fondy from "../icons/fondy.png";
+import visa from "../icons/visa.png";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
@@ -24,7 +24,7 @@ import {
   StyledUl,
   StyledA
 } from "./Footer.Styled";
-import { StyledFlexWrapper } from "../styles/FlexWrapper.Styled";
+import { StyledFlexWrapper } from "../../../components/styles/FlexWrapper.Styled";
 
 const Footer = () => {
   const { t } = useTranslation();

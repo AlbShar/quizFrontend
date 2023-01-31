@@ -4,7 +4,7 @@ import Button from "../../components/UI/Button/Button";
 import Answers from "../../components/UI/Answers";
 import Quiestion from "../../components/Quiestion";
 import QuantityQuestions from "../../components/QuantityQuestions";
-import Timer from "../../components/Timer";
+import Timer from "../../modules/Timer/index";
 import ScrollBar from "../../components/ScrollBar";
 import { GlobalStyles } from "../../components/styles/Global";
 import { StyledMain } from "../Main.Styled";

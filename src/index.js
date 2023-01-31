@@ -7,7 +7,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, set, push, update } from "firebase/database";
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
-import { deadline } from "./components/Timer";
+import { deadline } from "./modules/Timer/index";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVNDua7phkjh4mSytFaX6CTuJsImD6Od8",

@@ -1,5 +1,5 @@
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
-import { deadline } from "../../../components/Timer";
+import { deadline } from "../../Timer/index";
 
 const insertDataInfoTest = async (textQuestions, textTime, ...selectors) => {
     try {

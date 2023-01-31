@@ -1,52 +1,38 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../UI/Modal/Modal";
-import { StyledDivTimer, StyledButtonPause } from "./styles/Timer.Styled";
+import Modal from "../../../UI/Modal/Modal";
+import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
+import getFullNumb from "../helpers/getFullNumb";
+import removePenaltyPoints from "../helpers/removePenaltyPoints";
+import pauseTimer from "../helpers/pauseTimer";
+import isModal from "../helpers/isModal";
 
-export const deadline = 7500; // seconds
+ const deadline = 7500; // seconds
 
-const Timer = () => {
+ const Timer = () => {
   const { t } = useTranslation();
 
   let [timeLeft, setTimeLeft] = useState(deadline);
-  const getFullNumb = (numb) => {
-    return `${numb}`.length === 1 ? `0${numb}` : numb;
-  };
-
   let hours = getFullNumb(Math.floor(timeLeft / 3600) % 60);
   let minutes = getFullNumb(Math.floor(timeLeft / 60) % 60);
   let seconds = getFullNumb(Math.floor(timeLeft % 60));
   const [isCounting, setIsCounting] = useState(true);
-
-  const pauseTimer = () => {
-    setIsCounting(!isCounting);
-  };
-
+  const timer = [`${hours}:`, `${minutes}:`, seconds];
   useEffect(() => {
-    if (localStorage.getItem("penalty-points")) {
-      localStorage.removeItem("penalty-points");
-    }
+    removePenaltyPoints();
     const interval = setInterval(() => {
-      let isNotification = document.querySelector("#notification")
-        ? getComputedStyle(document.querySelector("#notification")).display ===
-          "block"
-        : false;
-      if (isNotification === false && isCounting === false) {
-        setIsCounting(!isCounting);
+      if (isModal("#notification") === false && isCounting === false) {
+        pauseTimer(isCounting, setIsCounting);
       }
       isCounting && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
     }, 1000);
     return () => clearInterval(interval);
-  }, [timeLeft, isCounting]);
+}, [timeLeft, isCounting]);
 
   return (
     <StyledDivTimer>
       <span>
-        <span>{hours}</span>
-        <span>:</span>
-        <span>{minutes}</span>
-        <span>:</span>
-        <span>{seconds}</span>
+        {timer.map(time => <span>{time}</span>)}
       </span>
       {hours === "00" && minutes === "00" && seconds === "00" && (
         <Modal
@@ -60,9 +46,10 @@ const Timer = () => {
           subTitle={t("Заголовок2_пауза")}
         />
       )}
-      <StyledButtonPause onClick={pauseTimer}>{t("Пауза")}</StyledButtonPause>
+      <StyledButtonPause onClick={() => pauseTimer(isCounting, setIsCounting)}>{t("Пауза")}</StyledButtonPause>
     </StyledDivTimer>
   );
 };
 
+export {deadline};
 export default Timer;
