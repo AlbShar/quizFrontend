@@ -14,11 +14,9 @@ const Header = () => {
         <Container>
           <StyledFlexWrapper>
             <Logo head />
-            <StyledFlexWrapper gap="48">
-              <TotalTested />
               <Dropdown />
-            </StyledFlexWrapper>
           </StyledFlexWrapper>
+          <TotalTested/>
         </Container>
       </HeaderStyled>
       <Outlet />

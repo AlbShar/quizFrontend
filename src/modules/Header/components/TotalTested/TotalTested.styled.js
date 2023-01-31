@@ -10,7 +10,6 @@ const StyledSpanText = styled.span`
   color: #ffffffcc;
 `;
 const StyledSpanNumber = styled.span`
-  //styleName: Text/Bold;
   font-family: Inter;
   font-size: 16px;
   font-weight: 700;
@@ -21,10 +20,13 @@ const StyledSpanNumber = styled.span`
 `;
 
 const StyledDivWrapper = styled.div`
-  background-color: #ffffff1a;
+  box-sizing: border-box;
   border-radius: 2px;
-  padding: 12px 20px;
+  padding: 4px 0;
   display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.1);
   gap: 8px;
 `;
 

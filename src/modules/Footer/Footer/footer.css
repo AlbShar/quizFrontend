@@ -1,0 +1,5 @@
+.footer__list-link {
+    color: var(--color-footer-content);
+    font: var(--font-little-text-regular);
+    text-decoration: none;
+}

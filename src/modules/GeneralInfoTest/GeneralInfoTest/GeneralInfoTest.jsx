@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import InfoBlock from "../../../components/InfoBlock";
 import variants from "../images/variants.png";
+import chooseVariant from "../images/chooseVariant.png";
 import { useTranslation } from "react-i18next";
 import { convertJSONToText } from "../helpers/convertJSONToText";
 
@@ -20,6 +21,8 @@ const GeneralInfoTest = () => {
         },
         {
           title: t("Результаты_теста"),
+          img: chooseVariant,
+          alt: "Тест с выбранными вариантами ответа",
           text: t("После_прохождения"),
         },
       ];
@@ -35,8 +38,9 @@ const GeneralInfoTest = () => {
 
   return (
     <section>
-      {generalInfo.map((block) => (
+      {generalInfo.map((block, index) => (
         <InfoBlock
+          key={index+1}
           title={block.title}
           text={block.text}
           imgSrc={block.img}
