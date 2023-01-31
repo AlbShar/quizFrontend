@@ -5,7 +5,7 @@ import Answers from "../../components/UI/Answers";
 import Quiestion from "../../components/Quiestion";
 import QuantityQuestions from "../../components/QuantityQuestions";
 import Timer from "../../modules/Timer/index";
-import ScrollBar from "../../components/ScrollBar";
+import ScrollBar from "../../modules/ScrollBar/index";
 import { GlobalStyles } from "../../components/styles/Global";
 import { StyledMain } from "../Main.Styled";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
