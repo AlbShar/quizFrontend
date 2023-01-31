@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { insertNameQuestionQuiz, insertImageQuiz } from "../index";
+import { insertImageQuiz } from "../helpers/insertImageQuiz";
+import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
 import {
   StyledH2,
   StyledArticleQuestion,
   StyledDiv,
   StyledImg,
-} from "./styles/Question.Styled";
+} from "./NameQuestionAndImg.Styled";
 
-const Quiestion = ({ currentQuestionNumb }) => {
+const NameQuestionAndImg = ({ currentQuestionNumb }) => {
   useEffect(() => {
     insertNameQuestionQuiz(currentQuestionNumb, '#questionTitle');
     insertImageQuiz(currentQuestionNumb, "#WrapperImg", "#imgQuestion");
@@ -23,4 +24,4 @@ const Quiestion = ({ currentQuestionNumb }) => {
   );
 };
 
-export default Quiestion;
+export default NameQuestionAndImg;
