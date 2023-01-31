@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { insertThemeQuestionQuiz, insertTotalQuestionNumbQuiz } from "../index.js";
 import { useTranslation } from "react-i18next";
-import { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity } from "./styles/QuantityQuestions.Styled";
+import { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity } from "./QuantityThemeQuestions.Styled";
+import {insertTotalQuestionNumbQuiz} from "../helpers/insertTotalQuestionNumbQuiz";
+import {insertThemeQuestionQuiz} from "../helpers/insertThemeQuestionQuiz";
 
 
-const QuantityQuestions = ({ currentQuestionNumb }) => {
+const QuantityThemeQuestions = ({ currentQuestionNumb }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -20,4 +21,4 @@ const QuantityQuestions = ({ currentQuestionNumb }) => {
   );
 };
 
-export default QuantityQuestions;
+export default QuantityThemeQuestions;

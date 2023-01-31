@@ -3,7 +3,7 @@ import Container from "../../components/Container";
 import Button from "../../components/UI/Button/Button";
 import Answers from "../../components/UI/Answers";
 import Quiestion from "../../components/Quiestion";
-import QuantityQuestions from "../../components/QuantityQuestions";
+import QuantityThemeQuestions from "../../modules/QuantityThemeQuestions/index";
 import Timer from "../../modules/Timer/index";
 import ScrollBar from "../../modules/ScrollBar/index";
 import { GlobalStyles } from "../../components/styles/Global";
@@ -20,7 +20,7 @@ const Quiz = () => {
         <StyledSection id="quiz">
           <ScrollBar currentQuestionNumb={currentQuestionNumb} />
           <StyledArticle>
-            <QuantityQuestions currentQuestionNumb={currentQuestionNumb} />
+            <QuantityThemeQuestions currentQuestionNumb={currentQuestionNumb} />
             <Timer />
           </StyledArticle>
           <Quiestion currentQuestionNumb={currentQuestionNumb} />
