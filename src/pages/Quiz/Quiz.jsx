@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/UI/Button/Button";
-import Answers from "../../components/UI/Answers";
+import Answers from "../../modules/Answers/index";
 import NameQuestionAndImg from "../../modules/NameQuestionAndImg/index";
 import QuantityThemeQuestions from "../../modules/QuantityThemeQuestions/index";
 import Timer from "../../modules/Timer/index";
