@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { insertImageQuiz } from "../helpers/insertImageQuiz";
 import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
 import {
@@ -7,8 +7,11 @@ import {
   StyledDiv,
   StyledImg,
 } from "./NameQuestionAndImg.Styled";
+import {ContextQuestionNumb} from "../../../components/Context";
 
-const NameQuestionAndImg = ({ currentQuestionNumb }) => {
+const NameQuestionAndImg = () => {
+  const [currentQuestionNumb] = useContext(ContextQuestionNumb);
+
   useEffect(() => {
     insertNameQuestionQuiz(currentQuestionNumb, '#questionTitle');
     insertImageQuiz(currentQuestionNumb, "#WrapperImg", "#imgQuestion");

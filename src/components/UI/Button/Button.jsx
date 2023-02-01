@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./button.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -16,17 +16,17 @@ import {
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import { db } from "../../../index";
+import {ContextQuestionNumb} from "../../../components/Context";
 
 
 const Button = ({
   type,
   goToPage,
   textBtn,
-  currentQuestionNumb,
-  setCurrentQuestionNumb,
   pageName
 }) => {
   const { t } = useTranslation();
+  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb);
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;

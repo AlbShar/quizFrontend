@@ -9,27 +9,28 @@ import ScrollBar from "../../modules/ScrollBar/index";
 import { GlobalStyles } from "../../components/styles/Global";
 import { StyledMain } from "../Main.Styled";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
+import Context from "../../components/Context";
+
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
-
   return (
     <StyledMain>
       <Container>
-        <GlobalStyles/>
+        <GlobalStyles />
         <StyledSection id="quiz">
-          <ScrollBar currentQuestionNumb={currentQuestionNumb} />
-          <StyledArticle>
-            <QuantityThemeQuestions currentQuestionNumb={currentQuestionNumb} />
-            <Timer />
-          </StyledArticle>
-          <NameQuestionAndImg currentQuestionNumb={currentQuestionNumb} />
-          <Answers currentQuestionNumb={currentQuestionNumb} />
-          <Button
-            currentPage="Quiz"
-            currentQuestionNumb={currentQuestionNumb}
-            setCurrentQuestionNumb={setCurrentQuestionNumb}
-          />
+          <Context value={[currentQuestionNumb, setCurrentQuestionNumb]}>
+            <ScrollBar />
+            <StyledArticle>
+              <QuantityThemeQuestions/>
+              <Timer />
+            </StyledArticle>
+            <NameQuestionAndImg />
+            <Answers />
+            <Button
+              currentPage="Quiz"
+            />
+          </Context>
         </StyledSection>
       </Container>
     </StyledMain>

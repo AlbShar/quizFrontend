@@ -32,7 +32,7 @@ import isModal from "../helpers/isModal";
   return (
     <StyledDivTimer>
       <span>
-        {timer.map(time => <span>{time}</span>)}
+        {timer.map((time, index) => <span key={index+1}>{time}</span>)}
       </span>
       {hours === "00" && minutes === "00" && seconds === "00" && (
         <Modal

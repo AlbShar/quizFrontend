@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { removeAttributesAnswers } from "../helpers/removeAttributesAnswers";
 import { getAnswersDb } from "../api/getAnswersDb";
 import { StyledArticle, StyledUl } from "./Answers.Styled";
 import Answer from "../components/Answer/Answer";
+import {ContextQuestionNumb} from "../../../components/Context";
 
-const Answers = ({ currentQuestionNumb }) => {
+const Answers = () => {
   const [answers, setAnswers] = useState([]);
+  const [currentQuestionNumb] = useContext(ContextQuestionNumb);
 
   useEffect(() => {
     removeAttributesAnswers("#answersAll ul li");
