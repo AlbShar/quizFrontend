@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button/Button";
+// import Button from "./Button/Button";
 import {
   StyledInputText,
   StyledSpan,
@@ -94,12 +94,12 @@ const Form = () => {
           </StyledLabelGender>
         </StyledDivWrapperGender>
       </StyledFieldset>
-      <Button
+      {/* <Button
         type="Link"
         goToPage="/results"
         textBtn={t("Получить_результат")}
         pageName="contact"
-      />
+      /> */}
     </form>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Container from "../../components/Container";
-import Button from "../../components/UI/Button/Button";
 import Answers from "../../modules/Answers/index";
 import NameQuestionAndImg from "../../modules/NameQuestionAndImg/index";
 import QuantityThemeQuestions from "../../modules/QuantityThemeQuestions/index";
@@ -10,6 +9,7 @@ import { GlobalStyles } from "../../components/styles/Global";
 import { StyledMain } from "../Main.Styled";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
 import Context from "../../components/Context";
+import ButtonsQuiz from "../../modules/ButtonsQuiz/index";
 
 
 const Quiz = () => {
@@ -27,9 +27,7 @@ const Quiz = () => {
             </StyledArticle>
             <NameQuestionAndImg />
             <Answers />
-            <Button
-              currentPage="Quiz"
-            />
+            <ButtonsQuiz/>
           </Context>
         </StyledSection>
       </Container>
