@@ -5,7 +5,7 @@ import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
 import ButtonLink from "../UI/ButtonLink/ButtonLink";
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
-import { db } from "../../../index";
+import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 
 const ButtonsQuiz = () => {

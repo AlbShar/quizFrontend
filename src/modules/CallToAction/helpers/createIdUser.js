@@ -1,6 +1,6 @@
 import { push } from "firebase/database";
 import { ref } from "firebase/database";
-import {db} from "../../../index";
+import db from "../../../config/firebase/firebaseConfig";
 
 
 export const createIdUser = () => {

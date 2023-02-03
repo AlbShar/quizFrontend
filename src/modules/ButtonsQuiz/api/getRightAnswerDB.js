@@ -1,5 +1,5 @@
 import { ref, onValue } from "firebase/database";
-import {db} from "../../../index";
+import db from "../../../config/firebase/firebaseConfig";
 
 const getRightAnswerDB = async (currentQuestionNumb) => {
     try {

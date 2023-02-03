@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../images/logo.png";
+import logo from "../../assets/images/logoQuiz.png";
 import { StyledImg } from './Logo.Styled';
 
 const Logo = ({head}) => {

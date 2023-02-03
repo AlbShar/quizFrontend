@@ -1,6 +1,6 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
-import {db} from "../index"
+import db from "../config/firebase/firebaseConfig"
 
 
 const getTotalQuestionsNumb = async () => {

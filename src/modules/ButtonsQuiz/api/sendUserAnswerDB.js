@@ -1,6 +1,6 @@
 import { ref, set } from "firebase/database";
 import { getRightAnswerDB } from "./getRightAnswerDB";
-import {db} from "../../../index";
+import db from "../../../config/firebase/firebaseConfig";
 
 const sendUserAnswerDB = async (
     currentQuestionNumb,

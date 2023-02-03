@@ -6,7 +6,7 @@ import { getIdUser } from '../../../../helpers/getIdUser';
 import { useTranslation } from "react-i18next";
 import { sendUserAnswerDB } from '../../api/sendUserAnswerDB';
 import { ref, onValue } from "firebase/database";
-import {db} from "../../../../index";
+import db from "../../../../config/firebase/firebaseConfig";
 
 const ButtonQuiz = () => {
     const { t } = useTranslation();
