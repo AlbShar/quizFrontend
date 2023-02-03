@@ -1,8 +1,7 @@
 import React from "react";
-import Container from "../../components/Container";
+import Container from "../../components/Container/Container";
 import ReportBugTest from "../../modules/ReportBugTest/index";
 import { useTranslation } from "react-i18next";
-import { GlobalStyles } from "../../components/styles/Global";
 import { StyledH1 } from "./H1.Styled";
 import { StyledMain } from "../Main.Styled";
 
@@ -13,7 +12,6 @@ const ReportBugPage = () => {
   return (
     <StyledMain>
       <Container>
-        <GlobalStyles/>
         <StyledH1>{t("Нашли_ошибку")}</StyledH1>
         <ReportBugTest/>
       </Container>

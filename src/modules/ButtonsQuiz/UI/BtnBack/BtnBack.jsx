@@ -5,7 +5,7 @@ import {
     StyledSpan} from "./BtnBack.Styled";
 import {ContextQuestionNumb} from "../../../../components/Context";
 import arrowleft from "../../icons/arrowleft.png";
-import { getIdUser } from '../../helpers/getIdUser';
+import { getIdUser } from '../../../../helpers/getIdUser';
 import { highlightPreviousAnswer } from '../../helpers/highlightPreviousAnswer';
 
 

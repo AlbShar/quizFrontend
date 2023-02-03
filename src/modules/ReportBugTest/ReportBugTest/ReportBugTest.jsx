@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import InfoBlock from "../../../components/InfoBlock";
+import InfoBlock from "../../../components/InfoBlock/InfoBlock";
 import mistake from "../images/mistake.jpg";
 import { useTranslation } from "react-i18next";
 import { convertJSONToText } from "../helpers/convertJSONToText";

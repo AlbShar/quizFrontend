@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../../../components/Container";
-import Logo from "../../../components/Logo";
+import Container from "../../../components/Container/Container";
+import Logo from "../../../components/Logo/Logo";
 import "./footer.css";
 import facebook from "../icons/facebook.png";
 import instagram from "../icons/instagram.png";
@@ -24,7 +24,7 @@ import {
   StyledUl,
   StyledA
 } from "./Footer.Styled";
-import { StyledFlexWrapper } from "../../../components/styles/FlexWrapper.Styled";
+import { StyledFlexWrapper } from "../../../styles/FlexWrapper.Styled";
 
 const Footer = () => {
   const { t } = useTranslation();

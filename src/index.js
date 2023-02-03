@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./styles/index.css";
 import App from "./App";
 import "./i18nextInit";
 import { initializeApp } from "firebase/app";
@@ -417,28 +417,5 @@ root.render(
   </React.StrictMode>
 );
 export {
-  db,
-  getTotalQuestionsNumb,
-  setQuiantiyTestedUsers,
-  getAllTestedUsers,
-  setAnimateInputAndText,
-  clearAnimateInputAndText,
-  getIdUser,
-  createIdUser,
-  getAnswersDb,
-  checkIsUserData,
-  sendUserInfoDB,
-  removeAttributesAnswers,
-  setAttributesUserAnswer,
-  getThemeQuestion,
-  highlightPreviousAnswer,
-  sendUserAnswerDB,
-  insertDataInfoTest,
-  convertJSONToText,
-  insertNameQuestionQuiz,
-  setWidthScrollBar,
-  insertImageQuiz,
-  insertTotalQuestionNumbQuiz,
-  checkIsImgAlt,
-  insertThemeQuestionQuiz,
+  db, onValue, ref
 };

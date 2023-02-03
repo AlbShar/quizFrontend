@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
 import { ContextQuestionNumb } from '../../../../components/Context';
 import {StyledButtonQuiz} from "./ButtonQuiz.Styled";
-import { getIdUser } from '../../helpers/getIdUser';
+import { getIdUser } from '../../../../helpers/getIdUser';
 import { useTranslation } from "react-i18next";
 import { sendUserAnswerDB } from '../../api/sendUserAnswerDB';
 import { ref, onValue } from "firebase/database";

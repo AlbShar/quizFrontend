@@ -1,27 +1,5 @@
 import styled from "styled-components";
-const StyledInputText = styled.input`
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 288px;
-  height: 56px;
-  border: 1px solid #81868c80;
-  padding: 16px 19px;
-  font: var(--font-text-bold);
-  outline: none;
-  
-  &::placeholder {
-    color: #81868c;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: left;
-  }
 
-  @media screen and (min-width: 459.8px) {
-    max-width: 391px;
-  }
-`;
 const StyledSpan = styled.span`
   position: absolute;
   top: -10px;
@@ -51,20 +29,7 @@ const StyledFieldset = styled.fieldset`
     }
 `;
 
-const StyledSelect = styled.select`
-  box-sizing: border-box;
-  height: 56px;
-  border: 1px solid #81868C8;
-  font: var(--font-text-bold);
-  width: 122px;
-  padding: 0 0 0 19px;
-  outline: none;
 
-
-  @media screen and (min-width: 459.8px) {
-    margin: 0 65px 0 0;
-  }
-`;
 
 const StyledInputRadio = styled.input.attrs({type:"radio"})`
   position: absolute;
@@ -113,11 +78,9 @@ const StyledLabelGender = styled.label`
 `;
 
 export  {
-    StyledInputText,
     StyledSpan,
     StyledPForm,
     StyledFieldset,
-    StyledSelect,
     StyledInputRadio,
     StyledImgGender,
     StyledDivWrapperGender,

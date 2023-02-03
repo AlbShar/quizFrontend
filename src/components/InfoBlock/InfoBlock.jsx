@@ -5,7 +5,7 @@ import {
     StyledP,
     StyledImg,
     StyledDivWrapper
-  } from "./styles/InfoBlock.styled";
+  } from "./InfoBlock.styled";
 
 const InfoBlock = ({title, text, imgSrc, imgAlt, idForText}) => {
     return (

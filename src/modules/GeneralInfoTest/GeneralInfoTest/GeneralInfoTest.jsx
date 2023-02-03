@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import InfoBlock from "../../../components/InfoBlock";
+import InfoBlock from "../../../components/InfoBlock/InfoBlock";
 import variants from "../images/variants.png";
 import chooseVariant from "../images/chooseVariant.png";
 import { useTranslation } from "react-i18next";
