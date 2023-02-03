@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/Container/Container";
-import { StyledMain } from "../Main.Styled";
+import { StyledMain } from "../../styles/Main.Styled";
 import {
   StyledH1,
   StyledSection,

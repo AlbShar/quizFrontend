@@ -5,14 +5,14 @@ import NameQuestionAndImg from "../../modules/NameQuestionAndImg/index";
 import QuantityThemeQuestions from "../../modules/QuantityThemeQuestions/index";
 import Timer from "../../modules/Timer/index";
 import ScrollBar from "../../modules/ScrollBar/index";
-import { StyledMain } from "../Main.Styled";
+import { StyledMain } from "../../styles/Main.Styled";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
 import Context from "../../components/Context";
 import ButtonsQuiz from "../../modules/ButtonsQuiz/index";
 
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(55);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
   return (
     <StyledMain>
       <Container>
