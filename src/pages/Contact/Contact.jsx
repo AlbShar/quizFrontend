@@ -1,21 +1,17 @@
 import React from "react";
-import Container from "../../components/Container";
-import { GlobalStyles } from "../../components/styles/Global";
-import { StyledMain } from "../Main.Styled";
+import Container from "../../components/Container/Container";
+import { StyledMain } from "../../styles/Main.Styled";
 import {
   StyledH1,
   StyledSection,
   StyledP,
 } from "./Contact.styled";
 import { useTranslation } from "react-i18next";
-
-import Form from "../../components/UI/Form";
+import UserForm from "../../modules/UserForm/index";
 
 const Contact = () => {
   const { t } = useTranslation();
   return (
-    <>
-      <GlobalStyles />
       <StyledMain>
         <Container>
           <StyledSection>
@@ -26,12 +22,11 @@ const Contact = () => {
               </StyledP>
             </article>
             <article>
-              <Form/>
+              <UserForm/>
             </article>
           </StyledSection>
         </Container>
       </StyledMain>
-    </>
   );
 };
 
