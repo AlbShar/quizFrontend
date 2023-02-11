@@ -1,17 +1,21 @@
-import React from "react";
+import {FC} from "react";
 import { useTranslation } from "react-i18next";
 import {
   StyledButton,
 } from "./Button.Styled";
 
-const Button = ({
-  children, action
+interface Btn {
+ text: string,
+ action: () => void
+}
+const Button: FC<Btn> = ({
+  text, action
 }) => {
   const { t } = useTranslation();
 
   return <StyledButton onClick={() => {
     action();
-  }}>{t(children)}</StyledButton>;
+  }}>{t(text)}</StyledButton>;
 };
 
 export default Button;

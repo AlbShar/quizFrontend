@@ -5,7 +5,7 @@ import App from "./App";
 import "./config/i18/i18nextInit";
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
   <React.StrictMode>
     <App />

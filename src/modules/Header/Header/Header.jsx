@@ -13,7 +13,7 @@ const Header = () => {
       <HeaderStyled>
         <Container>
           <StyledFlexWrapper>
-            <Logo head />
+            <Logo location="header" />
               <Dropdown />
           </StyledFlexWrapper>
           <TotalTested/>

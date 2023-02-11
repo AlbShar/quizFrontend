@@ -1,9 +1,14 @@
-import React, {useEffect} from "react";
+import {useEffect, FC} from "react";
 import { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal } from "./Modal.Styled";
 
-const Modal = ({title, subTitle}) => {
-  const hideNotification = (selector) => {
-    document.querySelector(selector).style.display = 'none';
+interface Mod {
+  title: string;
+  subTitle: string;
+}
+const Modal: FC<Mod> = ({title, subTitle}) => {
+
+  const hideNotification = (selector: string) => {
+    (document.querySelector(selector) as HTMLInputElement).style.display = 'none';
   };
 
   // удалить этот хук и переместить логику в компонент Timer!

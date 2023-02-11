@@ -14,7 +14,7 @@ export const CallToAction = () => {
             <InfoTest/>
             <StyledP>{t("Добро_пожаловать")}</StyledP>
             <StyledP>{t("Тест_будет")}</StyledP>
-            <LinkBtn pageTo="quiz" someAction={createIdUser}>Начать тест</LinkBtn>
+            <LinkBtn pageTo="quiz" someAction={createIdUser} text="Начать тест"></LinkBtn>
         </StyledCallToAction>
     );
 };
