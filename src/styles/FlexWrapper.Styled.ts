@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const StyledFlexWrapper = styled.div`
+interface IFlexWrapper{
+  gap?: number;
+  widthFlexStart?: number;
+}
+
+const StyledFlexWrapper = styled.div<IFlexWrapper>`
   gap: ${({gap}) => gap ? (gap + 'px') : ""};
   ${function ({ widthFlexStart }) {
     if (!widthFlexStart) {

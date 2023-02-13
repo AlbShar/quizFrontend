@@ -12,7 +12,7 @@ const Button = () => {
     return (
         <LinkBtn pageTo="/results" someAction={(e) => {
             if (checkIsUserData()) {
-                sendUserInfoDB(getIdUser());
+                sendUserInfoDB(getIdUser("idUser"));
               } else {
                 e.preventDefault();
               }

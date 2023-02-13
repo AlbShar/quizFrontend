@@ -5,9 +5,9 @@ import db from "../config/firebase/firebaseConfig"
 
 const getTotalQuestionsNumb = async () => {
     try {
-      return await new Promise(function (resolve, reject) {
+      return await new Promise<number>(function (resolve, reject) {
         onValue(ref(db, `questions`), (snapshot) => {
-          const totalQuestionsNumb = Object.entries(snapshot.val()).length;
+          const totalQuestionsNumb: number = Object.entries(snapshot.val()).length;
           resolve(totalQuestionsNumb);
         });
       });

@@ -19,7 +19,7 @@ const ButtonLink = () => {
                     "#questionTitle",
                     asnwerItem.textContent,
                     "#themeQuestion",
-                    getIdUser()
+                    getIdUser("idUser")
                   );
                 } else {
                   return false;

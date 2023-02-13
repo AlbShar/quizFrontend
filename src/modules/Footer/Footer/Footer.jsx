@@ -67,7 +67,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <StyledFlexWrapper widthFlexStart="767.8" gap='15'>
+        <StyledFlexWrapper widthFlexStart={767.8} gap={15}>
           <Logo location="footer" />
           <StyledSectionNetworks>
             <nav >
