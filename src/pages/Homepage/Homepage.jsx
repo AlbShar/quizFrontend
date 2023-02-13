@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <>
     <StyledMain>
-      <Container flex={false}>
+      <Container>
         <CallToAction />
         <GeneralInfoTest/>
       </Container>

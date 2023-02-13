@@ -34,7 +34,6 @@ const StyledP = styled.p`
     font: var(--font-text-regular);
   }
 `;
-// padding: 20px 40px;
 
 const StyledImg = styled.img`
   display: block;

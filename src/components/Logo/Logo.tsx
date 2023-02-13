@@ -3,10 +3,10 @@ import {FC} from 'react';
 import { StyledImg } from './Logo.Styled';
 
 const logo = require("../../assets/images/logoQuiz.png");
-interface Logo {
+interface ILogo {
     location: string
 }
-const Logo: FC<Logo> = ({location}) => {
+const Logo: FC<ILogo> = ({location}) => {
     return (
         <StyledImg src={logo} alt="logo" loc={location}/>
     );

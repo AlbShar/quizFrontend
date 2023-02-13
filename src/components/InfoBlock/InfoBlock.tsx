@@ -1,4 +1,4 @@
-import React from 'react';
+import {FC} from 'react';
 import {
     StyledFeatureArticle,
     StyledH2,
@@ -7,7 +7,15 @@ import {
     StyledDivWrapper
   } from "./InfoBlock.styled";
 
-const InfoBlock = ({title, text, imgSrc, imgAlt, idForText}) => {
+  interface Info {
+    title: string;
+    text: string;
+    imgSrc: string;
+    imgAlt: string;
+    idForText?: string;
+  }
+
+const InfoBlock: FC<Info> = ({title, text, imgSrc, imgAlt, idForText}) => {
     return (
         <StyledFeatureArticle>
             <StyledH2>{title}</StyledH2>
