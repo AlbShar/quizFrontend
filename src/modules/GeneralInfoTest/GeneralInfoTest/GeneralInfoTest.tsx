@@ -1,13 +1,27 @@
 import React, {useEffect} from "react";
 import InfoBlock from "../../../components/InfoBlock/InfoBlock";
-import variants from "../images/variants.png";
-import chooseVariant from "../images/chooseVariant.png";
 import { useTranslation } from "react-i18next";
 import { convertJSONToText } from "../helpers/convertJSONToText";
 
+const variants = require("../images/variants.png") ;
+const chooseVariant = require("../images/chooseVariant.png") ;
+
 const GeneralInfoTest = () => {
+  interface IGeneralInfo {
+    title: string,
+    img?: string,
+    id?: string,
+    alt?: string,
+    text: string,
+  }
+
+  interface IJSONText {
+    selector: string;
+    json: string;
+  }
+
     const { t } = useTranslation();
-    const generalInfo = [
+    const generalInfo: IGeneralInfo[] = [
         {
           title: t("Особенности_теста"),
           img: variants,
@@ -27,8 +41,8 @@ const GeneralInfoTest = () => {
         },
       ];
     
-      const JSONText = [
-        { selector: "#generalInfoTestText", json: t("Данный_тест") },
+      const JSONText: [IJSONText] = [
+        { selector: "#generalInfoTestText", json: t("Данный_тест") }
       ];
 
       useEffect(() => {
@@ -43,8 +57,8 @@ const GeneralInfoTest = () => {
           key={index+1}
           title={block.title}
           text={block.text}
-          imgSrc={block.img}
-          imgAlt={block.alt}
+          imgSrc={block.img || ''}
+          imgAlt={block.alt || ''}
           idForText={block.id}
         />
       ))}

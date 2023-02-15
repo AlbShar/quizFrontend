@@ -2,13 +2,6 @@ import React from "react";
 import Container from "../../../components/Container/Container";
 import Logo from "../../../components/Logo/Logo";
 import "./footer.css";
-import facebook from "../icons/facebook.png";
-import instagram from "../icons/instagram.png";
-import twitter from "../icons/twitter.png";
-import youtube from "../icons/youtube.png";
-import mastercard from "../icons/mastercard.png";
-import fondy from "../icons/fondy.png";
-import visa from "../icons/visa.png";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
@@ -25,11 +18,32 @@ import {
   StyledA
 } from "./Footer.Styled";
 import { StyledFlexWrapper } from "../../../styles/FlexWrapper.Styled";
+const facebook = require("../icons/facebook.png");
+const twitter = require("../icons/twitter.png");
+const youtube = require("../icons/youtube.png");
+const mastercard = require("../icons/mastercard.png");
+const fondy = require("../icons/fondy.png");
+const visa = require("../icons/visa.png");
+const instagram = require("../icons/instagram.png");
 
 const Footer = () => {
+ 
+  interface IconNetwork {
+    src: string;
+    alt: string;
+    url: string;
+  }
+  interface InfoFooter {
+    text: string;
+    link: "/reportbug" | "/reestablish" | "/politics";
+  }
+  interface IconPayment {
+    src: string;
+    alt: string;
+  }
   const { t } = useTranslation();
 
-  const iconsNetworks = [
+  const iconsNetworks: IconNetwork[] = [
     {
       src: facebook,
       alt: "Открыть сайт в facebook",
@@ -52,13 +66,13 @@ const Footer = () => {
     },
   ];
 
-  const infoMiddleFooter = [
+  const infoMiddleFooter: InfoFooter[]= [
     { text: t("Сообщить"), link: "/reportbug" },
     { text: t("Восстановить"), link: "/reestablish" },
     { text: t("Политика"), link: "/politics" },
   ];
 
-  const iconsPayments = [
+  const iconsPayments: IconPayment[] = [
     { src: visa, alt: "Иконка visa" },
     { src: mastercard, alt: "Иконка mastercard" },
     { src: fondy, alt: "Иконка fondy" },
