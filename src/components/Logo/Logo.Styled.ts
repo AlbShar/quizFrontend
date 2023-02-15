@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface LogoImg {
-  loc: string;
+  location: string;
 }
 
 export const StyledImg = styled.img<LogoImg>`
@@ -9,7 +9,7 @@ export const StyledImg = styled.img<LogoImg>`
   height: 42px;
 
   @media screen and (min-width: 767.8px) {
-    width: ${({ loc }) => (loc === 'header' ? "140px" : "113px")};
-    height: ${({ loc }) => (loc === 'header'  ? "68px" : "55px")};  
+    width: ${({ location }) => (location === 'header' ? "140px" : "113px")};
+    height: ${({ location }) => (location === 'header'  ? "68px" : "55px")};  
   }
 `;

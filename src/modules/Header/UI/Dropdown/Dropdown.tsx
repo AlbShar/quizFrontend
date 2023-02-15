@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import chevrondown from "../../icons/chevrondown.png";
+import { useState, FC } from "react";
 import i18next from "i18next";
 import {
   StyleDivDropdown,
@@ -10,19 +9,28 @@ import {
   StyledSpan,
 } from "./Dropdown.Styled";
 
-const Dropdown = () => {
-  const [selected, setSelected] = useState("Русский");
-  const [isActive, setActive] = useState(false);
-  const languages = ["Русский", "English", "Deutsch"];
-  const mapLanguage = {
-    Русский: "ru",
-    English: "en",
-    Deutsch: "deu",
+const chevrondown = require("../../icons/chevrondown.png");
+
+const Dropdown: FC = () => {
+
+  interface IMapLanguage {
+    'Русский': string;
+    'English': string;
+    'Deutsch': string;
+  }
+
+  const [selected, setSelected] = useState<string>("Русский");
+  const [isActive, setActive] = useState<boolean>(false);
+  const languages: string[] = ["Русский", "English", "Deutsch"];
+  const mapLanguage: IMapLanguage = {
+    'Русский': "ru",
+    'English': "en",
+    'Deutsch': "deu",
   };
 
   return (
     <StyleDivDropdown>
-      <StyledButton onClick={() => setActive(!isActive)}>
+      <StyledButton onClick={() => setActive(isActive => !isActive)}>
         <StyledSpan className="dropdown-btn-text">
           {localStorage.getItem("language") || selected}
         </StyledSpan>
@@ -30,18 +38,16 @@ const Dropdown = () => {
       </StyledButton>
       {isActive && (
         <StyledUl>
-          {languages.map((language, index) => {
+          {languages.map((language: string, index: number) => {
             return (
               <StyledLi
                 key={index + 1}
                 onClick={() => {
                   setSelected(language);
-                  i18next.changeLanguage(mapLanguage[language]);
+                  i18next.changeLanguage(mapLanguage[language as keyof IMapLanguage]);
                   setActive(false);
                   localStorage.setItem("language", language);
-                  document
-                    .querySelector("html")
-                    .setAttribute("lang", localStorage.getItem("i18nextLng"));
+                  (document.querySelector("html") as HTMLHtmlElement).setAttribute("lang", localStorage.getItem("i18nextLng") || 'ru');
                 }}
               >
                 {language}

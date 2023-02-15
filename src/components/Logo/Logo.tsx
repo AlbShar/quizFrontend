@@ -8,7 +8,7 @@ interface ILogo {
 }
 const Logo: FC<ILogo> = ({location}) => {
     return (
-        <StyledImg src={logo} alt="logo" loc={location}/>
+        <StyledImg src={logo} alt="logo" location={location}/>
     );
 };
 

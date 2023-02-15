@@ -8,7 +8,7 @@ interface Mod {
 const Modal: FC<Mod> = ({title, subTitle}) => {
 
   const hideNotification = (selector: string) => {
-    (document.querySelector(selector) as HTMLInputElement).style.display = 'none';
+    (document.querySelector(selector) as HTMLHtmlElement ).style.display = 'none';
   };
 
   // удалить этот хук и переместить логику в компонент Timer!

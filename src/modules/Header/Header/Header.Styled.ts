@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface IFlexWrapper {
+  gap?: number;
+  widthFlexStart?: number;
+}
+
 const HeaderStyled = styled.header`
   background-color: #252b58;
   width: 100%;
@@ -9,7 +14,8 @@ const HeaderStyled = styled.header`
     margin: 0 0 40px 0;
   }
 `;
-const StyledFlexWrapper = styled.div`
+
+const StyledFlexWrapper = styled.div<IFlexWrapper>`
   gap: ${({gap}) => gap ? (gap + 'px') : ""};
   ${function ({ widthFlexStart }) {
     if (!widthFlexStart) {

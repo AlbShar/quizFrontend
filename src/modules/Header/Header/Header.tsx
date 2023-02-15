@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import Container from "../../../components/Container/Container";
 import Dropdown from "../UI/Dropdown/Dropdown";
 import Logo from "../../../components/Logo/Logo";
@@ -7,7 +7,7 @@ import { HeaderStyled } from "./Header.Styled";
 import { StyledFlexWrapper } from "../../../styles/FlexWrapper.Styled";
 import TotalTested from "../components/TotalTested/TotalTested";
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <>
       <HeaderStyled>
