@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
-import clock from "../../icons/clock.png";
-import helpcircle from "../../icons/helpcircle.png";
-import barchart from "../../icons/barchart.png";
 import { useTranslation } from "react-i18next";
 import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
-import { checkIsImgAlt } from "../../helpers/checkImgIsAlt";
 import { insertDataInfoTest } from "../../helpers/insertDataInfoTest";
 
+const clock = require("../../icons/clock.png");
+const helpcircle = require("../../icons/helpcircle.png");
+const barchart = require("../../icons/barchart.png");
+
+export interface IInfoTestBlock {
+  alt: string;
+   text: string;
+   srcIcon: string;
+}
 const InfoTest = () => {
   const { t } = useTranslation( );
   useEffect(() => {
     insertDataInfoTest(t("Вопросов"), t("Время"), "#CallToAction ul", 'span');
   });
 
-  const infoTestBlock = [
+  const infoTestBlock: IInfoTestBlock[] = [
     {
       text: t("Время"),
       srcIcon: clock,
@@ -35,7 +40,6 @@ const InfoTest = () => {
     <nav>
       <StyledUl>
         {infoTestBlock.map((item, index) => {
-          checkIsImgAlt(item, index);
           return (
             <StyledLi key={index + 1}>
               <StyledImg src={item.srcIcon} alt={item.alt}/>

@@ -6,14 +6,18 @@ import Answer from "../components/Answer/Answer";
 import {ContextQuestionNumb} from "../../../components/Context";
 
 const Answers = () => {
-  const [answers, setAnswers] = useState([]);
-  const [currentQuestionNumb] = useContext(ContextQuestionNumb);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const contextValue = useContext(ContextQuestionNumb);
+const currentQuestionNumb = contextValue ? contextValue[0] : null;
 
   useEffect(() => {
     removeAttributesAnswers("#answersAll ul li");
-    getAnswersDb(currentQuestionNumb).then((answersDB) =>
-      setAnswers(answersDB)
+    if (currentQuestionNumb) {
+      getAnswersDb(currentQuestionNumb).then((answersDB) =>
+      setAnswers(answersDB as string[])
     );
+
+    }
     // eslint-disable-next-line
   }, [currentQuestionNumb]);
 
@@ -21,7 +25,7 @@ const Answers = () => {
     <StyledArticle id="answersAll">
       <StyledUl>
         {answers.map((answer, index) => (
-          <Answer key={index + 1}>{answer}</Answer>
+          <Answer index={index}>{answer}</Answer>
         ))}
       </StyledUl>
     </StyledArticle>
