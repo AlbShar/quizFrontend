@@ -8,7 +8,7 @@ import {ContextQuestionNumb} from "../../../components/Context";
 const Answers = () => {
   const [answers, setAnswers] = useState<string[]>([]);
   const contextValue = useContext(ContextQuestionNumb);
-const currentQuestionNumb = contextValue ? contextValue[0] : null;
+const currentQuestionNumb = contextValue ? contextValue[0] : 1;
 
   useEffect(() => {
     removeAttributesAnswers("#answersAll ul li");
@@ -25,7 +25,7 @@ const currentQuestionNumb = contextValue ? contextValue[0] : null;
     <StyledArticle id="answersAll">
       <StyledUl>
         {answers.map((answer, index) => (
-          <Answer index={index}>{answer}</Answer>
+          <Answer key={index+1}>{answer}</Answer>
         ))}
       </StyledUl>
     </StyledArticle>

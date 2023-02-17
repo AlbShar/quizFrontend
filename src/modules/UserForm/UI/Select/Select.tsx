@@ -1,9 +1,9 @@
-import React from "react";
+import {FC} from "react";
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
 import { clearAnimateInputAndText } from "../../helpers/clearAnimateInputAndText";
 import { StyledSelect } from "./Select.Styled";
 
-const Select = () => {
+const Select: FC = () => {
   return (
     <StyledSelect
       onFocus={(e) => {

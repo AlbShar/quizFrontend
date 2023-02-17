@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/Container/Container";
-import ReportBugTest from "../../modules/ReportBugTest/index";
+import ReportBugTest from "../../components/ReportBugTest/ReportBugTest";
 import { useTranslation } from "react-i18next";
 import { StyledH1 } from "./ReportBugPage.Styled";
 import { StyledMain } from "../../styles/Main.Styled";

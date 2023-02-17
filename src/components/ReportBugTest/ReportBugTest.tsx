@@ -1,12 +1,14 @@
-import React, {useEffect} from "react";
-import InfoBlock from "../../../components/InfoBlock/InfoBlock";
-import mistake from "../images/mistake.jpg";
+import {useEffect, FC} from "react";
+import InfoBlock from "../InfoBlock/InfoBlock";
 import { useTranslation } from "react-i18next";
-import { convertJSONToText } from "../helpers/convertJSONToText";
+import { convertJSONToText } from "../../helpers/convertJSONToText";
+import { IInfoBlocks } from "../GeneralInfoTest/GeneralInfoTest";
+import { IJSONText } from "../GeneralInfoTest/GeneralInfoTest";
+const mistake = require("./images/mistake.jpg");
 
-const GeneralInfoTest = () => {
+const GeneralInfoTest: FC = () => {
     const { t } = useTranslation();
-    const dataReportBug = [
+    const dataReportBug: IInfoBlocks[] = [
       {
         title: t("Сообщить"),
         img: mistake,
@@ -16,7 +18,7 @@ const GeneralInfoTest = () => {
       },
     ];
     
-      const JSONText = [
+      const JSONText: IJSONText[] = [
         { selector: "#reportBugText", json: t("Если_вы_нашли_ошибку") },
       ];
 
@@ -32,8 +34,8 @@ const GeneralInfoTest = () => {
           key={index+1}
           title={block.title}
           text={block.text}
-          imgSrc={block.img}
-          imgAlt={block.alt}
+          imgSrc={block.img || ''}
+          imgAlt={block.alt || ""}
           idForText={block.id}
         />
       ))}

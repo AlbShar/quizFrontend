@@ -4,13 +4,11 @@ import { setAttributesUserAnswer } from '../../helpers/setAttributesUserAnswer';
 
 interface IAnswer {
   children: ReactNode,
-  index: number
 }
 
-const Answer: FC<IAnswer> = ({children, index}) => {
+const Answer: FC<IAnswer> = ({children}) => {
     return (
         <StyledLi
-        key={index + 1}
         onClick={(e: MouseEvent) => {
           setAttributesUserAnswer(e,'#answersAll ul li', '2px solid rgb(103, 104, 215)', 'data-useranswer')
         }}

@@ -2,10 +2,10 @@ import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
-const getNameQuestion = async (currentQuestionNumb) => {
+const getNameQuestion = async (currentQuestionNumb: number) => {
     try {
       let lang = localStorage.getItem("i18nextLng");
-      return await new Promise(function (resolve, reject) {
+      return await new Promise<string>(function (resolve, reject) {
         onValue(
           ref(db, `questions/question${currentQuestionNumb}/${lang}/name`),
           (snapshot) => {
@@ -14,8 +14,12 @@ const getNameQuestion = async (currentQuestionNumb) => {
           }
         );
       });
-    } catch (error) {
-      console.error(error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw new Error(`${error.message}`);
+      } else {
+        throw new Error(`Unknown error caught: ${error}`);
+      }
     }
   };
 

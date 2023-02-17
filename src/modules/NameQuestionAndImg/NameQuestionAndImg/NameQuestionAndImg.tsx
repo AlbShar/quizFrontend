@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect, useContext, FC } from "react";
 import { insertImageQuiz } from "../helpers/insertImageQuiz";
 import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
 import {
@@ -9,8 +9,9 @@ import {
 } from "./NameQuestionAndImg.Styled";
 import {ContextQuestionNumb} from "../../../components/Context";
 
-const NameQuestionAndImg = () => {
-  const [currentQuestionNumb] = useContext(ContextQuestionNumb);
+const NameQuestionAndImg: FC = () => {
+  const contextValue = useContext(ContextQuestionNumb)
+  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
 
   useEffect(() => {
     insertNameQuestionQuiz(currentQuestionNumb, '#questionTitle');

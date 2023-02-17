@@ -12,7 +12,7 @@ import ButtonsQuiz from "../../modules/ButtonsQuiz/index";
 
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(54);
   return (
     <StyledMain>
       <Container>

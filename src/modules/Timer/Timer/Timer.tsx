@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import Modal from "../../../UI/Modal/Modal";
 import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
@@ -9,22 +9,23 @@ import isModal from "../helpers/isModal";
 
  const deadline = 7500; // seconds
 
- const Timer = () => {
+ const Timer: FC = () => {
   const { t } = useTranslation();
 
-  let [timeLeft, setTimeLeft] = useState(deadline);
-  let hours = getFullNumb(Math.floor(timeLeft / 3600) % 60);
-  let minutes = getFullNumb(Math.floor(timeLeft / 60) % 60);
-  let seconds = getFullNumb(Math.floor(timeLeft % 60));
-  const [isCounting, setIsCounting] = useState(true);
-  const timer = [`${hours}:`, `${minutes}:`, seconds];
+  let [timeLeft, setTimeLeft] = useState<number>(deadline);
+  let hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
+  let minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
+  let seconds: string = getFullNumb(Math.floor(timeLeft % 60));
+  const [isCounting, setIsCounting] = useState<boolean>(true);
+  const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
+
   useEffect(() => {
     removePenaltyPoints();
     const interval = setInterval(() => {
       if (isModal("#notification") === false && isCounting === false) {
         pauseTimer(isCounting, setIsCounting);
       }
-      isCounting && setTimeLeft(timeLeft >= 1 ? timeLeft-- : 0);
+      isCounting && setTimeLeft(timeLeft >= 1 ? +timeLeft - 1 : 0);
     }, 1000);
     return () => clearInterval(interval);
 }, [timeLeft, isCounting]);

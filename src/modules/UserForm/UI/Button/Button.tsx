@@ -1,22 +1,22 @@
-import React from 'react';
+import {FC} from 'react';
 import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
-import { useTranslation } from "react-i18next";
 import { checkIsUserData } from '../../helpers/checkIsUserData';
 import { getIdUser } from '../../../../helpers/getIdUser';
 import { sendUserInfoDB } from '../../api/sendUserInfoDb';
+import { MouseEvent } from "react";
 
 
-const Button = () => {
-    const { t } = useTranslation();
+
+const Button: FC = () => {
 
     return (
-        <LinkBtn pageTo="/results" someAction={(e) => {
+        <LinkBtn text="Получить_результат" pageTo="/results" onClick={(e: MouseEvent) => {
             if (checkIsUserData()) {
                 sendUserInfoDB(getIdUser("idUser"));
               } else {
                 e.preventDefault();
               }
-        }}>{t("Получить_результат")}</LinkBtn> 
+        }} />
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect, useContext, FC } from "react";
 import { useTranslation } from "react-i18next";
 import { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity } from "./QuantityThemeQuestions.Styled";
 import {insertTotalQuestionNumbQuiz} from "../helpers/insertTotalQuestionNumbQuiz";
@@ -6,9 +6,10 @@ import {insertThemeQuestionQuiz} from "../helpers/insertThemeQuestionQuiz";
 import {ContextQuestionNumb} from "../../../components/Context";
 
 
-const QuantityThemeQuestions = () => {
+const QuantityThemeQuestions: FC = () => {
   const { t } = useTranslation();
-  const [currentQuestionNumb] = useContext(ContextQuestionNumb);
+  const contextValue: [number, (numb: number) => void] | null = useContext(ContextQuestionNumb);
+  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
 
   useEffect(() => {
     insertTotalQuestionNumbQuiz("#totalQuestionQuantity");

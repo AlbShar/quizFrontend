@@ -13,8 +13,8 @@ import {
     StyledSpanGender,
     StyledLabelGender,
   } from "./UserForm.Styled";
-  import womanavatar from "../icons/womanavatar.png";
-  import manavatar from "../icons/manavatar.png";
+  const womanavatar = require("../icons/womanavatar.png") ;
+  const manavatar = require("../icons/manavatar.png") ;
 
 const UserForm = () => {
     const { t } = useTranslation();

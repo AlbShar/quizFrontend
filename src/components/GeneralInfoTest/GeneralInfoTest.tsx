@@ -1,27 +1,25 @@
 import React, {useEffect} from "react";
-import InfoBlock from "../../../components/InfoBlock/InfoBlock";
+import InfoBlock from "../InfoBlock/InfoBlock";
 import { useTranslation } from "react-i18next";
-import { convertJSONToText } from "../helpers/convertJSONToText";
+import { convertJSONToText } from "../../helpers/convertJSONToText";
 
-const variants = require("../images/variants.png") ;
-const chooseVariant = require("../images/chooseVariant.png") ;
+const variants = require("./images/variants.png") ;
+const chooseVariant = require("./images/chooseVariant.png") ;
+export interface IInfoBlocks {
+  title: string,
+  img?: string,
+  id?: string,
+  alt?: string,
+  text: string,
+}
+export interface IJSONText {
+  selector: string;
+  json: string;
+}
 
 const GeneralInfoTest = () => {
-  interface IGeneralInfo {
-    title: string,
-    img?: string,
-    id?: string,
-    alt?: string,
-    text: string,
-  }
-
-  interface IJSONText {
-    selector: string;
-    json: string;
-  }
-
     const { t } = useTranslation();
-    const generalInfo: IGeneralInfo[] = [
+    const generalInfo: IInfoBlocks[] = [
         {
           title: t("Особенности_теста"),
           img: variants,

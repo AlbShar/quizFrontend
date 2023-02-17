@@ -3,20 +3,21 @@ import { onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
 const insertImageQuiz = (
-    currentQuestionNumb,
-    selectorWrapperImg,
-    selectorImg
+    currentQuestionNumb: number,
+    selectorWrapperImg: string,
+    selectorImg: string
   ) => {
     try{
-      const wrapperImg = document.querySelector(selectorWrapperImg);
+      const wrapperImg = document.querySelector<HTMLElement>(selectorWrapperImg);
       onValue(
         ref(db, `questions/question${currentQuestionNumb}/img`),
         (snapshot) => {
-          const imgSrc = snapshot.val();
-          if (imgSrc) {
+          const imgSrc: string = snapshot.val();
+          const elementImage = document.querySelector<HTMLImageElement>(selectorImg);
+          if (imgSrc && wrapperImg && elementImage) {
             wrapperImg.style.display = "block";
-            document.querySelector(selectorImg).src = imgSrc;
-          } else {
+            elementImage.src = imgSrc;
+          } else if (wrapperImg) {
             wrapperImg.style.display = "none";
           }
         }
