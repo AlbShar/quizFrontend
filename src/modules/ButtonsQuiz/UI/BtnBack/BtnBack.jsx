@@ -20,7 +20,7 @@ const BtnBack = () => {
             onClick={() => {
               setCurrentQuestionNumb(--currentQuestionNumb);
               highlightPreviousAnswer(
-                getIdUser(),
+                getIdUser("idUser"),
                 currentQuestionNumb,
                 "#answersAll ul li"
               );

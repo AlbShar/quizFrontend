@@ -9,7 +9,7 @@ import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 
 const ButtonsQuiz = () => {
-  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb);
+  let [currentQuestionNumb,] = useContext(ContextQuestionNumb);
 
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {

@@ -3,14 +3,12 @@ import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
 import { sendUserAnswerDB } from '../../api/sendUserAnswerDB';
 import { getIdUser } from '../../../../helpers/getIdUser';
 import { ContextQuestionNumb } from '../../../../components/Context';
-import { ref, onValue } from "firebase/database";
-import {db} from "../../../../index";
 
 
 const ButtonLink = () => {
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb);
     return (
-        <LinkBtn pageTo="/contact" someAction={() => {
+        <LinkBtn text="Закончить тест" pageTo="/contact" onClick={() => {
             const answersItem = document.querySelectorAll("#answersAll ul li");
 
             answersItem.forEach((asnwerItem) => {
@@ -21,13 +19,13 @@ const ButtonLink = () => {
                     "#questionTitle",
                     asnwerItem.textContent,
                     "#themeQuestion",
-                    getIdUser()
+                    getIdUser("idUser")
                   );
                 } else {
                   return false;
                 }
               });
-        }}>Закончить тест</LinkBtn>
+        }}></LinkBtn>
     );
 };
 
