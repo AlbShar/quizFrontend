@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, ChangeEvent} from "react";
 import InputField from "../UI/InputField/InputField";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
@@ -17,8 +17,21 @@ import {
   const manavatar = require("../icons/manavatar.png") ;
 
 const UserForm = () => {
-    const { t } = useTranslation();
+    interface IValueInput  {
+      userName: string ;
+      userEmail: string ;
+      userAge: string ;
+    };
 
+    const { t } = useTranslation();
+    const [valueInput, setValueInput] = useState<IValueInput>({userName: '', userEmail: '', userAge: '< 18'});
+    const onValueInput = (e: ChangeEvent<HTMLInputElement>) => {
+      const target = e.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
+      setValueInput((valueInput) => ({...valueInput, [name]: value}));
+      console.log(valueInput);
+    };
   return (
     <form>
       <StyledFieldset>
@@ -29,7 +42,9 @@ const UserForm = () => {
               placeholder="Ваше_имя"
               type="text"
               id="username"
-              name="username"
+              name="userName"
+              value={valueInput.userName}
+              onChange={onValueInput}
             />
           </label>
         </StyledPForm>
@@ -40,14 +55,17 @@ const UserForm = () => {
               placeholder="E-mail"
               type="email"
               id="useremail"
-              name="useremail"
+              name="userEmail"
+              value={valueInput.userEmail}
+              onChange={onValueInput}
+
             />
           </label>
         </StyledPForm>
         <StyledPForm>
           <label htmlFor="username">
             <StyledSpan>{t("Возраст")}</StyledSpan>
-            <Select/>
+            <Select value={valueInput.userAge} onChange={onValueInput}/>
           </label>
         </StyledPForm>
         <StyledDivWrapperGender>
