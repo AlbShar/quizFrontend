@@ -1,4 +1,4 @@
-import {useState, ChangeEvent} from "react";
+import {useState, ChangeEvent, FC} from "react";
 import InputField from "../UI/InputField/InputField";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
@@ -16,21 +16,22 @@ import {
   const womanavatar = require("../icons/womanavatar.png") ;
   const manavatar = require("../icons/manavatar.png") ;
 
-const UserForm = () => {
+const UserForm: FC = () => {
     interface IValueInput  {
       userName: string ;
       userEmail: string ;
       userAge: string ;
+      userGender: string;
     };
 
     const { t } = useTranslation();
-    const [valueInput, setValueInput] = useState<IValueInput>({userName: '', userEmail: '', userAge: '< 18'});
+    const [valueInput, setValueInput] = useState<IValueInput>({userName: '', userEmail: '', userAge: '< 18', userGender: 'man'});
     const onValueInput = (e: ChangeEvent<HTMLInputElement>) => {
       const target = e.target;
-      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const value = target.value;
       const name = target.name;
+      console.log(value);
       setValueInput((valueInput) => ({...valueInput, [name]: value}));
-      console.log(valueInput);
     };
   return (
     <form>
@@ -72,15 +73,16 @@ const UserForm = () => {
           <StyledSpanGender>{t("Пол")}</StyledSpanGender>
           <StyledLabelGender>
             <StyledInputRadio
-              name="gender"
+              name="userGender"
               id="userman"
               value="man"
-              defaultChecked
+              checked={'man' === valueInput.userGender}
+              onChange={onValueInput}
             />
             <StyledImgGender src={manavatar} />
           </StyledLabelGender>
           <StyledLabelGender>
-            <StyledInputRadio name="gender" id="userwoman" value="woman" />
+            <StyledInputRadio name="userGender" id="userwoman" value="woman" checked={'woman' === valueInput.userGender} onChange={onValueInput}/>
             <StyledImgGender src={womanavatar} />
           </StyledLabelGender>
         </StyledDivWrapperGender>
