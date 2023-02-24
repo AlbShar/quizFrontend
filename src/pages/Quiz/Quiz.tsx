@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState, useRef } from "react";
 import Container from "../../components/Container/Container";
 import Answers from "../../modules/Answers/index";
 import NameQuestionAndImg from "../../modules/NameQuestionAndImg/index";
@@ -12,13 +12,14 @@ import ButtonsQuiz from "../../modules/ButtonsQuiz/index";
 
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(54);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
+  const quizRef = useRef<HTMLTableSectionElement>(null);
   return (
     <StyledMain>
       <Container>
-        <StyledSection id="quiz">
+        <StyledSection ref={quizRef}>
           <Context value={[currentQuestionNumb, setCurrentQuestionNumb]}>
-            <ScrollBar />
+            <ScrollBar quizRef={quizRef}/>
             <StyledArticle>
               <QuantityThemeQuestions/>
               <Timer />
