@@ -1,11 +1,16 @@
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
 import { RefObject } from "react";
 
+interface IWidthScrollBar {
+  currentQuestionNumb: number;
+  quizRef: RefObject<HTMLTableSectionElement>;
+  scrollBarElementRef: RefObject<HTMLDivElement>;
 
+}
 async function setWidthScrollBar (
-  currentQuestionNumb: number,
-  quizRef: RefObject<HTMLTableSectionElement>,
-  scrollBarElementRef: RefObject<HTMLDivElement>
+  {currentQuestionNumb,
+  quizRef,
+  scrollBarElementRef}:IWidthScrollBar
 ){
   try {
     const totalQuestionsNumb: number | undefined =

@@ -11,7 +11,7 @@ const ScrollBar: FC<IScrollBar> = ({quizRef}) => {
   const scrollBarElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setWidthScrollBar(currentQuestionNumb, quizRef, scrollBarElementRef);
+    setWidthScrollBar({currentQuestionNumb, quizRef, scrollBarElementRef});
   });
 
   return <StyledDivScrollBar ref={scrollBarElementRef}></StyledDivScrollBar>;

@@ -1,4 +1,4 @@
-import {FC, ChangeEvent} from "react";
+import {FC, ChangeEvent, RefObject, FocusEvent} from "react";
 import { StyledInputField } from "./InputField.Style";
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
 import { clearAnimateInputAndText } from "../../helpers/clearAnimateInputAndText";
@@ -12,21 +12,23 @@ interface IInputField {
   placeholder: string ;
   value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  ref: RefObject<HTMLInputElement>;
 }
-const InputField: FC<IInputField> = ({ type, id, name, placeholder, onChange, value }) => {
+const InputField: FC<IInputField> = ({ type, id, ref, name, placeholder, onChange, value }) => {
     const { t } = useTranslation();
 
     return (
     <StyledInputField
+      ref={ref}
       type={type}
       id={id}
       name={name}
       value={value}
       placeholder={t(placeholder) || "Placeholder"}
-      onFocus={(e) => {
+      onFocus={(e: FocusEvent<HTMLInputElement>) => {
         setAnimateInputAndText(e, "#6768d7");
       }}
-      onBlur={(e) => {
+      onBlur={(e: FocusEvent<HTMLInputElement>) => {
         clearAnimateInputAndText(e, "#81868C");
       }}
       onChange={onChange}

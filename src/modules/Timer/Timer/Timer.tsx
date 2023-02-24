@@ -4,7 +4,6 @@ import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
 import getFullNumb from "../helpers/getFullNumb";
 import removePenaltyPoints from "../helpers/removePenaltyPoints";
-import pauseTimer from "../helpers/pauseTimer";
 import isModal from "../helpers/isModal";
 
  const deadline = 7500; // seconds
@@ -23,7 +22,7 @@ import isModal from "../helpers/isModal";
     removePenaltyPoints();
     const interval = setInterval(() => {
       if (isModal("#notification") === false && isCounting === false) {
-        pauseTimer(isCounting, setIsCounting);
+        setIsCounting(isCounting => !isCounting);
       }
       isCounting && setTimeLeft(timeLeft >= 1 ? +timeLeft - 1 : 0);
     }, 1000);
@@ -47,7 +46,7 @@ import isModal from "../helpers/isModal";
           subTitle={t("Заголовок2_пауза")}
         />
       )}
-      <StyledButtonPause onClick={() => pauseTimer(isCounting, setIsCounting)}>{t("Пауза")}</StyledButtonPause>
+      <StyledButtonPause onClick={() => setIsCounting(isCounting => !isCounting)}>{t("Пауза")}</StyledButtonPause>
     </StyledDivTimer>
   );
 };
