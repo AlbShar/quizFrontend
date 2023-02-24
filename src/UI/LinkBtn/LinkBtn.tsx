@@ -8,7 +8,7 @@ import { MouseEvent } from "react";
 interface LinkInt {
   text: string,
   pageTo: string,
-  onClick: (e: MouseEvent) => void
+  onClick?: (e: MouseEvent) => void
 }
 const LinkBtn: FC<LinkInt> = ({ text, pageTo, onClick }) => {
   const { t } = useTranslation();

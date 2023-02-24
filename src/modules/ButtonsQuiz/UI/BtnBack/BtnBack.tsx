@@ -4,13 +4,13 @@ import {
     StyledImg,
     StyledSpan} from "./BtnBack.Styled";
 import {ContextQuestionNumb} from "../../../../components/Context";
-import arrowleft from "../../icons/arrowleft.png";
 import { getIdUser } from '../../../../helpers/getIdUser';
 import { highlightPreviousAnswer } from '../../helpers/highlightPreviousAnswer';
 
+const arrowleft =  require("../../icons/arrowleft.png");
 
 const BtnBack = () => {
-    let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb);
+    let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
     return (
         <>

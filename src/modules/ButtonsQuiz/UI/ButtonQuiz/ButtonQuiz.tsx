@@ -10,7 +10,7 @@ import db from "../../../../config/firebase/firebaseConfig";
 
 const ButtonQuiz = () => {
     const { t } = useTranslation();
-    let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb);
+    let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
     let totalQuestionsNumbers;
     onValue(ref(db, `questions`), (snapshot) => {
       totalQuestionsNumbers = Object.entries(snapshot.val()).length;
@@ -19,19 +19,19 @@ const ButtonQuiz = () => {
     return (
         <>
           {totalQuestionsNumbers === currentQuestionNumb ? (
-          <LinkBtn pageTo="/contact">Закончить тест</LinkBtn> 
+          <LinkBtn text="Закончить тест" pageTo="/contact"/>
         ) : (
           <StyledButtonQuiz
             onClick={() => {
               const answersItem =
-                document.querySelectorAll("#answersAll ul li");
+                document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
               answersItem.forEach((asnwerItem) => {
                 if (asnwerItem.dataset.useranswer) {
                   setCurrentQuestionNumb(currentQuestionNumb + 1);
                   sendUserAnswerDB(
                     currentQuestionNumb,
                     "#questionTitle",
-                    asnwerItem.textContent,
+                    asnwerItem.textContent || 'No anwser',
                     "#themeQuestion",
                     getIdUser("idUser")
                   );

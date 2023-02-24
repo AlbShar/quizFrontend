@@ -3,15 +3,15 @@ import { getRightAnswerDB } from "./getRightAnswerDB";
 import db from "../../../config/firebase/firebaseConfig";
 
 const sendUserAnswerDB = async (
-    currentQuestionNumb,
-    selectorQuestion,
-    userAnswer,
-    selectorTheme,
-    idUser
+    currentQuestionNumb: number,
+    selectorQuestion: string,
+    userAnswer: string,
+    selectorTheme: string,
+    idUser: string
   ) => {
     try {
-      const theme = document.querySelector(selectorTheme).textContent;
-      const question = document.querySelector(selectorQuestion).textContent;
+      const theme = document.querySelector<HTMLSpanElement>(selectorTheme)?.textContent;
+      const question = document.querySelector<HTMLHeadingElement>(selectorQuestion)?.textContent;
   
       let referenceUserAnswers = ref(
         db,
