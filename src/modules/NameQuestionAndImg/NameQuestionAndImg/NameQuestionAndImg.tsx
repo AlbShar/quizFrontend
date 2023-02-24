@@ -1,4 +1,4 @@
-import { useEffect, useContext, FC, useRef} from "react";
+import { useEffect, useContext, FC, useRef, forwardRef} from "react";
 import { insertImageQuiz } from "../helpers/insertImageQuiz";
 import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
 import {
@@ -23,7 +23,7 @@ const NameQuestionAndImg: FC = () => {
 
   return (
     <StyledArticleQuestion>
-      <StyledH2 ref={questionTitleRef}></StyledH2>
+      <StyledH2 ref={questionTitleRef} id="questionTitle"></StyledH2>
       <StyledDiv ref={wrapperImgRef}>
         <StyledImg ref={imgRef} alt="Код на JS" />
       </StyledDiv>

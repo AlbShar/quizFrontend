@@ -15,11 +15,11 @@ const ButtonLink: FC = () => {
                 if (asnwerItem.dataset.useranswer) {
                   setCurrentQuestionNumb(currentQuestionNumb + 1);
                   sendUserAnswerDB(
-                    currentQuestionNumb,
-                    "#questionTitle",
-                    asnwerItem.textContent || 'No answer',
-                    "#themeQuestion",
-                    getIdUser("idUser")
+                    {currentQuestionNumb,
+                    selectorQuestion: "#questionTitle",
+                    userAnswer: asnwerItem.textContent || 'No answer',
+                    selectorTheme: "#themeQuestion",
+                    idUser: getIdUser("idUser")}
                   );
                 } else {
                   return false;
