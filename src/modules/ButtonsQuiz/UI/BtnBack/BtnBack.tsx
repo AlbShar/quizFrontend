@@ -16,13 +16,12 @@ const BtnBack = () => {
         <>
         {!(currentQuestionNumb === 1) && (
           <StyledButtonBack
-            id="BtnBack"
             onClick={() => {
               setCurrentQuestionNumb(--currentQuestionNumb);
               highlightPreviousAnswer(
-                getIdUser("idUser"),
+                {idUser: getIdUser("idUser"),
                 currentQuestionNumb,
-                "#answersAll ul li"
+                selectorAnswers: "#answersAll ul li"}
               );
             }}
           >

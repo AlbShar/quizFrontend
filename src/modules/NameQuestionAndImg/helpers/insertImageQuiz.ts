@@ -1,24 +1,31 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
+import { RefObject } from "react";
+
+interface IImageQuiz {
+  currentQuestionNumb: number;
+  wrapperImgRef: RefObject<HTMLDivElement>;
+  imgRef: RefObject<HTMLImageElement>;
+}
 
 const insertImageQuiz = (
-    currentQuestionNumb: number,
-    selectorWrapperImg: string,
-    selectorImg: string
+    {currentQuestionNumb,
+    wrapperImgRef,
+    imgRef}: IImageQuiz
   ) => {
     try{
-      const wrapperImg = document.querySelector<HTMLElement>(selectorWrapperImg);
+      const wrapperImgElement = wrapperImgRef.current;
       onValue(
         ref(db, `questions/question${currentQuestionNumb}/img`),
         (snapshot) => {
           const imgSrc: string = snapshot.val();
-          const elementImage = document.querySelector<HTMLImageElement>(selectorImg);
-          if (imgSrc && wrapperImg && elementImage) {
-            wrapperImg.style.display = "block";
+          const elementImage = imgRef.current;
+          if (imgSrc && wrapperImgElement && elementImage) {
+            wrapperImgElement.style.display = "block";
             elementImage.src = imgSrc;
-          } else if (wrapperImg) {
-            wrapperImg.style.display = "none";
+          } else if (wrapperImgElement) {
+            wrapperImgElement.style.display = "none";
           }
         }
       );

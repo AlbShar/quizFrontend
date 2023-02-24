@@ -1,9 +1,12 @@
 import { getAllTestedUsers } from "./getAllTestedUsers";
+import { RefObject } from "react";
 
-const setQuiantiyTestedUsers = async (selectorQuantityTestedUsers: string) => {
+const setQuiantiyTestedUsers = async (totalUsersElementRef: RefObject<HTMLSpanElement>) => {
     try {
       const quiantiyAllUsers: number = await getAllTestedUsers();
-      (document.querySelector(selectorQuantityTestedUsers) as HTMLHtmlElement).textContent = quiantiyAllUsers.toString();
+      if (totalUsersElementRef.current) {
+        totalUsersElementRef.current.textContent = quiantiyAllUsers.toString();
+      }
     } catch (error) {
       console.error(error);
     }

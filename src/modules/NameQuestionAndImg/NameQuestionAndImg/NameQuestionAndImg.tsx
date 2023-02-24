@@ -1,4 +1,4 @@
-import { useEffect, useContext, FC } from "react";
+import { useEffect, useContext, FC, useRef} from "react";
 import { insertImageQuiz } from "../helpers/insertImageQuiz";
 import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
 import {
@@ -12,17 +12,20 @@ import {ContextQuestionNumb} from "../../../components/Context";
 const NameQuestionAndImg: FC = () => {
   const contextValue = useContext(ContextQuestionNumb)
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+  const questionTitleRef = useRef<HTMLHeadingElement>(null);
+  const wrapperImgRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    insertNameQuestionQuiz(currentQuestionNumb, '#questionTitle');
-    insertImageQuiz(currentQuestionNumb, "#WrapperImg", "#imgQuestion");
+    insertNameQuestionQuiz({currentQuestionNumb, questionTitleRef});
+    insertImageQuiz({currentQuestionNumb, wrapperImgRef, imgRef});
   });
 
   return (
     <StyledArticleQuestion>
-      <StyledH2 id="questionTitle"></StyledH2>
-      <StyledDiv id="WrapperImg">
-        <StyledImg alt="Код на JS" id="imgQuestion" />
+      <StyledH2 ref={questionTitleRef}></StyledH2>
+      <StyledDiv ref={wrapperImgRef}>
+        <StyledImg ref={imgRef} alt="Код на JS" />
       </StyledDiv>
     </StyledArticleQuestion>
   );

@@ -10,7 +10,7 @@ const Answer: FC<IAnswer> = ({children}) => {
     return (
         <StyledLi
         onClick={(e: MouseEvent) => {
-          setAttributesUserAnswer(e,'#answersAll ul li', '2px solid rgb(103, 104, 215)', 'data-useranswer')
+          setAttributesUserAnswer({e, selectorAnswers: '#answersAll ul li', cssBorder: '2px solid rgb(103, 104, 215)', nameDataAtrr: 'data-useranswer'})
         }}
       >
         {children}

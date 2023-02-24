@@ -1,10 +1,17 @@
 import { ref, onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
+
+interface IPreviousAnswer {
+  idUser: string;
+  currentQuestionNumb: number;
+  selectorAnswers: string;
+
+}
 const highlightPreviousAnswer = (
-    idUser: string,
-    currentQuestionNumb: number,
-    selectorAnswers: string
+    {idUser,
+    currentQuestionNumb,
+    selectorAnswers}: IPreviousAnswer
   ) => {
     onValue(
       ref(db, `users/user${idUser}/answers/answer${currentQuestionNumb}`),

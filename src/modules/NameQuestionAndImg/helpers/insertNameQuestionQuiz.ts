@@ -1,9 +1,14 @@
 import { getNameQuestion } from "../api/getNameQuestion";
+import { RefObject } from "react";
 
-const insertNameQuestionQuiz = async (currentQuestionNumb: number, selector: string) => {
+interface INameQuestionQuiz{
+  currentQuestionNumb: number;
+  questionTitleRef: RefObject<HTMLHeadingElement>;
+}
+const insertNameQuestionQuiz = async ({currentQuestionNumb, questionTitleRef}: INameQuestionQuiz) => {
     try {
       let nameQuestion = await getNameQuestion(currentQuestionNumb);
-      const elementQuestion = document.querySelector<HTMLElement>(selector);
+      const elementQuestion = questionTitleRef.current;
       if (elementQuestion && nameQuestion) {
         elementQuestion.textContent = nameQuestion;
       }

@@ -1,11 +1,18 @@
 import {MouseEvent} from 'react';
 
+interface IAttributesUserAnswer {
+  e: MouseEvent;
+  selectorAnswers: string;
+  cssBorder: string;
+  nameDataAtrr: string;
+
+}
 
 const setAttributesUserAnswer = (
-  e: MouseEvent,
-  selectorAnswers: string,
-  cssBorder: string,
-  nameDataAtrr: string,
+  {e,
+  selectorAnswers,
+  cssBorder,
+  nameDataAtrr}: IAttributesUserAnswer
 ) => {
   document.querySelectorAll<HTMLElement>(selectorAnswers).forEach((item: HTMLElement) => {
     item.style.cssText = "";

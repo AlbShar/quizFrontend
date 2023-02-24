@@ -1,15 +1,22 @@
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
 import { deadline } from "../../Timer/index";
+import { RefObject } from "react";
 
+interface IInfoTest {
+  textQuestions: string;
+  textTime: string;
+  listRef: RefObject<HTMLUListElement>;
+  itemTag: string;
+}
 const insertDataInfoTest = async (
-  textQuestions: string,
-  textTime: string,
-  ...selectors: string[]
+  {textQuestions,
+  textTime,
+  listRef, itemTag}: IInfoTest
 ) => {
   try {
-    const queryResult = document.querySelector(selectors[0]);
+    const queryResult = listRef.current;
     if (queryResult !== null) {
-      const textListItems = queryResult.querySelectorAll(selectors[1]);
+      const textListItems = queryResult.querySelectorAll(itemTag);
       let totalQuestionsNumb = await getTotalQuestionsNumb();
 
       textListItems[
