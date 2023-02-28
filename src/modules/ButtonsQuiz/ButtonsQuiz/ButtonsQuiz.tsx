@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import {useContext} from "react";
 import { StyledArticle } from "./ButtonsQuiz.Styled";
 import BtnBack from "../UI/BtnBack/BtnBack";
 import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
@@ -9,7 +9,7 @@ import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 
 const ButtonsQuiz = () => {
-  let [currentQuestionNumb,] = useContext(ContextQuestionNumb);
+  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {

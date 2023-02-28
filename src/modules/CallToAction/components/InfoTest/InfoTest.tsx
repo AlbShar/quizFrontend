@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
 import { insertDataInfoTest } from "../../helpers/insertDataInfoTest";
@@ -12,10 +12,12 @@ export interface IInfoTestBlock {
    text: string;
    srcIcon: string;
 }
-const InfoTest = () => {
+const InfoTest: FC = () => {
   const { t } = useTranslation( );
+  const listRef = useRef<HTMLUListElement>(null);
+  const itemRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
-    insertDataInfoTest(t("Вопросов"), t("Время"), "#CallToAction ul", 'span');
+    insertDataInfoTest({textQuestions: t("Вопросов"), textTime: t("Время"), listRef, itemTag: 'span'});
   });
 
   const infoTestBlock: IInfoTestBlock[] = [
@@ -38,12 +40,12 @@ const InfoTest = () => {
 
   return (
     <nav>
-      <StyledUl>
+      <StyledUl ref={listRef}>
         {infoTestBlock.map((item, index) => {
           return (
             <StyledLi key={index + 1}>
               <StyledImg src={item.srcIcon} alt={item.alt}/>
-              <span>{item.text}</span>
+              <span ref={itemRef}>{item.text}</span>
             </StyledLi>
           );
         })}

@@ -1,24 +1,33 @@
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
-export const setWidthScrollBar = async (
-  currentQuestionNumb: number,
-  selectorQuiz: string,
-  selectorScrollBar: string
-) => {
+import { RefObject } from "react";
+
+interface IWidthScrollBar {
+  currentQuestionNumb: number;
+  quizRef: RefObject<HTMLTableSectionElement>;
+  scrollBarElementRef: RefObject<HTMLDivElement>;
+
+}
+async function setWidthScrollBar (
+  {currentQuestionNumb,
+  quizRef,
+  scrollBarElementRef}:IWidthScrollBar
+){
   try {
-    const totalQuestionsNumb: number | undefined = await getTotalQuestionsNumb();
-    const quiz = document.querySelector<HTMLElement>(selectorQuiz);
-    const elementScrollBar = document.querySelector<HTMLElement>(selectorScrollBar);
-    if (quiz && totalQuestionsNumb && elementScrollBar) {
+    const totalQuestionsNumb: number | undefined =
+      await getTotalQuestionsNumb();
+
+     const quizElement = quizRef.current;
+     const scrollBarElement = scrollBarElementRef.current;
+    if (quizElement && totalQuestionsNumb && scrollBarElement) {
       const widthContainer =
-        quiz.clientWidth -
-        parseInt(getComputedStyle(quiz).paddingRight) -
-        parseInt(getComputedStyle(quiz).paddingLeft);
-        let valueWidthScroll = widthContainer / totalQuestionsNumb;
-        elementScrollBar.style.width = `${
-      currentQuestionNumb * valueWidthScroll
-    }px`;
+      quizElement.clientWidth -
+        parseInt(getComputedStyle(quizElement).paddingRight) -
+        parseInt(getComputedStyle(quizElement).paddingLeft);
+      let valueWidthScroll = widthContainer / totalQuestionsNumb;
+      scrollBarElement.style.width = `${
+        currentQuestionNumb * valueWidthScroll
+      }px`;
     }
-    
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new Error(`${error.message}`);
@@ -27,3 +36,7 @@ export const setWidthScrollBar = async (
     }
   }
 };
+
+
+
+export {setWidthScrollBar};

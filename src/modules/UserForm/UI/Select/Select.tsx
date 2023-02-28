@@ -1,17 +1,24 @@
-import {FC} from "react";
+import {FC, FocusEvent, ChangeEvent} from "react";
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
 import { clearAnimateInputAndText } from "../../helpers/clearAnimateInputAndText";
 import { StyledSelect } from "./Select.Styled";
 
-const Select: FC = () => {
+interface ISelect {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+const Select: FC<ISelect> = ({value, onChange}) => {
   return (
     <StyledSelect
-      onFocus={(e) => {
+      onFocus={(e: FocusEvent<HTMLSelectElement, Element>) => {
         setAnimateInputAndText(e, "#6768d7");
       }}
-      onBlur={(e) => {
+      onBlur={(e: FocusEvent<HTMLSelectElement, Element>) => {
         clearAnimateInputAndText(e, "#81868C");
       }}
+      value={value}
+      onChange={onChange}
+      name="userAge"
     >
       <option disabled>Возраст</option>
       <option value="<18"> &lt; 18 </option>

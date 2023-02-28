@@ -1,5 +1,9 @@
 import { getThemeQuestion } from "../api/getThemeQuestion";
-const insertThemeQuestionQuiz = async (currentQuestionNumb: number, selector: string) => {
+interface IThemeQuestionQuiz {
+  currentQuestionNumb: number;
+   selector: string;
+}
+const insertThemeQuestionQuiz = async ({currentQuestionNumb, selector}: IThemeQuestionQuiz) => {
     try {
       const nameThemeQuestion: string | undefined = await getThemeQuestion(currentQuestionNumb);
       const elementQuestion =  document.querySelector<HTMLElement>(selector);

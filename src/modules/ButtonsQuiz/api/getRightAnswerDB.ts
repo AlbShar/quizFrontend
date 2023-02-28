@@ -1,7 +1,7 @@
 import { ref, onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
-const getRightAnswerDB = async (currentQuestionNumb) => {
+const getRightAnswerDB = async (currentQuestionNumb: number) => {
     try {
       let lang = localStorage.getItem("i18nextLng");
   

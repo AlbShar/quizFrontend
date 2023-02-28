@@ -12,6 +12,7 @@ const currentQuestionNumb = contextValue ? contextValue[0] : 1;
 
   useEffect(() => {
     removeAttributesAnswers("#answersAll ul li");
+    
     if (currentQuestionNumb) {
       getAnswersDb(currentQuestionNumb).then((answersDB) =>
       setAnswers(answersDB as string[])

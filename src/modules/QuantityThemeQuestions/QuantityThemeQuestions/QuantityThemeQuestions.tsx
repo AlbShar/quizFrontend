@@ -13,7 +13,7 @@ const QuantityThemeQuestions: FC = () => {
 
   useEffect(() => {
     insertTotalQuestionNumbQuiz("#totalQuestionQuantity");
-    insertThemeQuestionQuiz(currentQuestionNumb, "#themeQuestion")
+    insertThemeQuestionQuiz({currentQuestionNumb, selector: "#themeQuestion"})
   }, [currentQuestionNumb]);
   return (
     <StyledH1 id="questionName">
