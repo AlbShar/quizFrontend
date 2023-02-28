@@ -15,14 +15,11 @@ const StyledH2 = styled.h2`
   }
 `;
 
-const StyledDiv = styled.div`
+const StyledPicture = styled.picture`
 align-items: center;
 box-sizing: border-box;
-padding: 8px;
-background-color: #dfe4e9;
 border-radius: 5px;
 max-width: 100%;
-margin-bottom: 14px;
 
   @media screen and (min-width: 767.8px) {
     display: flex;
@@ -33,13 +30,14 @@ margin-bottom: 14px;
 
   @media screen and (min-width: 1123.8px) {
     flex-basis: 48%;
-    padding: 8px;
   }
 `;
 
 const StyledImg = styled.img`
   width: 100%;
+  height: auto;
   border-radius: 5px;
 `;
 
-export { StyledH2, StyledArticleQuestion, StyledDiv, StyledImg };
+export { StyledH2, StyledArticleQuestion, StyledPicture, StyledImg };
+

@@ -7,23 +7,34 @@ interface IImageQuiz {
   currentQuestionNumb: number;
   wrapperImgRef: RefObject<HTMLDivElement>;
   imgRef: RefObject<HTMLImageElement>;
+  sourceMobImgRef: RefObject<HTMLSourceElement>;
+  sourceTabletImgRef: RefObject<HTMLSourceElement>;
+  sourceDesktopImgRef: RefObject<HTMLSourceElement>;
 }
 
 const insertImageQuiz = (
     {currentQuestionNumb,
     wrapperImgRef,
-    imgRef}: IImageQuiz
+    imgRef, sourceMobImgRef, sourceTabletImgRef, sourceDesktopImgRef}: IImageQuiz
   ) => {
     try{
       const wrapperImgElement = wrapperImgRef.current;
       onValue(
-        ref(db, `questions/question${currentQuestionNumb}/img`),
+        ref(db, `questions/question${currentQuestionNumb}/images`),
         (snapshot) => {
-          const imgSrc: string = snapshot.val();
+          const imgSrc486 = snapshot.val().img486;
+          const imgSrc768 = snapshot.val().img768;
+          const imgSrcDefault = snapshot.val().imgDefault;
           const elementImage = imgRef.current;
-          if (imgSrc && wrapperImgElement && elementImage) {
+          const sourceMobImage = sourceMobImgRef.current;
+          const sourceTabletImg = sourceTabletImgRef.current;
+          const sourceDesktopImg = sourceDesktopImgRef.current;
+          if (wrapperImgElement && elementImage && sourceMobImage && sourceTabletImg && sourceDesktopImg) {
             wrapperImgElement.style.display = "block";
-            elementImage.src = imgSrc;
+            elementImage.src = imgSrcDefault;
+            sourceDesktopImg.srcset = imgSrcDefault;
+            sourceMobImage.srcset = imgSrc486;
+            sourceTabletImg.srcset = imgSrc768;
           } else if (wrapperImgElement) {
             wrapperImgElement.style.display = "none";
           }
