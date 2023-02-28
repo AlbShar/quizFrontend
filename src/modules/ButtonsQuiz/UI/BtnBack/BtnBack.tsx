@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {
     StyledButtonBack,
     StyledImg,
@@ -10,6 +10,7 @@ import { highlightPreviousAnswer } from '../../helpers/highlightPreviousAnswer';
 const arrowleft =  require("../../icons/arrowleft.png");
 
 const BtnBack = () => {
+    
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
     return (

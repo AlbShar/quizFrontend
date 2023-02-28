@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 import { ContextQuestionNumb } from "../../../../components/Context";
 import { StyledButtonQuiz } from "./ButtonQuiz.Styled";
@@ -25,11 +25,11 @@ const ButtonQuiz = () => {
       ) : (
         <StyledButtonQuiz
           onClick={() => {
+            setCurrentQuestionNumb(currentQuestionNumb + 1);
             const answersItem =
               document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
             answersItem.forEach((asnwerItem) => {
               if (asnwerItem.dataset.useranswer) {
-                setCurrentQuestionNumb(currentQuestionNumb + 1);
                 sendUserAnswerDB({
                   currentQuestionNumb,
                   selectorQuestion: "#questionTitle",
