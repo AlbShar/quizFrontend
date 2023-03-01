@@ -46,11 +46,11 @@ const StyledImg = styled.img<Img>`
     if (currentQuestionNumb !== 16) {
       return `
       @media screen and (min-width: 667.8px) {
-        width: 75%;
+        width: 85%;
       }
   
       @media screen and (min-width: 923.8px) {
-        width: 65%;
+        width: 78%;
       }
             `;
     }
