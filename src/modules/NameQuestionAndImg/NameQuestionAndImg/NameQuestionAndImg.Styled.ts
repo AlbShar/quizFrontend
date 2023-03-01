@@ -16,11 +16,11 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledPicture = styled.picture`
-align-items: center;
-box-sizing: border-box;
-border-radius: 5px;
-max-width: 100%;
-display: none;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  max-width: 100%;
+  display: none;
 
   @media screen and (min-width: 767.8px) {
     display: flex;
@@ -34,11 +34,28 @@ display: none;
   }
 `;
 
-const StyledImg = styled.img`
+interface Img {
+  currentQuestionNumb: number;
+}
+
+const StyledImg = styled.img<Img>`
   width: 100%;
   height: auto;
   border-radius: 5px;
+  ${function ({ currentQuestionNumb }) {
+    if (currentQuestionNumb !== 16) {
+      return `
+      @media screen and (min-width: 667.8px) {
+        width: 75%;
+      }
+  
+      @media screen and (min-width: 923.8px) {
+        width: 65%;
+      }
+            `;
+    }
+  }}
 `;
 
-export { StyledH2, StyledArticleQuestion, StyledPicture, StyledImg };
 
+export { StyledH2, StyledArticleQuestion, StyledPicture, StyledImg };

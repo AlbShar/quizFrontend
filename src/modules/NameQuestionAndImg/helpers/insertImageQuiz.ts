@@ -30,7 +30,7 @@ const insertImageQuiz = (
           const imgSrc = snapshot.val();
 
           if (imgSrc && wrapperImgElement && elementImage && sourceMobImage && sourceTabletImg && sourceDesktopImg) {
-            const imgSrc486 = imgSrc.imgMob;
+            const imgSrc486 = imgSrc.img486;
             const imgSrc768 = imgSrc.img768;
             const imgSrcDefault = imgSrc.imgDefault;  
             wrapperImgElement.style.display = "block";

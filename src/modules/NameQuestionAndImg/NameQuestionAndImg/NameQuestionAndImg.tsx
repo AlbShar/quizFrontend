@@ -50,7 +50,7 @@ const NameQuestionAndImg: FC = () => {
           type="image/png"
           media="(min-width:769px)"
         ></source>
-        <StyledImg ref={imgRef} alt="Код на JS" />
+        <StyledImg currentQuestionNumb={currentQuestionNumb} ref={imgRef} alt="Код на JS" />
       </StyledPicture>
     </StyledArticleQuestion>
   );
