@@ -17,37 +17,37 @@ const ButtonQuiz = () => {
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
+  const isLastQuestion = totalQuestionsNumbers === currentQuestionNumb;
+
+  const onClickBtnQuiz = () => {
+    const answersItem =
+      document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
+    const btnBack = document.querySelector("#btnBack");
+    answersItem.forEach((asnwerItem) => {
+      if (asnwerItem.dataset.useranswer) {
+        setCurrentQuestionNumb(currentQuestionNumb + 1);
+        sendUserAnswerDB({
+          currentQuestionNumb,
+          selectorQuestion: "#questionTitle",
+          userAnswer: asnwerItem.textContent || "No anwser",
+          selectorTheme: "#themeQuestion",
+          idUser: getIdUser("idUser"),
+        });
+      } else {
+        return false;
+      }
+      if ((btnBack as HTMLButtonElement)?.style.display === "none") {
+        (btnBack as HTMLButtonElement).style.display = "flex";
+      }
+    });
+  };
 
   return (
     <>
-      {totalQuestionsNumbers === currentQuestionNumb ? (
+      {isLastQuestion ? (
         <LinkBtn text="Закончить тест" pageTo="/contact" />
       ) : (
-        <StyledButtonQuiz
-          onClick={() => {
-            setCurrentQuestionNumb(currentQuestionNumb + 1);
-            const answersItem =
-              document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
-              const btnBack = document.querySelector('#btnBack');
-            answersItem.forEach((asnwerItem) => {
-              if (asnwerItem.dataset.useranswer) {
-                sendUserAnswerDB({
-                  currentQuestionNumb,
-                  selectorQuestion: "#questionTitle",
-                  userAnswer: asnwerItem.textContent || "No anwser",
-                  selectorTheme: "#themeQuestion",
-                  idUser: getIdUser("idUser")
-                });
-              } else {
-                return false;
-              }
-              if ((btnBack as HTMLButtonElement)?.style.display === 'none') {
-                (btnBack as HTMLButtonElement).style.display = 'flex';
-              }
-              
-            });
-          }}
-        >
+        <StyledButtonQuiz onClick={onClickBtnQuiz}>
           {t("Принять")}
         </StyledButtonQuiz>
       )}

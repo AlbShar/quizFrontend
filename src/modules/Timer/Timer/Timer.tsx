@@ -17,6 +17,8 @@ import isModal from "../helpers/isModal";
   let seconds: string = getFullNumb(Math.floor(timeLeft % 60));
   const [isCounting, setIsCounting] = useState<boolean>(true);
   const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
+  const elementNumbersTimer = timer.map((time, index) => <span key={index+1}>{time}</span>);
+  const isTimeUp = hours === "00" && minutes === "00" && seconds === "00";
 
   useEffect(() => {
     removePenaltyPoints();
@@ -32,9 +34,9 @@ import isModal from "../helpers/isModal";
   return (
     <StyledDivTimer>
       <span>
-        {timer.map((time, index) => <span key={index+1}>{time}</span>)}
+        {elementNumbersTimer}
       </span>
-      {hours === "00" && minutes === "00" && seconds === "00" && (
+      { isTimeUp && (
         <Modal
           title={t("Заголовок1_вышло_время")}
           subTitle={t("Заголовок2_вышло_время")}
