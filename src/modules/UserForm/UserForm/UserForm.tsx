@@ -30,13 +30,14 @@ const UserForm: FC = () => {
     userAge: "< 18",
     userGender: "man",
   });
-  const onValueInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const onValueInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
     console.log(value);
     setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
   };
+  
   const inputUserNameRef = useRef<HTMLInputElement>(null);
   const inputUserEmailRef = useRef<HTMLInputElement>(null);
   const inputUserRadioManRef = useRef<HTMLInputElement>(null);

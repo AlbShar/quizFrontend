@@ -28,6 +28,7 @@ const ButtonQuiz = () => {
             setCurrentQuestionNumb(currentQuestionNumb + 1);
             const answersItem =
               document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
+              const btnBack = document.querySelector('#btnBack');
             answersItem.forEach((asnwerItem) => {
               if (asnwerItem.dataset.useranswer) {
                 sendUserAnswerDB({
@@ -40,6 +41,10 @@ const ButtonQuiz = () => {
               } else {
                 return false;
               }
+              if ((btnBack as HTMLButtonElement)?.style.display === 'none') {
+                (btnBack as HTMLButtonElement).style.display = 'flex';
+              }
+              
             });
           }}
         >

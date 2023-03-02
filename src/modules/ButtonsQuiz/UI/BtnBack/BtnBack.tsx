@@ -16,14 +16,15 @@ const BtnBack = () => {
     return (
         <>
         {!(currentQuestionNumb === 1) && (
-          <StyledButtonBack
-            onClick={() => {
+          <StyledButtonBack id='btnBack'
+            onClick={(e) => {
               setCurrentQuestionNumb(--currentQuestionNumb);
               highlightPreviousAnswer(
                 {idUser: getIdUser("idUser"),
                 currentQuestionNumb,
                 selectorAnswers: "#answersAll ul li"}
               );
+              (e.currentTarget as HTMLButtonElement).style.display = 'none';
             }}
           >
             <StyledImg src={arrowleft} alt="Кнопка назад" />
