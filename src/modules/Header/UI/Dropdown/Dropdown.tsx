@@ -32,6 +32,7 @@ const Dropdown: FC = () => {
     return (
       <StyledLi
         key={index + 1}
+        tabIndex={0}
         onClick={() => {
           setSelected(language);
           i18next.changeLanguage(mapLanguage[language as keyof IMapLanguage]);

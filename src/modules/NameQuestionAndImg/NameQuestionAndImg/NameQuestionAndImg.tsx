@@ -33,7 +33,7 @@ const NameQuestionAndImg: FC = () => {
 
   return (
     <StyledArticleQuestion>
-      <StyledH2 ref={questionTitleRef} id="questionTitle"></StyledH2>
+      <StyledH2 ref={questionTitleRef} id="questionTitle" tabIndex={0}></StyledH2>
       <StyledPicture ref={wrapperImgRef}>
         <source
           ref={sourceMobImgRef}
