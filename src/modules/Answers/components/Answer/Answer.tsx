@@ -1,4 +1,4 @@
-import {FC, ReactNode, MouseEvent} from 'react';
+import {FC, ReactNode, MouseEvent, KeyboardEventHandler} from 'react';
 import {StyledLi} from "./Answer.Styled";
 import { setAttributesUserAnswer } from '../../helpers/setAttributesUserAnswer';
 
@@ -13,7 +13,7 @@ const Answer: FC<IAnswer> = ({children}) => {
     ;
   }
   
-  const handleKeyboardClick = (e: KeyboardEvent) => {
+  const handleKeyboardClick: KeyboardEventHandler<HTMLLIElement> = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       (e.currentTarget as HTMLLIElement)?.click();
