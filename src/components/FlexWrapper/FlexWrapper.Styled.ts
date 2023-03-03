@@ -3,20 +3,22 @@ import styled from "styled-components";
 interface IFlexWrapper {
   gap?: number;
   widthFlexStart?: number;
+  widthColumnStart?: number;
 }
 
-const HeaderStyled = styled.header`
-  background-color: #252b58;
-  width: 100%;
-  margin: 0 0 34px 0;
+export const StyledFlexWrapper = styled.div<IFlexWrapper>`
+  gap: ${({ gap }) => (gap ? gap + "px" : "")};
 
-  @media screen and (min-width: 459.8px) {
-    margin: 0 0 40px 0;
-  }
-`;
+  ${function ({ widthColumnStart }) {
+    if (widthColumnStart) {
+      return `
+      display: flex;
+      flex-direction: column;
+      justigy-content: center;
+            `;
+    }
+  }}}
 
-const StyledFlexWrapper = styled.div<IFlexWrapper>`
-  gap: ${({gap}) => gap ? (gap + 'px') : ""};
   ${function ({ widthFlexStart }) {
     if (!widthFlexStart) {
       return `
@@ -37,5 +39,3 @@ const StyledFlexWrapper = styled.div<IFlexWrapper>`
     }
   }}
 `;
-
-export { HeaderStyled, StyledFlexWrapper };
