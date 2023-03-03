@@ -9,14 +9,16 @@ import { MouseEvent } from "react";
 
 const Button: FC = () => {
 
+  const onClickLinkBtn = (e: MouseEvent) => {
+    if (checkIsUserData()) {
+        sendUserInfoDB(getIdUser("idUser"));
+      } else {
+        e.preventDefault();
+      }
+}
+
     return (
-        <LinkBtn text="Получить_результат" pageTo="/results" onClick={(e: MouseEvent) => {
-            if (checkIsUserData()) {
-                sendUserInfoDB(getIdUser("idUser"));
-              } else {
-                e.preventDefault();
-              }
-        }} />
+        <LinkBtn text="Получить_результат" pageTo="/results" onClick={onClickLinkBtn} />
     );
 };
 

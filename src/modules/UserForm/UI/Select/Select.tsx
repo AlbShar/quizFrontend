@@ -5,7 +5,7 @@ import { StyledSelect } from "./Select.Styled";
 
 interface ISelect {
   value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 const Select: FC<ISelect> = ({value, onChange}) => {
   return (

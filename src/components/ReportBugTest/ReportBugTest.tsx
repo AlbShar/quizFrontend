@@ -17,6 +17,16 @@ const GeneralInfoTest: FC = () => {
         text: t("Если_вы_нашли_ошибку"),
       },
     ];
+    const blockReportBug = dataReportBug.map((block, index) => (
+      <InfoBlock
+        key={index+1}
+        title={block.title}
+        text={block.text}
+        imgSrc={block.img || ''}
+        imgAlt={block.alt || "Картинка"}
+        idForText={block.id}
+      />
+    ));
     
       const JSONText: IJSONText[] = [
         { selector: "#reportBugText", json: t("Если_вы_нашли_ошибку") },
@@ -29,16 +39,7 @@ const GeneralInfoTest: FC = () => {
 
   return (
     <section>
-      {dataReportBug.map((block, index) => (
-        <InfoBlock
-          key={index+1}
-          title={block.title}
-          text={block.text}
-          imgSrc={block.img || ''}
-          imgAlt={block.alt || ""}
-          idForText={block.id}
-        />
-      ))}
+      {blockReportBug}
     </section>
   );
 };

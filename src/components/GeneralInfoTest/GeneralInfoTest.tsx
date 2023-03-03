@@ -38,6 +38,16 @@ const GeneralInfoTest = () => {
           text: t("После_прохождения"),
         },
       ];
+      const blocksHomepage = generalInfo.map((block, index) => (
+        <InfoBlock
+          key={index+1}
+          title={block.title}
+          text={block.text}
+          imgSrc={block.img || ''}
+          imgAlt={block.alt || "Картинка"}
+          idForText={block.id}
+        />
+      ));
     
       const JSONText: [IJSONText] = [
         { selector: "#generalInfoTestText", json: t("Данный_тест") }
@@ -50,16 +60,7 @@ const GeneralInfoTest = () => {
 
   return (
     <section>
-      {generalInfo.map((block, index) => (
-        <InfoBlock
-          key={index+1}
-          title={block.title}
-          text={block.text}
-          imgSrc={block.img || ''}
-          imgAlt={block.alt || ''}
-          idForText={block.id}
-        />
-      ))}
+      {blocksHomepage}
     </section>
   );
 };

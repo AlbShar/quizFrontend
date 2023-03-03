@@ -7,11 +7,23 @@ interface IAnswer {
 }
 
 const Answer: FC<IAnswer> = ({children}) => {
+
+  const handleMouseClick = (e: MouseEvent) => {
+    setAttributesUserAnswer({e, selectorAnswers: '#answersAll ul li', cssBorder: '2px solid rgb(103, 104, 215)', nameDataAtrr: 'data-useranswer'})
+    ;
+  }
+  
+  const handleKeyboardClick = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      (e.currentTarget as HTMLLIElement)?.click();
+    }
+  }
     return (
         <StyledLi
-        onClick={(e: MouseEvent) => {
-          setAttributesUserAnswer({e, selectorAnswers: '#answersAll ul li', cssBorder: '2px solid rgb(103, 104, 215)', nameDataAtrr: 'data-useranswer'})
-        }}
+        tabIndex={0}
+        onClick={handleMouseClick}
+        onKeyDown={handleKeyboardClick}
       >
         {children}
       </StyledLi>

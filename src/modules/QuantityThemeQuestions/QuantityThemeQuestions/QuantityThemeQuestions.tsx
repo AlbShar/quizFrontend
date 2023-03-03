@@ -18,7 +18,7 @@ const QuantityThemeQuestions: FC = () => {
   return (
     <StyledH1 id="questionName">
       {t("Вопрос")} {currentQuestionNumb}
-      <StyledSpanQuestionQuantity id="totalQuestionQuantity">0</StyledSpanQuestionQuantity>
+      <StyledSpanQuestionQuantity id="totalQuestionQuantity" tabIndex={0}>0</StyledSpanQuestionQuantity>
       <StyledSpanThemeQuestion id="themeQuestion">0</StyledSpanThemeQuestion>
     </StyledH1>
   );

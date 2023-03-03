@@ -37,18 +37,19 @@ const InfoTest: FC = () => {
       alt: "icon of bar chart",
     },
   ];
-
+  const elementsInfoTestBlock = infoTestBlock.map((item, index) => {
+    return (
+      <StyledLi key={index + 1}>
+        <StyledImg src={item.srcIcon} alt={item.alt}/>
+        <span ref={itemRef}>{item.text}</span>
+      </StyledLi>
+    );
+  });
+  
   return (
     <nav>
       <StyledUl ref={listRef}>
-        {infoTestBlock.map((item, index) => {
-          return (
-            <StyledLi key={index + 1}>
-              <StyledImg src={item.srcIcon} alt={item.alt}/>
-              <span ref={itemRef}>{item.text}</span>
-            </StyledLi>
-          );
-        })}
+        {elementsInfoTestBlock}
       </StyledUl>
     </nav>
   );

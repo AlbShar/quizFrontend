@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, MouseEvent} from 'react';
 import {
     StyledButtonBack,
     StyledImg,
@@ -12,19 +12,21 @@ const arrowleft =  require("../../icons/arrowleft.png");
 const BtnBack = () => {
     
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
+    const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
+      setCurrentQuestionNumb(--currentQuestionNumb);
+      highlightPreviousAnswer(
+        {idUser: getIdUser("idUser"),
+        currentQuestionNumb,
+        selectorAnswers: "#answersAll ul li"}
+      );
+      e.currentTarget.style.display = 'none';
 
+    };
     return (
         <>
         {!(currentQuestionNumb === 1) && (
-          <StyledButtonBack
-            onClick={() => {
-              setCurrentQuestionNumb(--currentQuestionNumb);
-              highlightPreviousAnswer(
-                {idUser: getIdUser("idUser"),
-                currentQuestionNumb,
-                selectorAnswers: "#answersAll ul li"}
-              );
-            }}
+          <StyledButtonBack id='btnBack'
+            onClick={onClickBackBtn}
           >
             <StyledImg src={arrowleft} alt="Кнопка назад" />
             <StyledSpan>Назад</StyledSpan>

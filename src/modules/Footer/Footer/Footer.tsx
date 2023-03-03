@@ -78,6 +78,36 @@ const Footer = () => {
     { src: fondy, alt: "Иконка fondy" },
   ];
 
+  const elementsIconsNetworks = iconsNetworks.map((icon, index) => {
+    return (
+      <StyledLiNetworks key={index + 1}>
+        <StyledA href={icon.url} >
+          <StyledImgNetworks src={icon.src} alt={icon.alt} />
+        </StyledA>
+      </StyledLiNetworks>
+    );
+  });
+
+  const elementsInfoMiddleFooter = infoMiddleFooter.map((item, index) => {
+    return (
+      <StyledLi key={index + 1}>
+        <Link className="footer__list-link" to={item.link}>
+          {item.text}
+        </Link>
+      </StyledLi>
+    );
+  });
+
+  const elementsIconsPayments = iconsPayments.map((icon, index) => {
+    return (
+      <StyledImgPayment
+        src={icon.src}
+        alt={icon.alt}
+        key={index + 1}
+      />
+    );
+  });
+
   return (
     <StyledFooter>
       <Container>
@@ -86,43 +116,19 @@ const Footer = () => {
           <StyledSectionNetworks>
             <nav >
               <StyledUlNetworks>
-                {iconsNetworks.map((icon, index) => {
-                  return (
-                    <StyledLiNetworks key={index + 1}>
-                      <StyledA href={icon.url} >
-                        <StyledImgNetworks src={icon.src} alt={icon.alt} />
-                      </StyledA>
-                    </StyledLiNetworks>
-                  );
-                })}
+                {elementsIconsNetworks}
               </StyledUlNetworks>
             </nav>
           </StyledSectionNetworks>
           <StyledSection>
             <nav>
               <StyledUl>
-                {infoMiddleFooter.map((item, index) => {
-                  return (
-                    <StyledLi key={index + 1}>
-                      <Link className="footer__list-link" to={item.link}>
-                        {item.text}
-                      </Link>
-                    </StyledLi>
-                  );
-                })}
+                {elementsInfoMiddleFooter}
               </StyledUl>
             </nav>
           </StyledSection>
           <StyledSectionPayment>
-            {iconsPayments.map((icon, index) => {
-              return (
-                <StyledImgPayment
-                  src={icon.src}
-                  alt={icon.alt}
-                  key={index + 1}
-                />
-              );
-            })}
+            {elementsIconsPayments}
           </StyledSectionPayment>
         </StyledFlexWrapper>
       </Container>
