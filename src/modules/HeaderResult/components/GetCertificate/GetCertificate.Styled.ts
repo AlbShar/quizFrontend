@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import { StyledSect } from "../../styles/Common.Styled";
+
+const StyledSection = styled(StyledSect)`
+  position: relative;
+  width: 288px;
+  @media screen and (min-width: 767.8px) {
+    max-width: 235px;
+    min-height: 118px;
+    padding-top: 84px;
+    text-align: center;
+  }
+`;
 
 const StyledH2 = styled.h2`
   font: var(--font-title4);
@@ -6,6 +18,10 @@ const StyledH2 = styled.h2`
   max-width: 205px;
   margin: 0;
   padding: 0;
+
+  @media screen and (min-width: 767.8px) {
+    display: none;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -14,6 +30,11 @@ const StyledImg = styled.img`
   position: absolute;
   top: 30%;
   right: 10px;
+
+  @media screen and (min-width: 767.8px) {
+    top: 16%;
+  right: 36%;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -24,9 +45,7 @@ const StyledButton = styled.button`
   margin: 0;
   padding: 0;
 
-  @media screen and (min-width: 459.8px) {
-    font: var(--font-button);
-  }
+  
 `;
 
-export { StyledH2, StyledButton, StyledImg };
+export { StyledH2, StyledButton, StyledImg, StyledSection };

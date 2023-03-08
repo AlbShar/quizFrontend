@@ -14,4 +14,12 @@ const StyledH2 = styled.h2`
   color: white;
 `;
 
-export {StyledH1, StyledH2}
+const StyledArticle = styled.article`
+  text-align: center;
+
+  @media screen and (min-width: 767.8px) {
+    text-align: left;
+  }
+`;
+
+export {StyledH1, StyledH2, StyledArticle}

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import { StyledLabel, StyledUserData, StyledArticle} from "./UserInfo.Styled";
-import { StyledSection } from '../../styles/Common.Styled';
+import { StyledSection } from './UserInfo.Styled';
 
 const UserInfo: FC = () => {
     return (
@@ -13,7 +13,6 @@ const UserInfo: FC = () => {
                 <StyledLabel as='span'>Email</StyledLabel>
                 <StyledUserData as='span'>Anton@gmail.com</StyledUserData>
             </article>
-            
         </StyledSection>
     );
 };

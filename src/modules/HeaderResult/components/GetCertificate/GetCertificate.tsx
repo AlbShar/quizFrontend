@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledSection } from '../../styles/Common.Styled';
+import { StyledSection } from './GetCertificate.Styled';
 import { StyledH2, StyledButton, StyledImg } from './GetCertificate.Styled';
 
 const iconPdf = require("../../images/icon_pdf.png");

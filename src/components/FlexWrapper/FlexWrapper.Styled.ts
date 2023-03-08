@@ -4,6 +4,7 @@ interface IFlexWrapper {
   gap?: number;
   widthFlexStart?: number;
   widthColumnStart?: number;
+  widthColumnEnd?: number;
 }
 
 export const StyledFlexWrapper = styled.div<IFlexWrapper>`
@@ -15,6 +16,16 @@ export const StyledFlexWrapper = styled.div<IFlexWrapper>`
       display: flex;
       flex-direction: column;
       justigy-content: center;
+            `;
+    }
+  }}}
+
+  ${function ({ widthColumnEnd }) {
+    if (widthColumnEnd) {
+      return `
+      @media screen and (min-width: ${widthColumnEnd}px) {
+        flex-direction: row;
+      }
             `;
     }
   }}}
