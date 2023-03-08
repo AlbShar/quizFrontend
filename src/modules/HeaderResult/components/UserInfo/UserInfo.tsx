@@ -1,6 +1,6 @@
 import {FC} from 'react';
-import {StyledSection, StyledLabel, StyledUserData, StyledArticle} from "./UserInfo.Styled";
-
+import { StyledLabel, StyledUserData, StyledArticle} from "./UserInfo.Styled";
+import { StyledSection } from '../../styles/Common.Styled';
 
 const UserInfo: FC = () => {
     return (

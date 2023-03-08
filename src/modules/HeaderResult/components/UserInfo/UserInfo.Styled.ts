@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-const StyledSection = styled.section`
-  background-color: #3b4069;
-  padding: 16px 8px 13px 16px;
-  margin: 16px 0;
-`;
+
 
 const StyledArticle = styled.section`
   padding: 0 0 12px 0;
@@ -27,4 +23,4 @@ const StyledUserData = styled.h3`
   padding: 0;
 `;
 
-export { StyledSection, StyledLabel, StyledUserData, StyledArticle };
+export { StyledLabel, StyledUserData, StyledArticle };

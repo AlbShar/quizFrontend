@@ -6,6 +6,7 @@ import {
     StyledH1, StyledH2 
   } from "./HeaderResult.Styled";
   import UserInfo from '../components/UserInfo/UserInfo';
+  import GetCertificate from '../components/GetCertificate/GetCertificate';
 
 const HeaderResult: FC = () => {
     return (
@@ -15,6 +16,7 @@ const HeaderResult: FC = () => {
                 <StyledH1>Поздравляю, Антон</StyledH1>
                 <StyledH2>Вы успешно прошли тестирование</StyledH2>
                 <UserInfo/>
+                <GetCertificate/>
             </FlexWrapper>
         </Header>
     );
