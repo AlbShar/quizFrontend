@@ -7,21 +7,20 @@ const StyledSection = styled(StyledSect)`
   @media screen and (min-width: 767.8px) {
     max-width: 235px;
     min-height: 118px;
-    padding-top: 84px;
-    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 `;
 
 const StyledH2 = styled.h2`
   font: var(--font-title4);
   color: #ffffff;
-  max-width: 205px;
   margin: 0;
   padding: 0;
-
-  @media screen and (min-width: 767.8px) {
-    display: none;
-  }
+  max-width: 205px;
 `;
 
 const StyledImg = styled.img`
@@ -32,8 +31,8 @@ const StyledImg = styled.img`
   right: 10px;
 
   @media screen and (min-width: 767.8px) {
-    top: 16%;
-  right: 36%;
+  margin: 0 0 0 15px;
+  position: relative;
   }
 `;
 
