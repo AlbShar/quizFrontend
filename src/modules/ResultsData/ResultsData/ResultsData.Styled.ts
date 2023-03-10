@@ -20,11 +20,33 @@ const StyledSection = styled.section`
     top: 50%;
     left: 50%;
   }
+
+  @media screen and (min-width: 767.8px) {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 185px;
+
+    &:after {
+      transform: rotate(90deg);
+      width: 102px;
+      left: 43%;
+    }
+  }
+
+  @media screen and (min-width: 1439.8px) {
+    &:after {
+      left: 45.5%;
+    }
+  }
 `;
 
 const StyledArticle = styled.article`
   text-align: center;
   padding: 16px 0;
+
+  @media screen and (min-width: 767.8px) {
+    flex-basis: 50%;
+  }
 `;
 
 const StyledH3 = styled.h3`

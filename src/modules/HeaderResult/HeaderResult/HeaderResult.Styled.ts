@@ -19,6 +19,7 @@ const StyledArticle = styled.article`
 
   @media screen and (min-width: 767.8px) {
     text-align: left;
+    margin: 0 15px 0 0;
   }
 `;
 

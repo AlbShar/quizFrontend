@@ -11,6 +11,11 @@ const StyledArticle = styled.article`
   &:not(list-child) {
     margin: 0 0 24px 0;
   }
+
+  @media screen and (min-width: 767.8px) {
+    padding: 16px 40px 18px 40px;
+
+  }
 `
 
 const StyledP = styled.article`
@@ -20,4 +25,19 @@ const StyledP = styled.article`
   margin: 12px 0 0 0; 
 `
 
-export {StyledArticle, StyledP};
+const StyledImg = styled.img`
+  width: 100%;
+  max-height: 220px;
+  max-width: 291px;
+
+  @media screen and (min-width: 767.8px) {
+    max-height: 220px;
+    max-width: 520px;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    max-height: 320px;
+  }
+`
+
+export {StyledArticle, StyledP, StyledImg};

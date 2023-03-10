@@ -7,8 +7,8 @@ const Graphics = () => {
   return (
     <Container>
       <StyledSection>
-        <Graphic/>
-        <Graphic/>
+          <Graphic />
+          <Graphic />
       </StyledSection>
     </Container>
   );

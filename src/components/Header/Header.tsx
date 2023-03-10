@@ -3,10 +3,11 @@ import { HeaderStyled } from './Header.Styled';
 
 interface IHeader {
     children: React.ReactNode;
+    height?: number;
 }
-const Header:FC<IHeader> = ({children}) => {
+const Header:FC<IHeader> = ({children, height}) => {
     return (
-        <HeaderStyled>
+        <HeaderStyled height={height}>
             {children}
         </HeaderStyled>
     );
