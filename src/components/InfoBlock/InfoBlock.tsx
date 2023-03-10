@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, ReactNode} from 'react';
 import {
     StyledFeatureArticle,
     StyledSummary,
@@ -13,6 +13,7 @@ import {
     imgSrc: string;
     imgAlt: string;
     idForText?: string;
+    children?: ReactNode;
   }
 
 const InfoBlock: FC<Info> = ({title, text, imgSrc, imgAlt, idForText}) => {
