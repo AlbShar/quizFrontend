@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { removeAttributesAnswers } from "../helpers/removeAttributesAnswers";
 import { getAnswersDb } from "../api/getAnswersDb";
 import { StyledArticle, StyledUl } from "./Answers.Styled";
