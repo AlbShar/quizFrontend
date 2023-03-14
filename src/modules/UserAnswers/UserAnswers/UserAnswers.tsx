@@ -1,19 +1,43 @@
 import { useState, useLayoutEffect } from "react";
 import Container from "../../../components/Container/Container";
+import Dropdown from "../../../UI/Dropdown/Dropdown";
+
+interface IUserAnswer {
+  point: number;
+  userAnswer: string;
+  question: string;
+  theme: string;
+}
 
 interface IUserAnswers {
-  answer1: object;
-  answer2: object;
+  [key: string]: IUserAnswer;
+}
+
+interface IAnswer {
+  A: string;
+  B: string;
+  C: string;
+  D: string;
+  E: string;
 }
 
 interface IAllAnswers {
-  answers1: object;
-  answers2: object;
+  [key: string]: {
+    [key: string]: IAnswer;
+  };
+}
+
+interface IQuestion {
+  descr: string;
+  name: string;
+  rightAnswer: string;
+  theme: string;
 }
 
 interface IAllQuiestions {
-  question1: object;
-  question2: object;
+  [key: string]: {
+    [key: string]: IQuestion;
+  };
 }
 
 const UserAnswers = () => {
@@ -134,6 +158,8 @@ const UserAnswers = () => {
   return (
     <Container>
       <details open>
+        <Dropdown nameList="filter-theme" style={{ display: "inline" }} />
+        <Dropdown nameList="filter-right" style={{ display: "inline" }} />
         <summary>Ответы</summary>
         <ul>
           {Object.entries(userAnswers).map((userAnswerArr) => {
@@ -146,19 +172,36 @@ const UserAnswers = () => {
 
             return (
               <li style={className}>
-                <div><span>{`Вопрос № ${numbQuiestion}:`}</span>{question}</div>
-                <div>
-                  <span>
-                    {" "}
-                    <span>Варианты ответов:</span>
-                    {Object.entries(allAnswers[`answers${numbQuiestion}`][lang])
-                      .map((answer) => answer.join(", "))
-                      .join(", ")}
-                  </span>
-                </div>
-                <div>{`Ваш ответ: ${userAnswer}`}</div>
-                  <div><span>Правильный ответ: </span>{allQuiestions[`question${numbQuiestion}`][lang]['rightAnswer']}</div>
-                  <div><span>Объяснение: </span>{allQuiestions[`question${numbQuiestion}`][lang]['descr']}</div>
+                <ul>
+                  <li>
+                    <span>{`Вопрос № ${numbQuiestion}: `}</span>
+                    {question}
+                  </li>
+                  <li>
+                    <span>
+                      {" "}
+                      <span>Варианты ответов:</span>
+                      {Object.entries(
+                        allAnswers[`answers${numbQuiestion}`][lang || "ru"]
+                      )
+                        .map((answer) => answer.join(", "))
+                        .join(", ")}
+                    </span>
+                  </li>
+                  <li>{`Ваш ответ: ${userAnswer}`}</li>
+                  {["rightAnswer", "descr"].map((property) => {
+                    return (
+                      <li>
+                        <span>Правильный ответ: </span>
+                        {
+                          allQuiestions[`question${numbQuiestion}`][
+                            lang || "ru"
+                          ][property]
+                        }
+                      </li>
+                    );
+                  })}
+                </ul>
               </li>
             );
           })}

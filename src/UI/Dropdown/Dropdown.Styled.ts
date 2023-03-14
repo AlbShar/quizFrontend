@@ -24,6 +24,7 @@ const StyledSpan = styled.span`
 `;
 
 const StyledUl = styled.ul`
+border: 1px solid red;
   left: -9px;
   top: 30px;
   background-color: white;

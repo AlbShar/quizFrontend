@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, FC, CSSProperties } from "react";
 import i18next from "i18next";
 import {
   StyleDivDropdown,
@@ -9,56 +9,69 @@ import {
   StyledSpan,
 } from "./Dropdown.Styled";
 
-const chevrondown = require("../../icons/chevrondown.png");
+const chevrondown = require("../../assets/images/chevrondown.png");
 
-const Dropdown: FC = () => {
+type DropdownProps = {
+  nameList: "languages" | "filter-right" | "filter-theme";
+  style?: CSSProperties;
+};
 
-  interface IMapLanguage {
-    'Русский': string;
-    'English': string;
-    'Deutsch': string;
-  }
+const Dropdown: FC<DropdownProps> = ({ nameList, style }) => {
+  const data =
+    nameList === "languages"
+      ? ["Русский", "English", "Deutsch"]
+      : nameList === "filter-right"
+      ? ["Все вопросы", "Правильно", "Неправильно"]
+      : [
+          "Парадигмы программирования",
+          "Теория Javascript",
+          "практика Javascript",
+          "TypeScript",
+          "React",
+        ];
+  interface IMapLanguage extends Record<typeof data[number], string> {}
 
-  const [selected, setSelected] = useState<string>("Русский");
+  const [selected, setSelected] = useState<string>(data[0]);
   const [isActive, setActive] = useState<boolean>(false);
-  const languages: string[] = ["Русский", "English", "Deutsch"];
+  const itemsDropdown: string[] = data;
   const mapLanguage: IMapLanguage = {
-    'Русский': "ru",
-    'English': "en",
-    'Deutsch': "deu",
+    Русский: "ru",
+    English: "en",
+    Deutsch: "deu",
   };
 
-  const elementLanguages = languages.map((language: string, index: number) => {
+  const elementLanguages = itemsDropdown.map((item: string, index: number) => {
     return (
-      <StyledLi
+      <StyledLi 
         key={index + 1}
         tabIndex={0}
         onClick={() => {
-          setSelected(language);
-          i18next.changeLanguage(mapLanguage[language as keyof IMapLanguage]);
+          setSelected(item);
+          i18next.changeLanguage(mapLanguage[item as keyof IMapLanguage]);
           setActive(false);
-          localStorage.setItem("language", language);
-          (document.querySelector("html") as HTMLHtmlElement).setAttribute("lang", localStorage.getItem("i18nextLng") || 'ru');
+          localStorage.setItem("language", item);
+          (document.querySelector("html") as HTMLHtmlElement).setAttribute(
+            "lang",
+            localStorage.getItem("i18nextLng") || "ru"
+          );
         }}
       >
-        {language}
+        {item}
       </StyledLi>
     );
-  })
+  });
 
   return (
-    <StyleDivDropdown>
-      <StyledButton onClick={() => setActive(isActive => !isActive)}>
+    <StyleDivDropdown style={style} >
+      <StyledButton onClick={() => {
+        setActive((isActive) => !isActive)
+      }}>
         <StyledSpan className="dropdown-btn-text">
-          {localStorage.getItem("language") || selected}
+          {selected || localStorage.getItem("language")}
         </StyledSpan>
         <StyledImg src={chevrondown} alt="Кнопка вниз" />
       </StyledButton>
-      {isActive && (
-        <StyledUl>
-          {elementLanguages}
-        </StyledUl>
-      )}
+      {isActive && <StyledUl>{elementLanguages}</StyledUl>}
     </StyleDivDropdown>
   );
 };
