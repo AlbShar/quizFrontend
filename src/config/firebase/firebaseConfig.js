@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDVNDua7phkjh4mSytFaX6CTuJsImD6Od8",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "quizfrontend-ac9ee.firebaseapp.com",
     databaseURL:
       "https://quizfrontend-ac9ee-default-rtdb.europe-west1.firebasedatabase.app",

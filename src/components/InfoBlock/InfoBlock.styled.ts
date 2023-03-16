@@ -20,6 +20,7 @@ const StyledSummary = styled.summary`
         font: var(--font-title4);
         justify-content: flex-start;
         padding: 10px 0 10px 40px;
+      }
         
 `;
 const StyledP = styled.p`

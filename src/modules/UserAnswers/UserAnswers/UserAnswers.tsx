@@ -1,6 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import Container from "../../../components/Container/Container";
 import Dropdown from "../../../UI/Dropdown/Dropdown";
+import { StyledLi, StyledUl, StyledSpan, StyledSpanResult, StyledSum } from "./UserAnswers.Styled";
 
 interface IUserAnswer {
   point: number;
@@ -14,11 +15,7 @@ interface IUserAnswers {
 }
 
 interface IAnswer {
-  A: string;
-  B: string;
-  C: string;
-  D: string;
-  E: string;
+  [key: string]: string;
 }
 
 interface IAllAnswers {
@@ -160,52 +157,50 @@ const UserAnswers = () => {
       <details open>
         <Dropdown nameList="filter-theme" style={{ display: "inline" }} />
         <Dropdown nameList="filter-right" style={{ display: "inline" }} />
-        <summary>Ответы</summary>
-        <ul>
+        <StyledSum>Ответы</StyledSum>
+        <StyledUl>
           {Object.entries(userAnswers).map((userAnswerArr) => {
             const numbQuiestion = userAnswerArr[0].match(/\d+/);
             const { point, userAnswer, question, theme } = userAnswerArr[1];
             const isRight = point ? true : false;
             const color = isRight ? "green" : "red";
-            const className = { border: `1px solid ${color}` };
+            const className = { borderRadius: 10, border: `1px solid ${color}` };
             const lang = localStorage.getItem("i18nextLng");
 
             return (
-              <li style={className}>
-                <ul>
-                  <li>
-                    <span>{`Вопрос № ${numbQuiestion}: `}</span>
+              <StyledLi style={className}>
+                <StyledUl>
+                  <StyledSpanResult isRight={isRight}>{isRight ? 'Верно' : 'Неверно'}</StyledSpanResult>
+                  <StyledLi>
+                    <StyledSpan>{`Вопрос № ${numbQuiestion}: `}</StyledSpan>
                     {question}
-                  </li>
-                  <li>
-                    <span>
-                      {" "}
-                      <span>Варианты ответов:</span>
+                  </StyledLi>
+                  <StyledLi>
+                      <StyledSpan>Варианты ответов: </StyledSpan>
                       {Object.entries(
                         allAnswers[`answers${numbQuiestion}`][lang || "ru"]
                       )
                         .map((answer) => answer.join(", "))
                         .join(", ")}
-                    </span>
-                  </li>
-                  <li>{`Ваш ответ: ${userAnswer}`}</li>
+                  </StyledLi>
+                  <StyledLi><StyledSpan>Ваш ответ:</StyledSpan> {userAnswer}</StyledLi>
                   {["rightAnswer", "descr"].map((property) => {
                     return (
-                      <li>
-                        <span>Правильный ответ: </span>
+                      <StyledLi>
+                        <StyledSpan>Правильный ответ: </StyledSpan>
                         {
                           allQuiestions[`question${numbQuiestion}`][
                             lang || "ru"
                           ][property]
                         }
-                      </li>
+                      </StyledLi>
                     );
                   })}
-                </ul>
-              </li>
+                </StyledUl>
+              </StyledLi>
             );
           })}
-        </ul>
+        </StyledUl>
       </details>
     </Container>
   );
