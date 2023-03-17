@@ -1,7 +1,14 @@
 import { useState, useLayoutEffect } from "react";
 import Container from "../../../components/Container/Container";
-import Dropdown from "../../../UI/Dropdown/Dropdown";
-import { StyledLi, StyledUl, StyledSpan, StyledSpanResult, StyledSum } from "./UserAnswers.Styled";
+import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
+import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
+import {
+  StyledLi,
+  StyledUl,
+  StyledSpan,
+  StyledSpanResult,
+  StyledSum,
+} from "./UserAnswers.Styled";
 
 interface IUserAnswer {
   point: number;
@@ -40,13 +47,13 @@ interface IAllQuiestions {
 const UserAnswers = () => {
   const [userAnswers, setUserAnswers] = useState<IUserAnswers>({
     answer1: {
-      point: 0,
+      point: 1,
       userAnswer: "E. Все вышеперечисленное",
       question: "В чем заключаются особенности гетерров и сеттеров?",
       theme: "Парадигмы программирования, архитектура",
     },
     answer2: {
-      point: 1,
+      point: 0,
       userAnswer: "E. Все вышеперечисленное",
       question:
         "Выберете верное утверждение про статический метод класса (static)?",
@@ -155,38 +162,48 @@ const UserAnswers = () => {
   return (
     <Container>
       <details open>
-        <Dropdown nameList="filter-theme" style={{ display: "inline" }} />
-        <Dropdown nameList="filter-right" style={{ display: "inline" }} />
         <StyledSum>Ответы</StyledSum>
+        <section style={{margin: '24px 0 0 0'}}>
+          <DropDownThemes />
+          <DropdownIsRight />
+        </section>
+
         <StyledUl>
-          {Object.entries(userAnswers).map((userAnswerArr) => {
+          {Object.entries(userAnswers).map((userAnswerArr, index) => {
             const numbQuiestion = userAnswerArr[0].match(/\d+/);
             const { point, userAnswer, question, theme } = userAnswerArr[1];
             const isRight = point ? true : false;
             const color = isRight ? "green" : "red";
-            const className = { borderRadius: 10, border: `1px solid ${color}` };
+            const className = {
+              borderRadius: 10,
+              border: `1px solid ${color}`,
+            };
             const lang = localStorage.getItem("i18nextLng");
 
             return (
-              <StyledLi style={className}>
+              <StyledLi style={className} key={index + 1}>
                 <StyledUl>
-                  <StyledSpanResult isRight={isRight}>{isRight ? 'Верно' : 'Неверно'}</StyledSpanResult>
+                  <StyledSpanResult isRight={isRight}>
+                    {isRight ? "\u2714" : "\u2718"}
+                  </StyledSpanResult>
                   <StyledLi>
                     <StyledSpan>{`Вопрос № ${numbQuiestion}: `}</StyledSpan>
                     {question}
                   </StyledLi>
                   <StyledLi>
-                      <StyledSpan>Варианты ответов: </StyledSpan>
-                      {Object.entries(
-                        allAnswers[`answers${numbQuiestion}`][lang || "ru"]
-                      )
-                        .map((answer) => answer.join(", "))
-                        .join(", ")}
+                    <StyledSpan>Варианты ответов: </StyledSpan>
+                    {Object.entries(
+                      allAnswers[`answers${numbQuiestion}`][lang || "ru"]
+                    )
+                      .map((answer) => answer.join(", "))
+                      .join(", ")}
                   </StyledLi>
-                  <StyledLi><StyledSpan>Ваш ответ:</StyledSpan> {userAnswer}</StyledLi>
-                  {["rightAnswer", "descr"].map((property) => {
+                  <StyledLi>
+                    <StyledSpan>Ваш ответ:</StyledSpan> {userAnswer}
+                  </StyledLi>
+                  {["rightAnswer", "descr"].map((property, index) => {
                     return (
-                      <StyledLi>
+                      <StyledLi key={index + 1}>
                         <StyledSpan>Правильный ответ: </StyledSpan>
                         {
                           allQuiestions[`question${numbQuiestion}`][

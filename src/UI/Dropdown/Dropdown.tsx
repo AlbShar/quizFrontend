@@ -1,4 +1,11 @@
-import { useState, FC, CSSProperties } from "react";
+import {
+  FC,
+  CSSProperties,
+  useEffect,
+  RefObject,
+  forwardRef,
+  Ref,
+} from "react";
 import i18next from "i18next";
 import {
   StyleDivDropdown,
@@ -12,68 +19,73 @@ import {
 const chevrondown = require("../../assets/images/chevrondown.png");
 
 type DropdownProps = {
-  nameList: "languages" | "filter-right" | "filter-theme";
   style?: CSSProperties;
+  selected: string;
+  isActive: boolean;
+  data: string[];
+  onClickBtn?: () => void;
+  onClickDrop?: (item: string) => void;
+  ref: RefObject<HTMLDivElement>;
+  hideList: () => void;
 };
 
-const Dropdown: FC<DropdownProps> = ({ nameList, style }) => {
-  const data =
-    nameList === "languages"
-      ? ["Русский", "English", "Deutsch"]
-      : nameList === "filter-right"
-      ? ["Все вопросы", "Правильно", "Неправильно"]
-      : [
-          "Парадигмы программирования",
-          "Теория Javascript",
-          "практика Javascript",
-          "TypeScript",
-          "React",
-        ];
-  interface IMapLanguage extends Record<typeof data[number], string> {}
+const Dropdown = forwardRef(
+  (
+    {
+      hideList,
+      data,
+      selected,
+      isActive,
+      style,
+      onClickDrop,
+      onClickBtn,
+    }: DropdownProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const elementLanguages = data.map((item: string, index: number) => {
+      return (
+        <StyledLi
+          key={index + 1}
+          tabIndex={0}
+          onClick={() => onClickDrop && onClickDrop(item)}
+        >
+          {item}
+        </StyledLi>
+      );
+    });
 
-  const [selected, setSelected] = useState<string>(data[0]);
-  const [isActive, setActive] = useState<boolean>(false);
-  const itemsDropdown: string[] = data;
-  const mapLanguage: IMapLanguage = {
-    Русский: "ru",
-    English: "en",
-    Deutsch: "deu",
-  };
+    useEffect(() => {
+      const handleClickOutside = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
 
-  const elementLanguages = itemsDropdown.map((item: string, index: number) => {
+        if (!target.closest("#wrapper")) {
+          hideList();
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+
     return (
-      <StyledLi 
-        key={index + 1}
-        tabIndex={0}
-        onClick={() => {
-          setSelected(item);
-          i18next.changeLanguage(mapLanguage[item as keyof IMapLanguage]);
-          setActive(false);
-          localStorage.setItem("language", item);
-          (document.querySelector("html") as HTMLHtmlElement).setAttribute(
-            "lang",
-            localStorage.getItem("i18nextLng") || "ru"
-          );
-        }}
-      >
-        {item}
-      </StyledLi>
+      <StyleDivDropdown ref={ref} style={style} id="wrapper">
+        <StyledButton onClick={onClickBtn}>
+          <StyledSpan className="dropdown-btn-text">
+            {selected || data[0]}
+          </StyledSpan>
+          <StyledImg src={chevrondown} alt="Кнопка вниз" />
+        </StyledButton>
+        {isActive && <StyledUl>{elementLanguages}</StyledUl>}
+      </StyleDivDropdown>
     );
-  });
+  }
+);
 
-  return (
-    <StyleDivDropdown style={style} >
-      <StyledButton onClick={() => {
-        setActive((isActive) => !isActive)
-      }}>
-        <StyledSpan className="dropdown-btn-text">
-          {selected || localStorage.getItem("language")}
-        </StyledSpan>
-        <StyledImg src={chevrondown} alt="Кнопка вниз" />
-      </StyledButton>
-      {isActive && <StyledUl>{elementLanguages}</StyledUl>}
-    </StyleDivDropdown>
-  );
-};
+Dropdown.displayName = "Dropdown";
 
-export default Dropdown;
+export default Dropdown as FC<
+  DropdownProps & { ref?: RefObject<HTMLDivElement> }
+>;

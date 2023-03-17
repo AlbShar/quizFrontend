@@ -9,24 +9,24 @@ const StyleDivDropdown = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: transparent;
-  border: none;
+  background-color: white;
+  // border: none;
   cursor: pointer;
+  border: 1px solid black;
 `;
 
 const StyledSpan = styled.span`
-  color: white;
-  font: var(--font-little-text-bold);
+  color: black;
+  font: var(--font-little-text-regular);
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-bold);
+    font: var(--font-text-regular);
   }
 `;
 
 const StyledUl = styled.ul`
-z-index: 2;
-border: 1px solid red;
-  left: -9px;
+  z-index: 2;
+  left: 0px;
   top: 30px;
   background-color: white;
   position: absolute;
@@ -38,7 +38,7 @@ border: 1px solid red;
 `;
 
 const StyledImg = styled.img`
-  filter: invert(100);
+  // filter: invert(100);
   width: 12px;
   height: 12px;
   margin-left: 4px;

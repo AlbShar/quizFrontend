@@ -23,7 +23,7 @@ const StyledLi = styled.li`
 
 const StyledUl = styled.ul`
   margin: 0;
-  padding: 25px 10px 5px 10px;
+  padding: 15px 10px 5px 10px;
   position: relative;
 `;
 
@@ -58,7 +58,7 @@ const StyledSpanResult = styled.span<ISpan>`
   position: absolute;
   color: ${({ isRight }) => (isRight ? "green" : "red")};
   top: 5px;
-  right: 5px;
+  right: 7px;
 
   font: var(--font-little-text-bold);
 
