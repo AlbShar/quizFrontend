@@ -1,7 +1,7 @@
-import {FC} from 'react';
+import {FC, ReactNode} from 'react';
 import {
     StyledFeatureArticle,
-    StyledH2,
+    StyledSummary,
     StyledP,
     StyledImg,
     StyledDivWrapper
@@ -13,16 +13,19 @@ import {
     imgSrc: string;
     imgAlt: string;
     idForText?: string;
+    children?: ReactNode;
   }
 
 const InfoBlock: FC<Info> = ({title, text, imgSrc, imgAlt, idForText}) => {
     return (
         <StyledFeatureArticle>
-            <StyledH2>{title}</StyledH2>
+          <details>
+          <StyledSummary>{title}</StyledSummary>
             <StyledDivWrapper>
             {!!imgSrc && <StyledImg src={imgSrc} alt={imgAlt}/>}
             <StyledP id={idForText}>{text}</StyledP>
             </StyledDivWrapper>
+          </details>
         </StyledFeatureArticle>
     );
 };

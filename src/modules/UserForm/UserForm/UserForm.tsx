@@ -49,7 +49,7 @@ const UserForm: FC = () => {
           <label htmlFor="username">
             <StyledSpan>{t("Ваше_имя")}</StyledSpan>
             <InputField
-              ref={inputUserNameRef}
+              refer={inputUserNameRef}
               placeholder="Ваше_имя"
               type="text"
               id="username"
@@ -63,7 +63,7 @@ const UserForm: FC = () => {
           <label htmlFor="username">
             <StyledSpan>E-mail</StyledSpan>
             <InputField
-              ref={inputUserEmailRef}
+              refer={inputUserEmailRef}
               placeholder="E-mail"
               type="email"
               id="useremail"

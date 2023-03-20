@@ -1,30 +1,31 @@
 import styled from "styled-components";
 
-const StyleDivDropdown = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
 `;
 
 const StyledButton = styled.button`
-  background-color: transparent;
-  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
   cursor: pointer;
+  border: 1px solid black;
 `;
 
 const StyledSpan = styled.span`
-  color: white;
-  font: var(--font-little-text-bold);
+  color: black;
+  font: var(--font-little-text-regular);
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-bold);
+    font: var(--font-text-regular);
   }
 `;
 
 const StyledUl = styled.ul`
-  left: -9px;
+  z-index: 2;
+  left: 0px;
   top: 30px;
   background-color: white;
   position: absolute;
@@ -36,7 +37,7 @@ const StyledUl = styled.ul`
 `;
 
 const StyledImg = styled.img`
-  filter: invert(100);
+  // filter: invert(100);
   width: 12px;
   height: 12px;
   margin-left: 4px;
@@ -50,7 +51,7 @@ const StyledLi = styled.li`
 `;
 
 export {
-  StyleDivDropdown,
+  StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,
