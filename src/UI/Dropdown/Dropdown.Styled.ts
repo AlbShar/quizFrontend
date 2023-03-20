@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
-const StyleDivDropdown = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
 `;
 
 const StyledButton = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
-  // border: none;
   cursor: pointer;
   border: 1px solid black;
 `;
@@ -52,7 +51,7 @@ const StyledLi = styled.li`
 `;
 
 export {
-  StyleDivDropdown,
+  StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,

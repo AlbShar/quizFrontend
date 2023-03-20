@@ -8,7 +8,7 @@ import {
 } from "react";
 import i18next from "i18next";
 import {
-  StyleDivDropdown,
+  StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,
@@ -71,15 +71,15 @@ const Dropdown = forwardRef(
     }, [ref]);
 
     return (
-      <StyleDivDropdown ref={ref} style={style} id="wrapper">
-        <StyledButton onClick={onClickBtn}>
-          <StyledSpan className="dropdown-btn-text">
-            {selected || data[0]}
-          </StyledSpan>
-          <StyledImg src={chevrondown} alt="Кнопка вниз" />
-        </StyledButton>
+      <StyleArticleDropdown ref={ref} style={style} id="wrapper">
+          <StyledButton onClick={onClickBtn}>
+            <StyledSpan className="dropdown-btn-text">
+              {selected || data[0]}
+            </StyledSpan>
+            <StyledImg src={chevrondown} alt="Кнопка вниз" />
+          </StyledButton>
         {isActive && <StyledUl>{elementLanguages}</StyledUl>}
-      </StyleDivDropdown>
+      </StyleArticleDropdown>
     );
   }
 );
