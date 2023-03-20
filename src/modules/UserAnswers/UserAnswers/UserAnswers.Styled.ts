@@ -20,10 +20,29 @@ const StyledLi = styled.li`
     }
   }
 `;
+const StyledListAnswers = styled.li`
+  box-sizing: border-box;
+  list-style-type: none;
+  font: var(--font-little-text-regular);
+  padding: 0 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 767.8px) {
+    font: var(--font-text-regular);
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+`;
 
 const StyledUl = styled.ul`
+  width: 100%;
+  box-sizing: border-box;
   margin: 0;
-  padding: 15px 10px 5px 10px;
+  padding: 8px 0 17px 0;
   position: relative;
 `;
 
@@ -54,11 +73,18 @@ const StyledSpan = styled.span`
   }
 `;
 
+const StyledSection = styled.section`
+  margin: 24px 0 18px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+`;
+
 const StyledSpanResult = styled.span<ISpan>`
   position: absolute;
   color: ${({ isRight }) => (isRight ? "green" : "red")};
   top: 5px;
-  right: 7px;
+  right: 0;
 
   font: var(--font-little-text-bold);
 
@@ -67,4 +93,4 @@ const StyledSpanResult = styled.span<ISpan>`
   }
 `;
 
-export { StyledLi, StyledUl, StyledSpan, StyledSpanResult, StyledSum };
+export { StyledLi, StyledUl, StyledSpan, StyledListAnswers, StyledSpanResult, StyledSum, StyledSection };

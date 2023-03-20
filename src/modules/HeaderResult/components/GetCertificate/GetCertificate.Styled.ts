@@ -43,7 +43,11 @@ const StyledButton = styled.button`
   color: #ffffff;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 
+  &:hover {
+    text-decoration: underline;
+  }
   
 `;
 

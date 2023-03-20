@@ -4,10 +4,12 @@ import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
 import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
 import {
   StyledLi,
+  StyledListAnswers,
   StyledUl,
   StyledSpan,
   StyledSpanResult,
   StyledSum,
+  StyledSection
 } from "./UserAnswers.Styled";
 
 interface IUserAnswer {
@@ -163,10 +165,10 @@ const UserAnswers = () => {
     <Container>
       <details open>
         <StyledSum>Ответы</StyledSum>
-        <section style={{margin: '24px 0 0 0'}}>
+        <StyledSection>
           <DropDownThemes />
           <DropdownIsRight />
-        </section>
+        </StyledSection>
 
         <StyledUl>
           {Object.entries(userAnswers).map((userAnswerArr, index) => {
@@ -181,7 +183,7 @@ const UserAnswers = () => {
             const lang = localStorage.getItem("i18nextLng");
 
             return (
-              <StyledLi style={className} key={index + 1}>
+              <StyledListAnswers style={className} key={index + 1}>
                 <StyledUl>
                   <StyledSpanResult isRight={isRight}>
                     {isRight ? "\u2714" : "\u2718"}
@@ -214,7 +216,7 @@ const UserAnswers = () => {
                     );
                   })}
                 </StyledUl>
-              </StyledLi>
+              </StyledListAnswers>
             );
           })}
         </StyledUl>

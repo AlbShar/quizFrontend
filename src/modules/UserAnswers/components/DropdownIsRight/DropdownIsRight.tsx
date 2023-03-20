@@ -26,7 +26,6 @@ const DropdownIsRight: FC = () => {
     selected={selected}
     isActive={isActive}
     onClickDrop={(item: string) => onClickDrop(item)}
-    style={{display: 'inline'}}
     ref={refWrapperRight}
     hideList={hideList}
 

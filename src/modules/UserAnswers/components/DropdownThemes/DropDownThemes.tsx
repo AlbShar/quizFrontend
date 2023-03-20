@@ -27,7 +27,7 @@ const DropDownThemes: FC = () => {
     selected={selected}
     isActive={isActive}
     onClickDrop={(item: string) => onClickDrop(item)}
-    style={{display: 'inline', margin: '0 25px 0 0'}}
+    style={{margin: '0 25px 0 0'}}
     ref={refWrapperTheme}
     hideList={hideList}
   />;

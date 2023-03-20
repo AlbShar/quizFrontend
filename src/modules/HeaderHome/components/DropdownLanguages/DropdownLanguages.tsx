@@ -1,12 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Dropdown from "../../../../UI/Dropdown/Dropdown";
 import i18next from "i18next";
 
 const DropdownLanguages = () => {
   const data: string[] = ["Русский", "English", "Deutsch"];
-  const [selected, setSelected] = useState<string>(data[0]);
+  // const [selected, setSelected] = useState<string>(data[0]);
+  const language: string = localStorage.getItem("language") || 'Русский';
+  const [selected, setSelected] = useState<string>(language);
   const [isActive, setActive] = useState<boolean>(false);
-  const idFilter = "dropdown-languages";
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
 
@@ -17,6 +18,7 @@ const DropdownLanguages = () => {
     English: "en",
     Deutsch: "deu",
   };
+
 
   const onClickDrop = (item: string) => {
     setSelected(item);
