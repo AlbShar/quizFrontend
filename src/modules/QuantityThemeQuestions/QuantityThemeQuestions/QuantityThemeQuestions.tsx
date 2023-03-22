@@ -10,6 +10,7 @@ const QuantityThemeQuestions: FC = () => {
   const { t } = useTranslation();
   const contextValue: [number, (numb: number) => void] | null = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+  
 
   useEffect(() => {
     insertTotalQuestionNumbQuiz("#totalQuestionQuantity");

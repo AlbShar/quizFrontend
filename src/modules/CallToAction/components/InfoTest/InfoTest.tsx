@@ -1,7 +1,9 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
 import { insertDataInfoTest } from "../../helpers/insertDataInfoTest";
+import { getTotalQuestionsNumb } from "../../../../api/getTotalQuestionsNumb";
+import Spinner from "../../../../UI/Spinner/Spinner";
 
 const clock = require("../../icons/clock.png");
 const helpcircle = require("../../icons/helpcircle.png");
@@ -16,9 +18,16 @@ const InfoTest: FC = () => {
   const { t } = useTranslation( );
   const listRef = useRef<HTMLUListElement>(null);
   const itemRef = useRef<HTMLSpanElement>(null);
+
+  const [loading, setLoading] = useState<boolean>(true);
+  const loadingIsOver = () => {
+    setLoading(false)
+  };
+
   useEffect(() => {
+    getTotalQuestionsNumb().then(loadingIsOver)
     insertDataInfoTest({textQuestions: t("Вопросов"), textTime: t("Время"), listRef, itemTag: 'span'});
-  });
+  }, [loading]);
 
   const infoTestBlock: IInfoTestBlock[] = [
     {
@@ -49,7 +58,7 @@ const InfoTest: FC = () => {
   return (
     <nav>
       <StyledUl ref={listRef}>
-        {elementsInfoTestBlock}
+        {loading ? <Spinner width='50' height='50'/> : elementsInfoTestBlock}
       </StyledUl>
     </nav>
   );
