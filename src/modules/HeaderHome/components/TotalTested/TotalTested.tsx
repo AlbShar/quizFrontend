@@ -30,7 +30,7 @@ const TotalTested: FC = () => {
   }, [loading]);
 
   if (loading) {
-    return <Spinner width='50' height='50'/>;
+    return <Spinner width={50} height={50} color='#fcfdff' margin='auto'/>;
   }
 
   return (

@@ -58,7 +58,7 @@ const InfoTest: FC = () => {
   return (
     <nav>
       <StyledUl ref={listRef}>
-        {loading ? <Spinner width='50' height='50'/> : elementsInfoTestBlock}
+        {loading ? <Spinner width={50} height={50} color='#fcfdff' margin='auto'/> : elementsInfoTestBlock}
       </StyledUl>
     </nav>
   );
