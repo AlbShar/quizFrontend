@@ -2,7 +2,7 @@ import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
-const getThemeQuestion = async (currentQuestionNumb) => {
+const getThemeQuestion = async (currentQuestionNumb: number) => {
     try {
       let lang = localStorage.getItem("i18nextLng");
       return await new Promise(function (resolve, reject) {

@@ -5,7 +5,6 @@ import {
   StyledSpanThemeQuestion,
   StyledSpanQuestionQuantity,
 } from "./QuantityThemeQuestions.Styled";
-import { insertTotalQuestionNumbQuiz } from "../helpers/insertTotalQuestionNumbQuiz";
 import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
 import {getThemeQuestion} from "../api/getThemeQuestion";
@@ -20,6 +19,7 @@ const QuantityThemeQuestions: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [questionTheme, setQuestionTheme] = useState<string>('');
   const [totalQuestionNumber, setTotalQuestionNumber] = useState<number>(0);
+  const spinner = <Spinner width={50} height={50} color='#1f2ce0' margin=''/>;
 
   const loadingIsOver = () => {
     setLoading(false);
@@ -28,7 +28,7 @@ const QuantityThemeQuestions: FC = () => {
   useEffect(() => {
     getThemeQuestion(currentQuestionNumb).then(res => {
       loadingIsOver();
-      setQuestionTheme(res);
+      setQuestionTheme(res as string);
     })
     getTotalQuestionsNumb().then(res => {
       if (res !== undefined) {
@@ -50,7 +50,7 @@ const QuantityThemeQuestions: FC = () => {
     )
   }
 
-  return (loading ? <Spinner width={50} height={50} color='#1f2ce0' margin=''/> : viewQuantity());
+  return (loading ? spinner : viewQuantity());
 };
 
 
