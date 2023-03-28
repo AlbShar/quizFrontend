@@ -1,6 +1,4 @@
-import { useEffect, useContext, FC, useRef } from "react";
-import { insertImageQuiz } from "../helpers/insertImageQuiz";
-import { insertNameQuestionQuiz } from "../helpers/insertNameQuestionQuiz";
+import { useEffect, useContext, FC, useState } from "react";
 import {
   StyledH2,
   StyledArticleQuestion,
@@ -8,52 +6,111 @@ import {
   StyledImg,
 } from "./NameQuestionAndImg.Styled";
 import { ContextQuestionNumb } from "../../../components/Context";
+import { getQuestionInfo } from "../../../api/getQuestionInfo";
+import Spinner from "../../../UI/Spinner/Spinner";
+
+type IState = {
+  question: string;
+  loading?: boolean;
+  srcImg?: string;
+};
+
+type IQuestion = {
+  name: string;
+  descr: string;
+  img?: string;
+  theme: string;
+  rightAnswer: string;
+};
 
 const NameQuestionAndImg: FC = () => {
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
-  const questionTitleRef = useRef<HTMLHeadingElement>(null);
-  const wrapperImgRef = useRef<HTMLDivElement>(null);
-  const sourceMobImgRef = useRef<HTMLSourceElement>(null);
-  const sourceTabletImgRef = useRef<HTMLSourceElement>(null);
-  const sourceDesktopImgRef = useRef<HTMLSourceElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    insertNameQuestionQuiz({ currentQuestionNumb, questionTitleRef });
-    insertImageQuiz({
-      currentQuestionNumb,
-      wrapperImgRef,
-      imgRef,
-      sourceMobImgRef,
-      sourceTabletImgRef,
-      sourceDesktopImgRef,
-    });
+  const [state, setState] = useState<IState>({
+    question: "",
+    loading: true,
+    srcImg: "",
   });
 
+  const spinner = state.loading ? (
+    <Spinner width={50} height={50} color="#1f2ce0" margin="0" />
+  ) : null;
+
+  const transformQuiestionInfo = (questionInfo: IQuestion): IState => {
+    const { name, img } = questionInfo;
+    return {
+      question: name,
+      srcImg: img,
+      loading: false,
+    };
+  };
+
+  const view = () => {
+    if (!state.srcImg) {
+      return (
+        <StyledArticleQuestion>
+        <StyledH2 id="questionTitle" tabIndex={0}>
+          {state.question}
+        </StyledH2>
+      </StyledArticleQuestion>
+
+      );
+    }
+    return (
+      <StyledArticleQuestion>
+        <StyledH2 id="questionTitle" tabIndex={0}>
+          {state.question}
+        </StyledH2>
+        <StyledPicture>
+          <source
+            type="image/png"
+            media="(min-width: 320px)"
+            srcSet={state.srcImg}
+            width="320"
+            height="auto"
+          ></source>
+          <source
+            type="image/png"
+            media="(min-width: 487px)"
+            srcSet={state.srcImg}
+            width="768"
+            height="auto"
+          ></source>
+          <source
+            type="image/png"
+            media="(min-width: 769px)"
+            srcSet={state.srcImg}
+            width="1024"
+            height="auto"
+          ></source>
+          <StyledImg
+            src={state.srcImg}
+            width="1024"
+            height="auto"
+            alt="Код на JS"
+          />
+        </StyledPicture>
+      </StyledArticleQuestion>
+    );
+  };
+  const content = state.loading ? null : view();
+
+  const setNewState = (newState: IState) => {
+    setState(newState);
+  };
+
+  useEffect(() => {
+    getQuestionInfo(currentQuestionNumb)
+      .then(transformQuiestionInfo)
+      .then(setNewState);
+  }, [currentQuestionNumb]);
+
   return (
-    <StyledArticleQuestion>
-      <StyledH2 ref={questionTitleRef} id="questionTitle" tabIndex={0}></StyledH2>
-      <StyledPicture ref={wrapperImgRef}>
-        <source
-          ref={sourceMobImgRef}
-          type="image/png"
-          media="(min-width:320px) and (max-width:486px)"
-        ></source>
-        <source
-          ref={sourceTabletImgRef}
-          type="image/png"
-          media="(min-width:487px) and (max-width:768px)"
-        ></source>
-        <source
-          ref={sourceDesktopImgRef}
-          type="image/png"
-          media="(min-width:769px)"
-        ></source>
-        <StyledImg currentQuestionNumb={currentQuestionNumb} ref={imgRef} alt="Код на JS" />
-      </StyledPicture>
-    </StyledArticleQuestion>
+    <>
+      {spinner} {content}
+    </>
   );
 };
+
 
 export default NameQuestionAndImg;

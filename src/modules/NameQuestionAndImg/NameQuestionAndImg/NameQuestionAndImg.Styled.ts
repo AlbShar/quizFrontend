@@ -35,7 +35,7 @@ const StyledPicture = styled.picture`
 `;
 
 interface Img {
-  currentQuestionNumb: number;
+  currentQuestionNumb?: number;
 }
 
 const StyledImg = styled.img<Img>`
