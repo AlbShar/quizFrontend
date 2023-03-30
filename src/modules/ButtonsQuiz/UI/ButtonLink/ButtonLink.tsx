@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 import { sendUserAnswerDB } from "../../api/sendUserAnswerDB";
 import { getIdUser } from "../../../../helpers/getIdUser";
@@ -8,6 +8,7 @@ const ButtonLink: FC = () => {
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb
   ) || [1, () => {}];
+  const [isUserChoseAnswer, setUserChoseAnswer] = useState<boolean>(false);
 
   const onClickLinkBtn = () => {
     const answersItem =
@@ -15,7 +16,6 @@ const ButtonLink: FC = () => {
 
     answersItem.forEach((asnwerItem) => {
       if (asnwerItem.dataset.useranswer) {
-        setCurrentQuestionNumb(currentQuestionNumb + 1);
         sendUserAnswerDB({
           currentQuestionNumb,
           selectorQuestion: "#questionTitle",
@@ -28,13 +28,18 @@ const ButtonLink: FC = () => {
       }
     });
   };
-  
+
+
   return (
-    <LinkBtn
-      text="Закончить тест"
-      pageTo="/contact"
-      onClick={onClickLinkBtn}
-    ></LinkBtn>
+    <>
+      {isUserChoseAnswer && (
+        <LinkBtn
+          text="Закончить тест"
+          pageTo="/contact"
+          onClick={onClickLinkBtn}
+        />
+      )}
+    </>
   );
 };
 

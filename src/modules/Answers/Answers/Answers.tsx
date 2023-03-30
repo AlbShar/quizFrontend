@@ -7,8 +7,9 @@ import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
 
 type TState = {
-  loading: boolean;
-  answers: string[];
+  loading: boolean,
+  answers: string[],
+  isUserChoseAnswer: boolean
 };
 const Answers = () => {
   const [state, setState] = useState({ answers: [], loading: true });
@@ -31,7 +32,7 @@ const Answers = () => {
     if (currentQuestionNumb) {
       getAnswersDb(currentQuestionNumb).then((answersDB) => {
         if (Array.isArray(answersDB)) {
-          setState({ answers: answersDB as never[], loading: false });
+          setState(state => ({...state, answers: answersDB as never[], loading: false}));
         }
       });
     }
