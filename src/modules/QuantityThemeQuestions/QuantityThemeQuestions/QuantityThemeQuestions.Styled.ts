@@ -6,7 +6,7 @@ const StyledH1 = styled.h1`
   padding: 0;
   margin: 20px 0;
   position: relative;
-}
+  flex: 0 1 85%;
 
   @media screen and (min-width: 459.8px) {
     font: var(--font-title4);

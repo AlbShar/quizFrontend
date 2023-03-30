@@ -12,7 +12,7 @@ import Spinner from "../../../UI/Spinner/Spinner";
 type IState = {
   question: string;
   loading?: boolean;
-  srcImg?: string;
+  srcImg?: string | undefined;
 };
 
 type IQuestion = {
@@ -36,7 +36,8 @@ const NameQuestionAndImg: FC = () => {
     <Spinner width={50} height={50} color="#1f2ce0" margin="0" />
   ) : null;
 
-  const transformQuiestionInfo = (questionInfo: IQuestion): IState => {
+
+  const transformQuestionInfo = (questionInfo: IQuestion): IState => {
     const { name, img } = questionInfo;
     return {
       question: name,
@@ -66,7 +67,7 @@ const NameQuestionAndImg: FC = () => {
             type="image/png"
             media="(min-width: 320px)"
             srcSet={state.srcImg}
-            width="320"
+            width="120"
             height="auto"
           ></source>
           <source
@@ -93,6 +94,7 @@ const NameQuestionAndImg: FC = () => {
       </StyledArticleQuestion>
     );
   };
+
   const content = state.loading ? null : view();
 
   const setNewState = (newState: IState) => {
@@ -101,7 +103,7 @@ const NameQuestionAndImg: FC = () => {
 
   useEffect(() => {
     getQuestionInfo(currentQuestionNumb)
-      .then(transformQuiestionInfo)
+      .then(transformQuestionInfo)
       .then(setNewState);
   }, [currentQuestionNumb]);
 
