@@ -1,14 +1,13 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 import { sendUserAnswerDB } from "../../api/sendUserAnswerDB";
 import { getIdUser } from "../../../../helpers/getIdUser";
 import { ContextQuestionNumb } from "../../../../components/Context";
 
 const ButtonLink: FC = () => {
-  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
+  let [currentQuestionNumb, ] = useContext(
     ContextQuestionNumb
   ) || [1, () => {}];
-  const [isUserChoseAnswer, setUserChoseAnswer] = useState<boolean>(false);
 
   const onClickLinkBtn = () => {
     const answersItem =
@@ -31,15 +30,11 @@ const ButtonLink: FC = () => {
 
 
   return (
-    <>
-      {isUserChoseAnswer && (
-        <LinkBtn
+    <LinkBtn
           text="Закончить тест"
           pageTo="/contact"
           onClick={onClickLinkBtn}
         />
-      )}
-    </>
   );
 };
 

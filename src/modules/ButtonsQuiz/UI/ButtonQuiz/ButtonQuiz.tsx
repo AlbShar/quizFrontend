@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 import { ContextQuestionNumb } from "../../../../components/Context";
 import { StyledButtonQuiz } from "./ButtonQuiz.Styled";
@@ -8,7 +8,10 @@ import { sendUserAnswerDB } from "../../api/sendUserAnswerDB";
 import { ref, onValue } from "firebase/database";
 import db from "../../../../config/firebase/firebaseConfig";
 
-const ButtonQuiz = () => {
+type TButtonsQuiz = {
+  userDidntChooseAnswer: () => void
+};
+const ButtonQuiz: FC<TButtonsQuiz> = ({userDidntChooseAnswer}) => {
   const { t } = useTranslation();
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb
@@ -23,6 +26,7 @@ const ButtonQuiz = () => {
     const answersItem =
       document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
     const btnBack = document.querySelector("#btnBack");
+    userDidntChooseAnswer();
     answersItem.forEach((asnwerItem) => {
       if (asnwerItem.dataset.useranswer) {
         setCurrentQuestionNumb(currentQuestionNumb + 1);

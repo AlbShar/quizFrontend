@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, FC} from "react";
 import { StyledArticle } from "./ButtonsQuiz.Styled";
 import BtnBack from "../UI/BtnBack/BtnBack";
 import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
@@ -8,8 +8,13 @@ import { onValue } from "firebase/database";
 import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 
-const ButtonsQuiz = () => {
-  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
+type TButtonsQuiz = {
+  isUserChoseAnswer: boolean,
+  userDidntChooseAnswer: () => void
+};
+
+const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer}) => {
+  let [currentQuestionNumb, ] = useContext(ContextQuestionNumb) || [1, () => {}];
 
   let totalQuestionsNumbers;
   onValue(ref(db, `questions`), (snapshot) => {
@@ -19,9 +24,9 @@ const ButtonsQuiz = () => {
   return (
     <StyledArticle>
       <BtnBack />
-      {totalQuestionsNumbers === currentQuestionNumb ? (
-        <ButtonLink />
-      ) : <ButtonQuiz />}
+      {isUserChoseAnswer && (totalQuestionsNumbers === currentQuestionNumb ? (
+         <ButtonLink />
+      ) : <ButtonQuiz userDidntChooseAnswer={userDidntChooseAnswer}/>)}
     </StyledArticle>
   );
 };

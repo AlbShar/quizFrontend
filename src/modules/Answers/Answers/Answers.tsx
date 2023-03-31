@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, FC } from "react";
 import { removeAttributesAnswers } from "../helpers/removeAttributesAnswers";
 import { getAnswersDb } from "../api/getAnswersDb";
 import { StyledArticle, StyledUl } from "./Answers.Styled";
@@ -9,14 +9,18 @@ import Spinner from "../../../UI/Spinner/Spinner";
 type TState = {
   loading: boolean,
   answers: string[],
-  isUserChoseAnswer: boolean
 };
-const Answers = () => {
-  const [state, setState] = useState({ answers: [], loading: true });
+
+type TAnswer = {
+  userChoseAnswer: () => void
+};
+
+const Answers: FC<TAnswer> = ({userChoseAnswer}) => {
+  const [state, setState] = useState<TState>({ answers: [], loading: true });
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const answersItems = state.answers.map((answer, index) => (
-    <Answer key={index + 1}>{answer}</Answer>
+    <Answer key={index + 1} userChoseAnswer={userChoseAnswer}>{answer}</Answer>
   ));
   const spinner = state.loading ? (
     <Spinner width={50} height={50} color="#1f2ce0" margin="" />

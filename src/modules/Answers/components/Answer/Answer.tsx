@@ -4,10 +4,12 @@ import { setAttributesUserAnswer } from "../../helpers/setAttributesUserAnswer";
 
 interface IAnswer {
   children: ReactNode;
+  userChoseAnswer: () => void
 }
 
-const Answer: FC<IAnswer> = ({ children }) => {
+const Answer: FC<IAnswer> = ({ children, userChoseAnswer }) => {
   const handleMouseClick = (e: MouseEvent) => {
+    userChoseAnswer();
     setAttributesUserAnswer({
       e,
       selectorAnswers: "#answersAll ul li",
