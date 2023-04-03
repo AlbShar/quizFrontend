@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 
 
 type TButtonsLink = {
-  onClickButtonHandler: () => void
+  onClickButtonHandler: (e: MouseEvent) => void
 };
 
 const ButtonLink: FC<TButtonsLink> = ({onClickButtonHandler}) => {
@@ -13,6 +13,7 @@ const ButtonLink: FC<TButtonsLink> = ({onClickButtonHandler}) => {
           text="Закончить тест"
           pageTo="/contact"
           onClick={onClickButtonHandler}
+          id="btnFinish"
         />
   );
 };

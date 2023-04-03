@@ -1,4 +1,4 @@
-import { useContext, FC } from "react";
+import { useContext, FC, MouseEvent } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
 import { ContextQuestionNumb } from "../../../../components/Context";
 import { StyledButtonQuiz } from "./ButtonQuiz.Styled";
@@ -8,7 +8,7 @@ import db from "../../../../config/firebase/firebaseConfig";
 
 type TButtonsQuiz = {
   userDidntChooseAnswer: () => void,
-  onClickButtonHandler: () => void
+  onClickButtonHandler: (e: MouseEvent) => void
 };
 
 const ButtonQuiz: FC<TButtonsQuiz> = ({userDidntChooseAnswer, onClickButtonHandler}) => {

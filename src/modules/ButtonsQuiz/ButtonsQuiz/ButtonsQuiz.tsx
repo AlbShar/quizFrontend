@@ -1,4 +1,4 @@
-import {useContext, FC} from "react";
+import {useContext, FC, MouseEvent} from "react";
 import { StyledArticle } from "./ButtonsQuiz.Styled";
 import BtnBack from "../UI/BtnBack/BtnBack";
 import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
@@ -9,6 +9,7 @@ import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 import { sendUserAnswerDB } from "../api/sendUserAnswerDB";
 import { getIdUser } from "../../../helpers/getIdUser";
+import { setQunatityPause } from "../api/setQuantityPause";
 
 type TButtonsQuiz = {
   isUserChoseAnswer: boolean,
@@ -24,7 +25,7 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
-  const onClickButtonHandler = () => {
+  const onClickButtonHandler = (e: MouseEvent) => {
     const answersItem =
       document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
     const btnBack = document.querySelector("#btnBack");
@@ -40,6 +41,9 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
           idUser: getIdUser("idUser"),
         });
       } 
+      if (e.currentTarget.closest('#btnFinish')) {
+        setQunatityPause();
+      }
       if ((btnBack as HTMLButtonElement)?.style.display === "none") {
         (btnBack as HTMLButtonElement).style.display = "flex";
       }
