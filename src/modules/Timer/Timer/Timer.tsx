@@ -8,52 +8,91 @@ import { setPenaltyPoints } from "../api/setPenaltyPoints";
 import { deadline } from "../../../variables/variables";
 import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
 
-
+type TState = {
+  isModal: boolean,
+  isCounting: boolean,
+  timeLeft: number,
+  isTimeUp: boolean
+};
 const Timer: FC = () => {
   const { t } = useTranslation();
 
-  let [timeLeft, setTimeLeft] = useState<number>(deadline);
-  let hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
-  let minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
-  let seconds: string = getFullNumb(Math.floor(timeLeft % 60));
-  const [isCounting, setIsCounting] = useState<boolean>(true);
+  const [state, setState] = useState<TState>({
+    isModal: false,
+    isCounting: true,
+    timeLeft: deadline,
+    isTimeUp: false
+  });
+
+  let hours: string = getFullNumb(Math.floor(state.timeLeft / 3600) % 60);
+  let minutes: string = getFullNumb(Math.floor(state.timeLeft / 60) % 60);
+  let seconds: string = getFullNumb(Math.floor(state.timeLeft % 60));
   const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
   ));
-  const isTimeUp: boolean = hours === "00" && minutes === "00" && seconds === "00";
+
+  const countingTime = () => {
+    return {
+      timeLeft: state.timeLeft >= 1 ? +state.timeLeft - 1 : 0,
+      isTimeUp: state.timeLeft ? false : true
+    }
+  };
+
+  const startTimer = () => {
+    state.isCounting && setState(state => ({...state, ...countingTime()}));
+  };
+
+  const stopTimer = () => {
+    setState(state => ({...state, isCounting: false, isModal: true}))
+  };
+
+  const stopPause = () => {
+    setState(state => ({...state, isCounting: true, isModal: false}))
+  };
+
+  const closeModal = () => {
+    setState(state => ({...state, isModal: false}))
+  }
 
   const onClickButtonHandler = () => {
-    setIsCounting((isCounting) => !isCounting);
+    stopTimer();
     incrementQuantityPause();
   };
 
-
   useEffect(() => {
-    if (isTimeUp) {
+
+    if (state.isTimeUp) {
+      setState(state => ({...state, isModal: true, isCounting: false}))
       setPenaltyPoints();
     }
 
-    const interval = setInterval(() => {
-      if (isModal("#notification") === false && isCounting === false) {
-        setIsCounting((isCounting) => !isCounting);
+    const timerId = setTimeout(() => {
+      if (state.isCounting) {
+        clearTimeout(timerId)
       }
-      isCounting && setTimeLeft(timeLeft >= 1 ? +timeLeft - 1 : 0);
+      setTimeout(startTimer, 1000);
     }, 1000);
-    return () => clearInterval(interval);
-  }, [timeLeft, isCounting]);
+
+    return () => clearTimeout(timerId);
+  }, [state.timeLeft, state.isCounting, state.isTimeUp]);
 
   return (
     <StyledDivTimer>
       <span>{elementNumbersTimer}</span>
-      {isTimeUp && (
+      {(state.isModal) && (
         <Modal
           title={t("Заголовок1_вышло_время")}
           subTitle={t("Заголовок2_вышло_время")}
+          onClickHandler={stopPause}
         />
       )}
-      {!isCounting && (
-        <Modal title={t("Заголовок1_пауза")} subTitle={t("Заголовок2_пауза")} />
+      {(state.isTimeUp && state.isModal) && (
+        <Modal
+          title={t("Заголовок1_вышло_время")}
+          subTitle={t("Заголовок2_вышло_время")}
+          onClickHandler={closeModal}
+        />
       )}
       <StyledButtonPause
         onClick={onClickButtonHandler}

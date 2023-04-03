@@ -14,9 +14,13 @@ export interface IInfoTestBlock {
    text: string;
    srcIcon: string;
 }
+type TState = {
+  loading: boolean,
+  quantityQuestions: number
+};
 const InfoTest: FC = () => {
   const { t } = useTranslation( );  
-  const [state, setState] = useState({
+  const [state, setState] = useState<TState>({
     loading: true,
     quantityQuestions: 0
   });

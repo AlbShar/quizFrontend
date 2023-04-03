@@ -1,32 +1,19 @@
-import {FC, useRef, RefObject} from "react";
+import {FC} from "react";
 import { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal } from "./Modal.Styled";
 
 interface Mod {
   title: string;
   subTitle: string;
+  onClickHandler?: () => void
 }
-const Modal: FC<Mod> = ({title, subTitle}) => {
-
-  const hideNotification = (modalRef: RefObject<HTMLDivElement>) => {
-    if (modalRef.current) {
-      modalRef.current.style.display = 'none';
-    }
-  };
-
-  const modalRef = useRef<HTMLDivElement>(null);
-
- 
+const Modal: FC<Mod> = ({title, subTitle, onClickHandler}) => {
   return (
-    <StyleDivModal ref={modalRef} id="notification">
+    <StyleDivModal id="notification">
       <StyledDivWrapper>
         <StyledH1 className="notification__title">{title}</StyledH1>
-        <StyledSpanClose className="notification__close" onClick={() => {
-           hideNotification(modalRef);
-        }}>✖</StyledSpanClose>
+        <StyledSpanClose className="notification__close" onClick={onClickHandler}>✖</StyledSpanClose>
         <StyledSpan className="notification__text">{subTitle}</StyledSpan>
-        <StyledButtonModal onClick={() => {
-           hideNotification(modalRef);
-        }}>Продолжить</StyledButtonModal>
+        <StyledButtonModal onClick={onClickHandler}>Продолжить</StyledButtonModal>
       </StyledDivWrapper>
     </StyleDivModal>
   );
