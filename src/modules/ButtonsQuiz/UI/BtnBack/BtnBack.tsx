@@ -1,4 +1,4 @@
-import {useContext, MouseEvent} from 'react';
+import {useContext, MouseEvent, FC} from 'react';
 import {
     StyledButtonBack,
     StyledImg,
@@ -9,11 +9,15 @@ import { highlightPreviousAnswer } from '../../helpers/highlightPreviousAnswer';
 
 const arrowleft =  require("../../icons/arrowleft.png");
 
-const BtnBack = () => {
+type TBtnBack = {
+  userChoseAnswer: () => void
+};
+const BtnBack: FC<TBtnBack> = ({userChoseAnswer}) => {
     
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
     const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
       setCurrentQuestionNumb(--currentQuestionNumb);
+      userChoseAnswer();
       highlightPreviousAnswer(
         {idUser: getIdUser("idUser"),
         currentQuestionNumb,

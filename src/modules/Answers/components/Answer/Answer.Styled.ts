@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledLi = styled.li`
+  word-wrap: break-word;
   box-sizing: border-box;
   flex-basis: 100%;
   list-style-type: none;

@@ -20,7 +20,7 @@ const StyledPicture = styled.picture`
   box-sizing: border-box;
   border-radius: 5px;
   max-width: 100%;
-  display: none;
+  
 
   @media screen and (min-width: 767.8px) {
     display: flex;
@@ -35,7 +35,7 @@ const StyledPicture = styled.picture`
 `;
 
 interface Img {
-  currentQuestionNumb: number;
+  currentQuestionNumb?: number;
 }
 
 const StyledImg = styled.img<Img>`

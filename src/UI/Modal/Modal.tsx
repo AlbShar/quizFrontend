@@ -1,4 +1,4 @@
-import {useEffect, FC, useRef, RefObject} from "react";
+import {FC, useRef, RefObject} from "react";
 import { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal } from "./Modal.Styled";
 
 interface Mod {
@@ -15,10 +15,7 @@ const Modal: FC<Mod> = ({title, subTitle}) => {
 
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // удалить этот хук и переместить логику в компонент Timer!
-  useEffect(() => {
-    localStorage.setItem('penalty-points', '3')
-  })
+ 
   return (
     <StyleDivModal ref={modalRef} id="notification">
       <StyledDivWrapper>

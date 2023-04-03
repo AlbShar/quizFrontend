@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, FC, MouseEvent} from "react";
 import { StyledArticle } from "./ButtonsQuiz.Styled";
 import BtnBack from "../UI/BtnBack/BtnBack";
 import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
@@ -7,8 +7,17 @@ import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
 import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
+import { sendUserAnswerDB } from "../api/sendUserAnswerDB";
+import { getIdUser } from "../../../helpers/getIdUser";
+import { setQunatityPause } from "../api/setQuantityPause";
 
-const ButtonsQuiz = () => {
+type TButtonsQuiz = {
+  isUserChoseAnswer: boolean,
+  userDidntChooseAnswer: () => void,
+  userChoseAnswer: () => void
+};
+
+const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer}) => {
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
   let totalQuestionsNumbers;
@@ -16,12 +25,38 @@ const ButtonsQuiz = () => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
+  const onClickButtonHandler = (e: MouseEvent) => {
+    const answersItem =
+      document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
+    const btnBack = document.querySelector("#btnBack");
+    userDidntChooseAnswer();
+    answersItem.forEach((asnwerItem) => {
+      if (asnwerItem.dataset.useranswer) {
+        setCurrentQuestionNumb(currentQuestionNumb + 1);
+        sendUserAnswerDB({
+          currentQuestionNumb,
+          selectorQuestion: "#questionTitle",
+          userAnswer: asnwerItem.textContent || "No anwser",
+          selectorTheme: "#themeQuestion",
+          idUser: getIdUser("idUser"),
+        });
+      } 
+      if (e.currentTarget.closest('#btnFinish')) {
+        setQunatityPause();
+      }
+      if ((btnBack as HTMLButtonElement)?.style.display === "none") {
+        (btnBack as HTMLButtonElement).style.display = "flex";
+      }
+    });
+
+  };
+
   return (
     <StyledArticle>
-      <BtnBack />
-      {totalQuestionsNumbers === currentQuestionNumb ? (
-        <ButtonLink />
-      ) : <ButtonQuiz />}
+      <BtnBack userChoseAnswer={userChoseAnswer}/>
+      {isUserChoseAnswer && (totalQuestionsNumbers === currentQuestionNumb ? (
+         <ButtonLink onClickButtonHandler={onClickButtonHandler}/>
+      ) : <ButtonQuiz userDidntChooseAnswer={userDidntChooseAnswer} onClickButtonHandler={onClickButtonHandler}/>)}
     </StyledArticle>
   );
 };

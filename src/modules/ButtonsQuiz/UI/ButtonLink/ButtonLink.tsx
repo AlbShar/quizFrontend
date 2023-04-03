@@ -1,40 +1,20 @@
-import { FC, useContext } from "react";
+import { FC, MouseEvent } from "react";
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
-import { sendUserAnswerDB } from "../../api/sendUserAnswerDB";
-import { getIdUser } from "../../../../helpers/getIdUser";
-import { ContextQuestionNumb } from "../../../../components/Context";
 
-const ButtonLink: FC = () => {
-  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextQuestionNumb
-  ) || [1, () => {}];
 
-  const onClickLinkBtn = () => {
-    const answersItem =
-      document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
+type TButtonsLink = {
+  onClickButtonHandler: (e: MouseEvent) => void
+};
 
-    answersItem.forEach((asnwerItem) => {
-      if (asnwerItem.dataset.useranswer) {
-        setCurrentQuestionNumb(currentQuestionNumb + 1);
-        sendUserAnswerDB({
-          currentQuestionNumb,
-          selectorQuestion: "#questionTitle",
-          userAnswer: asnwerItem.textContent || "No answer",
-          selectorTheme: "#themeQuestion",
-          idUser: getIdUser("idUser"),
-        });
-      } else {
-        return false;
-      }
-    });
-  };
-  
+const ButtonLink: FC<TButtonsLink> = ({onClickButtonHandler}) => {
+
   return (
     <LinkBtn
-      text="Закончить тест"
-      pageTo="/contact"
-      onClick={onClickLinkBtn}
-    ></LinkBtn>
+          text="Закончить тест"
+          pageTo="/contact"
+          onClick={onClickButtonHandler}
+          id="btnFinish"
+        />
   );
 };
 

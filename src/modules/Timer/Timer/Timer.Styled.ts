@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledDivTimer = styled.div`
   font: var(--font-little-text-regular);
-
+  text-align: center;
 
   @media screen and (min-width: 459.8px) {
     display: block;
