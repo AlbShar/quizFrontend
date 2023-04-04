@@ -14,21 +14,24 @@ import { setQunatityPause } from "../api/setQuantityPause";
 type TButtonsQuiz = {
   isUserChoseAnswer: boolean,
   userDidntChooseAnswer: () => void,
-  userChoseAnswer: () => void
+  userChoseAnswer: () => void,
+  testFinished: () => void,
 };
 
-const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer}) => {
+const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer, testFinished }) => {
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
-  let totalQuestionsNumbers;
+  let totalQuestionsNumbers: number = 0;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
   const onClickButtonHandler = (e: MouseEvent) => {
+    console.log('click')
     const answersItem =
       document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
     const btnBack = document.querySelector("#btnBack");
+
     userDidntChooseAnswer();
     answersItem.forEach((asnwerItem) => {
       if (asnwerItem.dataset.useranswer) {
@@ -41,8 +44,12 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
           idUser: getIdUser("idUser"),
         });
       } 
+
       if (e.currentTarget.closest('#btnFinish')) {
         setQunatityPause();
+        testFinished();
+        console.log('finish');
+        // Почему срабатывает 5 раз? Fix
       }
       if ((btnBack as HTMLButtonElement)?.style.display === "none") {
         (btnBack as HTMLButtonElement).style.display = "flex";

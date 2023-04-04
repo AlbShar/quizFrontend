@@ -14,16 +14,20 @@ const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(54);
   const quizRef = useRef<HTMLTableSectionElement>(null);
   const [isUserChoseAnswer, setUserChoseAnswer] = useState<boolean>(false);
+  const [isTestFinished, setTestFinished] = useState<boolean>(false);
+
+  const testFinished = () => {
+    setTestFinished(true);
+  }
 
   const userChoseAnswer = () => {
-    // const answersItem =
-    //   document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
-    // answersItem.forEach((answerItem) => {
-    //   if (answerItem.dataset.useranswer) {
-    //     return;
-    //   }
-    // });
-    setUserChoseAnswer(true);
+    const answersItem: HTMLLIElement[] = Array.from(document.querySelectorAll<HTMLLIElement>("#answersAll ul li"));
+    const currentAnswer: HTMLLIElement[] | [] = answersItem.filter(answerItem => answerItem.dataset.useranswer);
+    let isCurrentAnswer: boolean = currentAnswer.length ? true : false;
+
+    if (!isCurrentAnswer) {
+      setUserChoseAnswer(true);
+    }
   };
 
   const userDidntChooseAnswer = () => {
@@ -38,11 +42,11 @@ const Quiz = () => {
             <ScrollBar quizRef={quizRef} />
             <StyledArticle>
               <QuantityThemeQuestions />
-              <Timer />
+              <Timer isTestFinished={isTestFinished}/>
             </StyledArticle>
             <NameQuestionAndImg />
             <Answers userChoseAnswer={userChoseAnswer} />
-            <ButtonsQuiz userChoseAnswer={userChoseAnswer} isUserChoseAnswer={isUserChoseAnswer} userDidntChooseAnswer={userDidntChooseAnswer}/>
+            <ButtonsQuiz testFinished={testFinished} userChoseAnswer={userChoseAnswer} isUserChoseAnswer={isUserChoseAnswer} userDidntChooseAnswer={userDidntChooseAnswer}/>
           </Context>
         </StyledSection>
       </Container>
