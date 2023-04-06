@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect, FC, useRef } from "react";
 import Modal from "../../../UI/Modal/Modal";
 import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
@@ -6,7 +6,8 @@ import getFullNumb from "../helpers/getFullNumb";
 import { setPenaltyPoints } from "../api/setPenaltyPoints";
 import { deadline } from "../../../variables/variables";
 import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
-import { setTimeToPassQuiz } from "../../../helpers/setTimeToPassQuiz";
+import { setTimeToPassQuiz } from "../api/setTimeToPassQuiz";
+
 
 type TState = {
   isModal: boolean,
@@ -15,10 +16,9 @@ type TState = {
   isTimeUp: boolean,
 };
 
-type TTimer = {
-  isTestFinished: boolean
-}
-const Timer: FC<TTimer> = ({isTestFinished}) => {
+
+
+const Timer: FC = () => {
   const { t } = useTranslation();
   const [{isCounting, isModal, timeLeft, isTimeUp}, setState] = useState<TState>({
     isModal: false,
@@ -26,6 +26,8 @@ const Timer: FC<TTimer> = ({isTestFinished}) => {
     timeLeft: deadline,
     isTimeUp: false,
   });
+  const timerRef = useRef<HTMLDivElement>(null);
+
 
   let hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
   let minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
@@ -35,18 +37,11 @@ const Timer: FC<TTimer> = ({isTestFinished}) => {
     <span key={index + 1}>{time}</span>
   ));
 
-  useEffect(() => {
-    console.log('start')
-
-    return () => {
-      console.log('end')
-    };
-  }, [isTestFinished]);
-
   const countingTime = () => {
+    let updateTime = timeLeft >= 1 ? +timeLeft - 1 : 0;
     return {
-      timeLeft: timeLeft >= 1 ? +timeLeft - 1 : 0,
-      isTimeUp: timeLeft ? false : true
+      timeLeft: updateTime,
+      isTimeUp: timeLeft ? false : true,
     }
   };
 
@@ -73,25 +68,30 @@ const Timer: FC<TTimer> = ({isTestFinished}) => {
 
 
   useEffect(() => {
+     const timerId = setTimeout(() => {
+      startTimer();
+    }, 1000);
+
+    return () => {
+      if (!timerRef.current) {
+        clearTimeout(timerId);
+        setTimeToPassQuiz(timeLeft)
+      }
+    };
+  }, [timeLeft, isCounting]);
+
+
+  useEffect(() => {
     if (isTimeUp) {
       setState(state => ({...state, isModal: true, isCounting: false}))
       setPenaltyPoints();
     }
-
-    const timerId = setTimeout(() => {
-      if (isCounting) {
-        clearTimeout(timerId)
-      }
-      setTimeout(startTimer, 1000);
-    }, 1000);
-
-    return () => clearTimeout(timerId);
-  }, [timeLeft, isCounting, isTimeUp]);
+  }, [isTimeUp]);
 
 
 
   return (
-    <StyledDivTimer>
+    <StyledDivTimer ref={timerRef}>
       <span>{elementNumbersTimer}</span>
       {(isModal) && (
         <Modal
