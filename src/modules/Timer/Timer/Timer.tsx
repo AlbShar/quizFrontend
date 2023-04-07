@@ -87,7 +87,7 @@ const Timer: FC = () => {
       }
       clearTimeout(timerId);
     };
-    /* startTimer isn't dependency, it's function, 
+    /* startTimer isn't dependency, it's a function, 
     which decreases timeLeft state every second by 1*/
     // eslint-disable-next-line
   }, [timeLeft, isCounting]);
