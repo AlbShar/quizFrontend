@@ -1,12 +1,12 @@
 import {FC} from "react";
 import { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal } from "./Modal.Styled";
 
-interface Mod {
+interface IModalProps {
   title: string;
   subTitle: string;
   onClickHandler?: () => void
 }
-const Modal: FC<Mod> = ({title, subTitle, onClickHandler}) => {
+const Modal: FC<IModalProps> = ({title, subTitle, onClickHandler}) => {
   return (
     <StyleDivModal id="notification">
       <StyledDivWrapper>

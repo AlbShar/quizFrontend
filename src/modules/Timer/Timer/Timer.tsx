@@ -27,7 +27,6 @@ const Timer: FC = () => {
   });
   const timerRef = useRef<HTMLDivElement>(null);
 
-
   let hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
   let minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
   let seconds: string = getFullNumb(Math.floor(timeLeft % 60));
@@ -35,6 +34,9 @@ const Timer: FC = () => {
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
   ));
+  const titleModal = isTimeUp ? t("Заголовок1_вышло_время") : t("Заголовок1_пауза");
+  const subtitleModal = isTimeUp ? t("Заголовок2_вышло_время") : t("Заголовок2_пауза");
+
 
   const countingTime = () => {
     let updateTime = timeLeft >= 1 ? +timeLeft - 1 : 0;
@@ -60,6 +62,9 @@ const Timer: FC = () => {
     setState(state => ({...state, isModal: false}))
   }
 
+  const onClickHandlerModal = isTimeUp ? closeModal : restoreTimer;
+
+
   const onClickButtonHandler = () => {
     stopTimer();
     incrementQuantityPause();
@@ -78,9 +83,9 @@ const Timer: FC = () => {
       // eslint-disable-next-line 
       if (!timerRef.current) {
         const time = deadline - timeLeft;
-        clearTimeout(timerId);
         sendDbTimeLeft(time);
       }
+      clearTimeout(timerId);
     };
     /* startTimer isn't dependency, it's function, 
     which decreases timeLeft state every second by 1*/
@@ -100,18 +105,11 @@ const Timer: FC = () => {
   return (
     <StyledDivTimer ref={timerRef}>
       <span>{elementNumbersTimer}</span>
-      {(isModal) && (
+      {isModal && (
         <Modal
-          title={t("Заголовок1_пауза")}
-          subTitle={t("Заголовок2_пауза")}
-          onClickHandler={restoreTimer}
-        />
-      )}
-      {(isTimeUp && isModal) && (
-        <Modal
-          title={t("Заголовок1_вышло_время")}
-          subTitle={t("Заголовок2_вышло_время")}
-          onClickHandler={closeModal}
+          title={titleModal}
+          subTitle={subtitleModal}
+          onClickHandler={onClickHandlerModal}
         />
       )}
       <StyledButtonPause
