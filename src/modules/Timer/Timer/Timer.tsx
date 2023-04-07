@@ -3,11 +3,10 @@ import Modal from "../../../UI/Modal/Modal";
 import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
 import getFullNumb from "../helpers/getFullNumb";
-import { setPenaltyPoints } from "../api/setPenaltyPoints";
+import { sendDbPenaltyPoints } from "../api/sendDbPenaltyPoints";
 import { deadline } from "../../../variables/variables";
 import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
-import { setTimeToPassQuiz } from "../api/setTimeToPassQuiz";
-
+import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
 
 type TState = {
   isModal: boolean,
@@ -72,19 +71,27 @@ const Timer: FC = () => {
       startTimer();
     }, 1000);
 
+
     return () => {
+      /* If I copy 'timerRef.current' to a variable inside the useEffect,
+       the cleanup function doesn't run, when Timer unmountes */
+      // eslint-disable-next-line 
       if (!timerRef.current) {
+        const time = deadline - timeLeft;
         clearTimeout(timerId);
-        setTimeToPassQuiz(timeLeft)
+        sendDbTimeLeft(time);
       }
     };
+    /* startTimer isn't dependency, it's function, 
+    which decreases timeLeft state every second by 1*/
+    // eslint-disable-next-line
   }, [timeLeft, isCounting]);
 
 
   useEffect(() => {
     if (isTimeUp) {
       setState(state => ({...state, isModal: true, isCounting: false}))
-      setPenaltyPoints();
+      sendDbPenaltyPoints();
     }
   }, [isTimeUp]);
 

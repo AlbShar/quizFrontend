@@ -1,7 +1,7 @@
 import { ref, update } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
-const setTimeToPassQuiz = (time: number) => {
+const sendDbTimeLeft = (time: number) => {
     try {
       let idUser = localStorage.getItem("idUser"); 
       const referenceUserAnswers = ref(db, `users/user${idUser}/userInfo`);
@@ -13,4 +13,4 @@ const setTimeToPassQuiz = (time: number) => {
     }
   };
 
-  export {setTimeToPassQuiz};
+  export {sendDbTimeLeft};
