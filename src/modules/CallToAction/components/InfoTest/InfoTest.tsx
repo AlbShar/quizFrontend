@@ -1,9 +1,9 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
-import { insertDataInfoTest } from "../../helpers/insertDataInfoTest";
 import { getTotalQuestionsNumb } from "../../../../api/getTotalQuestionsNumb";
 import Spinner from "../../../../UI/Spinner/Spinner";
+import { deadline } from "../../../Timer";
 
 const clock = require("../../icons/clock.png");
 const helpcircle = require("../../icons/helpcircle.png");
@@ -14,24 +14,30 @@ export interface IInfoTestBlock {
    text: string;
    srcIcon: string;
 }
+type TState = {
+  loading: boolean,
+  quantityQuestions: number
+};
 const InfoTest: FC = () => {
-  const { t } = useTranslation( );
-  const listRef = useRef<HTMLUListElement>(null);
-  const itemRef = useRef<HTMLSpanElement>(null);
+  const { t } = useTranslation( );  
+  const [state, setState] = useState<TState>({
+    loading: true,
+    quantityQuestions: 0
+  });
 
-  const [loading, setLoading] = useState<boolean>(true);
-  const loadingIsOver = () => {
-    setLoading(false)
+  const updateState = (quantityQuestions: number = 0) => {
+    if (quantityQuestions !== undefined) {
+          setState({loading: false, quantityQuestions})
+    }
   };
 
   useEffect(() => {
-    getTotalQuestionsNumb().then(loadingIsOver)
-    insertDataInfoTest({textQuestions: t("Вопросов"), textTime: t("Время"), listRef, itemTag: 'span'});
-  }, [loading]);
+    getTotalQuestionsNumb().then(updateState)
+  }, [state.loading]);
 
   const infoTestBlock: IInfoTestBlock[] = [
     {
-      text: t("Время"),
+      text: `${deadline / 60} ${t("Время")}`,
       srcIcon: clock,
       alt: "icon of clock",
     },
@@ -41,7 +47,7 @@ const InfoTest: FC = () => {
       alt: "icon of question in circle",
     },
     {
-      text: t("Вопросов"),
+      text: `${state.quantityQuestions} ${t("Вопросов")}`,
       srcIcon: barchart,
       alt: "icon of bar chart",
     },
@@ -50,15 +56,15 @@ const InfoTest: FC = () => {
     return (
       <StyledLi key={index + 1}>
         <StyledImg src={item.srcIcon} alt={item.alt}/>
-        <span ref={itemRef}>{item.text}</span>
+        <span>{item.text}</span>
       </StyledLi>
     );
   });
   
   return (
     <nav>
-      <StyledUl ref={listRef}>
-        {loading ? <Spinner width={50} height={50} color='#fcfdff' margin='auto'/> : elementsInfoTestBlock}
+      <StyledUl>
+        {state.loading ? <Spinner width={50} height={50} color='#fcfdff' margin='auto'/> : elementsInfoTestBlock}
       </StyledUl>
     </nav>
   );

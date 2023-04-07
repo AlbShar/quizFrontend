@@ -16,14 +16,13 @@ const Quiz = () => {
   const [isUserChoseAnswer, setUserChoseAnswer] = useState<boolean>(false);
 
   const userChoseAnswer = () => {
-    // const answersItem =
-    //   document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
-    // answersItem.forEach((answerItem) => {
-    //   if (answerItem.dataset.useranswer) {
-    //     return;
-    //   }
-    // });
-    setUserChoseAnswer(true);
+    const answersItem: HTMLLIElement[] = Array.from(document.querySelectorAll<HTMLLIElement>("#answersAll ul li"));
+    const currentAnswer: HTMLLIElement[] | [] = answersItem.filter(answerItem => answerItem.dataset.useranswer);
+    let isCurrentAnswer: boolean = currentAnswer.length ? true : false;
+
+    if (!isCurrentAnswer) {
+      setUserChoseAnswer(true);
+    }
   };
 
   const userDidntChooseAnswer = () => {
@@ -42,7 +41,7 @@ const Quiz = () => {
             </StyledArticle>
             <NameQuestionAndImg />
             <Answers userChoseAnswer={userChoseAnswer} />
-            <ButtonsQuiz userChoseAnswer={userChoseAnswer} isUserChoseAnswer={isUserChoseAnswer} userDidntChooseAnswer={userDidntChooseAnswer}/>
+            <ButtonsQuiz  userChoseAnswer={userChoseAnswer} isUserChoseAnswer={isUserChoseAnswer} userDidntChooseAnswer={userDidntChooseAnswer}/>
           </Context>
         </StyledSection>
       </Container>

@@ -4,7 +4,6 @@ import { quiantityPause } from "../../../helpers/incrementQuantityPause";
 
 const setQunatityPause = () => {
     try {
-        debugger
       const idUser = localStorage.getItem("idUser"); 
       const referenceUserAnswers = ref(db, `users/user${idUser}/userInfo`);
       set(referenceUserAnswers, {

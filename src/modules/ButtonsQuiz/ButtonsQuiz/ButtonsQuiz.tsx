@@ -10,45 +10,56 @@ import { ContextQuestionNumb } from "../../../components/Context";
 import { sendUserAnswerDB } from "../api/sendUserAnswerDB";
 import { getIdUser } from "../../../helpers/getIdUser";
 import { setQunatityPause } from "../api/setQuantityPause";
+import { resetQuantityPause } from "../../../helpers/incrementQuantityPause";
 
 type TButtonsQuiz = {
   isUserChoseAnswer: boolean,
   userDidntChooseAnswer: () => void,
-  userChoseAnswer: () => void
+  userChoseAnswer: () => void,
 };
 
-const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer}) => {
+const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer }) => {
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
 
-  let totalQuestionsNumbers;
+  let totalQuestionsNumbers: number = 0;
   onValue(ref(db, `questions`), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
-  const onClickButtonHandler = (e: MouseEvent) => {
+  const sendAnswersToDb = () => {
     const answersItem =
-      document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
-    const btnBack = document.querySelector("#btnBack");
-    userDidntChooseAnswer();
-    answersItem.forEach((asnwerItem) => {
-      if (asnwerItem.dataset.useranswer) {
-        setCurrentQuestionNumb(currentQuestionNumb + 1);
-        sendUserAnswerDB({
-          currentQuestionNumb,
-          selectorQuestion: "#questionTitle",
-          userAnswer: asnwerItem.textContent || "No anwser",
-          selectorTheme: "#themeQuestion",
-          idUser: getIdUser("idUser"),
-        });
-      } 
-      if (e.currentTarget.closest('#btnFinish')) {
-        setQunatityPause();
-      }
-      if ((btnBack as HTMLButtonElement)?.style.display === "none") {
-        (btnBack as HTMLButtonElement).style.display = "flex";
-      }
-    });
+    document.querySelectorAll<HTMLLIElement>("#answersAll ul li");
+  answersItem.forEach((asnwerItem) => {
+    if (asnwerItem.dataset.useranswer) {
+      setCurrentQuestionNumb(currentQuestionNumb + 1);
+      sendUserAnswerDB({
+        currentQuestionNumb,
+        selectorQuestion: "#questionTitle",
+        userAnswer: asnwerItem.textContent || "No anwser",
+        selectorTheme: "#themeQuestion",
+        idUser: getIdUser("idUser"),
+      });
+    } 
+  });
+  };
 
+  const onClickTheLastQuestion = () => {
+      setQunatityPause();
+      resetQuantityPause();
+  };
+
+  const onClickButtonHandler = (e: MouseEvent) => {
+    const btnBack = document.querySelector("#btnBack");
+    sendAnswersToDb();
+    if (e.currentTarget.closest('#btnFinish')) {
+      onClickTheLastQuestion();
+      return;
+    }
+    userDidntChooseAnswer();
+    
+    if ((btnBack as HTMLButtonElement)?.style.display === "none") {
+      (btnBack as HTMLButtonElement).style.display = "flex";
+    }
   };
 
   return (

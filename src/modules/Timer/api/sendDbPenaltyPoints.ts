@@ -2,7 +2,7 @@ import { ref, update } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 import { penaltyPoints } from "../../../variables/variables";
 
-const setPenaltyPoints = () => {
+const sendDbPenaltyPoints = () => {
     try {
       let idUser = localStorage.getItem("idUser"); 
       const referenceUserAnswers = ref(db, `users/user${idUser}/userInfo`);
@@ -14,4 +14,4 @@ const setPenaltyPoints = () => {
     }
   };
 
-  export {setPenaltyPoints};
+  export {sendDbPenaltyPoints};

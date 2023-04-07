@@ -7,7 +7,7 @@ import {
 } from "./QuantityThemeQuestions.Styled";
 import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
-import { getThemeQuestion } from "../api/getThemeQuestion";
+import  {getThemeQuestion}  from "../api/getThemeQuestion";
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
 
 type TState = {
