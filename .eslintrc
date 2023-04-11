@@ -1,0 +1,24 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "prefer-const": "warn",
+    "no-console": ["warn", { "allow": ["error"] }],
+    "quotes": ["warn", "double"],
+    "jsx-quotes": ["warn", "prefer-double"],
+    "max-len": ["warn", {"code": 120}],
+    "comma-dangle": ["warn", "always-multiline"],
+    "semi": ["warn", "always"],
+    "import/order": ["warn", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+      "newlines-between": "always"
+    }]
+  }
+}

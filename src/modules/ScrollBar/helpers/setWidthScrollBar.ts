@@ -35,7 +35,7 @@ async function setWidthScrollBar (
       throw new Error(`Unknown error caught: ${error}`);
     }
   }
-};
+}
 
 
 

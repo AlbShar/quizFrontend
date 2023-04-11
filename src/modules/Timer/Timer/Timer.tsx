@@ -1,12 +1,14 @@
 import { useState, useEffect, FC, useRef } from "react";
-import Modal from "../../../UI/Modal/Modal";
-import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
+
+import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
+import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
+import Modal from "../../../UI/Modal/Modal";
 import getFullNumb from "../helpers/getFullNumb";
 import { sendDbPenaltyPoints } from "../api/sendDbPenaltyPoints";
 import { deadline } from "../../../variables/variables";
-import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
-import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
+
+import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 
 type TState = {
   isModal: boolean,
@@ -18,6 +20,7 @@ type TState = {
 
 
 const Timer: FC = () => {
+  console.log(3);
   const { t } = useTranslation();
   const [{isCounting, isModal, timeLeft, isTimeUp}, setState] = useState<TState>({
     isModal: false,
