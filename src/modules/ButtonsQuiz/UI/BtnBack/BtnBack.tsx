@@ -14,7 +14,7 @@ type TBtnBack = {
 };
 const BtnBack: FC<TBtnBack> = ({userChoseAnswer}) => {
     
-
+    //eslint-disable-next-line
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
     const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
       setCurrentQuestionNumb(--currentQuestionNumb);

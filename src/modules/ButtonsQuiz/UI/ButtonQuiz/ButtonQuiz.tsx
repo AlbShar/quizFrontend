@@ -16,9 +16,8 @@ type TButtonsQuiz = {
 
 const ButtonQuiz: FC<TButtonsQuiz> = ({userDidntChooseAnswer, onClickButtonHandler}) => {
   const { t } = useTranslation();
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextQuestionNumb,
-  ) || [1, () => {}];
+    //eslint-disable-next-line
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb,) || [1, () => {}];
   let totalQuestionsNumbers;
   onValue(ref(db, "questions"), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
