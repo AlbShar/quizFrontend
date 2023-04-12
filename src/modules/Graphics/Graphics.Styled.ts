@@ -12,6 +12,6 @@ const StyledSection = styled.section`
     gap: 20px;
   }
 
-`
+`;
 
 export {StyledSection};

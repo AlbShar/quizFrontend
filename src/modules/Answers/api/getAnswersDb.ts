@@ -1,10 +1,11 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
+
 import db from "../../../config/firebase/firebaseConfig";
 
 const getAnswersDb = async (currentQuestionNumb: number) => {
     try {
-      let lang = localStorage.getItem("i18nextLng");
+      const lang = localStorage.getItem("i18nextLng");
   
       return await new Promise(function (resolve, reject) {
         onValue(
@@ -12,7 +13,7 @@ const getAnswersDb = async (currentQuestionNumb: number) => {
           (snapshot) => {
             const answersDB = Object.entries(snapshot.val());
             resolve(answersDB.map((item) => item.join(". ")));
-          }
+          },
         );
       });
     } catch (error) {

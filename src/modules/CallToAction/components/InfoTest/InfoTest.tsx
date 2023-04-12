@@ -1,13 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
+
 import { getTotalQuestionsNumb } from "../../../../api/getTotalQuestionsNumb";
 import Spinner from "../../../../UI/Spinner/Spinner";
 import { deadline } from "../../../Timer";
 
-const clock = require("../../icons/clock.png");
-const helpcircle = require("../../icons/helpcircle.png");
-const barchart = require("../../icons/barchart.png");
+import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
 
 export interface IInfoTestBlock {
   alt: string;
@@ -22,33 +20,33 @@ const InfoTest: FC = () => {
   const { t } = useTranslation( );  
   const [state, setState] = useState<TState>({
     loading: true,
-    quantityQuestions: 0
+    quantityQuestions: 0,
   });
 
-  const updateState = (quantityQuestions: number = 0) => {
+  const updateState = (quantityQuestions = 0) => {
     if (quantityQuestions !== undefined) {
-          setState({loading: false, quantityQuestions})
+          setState({loading: false, quantityQuestions});
     }
   };
 
   useEffect(() => {
-    getTotalQuestionsNumb().then(updateState)
+    getTotalQuestionsNumb().then(updateState);
   }, [state.loading]);
 
   const infoTestBlock: IInfoTestBlock[] = [
     {
       text: `${deadline / 60} ${t("Время")}`,
-      srcIcon: clock,
+      srcIcon: require("../../icons/clock.png"),
       alt: "icon of clock",
     },
     {
       text: t("Возрастающая_сложность"),
-      srcIcon: helpcircle,
+      srcIcon: require("../../icons/helpcircle.png"),
       alt: "icon of question in circle",
     },
     {
       text: `${state.quantityQuestions} ${t("Вопросов")}`,
-      srcIcon: barchart,
+      srcIcon: require("../../icons/barchart.png"),
       alt: "icon of bar chart",
     },
   ];
@@ -64,7 +62,7 @@ const InfoTest: FC = () => {
   return (
     <nav>
       <StyledUl>
-        {state.loading ? <Spinner width={50} height={50} color='#fcfdff' margin='auto'/> : elementsInfoTestBlock}
+        {state.loading ? <Spinner width={50} height={50} color="#fcfdff" margin="auto"/> : elementsInfoTestBlock}
       </StyledUl>
     </nav>
   );

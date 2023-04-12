@@ -1,5 +1,6 @@
-import { getNameQuestion } from "../api/getNameQuestion";
 import { RefObject } from "react";
+
+import { getNameQuestion } from "../api/getNameQuestion";
 
 interface INameQuestionQuiz{
   currentQuestionNumb: number;
@@ -7,7 +8,7 @@ interface INameQuestionQuiz{
 }
 const insertNameQuestionQuiz = async ({currentQuestionNumb, questionTitleRef}: INameQuestionQuiz) => {
     try {
-      let nameQuestion = await getNameQuestion(currentQuestionNumb);
+      const nameQuestion = await getNameQuestion(currentQuestionNumb);
       const elementQuestion = questionTitleRef.current;
       if (elementQuestion && nameQuestion) {
         elementQuestion.textContent = nameQuestion;

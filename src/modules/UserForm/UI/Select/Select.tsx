@@ -1,6 +1,8 @@
 import {FC, FocusEvent, ChangeEvent} from "react";
+
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
 import { clearAnimateInputAndText } from "../../helpers/clearAnimateInputAndText";
+
 import { StyledSelect } from "./Select.Styled";
 
 interface ISelect {

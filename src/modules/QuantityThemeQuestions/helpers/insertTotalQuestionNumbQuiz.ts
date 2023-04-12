@@ -2,7 +2,7 @@ import {getTotalQuestionsNumb} from "../../../api/getTotalQuestionsNumb";
 
 const insertTotalQuestionNumbQuiz = async (selector: string) => {
     try {
-      let totalQuestionsNumb: number | undefined = await getTotalQuestionsNumb();
+      const totalQuestionsNumb: number | undefined = await getTotalQuestionsNumb();
       const elementTotalQuestionNumb = document.querySelector<HTMLElement>(selector);
       if (elementTotalQuestionNumb) {
         elementTotalQuestionNumb.textContent = `/ ${totalQuestionsNumb}`;

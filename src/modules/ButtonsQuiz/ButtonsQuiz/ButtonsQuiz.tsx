@@ -1,16 +1,18 @@
 import {useContext, FC, MouseEvent} from "react";
-import { StyledArticle } from "./ButtonsQuiz.Styled";
+import { ref } from "firebase/database";
+import { onValue } from "firebase/database";
+
 import BtnBack from "../UI/BtnBack/BtnBack";
 import ButtonQuiz from "../UI/ButtonQuiz/ButtonQuiz";
 import ButtonLink from "../UI/ButtonLink/ButtonLink";
-import { ref } from "firebase/database";
-import { onValue } from "firebase/database";
 import  db  from "../../../config/firebase/firebaseConfig";
 import { ContextQuestionNumb } from "../../../components/Context";
 import { sendUserAnswerDB } from "../api/sendUserAnswerDB";
 import { getIdUser } from "../../../helpers/getIdUser";
 import { setQunatityPause } from "../api/setQuantityPause";
 import { resetQuantityPause } from "../../../helpers/incrementQuantityPause";
+
+import { StyledArticle } from "./ButtonsQuiz.Styled";
 
 type TButtonsQuiz = {
   isUserChoseAnswer: boolean,
@@ -19,10 +21,11 @@ type TButtonsQuiz = {
 };
 
 const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer }) => {
-  let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
+  
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [0, () => {}];
 
-  let totalQuestionsNumbers: number = 0;
-  onValue(ref(db, `questions`), (snapshot) => {
+  let totalQuestionsNumbers = 0;
+  onValue(ref(db, "questions"), (snapshot) => {
     totalQuestionsNumbers = Object.entries(snapshot.val()).length;
   });
 
@@ -51,7 +54,7 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
   const onClickButtonHandler = (e: MouseEvent) => {
     const btnBack = document.querySelector("#btnBack");
     sendAnswersToDb();
-    if (e.currentTarget.closest('#btnFinish')) {
+    if (e.currentTarget.closest("#btnFinish")) {
       onClickTheLastQuestion();
       return;
     }

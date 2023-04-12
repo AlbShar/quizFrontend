@@ -8,7 +8,7 @@ interface IJSONText {
       dataArray.forEach((data) => {
         if (document.querySelector(data.selector)) {
           (document.querySelector(data.selector) as HTMLHtmlElement).innerHTML = JSON.parse(
-            JSON.stringify(data.json)
+            JSON.stringify(data.json),
           );
         }
       });

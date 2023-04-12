@@ -24,4 +24,4 @@ const StyledInputField = styled.input`
   }
 `;
 
-export {StyledInputField}
+export {StyledInputField};

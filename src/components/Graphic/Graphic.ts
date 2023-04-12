@@ -16,14 +16,14 @@ const StyledArticle = styled.article`
     padding: 16px 40px 18px 40px;
 
   }
-`
+`;
 
 const StyledP = styled.article`
   font: var(--font-little-text-regular);
   color: #29313C;
   text-align: justify;
   margin: 12px 0 0 0; 
-`
+`;
 
 const StyledImg = styled.img`
   width: 100%;
@@ -38,6 +38,6 @@ const StyledImg = styled.img`
   @media screen and (min-width: 1023.8px) {
     max-height: 320px;
   }
-`
+`;
 
 export {StyledArticle, StyledP, StyledImg};

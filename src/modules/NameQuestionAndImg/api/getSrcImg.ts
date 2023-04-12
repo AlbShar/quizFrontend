@@ -1,5 +1,6 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
+
 import db from "../../../config/firebase/firebaseConfig";
 
 const getSrcImg = async (currentQuestionNumb: number) => {
@@ -10,7 +11,7 @@ const getSrcImg = async (currentQuestionNumb: number) => {
           (snapshot) => {
             const srcImg = snapshot.val();
             resolve(srcImg);
-          }
+          },
         );
       });
     } catch (error: unknown) {

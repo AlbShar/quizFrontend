@@ -1,5 +1,6 @@
 import {FC} from "react";
 import { useTranslation } from "react-i18next";
+
 import {
   StyledButton,
 } from "./Button.Styled";
@@ -9,7 +10,7 @@ interface Btn {
  action: () => void
 }
 const Button: FC<Btn> = ({
-  text, action
+  text, action,
 }) => {
   const { t } = useTranslation();
 

@@ -1,9 +1,11 @@
-import React from 'react';
-import InfoTest from '../components/InfoTest/InfoTest';
+import React from "react";
 import { useTranslation } from "react-i18next";
-import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
-import { createIdUser } from '../helpers/createIdUser';
-import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
+
+import InfoTest from "../components/InfoTest/InfoTest";
+import LinkBtn from "../../../UI/LinkBtn/LinkBtn";
+import { createIdUser } from "../helpers/createIdUser";
+
+import { StyledCallToAction, StyledH1, StyledP } from "./CallToAction.styled";
 
 // eslint-disable-next-line
 export const CallToAction = () => {

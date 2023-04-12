@@ -1,4 +1,4 @@
-import {MouseEvent} from 'react';
+import {MouseEvent} from "react";
 
 interface IAttributesUserAnswer {
   e: MouseEvent;
@@ -12,14 +12,14 @@ const setAttributesUserAnswer = (
   {e,
   selectorAnswers,
   cssBorder,
-  nameDataAtrr}: IAttributesUserAnswer
+  nameDataAtrr}: IAttributesUserAnswer,
 ) => {
   document.querySelectorAll<HTMLElement>(selectorAnswers).forEach((item: HTMLElement) => {
     item.style.cssText = "";
     item.removeAttribute(nameDataAtrr);
   });
   (e.target as HTMLElement).style.border = cssBorder;
-  (e.target as HTMLElement).setAttribute(nameDataAtrr, 'true');
+  (e.target as HTMLElement).setAttribute(nameDataAtrr, "true");
 
 };
 

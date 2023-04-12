@@ -7,7 +7,8 @@ html {
     padding: 0;
     width: 100%;
     height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
-      document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)}px;
+      document.documentElement.clientHeight, document.documentElement.scrollHeight, 
+      document.documentElement.offsetHeight)}px;
   }
   
   div#root {
@@ -22,7 +23,8 @@ body {
   width: 100%;
   overflowY:  hidden;
   height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
-    document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)}px;
+    document.documentElement.clientHeight, document.documentElement.scrollHeight, 
+    document.documentElement.offsetHeight)}px;
 
     background-color: var(--color-main-background); 
     --color-footer: #1C232E;

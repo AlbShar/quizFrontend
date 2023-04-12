@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 import Container from "../../components/Container/Container";
 import { StyledMain } from "../../styles/Main.Styled";
+import UserForm from "../../modules/UserForm/index";
+
 import {
   StyledH1,
   StyledSection,
   StyledP,
 } from "./Contact.styled";
-import { useTranslation } from "react-i18next";
-import UserForm from "../../modules/UserForm/index";
 
 const Contact = () => {
   const { t } = useTranslation();

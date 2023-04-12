@@ -1,7 +1,8 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
-import db from "../../../config/firebase/firebaseConfig";
 import { RefObject } from "react";
+
+import db from "../../../config/firebase/firebaseConfig";
 
 interface IImageQuiz {
   currentQuestionNumb: number;
@@ -15,7 +16,7 @@ interface IImageQuiz {
 const insertImageQuiz = (
     {currentQuestionNumb,
     wrapperImgRef,
-    imgRef, sourceMobImgRef, sourceTabletImgRef, sourceDesktopImgRef}: IImageQuiz
+    imgRef, sourceMobImgRef, sourceTabletImgRef, sourceDesktopImgRef}: IImageQuiz,
   ) => {
     try{
       const wrapperImgElement = wrapperImgRef.current;
@@ -41,11 +42,11 @@ const insertImageQuiz = (
           } else if (wrapperImgElement) {
             wrapperImgElement.style.display = "none";
           }
-        }
+        },
       );
     }
     catch(error) {
-      console.error(error)
+      console.error(error);
     }
   
   };

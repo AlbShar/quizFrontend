@@ -54,4 +54,4 @@ const StyledDivWrapper = styled.div`
   }
 `;
 
-export {StyledFeatureArticle, StyledDivWrapper, StyledSummary, StyledP, StyledImg}
+export {StyledFeatureArticle, StyledDivWrapper, StyledSummary, StyledP, StyledImg};

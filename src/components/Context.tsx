@@ -1,4 +1,4 @@
-import {FC, createContext } from 'react';
+import {FC, createContext } from "react";
 export const ContextQuestionNumb = createContext<IContext["value"] | null>(null);
 
 interface IContext {

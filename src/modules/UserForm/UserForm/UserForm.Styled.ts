@@ -86,4 +86,4 @@ export  {
     StyledDivWrapperGender,
     StyledSpanGender,
     StyledLabelGender,
-  }
+  };

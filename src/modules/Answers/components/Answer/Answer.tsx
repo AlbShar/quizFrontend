@@ -1,6 +1,8 @@
 import { FC, ReactNode, MouseEvent, KeyboardEventHandler } from "react";
-import { StyledLi } from "./Answer.Styled";
+
 import { setAttributesUserAnswer } from "../../helpers/setAttributesUserAnswer";
+
+import { StyledLi } from "./Answer.Styled";
 
 interface IAnswer {
   children: ReactNode;

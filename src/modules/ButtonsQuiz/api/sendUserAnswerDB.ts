@@ -1,7 +1,9 @@
 import { ref, set } from "firebase/database";
-import { getRightAnswerDB } from "./getRightAnswerDB";
+
 import db from "../../../config/firebase/firebaseConfig";
 import {quiantityPause} from "../../../helpers/incrementQuantityPause";
+
+import { getRightAnswerDB } from "./getRightAnswerDB";
 
 interface IUserAnswer {
   currentQuestionNumb: number;
@@ -17,23 +19,23 @@ const sendUserAnswerDB = async (
     selectorQuestion,
     userAnswer,
     selectorTheme,
-    idUser}: IUserAnswer
+    idUser}: IUserAnswer,
   ) => {
     const theme = document.querySelector<HTMLSpanElement>(selectorTheme)?.textContent;
     const question = document.querySelector<HTMLHeadingElement>(selectorQuestion)?.textContent;
     const rightAnswer = await getRightAnswerDB(currentQuestionNumb);
 
     try {
-      let referenceUserAnswers = ref(
+      const referenceUserAnswers = ref(
         db,
-        `users/user${idUser}/answers/answer${currentQuestionNumb}`
+        `users/user${idUser}/answers/answer${currentQuestionNumb}`,
       );
       set(referenceUserAnswers, {
         question: question,
         userAnswer: userAnswer,
         theme: theme,
         point: rightAnswer === userAnswer ? 1 : 0,
-        quantityPause: quiantityPause
+        quantityPause: quiantityPause,
       });
     } catch (error) {
       if (!theme) {

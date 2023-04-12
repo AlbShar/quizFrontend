@@ -6,7 +6,8 @@ import {
   forwardRef,
   Ref,
 } from "react";
-import i18next from "i18next";
+
+
 import {
   StyleArticleDropdown,
   StyledButton,
@@ -16,7 +17,8 @@ import {
   StyledSpan,
 } from "./Dropdown.Styled";
 
-const chevrondown = require("../../assets/images/chevrondown.png");
+require("../../assets/images/chevrondown.png");
+
 
 type DropdownProps = {
   style?: CSSProperties;
@@ -40,7 +42,7 @@ const Dropdown = forwardRef(
       onClickDrop,
       onClickBtn,
     }: DropdownProps,
-    ref: Ref<HTMLDivElement>
+    ref: Ref<HTMLDivElement>,
   ) => {
     const elementLanguages = data.map((item: string, index: number) => {
       return (
@@ -76,12 +78,12 @@ const Dropdown = forwardRef(
             <StyledSpan className="dropdown-btn-text">
               {selected || data[0]}
             </StyledSpan>
-            <StyledImg src={chevrondown} alt="Кнопка вниз" />
+            <StyledImg src={require("../../assets/images/chevrondown.png")} alt="Кнопка вниз" />
           </StyledButton>
         {isActive && <StyledUl>{elementLanguages}</StyledUl>}
       </StyleArticleDropdown>
     );
-  }
+  },
 );
 
 Dropdown.displayName = "Dropdown";

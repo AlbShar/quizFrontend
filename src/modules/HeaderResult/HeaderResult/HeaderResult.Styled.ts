@@ -23,4 +23,4 @@ const StyledArticle = styled.article`
   }
 `;
 
-export {StyledH1, StyledH2, StyledArticle}
+export {StyledH1, StyledH2, StyledArticle};

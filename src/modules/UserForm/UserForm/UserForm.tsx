@@ -1,8 +1,10 @@
 import { useState, ChangeEvent, FC, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 import InputField from "../UI/InputField/InputField";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
-import { useTranslation } from "react-i18next";
+
 import {
   StyledSpan,
   StyledPForm,
@@ -13,6 +15,7 @@ import {
   StyledSpanGender,
   StyledLabelGender,
 } from "./UserForm.Styled";
+
 const womanavatar = require("../icons/womanavatar.png");
 const manavatar = require("../icons/manavatar.png");
 interface IValueInput {

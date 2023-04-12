@@ -26,7 +26,8 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
-    "lint": "eslint -c ./.eslintrc \"./src/**/*.ts\""
+    "lint": "eslint -c ./.eslintrc \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "npm run lint -- --fix"
 
   },
   "browserslist": {

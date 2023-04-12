@@ -1,10 +1,12 @@
 import { useEffect, useState, useContext, FC } from "react";
+
 import { removeAttributesAnswers } from "../helpers/removeAttributesAnswers";
 import { getAnswersDb } from "../api/getAnswersDb";
-import { StyledArticle, StyledUl } from "./Answers.Styled";
 import Answer from "../components/Answer/Answer";
 import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
+
+import { StyledArticle, StyledUl } from "./Answers.Styled";
 
 type TState = {
   loading: boolean,

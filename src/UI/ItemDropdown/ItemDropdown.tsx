@@ -1,6 +1,7 @@
 import React, { useState, FC } from "react";
-import { StyledLi } from "./ItemDropdown";
 import i18next from "i18next";
+
+import { StyledLi } from "./ItemDropdown";
 
 
 const ItemDropdown: FC = () => {
@@ -26,13 +27,13 @@ const ItemDropdown: FC = () => {
         onClick={() => {
           setSelected(language);
           i18next.changeLanguage(
-            mapLanguage[language as keyof IMapLanguage]
+            mapLanguage[language as keyof IMapLanguage],
           );
           setActive(false);
           localStorage.setItem("language", language);
           (document.querySelector("html") as HTMLHtmlElement).setAttribute(
             "lang",
-            localStorage.getItem("i18nextLng") || "ru"
+            localStorage.getItem("i18nextLng") || "ru",
           );
         }}
       >
