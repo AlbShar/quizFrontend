@@ -1,12 +1,29 @@
 {
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+    },
+  
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "eslint-plugin-import",
+    "import"
   ],
   "extends": [
     "eslint:recommended",
     "react-app",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript"
   ],
   "rules": {
     "prefer-const": "warn",
@@ -20,6 +37,12 @@
       "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
       "newlines-between": "always"
     }],
-    "no-empty-function": ["warn", { "allow": ["arrowFunctions"] }]
+    "no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
+    "import/no-restricted-paths": ["error", {
+      "zones": [
+        { "target": "./src/UI/**/*", "from": "./src/components/**/*" },
+        { "target": "./src/UI/**/*", "from": "./src/modules/**/*" }
+      ]
+    }]
   }
 }

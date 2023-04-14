@@ -7,6 +7,7 @@ import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
 
 import { StyledArticle, StyledUl } from "./Answers.Styled";
+import Contact from "../../../pages/Contact/Contact";
 
 type TState = {
   loading: boolean,
