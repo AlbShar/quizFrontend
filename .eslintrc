@@ -1,6 +1,7 @@
 {
   "settings": {
     "import/resolver": {
+    "typescript": true,
       "node": {
         "paths": ["."],
         "extensions": [
@@ -41,6 +42,7 @@
     "import/no-restricted-paths": ["error", {
       "zones": [
         { "target": "./src/UI/**/*", "from": "./src/components/**/*" },
+        { "target": "./src/UI/**/*", "from": "./src/pages/**/*" },
         { "target": "./src/UI/**/*", "from": "./src/modules/**/*" }
       ]
     }]
