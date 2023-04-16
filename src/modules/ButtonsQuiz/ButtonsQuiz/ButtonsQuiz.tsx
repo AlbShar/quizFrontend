@@ -14,6 +14,7 @@ import { resetQuantityPause } from "../../../helpers/incrementQuantityPause";
 
 import { StyledArticle } from "./ButtonsQuiz.Styled";
 
+
 type TButtonsQuiz = {
   isUserChoseAnswer: boolean,
   userDidntChooseAnswer: () => void,
@@ -21,7 +22,7 @@ type TButtonsQuiz = {
 };
 
 const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer }) => {
-  
+  //eslint-disable-next-line
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [0, () => {}];
 
   let totalQuestionsNumbers = 0;

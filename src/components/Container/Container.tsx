@@ -1,7 +1,6 @@
 import React, {FC} from "react";
-import { ContainerStyled } from "./Container.styled";
-import Dropdown from "../../UI/Dropdown/Dropdown";
 
+import { ContainerStyled } from "./Container.styled";
 
 interface IContainer {
     children: React.ReactNode,

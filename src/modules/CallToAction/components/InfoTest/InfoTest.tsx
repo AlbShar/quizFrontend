@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { getTotalQuestionsNumb } from "../../../../api/getTotalQuestionsNumb";
 import Spinner from "../../../../UI/Spinner/Spinner";
-import { deadline } from "../../../Timer";
+import { deadline } from "../../../../variables/variables";
 
 import { StyledUl, StyledImg, StyledLi } from "./InfoTest.styled";
 

@@ -1,4 +1,5 @@
 import React from "react";
+
 type ISpinner = {
   width: number,
   height: number,
