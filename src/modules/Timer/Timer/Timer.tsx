@@ -7,6 +7,7 @@ import Modal from "../../../UI/Modal/Modal";
 import getFullNumb from "../helpers/getFullNumb";
 import { sendDbPenaltyPoints } from "../api/sendDbPenaltyPoints";
 import { deadline } from "../../../variables/variables";
+import Portal from "../../../components/Portal/Portal";
 
 import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 
@@ -108,11 +109,14 @@ const Timer: FC = () => {
     <StyledDivTimer ref={timerRef}>
       <span>{elementNumbersTimer}</span>
       {isModal && (
-        <Modal
+        <Portal>
+          <Modal
           title={titleModal}
           subTitle={subtitleModal}
           onClickHandler={onClickHandlerModal}
         />
+        </Portal>
+        
       )}
       <StyledButtonPause
         onClick={onClickButtonHandler}
