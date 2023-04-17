@@ -39,6 +39,7 @@
       "newlines-between": "always"
     }],
     "no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
+    "no-debugger": "warn",
     "import/no-restricted-paths": ["error", {
       "zones": [
         {
@@ -118,7 +119,7 @@
         },
         { "target": "./src/UI/**/*", "from": "./src/{components,modules,pages}/**/*", "message": "We can't import files from components, modules, pages folders in the UI element " },
         { "target": "./src/components/**/*", "from": "./src/{modules,pages}/**/*", "message": "We can't import files from modules, pages folders in the component "  },
-        { "target": "./src/modules/**/*", "from": "./src/pages/**/*", "message": "We can't import files from pages folder in the module " },
+        { "target": "./src/modules/**/*", "from": "./src/pages/**/*", "message": "We can't import files from pages folder in the module " }
       ]
     }]
   }

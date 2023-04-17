@@ -1,6 +1,10 @@
 import {FC} from "react";
 
-import { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal } from "./Modal.Styled";
+import { StyleDivModal, 
+        StyledDivWrapper, 
+        StyledH1, StyledSpan, 
+        StyledSpanClose, 
+        StyledButtonModal } from "./Modal.Styled";
 
 interface IModalProps {
   title: string;

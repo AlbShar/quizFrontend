@@ -15,20 +15,14 @@ import { StyledSection, StyledArticle } from "./Quiz.Styled";
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(54);
   const quizRef = useRef<HTMLTableSectionElement>(null);
-  const [isUserChoseAnswer, setUserChoseAnswer] = useState<boolean>(false);
+  const [isButtonAcceptVisibility, setButtonAcceptVisibility] = useState<boolean>(false);
 
-  const userChoseAnswer = () => {
-    const answersItem: HTMLLIElement[] = Array.from(document.querySelectorAll<HTMLLIElement>("#answersAll ul li"));
-    const currentAnswer: HTMLLIElement[] | [] = answersItem.filter(answerItem => answerItem.dataset.useranswer);
-    const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
-
-    if (!isCurrentAnswer) {
-      setUserChoseAnswer(true);
-    }
+  const showButtonAccept = () => {
+    setButtonAcceptVisibility(true);
   };
 
-  const userDidntChooseAnswer = () => {
-    setUserChoseAnswer(false);
+  const hideButtonAccept = () => {
+    setButtonAcceptVisibility(false);
   };
 
   return (
@@ -42,11 +36,11 @@ const Quiz = () => {
               <Timer />
             </StyledArticle>
             <NameQuestionAndImg />
-            <Answers userChoseAnswer={userChoseAnswer} />
+            <Answers showButtonAccept={showButtonAccept} />
             <ButtonsQuiz  
-              userChoseAnswer={userChoseAnswer} 
-              isUserChoseAnswer={isUserChoseAnswer} 
-              userDidntChooseAnswer={userDidntChooseAnswer}/>
+              showButtonAccept={showButtonAccept} 
+              isButtonAcceptVisibility={isButtonAcceptVisibility} 
+              hideButtonAccept={hideButtonAccept}/>
           </Context>
         </StyledSection>
       </Container>

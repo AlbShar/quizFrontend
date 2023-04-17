@@ -10,11 +10,10 @@ import { StyledButtonQuiz } from "./ButtonQuiz.Styled";
 
 
 type TButtonsQuiz = {
-  userDidntChooseAnswer: () => void,
   onClickButtonHandler: (e: MouseEvent) => void
 };
 
-const ButtonQuiz: FC<TButtonsQuiz> = ({userDidntChooseAnswer, onClickButtonHandler}) => {
+const ButtonQuiz: FC<TButtonsQuiz> = ({onClickButtonHandler}) => {
   const { t } = useTranslation();
     //eslint-disable-next-line
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb,) || [1, () => {}];

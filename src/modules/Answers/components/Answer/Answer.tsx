@@ -1,25 +1,15 @@
-import { FC, ReactNode, MouseEvent, KeyboardEventHandler } from "react";
-
-import { setAttributesUserAnswer } from "../../helpers/setAttributesUserAnswer";
+import { FC, ReactNode, KeyboardEventHandler } from "react";
 
 import { StyledLi } from "./Answer.Styled";
 
 interface IAnswer {
   children: ReactNode;
-  userChoseAnswer: () => void
+  setRef: (elem: any) => void,
+  onFocusUserAnswer: (id: number) => void,
+  index: number
 }
 
-const Answer: FC<IAnswer> = ({ children, userChoseAnswer }) => {
-  const handleMouseClick = (e: MouseEvent) => {
-    userChoseAnswer();
-    setAttributesUserAnswer({
-      e,
-      selectorAnswers: "#answersAll ul li",
-      cssBorder: "2px solid rgb(103, 104, 215)",
-      nameDataAtrr: "data-useranswer",
-    });
-  };
-
+const Answer: FC<IAnswer> = ({ children, index, setRef, onFocusUserAnswer }) => {
   const handleKeyboardClick: KeyboardEventHandler<HTMLLIElement> = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -28,8 +18,9 @@ const Answer: FC<IAnswer> = ({ children, userChoseAnswer }) => {
   };
   return (
     <StyledLi
+      ref={setRef}
       tabIndex={0}
-      onClick={handleMouseClick}
+      onClick={() => onFocusUserAnswer(index)}
       onKeyDown={handleKeyboardClick}
     >
       {children}

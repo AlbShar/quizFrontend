@@ -16,12 +16,12 @@ import { StyledArticle } from "./ButtonsQuiz.Styled";
 
 
 type TButtonsQuiz = {
-  isUserChoseAnswer: boolean,
-  userDidntChooseAnswer: () => void,
-  userChoseAnswer: () => void,
+  isButtonAcceptVisibility: boolean,
+  showButtonAccept: () => void,
+  hideButtonAccept: () => void,
 };
 
-const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer, userChoseAnswer }) => {
+const ButtonsQuiz: FC<TButtonsQuiz> = ({isButtonAcceptVisibility, showButtonAccept, hideButtonAccept }) => {
   //eslint-disable-next-line
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [0, () => {}];
 
@@ -59,7 +59,7 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
       onClickTheLastQuestion();
       return;
     }
-    userDidntChooseAnswer();
+    hideButtonAccept();
     
     if ((btnBack as HTMLButtonElement)?.style.display === "none") {
       (btnBack as HTMLButtonElement).style.display = "flex";
@@ -68,10 +68,10 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({isUserChoseAnswer, userDidntChooseAnswer
 
   return (
     <StyledArticle>
-      <BtnBack userChoseAnswer={userChoseAnswer}/>
-      {isUserChoseAnswer && (totalQuestionsNumbers === currentQuestionNumb ? (
+      <BtnBack showButtonAccept={showButtonAccept}/>
+      {isButtonAcceptVisibility && (totalQuestionsNumbers === currentQuestionNumb ? (
          <ButtonLink onClickButtonHandler={onClickButtonHandler}/>
-      ) : <ButtonQuiz userDidntChooseAnswer={userDidntChooseAnswer} onClickButtonHandler={onClickButtonHandler}/>)}
+      ) : <ButtonQuiz onClickButtonHandler={onClickButtonHandler}/>)}
     </StyledArticle>
   );
 };

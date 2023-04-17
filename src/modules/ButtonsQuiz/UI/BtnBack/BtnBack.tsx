@@ -10,15 +10,15 @@ import {
     StyledSpan} from "./BtnBack.Styled";
 
 type TBtnBack = {
-  userChoseAnswer: () => void
+  showButtonAccept: () => void
 };
-const BtnBack: FC<TBtnBack> = ({userChoseAnswer}) => {
+const BtnBack: FC<TBtnBack> = ({showButtonAccept}) => {
     
     //eslint-disable-next-line
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
     const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
       setCurrentQuestionNumb(--currentQuestionNumb);
-      userChoseAnswer();
+      showButtonAccept();
       highlightPreviousAnswer(
         {idUser: getIdUser("idUser"),
         currentQuestionNumb,
