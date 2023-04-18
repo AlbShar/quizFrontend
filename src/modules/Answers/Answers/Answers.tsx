@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext, FC } from "react";
+import { useEffect, useState, useContext, FC} from "react";
 
-import { removeAttributesAnswers } from "../helpers/removeAttributesAnswers";
 import { getAnswersDb } from "../api/getAnswersDb";
 import Answer from "../components/Answer/Answer";
 import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
+import { removeAllAttributes } from "../helpers/removeAllAttributes";
 
 import { StyledArticle, StyledUl } from "./Answers.Styled";
 
@@ -13,17 +13,17 @@ type TState = {
   answers: string[],
 };
 
-type TAnswer = {
+type AnswersProps = {
   showButtonAccept: () => void
 };
 
-const Answers: FC<TAnswer> = ({showButtonAccept}) => {
+const Answers: FC<AnswersProps> = ({showButtonAccept}) => {
   const [state, setState] = useState<TState>({ answers: [], loading: true });
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const refAnswers: HTMLLIElement[] = [];
-  const setRefAnswer = elem => {
-    refAnswers.push(elem);
+  const setRefAnswer = (elem: HTMLLIElement) => {
+    refAnswers.push(elem as HTMLLIElement);
   };
 
   const onFocusUserAnswer = (id: number) => {
@@ -34,15 +34,16 @@ const Answers: FC<TAnswer> = ({showButtonAccept}) => {
       showButtonAccept();
     }
 
-    refAnswers.forEach(answer => {
-      answer.removeAttribute("style");
-      answer.removeAttribute("data-useranswer");
-      
-    });
-
+    removeAllAttributes(refAnswers);
     refAnswers[id].setAttribute("style", styleBorder);
     refAnswers[id].setAttribute("data-useranswer", "true");
     refAnswers[id].focus();
+  };
+
+ 
+
+  const answersHasLoaded = (answersDB: never[]) => {
+    setState(state => ({...state, answers: answersDB as never[], loading: false}));
   };
 
   const answersItems = state.answers.map((answer, index) => (
@@ -64,14 +65,15 @@ const Answers: FC<TAnswer> = ({showButtonAccept}) => {
   );
 
   useEffect(() => {
-    removeAttributesAnswers("#answersAll ul li");
+    removeAllAttributes(refAnswers);
     if (currentQuestionNumb) {
       getAnswersDb(currentQuestionNumb).then((answersDB) => {
         if (Array.isArray(answersDB)) {
-          setState(state => ({...state, answers: answersDB as never[], loading: false}));
+          answersHasLoaded(answersDB as never[]);
         }
       });
     }
+    //eslint-disable-next-line
   }, [currentQuestionNumb]);
 
   return (

@@ -6,14 +6,14 @@ interface IAnswer {
   children: ReactNode;
   setRef: (elem: any) => void,
   onFocusUserAnswer: (id: number) => void,
-  index: number
+  index: number,
 }
 
 const Answer: FC<IAnswer> = ({ children, index, setRef, onFocusUserAnswer }) => {
   const handleKeyboardClick: KeyboardEventHandler<HTMLLIElement> = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      (e.currentTarget as HTMLLIElement)?.click();
+      onFocusUserAnswer(index);
     }
   };
   return (
