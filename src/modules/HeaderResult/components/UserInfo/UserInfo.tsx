@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from "react";
+
 import { StyledLabel, StyledUserData, StyledArticleName, StyledArticleEmail } from "./UserInfo.Styled";
 import { StyledSection } from "./UserInfo.Styled";
 

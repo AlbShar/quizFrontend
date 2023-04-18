@@ -181,5 +181,5 @@ export {
   StyledSection,
   StyledLi,
   StyledUl,
-  StyledA
+  StyledA,
 };

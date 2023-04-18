@@ -32,4 +32,4 @@ const StyledButtonPause = styled.button`
   }
 `;
 
-export {StyledDivTimer, StyledButtonPause }
+export {StyledDivTimer, StyledButtonPause };

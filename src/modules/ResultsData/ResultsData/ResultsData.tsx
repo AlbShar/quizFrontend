@@ -1,6 +1,8 @@
-import React from 'react';
-import Container from '../../../components/Container/Container';
-import { StyledSection, StyledH2, StyledH3, StyledArticle } from './ResultsData.Styled';
+import React from "react";
+
+import Container from "../../../components/Container/Container";
+
+import { StyledSection, StyledH2, StyledH3, StyledArticle } from "./ResultsData.Styled";
 
 const ResultsData = () => {
     return (

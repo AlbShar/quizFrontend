@@ -1,17 +1,17 @@
-import { useState, useRef, useLayoutEffect } from "react";
-import Dropdown from "../../../../UI/Dropdown/Dropdown";
+import { useState, useRef } from "react";
 import i18next from "i18next";
+
+import Dropdown from "../../../../UI/Dropdown/Dropdown";
 
 const DropdownLanguages = () => {
   const data: string[] = ["Русский", "English", "Deutsch"];
-  // const [selected, setSelected] = useState<string>(data[0]);
-  const language: string = localStorage.getItem("language") || 'Русский';
+  const language: string = localStorage.getItem("language") || "Русский";
   const [selected, setSelected] = useState<string>(language);
   const [isActive, setActive] = useState<boolean>(false);
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
 
-  interface IMapLanguage extends Record<typeof data[number], string> {}
+  type IMapLanguage = Record<typeof data[number], string>
 
   const mapLanguage: IMapLanguage = {
     Русский: "ru",
@@ -27,7 +27,7 @@ const DropdownLanguages = () => {
     localStorage.setItem("language", item);
     (document.querySelector("html") as HTMLHtmlElement).setAttribute(
       "lang",
-      localStorage.getItem("i18nextLng") || "ru"
+      localStorage.getItem("i18nextLng") || "ru",
     );
   };
 

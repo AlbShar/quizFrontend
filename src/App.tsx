@@ -1,6 +1,7 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import HeaderHome from "./modules/HeaderHome/index";
 import Footer from "./modules/Footer/index";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReportBugPage from "./pages/ReportBugPage/ReportBugPage";
 import Homepage from "./pages/Homepage/Homepage";
 import Quiz from "./pages/Quiz/Quiz";

@@ -1,8 +1,10 @@
 import { useState, ChangeEvent, FC, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 import InputField from "../UI/InputField/InputField";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
-import { useTranslation } from "react-i18next";
+
 import {
   StyledSpan,
   StyledPForm,
@@ -13,8 +15,7 @@ import {
   StyledSpanGender,
   StyledLabelGender,
 } from "./UserForm.Styled";
-const womanavatar = require("../icons/womanavatar.png");
-const manavatar = require("../icons/manavatar.png");
+
 interface IValueInput {
   userName: string;
   userEmail: string;
@@ -34,7 +35,6 @@ const UserForm: FC = () => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    console.log(value);
     setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
   };
   
@@ -90,7 +90,7 @@ const UserForm: FC = () => {
               checked={"man" === valueInput.userGender}
               onChange={onValueInput}
             />
-            <StyledImgGender src={manavatar} />
+            <StyledImgGender src={require("../icons/manavatar.png")} />
           </StyledLabelGender>
           <StyledLabelGender>
             <StyledInputRadio
@@ -101,7 +101,7 @@ const UserForm: FC = () => {
               checked={"woman" === valueInput.userGender}
               onChange={onValueInput}
             />
-            <StyledImgGender src={womanavatar} />
+            <StyledImgGender src={require("../icons/womanavatar.png")} />
           </StyledLabelGender>
         </StyledDivWrapperGender>
       </StyledFieldset>

@@ -1,7 +1,9 @@
 import React from "react";
-import { StyledSection } from "./Graphics.Styled";
+
 import Container from "../../components/Container/Container";
 import Graphic from "../../components/Graphic/Grpahic";
+
+import { StyledSection } from "./Graphics.Styled";
 
 const Graphics = () => {
   return (

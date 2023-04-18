@@ -1,0 +1,126 @@
+{
+  "settings": {
+    "import/resolver": {
+    "typescript": true,
+      "node": {
+        "paths": ["."],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+    },
+  
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "prefer-const": "warn",
+    "no-console": ["warn", { "allow": ["error"] }],
+    "quotes": ["warn", "double"],
+    "jsx-quotes": ["warn", "prefer-double"],
+    "max-len": ["warn", {"code": 120}],
+    "comma-dangle": ["warn", "always-multiline"],
+    "semi": ["warn", "always"],
+    "import/order": ["warn", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+      "newlines-between": "always"
+    }],
+    "no-empty-function": ["warn", { "allow": ["arrowFunctions"] }],
+    "no-debugger": "warn",
+    "import/no-restricted-paths": ["error", {
+      "zones": [
+        {
+          "target": "./src/pages/**/*",
+          "from": "./src/modules/**/!(index.ts)", 
+          "message": "We can import only index file from modules"
+        },
+        {
+          "target": "./src/modules/Answers/**/*",
+          "from": "./src/modules/!(Answers)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/ButtonsQuiz/**/*",
+          "from": "./src/modules/!(ButtonsQuiz)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/CallToAction/**/*",
+          "from": "./src/modules/!(CallToAction)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/Footer/**/*",
+          "from": "./src/modules/!(Footer)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/Graphics/**/*",
+          "from": "./src/modules/!(Graphics)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/HeaderHome/**/*",
+          "from": "./src/modules/!(HeaderHome)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/HeaderResult/**/*",
+          "from": "./src/modules/!(HeaderResult)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/NameQuestionAndImg/**/*",
+          "from": "./src/modules/!(NameQuestionAndImg)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/QuantityThemeQuestions/**/*",
+          "from": "./src/modules/!(QuantityThemeQuestions)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/ResultsData/**/*",
+          "from": "./src/modules/!(ResultsData)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+
+        {
+          "target": "./src/modules/ScrollBar/**/*",
+          "from": "./src/modules/!(ScrollBar)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },{
+          "target": "./src/modules/Timer/**/*",
+          "from": "./src/modules/!(Timer)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/UserAnswers/**/*",
+          "from": "./src/modules/!(UserAnswers)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        {
+          "target": "./src/modules/UserForm/**/*",
+          "from": "./src/modules/!(UserForm)/**/*", 
+          "message": "Module has to be isolated, so we can't import files from one module to another"
+        },
+        { "target": "./src/UI/**/*", "from": "./src/{components,modules,pages}/**/*", "message": "We can't import files from components, modules, pages folders in the UI element " },
+        { "target": "./src/components/**/*", "from": "./src/{modules,pages}/**/*", "message": "We can't import files from modules, pages folders in the component "  },
+        { "target": "./src/modules/**/*", "from": "./src/pages/**/*", "message": "We can't import files from pages folder in the module " }
+      ]
+    }]
+  }
+}

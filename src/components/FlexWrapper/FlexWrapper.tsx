@@ -1,5 +1,6 @@
-import {FC, CSSProperties} from 'react';
-import { StyledFlexWrapper } from './FlexWrapper.Styled';
+import {FC, CSSProperties} from "react";
+
+import { StyledFlexWrapper } from "./FlexWrapper.Styled";
 
 interface IFlexWrapper {
     children: React.ReactNode;
@@ -12,8 +13,13 @@ interface IFlexWrapper {
 
 const FlexWrapper: FC<IFlexWrapper> = ({style, children, widthFlexStart, widthColumnEnd, widthColumnStart, gap}) => {
     return (
-        <StyledFlexWrapper style={style} widthFlexStart={widthFlexStart} widthColumnStart={widthColumnStart} gap={gap} widthColumnEnd={widthColumnEnd}>
-            {children}
+        <StyledFlexWrapper 
+            style={style} 
+            widthFlexStart={widthFlexStart} 
+            widthColumnStart={widthColumnStart}
+            gap={gap} 
+            widthColumnEnd={widthColumnEnd}>
+        {children}
         </StyledFlexWrapper>
     );
 };

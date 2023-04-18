@@ -1,12 +1,13 @@
 import { ref } from "firebase/database";
 import { onValue } from "firebase/database";
-import db from "../config/firebase/firebaseConfig"
+
+import db from "../config/firebase/firebaseConfig";
 
 
 const getTotalQuestionsNumb = async () => {
     try {
       return await new Promise<number>(function (resolve, reject) {
-        onValue(ref(db, `questions`), (snapshot) => {
+        onValue(ref(db, "questions"), (snapshot) => {
           const totalQuestionsNumb: number = Object.entries(snapshot.val()).length;
           resolve(totalQuestionsNumb);
         });
@@ -16,4 +17,4 @@ const getTotalQuestionsNumb = async () => {
     }
   };
 
-  export {getTotalQuestionsNumb}
+  export {getTotalQuestionsNumb};

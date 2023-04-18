@@ -1,5 +1,6 @@
-import {FC} from 'react';
-import { HeaderStyled } from './Header.Styled';
+import {FC} from "react";
+
+import { HeaderStyled } from "./Header.Styled";
 
 interface IHeader {
     children: React.ReactNode;

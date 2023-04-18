@@ -1,5 +1,6 @@
-import {FC, useState, useRef} from 'react';
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
+import {FC, useState, useRef} from "react";
+
+import Dropdown from "../../../../UI/Dropdown/Dropdown";
 
 const DropdownIsRight: FC = () => {
     const refWrapperRight = useRef<HTMLDivElement>(null);

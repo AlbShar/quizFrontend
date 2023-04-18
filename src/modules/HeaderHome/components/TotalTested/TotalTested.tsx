@@ -1,13 +1,15 @@
 import { FC, useRef, useState } from "react";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+import Spinner from "../../../../UI/Spinner/Spinner";
+import { getAllTestedUsers } from "../../api/getAllTestedUsers";
+
 import {
   StyledSpanText,
   StyledSpanNumber,
   StyledDivWrapper,
 } from "./TotalTested.styled";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import Spinner from "../../../../UI/Spinner/Spinner";
-import { getAllTestedUsers } from "../../api/getAllTestedUsers";
 
 const TotalTested: FC = () => {
   const { t } = useTranslation();
@@ -15,22 +17,22 @@ const TotalTested: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [allTestedUsers, SetAllTestedUsers] = useState<number>(0);
   const loadingIsOver = () => {
-    setLoading(false)
+    setLoading(false);
   };
 
   const setTestedUsers = (num: number) => {
-    SetAllTestedUsers(num)
+    SetAllTestedUsers(num);
   };
 
   useEffect(() => {
     getAllTestedUsers().then((allTestedUsers) => {
         loadingIsOver();
-        setTestedUsers(allTestedUsers)
+        setTestedUsers(allTestedUsers);
     });
   }, [loading]);
 
   if (loading) {
-    return <Spinner width={50} height={50} color='#fcfdff' margin='auto'/>;
+    return <Spinner width={50} height={50} color="#fcfdff" margin="auto"/>;
   }
 
   return (

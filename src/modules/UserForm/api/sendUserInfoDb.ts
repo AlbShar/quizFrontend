@@ -1,5 +1,6 @@
 import { update } from "firebase/database";
 import { ref } from "firebase/database";
+
 import db from "../../../config/firebase/firebaseConfig";
 
 interface IUserData {

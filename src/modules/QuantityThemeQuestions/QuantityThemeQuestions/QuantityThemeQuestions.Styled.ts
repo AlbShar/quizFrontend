@@ -27,6 +27,6 @@ const StyledSpanThemeQuestion = styled(StyledSpanQuestionQuantity)`
     display: inline;
     padding: 0 0 0 10px;
   }
-`
+`;
 
 export { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity };

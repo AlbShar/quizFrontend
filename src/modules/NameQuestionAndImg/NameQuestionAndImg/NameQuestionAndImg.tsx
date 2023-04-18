@@ -1,13 +1,15 @@
 import { useEffect, useContext, FC, useState } from "react";
+
+import { ContextQuestionNumb } from "../../../components/Context";
+import { getQuestionInfo } from "../../../api/getQuestionInfo";
+import Spinner from "../../../UI/Spinner/Spinner";
+
 import {
   StyledH2,
   StyledArticleQuestion,
   StyledPicture,
   StyledImg,
 } from "./NameQuestionAndImg.Styled";
-import { ContextQuestionNumb } from "../../../components/Context";
-import { getQuestionInfo } from "../../../api/getQuestionInfo";
-import Spinner from "../../../UI/Spinner/Spinner";
 
 type IState = {
   question: string;

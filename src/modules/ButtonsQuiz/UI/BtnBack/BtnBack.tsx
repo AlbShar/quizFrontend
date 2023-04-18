@@ -1,38 +1,39 @@
-import {useContext, MouseEvent, FC} from 'react';
+import {useContext, MouseEvent, FC} from "react";
+
+import {ContextQuestionNumb} from "../../../../components/Context";
+import { getIdUser } from "../../../../helpers/getIdUser";
+import { highlightPreviousAnswer } from "../../helpers/highlightPreviousAnswer";
+
 import {
     StyledButtonBack,
     StyledImg,
     StyledSpan} from "./BtnBack.Styled";
-import {ContextQuestionNumb} from "../../../../components/Context";
-import { getIdUser } from '../../../../helpers/getIdUser';
-import { highlightPreviousAnswer } from '../../helpers/highlightPreviousAnswer';
-
-const arrowleft =  require("../../icons/arrowleft.png");
 
 type TBtnBack = {
-  userChoseAnswer: () => void
+  showButtonAccept: () => void
 };
-const BtnBack: FC<TBtnBack> = ({userChoseAnswer}) => {
+const BtnBack: FC<TBtnBack> = ({showButtonAccept}) => {
     
+    //eslint-disable-next-line
     let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(ContextQuestionNumb) || [1, () => {}];
     const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
       setCurrentQuestionNumb(--currentQuestionNumb);
-      userChoseAnswer();
+      showButtonAccept();
       highlightPreviousAnswer(
         {idUser: getIdUser("idUser"),
         currentQuestionNumb,
-        selectorAnswers: "#answersAll ul li"}
+        selectorAnswers: "#answersAll ul li"},
       );
-      e.currentTarget.style.display = 'none';
+      e.currentTarget.style.display = "none";
 
     };
     return (
         <>
         {!(currentQuestionNumb === 1) && (
-          <StyledButtonBack id='btnBack'
+          <StyledButtonBack id="btnBack"
             onClick={onClickBackBtn}
           >
-            <StyledImg src={arrowleft} alt="Кнопка назад" />
+            <StyledImg src={require("../../icons/arrowleft.png")} alt="Кнопка назад" />
             <StyledSpan>Назад</StyledSpan>
           </StyledButtonBack>
         )}

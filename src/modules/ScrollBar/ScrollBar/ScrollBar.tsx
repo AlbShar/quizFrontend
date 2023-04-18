@@ -1,7 +1,9 @@
 import { useEffect, useContext, FC, useRef, RefObject } from "react";
+
 import { setWidthScrollBar } from "../helpers/setWidthScrollBar";
-import { StyledDivScrollBar } from "./SrollBar.Styled";
 import {ContextQuestionNumb} from "../../../components/Context";
+
+import { StyledDivScrollBar } from "./SrollBar.Styled";
 interface IScrollBar {
   quizRef: RefObject<HTMLTableSectionElement>
 }

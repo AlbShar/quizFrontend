@@ -1,9 +1,10 @@
 import { ref, onValue } from "firebase/database";
+
 import db from "../../../config/firebase/firebaseConfig";
 
 const getRightAnswerDB = async (currentQuestionNumb: number) => {
     try {
-      let lang = localStorage.getItem("i18nextLng");
+      const lang = localStorage.getItem("i18nextLng");
   
       const rightAnswer = await new Promise(function (resolve, reject) {
         onValue(
@@ -11,7 +12,7 @@ const getRightAnswerDB = async (currentQuestionNumb: number) => {
           (snapshot) => {
             const rightAnswerDb = snapshot.val();
             resolve(rightAnswerDb);
-          }
+          },
         );
       });
   

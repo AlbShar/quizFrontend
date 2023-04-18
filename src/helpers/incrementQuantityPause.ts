@@ -1,4 +1,4 @@
-let quiantityPause: number = 0;
+let quiantityPause = 0;
 
 export function incrementQuantityPause() {
   quiantityPause++;

@@ -1,12 +1,15 @@
 import { useState, useEffect, FC, useRef } from "react";
-import Modal from "../../../UI/Modal/Modal";
-import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 import { useTranslation } from "react-i18next";
+
+import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
+import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
+import Modal from "../../../UI/Modal/Modal";
 import getFullNumb from "../helpers/getFullNumb";
 import { sendDbPenaltyPoints } from "../api/sendDbPenaltyPoints";
 import { deadline } from "../../../variables/variables";
-import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
-import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
+import Portal from "../../../components/Portal/Portal";
+
+import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
 
 type TState = {
   isModal: boolean,
@@ -27,9 +30,9 @@ const Timer: FC = () => {
   });
   const timerRef = useRef<HTMLDivElement>(null);
 
-  let hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
-  let minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
-  let seconds: string = getFullNumb(Math.floor(timeLeft % 60));
+  const hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
+  const minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
+  const seconds: string = getFullNumb(Math.floor(timeLeft % 60));
   const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
@@ -39,11 +42,11 @@ const Timer: FC = () => {
 
 
   const countingTime = () => {
-    let updateTime = timeLeft >= 1 ? +timeLeft - 1 : 0;
+    const updateTime = timeLeft >= 1 ? +timeLeft - 1 : 0;
     return {
       timeLeft: updateTime,
       isTimeUp: timeLeft ? false : true,
-    }
+    };
   };
 
   const startTimer = () => {
@@ -51,16 +54,16 @@ const Timer: FC = () => {
   };
 
   const stopTimer = () => {
-    setState(state => ({...state, isCounting: false, isModal: true}))
+    setState(state => ({...state, isCounting: false, isModal: true}));
   };
 
   const restoreTimer = () => {
-    setState(state => ({...state, isCounting: true, isModal: false}))
+    setState(state => ({...state, isCounting: true, isModal: false}));
   };
 
   const closeModal = () => {
-    setState(state => ({...state, isModal: false}))
-  }
+    setState(state => ({...state, isModal: false}));
+  };
 
   const onClickHandlerModal = isTimeUp ? closeModal : restoreTimer;
 
@@ -95,7 +98,7 @@ const Timer: FC = () => {
 
   useEffect(() => {
     if (isTimeUp) {
-      setState(state => ({...state, isModal: true, isCounting: false}))
+      setState(state => ({...state, isModal: true, isCounting: false}));
       sendDbPenaltyPoints();
     }
   }, [isTimeUp]);
@@ -106,11 +109,14 @@ const Timer: FC = () => {
     <StyledDivTimer ref={timerRef}>
       <span>{elementNumbersTimer}</span>
       {isModal && (
-        <Modal
+        <Portal>
+          <Modal
           title={titleModal}
           subTitle={subtitleModal}
           onClickHandler={onClickHandlerModal}
         />
+        </Portal>
+        
       )}
       <StyledButtonPause
         onClick={onClickButtonHandler}

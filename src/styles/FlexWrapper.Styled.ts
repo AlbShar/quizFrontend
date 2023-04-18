@@ -6,7 +6,7 @@ interface IFlexWrapper{
 }
 
 const StyledFlexWrapper = styled.div<IFlexWrapper>`
-  gap: ${({gap}) => gap ? (gap + 'px') : ""};
+  gap: ${({gap}) => gap ? (gap + "px") : ""};
   ${function ({ widthFlexStart }) {
     if (!widthFlexStart) {
       return `

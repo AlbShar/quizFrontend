@@ -1,7 +1,9 @@
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
+
 import Container from "../../../components/Container/Container";
 import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
 import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
+
 import {
   StyledLi,
   StyledListAnswers,
@@ -9,7 +11,7 @@ import {
   StyledSpan,
   StyledSpanResult,
   StyledSum,
-  StyledSection
+  StyledSection,
 } from "./UserAnswers.Styled";
 
 interface IUserAnswer {
@@ -69,21 +71,26 @@ const UserAnswers = () => {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
         rightAnswer:
-          "A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte mit einem flexiblen Layoutraster, flexiblen Bildern und Medienabfragen, Responsive Design – ein separater Satz von Dateien für jeden Gerätetyp",
+          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte mit einem flexiblen 
+          Layoutraster, flexiblen Bildern und Medienabfragen, Responsive Design – ein separater Satz von Dateien 
+          für jeden Gerätetyp`,
         theme: "Web-Theorie",
       },
       en: {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "What is the difference between adaptive and responsive designs?",
         rightAnswer:
-          "A. Responsive design - one set of files (css, html, js) for all devices using a flexible layout grid, flexible images and media queries, responsive design - a separate set of files for each type of device",
+          `A. Responsive design - one set of files (css, html, js) for all devices using a flexible layout grid, 
+          flexible images and media queries, responsive design - a separate set of files for each type of device`,
         theme: "Web Theory",
       },
       ru: {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
         rightAnswer:
-          "A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с использованием гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для каждого вида устройства отдельный набором файлов",
+          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с 
+          использованием гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для 
+          каждого вида устройства отдельный набором файлов`,
         theme: "Теория Веба",
       },
     },
@@ -92,21 +99,27 @@ const UserAnswers = () => {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
         rightAnswer:
-          "A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte mit einem flexiblen Layoutraster, flexiblen Bildern und Medienabfragen, Responsive Design – ein separater Satz von Dateien für jeden Gerätetyp",
+          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte
+           mit einem flexiblen Layoutraster, flexiblen Bildern und Medienabfragen, Responsive
+           Design – ein separater Satz von Dateien für jeden Gerätetyp`,
         theme: "Web-Theorie",
       },
       en: {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "What is the difference between adaptive and responsive designs?",
         rightAnswer:
-          "A. Responsive design - one set of files (css, html, js) for all devices using a flexible layout grid, flexible images and media queries, responsive design - a separate set of files for each type of device",
+          `A. Responsive design - one set of files (css, html, js) for all devices using 
+          a flexible layout grid, flexible images and media queries, responsive design - 
+          a separate set of files for each type of device`,
         theme: "Web Theory",
       },
       ru: {
         descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
         name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
         rightAnswer:
-          "A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с использованием гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для каждого вида устройства отдельный набором файлов",
+          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с использованием
+           гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для каждого вида
+           устройства отдельный набором файлов`,
         theme: "Теория Веба",
       },
     },
@@ -173,7 +186,7 @@ const UserAnswers = () => {
         <StyledUl>
           {Object.entries(userAnswers).map((userAnswerArr, index) => {
             const numbQuiestion = userAnswerArr[0].match(/\d+/);
-            const { point, userAnswer, question, theme } = userAnswerArr[1];
+            const { point, userAnswer, question } = userAnswerArr[1];
             const isRight = point ? true : false;
             const color = isRight ? "green" : "red";
             const className = {
@@ -195,7 +208,7 @@ const UserAnswers = () => {
                   <StyledLi>
                     <StyledSpan>Варианты ответов: </StyledSpan>
                     {Object.entries(
-                      allAnswers[`answers${numbQuiestion}`][lang || "ru"]
+                      allAnswers[`answers${numbQuiestion}`][lang || "ru"],
                     )
                       .map((answer) => answer.join(", "))
                       .join(", ")}

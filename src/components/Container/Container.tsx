@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
-import { ContainerStyled } from './Container.styled';
+import React, {FC} from "react";
+
+import { ContainerStyled } from "./Container.styled";
 
 interface IContainer {
     children: React.ReactNode,

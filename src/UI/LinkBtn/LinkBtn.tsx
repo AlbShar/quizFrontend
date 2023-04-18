@@ -2,8 +2,9 @@ import {FC} from "react";
 import "./link.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { StyledButton } from "./LinkBtn.Styled";
 import { MouseEvent } from "react";
+
+import { StyledButton } from "./LinkBtn.Styled";
 
 interface LinkInt {
   text: string,

@@ -1,9 +1,12 @@
-import React from "react";
-import Container from "../../../components/Container/Container";
-import Logo from "../../../components/Logo/Logo";
+
 import "./footer.css";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
+import Container from "../../../components/Container/Container";
+import Logo from "../../../components/Logo/Logo";
+import { StyledFlexWrapper } from "../../../styles/FlexWrapper.Styled";
+
 import {
   StyledFooter,
   StyledImgNetworks,
@@ -15,16 +18,9 @@ import {
   StyledSection,
   StyledLi,
   StyledUl,
-  StyledA
+  StyledA,
 } from "./Footer.Styled";
-import { StyledFlexWrapper } from "../../../styles/FlexWrapper.Styled";
-const facebook = require("../icons/facebook.png");
-const twitter = require("../icons/twitter.png");
-const youtube = require("../icons/youtube.png");
-const mastercard = require("../icons/mastercard.png");
-const fondy = require("../icons/fondy.png");
-const visa = require("../icons/visa.png");
-const instagram = require("../icons/instagram.png");
+
 
 const Footer = () => {
  
@@ -45,22 +41,22 @@ const Footer = () => {
 
   const iconsNetworks: IconNetwork[] = [
     {
-      src: facebook,
+      src: require("../icons/facebook.png"),
       alt: "Открыть сайт в facebook",
       url: "https://ru-ru.facebook.com",
     },
     {
-      src: instagram,
+      src: require("../icons/instagram.png"),
       alt: "Открыть сайт в instagram",
       url: "https://www.instagram.com",
     },
     {
-      src: twitter,
+      src: require("../icons/twitter.png"),
       alt: "Открыть сайт в twitter",
       url: "https://twitter.com ",
     },
     {
-      src: youtube,
+      src: require("../icons/youtube.png"),
       alt: "Открыть сайт в youtube",
       url: "https://www.youtube.com/",
     },
@@ -73,9 +69,9 @@ const Footer = () => {
   ];
 
   const iconsPayments: IconPayment[] = [
-    { src: visa, alt: "Иконка visa" },
-    { src: mastercard, alt: "Иконка mastercard" },
-    { src: fondy, alt: "Иконка fondy" },
+    { src: require("../icons/visa.png"), alt: "Иконка visa" },
+    { src: require("../icons/mastercard.png"), alt: "Иконка mastercard" },
+    { src: require("../icons/fondy.png"), alt: "Иконка fondy" },
   ];
 
   const elementsIconsNetworks = iconsNetworks.map((icon, index) => {

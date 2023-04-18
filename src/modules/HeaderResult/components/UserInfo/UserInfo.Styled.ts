@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { StyledSect } from "../../styles/Common.Styled";
 
 const StyledSection = styled(StyledSect)`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import {StyledButton} from "../Button/Button.Styled";
 
 
@@ -40,11 +41,11 @@ const StyledDivWrapper = styled.div`
 
 const StyledH1 = styled.h1`
   margin-top: 0;
-  font: var(--font-title4);
+  font: 800 24px/36px Inter, Arial, sans-serif;
 `;
 
 const StyledSpan = styled.span`
-  font: var(--font-h5);
+  font:  400 16px/24px Inter, Arial, sans-serif;
 `;
 
 const StyledSpanClose = styled.span`

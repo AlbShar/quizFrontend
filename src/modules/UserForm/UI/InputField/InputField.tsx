@@ -1,8 +1,11 @@
 import {FC, ChangeEvent, RefObject, FocusEvent} from "react";
-import { StyledInputField } from "./InputField.Style";
+import { useTranslation } from "react-i18next";
+
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
 import { clearAnimateInputAndText } from "../../helpers/clearAnimateInputAndText";
-import { useTranslation } from "react-i18next";
+
+import { StyledInputField } from "./InputField.Style";
+
 
 
 interface IInputField {
