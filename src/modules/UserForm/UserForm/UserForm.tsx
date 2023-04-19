@@ -1,6 +1,5 @@
-import { useState, ChangeEvent, FC, useRef } from "react";
+import { useState, ChangeEvent, FC, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-
 import InputField from "../UI/InputField/InputField";
 import Button from "../UI/Button/Button";
 
@@ -27,9 +26,18 @@ const UserForm: FC = () => {
     const name = target.name;
     setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
   };
+
+const refsInputs = useRef<HTMLInputElement[]>([]);
+
+const setRefs = (elem: HTMLInputElement) => {
+  refsInputs.current.push(elem);
+};
+
+  useEffect(() => {
+    refsInputs.current[0]?.focus();
+    console.log(refsInputs);
+  });
   
-  const inputUserNameRef = useRef<HTMLInputElement>(null);
-  const inputUserEmailRef = useRef<HTMLInputElement>(null);
   return (
     <form>
       <StyledFieldset>
@@ -37,7 +45,7 @@ const UserForm: FC = () => {
           <label htmlFor="username">
             <StyledSpan>{t("Ваше_имя")}</StyledSpan>
             <InputField
-              refer={inputUserNameRef}
+              setRefs={setRefs}
               placeholder="Ваше_имя"
               type="text"
               id="username"
@@ -51,7 +59,7 @@ const UserForm: FC = () => {
           <label htmlFor="username">
             <StyledSpan>E-mail</StyledSpan>
             <InputField
-              refer={inputUserEmailRef}
+              setRefs={setRefs}
               placeholder="E-mail"
               type="email"
               id="useremail"
