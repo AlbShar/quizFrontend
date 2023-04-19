@@ -6,8 +6,6 @@ import { checkIsUserData } from "../../helpers/checkIsUserData";
 import { getIdUser } from "../../../../helpers/getIdUser";
 import { sendUserInfoDB } from "../../api/sendUserInfoDb";
 
-
-
 const Button: FC = () => {
 
   const onClickLinkBtn = (e: MouseEvent) => {

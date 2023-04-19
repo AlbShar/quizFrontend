@@ -2,25 +2,17 @@ import { useState, ChangeEvent, FC, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import InputField from "../UI/InputField/InputField";
-import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
 
 import {
   StyledSpan,
   StyledPForm,
   StyledFieldset,
-  StyledInputRadio,
-  StyledImgGender,
-  StyledDivWrapperGender,
-  StyledSpanGender,
-  StyledLabelGender,
 } from "./UserForm.Styled";
 
 interface IValueInput {
   userName: string;
-  userEmail: string;
-  userAge: string;
-  userGender: string;
+  userEmail: string ;
 }
 
 const UserForm: FC = () => {
@@ -28,8 +20,6 @@ const UserForm: FC = () => {
   const [valueInput, setValueInput] = useState<IValueInput>({
     userName: "",
     userEmail: "",
-    userAge: "< 18",
-    userGender: "man",
   });
   const onValueInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const target = e.target;
@@ -40,8 +30,6 @@ const UserForm: FC = () => {
   
   const inputUserNameRef = useRef<HTMLInputElement>(null);
   const inputUserEmailRef = useRef<HTMLInputElement>(null);
-  const inputUserRadioManRef = useRef<HTMLInputElement>(null);
-  const inputUserRadioWomanRef = useRef<HTMLInputElement>(null);
   return (
     <form>
       <StyledFieldset>
@@ -73,37 +61,6 @@ const UserForm: FC = () => {
             />
           </label>
         </StyledPForm>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>{t("Возраст")}</StyledSpan>
-            <Select value={valueInput.userAge} onChange={onValueInput} />
-          </label>
-        </StyledPForm>
-        <StyledDivWrapperGender>
-          <StyledSpanGender>{t("Пол")}</StyledSpanGender>
-          <StyledLabelGender>
-            <StyledInputRadio
-              ref={inputUserRadioManRef}
-              name="userGender"
-              id="userman"
-              value="man"
-              checked={"man" === valueInput.userGender}
-              onChange={onValueInput}
-            />
-            <StyledImgGender src={require("../icons/manavatar.png")} />
-          </StyledLabelGender>
-          <StyledLabelGender>
-            <StyledInputRadio
-              ref={inputUserRadioWomanRef}
-              name="userGender"
-              id="userwoman"
-              value="woman"
-              checked={"woman" === valueInput.userGender}
-              onChange={onValueInput}
-            />
-            <StyledImgGender src={require("../icons/womanavatar.png")} />
-          </StyledLabelGender>
-        </StyledDivWrapperGender>
       </StyledFieldset>
       <Button />
     </form>
