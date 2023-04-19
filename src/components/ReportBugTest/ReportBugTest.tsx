@@ -3,8 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import InfoBlock from "../InfoBlock/InfoBlock";
 import { convertJSONToText } from "../../helpers/convertJSONToText";
-import { IInfoBlocks } from "../GeneralInfoTest/GeneralInfoTest";
-import { IJSONText } from "../GeneralInfoTest/GeneralInfoTest";
+import { IInfoBlocks, IJSONText } from "../GeneralInfoTest/GeneralInfoTest";
 
 const GeneralInfoTest: FC = () => {
     const { t } = useTranslation();
