@@ -1,5 +1,6 @@
-import { useState, ChangeEvent, FC, useEffect, useRef } from "react";
+import { useState, ChangeEvent, FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+
 import InputField from "../UI/InputField/InputField";
 import Button from "../UI/Button/Button";
 
@@ -14,6 +15,15 @@ interface IValueInput {
   userEmail: string ;
 }
 
+type TDataInputs = {
+  htmlFor: "username" | "email",
+  placeholder: "Ваше_имя" | "E-mail",
+  type: "text" | "email",
+  id: "username" | "email",
+  name: "userName" | "userEmail",
+  nameField: string,
+};
+
 const UserForm: FC = () => {
   const { t } = useTranslation();
   const [valueInput, setValueInput] = useState<IValueInput>({
@@ -27,48 +37,58 @@ const UserForm: FC = () => {
     setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
   };
 
-const refsInputs = useRef<HTMLInputElement[]>([]);
-
+const refsInputs: HTMLInputElement[] = [];
 const setRefs = (elem: HTMLInputElement) => {
-  refsInputs.current.push(elem);
+  refsInputs.push(elem);
+};
+const onFocusNameField = () => {
+  refsInputs[0]?.focus();
+};
+const dataInputs: TDataInputs[] = [{
+  htmlFor: "username",
+  placeholder: "Ваше_имя",
+  type:"text",
+  id:"username",
+  name:"userName",
+  nameField: t("Ваше_имя"),
+},
+{
+  htmlFor: "email",
+  placeholder: "E-mail",
+  type: "email",
+  id: "email",
+  name: "userEmail",
+  nameField: "Email",
+}];
+
+const inputsCallback = (dataInput: TDataInputs, index: number) => {
+  const {htmlFor, placeholder, nameField, type, id, name} = dataInput;
+    return (
+      <StyledPForm key={index + 1}>
+      <label htmlFor={htmlFor}>
+        <StyledSpan>{nameField}</StyledSpan>
+        <InputField
+          setRefs={setRefs}
+          placeholder={placeholder}
+          type={type}
+          id={id}
+          name={name}
+          value={valueInput.userName}
+          onChange={onValueInput}
+        />
+      </label>
+    </StyledPForm>
+    );
 };
 
   useEffect(() => {
-    refsInputs.current[0]?.focus();
-    console.log(refsInputs);
+    onFocusNameField();
   });
   
   return (
     <form>
       <StyledFieldset>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>{t("Ваше_имя")}</StyledSpan>
-            <InputField
-              setRefs={setRefs}
-              placeholder="Ваше_имя"
-              type="text"
-              id="username"
-              name="userName"
-              value={valueInput.userName}
-              onChange={onValueInput}
-            />
-          </label>
-        </StyledPForm>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>E-mail</StyledSpan>
-            <InputField
-              setRefs={setRefs}
-              placeholder="E-mail"
-              type="email"
-              id="useremail"
-              name="userEmail"
-              value={valueInput.userEmail}
-              onChange={onValueInput}
-            />
-          </label>
-        </StyledPForm>
+        {dataInputs.map(inputsCallback)}
       </StyledFieldset>
       <Button />
     </form>
