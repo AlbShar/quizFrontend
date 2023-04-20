@@ -15,14 +15,14 @@ interface IInputField {
   placeholder: string ;
   value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  refer: RefObject<HTMLInputElement>;
+  setRefs: (elem: HTMLInputElement) => void;
 }
-const InputField: FC<IInputField> = ({ type, id, refer, name, placeholder, onChange, value }) => {
+const InputField: FC<IInputField> = ({ type, id, setRefs, name, placeholder, onChange, value }) => {
     const { t } = useTranslation();
 
     return (
     <StyledInputField
-      ref={refer}
+      ref={setRefs}
       type={type}
       id={id}
       name={name}

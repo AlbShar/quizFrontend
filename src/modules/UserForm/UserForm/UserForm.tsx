@@ -1,35 +1,34 @@
-import { useState, ChangeEvent, FC, useRef } from "react";
+import { useState, ChangeEvent, FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import InputField from "../UI/InputField/InputField";
-import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
 
 import {
   StyledSpan,
   StyledPForm,
   StyledFieldset,
-  StyledInputRadio,
-  StyledImgGender,
-  StyledDivWrapperGender,
-  StyledSpanGender,
-  StyledLabelGender,
 } from "./UserForm.Styled";
 
 interface IValueInput {
   userName: string;
-  userEmail: string;
-  userAge: string;
-  userGender: string;
+  userEmail: string ;
 }
+
+type TDataInputs = {
+  htmlFor: "username" | "email",
+  placeholder: "Ваше_имя" | "E-mail",
+  type: "text" | "email",
+  id: "username" | "email",
+  name: "userName" | "userEmail",
+  nameField: string,
+};
 
 const UserForm: FC = () => {
   const { t } = useTranslation();
   const [valueInput, setValueInput] = useState<IValueInput>({
     userName: "",
     userEmail: "",
-    userAge: "< 18",
-    userGender: "man",
   });
   const onValueInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const target = e.target;
@@ -37,73 +36,59 @@ const UserForm: FC = () => {
     const name = target.name;
     setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
   };
+
+const refsInputs: HTMLInputElement[] = [];
+const setRefs = (elem: HTMLInputElement) => {
+  refsInputs.push(elem);
+};
+const onFocusNameField = () => {
+  refsInputs[0]?.focus();
+};
+const dataInputs: TDataInputs[] = [{
+  htmlFor: "username",
+  placeholder: "Ваше_имя",
+  type:"text",
+  id:"username",
+  name:"userName",
+  nameField: t("Ваше_имя"),
+},
+{
+  htmlFor: "email",
+  placeholder: "E-mail",
+  type: "email",
+  id: "email",
+  name: "userEmail",
+  nameField: "Email",
+}];
+
+const inputsCallback = (dataInput: TDataInputs, index: number) => {
+  const {htmlFor, placeholder, nameField, type, id, name} = dataInput;
+    return (
+      <StyledPForm key={index + 1}>
+      <label htmlFor={htmlFor}>
+        <StyledSpan>{nameField}</StyledSpan>
+        <InputField
+          setRefs={setRefs}
+          placeholder={placeholder}
+          type={type}
+          id={id}
+          name={name}
+          value={valueInput.userName}
+          onChange={onValueInput}
+        />
+      </label>
+    </StyledPForm>
+    );
+};
+
+  useEffect(() => {
+    onFocusNameField();
+  });
   
-  const inputUserNameRef = useRef<HTMLInputElement>(null);
-  const inputUserEmailRef = useRef<HTMLInputElement>(null);
-  const inputUserRadioManRef = useRef<HTMLInputElement>(null);
-  const inputUserRadioWomanRef = useRef<HTMLInputElement>(null);
   return (
     <form>
       <StyledFieldset>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>{t("Ваше_имя")}</StyledSpan>
-            <InputField
-              refer={inputUserNameRef}
-              placeholder="Ваше_имя"
-              type="text"
-              id="username"
-              name="userName"
-              value={valueInput.userName}
-              onChange={onValueInput}
-            />
-          </label>
-        </StyledPForm>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>E-mail</StyledSpan>
-            <InputField
-              refer={inputUserEmailRef}
-              placeholder="E-mail"
-              type="email"
-              id="useremail"
-              name="userEmail"
-              value={valueInput.userEmail}
-              onChange={onValueInput}
-            />
-          </label>
-        </StyledPForm>
-        <StyledPForm>
-          <label htmlFor="username">
-            <StyledSpan>{t("Возраст")}</StyledSpan>
-            <Select value={valueInput.userAge} onChange={onValueInput} />
-          </label>
-        </StyledPForm>
-        <StyledDivWrapperGender>
-          <StyledSpanGender>{t("Пол")}</StyledSpanGender>
-          <StyledLabelGender>
-            <StyledInputRadio
-              ref={inputUserRadioManRef}
-              name="userGender"
-              id="userman"
-              value="man"
-              checked={"man" === valueInput.userGender}
-              onChange={onValueInput}
-            />
-            <StyledImgGender src={require("../icons/manavatar.png")} />
-          </StyledLabelGender>
-          <StyledLabelGender>
-            <StyledInputRadio
-              ref={inputUserRadioWomanRef}
-              name="userGender"
-              id="userwoman"
-              value="woman"
-              checked={"woman" === valueInput.userGender}
-              onChange={onValueInput}
-            />
-            <StyledImgGender src={require("../icons/womanavatar.png")} />
-          </StyledLabelGender>
-        </StyledDivWrapperGender>
+        {dataInputs.map(inputsCallback)}
       </StyledFieldset>
       <Button />
     </form>
