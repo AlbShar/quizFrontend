@@ -11,6 +11,7 @@ import { StyledArticle, StyledUl } from "./Answers.Styled";
 type TState = {
   loading: boolean,
   answers: string[],
+  error: boolean,
 };
 
 type AnswersProps = {
@@ -18,7 +19,7 @@ type AnswersProps = {
 };
 
 const Answers: FC<AnswersProps> = ({showButtonAccept}) => {
-  const [state, setState] = useState<TState>({ answers: [], loading: true });
+  const [state, setState] = useState<TState>({ answers: [], loading: true, error: false });
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const refAnswers: HTMLLIElement[] = [];
@@ -42,8 +43,12 @@ const Answers: FC<AnswersProps> = ({showButtonAccept}) => {
 
  
 
-  const answersHasLoaded = (answersDB: never[]) => {
-    setState(state => ({...state, answers: answersDB as never[], loading: false}));
+  const answersHasLoaded = (response) => {
+    const answers = Object.entries(response).map((item) => item.join(". "));
+    if (Array.isArray(answers)) {
+      setState(state => ({...state, answers: answers as string[], loading: false}));
+
+    }
   };
 
   const answersItems = state.answers.map((answer, index) => (
@@ -57,27 +62,29 @@ const Answers: FC<AnswersProps> = ({showButtonAccept}) => {
   const spinner = state.loading ? (
     <Spinner width={50} height={50} color="#1f2ce0" margin="" />
   ) : null;
+  const errorMessage = "ERROR!";
+  const error = state.error ? errorMessage : null;
 
-  const content = state.loading ? null : (
+  const content = !(state.loading || state.error) ? (
     <StyledArticle id="answersAll">
       <StyledUl>{answersItems}</StyledUl>
     </StyledArticle>
-  );
+  ) : null;
+
+  const onErrorHandler = () => {
+    setState(state => ({...state, error: true, loading: false}));
+  };
 
   useEffect(() => {
     removeAllAttributes(refAnswers);
     if (currentQuestionNumb) {
-      getAnswersDb(currentQuestionNumb).then((answersDB) => {
-        if (Array.isArray(answersDB)) {
-          answersHasLoaded(answersDB as never[]);
-        }
-      });
+      getAnswersDb(currentQuestionNumb).then(answersHasLoaded).catch(onErrorHandler);
     }
     //eslint-disable-next-line
   }, [currentQuestionNumb]);
 
   return (
-   <> {spinner} {content}
+   <> {spinner} {content} {error}
    </>
   );
 };

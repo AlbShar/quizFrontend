@@ -40,6 +40,8 @@ const NameQuestionAndImg: FC = () => {
 
 
   const transformQuestionInfo = (questionInfo: IQuestion): IState => {
+   
+
     const { name, img } = questionInfo;
     return {
       question: name,

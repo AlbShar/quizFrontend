@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { ContextQuestionNumb } from "../../../components/Context";
 import Spinner from "../../../UI/Spinner/Spinner";
-import  {getThemeQuestion}  from "../api/getThemeQuestion";
+import { getThemeQuestion } from "../api/getThemeQuestion";
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
 
 import {
@@ -15,7 +15,7 @@ import {
 type TState = {
   loading: boolean;
   questionTheme: string | null;
-  totalQuestionNumber: number;
+  totalQuestionNumber: number | null;
 };
 const QuantityThemeQuestions: FC = () => {
   const { t } = useTranslation();
@@ -28,6 +28,7 @@ const QuantityThemeQuestions: FC = () => {
     questionTheme: null,
     totalQuestionNumber: 0,
   });
+
   const view = () => {
     return (
       <StyledH1 id="questionName">
@@ -44,22 +45,47 @@ const QuantityThemeQuestions: FC = () => {
   const spinner = state.loading ? (
     <Spinner width={50} height={50} color="#1f2ce0" margin="" />
   ) : null;
-  const content = state.loading ? null : view();
+  const content = !state.loading ? view() : null;
 
-  useEffect(() => {
-    Promise.all([
-      getThemeQuestion(currentQuestionNumb),
-      getTotalQuestionsNumb(),
-    ]).then((res) => {
-      const [theme, number] = res;
-      if (theme && number) {
-        setState({
-          loading: false,
-          questionTheme: `${theme}`,
-          totalQuestionNumber: number,
-        });
+  const dataLoaded = (res) => {
+    type TArrayItems = {
+      theme: null | string;
+      totalQuestionNumber: number | null;
+    };
+
+    const items: TArrayItems = {
+      theme: null,
+      totalQuestionNumber: null,
+    };
+
+    res.forEach((result) => {
+      if (typeof result.value === "number") {
+        items.totalQuestionNumber = result.value;
+      } else if (typeof result.value === "string") {
+        items.theme = result.value;
       }
     });
+
+    setState({
+      loading: false,
+      questionTheme: `${items.theme}`,
+      totalQuestionNumber: items.totalQuestionNumber,
+    });
+
+    for (const key in items) {
+      if (!items[key]) {
+        throw new Error(`Value of ${key} is ${items[key]} in object "items"`);
+      }
+    }
+  };
+
+ 
+
+  useEffect(() => {
+    Promise.allSettled([
+      getThemeQuestion(currentQuestionNumb),
+      getTotalQuestionsNumb(),
+    ]).then(dataLoaded);
   }, [currentQuestionNumb]);
 
   return (

@@ -5,7 +5,8 @@ import db from "../../../config/firebase/firebaseConfig";
 
 const getNameQuestion = async (currentQuestionNumb: number) => {
     try {
-      const lang = localStorage.getItem("i18nextLng");
+      const lang = document.querySelector("html")?.getAttribute("lang");      
+      
       return await new Promise<string>(function (resolve, reject) {
         onValue(
           ref(db, `questions/question${currentQuestionNumb}/${lang}/name`),
