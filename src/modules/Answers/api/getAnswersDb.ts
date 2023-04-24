@@ -4,21 +4,21 @@ import { onValue } from "firebase/database";
 import db from "../../../config/firebase/firebaseConfig";
 
 const getAnswersDb = async (currentQuestionNumb: number) => {
-    try {
-      const lang = localStorage.getItem("i18nextLng");
-  
+       const lang = document.querySelector("html")?.getAttribute("lang");
+
       return await new Promise(function (resolve, reject) {
         onValue(
           ref(db, `answers/answers${currentQuestionNumb}/${lang}`),
           (snapshot) => {
-            const answersDB = Object.entries(snapshot.val());
-            resolve(answersDB.map((item) => item.join(". ")));
+            if (snapshot.val()) {
+              resolve(snapshot.val());
+            } else {
+              reject();
+            }
           },
         );
       });
-    } catch (error) {
-      console.error(error);
-    }
+   
   };
 
   export {getAnswersDb};

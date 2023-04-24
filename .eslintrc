@@ -27,6 +27,8 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "react-hooks/rules-of-hooks": "error", 
+    "react-hooks/exhaustive-deps": "warn", 
     "prefer-const": "warn",
     "no-console": ["warn", { "allow": ["error"] }],
     "quotes": ["warn", "double"],

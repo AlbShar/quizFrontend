@@ -1,8 +1,9 @@
 import { useEffect, useContext, FC, useState } from "react";
 
 import { ContextQuestionNumb } from "../../../components/Context";
-import { getQuestionInfo } from "../../../api/getQuestionInfo";
 import Spinner from "../../../UI/Spinner/Spinner";
+import { getSrcImg } from "../api/getSrcImg";
+import { getNameQuestion } from "../api/getNameQuestion";
 
 import {
   StyledH2,
@@ -15,14 +16,7 @@ type IState = {
   question: string;
   loading?: boolean;
   srcImg?: string | undefined;
-};
-
-type IQuestion = {
-  name: string;
-  descr: string;
-  img?: string;
-  theme: string;
-  rightAnswer: string;
+  error: boolean;
 };
 
 const NameQuestionAndImg: FC = () => {
@@ -32,31 +26,22 @@ const NameQuestionAndImg: FC = () => {
     question: "",
     loading: true,
     srcImg: "",
+    error: false,
   });
-
+  const errorMessage = "ERROR!!";
+  const error = state.error ? errorMessage : null;
   const spinner = state.loading ? (
     <Spinner width={50} height={50} color="#1f2ce0" margin="0" />
   ) : null;
-
-
-  const transformQuestionInfo = (questionInfo: IQuestion): IState => {
-    const { name, img } = questionInfo;
-    return {
-      question: name,
-      srcImg: img,
-      loading: false,
-    };
-  };
 
   const view = () => {
     if (!state.srcImg) {
       return (
         <StyledArticleQuestion>
-        <StyledH2 id="questionTitle" tabIndex={0}>
-          {state.question}
-        </StyledH2>
-      </StyledArticleQuestion>
-
+          <StyledH2 id="questionTitle" tabIndex={0}>
+            {state.question}
+          </StyledH2>
+        </StyledArticleQuestion>
       );
     }
     return (
@@ -97,24 +82,50 @@ const NameQuestionAndImg: FC = () => {
     );
   };
 
-  const content = state.loading ? null : view();
+  const content = !(state.loading || state.error) ? view() : null;
 
-  const setNewState = (newState: IState) => {
-    setState(newState);
+  const dataLoaded = (result) => {
+    type TDataInfo = {
+      [key: string]: string;
+    };
+    const dataInfo: TDataInfo = { src: "", question: "" };
+    result.forEach((item) => {
+      if (item.value.startsWith("http")) {
+        dataInfo.src = item.value;
+      } if (item.value === "No") {
+        dataInfo.src = '';
+      }  if (typeof item.value === "string") {
+        dataInfo.question = item.value;
+      } 
+    });
+
+    setState((state) => ({
+      ...state,
+      loading: false,
+      question: dataInfo.question,
+      srcImg: dataInfo.src,
+    }));
+  };
+
+  const onErrorHandler = (error): never => {
+    setState((state) => ({ ...state, loading: false, error: true }));
+    throw new Error(error);
   };
 
   useEffect(() => {
-    getQuestionInfo(currentQuestionNumb)
-      .then(transformQuestionInfo)
-      .then(setNewState);
+    Promise.allSettled([
+      getSrcImg(currentQuestionNumb),
+      getNameQuestion(currentQuestionNumb),
+    ])
+      .then(dataLoaded)
+      .catch(onErrorHandler);
   }, [currentQuestionNumb]);
 
   return (
     <>
-      {spinner} {content}
+      {spinner} {content} {error}
     </>
   );
 };
-
 
 export default NameQuestionAndImg;
