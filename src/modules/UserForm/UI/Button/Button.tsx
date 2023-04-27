@@ -6,11 +6,16 @@ import { checkIsUserData } from "../../helpers/checkIsUserData";
 import { getIdUser } from "../../../../helpers/getIdUser";
 import { sendUserInfoDB } from "../../api/sendUserInfoDb";
 
-const Button: FC = () => {
+type ButtonProps = {
+  userName: string;
+  userEmail: string
+};
+
+const Button: FC<ButtonProps> = ({userName, userEmail}) => {
 
   const onClickLinkBtn = (e: MouseEvent) => {
-    if (checkIsUserData()) {
-        sendUserInfoDB(getIdUser("idUser"));
+    if (checkIsUserData(userName, userEmail)) {
+        sendUserInfoDB(getIdUser("idUser"), userName, userEmail);
       } else {
         e.preventDefault();
       }

@@ -1,6 +1,4 @@
-const checkIsUserData = () => {
-    const userName = document.querySelector<HTMLInputElement>("#username")?.value;
-    const userEmail = document.querySelector<HTMLInputElement>("#useremail")?.value;
+const checkIsUserData = (userName: string, userEmail: string): boolean => {
     return userName && userEmail ? true : false;
   };
 

@@ -8,10 +8,10 @@ interface IUserData {
   email: string | "No email";
 }
 
-const sendUserInfoDB = async (idUser: string) => {
+const sendUserInfoDB = async (idUser: string, userName: string, userEmail: string) => {
     try {
-      const userName = document.querySelector<HTMLInputElement>("#username")?.value;
-      const userEmail = document.querySelector<HTMLInputElement>("#useremail")?.value;
+      // const userName = document.querySelector<HTMLInputElement>("#username")?.value;
+      // const userEmail = document.querySelector<HTMLInputElement>("#useremail")?.value;
   
       const referenceUserAnswers = ref(db, `users/user${idUser}/userInfo`);
       update(referenceUserAnswers, {
