@@ -73,7 +73,7 @@ const inputsCallback = (dataInput: TDataInputs, index: number) => {
           type={type}
           id={id}
           name={name}
-          value={valueInput.userName}
+          value={valueInput[nameField]}
           onChange={onValueInput}
         />
       </label>
@@ -83,14 +83,14 @@ const inputsCallback = (dataInput: TDataInputs, index: number) => {
 
   useEffect(() => {
     onFocusNameField();
-  });
+  }, []);
   
   return (
     <form>
       <StyledFieldset>
         {dataInputs.map(inputsCallback)}
       </StyledFieldset>
-      <Button />
+      <Button userName={valueInput.userName} userEmail={valueInput.userEmail}/>
     </form>
   );
 };
