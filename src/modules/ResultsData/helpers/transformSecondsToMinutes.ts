@@ -1,4 +1,4 @@
-const transformSecondsToMinutes = (seconds: number | false): string => {
+const transformSecondsToMinutes = (seconds: unknown): string | false | null  => {
     let result = "";
 
     if (typeof seconds === 'number') {
@@ -11,8 +11,13 @@ const transformSecondsToMinutes = (seconds: number | false): string => {
         const leftSeconds = seconds - minutes * 60;
         result = `${minutes} мин ${leftSeconds} сек`;
        }
+       return result;
+    } else if (typeof seconds === 'boolean') {
+        return false;
+    } else {
+        return null;
     }
-    return result;
+    
     
 };
 

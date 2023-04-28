@@ -3,7 +3,7 @@ import { onValue } from "firebase/database";
 
 import db from "../config/firebase/firebaseConfig";
 
-
+// Fix: 11 строку вынести в отдельную строку
 const getTotalQuestionsNumb = async () => {
     try {
       return await new Promise<number>(function (resolve, reject) {
