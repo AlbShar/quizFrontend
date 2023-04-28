@@ -1,12 +1,42 @@
-import React from "react";
+import {FC, useState, useEffect} from "react";
 
 import Container from "../../../components/Container/Container";
+import { getUserInfo } from "../api/getUserInfo";
+import Spinner from "../../../UI/Spinner/Spinner";
+import { transformSecondsToMinutes } from "../helpers/transformSecondsToMinutes";
 
 import { StyledSection, StyledH2, StyledH3, StyledArticle } from "./ResultsData.Styled";
 
-const ResultsData = () => {
-    return (
-        <Container>
+const ResultsData: FC = () => {
+    type TUserInfo = {
+        time: number,
+        points: null | number,
+        loading: boolean,
+        error: boolean,
+    };
+
+    type TUserInfoDB = {
+        name: string,
+        email: string,
+        quiantityPause: number,
+        time: number
+      };
+
+    const [userInfo, setUserInfo] = useState<TUserInfo>({
+        time: 0,
+        points: null,
+        loading: true,
+        error: false,
+    });
+
+    const timeHasLoaded = (response: TUserInfoDB) => {
+        const {time} = response;
+        setUserInfo((state) => ({...state, loading: false, time}));
+    };
+
+    const view = () => {
+        return (
+            <Container>
             <StyledSection>
                 <StyledArticle >
                     <StyledH3>Ваш результат</StyledH3>
@@ -14,10 +44,26 @@ const ResultsData = () => {
                 </StyledArticle>
                 <StyledArticle >
                     <StyledH3>Затраченное время</StyledH3>
-                    <StyledH2>24 мин</StyledH2>
+                    <StyledH2>{transformSecondsToMinutes(userInfo.time)}</StyledH2>
                 </StyledArticle>
             </StyledSection>
         </Container>
+        );
+    };
+
+    const spinner = userInfo.loading ? <Spinner width={50} height={50} color="#fcfdff" margin="0 auto"/> : false;
+    const errorMesage = "ERROR!!";
+    const error = userInfo.error ? errorMesage : false;
+    const content = !(userInfo.loading || userInfo.error) ? view() : false;
+
+    useEffect(() => {
+        getUserInfo().then(timeHasLoaded);
+    }, []);
+
+    return (
+        <>
+        {spinner} {error} {content}
+        </>
     );
 };
 
