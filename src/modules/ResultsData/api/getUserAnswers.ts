@@ -4,8 +4,19 @@ import { onValue } from "firebase/database";
 import { getIdUser } from "../../../helpers/getIdUser";
 import db from "../../../config/firebase/firebaseConfig";
 
+
+type TAnswersDB = {
+    [key: string]: {
+        point: number,
+        quantityPause: number,
+        question: string,
+        theme: string,
+        userAnswer: string,
+    }
+}
+
 const getUserAnswers = () => {
-    return new Promise<any>(function (resolve, reject) {
+    return new Promise<TAnswersDB>(function (resolve, reject) {
       onValue(ref(db, `users/user${getIdUser("idUser")}/answers`), (snapshot) => {
         resolve(snapshot.val());
       });

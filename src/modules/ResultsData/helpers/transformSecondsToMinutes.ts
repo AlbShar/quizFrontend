@@ -1,7 +1,7 @@
-const transformSecondsToMinutes = (seconds: number): string => {
+const transformSecondsToMinutes = (seconds: number | false): string => {
     let result = "";
 
-    if (seconds) {
+    if (typeof seconds === 'number') {
        if (seconds % 60 === 0) {
         result = `${seconds / 60} мин`;
        } else if (seconds < 60) {
