@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, FC, useEffect } from "react";
 
 import Container from "../../../components/Container/Container";
 import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
 import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
+import { getAnswerOptions } from "../api/getAnswerOptions";
+import { getUserAnswers } from "../api/getUserAnswers";
+import { getInfoQuestions } from "../api/getInfoQuestions";
 
 import {
   StyledLi,
@@ -14,41 +17,106 @@ import {
   StyledSection,
 } from "./UserAnswers.Styled";
 
-interface IUserAnswer {
+type TUserAnswer = {
   point: number;
   userAnswer: string;
-  question: string;
   theme: string;
 }
 
-interface IUserAnswers {
-  [key: string]: IUserAnswer;
+type TUserAnswers = {
+  [key: string] : TUserAnswer
 }
 
-interface IAnswer {
+type TAnswerOption = {
   [key: string]: string;
 }
 
-interface IAllAnswers {
+type TAnswerOptions = {
   [key: string]: {
-    [key: string]: IAnswer;
+    [key: string]: TAnswerOption;
   };
 }
 
-interface IQuestion {
+type TAnswerOptionsLangDB = {
+    deu: TAnswerOption,
+    en: TAnswerOption,
+    ru: TAnswerOption,
+}
+
+type TAnswerOptionsDB = {
+  [key: string]: TAnswerOptionsLangDB;
+}
+
+type TQuestion = {
   descr: string;
   name: string;
   rightAnswer: string;
   theme: string;
 }
 
-interface IAllQuiestions {
+type TInfoQuiestions = {
   [key: string]: {
-    [key: string]: IQuestion;
+    [key: string]: TQuestion;
   };
 }
 
-const UserAnswers = () => {
+type TAnswersDB = {
+  [key: string]: {
+      point: number,
+      quantityPause: number,
+      question: string,
+      theme: string,
+      userAnswer: string,
+  }};
+
+const UserAnswers: FC = () => {
+
+  type TState = {
+    answerOptions: null | TAnswerOptions,
+    userAnswers: null | TUserAnswers,
+    infoQuestions: null | TInfoQuiestions,
+  };
+
+  const [state, setState] = useState<TState>({
+    answerOptions: null,
+    userAnswers: null,
+    infoQuestions: null,
+  });
+
+  const transformUserAnswers = (res: TAnswersDB) => {
+    const updateUserAnswers = Object.fromEntries(
+      Object.entries(res)
+      .map(([key, value]) => [key, {point: value.point, theme: value.theme, userAnswer: value.userAnswer}])
+    );
+    return updateUserAnswers;
+  };
+
+  const transformAnswerOptions = (res: TAnswerOptionsDB) => {
+    const lang: string  = document.querySelector("html")?.getAttribute("lang") || "ru";
+    const updateAnswerOptions = Object.fromEntries(
+      Object.entries(res)
+      .map(([key, value]) => [key, value[lang]])
+    );
+    return updateAnswerOptions;
+  };
+
+  const setStateAnswerOptions = (transformAnswerOptions: TAnswerOptions) => {
+    setState((state) => ({...state, answerOptions: transformAnswerOptions}));
+  };
+
+  const setStateUserAnswers = (transformUserAnswers: TUserAnswers) => {
+    setState((state) => ({...state, userAnswers: transformUserAnswers}));
+  };
+
+
+  useEffect(() => {
+    getUserAnswers().then(transformUserAnswers).then(setStateUserAnswers);
+    getAnswerOptions()
+    .then((value) => transformAnswerOptions(value as TAnswerOptionsDB))
+    .then(setStateAnswerOptions);
+    getInfoQuestions().then(console.log)
+  }, []);
+
   const [userAnswers, setUserAnswers] = useState<IUserAnswers>({
     answer1: {
       point: 1,
@@ -125,7 +193,7 @@ const UserAnswers = () => {
     },
   });
 
-  const [allAnswers, setAllAnswers] = useState<IAllAnswers>({
+  const [allAnswers, setAllAnswers] = useState<IAnswerOptions>({
     answers1: {
       deu: {
         A: "für alle Geräte",
