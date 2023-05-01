@@ -37,6 +37,7 @@ const sendUserAnswerDB = async (
         point: rightAnswer === userAnswer ? 1 : 0,
         quantityPause: quiantityPause,
       });
+
     } catch (error) {
       if (!theme) {
         throw new Error(`The value of variable 'theme' is ${theme}. ${error}`);

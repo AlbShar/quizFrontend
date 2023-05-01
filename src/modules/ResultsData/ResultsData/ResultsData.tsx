@@ -1,24 +1,22 @@
-import React from "react";
+import {FC} from "react";
 
 import Container from "../../../components/Container/Container";
+import Result from "../components/Result";
+import Time from "../components/Time";
 
-import { StyledSection, StyledH2, StyledH3, StyledArticle } from "./ResultsData.Styled";
+import { StyledSection } from "./ResultsData.Styled";
 
-const ResultsData = () => {
+
+const ResultsData: FC = () => {  
     return (
         <Container>
             <StyledSection>
-                <StyledArticle >
-                    <StyledH3>Ваш результат</StyledH3>
-                    <StyledH2>121 бала</StyledH2>
-                </StyledArticle>
-                <StyledArticle >
-                    <StyledH3>Затраченное время</StyledH3>
-                    <StyledH2>24 мин</StyledH2>
-                </StyledArticle>
+                <Result/>
+                <Time/>
             </StyledSection>
         </Container>
     );
 };
 
 export default ResultsData;
+

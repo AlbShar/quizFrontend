@@ -13,7 +13,7 @@ import ButtonsQuiz from "../../modules/ButtonsQuiz/index";
 import { StyledSection, StyledArticle } from "./Quiz.Styled";
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(54);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
   const [isButtonAcceptVisibility, setButtonAcceptVisibility] = useState<boolean>(false);
 
