@@ -22,18 +22,8 @@ type TUserAnswer = {
   userAnswer: string;
 }
 
-type TUserAnswers = {
-  [key: string] : TUserAnswer
-}
-
 type TAnswerOption = {
   [key: string]: string;
-}
-
-type TAnswerOptions = {
-  [key: number]: {
-    [key: string]: TAnswerOption;
-  };
 }
 
 type TAnswerOptionsLangDB = {
@@ -42,20 +32,12 @@ type TAnswerOptionsLangDB = {
     ru: TAnswerOption,
 }
 
-type TAnswerOptionsDB = {
-  [key: string]: TAnswerOptionsLangDB;
-}
-
 type TQuestion = {
   descr: string;
   name: string;
   rightAnswer: string;
   theme: string;
   img: string;
-}
-
-type TInfoQuiestions = {
-  [key: number]: TQuestion;
 }
 
 type TInfoQuiestionsDB = {
@@ -108,8 +90,7 @@ const UserAnswers: FC = () => {
   const transformUserAnswers = (res: TAnswersDB) => {
     const updateUserAnswers = Object.fromEntries(
       Object.entries(res)
-      .map(([key, value]) => [getNumberFromKey(key), {point: value.point, userAnswer: value.userAnswer}])
-    );
+      .map(([key, value]) => [getNumberFromKey(key), {point: value.point, userAnswer: value.userAnswer}]));
     return updateUserAnswers;
   };
 
@@ -117,22 +98,10 @@ const UserAnswers: FC = () => {
     const lang: string  = document.querySelector("html")?.getAttribute("lang") || "ru";
     const updateAnswerOptions = Object.fromEntries(
       Object.entries(res)
-      .map(([key, value]) => [getNumberFromKey(key), value[lang]])
-    );
+      .map(([key, value]) => [getNumberFromKey(key), value[lang]]));
     return updateAnswerOptions;
   };
 
-  // const setStateAnswerOptions = (transformAnswerOptions: TAnswerOptions) => {
-  //   setState((state) => ({...state, answerOptions: transformAnswerOptions}));
-  // };
-
-  // const setStateUserAnswers = (transformUserAnswers: TUserAnswers) => {
-  //   setState((state) => ({...state, userAnswers: transformUserAnswers}));
-  // };
-
-  // const setStateInfoQuestions = (infoQuestions: TInfoQuiestions) => {
-  //   setState((state) => ({...state, infoQuestions}));
-  // };
   const transformQuestionsAndAnswersDB = (res: (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]) => {
     const [userAnswers, answerOptions, infoQuestions] = res;
 
@@ -160,33 +129,21 @@ const UserAnswers: FC = () => {
   useEffect(() => {
     Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
     .then((value) => transformQuestionsAndAnswersDB(value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]))
-    // getUserAnswers().then(transformUserAnswers).then(setStateUserAnswers);
-    // getAnswerOptions()
-    // .then((value) => transformData(value as TAnswerOptionsDB))
-    // .then(setStateAnswerOptions);
-    // getInfoQuestions().then((value) => transformData(value as TInfoQuiestionsDB)).then(setStateInfoQuestions)
   }, []);
 
-  return (
-    <Container>
-      <details open>
-        <StyledSum>Ответы</StyledSum>
-        <StyledSection>
-          <DropDownThemes />
-          <DropdownIsRight />
-        </StyledSection>
-
+  const view = () => {
+    if (state.infoQuestionsAndAnswers) {
+      return (
         <StyledUl>
-          {Object.entries(userAnswers).map((userAnswerArr, index) => {
-            const numbQuiestion = userAnswerArr[0].match(/\d+/);
-            const { point, userAnswer, question } = userAnswerArr[1];
-            const isRight = point ? true : false;
+          {Object.entries(state.infoQuestionsAndAnswers).map((userAnswerArr, index) => {
+            const numbQuiestion = userAnswerArr[0];
+            const { descr, img, name, rightAnswer, theme, answerOptions, userAnswer } = userAnswerArr[1];
+            const isRight = userAnswer.point ? true : false;
             const color = isRight ? "green" : "red";
             const className = {
               borderRadius: 10,
               border: `1px solid ${color}`,
             };
-            const lang = localStorage.getItem("i18nextLng");
 
             return (
               <StyledListAnswers style={className} key={index + 1}>
@@ -196,36 +153,41 @@ const UserAnswers: FC = () => {
                   </StyledSpanResult>
                   <StyledLi>
                     <StyledSpan>{`Вопрос № ${numbQuiestion}: `}</StyledSpan>
-                    {question}
+                    {name}
                   </StyledLi>
                   <StyledLi>
                     <StyledSpan>Варианты ответов: </StyledSpan>
-                    {Object.entries(
-                      allAnswers[`answers${numbQuiestion}`][lang || "ru"],
-                    )
-                      .map((answer) => answer.join(", "))
-                      .join(", ")}
+                    {Object.entries(answerOptions).map(([key, value]) => `${key}: ${value}`).join(", ")}
                   </StyledLi>
                   <StyledLi>
-                    <StyledSpan>Ваш ответ:</StyledSpan> {userAnswer}
+                    <StyledSpan>Ваш ответ:</StyledSpan> {userAnswer.userAnswer}
                   </StyledLi>
-                  {["rightAnswer", "descr"].map((property, index) => {
-                    return (
-                      <StyledLi key={index + 1}>
+                  <StyledLi>
                         <StyledSpan>Правильный ответ: </StyledSpan>
-                        {
-                          allQuiestions[`question${numbQuiestion}`][
-                            lang || "ru"
-                          ][property]
-                        }
-                      </StyledLi>
-                    );
-                  })}
+                        {rightAnswer}
+                  </StyledLi>
+                  <StyledLi>
+                        <StyledSpan>Объяснение: </StyledSpan>
+                        {descr}
+                  </StyledLi>
                 </StyledUl>
               </StyledListAnswers>
             );
           })}
         </StyledUl>
+      );
+    }
+  };
+
+  return (
+    <Container>
+      <details open>
+        <StyledSum>Ответы</StyledSum>
+        <StyledSection>
+          <DropDownThemes />
+          <DropdownIsRight />
+        </StyledSection>
+        {view()}
       </details>
     </Container>
   );
