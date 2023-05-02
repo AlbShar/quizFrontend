@@ -20,7 +20,6 @@ import {
 type TUserAnswer = {
   point: number;
   userAnswer: string;
-  theme: string;
 }
 
 type TUserAnswers = {
@@ -32,7 +31,7 @@ type TAnswerOption = {
 }
 
 type TAnswerOptions = {
-  [key: string]: {
+  [key: number]: {
     [key: string]: TAnswerOption;
   };
 }
@@ -52,12 +51,17 @@ type TQuestion = {
   name: string;
   rightAnswer: string;
   theme: string;
+  img: string;
 }
 
 type TInfoQuiestions = {
-  [key: string]: {
-    [key: string]: TQuestion;
-  };
+  [key: number]: TQuestion;
+}
+
+type TInfoQuiestionsDB = {
+  deu: TQuestion,
+  en: TQuestion,
+  ru: TQuestion,
 }
 
 type TAnswersDB = {
@@ -69,178 +73,99 @@ type TAnswersDB = {
       userAnswer: string,
   }};
 
+  type TQuestionAndAnswer = {
+    descr: string;
+    name: string;
+    rightAnswer: string;
+    theme: string;
+    img: string;
+    answerOptions: TAnswerOption;
+    userAnswer: TUserAnswer;
+  }
+
+  type TInfoQuestionsAndAnswers = {
+    [key: number]: TQuestionAndAnswer
+  };
+
 const UserAnswers: FC = () => {
 
   type TState = {
-    answerOptions: null | TAnswerOptions,
-    userAnswers: null | TUserAnswers,
-    infoQuestions: null | TInfoQuiestions,
+    infoQuestionsAndAnswers: null | TInfoQuestionsAndAnswers,
   };
 
   const [state, setState] = useState<TState>({
-    answerOptions: null,
-    userAnswers: null,
-    infoQuestions: null,
+    infoQuestionsAndAnswers: null,
   });
+
+  const getNumberFromKey = (key: string): number | undefined => {
+    const matches = key.match(/\d+/);
+    if (matches !== null) {
+      return parseInt(matches[0]);
+    }
+  };
+
 
   const transformUserAnswers = (res: TAnswersDB) => {
     const updateUserAnswers = Object.fromEntries(
       Object.entries(res)
-      .map(([key, value]) => [key, {point: value.point, theme: value.theme, userAnswer: value.userAnswer}])
+      .map(([key, value]) => [getNumberFromKey(key), {point: value.point, userAnswer: value.userAnswer}])
     );
     return updateUserAnswers;
   };
 
-  const transformAnswerOptions = (res: TAnswerOptionsDB) => {
+  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB) => {
     const lang: string  = document.querySelector("html")?.getAttribute("lang") || "ru";
     const updateAnswerOptions = Object.fromEntries(
       Object.entries(res)
-      .map(([key, value]) => [key, value[lang]])
+      .map(([key, value]) => [getNumberFromKey(key), value[lang]])
     );
     return updateAnswerOptions;
   };
 
-  const setStateAnswerOptions = (transformAnswerOptions: TAnswerOptions) => {
-    setState((state) => ({...state, answerOptions: transformAnswerOptions}));
-  };
+  // const setStateAnswerOptions = (transformAnswerOptions: TAnswerOptions) => {
+  //   setState((state) => ({...state, answerOptions: transformAnswerOptions}));
+  // };
 
-  const setStateUserAnswers = (transformUserAnswers: TUserAnswers) => {
-    setState((state) => ({...state, userAnswers: transformUserAnswers}));
+  // const setStateUserAnswers = (transformUserAnswers: TUserAnswers) => {
+  //   setState((state) => ({...state, userAnswers: transformUserAnswers}));
+  // };
+
+  // const setStateInfoQuestions = (infoQuestions: TInfoQuiestions) => {
+  //   setState((state) => ({...state, infoQuestions}));
+  // };
+  const transformQuestionsAndAnswersDB = (res: (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]) => {
+    const [userAnswers, answerOptions, infoQuestions] = res;
+
+    const data = {
+      userAnswers: transformUserAnswers(userAnswers as TAnswersDB),
+      answerOptions: transformData(answerOptions as TAnswerOptionsLangDB),
+      infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB),
+    };
+
+    const generalInfo = {};
+
+    for (const key in data.infoQuestions) {
+      generalInfo[key] = {
+        ...data.infoQuestions[key], 
+        userAnswer: data.userAnswers[key], 
+        answerOptions: data.answerOptions[key],
+      };
+
+    }
+
+    setState(state => ({...state, infoQuestionsAndAnswers: generalInfo}))
   };
 
 
   useEffect(() => {
-    getUserAnswers().then(transformUserAnswers).then(setStateUserAnswers);
-    getAnswerOptions()
-    .then((value) => transformAnswerOptions(value as TAnswerOptionsDB))
-    .then(setStateAnswerOptions);
-    getInfoQuestions().then(console.log)
+    Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
+    .then((value) => transformQuestionsAndAnswersDB(value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]))
+    // getUserAnswers().then(transformUserAnswers).then(setStateUserAnswers);
+    // getAnswerOptions()
+    // .then((value) => transformData(value as TAnswerOptionsDB))
+    // .then(setStateAnswerOptions);
+    // getInfoQuestions().then((value) => transformData(value as TInfoQuiestionsDB)).then(setStateInfoQuestions)
   }, []);
-
-  const [userAnswers, setUserAnswers] = useState<IUserAnswers>({
-    answer1: {
-      point: 1,
-      userAnswer: "E. Все вышеперечисленное",
-      question: "В чем заключаются особенности гетерров и сеттеров?",
-      theme: "Парадигмы программирования, архитектура",
-    },
-    answer2: {
-      point: 0,
-      userAnswer: "E. Все вышеперечисленное",
-      question:
-        "Выберете верное утверждение про статический метод класса (static)?",
-      theme: "Парадигмы программирования, архитектура",
-    },
-  });
-
-  const [allQuiestions, setAllQuiestions] = useState<IAllQuiestions>({
-    question1: {
-      deu: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
-        rightAnswer:
-          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte mit einem flexiblen 
-          Layoutraster, flexiblen Bildern und Medienabfragen, Responsive Design – ein separater Satz von Dateien 
-          für jeden Gerätetyp`,
-        theme: "Web-Theorie",
-      },
-      en: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "What is the difference between adaptive and responsive designs?",
-        rightAnswer:
-          `A. Responsive design - one set of files (css, html, js) for all devices using a flexible layout grid, 
-          flexible images and media queries, responsive design - a separate set of files for each type of device`,
-        theme: "Web Theory",
-      },
-      ru: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
-        rightAnswer:
-          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с 
-          использованием гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для 
-          каждого вида устройства отдельный набором файлов`,
-        theme: "Теория Веба",
-      },
-    },
-    question2: {
-      deu: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
-        rightAnswer:
-          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte
-           mit einem flexiblen Layoutraster, flexiblen Bildern und Medienabfragen, Responsive
-           Design – ein separater Satz von Dateien für jeden Gerätetyp`,
-        theme: "Web-Theorie",
-      },
-      en: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "What is the difference between adaptive and responsive designs?",
-        rightAnswer:
-          `A. Responsive design - one set of files (css, html, js) for all devices using 
-          a flexible layout grid, flexible images and media queries, responsive design - 
-          a separate set of files for each type of device`,
-        theme: "Web Theory",
-      },
-      ru: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
-        rightAnswer:
-          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с использованием
-           гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для каждого вида
-           устройства отдельный набором файлов`,
-        theme: "Теория Веба",
-      },
-    },
-  });
-
-  const [allAnswers, setAllAnswers] = useState<IAnswerOptions>({
-    answers1: {
-      deu: {
-        A: "für alle Geräte",
-        B: "für alle Geräte",
-        C: "für alle Geräte",
-        D: "für alle Geräte",
-        E: "für alle Geräte",
-      },
-      en: {
-        A: "all devices",
-        B: "all devices",
-        C: "all devices",
-        D: "all devices",
-        E: "all devices",
-      },
-      ru: {
-        A: "все девайсы",
-        B: "все девайсы",
-        C: "все девайсы",
-        D: "все девайсы",
-        E: "все девайсы",
-      },
-    },
-    answers2: {
-      deu: {
-        A: "jeden Gerätetyp",
-        B: "jeden Gerätetyp",
-        C: "jeden Gerätetyp",
-        D: "jeden Gerätetyp",
-        E: "jeden Gerätetyp",
-      },
-      en: {
-        A: "one layout",
-        B: "one layout",
-        C: "one layout",
-        D: "one layout",
-        E: "one layout",
-      },
-      ru: {
-        A: "девайсы",
-        B: "девайсы",
-        C: "девайсы",
-        D: "девайсы",
-        E: "девайсы",
-      },
-    },
-  });
 
   return (
     <Container>
