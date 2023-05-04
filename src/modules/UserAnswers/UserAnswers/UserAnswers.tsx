@@ -9,6 +9,7 @@ import { getUserAnswers } from "../api/getUserAnswers";
 import { getInfoQuestions } from "../api/getInfoQuestions";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { getNumberFromKey } from "../helpers/getNumberFromKey";
+import { getThemesNames } from "../helpers/getThemesNames";
 
 
 import {
@@ -184,6 +185,16 @@ const UserAnswers: FC = () => {
     throw new Error(error);
   };
 
+  const getThemes = (): string[] => {
+    if (state.infoQuestionsAndAnswers) {
+      return getThemesNames(state.infoQuestionsAndAnswers as TInfoQuestionsAndAnswers)
+    } else {
+      return [""];
+    }
+  };
+
+  
+
 
   useEffect(() => {
     Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
@@ -198,7 +209,7 @@ const UserAnswers: FC = () => {
       <details open>
         <StyledSum>{t("Ответы")}</StyledSum>
         <StyledSection>
-          <DropDownThemes />
+          <DropDownThemes themesNames={getThemes()}/>
           <DropdownIsRight />
         </StyledSection>
         {loading} {error} {content}

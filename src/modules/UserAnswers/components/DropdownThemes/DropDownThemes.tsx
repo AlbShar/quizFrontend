@@ -2,11 +2,25 @@ import {useState, FC, useRef} from "react";
 
 import Dropdown from "../../../../UI/Dropdown/Dropdown";
 
-const DropDownThemes: FC = () => {
-    const data: string[] = ["Парадигмы программирования", 
-    "Теория Javascript", "практика Javascript", "TypeScript", "React"];
-    const [selected, setSelected] = useState<string>(data[0]);
+type TDropDownThemesProps = {
+  themesNames: string[]
+};
+
+const DropDownThemes: FC<TDropDownThemesProps> = ({themesNames}) => {
+    const [selected, setSelected] = useState<string>(themesNames[0]);
     const [isActive, setActive] = useState<boolean>(false);
+
+    type TState = {
+      selected: string,
+      isActive: boolean
+    };
+
+    const [state, setState] = useState<TState>({
+      selected: themesNames[0],
+      isActive: false,
+    });
+
+    
     const refWrapperTheme = useRef<HTMLDivElement>(null);
     
     const onClickDrop = (item: string) => {
@@ -25,7 +39,7 @@ const DropDownThemes: FC = () => {
 
     return <Dropdown
     onClickBtn={onClickBtn}
-    data={data}
+    data={themesNames}
     selected={selected}
     isActive={isActive}
     onClickDrop={(item: string) => onClickDrop(item)}
