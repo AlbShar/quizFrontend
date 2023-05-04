@@ -2,8 +2,8 @@ import { useState, FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import Container from "../../../components/Container/Container";
-import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
-import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
+import FilterByRight from "../components/FilterByRight/FilterByRight";
+import FilterByThemes from "../components/FilterByThemes/FilterByThemes";
 import { getAnswerOptions } from "../api/getAnswerOptions";
 import { getUserAnswers } from "../api/getUserAnswers";
 import { getInfoQuestions } from "../api/getInfoQuestions";
@@ -209,8 +209,8 @@ const UserAnswers: FC = () => {
       <details open>
         <StyledSum>{t("Ответы")}</StyledSum>
         <StyledSection>
-          <DropDownThemes themesNames={getThemes()}/>
-          <DropdownIsRight />
+          <FilterByThemes themesNames={getThemes()}/>
+          <FilterByRight />
         </StyledSection>
         {loading} {error} {content}
       </details>
