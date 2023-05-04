@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, FC, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import Container from "../../../components/Container/Container";
 import DropdownIsRight from "../components/DropdownIsRight/DropdownIsRight";
 import DropDownThemes from "../components/DropdownThemes/DropDownThemes";
+import { getAnswerOptions } from "../api/getAnswerOptions";
+import { getUserAnswers } from "../api/getUserAnswers";
+import { getInfoQuestions } from "../api/getInfoQuestions";
+import Spinner from "../../../UI/Spinner/Spinner";
+import { getNumberFromKey } from "../helpers/getNumberFromKey";
+
 
 import {
   StyledLi,
@@ -14,186 +21,89 @@ import {
   StyledSection,
 } from "./UserAnswers.Styled";
 
-interface IUserAnswer {
+type TUserAnswer = {
   point: number;
   userAnswer: string;
-  question: string;
-  theme: string;
 }
 
-interface IUserAnswers {
-  [key: string]: IUserAnswer;
-}
-
-interface IAnswer {
+type TAnswerOption = {
   [key: string]: string;
 }
 
-interface IAllAnswers {
-  [key: string]: {
-    [key: string]: IAnswer;
-  };
+type TAnswerOptionsLangDB = {
+    deu: TAnswerOption,
+    en: TAnswerOption,
+    ru: TAnswerOption,
 }
 
-interface IQuestion {
+type TQuestion = {
   descr: string;
   name: string;
   rightAnswer: string;
   theme: string;
+  img: string;
 }
 
-interface IAllQuiestions {
+type TInfoQuiestionsDB = {
+  deu: TQuestion,
+  en: TQuestion,
+  ru: TQuestion,
+}
+
+type TAnswersDB = {
   [key: string]: {
-    [key: string]: IQuestion;
+      point: number,
+      quantityPause: number,
+      question: string,
+      theme: string,
+      userAnswer: string,
+  }};
+
+  type TQuestionAndAnswer = {
+    descr: string;
+    name: string;
+    rightAnswer: string;
+    theme: string;
+    img: string;
+    answerOptions: TAnswerOption;
+    userAnswer: TUserAnswer;
+  }
+
+  type TInfoQuestionsAndAnswers = {
+    [key: number]: TQuestionAndAnswer
   };
-}
 
-const UserAnswers = () => {
-  const [userAnswers, setUserAnswers] = useState<IUserAnswers>({
-    answer1: {
-      point: 1,
-      userAnswer: "E. Все вышеперечисленное",
-      question: "В чем заключаются особенности гетерров и сеттеров?",
-      theme: "Парадигмы программирования, архитектура",
-    },
-    answer2: {
-      point: 0,
-      userAnswer: "E. Все вышеперечисленное",
-      question:
-        "Выберете верное утверждение про статический метод класса (static)?",
-      theme: "Парадигмы программирования, архитектура",
-    },
+const UserAnswers: FC = () => {
+  const { t } = useTranslation();
+
+  type TState = {
+    infoQuestionsAndAnswers: null | TInfoQuestionsAndAnswers,
+    error: boolean,
+    loading: boolean
+  };
+
+  const [state, setState] = useState<TState>({
+    infoQuestionsAndAnswers: null,
+    error: false,
+    loading: true,
   });
 
-  const [allQuiestions, setAllQuiestions] = useState<IAllQuiestions>({
-    question1: {
-      deu: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
-        rightAnswer:
-          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte mit einem flexiblen 
-          Layoutraster, flexiblen Bildern und Medienabfragen, Responsive Design – ein separater Satz von Dateien 
-          für jeden Gerätetyp`,
-        theme: "Web-Theorie",
-      },
-      en: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "What is the difference between adaptive and responsive designs?",
-        rightAnswer:
-          `A. Responsive design - one set of files (css, html, js) for all devices using a flexible layout grid, 
-          flexible images and media queries, responsive design - a separate set of files for each type of device`,
-        theme: "Web Theory",
-      },
-      ru: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
-        rightAnswer:
-          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с 
-          использованием гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для 
-          каждого вида устройства отдельный набором файлов`,
-        theme: "Теория Веба",
-      },
-    },
-    question2: {
-      deu: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "Was ist der Unterschied zwischen adaptiven und responsiven Designs?",
-        rightAnswer:
-          `A. Responsives Design – ein Satz von Dateien (CSS, HTML, JS) für alle Geräte
-           mit einem flexiblen Layoutraster, flexiblen Bildern und Medienabfragen, Responsive
-           Design – ein separater Satz von Dateien für jeden Gerätetyp`,
-        theme: "Web-Theorie",
-      },
-      en: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "What is the difference between adaptive and responsive designs?",
-        rightAnswer:
-          `A. Responsive design - one set of files (css, html, js) for all devices using 
-          a flexible layout grid, flexible images and media queries, responsive design - 
-          a separate set of files for each type of device`,
-        theme: "Web Theory",
-      },
-      ru: {
-        descr: "https://html5book.ru/otzyvchivyj-dizayn-saita/",
-        name: "В чем разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
-        rightAnswer:
-          `A. Отзывчивый дизайн — один набор файлов (css, html, js) для всех устройств с использованием
-           гибкой сетки макета, гибких изображений и медиазапросов, адаптивный дизайн — для каждого вида
-           устройства отдельный набором файлов`,
-        theme: "Теория Веба",
-      },
-    },
-  });
-
-  const [allAnswers, setAllAnswers] = useState<IAllAnswers>({
-    answers1: {
-      deu: {
-        A: "für alle Geräte",
-        B: "für alle Geräte",
-        C: "für alle Geräte",
-        D: "für alle Geräte",
-        E: "für alle Geräte",
-      },
-      en: {
-        A: "all devices",
-        B: "all devices",
-        C: "all devices",
-        D: "all devices",
-        E: "all devices",
-      },
-      ru: {
-        A: "все девайсы",
-        B: "все девайсы",
-        C: "все девайсы",
-        D: "все девайсы",
-        E: "все девайсы",
-      },
-    },
-    answers2: {
-      deu: {
-        A: "jeden Gerätetyp",
-        B: "jeden Gerätetyp",
-        C: "jeden Gerätetyp",
-        D: "jeden Gerätetyp",
-        E: "jeden Gerätetyp",
-      },
-      en: {
-        A: "one layout",
-        B: "one layout",
-        C: "one layout",
-        D: "one layout",
-        E: "one layout",
-      },
-      ru: {
-        A: "девайсы",
-        B: "девайсы",
-        C: "девайсы",
-        D: "девайсы",
-        E: "девайсы",
-      },
-    },
-  });
-
-  return (
-    <Container>
-      <details open>
-        <StyledSum>Ответы</StyledSum>
-        <StyledSection>
-          <DropDownThemes />
-          <DropdownIsRight />
-        </StyledSection>
-
+  const errorMessage = "ERORR!";
+  const loading = state.loading ? <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto"/> : false;
+  const error = state.error ? errorMessage : false;
+  const view = () => {
+    if (state.infoQuestionsAndAnswers) {
+      return (
         <StyledUl>
-          {Object.entries(userAnswers).map((userAnswerArr, index) => {
-            const numbQuiestion = userAnswerArr[0].match(/\d+/);
-            const { point, userAnswer, question } = userAnswerArr[1];
-            const isRight = point ? true : false;
+          {Object.entries(state.infoQuestionsAndAnswers).map((userAnswerArr, index) => {
+            const numbQuiestion = userAnswerArr[0];
+            const { descr, img, name, rightAnswer, theme, answerOptions, userAnswer } = userAnswerArr[1];
+            const isRight = userAnswer.point ? true : false;
             const color = isRight ? "green" : "red";
             const className = {
               borderRadius: 10,
               border: `1px solid ${color}`,
             };
-            const lang = localStorage.getItem("i18nextLng");
 
             return (
               <StyledListAnswers style={className} key={index + 1}>
@@ -203,36 +113,95 @@ const UserAnswers = () => {
                   </StyledSpanResult>
                   <StyledLi>
                     <StyledSpan>{`Вопрос № ${numbQuiestion}: `}</StyledSpan>
-                    {question}
+                    {`${name} (${theme})`}
+                  </StyledLi>
+                  {img === "No" ? false : <StyledLi><img style={{maxWidth: "100%"}} src={img} alt="code" /></StyledLi>}
+                  <StyledLi>
+                    <StyledSpan>{`${t("Варианты_ответов")}: `}</StyledSpan>
+                    {Object.entries(answerOptions).map(([key, value]) => `${key}: ${value}`).join(", ")}
                   </StyledLi>
                   <StyledLi>
-                    <StyledSpan>Варианты ответов: </StyledSpan>
-                    {Object.entries(
-                      allAnswers[`answers${numbQuiestion}`][lang || "ru"],
-                    )
-                      .map((answer) => answer.join(", "))
-                      .join(", ")}
+                    <StyledSpan>{`${t("Ваш_ответ")}: `}</StyledSpan> {userAnswer.userAnswer}
                   </StyledLi>
+                  {isRight ? false : <StyledLi>
+                        <StyledSpan>{`${t("Правильный_ответ")}: `}</StyledSpan>
+                        {rightAnswer}
+                  </StyledLi>}
                   <StyledLi>
-                    <StyledSpan>Ваш ответ:</StyledSpan> {userAnswer}
+                        <StyledSpan>{`${t("Объяснение")}: `} </StyledSpan>
+                        {descr}
                   </StyledLi>
-                  {["rightAnswer", "descr"].map((property, index) => {
-                    return (
-                      <StyledLi key={index + 1}>
-                        <StyledSpan>Правильный ответ: </StyledSpan>
-                        {
-                          allQuiestions[`question${numbQuiestion}`][
-                            lang || "ru"
-                          ][property]
-                        }
-                      </StyledLi>
-                    );
-                  })}
                 </StyledUl>
               </StyledListAnswers>
             );
           })}
         </StyledUl>
+      );
+    }
+  };
+  const content = !(state.error || state.error) ? view() : null;
+
+  const transformUserAnswers = (res: TAnswersDB) => {
+    const updateUserAnswers = Object.fromEntries(
+      Object.entries(res)
+      .map(([key, value]) => [getNumberFromKey(key), {point: value.point, userAnswer: value.userAnswer}]));
+    return updateUserAnswers;
+  };
+
+  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB) => {
+    const lang: string  = document.querySelector("html")?.getAttribute("lang") || "ru";
+    const updateAnswerOptions = Object.fromEntries(
+      Object.entries(res)
+      .map(([key, value]) => [getNumberFromKey(key), value[lang]]));
+    return updateAnswerOptions;
+  };
+
+  const transformQuestionsAndAnswersDB = (res: (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]) => {
+    const [userAnswers, answerOptions, infoQuestions] = res;
+
+    const data = {
+      userAnswers: transformUserAnswers(userAnswers as TAnswersDB),
+      answerOptions: transformData(answerOptions as TAnswerOptionsLangDB),
+      infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB),
+    };
+
+    const generalInfo = {};
+
+    for (const key in data.infoQuestions) {
+      generalInfo[key] = {
+        ...data.infoQuestions[key], 
+        userAnswer: data.userAnswers[key], 
+        answerOptions: data.answerOptions[key],
+      };
+
+    }
+
+    setState(state => ({...state, infoQuestionsAndAnswers: generalInfo, loading: false}));
+  };
+
+  const onError = (error: any): never => {
+    setState(state => ({...state, error: true}));
+    throw new Error(error);
+  };
+
+
+  useEffect(() => {
+    Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
+    .then((value) => transformQuestionsAndAnswersDB(value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[]))
+    .catch(onError);
+  }, []);
+
+  
+
+  return (
+    <Container>
+      <details open>
+        <StyledSum>{t("Ответы")}</StyledSum>
+        <StyledSection>
+          <DropDownThemes />
+          <DropdownIsRight />
+        </StyledSection>
+        {loading} {error} {content}
       </details>
     </Container>
   );

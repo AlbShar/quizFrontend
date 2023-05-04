@@ -32,7 +32,12 @@
     "Заголовок1_вышло_время": "Unfortunately, your time is up!",
     "Заголовок2_вышло_время": "Keep solving the test further. Due to the fact that the time is up, your result will be lowered.",
     "Заголовок1_пауза": "Test execution has been suspended",
-    "Заголовок2_пауза": "You can take a short break and continue the test later."
+    "Заголовок2_пауза": "You can take a short break and continue the test later.",
+    "Варианты_ответов": "Варианты ответов",
+    "Ваш_ответ": "Your answer",
+    "Правильный_ответ": "Right answer",
+    "Объяснение": "Explanation",
+    "Ответы": "Answers"
 
 }
   

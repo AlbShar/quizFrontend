@@ -22,6 +22,7 @@ const StyledLi = styled.li`
 `;
 const StyledListAnswers = styled.li`
   box-sizing: border-box;
+  word-wrap: break-word;
   list-style-type: none;
   font: var(--font-little-text-regular);
   padding: 0 10px;
