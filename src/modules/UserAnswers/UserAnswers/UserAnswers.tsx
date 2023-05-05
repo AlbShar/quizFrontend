@@ -96,20 +96,34 @@ const UserAnswers: FC = () => {
 
   });
 
-  const filterByThemes = (data: TInfoQuestionsAndAnswers, filter: TState["filterByTheme"]): TInfoQuestionsAndAnswers => {
-    const transformData = Object.values(data);
-
-    switch (filter) {
-      case "Теория Веба":
-        return transformData.filter(question => question.theme === "Теория Веба");
-      case "Парадигмы программирования, архитектура":
-        return transformData.filter(question => question.theme === "Парадигмы программирования, архитектура");
-      case "Теория Javascript":
-        return transformData.filter(question => question.theme === "Теория Javascript");
-        default:
-          return transformData;
+  const getThemes = (): [string, ...string[]] => {
+    if (state.infoQuestionsAndAnswers) {
+      return getThemesNames(state.infoQuestionsAndAnswers as TInfoQuestionsAndAnswers)
+    } else {
+      return [""];
     }
   };
+
+  
+
+  const filterByThemes = (
+    data: TInfoQuestionsAndAnswers, 
+    filter: TState["filterByTheme"],
+    ): TInfoQuestionsAndAnswers => {
+      
+    const transformData = Object.values(data);
+    const themes = getThemes().filter((item, index) => index > 0);    
+
+    for (let i = 0; i < themes.length; i++) {
+      if (filter === themes[i]) {
+        return transformData.filter(question => question.theme === themes[i]);
+      } 
+    }
+
+    return transformData;
+};
+
+ 
 
   const filterByRightAnswer = (data: TInfoQuestionsAndAnswers, typeAnswer: TState["filterByRight"]) => {
     const transformData = Object.values(data);
@@ -221,13 +235,7 @@ const UserAnswers: FC = () => {
     throw new Error(error);
   };
 
-  const getThemes = (): string[] => {
-    if (state.infoQuestionsAndAnswers) {
-      return getThemesNames(state.infoQuestionsAndAnswers as TInfoQuestionsAndAnswers)
-    } else {
-      return [""];
-    }
-  };
+
 
   const setFilterByTheme = (newFilter: string): void => {
     setState(state => ({...state, filterByTheme: newFilter}));

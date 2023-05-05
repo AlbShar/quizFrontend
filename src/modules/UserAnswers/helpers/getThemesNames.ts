@@ -23,12 +23,12 @@ type TQuestionAndAnswer = {
 
   
 
-const getThemesNames = (infoQuestionsAndAnswers: TInfoQuestionsAndAnswers): string[] => {
+const getThemesNames = (infoQuestionsAndAnswers: TInfoQuestionsAndAnswers): [string, ...string[]] => {
     const themesNames = new Set(["Все тематики"]);
     const allThemes = Object.values(infoQuestionsAndAnswers).map(infoQuestion => infoQuestion.theme);
     allThemes.forEach(theme => themesNames.add(theme));
     
-    return Array.from(themesNames) as string[];
+    return Array.from(themesNames) as [string, ...string[]];
 
 };
 
