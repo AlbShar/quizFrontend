@@ -43,6 +43,7 @@ type TQuestion = {
   rightAnswer: string;
   theme: string;
   img: string;
+  id: number
 }
 
 type TInfoQuiestionsDB = {
@@ -68,6 +69,7 @@ type TAnswersDB = {
     img: string;
     answerOptions: TAnswerOption;
     userAnswer: TUserAnswer;
+    id: number
   }
 
   type TInfoQuestionsAndAnswers = {
@@ -80,25 +82,59 @@ const UserAnswers: FC = () => {
   type TState = {
     infoQuestionsAndAnswers: null | TInfoQuestionsAndAnswers,
     error: boolean,
-    loading: boolean
+    loading: boolean,
+    filterByTheme: string,
+    filterByRight: string
   };
 
   const [state, setState] = useState<TState>({
     infoQuestionsAndAnswers: null,
     error: false,
     loading: true,
+    filterByTheme: "",
+    filterByRight: "",
+
   });
+
+  const filterByThemes = (data: TInfoQuestionsAndAnswers, filter: TState["filterByTheme"]): TInfoQuestionsAndAnswers => {
+    const transformData = Object.values(data);
+
+    switch (filter) {
+      case "Теория Веба":
+        return transformData.filter(question => question.theme === "Теория Веба");
+      case "Парадигмы программирования, архитектура":
+        return transformData.filter(question => question.theme === "Парадигмы программирования, архитектура");
+      case "Теория Javascript":
+        return transformData.filter(question => question.theme === "Теория Javascript");
+        default:
+          return transformData;
+    }
+  };
+
+  const filterByRightAnswer = (data: TInfoQuestionsAndAnswers, typeAnswer: TState["filterByRight"]) => {
+    const transformData = Object.values(data);
+
+    switch (typeAnswer) {
+      case "Верно":
+        return transformData.filter(question => question?.userAnswer?.point === 1);
+      case "Неверно":
+        return transformData.filter(question => question?.userAnswer?.point === 0);
+        default:
+          return transformData;
+    }
+  };
 
   const errorMessage = "ERORR!";
   const loading = state.loading ? <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto"/> : false;
   const error = state.error ? errorMessage : false;
   const view = () => {
     if (state.infoQuestionsAndAnswers) {
+      const visibleData: TInfoQuestionsAndAnswers = 
+      filterByRightAnswer(filterByThemes(state.infoQuestionsAndAnswers, state.filterByTheme), state.filterByRight) ;
       return (
         <StyledUl>
-          {Object.entries(state.infoQuestionsAndAnswers).map((userAnswerArr, index) => {
-            const numbQuiestion = userAnswerArr[0];
-            const { descr, img, name, rightAnswer, theme, answerOptions, userAnswer } = userAnswerArr[1];
+          {Object.entries(visibleData as TQuestionAndAnswer[]).map((userAnswerArr, index) => {
+            const { descr, img, id, name, rightAnswer, theme, answerOptions, userAnswer } = userAnswerArr[1];
             const isRight = userAnswer.point ? true : false;
             const color = isRight ? "green" : "red";
             const className = {
@@ -113,7 +149,7 @@ const UserAnswers: FC = () => {
                     {isRight ? "\u2714" : "\u2718"}
                   </StyledSpanResult>
                   <StyledLi>
-                    <StyledSpan>{`Вопрос № ${numbQuiestion}: `}</StyledSpan>
+                    <StyledSpan>{`Вопрос № ${id}: `}</StyledSpan>
                     {`${name} (${theme})`}
                   </StyledLi>
                   {img === "No" ? false : <StyledLi><img style={{maxWidth: "100%"}} src={img} alt="code" /></StyledLi>}
@@ -193,6 +229,14 @@ const UserAnswers: FC = () => {
     }
   };
 
+  const setFilterByTheme = (newFilter: string): void => {
+    setState(state => ({...state, filterByTheme: newFilter}));
+  };
+
+  const setFilterByRightAnswer = (newFilter: string): void => {
+    setState(state => ({...state, filterByRight: newFilter}));
+  };
+
   
 
 
@@ -209,8 +253,8 @@ const UserAnswers: FC = () => {
       <details open>
         <StyledSum>{t("Ответы")}</StyledSum>
         <StyledSection>
-          <FilterByThemes themesNames={getThemes()}/>
-          <FilterByRight />
+          <FilterByThemes themesNames={getThemes()} setFilterByTheme={setFilterByTheme}/>
+          <FilterByRight setFilterByRightAnswer={setFilterByRightAnswer}/>
         </StyledSection>
         {loading} {error} {content}
       </details>

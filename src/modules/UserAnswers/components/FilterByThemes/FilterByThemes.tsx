@@ -3,10 +3,11 @@ import {useState, FC, useRef} from "react";
 import Dropdown from "../../UI/Dropdown/Dropdown";
 
 type TFilterByThemesProps = {
-  themesNames: string[]
+  themesNames: string[],
+  setFilterByTheme: (item: string) => void
 };
 
-const FilterByThemes: FC<TFilterByThemesProps> = ({themesNames}) => {
+const FilterByThemes: FC<TFilterByThemesProps> = ({themesNames, setFilterByTheme}) => {
     type TState = {
       selected: string,
       isShowList: boolean
@@ -21,6 +22,7 @@ const FilterByThemes: FC<TFilterByThemesProps> = ({themesNames}) => {
     const refWrapperTheme = useRef<HTMLDivElement>(null);
     const themeHasChoosen = (item: string) => {
       setState((state) => ({...state, selected: item, isShowList: false}));
+      setFilterByTheme(item);
     };
 
     const hideListFilters = () => {

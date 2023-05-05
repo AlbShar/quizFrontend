@@ -2,7 +2,11 @@ import {FC, useState, useRef} from "react";
 
 import Dropdown from "../../UI/Dropdown/Dropdown";
 
-const FilterByRight: FC = () => {
+type FilterByRightProps = {
+  setFilterByRightAnswer: (newFilter: string) =>  void
+};
+
+const FilterByRight: FC<FilterByRightProps> = ({setFilterByRightAnswer}) => {
     const refWrapperRight = useRef<HTMLDivElement>(null);
     const data: string[] = ["Все вопросы", "Верно", "Неверно"];
 
@@ -21,6 +25,7 @@ const FilterByRight: FC = () => {
     const refWrapperTheme = useRef<HTMLDivElement>(null);
     const themeHasChoosen = (item: string) => {
       setState((state) => ({...state, selected: item, isShowList: false}));
+      setFilterByRightAnswer(item)
     };
 
     const hideListFilters = () => {
