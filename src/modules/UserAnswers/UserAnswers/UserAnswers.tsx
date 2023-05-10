@@ -9,7 +9,9 @@ import { getUserAnswers } from "../api/getUserAnswers";
 import { getInfoQuestions } from "../api/getInfoQuestions";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { getNumberFromKey } from "../helpers/getNumberFromKey";
-import { getThemesNames } from "../helpers/getThemesNames";
+import filterByRightAnswer from "../helpers/filterByRightAnswer";
+import filterByThemes from "../helpers/filterByThemes";
+import getThemes from "../helpers/getThemes";
 
 import {
   StyledLi,
@@ -21,138 +23,35 @@ import {
   StyledSection,
 } from "./UserAnswers.Styled";
 
-type TUserAnswer = {
-  point: number;
-  userAnswer: string;
-};
-
-type TAnswerOption = {
-  [key: string]: string;
-};
-
-type TAnswerOptionsLangDB = {
-  deu: TAnswerOption;
-  en: TAnswerOption;
-  ru: TAnswerOption;
-};
-
-type TQuestion = {
-  descr: string;
-  name: string;
-  rightAnswer: string;
-  theme: string;
-  img: string;
-  id: number;
-};
-
-type TInfoQuiestionsDB = {
-  deu: TQuestion;
-  en: TQuestion;
-  ru: TQuestion;
-};
-
-type TAnswersDB = {
-  [key: string]: {
-    point: number;
-    quantityPause: number;
-    question: string;
-    theme: string;
-    userAnswer: string;
-  };
-};
-
-type TQuestionAndAnswer = {
-  descr: string;
-  name: string;
-  rightAnswer: string;
-  theme: string;
-  img: string;
-  answerOptions: TAnswerOption;
-  userAnswer: TUserAnswer;
-  id: number;
-};
-
-type TInfoQuestionsAndAnswers = {
-  [key: number]: TQuestionAndAnswer;
-};
+import type {
+  TInfoQuestionsAndAnswers,
+  TAnswersDB,
+  TAnswerOptionsLangDB,
+  TInfoQuiestionsDB,
+  TQuestionAndAnswer,
+} from "../types/types";
 
 const UserAnswers: FC = () => {
   const { t } = useTranslation();
-
-  type TState = {
-    infoQuestionsAndAnswers: null | TInfoQuestionsAndAnswers;
-    error: boolean;
-    loading: boolean;
-    filterByTheme: string;
-    filterByRight: string;
-  };
-
-  const [state, setState] = useState<TState>({
-    infoQuestionsAndAnswers: null,
-    error: false,
-    loading: true,
-    filterByTheme: "",
-    filterByRight: "",
-  });
-
-  const getThemes = (): [string, ...string[]] => {
-    if (state.infoQuestionsAndAnswers) {
-      return getThemesNames(
-        state.infoQuestionsAndAnswers as TInfoQuestionsAndAnswers
-      );
-    } else {
-      return [""];
-    }
-  };
-
-  const filterByThemes = (
-    data: TInfoQuestionsAndAnswers,
-    filter: TState["filterByTheme"],
-  ): TInfoQuestionsAndAnswers => {
-    const transformData = Object.values(data);
-    const themes = getThemes().filter((item, index) => index > 0);
-
-    for (let i = 0; i < themes.length; i++) {
-      if (filter === themes[i]) {
-        return transformData.filter((question) => question.theme === themes[i]);
-      }
-    }
-
-    return transformData;
-  };
-
-  const filterByRightAnswer = (
-    data: TInfoQuestionsAndAnswers,
-    typeAnswer: TState["filterByRight"]
-  ) => {
-    const transformData = Object.values(data);
-
-    switch (typeAnswer) {
-      case "Верно":
-        return transformData.filter(
-          (question) => question?.userAnswer?.point === 1
-        );
-      case "Неверно":
-        return transformData.filter(
-          (question) => question?.userAnswer?.point === 0
-        );
-      default:
-        return transformData;
-    }
-  };
+  const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
+    useState<null | TInfoQuestionsAndAnswers>(null);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [filterTheme, setFilterTheme] = useState<string>("");
+  const [filterRight, setFilterRight] = useState<string>("");
 
   const errorMessage = "ERORR!";
-  const loading = state.loading ? (
+  const loading = isLoading ? (
     <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto" />
   ) : (
     false
   );
-  const error = state.error ? errorMessage : false;
+  const error = isError ? errorMessage : false;
   const view = () => {
-    if (state.infoQuestionsAndAnswers) {
+    if (infoQuestionsAndAnswers) {
       const visibleData: TInfoQuestionsAndAnswers = filterByRightAnswer(
-        filterByThemes(state.infoQuestionsAndAnswers, state.filterByTheme),
-        state.filterByRight
+        filterByThemes(infoQuestionsAndAnswers, filterTheme),
+        filterRight
       );
       return (
         <StyledUl>
@@ -227,7 +126,7 @@ const UserAnswers: FC = () => {
       );
     }
   };
-  const content = !(state.error || state.error) ? view() : null;
+  const content = !(isLoading || isError) ? view() : null;
 
   const transformUserAnswers = (res: TAnswersDB) => {
     const updateUserAnswers = Object.fromEntries(
@@ -272,24 +171,21 @@ const UserAnswers: FC = () => {
       };
     }
 
-    setState((state) => ({
-      ...state,
-      infoQuestionsAndAnswers: generalInfo,
-      loading: false,
-    }));
+    setInfoQuestionsAndAnswers(generalInfo);
+    setIsLoading(false);
   };
 
   const onError = (error: any): never => {
-    setState((state) => ({ ...state, error: true }));
+    setIsError((isError) => !isError);
     throw new Error(error);
   };
 
   const setFilterByTheme = (newFilter: string): void => {
-    setState((state) => ({ ...state, filterByTheme: newFilter }));
+    setFilterTheme(newFilter);
   };
 
   const setFilterByRightAnswer = (newFilter: string): void => {
-    setState((state) => ({ ...state, filterByRight: newFilter }));
+    setFilterRight(newFilter);
   };
 
   useEffect(() => {
@@ -308,12 +204,10 @@ const UserAnswers: FC = () => {
         <StyledSum>{t("Ответы")}</StyledSum>
         <StyledSection>
           <FilterByThemes
-            themesNames={getThemes()}
+            themesNames={getThemes(infoQuestionsAndAnswers as TInfoQuestionsAndAnswers)}
             setFilterByTheme={setFilterByTheme}
           />
-          <FilterByRight
-            setFilterByRightAnswer={setFilterByRightAnswer}
-          />
+          <FilterByRight setFilterByRightAnswer={setFilterByRightAnswer} />
         </StyledSection>
         {loading} {error} {content}
       </details>
