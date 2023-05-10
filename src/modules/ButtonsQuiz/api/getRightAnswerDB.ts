@@ -4,7 +4,7 @@ import db from "../../../config/firebase/firebaseConfig";
 
 const getRightAnswerDB = async (currentQuestionNumb: number) => {
     try {
-      const lang = localStorage.getItem("i18nextLng");
+      const lang = document.querySelector("html")?.getAttribute("lang");
   
       const rightAnswer = await new Promise(function (resolve, reject) {
         onValue(

@@ -27,7 +27,7 @@ const DropdownLanguages = () => {
     localStorage.setItem("language", item);
     (document.querySelector("html") as HTMLHtmlElement).setAttribute(
       "lang",
-      localStorage.getItem("i18nextLng") || "ru",
+      document.querySelector("html")?.getAttribute("lang") || "ru",
     );
   };
 

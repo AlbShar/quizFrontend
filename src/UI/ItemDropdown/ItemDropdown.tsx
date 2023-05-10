@@ -33,7 +33,7 @@ const ItemDropdown: FC = () => {
           localStorage.setItem("language", language);
           (document.querySelector("html") as HTMLHtmlElement).setAttribute(
             "lang",
-            localStorage.getItem("i18nextLng") || "ru",
+            document.querySelector("html")?.getAttribute("lang") || "ru",
           );
         }}
       >

@@ -46,7 +46,6 @@ const Result: FC = () => {
     };
 
     const dataHasLoaded = (data: any) => {
-
         type TdataInfo = {
             points: TState["points"],
             totalQuestionNumbers: TState["totalQuestionNumbers"]
