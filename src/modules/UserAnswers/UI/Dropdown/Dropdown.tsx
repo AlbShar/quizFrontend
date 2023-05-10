@@ -2,9 +2,6 @@ import {
   FC,
   CSSProperties,
   useEffect,
-  RefObject,
-  forwardRef,
-  Ref,
 } from "react";
 
 
@@ -24,13 +21,13 @@ type DropdownProps = {
   selected: string;
   isActive: boolean;
   data: string[];
-  showListThemes?: () => void;
+  toggleListThemes?: () => void;
   themeHasChoosen?: (item: string) => void;
-  ref: RefObject<HTMLDivElement>;
   hideListFilters: () => void;
+  idWrapper: string
 };
 
-const Dropdown = forwardRef(
+const Dropdown =
   (
     {
       hideListFilters,
@@ -39,9 +36,9 @@ const Dropdown = forwardRef(
       isActive,
       style,
       themeHasChoosen,
-      showListThemes,
+      toggleListThemes,
+      idWrapper,
     }: DropdownProps,
-    ref: Ref<HTMLDivElement>,
   ) => {
     const elementLanguages = data.map((item: string, index: number) => {
       return (
@@ -58,8 +55,7 @@ const Dropdown = forwardRef(
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
-
-        if (!target.closest("#wrapper")) {
+        if (!target.closest(idWrapper) && target.tagName !== "LI") {
           hideListFilters();
         }
       };
@@ -69,11 +65,11 @@ const Dropdown = forwardRef(
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
-    }, [ref]);
+    }, []);
 
     return (
-      <StyleArticleDropdown ref={ref} style={style} id="wrapper">
-          <StyledButton onClick={showListThemes}>
+      <StyleArticleDropdown style={style} id={idWrapper}>
+          <StyledButton onClick={toggleListThemes}>
             <StyledSpan className="dropdown-btn-text">
               {selected || data[0]}
             </StyledSpan>
@@ -82,11 +78,8 @@ const Dropdown = forwardRef(
         {isActive && <StyledUl>{elementLanguages}</StyledUl>}
       </StyleArticleDropdown>
     );
-  },
-);
+  };
 
 Dropdown.displayName = "Dropdown";
 
-export default Dropdown as FC<
-  DropdownProps & { ref?: RefObject<HTMLDivElement> }
->;
+export default Dropdown;

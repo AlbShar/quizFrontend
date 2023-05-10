@@ -4,45 +4,39 @@ import Dropdown from "../../UI/Dropdown/Dropdown";
 
 type TFilterByThemesProps = {
   themesNames: string[],
-  setFilterByTheme: (item: string) => void
+  setFilterByTheme: (item: string) => void,
 };
 
 const FilterByThemes: FC<TFilterByThemesProps> = ({themesNames, setFilterByTheme}) => {
-    type TState = {
-      selected: string,
-      isShowList: boolean
-    };
-
-    const [state, setState] = useState<TState>({
-      selected: themesNames[0],
-      isShowList: false,
-    });
-
+   
+    const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
+    const [isShowList, setIsShowList] = useState<boolean>(false);
     
     const refWrapperTheme = useRef<HTMLDivElement>(null);
+
+    const toggleListThemes = () => {
+      setIsShowList(isShowList => !isShowList);
+    };
+
     const themeHasChoosen = (item: string) => {
-      setState((state) => ({...state, selected: item, isShowList: false}));
+      toggleListThemes();
+      setSelectedTheme(item);
       setFilterByTheme(item);
     };
 
     const hideListFilters = () => {
-      setState((state) => ({...state, isShowList: false}));
+      setIsShowList(false);
     };
-
-    const showListThemes = () => {
-      setState((state) => ({...state, isShowList: true}));
-    };
-      
 
     return <Dropdown
-    showListThemes={showListThemes}
+    toggleListThemes={toggleListThemes}
     data={themesNames}
-    selected={state.selected}
-    isActive={state.isShowList}
+    selected={selectedTheme}
+    isActive={isShowList}
     themeHasChoosen={(item: string) => themeHasChoosen(item)}
     style={{margin: "0 25px 0 0"}}
-    ref={refWrapperTheme}
     hideListFilters={hideListFilters}
+    idWrapper="wrapperThemes"
   />;
 };
 

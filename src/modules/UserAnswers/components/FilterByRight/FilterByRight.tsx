@@ -1,50 +1,39 @@
-import {FC, useState, useRef} from "react";
+import {FC, useState} from "react";
 
 import Dropdown from "../../UI/Dropdown/Dropdown";
 
 type FilterByRightProps = {
-  setFilterByRightAnswer: (newFilter: string) =>  void
+  setFilterByRightAnswer: (newFilter: string) =>  void,
 };
 
 const FilterByRight: FC<FilterByRightProps> = ({setFilterByRightAnswer}) => {
-    const refWrapperRight = useRef<HTMLDivElement>(null);
     const data: string[] = ["Все вопросы", "Верно", "Неверно"];
 
+    const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);
+    const [isShowList, setIsShowList] = useState<boolean>(false);
 
-   type TState = {
-      selected: string,
-      isShowList: boolean
+    const toggleListThemes = () => {
+      setIsShowList(isShowList => !isShowList);
     };
 
-    const [state, setState] = useState<TState>({
-      selected: data[0],
-      isShowList: false,
-    });
-
-    
-    const refWrapperTheme = useRef<HTMLDivElement>(null);
     const themeHasChoosen = (item: string) => {
-      setState((state) => ({...state, selected: item, isShowList: false}));
-      setFilterByRightAnswer(item)
+      toggleListThemes();
+      setTypeAnswer(item);
+      setFilterByRightAnswer(item);
     };
 
     const hideListFilters = () => {
-      setState((state) => ({...state, isShowList: false}));
+      setIsShowList(false);
     };
-
-    const showListThemes = () => {
-      setState((state) => ({...state, isShowList: true}));
-    };
-
 
     return <Dropdown
-    showListThemes={showListThemes}
+    toggleListThemes={toggleListThemes}
     data={data}
-    selected={state.selected}
-    isActive={state.isShowList}
+    selected={typeAnswer}
+    isActive={isShowList}
     themeHasChoosen={(item: string) => themeHasChoosen(item)}
-    ref={refWrapperRight}
     hideListFilters={hideListFilters}
+    idWrapper="wrapperTypeAnswer"
 
   />;
 };
