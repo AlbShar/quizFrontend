@@ -7,7 +7,7 @@ const getThemes = (infoQuestionsAndAnswers: TInfoQuestionsAndAnswers): [string, 
     if (infoQuestionsAndAnswers) {
       return getThemesNames(infoQuestionsAndAnswers);
     } else {
-      return [""];
+      return ["Все тематики"];
     }
   };
 
