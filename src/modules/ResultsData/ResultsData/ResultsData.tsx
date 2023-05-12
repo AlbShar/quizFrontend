@@ -6,12 +6,14 @@ import Time from "../components/Time";
 
 import { StyledSection } from "./ResultsData.Styled";
 
-
-const ResultsData: FC = () => {  
+type ResultsDataProps = {
+    setRightAnswers: (points: number) => void
+};
+const ResultsData: FC<ResultsDataProps> = ({setRightAnswers}) => {  
     return (
         <Container>
             <StyledSection>
-                <Result/>
+                <Result setRightAnswers={setRightAnswers}/>
                 <Time/>
             </StyledSection>
         </Container>

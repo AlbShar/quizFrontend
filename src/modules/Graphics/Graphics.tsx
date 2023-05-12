@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import Container from "../../components/Container/Container";
-import Graphic from "../../components/Graphic/Grpahic";
+import Graphic from "../../components/DoughnutWrapper/DoughnutWrapper";
 
 import { StyledSection } from "./Graphics.Styled";
 

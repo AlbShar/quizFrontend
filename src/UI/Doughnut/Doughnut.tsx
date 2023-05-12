@@ -5,7 +5,8 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 type PiechartProps = {
-  dataPieChart: number[]
+  dataPieChart: number[],
+
 };
 
 const Piechart: FC<PiechartProps> = ({dataPieChart}) => {
@@ -13,19 +14,24 @@ const Piechart: FC<PiechartProps> = ({dataPieChart}) => {
     labels: ["Верно", "Неверно"],
     datasets: [
       {
-        label: '# of Votes',
+        label: "%",
         data: dataPieChart,
         backgroundColor: [
           "green",
           "red",
         ],
-        
+        borderColor: [
+          "green",
+          "red",
+        ],
+        cutout: "75%",
         borderWidth: 1,
       },
     ],
   };
 
-  return <Doughnut data={data}/>;
+  return <Doughnut data={data}>
+  </Doughnut>;
 };
 
 export default Piechart;

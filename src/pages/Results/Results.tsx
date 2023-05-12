@@ -9,14 +9,18 @@ import UserAnswers from "../../modules/UserAnswers";
 import { StyledDiv } from "./Results.Styled";
 
 const Results = () => {
-  const [rightAnswers, setRightAnswers] = useState(15);
+  const [rightAnswers, setRightAnswers] = useState<number>(0);
+
+  const setRightUserAnswers = (points: number) => {
+    setRightAnswers(points);
+  };
 
   return (
     <>
       <HeaderResult />
       <StyledMain>
         <StyledDiv>
-          <ResultsData></ResultsData>
+          <ResultsData setRightAnswers={setRightUserAnswers}/>
           <Graphics rightAnswers={rightAnswers}/>
           <UserAnswers/>
         </StyledDiv>
