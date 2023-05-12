@@ -55,7 +55,7 @@ const Dropdown =
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
-        if (!target.closest(idWrapper) && target.tagName !== "LI") {
+        if (target.tagName !== "LI") {
           hideListFilters();
         }
       };

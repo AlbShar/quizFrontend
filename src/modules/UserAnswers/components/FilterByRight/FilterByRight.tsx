@@ -13,7 +13,7 @@ const FilterByRight: FC<FilterByRightProps> = ({setFilterByRightAnswer}) => {
     const [isShowList, setIsShowList] = useState<boolean>(false);
 
     const toggleListThemes = () => {
-      setIsShowList(isShowList => !isShowList);
+        setIsShowList(isShowList => !isShowList);
     };
 
     const themeHasChoosen = (item: string) => {
