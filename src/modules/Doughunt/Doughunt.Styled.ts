@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledArticle = styled.article`
+  box-sizing: border-box;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -10,10 +11,6 @@ const StyledArticle = styled.article`
 
   &:not(list-child) {
     margin: 0 0 24px 0;
-  }
-
-  @media screen and (min-width: 767.8px) {
-    padding: 16px 40px 18px 40px;
   }
 `;
 

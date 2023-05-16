@@ -1,25 +1,26 @@
 import { FC, useState, useEffect } from "react";
 
-import { StyledArticle, StyledP, StyledSpan } from "./DoughnutWrapper.Styled";
+import { StyledArticle, StyledP, StyledSpan } from "./Doughunt.Styled";
 
 import { getTotalQuestionsNumb } from "../../api/getTotalQuestionsNumb";
-import Piechart from "../../UI/Doughnut/Doughnut";
+import ChartDoughnut from "../../components/ChartDoughnut/ChartDoughnut";
 import Spinner from "../../UI/Spinner/Spinner";
 
-type GraphicType = {
+type DoughnutProps = {
   rightAnswers: number;
 };
 
-const DoughnutWrapper: FC<GraphicType> = ({ rightAnswers }) => {
+const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const percentRightQuestions = +((100 * rightAnswers) / totalQuestionNumbers).toFixed(1);
   const percentWrongQuestions = +(100 - percentRightQuestions).toFixed(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const view = () => {
     return (
       <StyledArticle>
         <div style={{position: "relative"}}>
-          <Piechart
+          <ChartDoughnut
             dataPieChart={[percentRightQuestions, percentWrongQuestions]}
           />
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
@@ -52,4 +53,4 @@ const DoughnutWrapper: FC<GraphicType> = ({ rightAnswers }) => {
   );
 };
 
-export default DoughnutWrapper;
+export default Doughnut;

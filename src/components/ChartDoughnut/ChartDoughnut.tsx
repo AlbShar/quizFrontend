@@ -9,7 +9,7 @@ type PiechartProps = {
 
 };
 
-const Piechart: FC<PiechartProps> = ({dataPieChart}) => {
+const ChartDoughnut: FC<PiechartProps> = ({dataPieChart}) => {
   const data = {
     labels: ["Верно", "Неверно"],
     datasets: [
@@ -26,6 +26,7 @@ const Piechart: FC<PiechartProps> = ({dataPieChart}) => {
         ],
         cutout: "75%",
         borderWidth: 1,
+        
       },
     ],
   };
@@ -34,4 +35,4 @@ const Piechart: FC<PiechartProps> = ({dataPieChart}) => {
   </Doughnut>;
 };
 
-export default Piechart;
+export default ChartDoughnut;
