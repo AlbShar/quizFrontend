@@ -8,9 +8,12 @@ import {
 import Spinner from "../../../UI/Spinner/Spinner";
 import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
 import { getUserAnswers } from "../api/getUserAnswers";
+ 
+type ResultProps = {
+    setRightAnswers: (points: number) => void
+};
 
-
-const Result: FC = () => {
+const Result: FC<ResultProps> = ({setRightAnswers}) => {
     type TState = {
         points: {
             [key: string]: number
@@ -45,6 +48,12 @@ const Result: FC = () => {
         }
     };
 
+    const getTotalPoints = (points: false | TState["points"] | null): number => {
+        if (points) {
+            return Object.values(points).reduce((sum, curr) => sum + curr, 0);
+        } else return 0;
+    };
+
     const dataHasLoaded = (data: any) => {
         type TdataInfo = {
             points: TState["points"],
@@ -72,6 +81,7 @@ const Result: FC = () => {
                 loading: false,
               };
         });
+        setRightAnswers(getTotalPoints(dataInfo.points));
 
         for (const key in dataInfo) {
             if (dataInfo[key] === null) {
@@ -80,11 +90,7 @@ const Result: FC = () => {
         }
     };
 
-    const getTotalPoints = (points: false | TState["points"] | null): number => {
-        if (points) {
-            return Object.values(points).reduce((sum, curr) => sum + curr, 0);
-        } else return 0;
-    };
+    
 
     const onError = (error: any): never => {
         setState((state) => ({...state, loading: false, error: true}));
