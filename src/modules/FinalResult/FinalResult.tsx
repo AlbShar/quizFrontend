@@ -4,16 +4,16 @@ import {
   StyledH2,
   StyledH3,
   StyledArticle,
-} from "../ResultsData/ResultsData.Styled";
-import Spinner from "../../../UI/Spinner/Spinner";
-import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
-import { getUserAnswers } from "../api/getUserAnswers";
+} from "./FinalResult.Styled";
+import Spinner from "../../UI/Spinner/Spinner";
+import { getTotalQuestionsNumb } from "../../api/getTotalQuestionsNumb";
+import { getUserAnswers } from "./api/getUserAnswers";
  
-type ResultProps = {
+type FinalResultProps = {
     setRightAnswers: (points: number) => void
 };
 
-const Result: FC<ResultProps> = ({setRightAnswers}) => {
+const FinalResult: FC<FinalResultProps> = ({setRightAnswers}) => {
     type TState = {
         points: {
             [key: string]: number
@@ -126,4 +126,4 @@ const Result: FC<ResultProps> = ({setRightAnswers}) => {
   );
 };
 
-export default Result;
+export default FinalResult;
