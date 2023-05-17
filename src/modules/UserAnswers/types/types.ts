@@ -53,6 +53,10 @@ type TInfoQuestionsAndAnswers = {
   [key: number]: TQuestionAndAnswer;
 };
 
+type TPointsByThemes = {
+  [key: string]: number;
+};
+
 export type {
   TUserAnswer,
   TAnswerOption,
@@ -61,4 +65,5 @@ export type {
   TAnswersDB,
   TQuestionAndAnswer,
   TInfoQuestionsAndAnswers,
+  TPointsByThemes
 };

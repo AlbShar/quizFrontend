@@ -12,6 +12,7 @@ import { getNumberFromKey } from "../helpers/getNumberFromKey";
 import filterByRightAnswer from "../helpers/filterByRightAnswer";
 import filterByThemes from "../helpers/filterByThemes";
 import getThemes from "../helpers/getThemes";
+import getPointsByThemes from "../helpers/getPointsByThemes";
 
 import {
   StyledLi,
@@ -202,7 +203,10 @@ const UserAnswers: FC<UserAnwersProps> = ({setThemesBarChart}) => {
   }, []);
 
   useEffect(() => {
-    setThemesBarChart(getThemes(infoQuestionsAndAnswers as TInfoQuestionsAndAnswers))
+    setThemesBarChart(getThemes(infoQuestionsAndAnswers as TInfoQuestionsAndAnswers));
+    if (infoQuestionsAndAnswers) {
+      getPointsByThemes(infoQuestionsAndAnswers);
+    }
   }, [infoQuestionsAndAnswers])
 
   return (
