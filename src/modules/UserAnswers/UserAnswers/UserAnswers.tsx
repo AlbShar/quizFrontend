@@ -31,7 +31,10 @@ import type {
   TQuestionAndAnswer,
 } from "../types/types";
 
-const UserAnswers: FC = () => {
+type UserAnwersProps = {
+  setThemesBarChart: (themes: string[]) => void
+};
+const UserAnswers: FC<UserAnwersProps> = ({setThemesBarChart}) => {
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -197,6 +200,10 @@ const UserAnswers: FC = () => {
       )
       .catch(onError);
   }, []);
+
+  useEffect(() => {
+    setThemesBarChart(getThemes(infoQuestionsAndAnswers as TInfoQuestionsAndAnswers))
+  }, [infoQuestionsAndAnswers])
 
   return (
     <Container>

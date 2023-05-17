@@ -1,4 +1,4 @@
-import {useState, FC, useRef} from "react";
+import {useState, FC} from "react";
 
 import Dropdown from "../../UI/Dropdown/Dropdown";
 
@@ -12,7 +12,6 @@ const FilterByThemes: FC<TFilterByThemesProps> = ({themesNames, setFilterByTheme
     const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
     const [isShowList, setIsShowList] = useState<boolean>(false);
     
-    const refWrapperTheme = useRef<HTMLDivElement>(null);
 
     const toggleListThemes = () => {
       setIsShowList(isShowList => !isShowList);

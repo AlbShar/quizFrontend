@@ -7,15 +7,25 @@ import Container from "../../components/Container/Container";
 import Doughnut from "../../modules/Doughunt/index";
 import FinalResult from "../../modules/FinalResult/index";
 import SpentTime from "../../modules/SpentTime/index";
+import BarChartWrapper from "../../modules/BarChartWrapper";
 
 import { StyledDiv, StyledSection, StyledSectionResults } from "./Results.Styled";
 
 const Results = () => {
   const [rightAnswers, setRightAnswers] = useState<number>(0);
+  const [nameThemes, setNameThemes] = useState<string[]>([]);
 
   const setRightUserAnswers = useCallback((points: number) => {
     setRightAnswers(points);
   },[]);
+
+  const setThemesBarChart = useCallback((themes: string[]) => {
+    const shortNameThemes = themes
+    .filter((item, index) => index > 0)
+    .map((theme) => theme.length > 17 ? `${theme.slice(0, 18)}...` : theme);
+
+    setNameThemes(shortNameThemes);
+  }, []);
 
   return (
     <>
@@ -28,11 +38,11 @@ const Results = () => {
               <SpentTime/>
             </StyledSectionResults>
             <StyledSection>
-                <Doughnut rightAnswers={rightAnswers}/>
+                <BarChartWrapper nameThemes={nameThemes}/>
                 <Doughnut rightAnswers={rightAnswers}/>
             </StyledSection>
           </Container>
-          <UserAnswers/>
+          <UserAnswers setThemesBarChart={setThemesBarChart}/>
         </StyledDiv>
       </StyledMain>
     </>
