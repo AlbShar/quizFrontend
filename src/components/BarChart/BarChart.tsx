@@ -18,12 +18,28 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+type TInfoTheme = {
+  totalPoints: number;
+   totalQuantityQuestions: number
+};
+type TPointsByThemes = {
+  [key: string]: TInfoTheme;
+};
 
 type BarChartProps = {
-    labels: string[]
+  pointsByTheme: TPointsByThemes | null
 }; 
 
-const BarChart: FC<BarChartProps> = ({labels}) => {
+const BarChart: FC<BarChartProps> = ({pointsByTheme}) => {
+  const labels = pointsByTheme ? 
+  Object.keys(pointsByTheme)
+  .map((theme) => theme.length > 13 ? `${theme.slice(0, 13)}...` : theme) : 
+  ["There is no data"];
+
+    const percentRightAnswers: number[] = (pointsByTheme) ? Object.values(pointsByTheme)
+  .map((point: TInfoTheme) => +(point.totalPoints / point.totalQuantityQuestions * 100)
+  .toFixed()) : [0];
+
     const options = {
         responsive: true,
         plugins: {
@@ -32,13 +48,13 @@ const BarChart: FC<BarChartProps> = ({labels}) => {
           },
           title: {
             display: true,
-            text: 'Chart.js Bar Chart',
+            text: "Столбчатая диаграмма",
           },
         },
         scales: {
             y: {
                 ticks: {
-                    stepSize: 1,
+                    stepSize: 25,
                 }
             }
         }
@@ -49,9 +65,9 @@ const BarChart: FC<BarChartProps> = ({labels}) => {
         labels,
         datasets: [
           {
-            label: 'Dataset 1',
-            data: [0, 1, 2],
-            backgroundColor: 'rgba(255, 99, 132)',
+            label: '%',
+            data: percentRightAnswers,
+            backgroundColor: percentRightAnswers.map((percent: number) => percent <= 25 ? "red" : "green"),
           },
         ],
       };

@@ -7,6 +7,8 @@ const StyledArticle = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   padding: 16px 8px 9px 8px;
 
   &:not(list-child) {

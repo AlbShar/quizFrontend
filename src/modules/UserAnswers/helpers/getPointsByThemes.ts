@@ -11,11 +11,14 @@ const getPointsByThemes = (data: TInfoQuestionsAndAnswers): TPointsByThemes => {
     for (const theme of themes) {
         for (const key in updateData) {
             if (theme === updateData[key].theme) {
-                pointsByThemes[theme] = (updateData[key].point || 0) + updateData[key].point;
-            }
+                if (!pointsByThemes[theme]) {
+                    pointsByThemes[theme] = { totalPoints: 0, totalQuantityQuestions: 0 };
+                  }
+                  pointsByThemes[theme].totalPoints += updateData[key].point;
+                  pointsByThemes[theme].totalQuantityQuestions += 1;
+                }
         }
     }
-    
     return pointsByThemes;
 };
 

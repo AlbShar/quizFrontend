@@ -30,12 +30,13 @@ import type {
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
   TQuestionAndAnswer,
+  TPointsByThemes
 } from "../types/types";
 
 type UserAnwersProps = {
-  setThemesBarChart: (themes: string[]) => void
+  setPointsByTheme: (themes: TPointsByThemes) => void
 };
-const UserAnswers: FC<UserAnwersProps> = ({setThemesBarChart}) => {
+const UserAnswers: FC<UserAnwersProps> = ({setPointsByTheme}) => {
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -203,9 +204,8 @@ const UserAnswers: FC<UserAnwersProps> = ({setThemesBarChart}) => {
   }, []);
 
   useEffect(() => {
-    setThemesBarChart(getThemes(infoQuestionsAndAnswers as TInfoQuestionsAndAnswers));
     if (infoQuestionsAndAnswers) {
-      getPointsByThemes(infoQuestionsAndAnswers);
+      setPointsByTheme(getPointsByThemes(infoQuestionsAndAnswers));
     }
   }, [infoQuestionsAndAnswers])
 

@@ -11,21 +11,22 @@ import BarChartWrapper from "../../modules/BarChartWrapper";
 
 import { StyledDiv, StyledSection, StyledSectionResults } from "./Results.Styled";
 
+type TInfoTheme = {
+  totalPoints: number;
+   totalQuantityQuestions: number
+};
+type TPointsByThemes = {
+  [key: string]: TInfoTheme;
+};
+
 const Results = () => {
   const [rightAnswers, setRightAnswers] = useState<number>(0);
-  const [nameThemes, setNameThemes] = useState<string[]>([]);
+  const [pointsByTheme, setPointsByTheme] = useState<TPointsByThemes | null>(null);
 
   const setRightUserAnswers = useCallback((points: number) => {
     setRightAnswers(points);
   },[]);
 
-  const setThemesBarChart = useCallback((themes: string[]) => {
-    const shortNameThemes = themes
-    .filter((item, index) => index > 0)
-    .map((theme) => theme.length > 17 ? `${theme.slice(0, 18)}...` : theme);
-
-    setNameThemes(shortNameThemes);
-  }, []);
 
   return (
     <>
@@ -38,11 +39,11 @@ const Results = () => {
               <SpentTime/>
             </StyledSectionResults>
             <StyledSection>
-                <BarChartWrapper nameThemes={nameThemes}/>
+                <BarChartWrapper pointsByTheme={pointsByTheme}/>
                 <Doughnut rightAnswers={rightAnswers}/>
             </StyledSection>
           </Container>
-          <UserAnswers setThemesBarChart={setThemesBarChart}/>
+          <UserAnswers setPointsByTheme={setPointsByTheme}/>
         </StyledDiv>
       </StyledMain>
     </>

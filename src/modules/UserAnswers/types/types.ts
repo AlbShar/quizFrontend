@@ -53,8 +53,12 @@ type TInfoQuestionsAndAnswers = {
   [key: number]: TQuestionAndAnswer;
 };
 
+type TInfoTheme = {
+  totalPoints: number;
+   totalQuantityQuestions: number
+};
 type TPointsByThemes = {
-  [key: string]: number;
+  [key: string]: TInfoTheme;
 };
 
 export type {

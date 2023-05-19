@@ -3,16 +3,26 @@ import {FC} from 'react';
 import { StyledArticle, StyledP, StyledSpan } from "./BarChart.Styled";
 import BarChart from '../../components/BarChart/BarChart';
 
-type BarChartWrapperProps = {
-    nameThemes: string[]
+type TInfoTheme = {
+  totalPoints: number;
+   totalQuantityQuestions: number
 };
-const BarChartWrapper: FC<BarChartWrapperProps> = ({nameThemes}) => {
+type TPointsByThemes = {
+  [key: string]: TInfoTheme;
+};
+
+type BarChartWrapperProps = {
+  pointsByTheme: TPointsByThemes | null
+};
+const BarChartWrapper: FC<BarChartWrapperProps> = ({pointsByTheme}) => {
     return (
         <StyledArticle>
-        <BarChart labels={nameThemes}/>
+        <BarChart pointsByTheme={pointsByTheme}/>
         <StyledP>
-          График отображает процент вопросов, на которые были даны верные и
-          неверные ответы
+        График отображает процент правильных ответов по каждому тематическому разделу теста. 
+        Показатель считается как отношение колисества вопросов,на которые был дан правильный ответ, 
+        к общему количеству вопросов  данной тематики. Если показатель составляет менее 50 %, 
+        то данный раздел необходимо изучить дополнительно.
         </StyledP>
       </StyledArticle>
     );
