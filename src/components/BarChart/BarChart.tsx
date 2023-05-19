@@ -39,6 +39,7 @@ const BarChart: FC<BarChartProps> = ({pointsByTheme}) => {
     const percentRightAnswers: number[] = (pointsByTheme) ? Object.values(pointsByTheme)
   .map((point: TInfoTheme) => +(point.totalPoints / point.totalQuantityQuestions * 100)
   .toFixed()) : [0];
+  const colors = ['black', 'red', 'blue'];
 
     const options = {
         responsive: true,
@@ -54,7 +55,7 @@ const BarChart: FC<BarChartProps> = ({pointsByTheme}) => {
         scales: {
             y: {
                 ticks: {
-                    stepSize: 25,
+                    stepSize: 10,
                 }
             }
         }
@@ -62,14 +63,17 @@ const BarChart: FC<BarChartProps> = ({pointsByTheme}) => {
       
       
       const data = {
-        labels,
-        datasets: [
-          {
-            label: '%',
-            data: percentRightAnswers,
-            backgroundColor: percentRightAnswers.map((percent: number) => percent <= 25 ? "red" : "green"),
-          },
-        ],
+        labels: [''],
+        datasets: pointsByTheme
+      ? Object.entries(pointsByTheme).map((item, index) => {
+          const percentOfTheme = +(item[1].totalPoints / item[1].totalQuantityQuestions * 100).toFixed();
+          return {
+            label: item[0].length > 13 ? `${item[0].slice(0, 13)}...` : item[0],
+            data: [percentOfTheme],
+            backgroundColor: colors[index],
+          };
+        })
+      : [],
       };
 
   return <Bar options={options} data={data} />;
