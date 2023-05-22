@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 
-import { StyledArticle, StyledP, StyledSpan } from "./Doughunt.Styled";
+import { StyledArticle, StyledP, StyledSpan, StyledDoughuntWrapper } from "./Doughunt.Styled";
 
 import { getTotalQuestionsNumb } from "../../api/getTotalQuestionsNumb";
 import ChartDoughnut from "../../components/ChartDoughnut/ChartDoughnut";
@@ -19,12 +19,12 @@ const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
   const view = () => {
     return (
       <StyledArticle>
-        <div style={{position: "relative"}}>
+        <StyledDoughuntWrapper>
           <ChartDoughnut
             dataPieChart={[percentRightQuestions, percentWrongQuestions]}
           />
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
-        </div>
+        </StyledDoughuntWrapper>
         <StyledP>
           График отображает процент вопросов, на которые были даны верные и
           неверные ответы

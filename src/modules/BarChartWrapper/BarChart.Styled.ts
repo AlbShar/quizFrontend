@@ -7,7 +7,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-height: 520px;
+  max-height: 575px;
   width: 100%;
   height: 100%;
   padding: 16px 8px 9px 8px;
@@ -18,6 +18,13 @@ const StyledArticle = styled.article`
 
   @media screen and (min-width: 767.8px) {
     max-width: 50%;
+
+    &:not(list-child) {
+      margin: 0;
+    }
+  }
+  @media screen and (min-width: 1023.8px) {
+    padding: 25px 8px 15px 8px;
   }
 `;
 

@@ -31,10 +31,6 @@ type BarChartProps = {
 };
 
 const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
-  // const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  // const [widthBar, setWidthBar] = useState<number>(280);
-  // const [heightBar, setHeightBar] = useState<number>(220);
-
   const colors = ["black", "red", "blue"];
 
   const options = {
@@ -71,35 +67,12 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
             label: `${percentOfTheme} % - ${shortNameTheme}`,
             data: [percentOfTheme],
             backgroundColor: colors[index],
+            
           };
         })
       : [],
   };
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (windowWidth > 320 && windowWidth < 459.8) {
-  //     setWidthBar(280);
-  //     setHeightBar(191);
-  //   } else if (windowWidth > 459.8 && windowWidth < 767.8) {
-  //     setWidthBar(350);
-  //     setHeightBar(250);
-  //   } else if (windowWidth > 767.8 && windowWidth < 1023.8) {
-  //     setWidthBar(525);
-  //     setHeightBar(320);
-  //   }
-  // }, [windowWidth]);
 
   return <Bar options={options} data={data}/>;
 };

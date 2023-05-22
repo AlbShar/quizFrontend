@@ -13,7 +13,7 @@ const StyledSection = styled.section`
 
   @media screen and (min-width: 767.8px) {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
   }`;
