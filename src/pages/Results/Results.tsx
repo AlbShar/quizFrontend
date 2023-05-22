@@ -7,7 +7,7 @@ import Container from "../../components/Container/Container";
 import Doughnut from "../../modules/Doughunt/index";
 import FinalResult from "../../modules/FinalResult/index";
 import SpentTime from "../../modules/SpentTime/index";
-import BarChartWrapper from "../../modules/BarChartWrapper";
+import ChartBar from "../../modules/ChartBar/index";
 
 import { StyledDiv, StyledSection, StyledSectionResults } from "./Results.Styled";
 
@@ -33,7 +33,7 @@ const Results = () => {
               <SpentTime/>
             </StyledSectionResults>
             <StyledSection>
-                <BarChartWrapper pointsByTheme={pointsByTheme}/>
+                <ChartBar pointsByTheme={pointsByTheme}/>
                 <Doughnut rightAnswers={rightAnswers}/>
             </StyledSection>
           </Container>

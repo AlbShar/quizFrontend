@@ -9,6 +9,9 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+
+import Spinner from "../../UI/Spinner/Spinner";
+
 import type { TPointsByThemes } from "../../types/types";
 
 ChartJS.register(
@@ -26,6 +29,7 @@ type BarChartProps = {
 };
 
 const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const colors = ["black", "red", "blue"];
 
   const options = {
@@ -68,8 +72,23 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
       : [],
   };
 
+  const spinner = isLoading ? (
+    <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto" />
+  ) : null;
+  const content = !isLoading ? <Bar options={options} data={data}/> : null;
 
-  return <Bar options={options} data={data}/>;
+  useEffect(() => {
+    if (pointsByTheme) {
+        setIsLoading(false);
+    }
+  }, [pointsByTheme]);
+
+
+  return (
+    <>
+    {content} {spinner}
+    </>
+  );
 };
 
 export default BarChart;
