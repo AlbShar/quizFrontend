@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import { StyledArticle, StyledP, StyledSpan } from "./BarChart.Styled";
+import { StyledArticle, StyledP, StyledBarChartWrapper } from "./BarChart.Styled";
 import BarChart from '../../components/BarChart/BarChart';
 
 type TInfoTheme = {
@@ -16,14 +16,16 @@ type BarChartWrapperProps = {
 };
 const BarChartWrapper: FC<BarChartWrapperProps> = ({pointsByTheme}) => {
     return (
-        <StyledArticle>
-        <BarChart pointsByTheme={pointsByTheme}/>
-        <StyledP>
-        График отображает процент правильных ответов по каждому тематическому разделу теста. 
-        Показатель считается как отношение колисества вопросов,на которые был дан правильный ответ, 
-        к общему количеству вопросов  данной тематики. Если показатель составляет менее 50 %, 
-        то данный раздел необходимо изучить дополнительно.
-        </StyledP>
+      <StyledArticle>
+        <StyledBarChartWrapper>
+          <BarChart pointsByTheme={pointsByTheme} />
+        </StyledBarChartWrapper>
+          <StyledP>
+            График отображает процент правильных ответов по каждому
+            тематическому разделу. Показатель считается как отношение
+            количества верных ответов к общему количеству вопросов тематики. Если показатель 
+            менее 50 %, то данный раздел необходимо изучить дополнительно.
+          </StyledP>
       </StyledArticle>
     );
 };

@@ -7,12 +7,17 @@ const StyledArticle = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 520px;
   width: 100%;
   height: 100%;
   padding: 16px 8px 9px 8px;
 
   &:not(list-child) {
     margin: 0 0 24px 0;
+  }
+
+  @media screen and (min-width: 767.8px) {
+    max-width: 50%;
   }
 `;
 
@@ -23,17 +28,11 @@ const StyledP = styled.article`
   margin: 12px 0 0 0;
 `;
 
-const StyledSpan = styled.span`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -20%);
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 60px;
-  color: #6768D7;
+const StyledBarChartWrapper = styled.span`
+  position: relative;
+  width: 100%;
+  height: 220px;
+  max-width: 525px;
 `;
 
-export { StyledArticle, StyledP, StyledSpan };
+export { StyledArticle, StyledP, StyledBarChartWrapper };
