@@ -12,6 +12,7 @@ import { getNumberFromKey } from "../helpers/getNumberFromKey";
 import filterByRightAnswer from "../helpers/filterByRightAnswer";
 import filterByThemes from "../helpers/filterByThemes";
 import getThemes from "../helpers/getThemes";
+import getPointsByThemes from "../helpers/getPointsByThemes";
 
 import {
   StyledLi,
@@ -28,10 +29,14 @@ import type {
   TAnswersDB,
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
-  TQuestionAndAnswer,
+  TQuestionAndAnswer
 } from "../types/types";
+import type { TPointsByThemes } from "../../../types/types";
 
-const UserAnswers: FC = () => {
+type UserAnwersProps = {
+  setPointsByTheme: (themes: TPointsByThemes) => void
+};
+const UserAnswers: FC<UserAnwersProps> = ({setPointsByTheme}) => {
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -197,6 +202,12 @@ const UserAnswers: FC = () => {
       )
       .catch(onError);
   }, []);
+
+  useEffect(() => {
+    if (infoQuestionsAndAnswers) {
+      setPointsByTheme(getPointsByThemes(infoQuestionsAndAnswers));
+    }
+  }, [infoQuestionsAndAnswers])
 
   return (
     <Container>

@@ -4,12 +4,12 @@ import {
   StyledH2,
   StyledH3,
   StyledArticle,
-} from "../ResultsData/ResultsData.Styled";
-import Spinner from "../../../UI/Spinner/Spinner";
-import { getUserInfo } from "../api/getUserInfo";
-import { transformSecondsToMinutes } from "../helpers/transformSecondsToMinutes";
+} from "../SpentTime/SpentTime.Styled";
+import Spinner from "../../UI/Spinner/Spinner";
+import { getUserInfo } from "./api/getUserInfo";
+import { transformSecondsToMinutes } from "./helpers/transformSecondsToMinutes";
 
-const Time: FC = () => {
+const SpentTime: FC = () => {
   type TState = {
     loading: boolean;
     error: boolean;
@@ -67,4 +67,4 @@ const Time: FC = () => {
   );
 };
 
-export default Time;
+export default SpentTime;
