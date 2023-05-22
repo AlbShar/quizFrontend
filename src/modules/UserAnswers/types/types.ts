@@ -53,13 +53,7 @@ type TInfoQuestionsAndAnswers = {
   [key: number]: TQuestionAndAnswer;
 };
 
-type TInfoTheme = {
-  totalPoints: number;
-   totalQuantityQuestions: number
-};
-type TPointsByThemes = {
-  [key: string]: TInfoTheme;
-};
+
 
 export type {
   TUserAnswer,
@@ -69,5 +63,4 @@ export type {
   TAnswersDB,
   TQuestionAndAnswer,
   TInfoQuestionsAndAnswers,
-  TPointsByThemes
 };

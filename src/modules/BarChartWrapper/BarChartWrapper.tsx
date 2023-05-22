@@ -1,15 +1,11 @@
-import {FC} from 'react';
+import {FC} from "react";
+
+import BarChart from "../../components/BarChart/BarChart";
 
 import { StyledArticle, StyledP, StyledBarChartWrapper } from "./BarChart.Styled";
-import BarChart from '../../components/BarChart/BarChart';
 
-type TInfoTheme = {
-  totalPoints: number;
-   totalQuantityQuestions: number
-};
-type TPointsByThemes = {
-  [key: string]: TInfoTheme;
-};
+import type { TPointsByThemes } from "../../types/types";
+
 
 type BarChartWrapperProps = {
   pointsByTheme: TPointsByThemes | null

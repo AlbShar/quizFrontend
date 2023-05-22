@@ -29,9 +29,9 @@ import type {
   TAnswersDB,
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
-  TQuestionAndAnswer,
-  TPointsByThemes
+  TQuestionAndAnswer
 } from "../types/types";
+import type { TPointsByThemes } from "../../../types/types";
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void

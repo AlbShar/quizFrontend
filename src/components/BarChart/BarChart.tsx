@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import type { TPointsByThemes } from "../../types/types";
 
 ChartJS.register(
   CategoryScale,
@@ -18,13 +19,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-type TInfoTheme = {
-  totalPoints: number;
-  totalQuantityQuestions: number;
-};
-type TPointsByThemes = {
-  [key: string]: TInfoTheme;
-};
+
 
 type BarChartProps = {
   pointsByTheme: TPointsByThemes | null;

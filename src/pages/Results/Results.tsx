@@ -11,13 +11,7 @@ import BarChartWrapper from "../../modules/BarChartWrapper";
 
 import { StyledDiv, StyledSection, StyledSectionResults } from "./Results.Styled";
 
-type TInfoTheme = {
-  totalPoints: number;
-   totalQuantityQuestions: number
-};
-type TPointsByThemes = {
-  [key: string]: TInfoTheme;
-};
+import type { TPointsByThemes } from "../../types/types";
 
 const Results = () => {
   const [rightAnswers, setRightAnswers] = useState<number>(0);

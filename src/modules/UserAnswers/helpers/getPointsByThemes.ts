@@ -1,6 +1,7 @@
 import getThemes from "./getThemes";
 
-import type { TInfoQuestionsAndAnswers, TPointsByThemes } from "../types/types";
+import type { TInfoQuestionsAndAnswers } from "../types/types";
+import type { TPointsByThemes } from "../../../types/types";
 
 
 const getPointsByThemes = (data: TInfoQuestionsAndAnswers): TPointsByThemes => {
