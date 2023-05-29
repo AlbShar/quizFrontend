@@ -14,13 +14,9 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = ({userName, userEmail, isDisabledBtn}) => {
 
-  const onClickLinkBtn = (e: MouseEvent) => {
-    if (checkIsUserData(userName, userEmail)) {
-        sendUserInfoDB(getIdUser("idUser"), userName, userEmail);
-      } else {
-        e.preventDefault();
-      }
-};
+  const onClickLinkBtn = () => {
+    sendUserInfoDB(getIdUser("idUser"), userName, userEmail);
+  };
 
     return (
         <LinkBtn isDisabledBtn={isDisabledBtn} text="Получить_результат" pageTo="/results" onClick={onClickLinkBtn} />
