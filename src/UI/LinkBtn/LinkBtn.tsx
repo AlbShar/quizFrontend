@@ -13,7 +13,7 @@ interface LinkInt {
   onClick?: (e: MouseEvent) => void,
   isDisabledBtn?: boolean
 }
-const LinkBtn: FC<LinkInt> = ({ text, pageTo, onClick, id, isDisabledBtn}) => {
+const LinkBtn: FC<LinkInt> = ({ text, pageTo, onClick, id, isDisabledBtn = false}) => {
   const { t } = useTranslation();
 
   return (

@@ -18,6 +18,9 @@ type TDataInputs = {
   id: "username" | "email",
   name: "userName" | "userEmail",
   nameField: string,
+  value: string,
+  isValidation: boolean,
+  isFirstRender: boolean
 };
 
 const UserForm: FC = () => {
@@ -27,6 +30,9 @@ const UserForm: FC = () => {
   const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
   const [isEmailValidation, setIsEmailValidation] = useState<boolean>(false);
   const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
+  const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
+  const [isFirstRenderEmail, setIsFirstRenderEmail] = useState<boolean>(true);
+
   
   const refsInputs: HTMLInputElement[] = [];
   const dataInputs: TDataInputs[] = [{
@@ -36,6 +42,9 @@ const UserForm: FC = () => {
     id:"username",
     name:"userName",
     nameField: t("Ваше_имя"),
+    value: userName,
+    isValidation: isNameValidation,
+    isFirstRender: isFirstRenderName
   },
   {
     htmlFor: "email",
@@ -44,6 +53,10 @@ const UserForm: FC = () => {
     id: "email",
     name: "userEmail",
     nameField: "Email",
+    value: userEmail,
+    isValidation: isEmailValidation,
+    isFirstRender: isFirstRenderEmail
+
   }];
 
   const onValueInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -55,9 +68,13 @@ const UserForm: FC = () => {
 
 
   useEffect(() => {
+    const onFocusNameField = () => {
+      refsInputs[0]?.focus();
+    };
     onFocusNameField();
   }, []);
 
+ 
   useEffect(() => {
     const validateInputName = () => {
       if (userName.length < 2 || userName.length > 50) {
@@ -67,6 +84,9 @@ const UserForm: FC = () => {
       }
      };
      if (userName !== "") {
+      if (isFirstRenderName) {
+        setIsFirstRenderName(false);
+      }
       validateInputName();
      }
     
@@ -82,6 +102,9 @@ const UserForm: FC = () => {
    };
 
    if (userEmail !== "") {
+    if (isFirstRenderEmail) {
+      setIsFirstRenderEmail(false);
+    }
     validateInputEmail();
    }
    
@@ -95,16 +118,12 @@ const UserForm: FC = () => {
 const setRefs = (elem: HTMLInputElement) => {
   refsInputs.push(elem);
 };
-const onFocusNameField = () => {
-  refsInputs[0]?.focus();
-};
+
 
 
 
 const inputsCallback = (dataInput: TDataInputs, index: number) => {
-  const {htmlFor, placeholder, nameField, type, id, name} = dataInput;
-  const isValidation = type === "text" ? isNameValidation : isEmailValidation;
-  const value = type === "text" ? userName : userEmail;
+  const {htmlFor, placeholder, nameField, type, id, name, isValidation, value, isFirstRender} = dataInput;
 
     return (
       <StyledPForm key={index + 1}>
@@ -119,7 +138,7 @@ const inputsCallback = (dataInput: TDataInputs, index: number) => {
           value={value}
           onChange={onValueInput}
         />
-        {isValidation ? null : <div>Введите корректные данные</div>}
+        {isFirstRender ? null : (isValidation ? null : <div>Введите корректные данные</div>)}
       </label>
     </StyledPForm>
     );

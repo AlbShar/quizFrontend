@@ -8,7 +8,7 @@ import { StyledInputField } from "./InputField.Style";
 
 
 
-interface IInputField {
+interface InputFieldProps {
   type: string ;
   id: string ;
   name: string ;
@@ -17,7 +17,8 @@ interface IInputField {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   setRefs: (elem: HTMLInputElement) => void;
 }
-const InputField: FC<IInputField> = ({ type, id, setRefs, name, placeholder, onChange, value }) => {
+
+const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value }) => {
     const { t } = useTranslation();
 
     return (
