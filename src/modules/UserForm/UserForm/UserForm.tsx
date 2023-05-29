@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FC, useEffect } from "react";
+import { useState, ChangeEvent, FC, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import InputField from "../UI/InputField/InputField";
@@ -10,10 +10,6 @@ import {
   StyledFieldset,
 } from "./UserForm.Styled";
 
-interface IValueInput {
-  userName: string;
-  userEmail: string ;
-}
 
 type TDataInputs = {
   htmlFor: "username" | "email",
@@ -26,43 +22,90 @@ type TDataInputs = {
 
 const UserForm: FC = () => {
   const { t } = useTranslation();
-  const [valueInput, setValueInput] = useState<IValueInput>({
-    userName: "",
-    userEmail: "",
-  });
+  const [userName, setUserName] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
+  const [isEmailValidation, setIsEmailValidation] = useState<boolean>(false);
+  const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
+  
+  const refsInputs: HTMLInputElement[] = [];
+  const dataInputs: TDataInputs[] = [{
+    htmlFor: "username",
+    placeholder: "Ваше_имя",
+    type:"text",
+    id:"username",
+    name:"userName",
+    nameField: t("Ваше_имя"),
+  },
+  {
+    htmlFor: "email",
+    placeholder: "E-mail",
+    type: "email",
+    id: "email",
+    name: "userEmail",
+    nameField: "Email",
+  }];
+
   const onValueInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    setValueInput((valueInput) => ({ ...valueInput, [name]: value }));
+    const newValue = target.value;
+    const type = target.type;
+    type === "text" ? setUserName(userName => newValue) : setUserEmail(userEmail => newValue);
   };
 
-const refsInputs: HTMLInputElement[] = [];
+
+  useEffect(() => {
+    onFocusNameField();
+  }, []);
+
+  useEffect(() => {
+    const validateInputName = () => {
+      if (userName.length < 2 || userName.length > 50) {
+        setIsNameValidation(_ => false);
+      } else if (!isNameValidation) {
+        setIsNameValidation(_ => true);
+      }
+     };
+     if (userName !== "") {
+      validateInputName();
+     }
+    
+  }, [userName]);
+
+  useEffect(() => {
+     const validateInputEmail = () => {
+    if (userEmail.length < 7 || userEmail.length > 64 || !userEmail.includes("@")) {
+      setIsEmailValidation(_ => false);
+    } else if (!isEmailValidation){
+      setIsEmailValidation(_ => true);
+    }
+   };
+
+   if (userEmail !== "") {
+    validateInputEmail();
+   }
+   
+  }, [userEmail]);
+
+  useEffect(() => {
+    setIsDisabledBtn(!(isEmailValidation && isNameValidation));
+  }, [isEmailValidation, isNameValidation]);
+ 
+
 const setRefs = (elem: HTMLInputElement) => {
   refsInputs.push(elem);
 };
 const onFocusNameField = () => {
   refsInputs[0]?.focus();
 };
-const dataInputs: TDataInputs[] = [{
-  htmlFor: "username",
-  placeholder: "Ваше_имя",
-  type:"text",
-  id:"username",
-  name:"userName",
-  nameField: t("Ваше_имя"),
-},
-{
-  htmlFor: "email",
-  placeholder: "E-mail",
-  type: "email",
-  id: "email",
-  name: "userEmail",
-  nameField: "Email",
-}];
+
+
 
 const inputsCallback = (dataInput: TDataInputs, index: number) => {
   const {htmlFor, placeholder, nameField, type, id, name} = dataInput;
+  const isValidation = type === "text" ? isNameValidation : isEmailValidation;
+  const value = type === "text" ? userName : userEmail;
+
     return (
       <StyledPForm key={index + 1}>
       <label htmlFor={htmlFor}>
@@ -73,24 +116,23 @@ const inputsCallback = (dataInput: TDataInputs, index: number) => {
           type={type}
           id={id}
           name={name}
-          value={valueInput[nameField]}
+          value={value}
           onChange={onValueInput}
         />
+        {isValidation ? null : <div>Введите корректные данные</div>}
       </label>
     </StyledPForm>
     );
 };
 
-  useEffect(() => {
-    onFocusNameField();
-  }, []);
+  
   
   return (
     <form>
       <StyledFieldset>
         {dataInputs.map(inputsCallback)}
       </StyledFieldset>
-      <Button userName={valueInput.userName} userEmail={valueInput.userEmail}/>
+      <Button userName={userName} userEmail={userEmail} isDisabledBtn={isDisabledBtn}/>
     </form>
   );
 };

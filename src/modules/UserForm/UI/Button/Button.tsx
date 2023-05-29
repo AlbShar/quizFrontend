@@ -7,11 +7,12 @@ import { getIdUser } from "../../../../helpers/getIdUser";
 import { sendUserInfoDB } from "../../api/sendUserInfoDb";
 
 type ButtonProps = {
-  userName: string;
-  userEmail: string
+  userName: string,
+  userEmail: string,
+  isDisabledBtn: boolean
 };
 
-const Button: FC<ButtonProps> = ({userName, userEmail}) => {
+const Button: FC<ButtonProps> = ({userName, userEmail, isDisabledBtn}) => {
 
   const onClickLinkBtn = (e: MouseEvent) => {
     if (checkIsUserData(userName, userEmail)) {
@@ -22,7 +23,7 @@ const Button: FC<ButtonProps> = ({userName, userEmail}) => {
 };
 
     return (
-        <LinkBtn text="Получить_результат" pageTo="/results" onClick={onClickLinkBtn} />
+        <LinkBtn isDisabledBtn={isDisabledBtn} text="Получить_результат" pageTo="/results" onClick={onClickLinkBtn} />
     );
 };
 

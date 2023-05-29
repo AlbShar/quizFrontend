@@ -10,14 +10,15 @@ interface LinkInt {
   text: string,
   id?: string,
   pageTo: string,
-  onClick?: (e: MouseEvent) => void
+  onClick?: (e: MouseEvent) => void,
+  isDisabledBtn?: boolean
 }
-const LinkBtn: FC<LinkInt> = ({ text, pageTo, onClick, id }) => {
+const LinkBtn: FC<LinkInt> = ({ text, pageTo, onClick, id, isDisabledBtn}) => {
   const { t } = useTranslation();
 
   return (
     <Link className="btn__link" to={pageTo} onClick={onClick} id={id}>
-      <StyledButton >{t(text)}</StyledButton>
+      <StyledButton disabled={isDisabledBtn}>{t(text)}</StyledButton>
     </Link>
   );
 };
