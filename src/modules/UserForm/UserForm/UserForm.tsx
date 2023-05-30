@@ -119,26 +119,6 @@ const UserForm: FC = () => {
     onFocusNameField();
   }, []);
 
-  // useEffect(() => {
-  //   const validateInputEmail = () => {
-  //     if (
-  //       userEmail.length < 7 ||
-  //       userEmail.length > 64 ||
-  //       !userEmail.includes("@")
-  //     ) {
-  //       setIsEmailValidation((_) => false);
-  //     } else if (!isEmailValidation) {
-  //       setIsEmailValidation((_) => true);
-  //     }
-  //   };
-
-  //   if (userEmail !== "") {
-  //     if (isFirstRenderEmail) {
-  //       setIsFirstRenderEmail(false);
-  //     }
-  //     validateInputEmail();
-  //   }
-  // }, [userEmail]);
 
   useEffect(() => {
     setIsDisabledBtn(!(isEmailValidation && isNameValidation));

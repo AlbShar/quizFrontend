@@ -38,6 +38,12 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
         clearAnimateInputAndText(e, "#81868C");
         onValidateInput();
       }}
+      onMouseLeave={onValidateInput}
+      onKeyDown={(event) => {
+        if (event.key === 'Tab') {
+          onValidateInput();
+        }
+      }}
       onChange={onChange}
       onInput={onError}
     ></StyledInputField>
