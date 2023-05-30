@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import InputField from "../UI/InputField/InputField";
 import Button from "../UI/Button/Button";
+import useValidateName from "../hooks/useValidateName";
+import useValidateEmail from "../hooks/useValidateEmail";
 
 import { StyledSpan, StyledPForm, StyledFieldset } from "./UserForm.Styled";
 
@@ -22,49 +24,17 @@ type TDataInputs = {
 
 const UserForm: FC = () => {
   const { t } = useTranslation();
-  const [userName, setUserName] = useState<string>("");
-  const [userEmail, setUserEmail] = useState<string>("");
-  const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
-  const [isEmailValidation, setIsEmailValidation] = useState<boolean>(false);
+  
+  const {
+    valueUserName, isFirstRenderName, isNameValidation, 
+    setValueUserName, hideErrorInputName, onValidateInputName
+  } = useValidateName();
+  const {
+    valueEmail, isFirstRenderEmail, isEmailValidation, 
+    setValueEmail, hideErrorInputEmail, onValidateInputEmail
+  } = useValidateEmail();
+
   const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
-  const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
-  const [isFirstRenderEmail, setIsFirstRenderEmail] = useState<boolean>(true);
-
-  const hideErrorInputName = useCallback(() => {
-    if (!isNameValidation && userName.length > 2 && userName.length < 50) {
-      setIsNameValidation(true);
-    }
-  }, [isNameValidation, userName]);
-
-  const onValidateInputName = useCallback((e) => {
-    if (isFirstRenderName) {
-      setIsFirstRenderName((_) => false);
-    }
-
-    if (userName.length < 2 || userName.length > 50) {
-      setIsNameValidation((_) => false);
-    }
-  }, [userName, isFirstRenderName]);
-
-  const onValidateInputEmail = useCallback((e) => {
-    if (isFirstRenderEmail) {
-      setIsFirstRenderEmail(false);
-    }
-
-    if (
-      userEmail.length < 7 ||
-      userEmail.length > 64 ||
-      !userEmail.includes("@") 
-    ) {
-      setIsEmailValidation((_) => false);
-    }
-  }, [userEmail, isFirstRenderEmail]);
-
-  const hideErrorInputEmail = useCallback(() => {
-    if (!isEmailValidation && userEmail.length > 7 && userEmail.length < 64) {
-      setIsEmailValidation(true);
-    }
-  }, [isEmailValidation, userEmail]);
 
 
 
@@ -77,7 +47,7 @@ const UserForm: FC = () => {
       id: "username",
       name: "userName",
       nameField: t("Ваше_имя"),
-      value: userName,
+      value: valueUserName,
       isValidation: isNameValidation,
       isFirstRender: isFirstRenderName,
       onError: hideErrorInputName,
@@ -90,7 +60,7 @@ const UserForm: FC = () => {
       id: "email",
       name: "userEmail",
       nameField: "Email",
-      value: userEmail,
+      value: valueEmail,
       isValidation: isEmailValidation,
       isFirstRender: isFirstRenderEmail,
       onError: hideErrorInputEmail,
@@ -105,8 +75,8 @@ const UserForm: FC = () => {
     const newValue = target.value;
     const type = target.type;
     type === "text"
-      ? setUserName((userName) => newValue)
-      : setUserEmail((userEmail) => newValue);
+      ? setValueUserName(userName => newValue)
+      : setValueEmail((userEmail) => newValue);
   };
 
   useEffect(() => {
@@ -167,8 +137,8 @@ const UserForm: FC = () => {
     <form>
       <StyledFieldset>{dataInputs.map(inputsCallback)}</StyledFieldset>
       <Button
-        userName={userName}
-        userEmail={userEmail}
+        userName={valueUserName}
+        userEmail={valueEmail}
         isDisabledBtn={isDisabledBtn}
       />
     </form>

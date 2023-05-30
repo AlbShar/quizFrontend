@@ -26,6 +26,7 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
 
     return (
     <StyledInputField
+      required
       autoComplete={autocompleteValue}
       ref={setRefs}
       type={type}
