@@ -1,4 +1,4 @@
-import {FC, ChangeEvent, RefObject, FocusEvent} from "react";
+import {FC, ChangeEvent, memo, FocusEvent} from "react";
 import { useTranslation } from "react-i18next";
 
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
@@ -16,9 +16,11 @@ interface InputFieldProps {
   value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   setRefs: (elem: HTMLInputElement) => void;
+  onError: () => void,
+  onValidateInput: () => void,
 }
 
-const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value }) => {
+const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
     const { t } = useTranslation();
 
     return (
@@ -34,10 +36,12 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
       }}
       onBlur={(e: FocusEvent<HTMLInputElement>) => {
         clearAnimateInputAndText(e, "#81868C");
+        onValidateInput();
       }}
       onChange={onChange}
+      onInput={onError}
     ></StyledInputField>
   );
 };
 
-export default InputField;
+export default memo(InputField);

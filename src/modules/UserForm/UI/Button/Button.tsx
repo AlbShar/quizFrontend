@@ -1,8 +1,6 @@
 import {FC} from "react";
-import { MouseEvent } from "react";
 
 import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
-import { checkIsUserData } from "../../helpers/checkIsUserData";
 import { getIdUser } from "../../../../helpers/getIdUser";
 import { sendUserInfoDB } from "../../api/sendUserInfoDb";
 
