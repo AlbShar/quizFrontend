@@ -17,7 +17,7 @@ type TDataInputs = {
   isValidation: boolean;
   isFirstRender: boolean;
   onError: () => void;
-  onValidateInput: () => void;
+  onValidateInput: (e) => void;
 };
 
 const UserForm: FC = () => {
@@ -36,7 +36,7 @@ const UserForm: FC = () => {
     }
   }, [isNameValidation, userName]);
 
-  const onValidateInputName = () => {
+  const onValidateInputName = (e) => {
     if (isFirstRenderName) {
       setIsFirstRenderName((_) => false);
     }
@@ -46,7 +46,7 @@ const UserForm: FC = () => {
     }
   };
 
-  const onValidateInputEmail = () => {
+  const onValidateInputEmail = (e) => {
     if (isFirstRenderEmail) {
       setIsFirstRenderEmail(false);
     }
@@ -58,9 +58,6 @@ const UserForm: FC = () => {
     ) {
       setIsEmailValidation((_) => false);
     }
-    //  else if (!isEmailValidation) {
-    //   setIsEmailValidation((_) => true);
-    // }
   };
 
   const hideErrorInputEmail = useCallback(() => {
@@ -156,7 +153,7 @@ const UserForm: FC = () => {
             value={value}
             onChange={onValueInput}
             onError={onError}
-            onValidateInput={onValidateInput}
+            onValidateInput={(e) => onValidateInput(e)}
           />
           {isFirstRender ? null : isValidation ? null : (
             <div>Введите корректные данные</div>

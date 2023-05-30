@@ -17,7 +17,7 @@ interface InputFieldProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   setRefs: (elem: HTMLInputElement) => void;
   onError: () => void,
-  onValidateInput: () => void,
+  onValidateInput: (e) => void,
 }
 
 const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
@@ -36,14 +36,23 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
       }}
       onBlur={(e: FocusEvent<HTMLInputElement>) => {
         clearAnimateInputAndText(e, "#81868C");
-        onValidateInput();
+        onValidateInput(e);
       }}
-      onMouseLeave={onValidateInput}
-      onKeyDown={(event) => {
-        if (event.key === 'Tab') {
-          onValidateInput();
+      onKeyDown={(e) => {
+        const key = e.key;
+        if (key === 'Tab') {
+          console.log('Tab')
+          onValidateInput(e);
         }
       }}
+      onKeyUp={(e) => {
+        const key = e.key;
+        if (key === "Backspace" || key === "Delete") {
+          console.log('Backspace')
+          onValidateInput(e);
+        }
+      }
+      }
       onChange={onChange}
       onInput={onError}
     ></StyledInputField>
