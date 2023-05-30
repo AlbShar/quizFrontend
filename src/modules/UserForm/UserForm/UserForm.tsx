@@ -24,7 +24,7 @@ type TDataInputs = {
 
 const UserForm: FC = () => {
   const { t } = useTranslation();
-  
+
   const {
     valueUserName, isFirstRenderName, isNameValidation, 
     setValueUserName, hideErrorInputName, onValidateInputName
@@ -75,8 +75,8 @@ const UserForm: FC = () => {
     const newValue = target.value;
     const type = target.type;
     type === "text"
-      ? setValueUserName(userName => newValue)
-      : setValueEmail((userEmail) => newValue);
+      ? setValueUserName(_ => newValue)
+      : setValueEmail(_ => newValue);
   };
 
   useEffect(() => {
