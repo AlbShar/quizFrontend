@@ -22,9 +22,11 @@ interface InputFieldProps {
 
 const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
     const { t } = useTranslation();
+    const autocompleteValue = id === "email" ? "username" : "on";
 
     return (
     <StyledInputField
+      autoComplete={autocompleteValue}
       ref={setRefs}
       type={type}
       id={id}
@@ -41,14 +43,12 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
       onKeyDown={(e) => {
         const key = e.key;
         if (key === 'Tab') {
-          console.log('Tab')
           onValidateInput(e);
         }
       }}
       onKeyUp={(e) => {
         const key = e.key;
         if (key === "Backspace" || key === "Delete") {
-          console.log('Backspace')
           onValidateInput(e);
         }
       }

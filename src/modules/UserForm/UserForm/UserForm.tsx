@@ -36,7 +36,7 @@ const UserForm: FC = () => {
     }
   }, [isNameValidation, userName]);
 
-  const onValidateInputName = (e) => {
+  const onValidateInputName = useCallback((e) => {
     if (isFirstRenderName) {
       setIsFirstRenderName((_) => false);
     }
@@ -44,9 +44,9 @@ const UserForm: FC = () => {
     if (userName.length < 2 || userName.length > 50) {
       setIsNameValidation((_) => false);
     }
-  };
+  }, [userName, isFirstRenderName]);
 
-  const onValidateInputEmail = (e) => {
+  const onValidateInputEmail = useCallback((e) => {
     if (isFirstRenderEmail) {
       setIsFirstRenderEmail(false);
     }
@@ -54,11 +54,11 @@ const UserForm: FC = () => {
     if (
       userEmail.length < 7 ||
       userEmail.length > 64 ||
-      !userEmail.includes("@")
+      !userEmail.includes("@") 
     ) {
       setIsEmailValidation((_) => false);
     }
-  };
+  }, [userEmail, isFirstRenderEmail]);
 
   const hideErrorInputEmail = useCallback(() => {
     if (!isEmailValidation && userEmail.length > 7 && userEmail.length < 64) {
