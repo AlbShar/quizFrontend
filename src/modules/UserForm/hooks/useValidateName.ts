@@ -4,29 +4,26 @@ const useValidateName = () => {
   const [valueUserName, setValueUserName] = useState<string>("");
   const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
   const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
-
-  const hideErrorInputName = useCallback(() => {
-    if (
-      !isNameValidation &&
-      valueUserName.length > 2 &&
-      valueUserName.length < 50
-    ) {
-      setIsNameValidation(true);
-    }
-  }, [isNameValidation, valueUserName]);
+  const requeirmentsValueName = "Запрещены спец. символы за исключением дефиса, минимальная длина - 2, максимальная - 30 "; 
 
 
   const isNameInvalid  = useMemo((): boolean => {
     const minValue = 2;
     const maxValue = 30;
-    const forbiddenSymbols = /[-~!@#$%^&*()+`'"\";:<>/\\|]/;
+    const forbiddenSymbols = /[~!@#$%^&*()+`'"\";:<>/\\|]/;
     const isInvalidLength = valueUserName.length < minValue || valueUserName.length > maxValue;     
     const hasForbiddenSymbols = forbiddenSymbols.test(valueUserName);  
 
-    console.log(isInvalidLength, hasForbiddenSymbols);
-        
+    console.log(valueUserName.length)
     return isInvalidLength || hasForbiddenSymbols;
   }, [valueUserName]);
+
+  const hideErrorInputName = () => {
+    if (!isNameInvalid) {
+      console.log('Валидное значение')
+      setIsNameValidation(true);
+    }
+  };
 
   const onValidateInputName = useCallback(
     () => {
@@ -35,14 +32,12 @@ const useValidateName = () => {
       } 
 
       if (isNameInvalid) {
-        console.log('Невалидно имя')
         setIsNameValidation(false);
       } else {
-        console.log('Валидное имя')
         setIsNameValidation(true);
       }
     },
-    [isFirstRenderName, valueUserName, isNameValidation]
+    [isFirstRenderName, valueUserName, isNameInvalid]
   );
 
   return {
@@ -52,6 +47,7 @@ const useValidateName = () => {
     setValueUserName,
     hideErrorInputName,
     onValidateInputName,
+    requeirmentsValueName
   };
 };
 

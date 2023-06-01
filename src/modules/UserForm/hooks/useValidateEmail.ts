@@ -5,7 +5,7 @@ const useValidateEmail = () => {
     const [isEmailValidation, setIsEmailValidation] = useState<boolean>(false);
     const [isFirstRenderEmail, setIsFirstRenderEmail] = useState<boolean>(true);
 
-    const onValidateInputEmail = useCallback((e) => {
+    const onValidateInputEmail = useCallback(() => {
         if (isFirstRenderEmail) {
           setIsFirstRenderEmail(false);
         }

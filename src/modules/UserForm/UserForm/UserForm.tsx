@@ -19,7 +19,8 @@ type TDataInputs = {
   isValidation: boolean;
   isFirstRender: boolean;
   onError: () => void;
-  onValidateInput: (e) => void;
+  onValidateInput: () => void;
+  reqValue: string
 };
 
 const UserForm: FC = () => {
@@ -27,7 +28,8 @@ const UserForm: FC = () => {
 
   const {
     valueUserName, isFirstRenderName, isNameValidation, 
-    setValueUserName, hideErrorInputName, onValidateInputName
+    setValueUserName, hideErrorInputName, onValidateInputName,
+    requeirmentsValueName
   } = useValidateName();
   const {
     valueEmail, isFirstRenderEmail, isEmailValidation, 
@@ -52,6 +54,7 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderName,
       onError: hideErrorInputName,
       onValidateInput: onValidateInputName,
+      reqValue: requeirmentsValueName
     },
     {
       htmlFor: "email",
@@ -65,6 +68,7 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderEmail,
       onError: hideErrorInputEmail,
       onValidateInput: onValidateInputEmail,
+      reqValue: requeirmentsValueName
     },
   ];
 
@@ -109,6 +113,7 @@ const UserForm: FC = () => {
       isFirstRender,
       onError,
       onValidateInput,
+      reqValue
     } = dataInput;
 
     return (
@@ -124,10 +129,10 @@ const UserForm: FC = () => {
             value={value}
             onChange={onValueInput}
             onError={onError}
-            onValidateInput={(e) => onValidateInput(e)}
+            onValidateInput={onValidateInput}
           />
           {isFirstRender ? null : isValidation ? null : (
-            <div>Введите корректные данные</div>
+            <div>{`Введите корректные данные. ${reqValue}`}</div>
           )}
         </label>
       </StyledPForm>
