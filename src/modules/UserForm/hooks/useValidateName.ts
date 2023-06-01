@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 const useValidateName = () => {
   const [valueUserName, setValueUserName] = useState<string>("");
@@ -15,32 +15,34 @@ const useValidateName = () => {
     }
   }, [isNameValidation, valueUserName]);
 
-  const onValidateInputName = useCallback(
-    (e) => {
-      const validateUserName = (): boolean => {
-        const minValue = 2;
-        const maxValue = 30;
-        const forbiddenSymbols = '~!@#$%^&*()+`\'";:<>/\\|';
-        const regexPattern = '^(?!.*[' + forbiddenSymbols + '])';
-        const regex = new RegExp(regexPattern);
-        const isValidLength = valueUserName.length >= minValue || valueUserName.length <= maxValue;
-      
-        console.log(valueUserName.length, valueUserName, regex.test(valueUserName));
-      
-        const hasForbiddenSymbols = regex.test(valueUserName);
-      
-        return isValidLength || hasForbiddenSymbols;
-      };
 
-      if (isFirstRenderName) {
+  const isNameInvalid  = useMemo((): boolean => {
+    const minValue = 2;
+    const maxValue = 30;
+    const forbiddenSymbols = /[-~!@#$%^&*()+`'"\";:<>/\\|]/;
+    const isInvalidLength = valueUserName.length < minValue || valueUserName.length > maxValue;     
+    const hasForbiddenSymbols = forbiddenSymbols.test(valueUserName);  
+
+    console.log(isInvalidLength, hasForbiddenSymbols);
+        
+    return isInvalidLength || hasForbiddenSymbols;
+  }, [valueUserName]);
+
+  const onValidateInputName = useCallback(
+    () => {
+      if (isFirstRenderName || valueUserName !== "") {
         setIsFirstRenderName(false);
+      } 
+
+      if (isNameInvalid) {
+        console.log('Невалидно имя')
+        setIsNameValidation(false);
       } else {
-        if (validateUserName()) {
-          setIsNameValidation(false);
-        } 
+        console.log('Валидное имя')
+        setIsNameValidation(true);
       }
     },
-    [isFirstRenderName, valueUserName]
+    [isFirstRenderName, valueUserName, isNameValidation]
   );
 
   return {
