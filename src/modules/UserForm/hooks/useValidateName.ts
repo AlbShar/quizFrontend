@@ -1,10 +1,11 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, FocusEvent, KeyboardEvent } from "react";
+import { setAnimateInputAndText } from "../helpers/setAnimateInputAndText";
 
 const useValidateName = () => {
   const [valueUserName, setValueUserName] = useState<string>("");
   const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
   const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
-  const requeirmentsValueName = "Запрещены спец. символы за исключением дефиса, минимальная длина - 2, максимальная - 30 "; 
+  const requeirmentsValueName = "Запрещены спец. символы за исключением дефиса, длина поля - 20-30 символов"; 
 
 
   const isNameInvalid  = useMemo((): boolean => {
@@ -14,25 +15,26 @@ const useValidateName = () => {
     const isInvalidLength = valueUserName.length < minValue || valueUserName.length > maxValue;     
     const hasForbiddenSymbols = forbiddenSymbols.test(valueUserName);  
 
-    console.log(valueUserName.length)
     return isInvalidLength || hasForbiddenSymbols;
   }, [valueUserName]);
 
-  const hideErrorInputName = () => {
+  const hideErrorInputName = (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => {
     if (!isNameInvalid) {
-      console.log('Валидное значение')
       setIsNameValidation(true);
+      setAnimateInputAndText(e, "#6768d7");
     }
   };
 
   const onValidateInputName = useCallback(
-    () => {
+    (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => {
       if (isFirstRenderName || valueUserName !== "") {
         setIsFirstRenderName(false);
+        setAnimateInputAndText(e, "#81868C");
       } 
 
       if (isNameInvalid) {
         setIsNameValidation(false);
+        setAnimateInputAndText(e, "red");
       } else {
         setIsNameValidation(true);
       }

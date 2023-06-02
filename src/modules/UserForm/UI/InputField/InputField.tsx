@@ -1,4 +1,4 @@
-import {FC, ChangeEvent, memo, FocusEvent} from "react";
+import {FC, ChangeEvent, memo, FocusEvent, KeyboardEvent} from "react";
 import { useTranslation } from "react-i18next";
 
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
@@ -16,11 +16,13 @@ interface InputFieldProps {
   value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   setRefs: (elem: HTMLInputElement) => void;
-  onError: () => void,
-  onValidateInput: () => void,
+  onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
+  onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
+  isValueValidate: boolean,
+  isFirstRender: boolean
 }
 
-const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
+const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
     const { t } = useTranslation();
     const autocompleteValue = id === "email" ? "username" : "on";
 
@@ -35,22 +37,24 @@ const InputField: FC<InputFieldProps> = ({ type, id, setRefs, name, placeholder,
       value={value}
       placeholder={t(placeholder) || "Placeholder"}
       onFocus={(e: FocusEvent<HTMLInputElement>) => {
-        setAnimateInputAndText(e, "#6768d7");
+        if (isFirstRender || isValueValidate) {
+            setAnimateInputAndText(e, "#6768d7");
+        }
       }}
       onBlur={(e: FocusEvent<HTMLInputElement>) => {
         clearAnimateInputAndText(e, "#81868C");
-        onValidateInput();
+        onValidateInput(e);
       }}
-      onKeyDown={(e) => {
+      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
         const key = e.key;
         if (key === 'Tab') {
-          onValidateInput();
+          onValidateInput(e);
         }
       }}
-      onKeyUp={(e) => {
+      onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
         const key = e.key;
         if (key === "Backspace" || key === "Delete") {
-          onError();
+          onError(e);
         }
       }
       }

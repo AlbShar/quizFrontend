@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FC, useEffect, useCallback } from "react";
+import { useState, ChangeEvent, FC, useEffect, FocusEvent, KeyboardEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 import InputField from "../UI/InputField/InputField";
@@ -18,9 +18,10 @@ type TDataInputs = {
   value: string;
   isValidation: boolean;
   isFirstRender: boolean;
-  onError: () => void;
-  onValidateInput: () => void;
-  reqValue: string
+  onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
+  onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
+  reqValue: string,
+  isValueValidate: boolean
 };
 
 const UserForm: FC = () => {
@@ -54,7 +55,8 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderName,
       onError: hideErrorInputName,
       onValidateInput: onValidateInputName,
-      reqValue: requeirmentsValueName
+      reqValue: requeirmentsValueName,
+      isValueValidate: isNameValidation
     },
     {
       htmlFor: "email",
@@ -68,7 +70,9 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderEmail,
       onError: hideErrorInputEmail,
       onValidateInput: onValidateInputEmail,
-      reqValue: requeirmentsValueName
+      reqValue: requeirmentsValueName,
+      isValueValidate: isEmailValidation
+
     },
   ];
 
@@ -113,7 +117,8 @@ const UserForm: FC = () => {
       isFirstRender,
       onError,
       onValidateInput,
-      reqValue
+      reqValue,
+      isValueValidate
     } = dataInput;
 
     return (
@@ -130,6 +135,8 @@ const UserForm: FC = () => {
             onChange={onValueInput}
             onError={onError}
             onValidateInput={onValidateInput}
+            isValueValidate={isValueValidate}
+            isFirstRender={isFirstRender}
           />
           {isFirstRender ? null : isValidation ? null : (
             <div>{`Введите корректные данные. ${reqValue}`}</div>

@@ -4,6 +4,8 @@ const useValidateEmail = () => {
     const [valueEmail, setValueEmail] = useState<string>("");
     const [isEmailValidation, setIsEmailValidation] = useState<boolean>(false);
     const [isFirstRenderEmail, setIsFirstRenderEmail] = useState<boolean>(true);
+    const requeirmentsValueEmail = "Обязательно должны присутствовать символы '.', '@'."; 
+
 
     const onValidateInputEmail = useCallback(() => {
         if (isFirstRenderEmail) {
