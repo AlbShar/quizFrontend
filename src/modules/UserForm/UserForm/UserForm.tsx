@@ -6,7 +6,7 @@ import Button from "../UI/Button/Button";
 import useValidateName from "../hooks/useValidateName";
 import useValidateEmail from "../hooks/useValidateEmail";
 
-import { StyledSpan, StyledPForm, StyledFieldset } from "./UserForm.Styled";
+import { StyledSpan, StyledPForm, StyledFieldset, StyledDivWarning } from "./UserForm.Styled";
 
 type TDataInputs = {
   htmlFor: "username" | "email";
@@ -140,7 +140,7 @@ const UserForm: FC = () => {
             isFirstRender={isFirstRender}
           />
           {isFirstRender ? null : isValidation ? null : (
-            <div>{warningMessage}</div>
+            <StyledDivWarning>{warningMessage}</StyledDivWarning>
           )}
         </label>
       </StyledPForm>
