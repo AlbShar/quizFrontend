@@ -37,7 +37,7 @@ const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type,
       value={value}
       placeholder={t(placeholder) || "Placeholder"}
       onFocus={(e: FocusEvent<HTMLInputElement>) => {
-        if (isFirstRender || isValueValidate) {
+        if (e.target.type === "email" || isFirstRender || isValueValidate) {
             setAnimateInputAndText(e, "#6768d7");
         }
       }}

@@ -5,7 +5,7 @@ const useValidateName = () => {
   const [valueUserName, setValueUserName] = useState<string>("");
   const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
   const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
-  const requeirmentsValueName = "Запрещены спец. символы за исключением дефиса, длина поля - 20-30 символов"; 
+  const warningMessageName = "Введите корректные данные"; 
 
 
   const isNameInvalid  = useMemo((): boolean => {
@@ -49,7 +49,7 @@ const useValidateName = () => {
     setValueUserName,
     hideErrorInputName,
     onValidateInputName,
-    requeirmentsValueName
+    warningMessageName
   };
 };
 

@@ -20,7 +20,7 @@ type TDataInputs = {
   isFirstRender: boolean;
   onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
   onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
-  reqValue: string,
+  warningMessage: string,
   isValueValidate: boolean
 };
 
@@ -30,11 +30,12 @@ const UserForm: FC = () => {
   const {
     valueUserName, isFirstRenderName, isNameValidation, 
     setValueUserName, hideErrorInputName, onValidateInputName,
-    requeirmentsValueName
+    warningMessageName
   } = useValidateName();
   const {
     valueEmail, isFirstRenderEmail, isEmailValidation, 
-    setValueEmail, hideErrorInputEmail, onValidateInputEmail
+    setValueEmail, hideErrorInputEmail, onValidateInputEmail,
+    warningMessageEmail
   } = useValidateEmail();
 
   const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
@@ -55,7 +56,7 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderName,
       onError: hideErrorInputName,
       onValidateInput: onValidateInputName,
-      reqValue: requeirmentsValueName,
+      warningMessage: warningMessageName,
       isValueValidate: isNameValidation
     },
     {
@@ -70,7 +71,7 @@ const UserForm: FC = () => {
       isFirstRender: isFirstRenderEmail,
       onError: hideErrorInputEmail,
       onValidateInput: onValidateInputEmail,
-      reqValue: requeirmentsValueName,
+      warningMessage: warningMessageEmail,
       isValueValidate: isEmailValidation
 
     },
@@ -117,7 +118,7 @@ const UserForm: FC = () => {
       isFirstRender,
       onError,
       onValidateInput,
-      reqValue,
+      warningMessage,
       isValueValidate
     } = dataInput;
 
@@ -139,7 +140,7 @@ const UserForm: FC = () => {
             isFirstRender={isFirstRender}
           />
           {isFirstRender ? null : isValidation ? null : (
-            <div>{`Введите корректные данные. ${reqValue}`}</div>
+            <div>{warningMessage}</div>
           )}
         </label>
       </StyledPForm>
