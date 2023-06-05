@@ -1,4 +1,4 @@
-import {FC, ChangeEvent, RefObject, FocusEvent} from "react";
+import {FC, ChangeEvent, memo, FocusEvent, KeyboardEvent} from "react";
 import { useTranslation } from "react-i18next";
 
 import { setAnimateInputAndText } from "../../helpers/setAnimateInputAndText";
@@ -8,7 +8,7 @@ import { StyledInputField } from "./InputField.Style";
 
 
 
-interface IInputField {
+interface InputFieldProps {
   type: string ;
   id: string ;
   name: string ;
@@ -16,12 +16,22 @@ interface IInputField {
   value?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   setRefs: (elem: HTMLInputElement) => void;
+  onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
+  onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
+  isValueValidate: boolean,
+  isFirstRender: boolean,
+  keyHint: "enter" | "done" | "go" | "next" | "previous" | "search" | "send"
 }
-const InputField: FC<IInputField> = ({ type, id, setRefs, name, placeholder, onChange, value }) => {
+
+const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type, id, setRefs, name, placeholder, onChange, value, onError, keyHint, onValidateInput }) => {
     const { t } = useTranslation();
+    const autocompleteValue = id === "email" ? "username" : "on";
 
     return (
     <StyledInputField
+      required
+      autoComplete={autocompleteValue}
+      enterKeyHint={keyHint}
       ref={setRefs}
       type={type}
       id={id}
@@ -29,14 +39,31 @@ const InputField: FC<IInputField> = ({ type, id, setRefs, name, placeholder, onC
       value={value}
       placeholder={t(placeholder) || "Placeholder"}
       onFocus={(e: FocusEvent<HTMLInputElement>) => {
-        setAnimateInputAndText(e, "#6768d7");
+        if (e.target.type === "email" || isFirstRender || isValueValidate) {
+            setAnimateInputAndText(e, "#6768d7");
+        }
       }}
       onBlur={(e: FocusEvent<HTMLInputElement>) => {
         clearAnimateInputAndText(e, "#81868C");
+        onValidateInput(e);
       }}
+      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+        const key = e.key;
+        if (key === 'Tab') {
+          onValidateInput(e);
+        }
+      }}
+      onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
+        const key = e.key;
+        if (key === "Backspace" || key === "Delete") {
+          onError(e);
+        }
+      }
+      }
       onChange={onChange}
+      onInput={onError}
     ></StyledInputField>
   );
 };
 
-export default InputField;
+export default memo(InputField);

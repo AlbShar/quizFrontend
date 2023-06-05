@@ -10,6 +10,11 @@ const StyledButton = styled.button`
   color: white;
   text-decoration: none;
 
+  &:disabled {
+    filter: grayscale(0.7);
+    cursor: not-allowed;
+  }
+
   @media screen and (min-width: 767.8px) {
     padding: 12px 80px;
   }
