@@ -21,7 +21,8 @@ type TDataInputs = {
   onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
   onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
   warningMessage: string,
-  isValueValidate: boolean
+  isValueValidate: boolean,
+  keyHint: "enter" | "done" | "go" | "next" | "previous" | "search" | "send"
 };
 
 const UserForm: FC = () => {
@@ -57,7 +58,8 @@ const UserForm: FC = () => {
       onError: hideErrorInputName,
       onValidateInput: onValidateInputName,
       warningMessage: warningMessageName,
-      isValueValidate: isNameValidation
+      isValueValidate: isNameValidation,
+      keyHint: "next"
     },
     {
       htmlFor: "email",
@@ -72,8 +74,8 @@ const UserForm: FC = () => {
       onError: hideErrorInputEmail,
       onValidateInput: onValidateInputEmail,
       warningMessage: warningMessageEmail,
-      isValueValidate: isEmailValidation
-
+      isValueValidate: isEmailValidation,
+      keyHint: "send"
     },
   ];
 
@@ -119,7 +121,8 @@ const UserForm: FC = () => {
       onError,
       onValidateInput,
       warningMessage,
-      isValueValidate
+      isValueValidate,
+      keyHint
     } = dataInput;
 
     return (
@@ -138,6 +141,7 @@ const UserForm: FC = () => {
             onValidateInput={onValidateInput}
             isValueValidate={isValueValidate}
             isFirstRender={isFirstRender}
+            keyHint={keyHint}
           />
           {isFirstRender ? null : isValidation ? null : (
             <StyledDivWarning>{warningMessage}</StyledDivWarning>

@@ -19,10 +19,11 @@ interface InputFieldProps {
   onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
   onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void,
   isValueValidate: boolean,
-  isFirstRender: boolean
+  isFirstRender: boolean,
+  keyHint: "enter" | "done" | "go" | "next" | "previous" | "search" | "send"
 }
 
-const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type, id, setRefs, name, placeholder, onChange, value, onError, onValidateInput }) => {
+const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type, id, setRefs, name, placeholder, onChange, value, onError, keyHint, onValidateInput }) => {
     const { t } = useTranslation();
     const autocompleteValue = id === "email" ? "username" : "on";
 
@@ -30,6 +31,7 @@ const InputField: FC<InputFieldProps> = ({ isFirstRender, isValueValidate, type,
     <StyledInputField
       required
       autoComplete={autocompleteValue}
+      enterKeyHint={keyHint}
       ref={setRefs}
       type={type}
       id={id}
