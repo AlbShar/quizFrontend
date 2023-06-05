@@ -15,6 +15,7 @@ const StyledSummary = styled.summary`
     align-items: center;
     padding: 10px 0;
     margin: 0 0 10px 0;
+    cursor: pointer;
 
     @media screen and (min-width: 459.8px) {
         font: var(--font-title4);
