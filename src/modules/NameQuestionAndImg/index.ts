@@ -1,3 +1,3 @@
-import NameQuestionAndImg from "./NameQuestionAndImg/NameQuestionAndImg";
+import NameQuestionAndImg from './NameQuestionAndImg/NameQuestionAndImg';
 
 export default NameQuestionAndImg;

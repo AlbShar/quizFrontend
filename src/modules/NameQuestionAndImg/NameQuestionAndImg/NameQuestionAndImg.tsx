@@ -1,16 +1,16 @@
-import { useEffect, useContext, FC, useState } from "react";
+import { useEffect, useContext, FC, useState } from 'react';
 
-import { ContextQuestionNumb } from "../../../components/Context";
-import Spinner from "../../../UI/Spinner/Spinner";
-import { getSrcImg } from "../api/getSrcImg";
-import { getNameQuestion } from "../api/getNameQuestion";
+import { ContextQuestionNumb } from '../../../components/Context';
+import Spinner from '../../../UI/Spinner/Spinner';
+import { getSrcImg } from '../api/getSrcImg';
+import { getNameQuestion } from '../api/getNameQuestion';
 
 import {
   StyledH2,
   StyledArticleQuestion,
   StyledPicture,
   StyledImg,
-} from "./NameQuestionAndImg.Styled";
+} from './NameQuestionAndImg.Styled';
 
 type IState = {
   question: string;
@@ -23,22 +23,22 @@ const NameQuestionAndImg: FC = () => {
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const [state, setState] = useState<IState>({
-    question: "",
+    question: '',
     loading: true,
-    srcImg: "",
+    srcImg: '',
     error: false,
   });
-  const errorMessage = "ERROR!!";
+  const errorMessage = 'ERROR!!';
   const error = state.error ? errorMessage : null;
   const spinner = state.loading ? (
-    <Spinner width={50} height={50} color="#1f2ce0" margin="0" />
+    <Spinner width={50} height={50} color='#1f2ce0' margin='0' />
   ) : null;
 
   const view = () => {
     if (!state.srcImg) {
       return (
         <StyledArticleQuestion>
-          <StyledH2 id="questionTitle" tabIndex={0}>
+          <StyledH2 id='questionTitle' tabIndex={0}>
             {state.question}
           </StyledH2>
         </StyledArticleQuestion>
@@ -46,36 +46,36 @@ const NameQuestionAndImg: FC = () => {
     }
     return (
       <StyledArticleQuestion>
-        <StyledH2 id="questionTitle" tabIndex={0}>
+        <StyledH2 id='questionTitle' tabIndex={0}>
           {state.question}
         </StyledH2>
         <StyledPicture>
           <source
-            type="image/png"
-            media="(min-width: 320px)"
+            type='image/png'
+            media='(min-width: 320px)'
             srcSet={state.srcImg}
-            width="120"
-            height="auto"
+            width='120'
+            height='auto'
           ></source>
           <source
-            type="image/png"
-            media="(min-width: 487px)"
+            type='image/png'
+            media='(min-width: 487px)'
             srcSet={state.srcImg}
-            width="768"
-            height="auto"
+            width='768'
+            height='auto'
           ></source>
           <source
-            type="image/png"
-            media="(min-width: 769px)"
+            type='image/png'
+            media='(min-width: 769px)'
             srcSet={state.srcImg}
-            width="1024"
-            height="auto"
+            width='1024'
+            height='auto'
           ></source>
           <StyledImg
             src={state.srcImg}
-            width="1024"
-            height="auto"
-            alt="Код на JS"
+            width='1024'
+            height='auto'
+            alt='Код на JS'
           />
         </StyledPicture>
       </StyledArticleQuestion>
@@ -88,15 +88,17 @@ const NameQuestionAndImg: FC = () => {
     type TDataInfo = {
       [key: string]: string;
     };
-    const dataInfo: TDataInfo = { src: "", question: "" };
+    const dataInfo: TDataInfo = { src: '', question: '' };
     result.forEach((item) => {
-      if (item.value.startsWith("http")) {
+      if (item.value.startsWith('http')) {
         dataInfo.src = item.value;
-      } if (item.value === "No") {
+      }
+      if (item.value === 'No') {
         dataInfo.src = '';
-      }  if (typeof item.value === "string") {
+      }
+      if (typeof item.value === 'string') {
         dataInfo.question = item.value;
-      } 
+      }
     });
 
     setState((state) => ({

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledButtonBack = styled.button`
   display: flex;
@@ -36,9 +36,4 @@ const StyledSpan = styled.span`
   text-transform: uppercase;
 `;
 
-export {
-  StyledArticle,
-  StyledButtonBack,
-  StyledImg,
-  StyledSpan,
-};
+export { StyledArticle, StyledButtonBack, StyledImg, StyledSpan };

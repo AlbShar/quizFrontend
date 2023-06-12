@@ -1,17 +1,13 @@
-import {FC} from "react";
+import { FC } from 'react';
 
-import { HeaderStyled } from "./Header.Styled";
+import { HeaderStyled } from './Header.Styled';
 
 interface IHeader {
-    children: React.ReactNode;
-    height?: number;
+  children: React.ReactNode;
+  height?: number;
 }
-const Header:FC<IHeader> = ({children, height}) => {
-    return (
-        <HeaderStyled height={height}>
-            {children}
-        </HeaderStyled>
-    );
+const Header: FC<IHeader> = ({ children, height }) => {
+  return <HeaderStyled height={height}>{children}</HeaderStyled>;
 };
 
 export default Header;

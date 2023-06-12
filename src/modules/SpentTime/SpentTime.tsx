@@ -1,13 +1,13 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from 'react';
 
 import {
   StyledH2,
   StyledH3,
   StyledArticle,
-} from "../SpentTime/SpentTime.Styled";
-import Spinner from "../../UI/Spinner/Spinner";
-import { getUserInfo } from "./api/getUserInfo";
-import { transformSecondsToMinutes } from "./helpers/transformSecondsToMinutes";
+} from '../SpentTime/SpentTime.Styled';
+import Spinner from '../../UI/Spinner/Spinner';
+import { getUserInfo } from './api/getUserInfo';
+import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
 
 const SpentTime: FC = () => {
   type TState = {
@@ -17,10 +17,10 @@ const SpentTime: FC = () => {
   };
 
   type TUserInfoDB = {
-    name: string,
-    email: string,
-    quiantityPause: number,
-    time: number,
+    name: string;
+    email: string;
+    quiantityPause: number;
+    time: number;
   };
 
   const [state, setState] = useState<TState>({
@@ -30,8 +30,8 @@ const SpentTime: FC = () => {
   });
 
   const timeHasLoaded = (userInfo: TUserInfoDB) => {
-    const {time} = userInfo;
-    setState((state) => ({...state, loading: false, time}));
+    const { time } = userInfo;
+    setState((state) => ({ ...state, loading: false, time }));
   };
 
   const view = () => {
@@ -43,18 +43,18 @@ const SpentTime: FC = () => {
     );
   };
   const spinner = state.loading ? (
-    <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto" />
+    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : (
     false
   );
-  const errorMessage = "ERROR!";
+  const errorMessage = 'ERROR!';
   const error = state.error ? errorMessage : false;
   const content = !(state.loading || state.error) ? view() : false;
 
   const onError = (error: any): never => {
-    setState((state) => ({...state, loading: false, error: true}));
+    setState((state) => ({ ...state, loading: false, error: true }));
     throw new Error(error);
-};
+  };
 
   useEffect(() => {
     getUserInfo().then(timeHasLoaded).catch(onError);

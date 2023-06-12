@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
@@ -6,9 +6,8 @@ const StyledFooter = styled.footer`
   padding: 16px;
   margin: 10px 0 0 0;
 
-
   @media screen and (min-width: 1023.8px) {
-     margin: 30px 0 0 0;
+    margin: 30px 0 0 0;
   }
 `;
 
@@ -17,7 +16,6 @@ const StyledFooter = styled.footer`
 const StyledSection = styled.section`
   @media screen and (min-width: 767.8px) margin-right: 10px;
 `;
-
 
 //#endregion
 
@@ -37,9 +35,7 @@ const StyledUl = styled.ul`
   @media screen and (min-width: 1023.8px) {
     margin: 0;
   }
-
 `;
-
 
 //#endregion
 
@@ -62,7 +58,7 @@ const StyledLi = styled.li`
     &:not(:last-child) {
       margin: 0;
     }
-    
+
     @media screen and (min-width: 1023.8px) {
       &:not(:last-child) {
         margin: 0;
@@ -73,9 +69,4 @@ const StyledLi = styled.li`
 
 //#endregion
 
-export {
-  StyledFooter,
-  StyledSection,
-  StyledLi,
-  StyledUl,
-};
+export { StyledFooter, StyledSection, StyledLi, StyledUl };

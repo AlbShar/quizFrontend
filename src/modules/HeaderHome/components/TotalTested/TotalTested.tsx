@@ -1,15 +1,15 @@
-import { FC, useRef, useState } from "react";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { FC, useRef, useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import Spinner from "../../../../UI/Spinner/Spinner";
-import { getAllTestedUsers } from "../../api/getAllTestedUsers";
+import Spinner from '../../../../UI/Spinner/Spinner';
+import { getAllTestedUsers } from '../../api/getAllTestedUsers';
 
 import {
   StyledSpanText,
   StyledSpanNumber,
   StyledDivWrapper,
-} from "./TotalTested.styled";
+} from './TotalTested.styled';
 
 const TotalTested: FC = () => {
   const { t } = useTranslation();
@@ -26,18 +26,18 @@ const TotalTested: FC = () => {
 
   useEffect(() => {
     getAllTestedUsers().then((allTestedUsers) => {
-        loadingIsOver();
-        setTestedUsers(allTestedUsers);
+      loadingIsOver();
+      setTestedUsers(allTestedUsers);
     });
   }, [loading]);
 
   if (loading) {
-    return <Spinner width={50} height={50} color="#fcfdff" margin="auto"/>;
+    return <Spinner width={50} height={50} color='#fcfdff' margin='auto' />;
   }
 
   return (
     <StyledDivWrapper>
-      <StyledSpanText>{t("Протестировано")}</StyledSpanText>
+      <StyledSpanText>{t('Протестировано')}</StyledSpanText>
       <StyledSpanNumber ref={totalUsersRef}>{allTestedUsers}</StyledSpanNumber>
     </StyledDivWrapper>
   );

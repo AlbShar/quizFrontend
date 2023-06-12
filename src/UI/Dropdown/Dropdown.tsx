@@ -5,8 +5,7 @@ import {
   RefObject,
   forwardRef,
   Ref,
-} from "react";
-
+} from 'react';
 
 import {
   StyleArticleDropdown,
@@ -15,10 +14,9 @@ import {
   StyledLi,
   StyledImg,
   StyledSpan,
-} from "./Dropdown.Styled";
+} from './Dropdown.Styled';
 
-require("../../assets/images/chevrondown.png");
-
+require('../../assets/images/chevrondown.png');
 
 type DropdownProps = {
   style?: CSSProperties;
@@ -60,33 +58,36 @@ const Dropdown = forwardRef(
       const handleClickOutside = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
 
-        if (!target.closest("#wrapper")) {
+        if (!target.closest('#wrapper')) {
           hideList();
         }
       };
 
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
 
       return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
       };
     }, [ref]);
 
     return (
-      <StyleArticleDropdown ref={ref} style={style} id="wrapper">
-          <StyledButton onClick={onClickBtn}>
-            <StyledSpan className="dropdown-btn-text">
-              {selected || data[0]}
-            </StyledSpan>
-            <StyledImg src={require("../../assets/images/chevrondown.png")} alt="Кнопка вниз" />
-          </StyledButton>
+      <StyleArticleDropdown ref={ref} style={style} id='wrapper'>
+        <StyledButton onClick={onClickBtn}>
+          <StyledSpan className='dropdown-btn-text'>
+            {selected || data[0]}
+          </StyledSpan>
+          <StyledImg
+            src={require('../../assets/images/chevrondown.png')}
+            alt='Кнопка вниз'
+          />
+        </StyledButton>
         {isActive && <StyledUl>{elementLanguages}</StyledUl>}
       </StyleArticleDropdown>
     );
   },
 );
 
-Dropdown.displayName = "Dropdown";
+Dropdown.displayName = 'Dropdown';
 
 export default Dropdown as FC<
   DropdownProps & { ref?: RefObject<HTMLDivElement> }

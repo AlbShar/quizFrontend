@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   box-sizing: border-box;

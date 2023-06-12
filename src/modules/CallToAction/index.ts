@@ -1,2 +1,1 @@
-
-export {CallToAction} from "./CallToAction/CallToAction";
+export { CallToAction } from './CallToAction/CallToAction';

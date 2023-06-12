@@ -1,16 +1,16 @@
-import { useEffect, useContext, FC, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useEffect, useContext, FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { ContextQuestionNumb } from "../../../components/Context";
-import Spinner from "../../../UI/Spinner/Spinner";
-import { getThemeQuestion } from "../api/getThemeQuestion";
-import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
+import { ContextQuestionNumb } from '../../../components/Context';
+import Spinner from '../../../UI/Spinner/Spinner';
+import { getThemeQuestion } from '../api/getThemeQuestion';
+import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 import {
   StyledH1,
   StyledSpanThemeQuestion,
   StyledSpanQuestionQuantity,
-} from "./QuantityThemeQuestions.Styled";
+} from './QuantityThemeQuestions.Styled';
 
 type TState = {
   loading: boolean;
@@ -31,19 +31,19 @@ const QuantityThemeQuestions: FC = () => {
 
   const view = () => {
     return (
-      <StyledH1 id="questionName">
-        {t("Вопрос")} {currentQuestionNumb}
-        <StyledSpanQuestionQuantity id="totalQuestionQuantity" tabIndex={0}>
+      <StyledH1 id='questionName'>
+        {t('Вопрос')} {currentQuestionNumb}
+        <StyledSpanQuestionQuantity id='totalQuestionQuantity' tabIndex={0}>
           {`/ ${state.totalQuestionNumber}`}
         </StyledSpanQuestionQuantity>
-        <StyledSpanThemeQuestion id="themeQuestion">
+        <StyledSpanThemeQuestion id='themeQuestion'>
           {state.questionTheme}
         </StyledSpanThemeQuestion>
       </StyledH1>
     );
   };
   const spinner = state.loading ? (
-    <Spinner width={50} height={50} color="#1f2ce0" margin="" />
+    <Spinner width={50} height={50} color='#1f2ce0' margin='' />
   ) : null;
   const content = !state.loading ? view() : null;
 
@@ -59,9 +59,9 @@ const QuantityThemeQuestions: FC = () => {
     };
 
     res.forEach((result) => {
-      if (typeof result.value === "number") {
+      if (typeof result.value === 'number') {
         items.totalQuestionNumber = result.value;
-      } else if (typeof result.value === "string") {
+      } else if (typeof result.value === 'string') {
         items.theme = result.value;
       }
     });
@@ -78,8 +78,6 @@ const QuantityThemeQuestions: FC = () => {
       }
     }
   };
-
- 
 
   useEffect(() => {
     Promise.allSettled([

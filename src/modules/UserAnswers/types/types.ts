@@ -53,8 +53,6 @@ type TInfoQuestionsAndAnswers = {
   [key: number]: TQuestionAndAnswer;
 };
 
-
-
 export type {
   TUserAnswer,
   TAnswerOption,

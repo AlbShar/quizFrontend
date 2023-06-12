@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -6,9 +6,13 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
-      document.documentElement.clientHeight, document.documentElement.scrollHeight, 
-      document.documentElement.offsetHeight)}px;
+    height: ${Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight,
+    )}px;
   }
   
   div#root {
@@ -22,9 +26,13 @@ body {
   padding: 0;
   width: 100%;
   overflowY:  hidden;
-  height: ${Math.max(document.body.scrollHeight, document.body.offsetHeight, 
-    document.documentElement.clientHeight, document.documentElement.scrollHeight, 
-    document.documentElement.offsetHeight)}px;
+  height: ${Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight,
+  )}px;
 
     background-color: var(--color-main-background); 
     --color-footer: #1C232E;

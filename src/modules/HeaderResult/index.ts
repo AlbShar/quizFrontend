@@ -1,3 +1,3 @@
-import HeaderResult from "./HeaderResult/HeaderResult";
+import HeaderResult from './HeaderResult/HeaderResult';
 
 export default HeaderResult;

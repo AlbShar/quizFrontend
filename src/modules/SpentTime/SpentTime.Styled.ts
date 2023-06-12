@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   text-align: center;
@@ -17,7 +17,7 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledH2 = styled.h2`
-  color: #6768D7;
+  color: #6768d7;
   font: var(--font-title2);
   margin: 0;
   padding: 0;

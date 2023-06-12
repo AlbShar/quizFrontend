@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ISpan {
   isRight: boolean;
@@ -83,7 +83,7 @@ const StyledSection = styled.section`
 
 const StyledSpanResult = styled.span<ISpan>`
   position: absolute;
-  color: ${({ isRight }) => (isRight ? "green" : "red")};
+  color: ${({ isRight }) => (isRight ? 'green' : 'red')};
   top: 5px;
   right: 0;
 
@@ -94,4 +94,12 @@ const StyledSpanResult = styled.span<ISpan>`
   }
 `;
 
-export { StyledLi, StyledUl, StyledSpan, StyledListAnswers, StyledSpanResult, StyledSum, StyledSection };
+export {
+  StyledLi,
+  StyledUl,
+  StyledSpan,
+  StyledListAnswers,
+  StyledSpanResult,
+  StyledSum,
+  StyledSection,
+};

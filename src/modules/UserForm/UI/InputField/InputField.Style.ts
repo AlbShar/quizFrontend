@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledInputField = styled.input`
   position: relative;
@@ -10,7 +10,7 @@ const StyledInputField = styled.input`
   padding: 16px 19px;
   font: var(--font-text-bold);
   outline: none;
-  
+
   &::placeholder {
     color: #81868c;
     font-size: 16px;
@@ -24,4 +24,4 @@ const StyledInputField = styled.input`
   }
 `;
 
-export {StyledInputField};
+export { StyledInputField };

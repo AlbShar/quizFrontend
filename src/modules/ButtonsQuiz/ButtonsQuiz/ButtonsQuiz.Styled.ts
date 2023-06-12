@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   position: relative;
@@ -11,6 +11,4 @@ const StyledArticle = styled.article`
   padding: 5px;
 `;
 
-
-export {
-  StyledArticle};
+export { StyledArticle };

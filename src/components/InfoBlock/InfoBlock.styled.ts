@@ -1,28 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledFeatureArticle = styled.article`
   background-color: #fff;
 `;
 
 const StyledSummary = styled.summary`
-    box-sizing: border-box;
-    width: 100%;
-    background-color: var(--color-title-background);
-    font: var(--font-little-text-regular);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin: 0 0 10px 0;
-    cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--color-title-background);
+  font: var(--font-little-text-regular);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin: 0 0 10px 0;
+  cursor: pointer;
 
-    @media screen and (min-width: 459.8px) {
-        font: var(--font-title4);
-        justify-content: flex-start;
-        padding: 10px 0 10px 40px;
-      }
-        
+  @media screen and (min-width: 459.8px) {
+    font: var(--font-title4);
+    justify-content: flex-start;
+    padding: 10px 0 10px 40px;
+  }
 `;
 const StyledP = styled.p`
   font: var(--font-little-text-regular);
@@ -32,7 +31,6 @@ const StyledP = styled.p`
   text-align: justify;
 
   @media screen and (min-width: 459.8px) {
-    
     font: var(--font-text-regular);
   }
 `;
@@ -55,4 +53,10 @@ const StyledDivWrapper = styled.div`
   }
 `;
 
-export {StyledFeatureArticle, StyledDivWrapper, StyledSummary, StyledP, StyledImg};
+export {
+  StyledFeatureArticle,
+  StyledDivWrapper,
+  StyledSummary,
+  StyledP,
+  StyledImg,
+};

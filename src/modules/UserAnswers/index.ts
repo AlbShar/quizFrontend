@@ -1,3 +1,3 @@
-import UserAnswers from "./UserAnswers/UserAnswers";
+import UserAnswers from './UserAnswers/UserAnswers';
 
 export default UserAnswers;

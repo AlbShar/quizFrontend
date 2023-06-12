@@ -1,24 +1,34 @@
-import {FC} from "react";
+import { FC } from 'react';
 
-import { StyleDivModal, 
-        StyledDivWrapper, 
-        StyledH1, StyledSpan, 
-        StyledSpanClose, 
-        StyledButtonModal } from "./Modal.Styled";
+import {
+  StyleDivModal,
+  StyledDivWrapper,
+  StyledH1,
+  StyledSpan,
+  StyledSpanClose,
+  StyledButtonModal,
+} from './Modal.Styled';
 
 interface IModalProps {
   title: string;
   subTitle: string;
-  onClickHandler?: () => void
+  onClickHandler?: () => void;
 }
-const Modal: FC<IModalProps> = ({title, subTitle, onClickHandler}) => {
+const Modal: FC<IModalProps> = ({ title, subTitle, onClickHandler }) => {
   return (
-    <StyleDivModal id="notification">
+    <StyleDivModal id='notification'>
       <StyledDivWrapper>
-        <StyledH1 className="notification__title">{title}</StyledH1>
-        <StyledSpanClose className="notification__close" onClick={onClickHandler}>✖</StyledSpanClose>
-        <StyledSpan className="notification__text">{subTitle}</StyledSpan>
-        <StyledButtonModal onClick={onClickHandler}>Продолжить</StyledButtonModal>
+        <StyledH1 className='notification__title'>{title}</StyledH1>
+        <StyledSpanClose
+          className='notification__close'
+          onClick={onClickHandler}
+        >
+          ✖
+        </StyledSpanClose>
+        <StyledSpan className='notification__text'>{subTitle}</StyledSpan>
+        <StyledButtonModal onClick={onClickHandler}>
+          Продолжить
+        </StyledButtonModal>
       </StyledDivWrapper>
     </StyleDivModal>
   );

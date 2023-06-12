@@ -1,10 +1,15 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from 'react';
 
-import { StyledArticle, StyledP, StyledSpan, StyledDoughuntWrapper } from "./Doughunt.Styled";
+import {
+  StyledArticle,
+  StyledP,
+  StyledSpan,
+  StyledDoughuntWrapper,
+} from './Doughunt.Styled';
 
-import { getTotalQuestionsNumb } from "../../api/getTotalQuestionsNumb";
-import ChartDoughnut from "../../components/ChartDoughnut/ChartDoughnut";
-import Spinner from "../../UI/Spinner/Spinner";
+import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
+import ChartDoughnut from '../../components/ChartDoughnut/ChartDoughnut';
+import Spinner from '../../UI/Spinner/Spinner';
 
 type DoughnutProps = {
   rightAnswers: number;
@@ -12,7 +17,10 @@ type DoughnutProps = {
 
 const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
-  const percentRightQuestions = +((100 * rightAnswers) / totalQuestionNumbers).toFixed(1);
+  const percentRightQuestions = +(
+    (100 * rightAnswers) /
+    totalQuestionNumbers
+  ).toFixed(1);
   const percentWrongQuestions = +(100 - percentRightQuestions).toFixed(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -33,7 +41,7 @@ const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
     );
   };
   const spinner = isLoading ? (
-    <Spinner width={50} height={50} color={"#1f2ce0"} margin="0 auto" />
+    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : null;
   const content = !isLoading ? view() : null;
 

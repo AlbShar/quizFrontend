@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { StyledSect } from "../../styles/Common.Styled";
+import { StyledSect } from '../../styles/Common.Styled';
 
 const StyledSection = styled(StyledSect)`
   width: 100%;
@@ -27,9 +27,9 @@ const StyledArticleEmail = styled.article`
   padding: 9px 0 0 0;
 
   @media screen and (min-width: 1023.8px) {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 

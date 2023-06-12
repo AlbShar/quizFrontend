@@ -1,3 +1,3 @@
-import Doughunt from "./Doughunt";
+import Doughunt from './Doughunt';
 
 export default Doughunt;

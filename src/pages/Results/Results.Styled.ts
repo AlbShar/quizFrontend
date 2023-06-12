@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
- const StyledDiv = styled.div`
-
-@media screen and (min-width: 1023.8px) {
+const StyledDiv = styled.div`
+  @media screen and (min-width: 1023.8px) {
     transform: translateY(-100px);
-  }`;
-
+  }
+`;
 
 const StyledSection = styled.section`
   box-sizing: border-box;
@@ -16,9 +15,10 @@ const StyledSection = styled.section`
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-  }`;
+  }
+`;
 
-  const StyledSectionResults = styled.section`
+const StyledSectionResults = styled.section`
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -29,10 +29,10 @@ const StyledSection = styled.section`
 
   &:after {
     position: absolute;
-    content: "";
+    content: '';
     height: 1px;
-    color: #DFE4E9;
-    background-color: #DFE4E9;
+    color: #dfe4e9;
+    background-color: #dfe4e9;
     width: 256px;
     transform: translateX(-50%) translateY(-50%);
     top: 50%;
@@ -58,4 +58,4 @@ const StyledSection = styled.section`
   }
 `;
 
-  export {StyledSection, StyledDiv, StyledSectionResults};
+export { StyledSection, StyledDiv, StyledSectionResults };

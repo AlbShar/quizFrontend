@@ -1,7 +1,7 @@
-import { useEffect, useState, FC } from "react";
+import { useEffect, useState, FC } from 'react';
 
-import { StyledSection } from "./GetCertificate.Styled";
-import { StyledH2, StyledButton, StyledImg } from "./GetCertificate.Styled";
+import { StyledSection } from './GetCertificate.Styled';
+import { StyledH2, StyledButton, StyledImg } from './GetCertificate.Styled';
 
 const GetCertificate: FC = () => {
   const [viewportWidth, setViewportWidth] = useState<number>(window.innerWidth);
@@ -11,10 +11,10 @@ const GetCertificate: FC = () => {
       setViewportWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -22,7 +22,7 @@ const GetCertificate: FC = () => {
     <StyledSection>
       {viewportWidth < 767 ? <StyledH2>Получить сертификат</StyledH2> : false}
       <StyledButton>Загрузить файл</StyledButton>
-      <StyledImg src={require("../../images/icon_pdf.png")} alt="icon pdf" />
+      <StyledImg src={require('../../images/icon_pdf.png')} alt='icon pdf' />
     </StyledSection>
   );
 };

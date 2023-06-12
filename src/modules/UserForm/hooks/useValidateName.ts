@@ -1,45 +1,53 @@
-import { useState, useCallback, useMemo, FocusEvent, KeyboardEvent } from "react";
-import { setAnimateInputAndText } from "../helpers/setAnimateInputAndText";
+import {
+  useState,
+  useCallback,
+  useMemo,
+  FocusEvent,
+  KeyboardEvent,
+} from 'react';
+import { setAnimateInputAndText } from '../helpers/setAnimateInputAndText';
 
 const useValidateName = () => {
-  const [valueUserName, setValueUserName] = useState<string>("");
+  const [valueUserName, setValueUserName] = useState<string>('');
   const [isNameValidation, setIsNameValidation] = useState<boolean>(false);
   const [isFirstRenderName, setIsFirstRenderName] = useState<boolean>(true);
-  const warningMessageName = "Введите корректные данные"; 
+  const warningMessageName = 'Введите корректные данные';
 
-
-  const isNameInvalid  = useMemo((): boolean => {
+  const isNameInvalid = useMemo((): boolean => {
     const minValue = 2;
     const maxValue = 30;
     const forbiddenSymbols = /[~!@#$%^&*()+`'"\";:<>/\\|]/;
-    const isInvalidLength = valueUserName.length < minValue || valueUserName.length > maxValue;     
-    const hasForbiddenSymbols = forbiddenSymbols.test(valueUserName);  
+    const isInvalidLength =
+      valueUserName.length < minValue || valueUserName.length > maxValue;
+    const hasForbiddenSymbols = forbiddenSymbols.test(valueUserName);
 
     return isInvalidLength || hasForbiddenSymbols;
   }, [valueUserName]);
 
-  const hideErrorInputName = (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => {
+  const hideErrorInputName = (
+    e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+  ) => {
     if (!isNameInvalid) {
       setIsNameValidation(true);
-      setAnimateInputAndText(e, "#6768d7");
+      setAnimateInputAndText(e, '#6768d7');
     }
   };
 
   const onValidateInputName = useCallback(
     (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => {
-      if (isFirstRenderName || valueUserName !== "") {
+      if (isFirstRenderName || valueUserName !== '') {
         setIsFirstRenderName(false);
-        setAnimateInputAndText(e, "#81868C");
-      } 
+        setAnimateInputAndText(e, '#81868C');
+      }
 
       if (isNameInvalid) {
         setIsNameValidation(false);
-        setAnimateInputAndText(e, "red");
+        setAnimateInputAndText(e, 'red');
       } else {
         setIsNameValidation(true);
       }
     },
-    [isFirstRenderName, valueUserName, isNameInvalid]
+    [isFirstRenderName, valueUserName, isNameInvalid],
   );
 
   return {
@@ -49,7 +57,7 @@ const useValidateName = () => {
     setValueUserName,
     hideErrorInputName,
     onValidateInputName,
-    warningMessageName
+    warningMessageName,
   };
 };
 

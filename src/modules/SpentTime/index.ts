@@ -1,3 +1,3 @@
-import SpentTime from "./SpentTime";
+import SpentTime from './SpentTime';
 
 export default SpentTime;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ContainerStyled = styled.div`
   min-width: 287px;
@@ -6,7 +6,7 @@ const ContainerStyled = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 5px;
-  border: 1px solid red;
+  border: 3px solid red;
 `;
 
 export { ContainerStyled };
