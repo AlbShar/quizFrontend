@@ -83,10 +83,10 @@ We use library i18next for text localization. There are JSON files with translat
 
 ## Team
 
-- [Frontend developer](https://t.me/Albert_Sharipov)
-- [QA engineer](https://t.me/nastya_botsul)
-- [Designer](https://t.me/lisa_vetta14)
-- [Project Manager](https://t.me/Nattalia_nat)
+- Frontend developer ([telegram](https://t.me/Albert_Sharipov))
+- QA engineer ([telegram](https://t.me/nastya_botsul))
+- Designer ([telegram](https://t.me/lisa_vetta14))
+- Project Manager ([telegram](https://t.me/Nattalia_nat))
 
 ## License
 
