@@ -6,7 +6,7 @@ import { incrementQuantityPause } from '../../../helpers/incrementQuantityPause'
 import Modal from '../../../UI/Modal/Modal';
 import getFullNumb from '../helpers/getFullNumb';
 import { sendDbPenaltyPoints } from '../api/sendDbPenaltyPoints';
-import { deadline } from '../../../variables/variables';
+import { deadline } from '../../../constants/constants';
 import Portal from '../../../components/Portal/Portal';
 
 import { StyledDivTimer, StyledButtonPause } from './Timer.Styled';

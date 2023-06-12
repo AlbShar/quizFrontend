@@ -1,7 +1,7 @@
 import { ref, update } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
-import { penaltyPoints } from '../../../variables/variables';
+import { penaltyPoints } from '../../../constants/constants';
 
 const sendDbPenaltyPoints = () => {
   try {

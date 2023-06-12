@@ -25,9 +25,10 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   showButtonAccept,
   hideButtonAccept,
 }) => {
-  //eslint-disable-next-line
+ 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
+     //eslint-disable-next-line
   ) || [0, () => {}];
 
   let totalQuestionsNumbers = 0;

@@ -6,7 +6,6 @@ const ContainerStyled = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 5px;
-  border: 3px solid red;
 `;
 
 export { ContainerStyled };

@@ -10,9 +10,9 @@ type TBtnBack = {
   showButtonAccept: () => void;
 };
 const BtnBack: FC<TBtnBack> = ({ showButtonAccept }) => {
-  //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
+    //eslint-disable-next-line
   ) || [1, () => {}];
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
     setCurrentQuestionNumb(--currentQuestionNumb);
