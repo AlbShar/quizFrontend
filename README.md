@@ -1,5 +1,15 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://github.com/AlbShar/quizFrontend/blob/master/src/assets/images/logo.svg)
+
+1. [Project Title](#project-title)
+2. [Demo](#demo)
+3. [Features](#features)
+4. [Run Locally](#run-locally)
+5. [Tech Stack](#tech-stack)
+6. [Running Tests](#running-tests)
+7. [Localization](#localization)
+8. [Team](#team)
+9. [License](#license)
 
 ## Project Title
 
