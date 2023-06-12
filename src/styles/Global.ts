@@ -31,7 +31,7 @@ body {
     --color-back-btn: #81868C;
     --color-quantity-questions: #81868C;
     --color-footer-content: #81868C;
-    --color-main-background: #DFE4E9;
+    --color-main-background: #EEEEFF;
     --color-border-answer: #DFE4E9;
     --color-button: #6768D7;
     --color-scroll-bar: #6768D7;
