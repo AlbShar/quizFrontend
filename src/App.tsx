@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter , Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import Spinner from './UI/Spinner/Spinner';
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter basename="/quizFrontend">
+      <HashRouter basename="/">
         <Suspense
           fallback={
             <Spinner
@@ -39,7 +39,7 @@ function App() {
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
