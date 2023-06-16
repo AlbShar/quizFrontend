@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <HashRouter basename="/">
+      <HashRouter basename="/quizFrontend">
         <Suspense
           fallback={
             <Spinner
