@@ -12,6 +12,7 @@ const Page404 = () => {
           justifyContent: 'flex-start',
           alignItems: 'center',
           backgroundColor: 'inherit',
+          marginTop: '30px'
         }}
       >
         <Typography variant='h1' style={{ color: 'black' }}>
