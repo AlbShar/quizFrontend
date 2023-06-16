@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import Container from '../../components/Container/Container';
 import Answers from '../../modules/Answers/index';
@@ -25,6 +25,19 @@ const Quiz = () => {
   const hideButtonAccept = () => {
     setButtonAcceptVisibility(false);
   };
+
+  useEffect(() => {
+    const showWarningWindow = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = 'Вы уверены, что хотите покинуть эту страницу? Все несохраненные изменения будут потеряны.';
+    };
+   
+    window.addEventListener("beforeunload", showWarningWindow)
+    
+    return () => {
+      window.removeEventListener("beforeunload", showWarningWindow)
+    }
+  }, [])
 
   return (
     <StyledMain>
