@@ -14,15 +14,16 @@
   }
 
   ${function(e){let{height:t}=e;if(t)return`\n      @media screen and (min-width: 1023.8px) {\n        height: ${t}px;\n      }\n            `}}}
-`;var r=n(184);const o=e=>{let{children:t,height:n}=e;return(0,r.jsx)(i,{height:n,children:t})}},2626:(e,t,n)=>{n.d(t,{Z:()=>o});const i=n(7691).ZP.img`
+`;var r=n(184);const o=e=>{let{children:t,height:n}=e;return(0,r.jsx)(i,{height:n,children:t})}},2626:(e,t,n)=>{n.d(t,{Z:()=>a});var i=n(1087);const r=n(7691).ZP.img`
   width: 86px;
   height: 42px;
+  cursor: pointer;
 
   @media screen and (min-width: 767.8px) {
     width: ${e=>{let{location:t}=e;return"header"===t?"140px":"113px"}};
     height: ${e=>{let{location:t}=e;return"header"===t?"68px":"55px"}};
   }
-`;var r=n(184);const o=e=>{let{location:t,style:o}=e;return(0,r.jsx)(i,{src:n(6988),alt:"logo",location:t,style:o})}},4530:(e,t,n)=>{n.d(t,{Z:()=>s});var i=n(2426),r=n(408);const o={apiKey:{NODE_ENV:"production",PUBLIC_URL:"/quizFrontend",WDS_SOCKET_HOST:void 0,WDS_SOCKET_PATH:void 0,WDS_SOCKET_PORT:void 0,FAST_REFRESH:!0}.REACT_APP_API_KEY,authDomain:"quizfrontend-ac9ee.firebaseapp.com",databaseURL:"https://quizfrontend-ac9ee-default-rtdb.europe-west1.firebasedatabase.app",projectId:"quizfrontend-ac9ee",storageBucket:"quizfrontend-ac9ee.appspot.com",messagingSenderId:"598479422146",appId:"1:598479422146:web:812463d02e2684ad0bf15b"},a=(0,i.ZF)(o),s=(0,r.N8)(a)},2555:(e,t,n)=>{n.r(t),n.d(t,{default:()=>C});var i=n(7689),r=n(9856),o=n(2626),a=n(5270),s=n(2791),d=n(7879),l=n(3201),c=n(408),p=n(4530);var x=n(7691);const u=x.ZP.span`
+`;var o=n(184);const a=e=>{let{location:t,style:a}=e;return(0,o.jsx)(i.rU,{to:"/",children:(0,o.jsx)(r,{src:n(6988),alt:"logo",location:t,style:a})})}},4530:(e,t,n)=>{n.d(t,{Z:()=>s});var i=n(2426),r=n(408);const o={apiKey:{NODE_ENV:"production",PUBLIC_URL:"/quizFrontend",WDS_SOCKET_HOST:void 0,WDS_SOCKET_PATH:void 0,WDS_SOCKET_PORT:void 0,FAST_REFRESH:!0}.REACT_APP_API_KEY,authDomain:"quizfrontend-ac9ee.firebaseapp.com",databaseURL:"https://quizfrontend-ac9ee-default-rtdb.europe-west1.firebasedatabase.app",projectId:"quizfrontend-ac9ee",storageBucket:"quizfrontend-ac9ee.appspot.com",messagingSenderId:"598479422146",appId:"1:598479422146:web:812463d02e2684ad0bf15b"},a=(0,i.ZF)(o),s=(0,r.N8)(a)},2555:(e,t,n)=>{n.r(t),n.d(t,{default:()=>C});var i=n(7689),r=n(9856),o=n(2626),a=n(5270),s=n(2791),d=n(7879),l=n(3201),c=n(408),p=n(4530);var x=n(7691);const u=x.ZP.span`
   font-family: Inter;
   font-size: 16px;
   font-weight: 700;
@@ -89,4 +90,4 @@
   gap: ${e=>{let{gap:t}=e;return t?t+"px":""}};
   ${function(e){let{widthFlexStart:t,jc:n="space-between"}=e;return t?`\n      position: relative;\n      @media screen and (min-width: ${t}px) {\n        display: flex;\n        justify-content: ${n};\n        align-items: center;\n        width: 100%;\n      }\n      `:`\n            display: flex;\n            justify-content: ${n};\n            align-items: center;\n            `}}
 `},9744:e=>{e.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABwSURBVHgB7Y2xDYAwDAQfZRFvBiPABIzACFkFOjrEBIxASwdfpKBIiIlS+qRTpMi6BwzDcIn/jnp60R3fCN1oQ1co6ekdbDPxI9xN+MmYGZFX3KOQ1IjUiKdGpGY8NnLWjsdG1HEHPUt4ZzrAMAw1Dx0pJGSXjajkAAAAAElFTkSuQmCC"},6988:(e,t,n)=>{e.exports=n.p+"static/media/logoQuiz.fe60373c0b47051a6b64.png"}}]);
-//# sourceMappingURL=555.2c115ee1.chunk.js.map
+//# sourceMappingURL=555.5f489ac4.chunk.js.map
