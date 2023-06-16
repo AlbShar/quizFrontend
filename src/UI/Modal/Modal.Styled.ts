@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import {StyledButton} from "../Button/Button.Styled";
-
+import { StyledButton } from '../Button/Button.Styled';
 
 const StyleDivModal = styled.div`
   position: fixed;
@@ -45,7 +44,7 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledSpan = styled.span`
-  font:  400 16px/24px Inter, Arial, sans-serif;
+  font: 400 16px/24px Inter, Arial, sans-serif;
 `;
 
 const StyledSpanClose = styled.span`
@@ -55,4 +54,11 @@ const StyledSpanClose = styled.span`
   right: 20px;
 `;
 
-export { StyleDivModal, StyledDivWrapper, StyledH1, StyledSpan, StyledSpanClose, StyledButtonModal };
+export {
+  StyleDivModal,
+  StyledDivWrapper,
+  StyledH1,
+  StyledSpan,
+  StyledSpanClose,
+  StyledButtonModal,
+};

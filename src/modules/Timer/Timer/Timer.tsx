@@ -1,15 +1,15 @@
-import { useState, useEffect, FC, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useEffect, FC, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { sendDbTimeLeft } from "../api/sendDbTimeLeft";
-import { incrementQuantityPause } from "../../../helpers/incrementQuantityPause";
-import Modal from "../../../UI/Modal/Modal";
-import getFullNumb from "../helpers/getFullNumb";
-import { sendDbPenaltyPoints } from "../api/sendDbPenaltyPoints";
-import { deadline } from "../../../variables/variables";
-import Portal from "../../../components/Portal/Portal";
+import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
+import { incrementQuantityPause } from '../../../helpers/incrementQuantityPause';
+import Modal from '../../../UI/Modal/Modal';
+import getFullNumb from '../helpers/getFullNumb';
+import { sendDbPenaltyPoints } from '../api/sendDbPenaltyPoints';
+import { deadline } from '../../../constants/constants';
+import Portal from '../../../components/Portal/Portal';
 
-import { StyledDivTimer, StyledButtonPause } from "./Timer.Styled";
+import { StyledDivTimer, StyledButtonPause } from './Timer.Styled';
 
 type TState = {
   isModal: boolean;
@@ -37,14 +37,12 @@ const Timer: FC = () => {
     <span key={index + 1}>{time}</span>
   ));
   const titleModal = isTimeUp
-    ? t("Заголовок1_вышло_время")
-    : t("Заголовок1_пауза");
+    ? t('Заголовок1_вышло_время')
+    : t('Заголовок1_пауза');
   const subtitleModal = isTimeUp
-    ? t("Заголовок2_вышло_время")
-    : t("Заголовок2_пауза");
+    ? t('Заголовок2_вышло_время')
+    : t('Заголовок2_пауза');
 
-
-  
   const stopTimer = () => {
     setState((state) => ({ ...state, isCounting: false, isModal: true }));
   };
@@ -72,11 +70,11 @@ const Timer: FC = () => {
         isTimeUp: timeLeft ? false : true,
       };
     };
-  
+
     const startTimer = () => {
       isCounting && setState((state) => ({ ...state, ...countingTime() }));
     };
-    
+
     const timerId = setTimeout(() => {
       startTimer();
     }, 1000);
@@ -100,7 +98,6 @@ const Timer: FC = () => {
     }
   }, [isTimeUp]);
 
-
   return (
     <StyledDivTimer ref={timerRef}>
       <span>{elementNumbersTimer}</span>
@@ -114,7 +111,7 @@ const Timer: FC = () => {
         </Portal>
       )}
       <StyledButtonPause onClick={onClickButtonHandler}>
-        {t("Пауза")}
+        {t('Пауза')}
       </StyledButtonPause>
     </StyledDivTimer>
   );

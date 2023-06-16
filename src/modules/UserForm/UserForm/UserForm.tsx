@@ -1,57 +1,79 @@
-import { useState, ChangeEvent, FC, useEffect, FocusEvent, KeyboardEvent } from "react";
-import { useTranslation } from "react-i18next";
+import {
+  useState,
+  ChangeEvent,
+  FC,
+  useEffect,
+  FocusEvent,
+  KeyboardEvent,
+} from 'react';
+import { useTranslation } from 'react-i18next';
 
-import InputField from "../UI/InputField/InputField";
-import Button from "../UI/Button/Button";
-import useValidateName from "../hooks/useValidateName";
-import useValidateEmail from "../hooks/useValidateEmail";
+import InputField from '../UI/InputField/InputField';
+import Button from '../UI/Button/Button';
+import useValidateName from '../hooks/useValidateName';
+import useValidateEmail from '../hooks/useValidateEmail';
 
-import { StyledSpan, StyledPForm, StyledFieldset, StyledDivWarning } from "./UserForm.Styled";
+import {
+  StyledSpan,
+  StyledPForm,
+  StyledFieldset,
+  StyledDivWarning,
+} from './UserForm.Styled';
 
 type TDataInputs = {
-  htmlFor: "username" | "email";
-  placeholder: "Ваше_имя" | "E-mail";
-  type: "text" | "email";
-  id: "username" | "email";
-  name: "userName" | "userEmail";
+  htmlFor: 'username' | 'email';
+  placeholder: 'Ваше_имя' | 'E-mail';
+  type: 'text' | 'email';
+  id: 'username' | 'email';
+  name: 'userName' | 'userEmail';
   nameField: string;
   value: string;
   isValidation: boolean;
   isFirstRender: boolean;
-  onError: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
-  onValidateInput: (e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>) => void;
-  warningMessage: string,
-  isValueValidate: boolean,
-  keyHint: "enter" | "done" | "go" | "next" | "previous" | "search" | "send"
+  onError: (
+    e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+  ) => void;
+  onValidateInput: (
+    e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+  ) => void;
+  warningMessage: string;
+  isValueValidate: boolean;
+  keyHint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 };
 
 const UserForm: FC = () => {
   const { t } = useTranslation();
 
   const {
-    valueUserName, isFirstRenderName, isNameValidation, 
-    setValueUserName, hideErrorInputName, onValidateInputName,
-    warningMessageName
+    valueUserName,
+    isFirstRenderName,
+    isNameValidation,
+    setValueUserName,
+    hideErrorInputName,
+    onValidateInputName,
+    warningMessageName,
   } = useValidateName();
   const {
-    valueEmail, isFirstRenderEmail, isEmailValidation, 
-    setValueEmail, hideErrorInputEmail, onValidateInputEmail,
-    warningMessageEmail
+    valueEmail,
+    isFirstRenderEmail,
+    isEmailValidation,
+    setValueEmail,
+    hideErrorInputEmail,
+    onValidateInputEmail,
+    warningMessageEmail,
   } = useValidateEmail();
 
   const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
 
-
-
   const refsInputs: HTMLInputElement[] = [];
   const dataInputs: TDataInputs[] = [
     {
-      htmlFor: "username",
-      placeholder: "Ваше_имя",
-      type: "text",
-      id: "username",
-      name: "userName",
-      nameField: t("Ваше_имя"),
+      htmlFor: 'username',
+      placeholder: 'Ваше_имя',
+      type: 'text',
+      id: 'username',
+      name: 'userName',
+      nameField: t('Ваше_имя'),
       value: valueUserName,
       isValidation: isNameValidation,
       isFirstRender: isFirstRenderName,
@@ -59,15 +81,15 @@ const UserForm: FC = () => {
       onValidateInput: onValidateInputName,
       warningMessage: warningMessageName,
       isValueValidate: isNameValidation,
-      keyHint: "next"
+      keyHint: 'next',
     },
     {
-      htmlFor: "email",
-      placeholder: "E-mail",
-      type: "email",
-      id: "email",
-      name: "userEmail",
-      nameField: "Email",
+      htmlFor: 'email',
+      placeholder: 'E-mail',
+      type: 'email',
+      id: 'email',
+      name: 'userEmail',
+      nameField: 'Email',
       value: valueEmail,
       isValidation: isEmailValidation,
       isFirstRender: isFirstRenderEmail,
@@ -75,20 +97,19 @@ const UserForm: FC = () => {
       onValidateInput: onValidateInputEmail,
       warningMessage: warningMessageEmail,
       isValueValidate: isEmailValidation,
-      keyHint: "send"
+      keyHint: 'send',
     },
   ];
 
-
   const onValueInput = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const target = e.target;
     const newValue = target.value;
     const type = target.type;
-    type === "text"
-      ? setValueUserName(_ => newValue)
-      : setValueEmail(_ => newValue);
+    type === 'text'
+      ? setValueUserName((_) => newValue)
+      : setValueEmail((_) => newValue);
   };
 
   useEffect(() => {
@@ -97,7 +118,6 @@ const UserForm: FC = () => {
     };
     onFocusNameField();
   }, []);
-
 
   useEffect(() => {
     setIsDisabledBtn(!(isEmailValidation && isNameValidation));
@@ -122,7 +142,7 @@ const UserForm: FC = () => {
       onValidateInput,
       warningMessage,
       isValueValidate,
-      keyHint
+      keyHint,
     } = dataInput;
 
     return (

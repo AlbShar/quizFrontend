@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   @media screen and (min-width: 767.8px) {

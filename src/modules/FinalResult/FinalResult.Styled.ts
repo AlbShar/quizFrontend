@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledSection = styled.section`
   background-color: #ffffff;
@@ -11,10 +11,10 @@ const StyledSection = styled.section`
 
   &:after {
     position: absolute;
-    content: "";
+    content: '';
     height: 1px;
-    color: #DFE4E9;
-    background-color: #DFE4E9;
+    color: #dfe4e9;
+    background-color: #dfe4e9;
     width: 256px;
     transform: translateX(-50%) translateY(-50%);
     top: 50%;
@@ -57,7 +57,7 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledH2 = styled.h2`
-  color: #6768D7;
+  color: #6768d7;
   font: var(--font-title2);
   margin: 0;
   padding: 0;

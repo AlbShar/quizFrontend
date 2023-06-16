@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   box-sizing: border-box;
@@ -61,7 +61,7 @@ const StyledSpan = styled.span`
   font-weight: 800;
   font-size: 39px;
   line-height: 60px;
-  color: #6768D7;
+  color: #6768d7;
 `;
 
 export { StyledArticle, StyledP, StyledSpan, StyledDoughuntWrapper };

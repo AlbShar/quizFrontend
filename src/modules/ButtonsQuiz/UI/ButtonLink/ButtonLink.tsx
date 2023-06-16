@@ -1,21 +1,19 @@
-import { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from 'react';
 
-import LinkBtn from "../../../../UI/LinkBtn/LinkBtn";
-
+import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
 
 type TButtonsLink = {
-  onClickButtonHandler: (e: MouseEvent) => void
+  onClickButtonHandler: (e: MouseEvent) => void;
 };
 
-const ButtonLink: FC<TButtonsLink> = ({onClickButtonHandler}) => {
-
+const ButtonLink: FC<TButtonsLink> = ({ onClickButtonHandler }) => {
   return (
     <LinkBtn
-          text="Закончить тест"
-          pageTo="/contact"
-          onClick={onClickButtonHandler}
-          id="btnFinish"
-        />
+      text='Закончить тест'
+      pageTo='/contact'
+      onClick={onClickButtonHandler}
+      id='btnFinish'
+    />
   );
 };
 

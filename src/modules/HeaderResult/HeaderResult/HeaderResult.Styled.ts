@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledH1 = styled.h1`
   font: var(--font-title5);
@@ -23,4 +23,4 @@ const StyledArticle = styled.article`
   }
 `;
 
-export {StyledH1, StyledH2, StyledArticle};
+export { StyledH1, StyledH2, StyledArticle };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticleQuestion = styled.article`
   padding-bottom: 14px;
@@ -20,7 +20,6 @@ const StyledPicture = styled.picture`
   box-sizing: border-box;
   border-radius: 5px;
   max-width: 100%;
-  
 
   @media screen and (min-width: 767.8px) {
     display: flex;
@@ -56,6 +55,5 @@ const StyledImg = styled.img<Img>`
     }
   }}
 `;
-
 
 export { StyledH2, StyledArticleQuestion, StyledPicture, StyledImg };

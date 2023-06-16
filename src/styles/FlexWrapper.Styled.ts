@@ -1,14 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-interface IFlexWrapper{
+interface IFlexWrapper {
   gap?: number;
   widthFlexStart?: number;
-  jc?: "start" | "center" | "space-between" | "space-around" | "space-evenly" |  "flex-start" | "flex-end"
+  jc?:
+    | 'start'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'flex-start'
+    | 'flex-end';
 }
 
 const StyledFlexWrapper = styled.div<IFlexWrapper>`
-  gap: ${({gap}) => gap ? (gap + "px") : ""};
-  ${function ({ widthFlexStart, jc = "space-between" }) {
+  gap: ${({ gap }) => (gap ? gap + 'px' : '')};
+  ${function ({ widthFlexStart, jc = 'space-between' }) {
     if (!widthFlexStart) {
       return `
             display: flex;

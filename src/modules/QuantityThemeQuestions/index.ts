@@ -1,3 +1,3 @@
-import QuantityThemeQuestions from "./QuantityThemeQuestions/QuantityThemeQuestions";
+import QuantityThemeQuestions from './QuantityThemeQuestions/QuantityThemeQuestions';
 
 export default QuantityThemeQuestions;

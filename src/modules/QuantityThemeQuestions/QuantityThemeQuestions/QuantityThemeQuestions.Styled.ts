@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledH1 = styled.h1`
   font: var(--font-title4);
@@ -21,7 +21,7 @@ const StyledSpanQuestionQuantity = styled.span`
 
 const StyledSpanThemeQuestion = styled(StyledSpanQuestionQuantity)`
   display: block;
-  padding:0;
+  padding: 0;
 
   @media screen and (min-width: 459.8px) {
     display: inline;

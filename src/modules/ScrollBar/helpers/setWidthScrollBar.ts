@@ -1,27 +1,26 @@
-import { RefObject } from "react";
+import { RefObject } from 'react';
 
-import { getTotalQuestionsNumb } from "../../../api/getTotalQuestionsNumb";
+import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 interface IWidthScrollBar {
   currentQuestionNumb: number;
   quizRef: RefObject<HTMLTableSectionElement>;
   scrollBarElementRef: RefObject<HTMLDivElement>;
-
 }
-async function setWidthScrollBar (
-  {currentQuestionNumb,
+async function setWidthScrollBar({
+  currentQuestionNumb,
   quizRef,
-  scrollBarElementRef}:IWidthScrollBar,
-){
+  scrollBarElementRef,
+}: IWidthScrollBar) {
   try {
     const totalQuestionsNumb: number | undefined =
       await getTotalQuestionsNumb();
 
-     const quizElement = quizRef.current;
-     const scrollBarElement = scrollBarElementRef.current;
+    const quizElement = quizRef.current;
+    const scrollBarElement = scrollBarElementRef.current;
     if (quizElement && totalQuestionsNumb && scrollBarElement) {
       const widthContainer =
-      quizElement.clientWidth -
+        quizElement.clientWidth -
         parseInt(getComputedStyle(quizElement).paddingRight) -
         parseInt(getComputedStyle(quizElement).paddingLeft);
       const valueWidthScroll = widthContainer / totalQuestionsNumb;
@@ -38,6 +37,4 @@ async function setWidthScrollBar (
   }
 }
 
-
-
-export {setWidthScrollBar};
+export { setWidthScrollBar };

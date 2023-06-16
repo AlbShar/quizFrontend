@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { StyledSect } from "../../styles/Common.Styled";
+import { StyledSect } from '../../styles/Common.Styled';
 
 const StyledSection = styled(StyledSect)`
   position: relative;
@@ -32,8 +32,8 @@ const StyledImg = styled.img`
   right: 10px;
 
   @media screen and (min-width: 767.8px) {
-  margin: 0 0 0 15px;
-  position: relative;
+    margin: 0 0 0 15px;
+    position: relative;
   }
 `;
 
@@ -49,7 +49,6 @@ const StyledButton = styled.button`
   &:hover {
     text-decoration: underline;
   }
-  
 `;
 
 export { StyledH2, StyledButton, StyledImg, StyledSection };

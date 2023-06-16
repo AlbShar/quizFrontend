@@ -1,6 +1,6 @@
-import { ref, onValue } from "firebase/database";
+import { ref, onValue } from 'firebase/database';
 
-import db from "../../../config/firebase/firebaseConfig";
+import db from '../../../config/firebase/firebaseConfig';
 
 interface IPreviousAnswer {
   idUser: string;
@@ -13,7 +13,7 @@ const highlightPreviousAnswer = ({
   selectorAnswers,
 }: IPreviousAnswer) => {
   const refer = `users/user${idUser}/answers/answer${currentQuestionNumb}`;
-  let userAnswerDb = "";
+  let userAnswerDb = '';
   try {
     onValue(
       ref(db, refer),
@@ -24,8 +24,8 @@ const highlightPreviousAnswer = ({
             .forEach((answerItem) => {
               userAnswerDb = snapshot.val().userAnswer;
               if (answerItem.textContent === userAnswerDb) {
-                answerItem.style.border = "2px solid rgb(103, 104, 215)";
-                answerItem.setAttribute("data-useranswer", "true");
+                answerItem.style.border = '2px solid rgb(103, 104, 215)';
+                answerItem.setAttribute('data-useranswer', 'true');
               }
             });
         }, 1);
@@ -36,8 +36,9 @@ const highlightPreviousAnswer = ({
     );
   } catch (error) {
     if (!userAnswerDb) {
-      throw new Error(`The value of variable 'userAnswerDb' is ${userAnswerDb}. ${error}`);
-
+      throw new Error(
+        `The value of variable 'userAnswerDb' is ${userAnswerDb}. ${error}`,
+      );
     }
     throw new Error(`Unknown mistake: ${error}`);
   }

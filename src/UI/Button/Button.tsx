@@ -1,22 +1,24 @@
-import {FC} from "react";
-import { useTranslation } from "react-i18next";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import {
-  StyledButton,
-} from "./Button.Styled";
+import { StyledButton } from './Button.Styled';
 
 interface Btn {
- text: string,
- action: () => void
+  text: string;
+  action: () => void;
 }
-const Button: FC<Btn> = ({
-  text, action,
-}) => {
+const Button: FC<Btn> = ({ text, action }) => {
   const { t } = useTranslation();
 
-  return <StyledButton onClick={() => {
-    action();
-  }}>{t(text)}</StyledButton>;
+  return (
+    <StyledButton
+      onClick={() => {
+        action();
+      }}
+    >
+      {t(text)}
+    </StyledButton>
+  );
 };
 
 export default Button;

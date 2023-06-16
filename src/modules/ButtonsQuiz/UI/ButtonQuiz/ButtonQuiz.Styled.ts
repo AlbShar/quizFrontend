@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   padding: 8px 33px;
@@ -21,7 +21,4 @@ const StyledButtonQuiz = styled(StyledButton)`
   top: 0;
 `;
 
-
-export {
-  StyledButtonQuiz,
-};
+export { StyledButtonQuiz };

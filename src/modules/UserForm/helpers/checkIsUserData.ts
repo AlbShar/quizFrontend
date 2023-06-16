@@ -1,5 +1,5 @@
 const checkIsUserData = (userName: string, userEmail: string): boolean => {
-    return userName && userEmail ? true : false;
-  };
+  return userName && userEmail ? true : false;
+};
 
-export {checkIsUserData};
+export { checkIsUserData };

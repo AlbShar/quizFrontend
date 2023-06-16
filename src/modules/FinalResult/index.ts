@@ -1,3 +1,3 @@
-import FinalResult from "./FinalResult";
+import FinalResult from './FinalResult';
 
 export default FinalResult;

@@ -1,3 +1,3 @@
-import ButtonsQuiz from "./ButtonsQuiz/ButtonsQuiz";
+import ButtonsQuiz from './ButtonsQuiz/ButtonsQuiz';
 
 export default ButtonsQuiz;

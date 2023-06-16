@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledLi = styled.li`
   font: var(--font-text-regular);
@@ -7,6 +7,4 @@ const StyledLi = styled.li`
   }
 `;
 
-export {
-  StyledLi,
-};
+export { StyledLi };

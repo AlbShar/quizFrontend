@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledUl = styled.ul`
   display: flex;
@@ -15,9 +15,7 @@ const StyledUl = styled.ul`
     max-width: 685px;
     padding: 24px;
     flex-direction: row;
-
   }
-
 `;
 
 const StyledImg = styled.img`
@@ -46,12 +44,10 @@ const StyledLi = styled.li`
 
     &:not(:last-child):after {
       position: relative;
-      content: "/";
+      content: '/';
       left: 12px;
     }
-
   }
-
 `;
 
 export { StyledUl, StyledImg, StyledLi };

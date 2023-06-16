@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface IFlexWrapper {
   gap?: number;
@@ -8,7 +8,7 @@ interface IFlexWrapper {
 }
 
 export const StyledFlexWrapper = styled.div<IFlexWrapper>`
-  gap: ${({ gap }) => (gap ? gap + "px" : "")};
+  gap: ${({ gap }) => (gap ? gap + 'px' : '')};
 
   ${function ({ widthColumnStart }) {
     if (widthColumnStart) {

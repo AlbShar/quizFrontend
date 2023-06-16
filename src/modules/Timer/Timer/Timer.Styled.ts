@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledDivTimer = styled.div`
   font: var(--font-little-text-regular);
@@ -24,7 +24,6 @@ const StyledButtonPause = styled.button`
   @media screen and (min-width: 459.8px) {
     margin: 0 0 0 10px;
   }
-  
 
   &:hover {
     border: 1px solid #6768d7;
@@ -32,4 +31,4 @@ const StyledButtonPause = styled.button`
   }
 `;
 
-export {StyledDivTimer, StyledButtonPause };
+export { StyledDivTimer, StyledButtonPause };

@@ -1,33 +1,31 @@
-import { useState, useRef } from "react";
-import i18next from "i18next";
+import { useState, useRef } from 'react';
+import i18next from 'i18next';
 
-import Dropdown from "../../../../UI/Dropdown/Dropdown";
+import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
 const DropdownLanguages = () => {
-  const data: string[] = ["Русский", "English", "Deutsch"];
-  const language: string = localStorage.getItem("language") || "Русский";
+  const data: string[] = ['Русский', 'English', 'Deutsch'];
+  const language: string = localStorage.getItem('language') || 'Русский';
   const [selected, setSelected] = useState<string>(language);
   const [isActive, setActive] = useState<boolean>(false);
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
-
-  type IMapLanguage = Record<typeof data[number], string>
+  type IMapLanguage = Record<(typeof data)[number], string>;
 
   const mapLanguage: IMapLanguage = {
-    Русский: "ru",
-    English: "en",
-    Deutsch: "deu",
+    Русский: 'ru',
+    English: 'en',
+    Deutsch: 'deu',
   };
-
 
   const onClickDrop = (item: string) => {
     setSelected(item);
     i18next.changeLanguage(mapLanguage[item as keyof IMapLanguage]);
     setActive(false);
-    localStorage.setItem("language", item);
-    (document.querySelector("html") as HTMLHtmlElement).setAttribute(
-      "lang",
-      document.querySelector("html")?.getAttribute("lang") || "ru",
+    localStorage.setItem('language', item);
+    (document.querySelector('html') as HTMLHtmlElement).setAttribute(
+      'lang',
+      document.querySelector('html')?.getAttribute('lang') || 'ru',
     );
   };
 
@@ -37,10 +35,8 @@ const DropdownLanguages = () => {
 
   const hideList = () => {
     setActive(false);
-};
+  };
 
-
-  
   return (
     <Dropdown
       onClickBtn={onClickBtn}
@@ -49,9 +45,7 @@ const DropdownLanguages = () => {
       isActive={isActive}
       onClickDrop={(item: string) => onClickDrop(item)}
       ref={refWrapperLanguage}
-
       hideList={hideList}
-      
     />
   );
 };

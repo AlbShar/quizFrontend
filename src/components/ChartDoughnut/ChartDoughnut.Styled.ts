@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   background-color: #ffffff;
@@ -14,15 +14,14 @@ const StyledArticle = styled.article`
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 40px 18px 40px;
-
   }
 `;
 
 const StyledP = styled.article`
   font: var(--font-little-text-regular);
-  color: #29313C;
+  color: #29313c;
   text-align: justify;
-  margin: 12px 0 0 0; 
+  margin: 12px 0 0 0;
 `;
 
 const StyledImg = styled.img`
@@ -40,4 +39,4 @@ const StyledImg = styled.img`
   }
 `;
 
-export {StyledArticle, StyledP, StyledImg};
+export { StyledArticle, StyledP, StyledImg };
