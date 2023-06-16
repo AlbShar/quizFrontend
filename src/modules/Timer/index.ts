@@ -1,4 +1,4 @@
-import { deadline } from './Timer/Timer';
+import  deadline  from './Timer/Timer';
 import Timer from './Timer/Timer';
 
 export { deadline };

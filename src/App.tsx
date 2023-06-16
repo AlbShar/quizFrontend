@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename="/quizFrontend">
         <Suspense
           fallback={
             <Spinner
