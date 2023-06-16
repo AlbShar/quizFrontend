@@ -7,6 +7,7 @@ interface LogoImg {
 export const StyledImg = styled.img<LogoImg>`
   width: 86px;
   height: 42px;
+  cursor: pointer;
 
   @media screen and (min-width: 767.8px) {
     width: ${({ location }) => (location === 'header' ? '140px' : '113px')};
