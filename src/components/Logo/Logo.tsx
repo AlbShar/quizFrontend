@@ -1,7 +1,11 @@
 import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
+
+import logo from '../../assets/images/logo.svg';
+
 import { StyledImg } from './Logo.Styled';
+
 
 interface ILogo {
   location: string;
@@ -11,7 +15,7 @@ const Logo: FC<ILogo> = ({ location, style }) => {
   return (
     <Link to="/">
       <StyledImg
-        src={require('../../assets/images/logoQuiz.png')}
+        src={logo}
         alt='logo'
         location={location}
         style={style}
