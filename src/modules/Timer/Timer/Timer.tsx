@@ -5,8 +5,6 @@ import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
 import { incrementQuantityPause } from '../../../helpers/incrementQuantityPause';
 import Modal from '../../../UI/Modal/Modal';
 import getFullNumb from '../helpers/getFullNumb';
-import { sendDbPenaltyPoints } from '../api/sendDbPenaltyPoints';
-import { deadline } from '../../../constants/constants';
 import Portal from '../../../components/Portal/Portal';
 
 import { StyledDivTimer, StyledButtonPause } from './Timer.Styled';
@@ -15,17 +13,15 @@ type TState = {
   isModal: boolean;
   isCounting: boolean;
   timeLeft: number;
-  isTimeUp: boolean;
 };
 
 const Timer: FC = () => {
   const { t } = useTranslation();
-  const [{ isCounting, isModal, timeLeft, isTimeUp }, setState] =
+  const [{ isCounting, isModal, timeLeft }, setState] =
     useState<TState>({
       isModal: false,
       isCounting: true,
-      timeLeft: deadline,
-      isTimeUp: false,
+      timeLeft: 0,
     });
   const timerRef = useRef<HTMLDivElement>(null);
 
@@ -36,12 +32,8 @@ const Timer: FC = () => {
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
   ));
-  const titleModal = isTimeUp
-    ? t('Заголовок1_вышло_время')
-    : t('Заголовок1_пауза');
-  const subtitleModal = isTimeUp
-    ? t('Заголовок2_вышло_время')
-    : t('Заголовок2_пауза');
+  const titleModal = t('Заголовок1_пауза');
+  const subtitleModal = t('Заголовок2_пауза');
 
   const stopTimer = () => {
     setState((state) => ({ ...state, isCounting: false, isModal: true }));
@@ -51,28 +43,14 @@ const Timer: FC = () => {
     setState((state) => ({ ...state, isCounting: true, isModal: false }));
   };
 
-  const closeModal = () => {
-    setState((state) => ({ ...state, isModal: false }));
-  };
-
-  const onClickHandlerModal = isTimeUp ? closeModal : restoreTimer;
-
-  const onClickButtonHandler = () => {
+   const onClickButtonHandler = () => {
     stopTimer();
     incrementQuantityPause();
   };
 
   useEffect(() => {
-    const countingTime = () => {
-      const updateTime = timeLeft >= 1 ? +timeLeft - 1 : 0;
-      return {
-        timeLeft: updateTime,
-        isTimeUp: timeLeft ? false : true,
-      };
-    };
-
-    const startTimer = () => {
-      isCounting && setState((state) => ({ ...state, ...countingTime() }));
+      const startTimer = () => {
+      isCounting && setState((state) => ({ ...state, timeLeft: timeLeft + 1 }));
     };
 
     const timerId = setTimeout(() => {
@@ -83,20 +61,12 @@ const Timer: FC = () => {
       /* If I copy 'timerRef.current' to a variable inside the useEffect,
        the cleanup function doesn't run, when Timer unmountes */
       // eslint-disable-next-line
-      if (!timerRef.current) {
-        const time = deadline - timeLeft;
-        sendDbTimeLeft(time);
-      }
+      sendDbTimeLeft(timeLeft);
       clearTimeout(timerId);
     };
   }, [timeLeft, isCounting]);
 
-  useEffect(() => {
-    if (isTimeUp) {
-      setState((state) => ({ ...state, isModal: true, isCounting: false }));
-      sendDbPenaltyPoints();
-    }
-  }, [isTimeUp]);
+ 
 
   return (
     <StyledDivTimer ref={timerRef}>
@@ -106,7 +76,7 @@ const Timer: FC = () => {
           <Modal
             title={titleModal}
             subTitle={subtitleModal}
-            onClickHandler={onClickHandlerModal}
+            onClickHandler={restoreTimer}
           />
         </Portal>
       )}
@@ -117,5 +87,5 @@ const Timer: FC = () => {
   );
 };
 
-export { deadline };
+
 export default Timer;
