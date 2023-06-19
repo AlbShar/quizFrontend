@@ -5,6 +5,7 @@ import {
   RefObject,
   forwardRef,
   Ref,
+  useState
 } from 'react';
 
 import {
@@ -21,33 +22,41 @@ require('../../assets/images/chevrondown.png');
 type DropdownProps = {
   style?: CSSProperties;
   selected: string;
-  isActive: boolean;
   data: string[];
-  onClickBtn?: () => void;
-  onClickDrop?: (item: string) => void;
+  onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
-  hideList: () => void;
 };
 
 const Dropdown = forwardRef(
   (
     {
-      hideList,
       data,
       selected,
-      isActive,
       style,
-      onClickDrop,
-      onClickBtn,
+      onClickElement,
     }: DropdownProps,
     ref: Ref<HTMLDivElement>,
   ) => {
-    const elementLanguages = data.map((item: string, index: number) => {
+    const [isActive, setActive] = useState<boolean>(false);
+
+    const toggleList = () => {
+      setActive((isActive) => !isActive);
+    };
+  
+    const hideList = () => {
+      setActive(false);
+    };
+
+
+    const dropdownElements = data.map((item: string, index: number) => {
       return (
         <StyledLi
           key={index + 1}
           tabIndex={0}
-          onClick={() => onClickDrop && onClickDrop(item)}
+          onClick={() => {
+            onClickElement && onClickElement(item);
+            toggleList();
+          }}
         >
           {item}
         </StyledLi>
@@ -72,7 +81,7 @@ const Dropdown = forwardRef(
 
     return (
       <StyleArticleDropdown ref={ref} style={style} id='wrapper'>
-        <StyledButton onClick={onClickBtn}>
+        <StyledButton onClick={toggleList}>
           <StyledSpan className='dropdown-btn-text'>
             {selected || data[0]}
           </StyledSpan>
@@ -81,7 +90,7 @@ const Dropdown = forwardRef(
             alt='Кнопка вниз'
           />
         </StyledButton>
-        {isActive && <StyledUl>{elementLanguages}</StyledUl>}
+        {isActive && <StyledUl>{dropdownElements}</StyledUl>}
       </StyleArticleDropdown>
     );
   },
