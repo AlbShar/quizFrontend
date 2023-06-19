@@ -5,7 +5,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import translationRU from "../../assets/locales/ru/translation.json";
 import translationEN from "../../assets/locales/en/translation.json";
-import translationDEU from "../../assets/locales/deu/translation.json";
 
 const fallbackLng = ["ru"];
 const availableLanguages = ["ru", "en", "deu"];
@@ -16,9 +15,6 @@ const resources = {
   },
   en: {
     translation: translationEN,
-  },
-  deu: {
-    translation: translationDEU,
   },
 };
 
