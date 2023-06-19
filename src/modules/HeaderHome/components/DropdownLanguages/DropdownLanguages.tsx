@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import i18next from 'i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
@@ -12,10 +12,18 @@ const DropdownLanguages = () => {
     'English': 'en',
   };
 
+  useEffect(() => {
+    const i18nextLng = localStorage.getItem('i18nextLng');
+    (document.querySelector('html') as HTMLHtmlElement).setAttribute(
+      'lang', i18nextLng || "ru"
+    )
+  }, [])
+
   const [selected, setSelected] = useState<string>(mapLanguage['Русский']);
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
   const onClickElement = (item: string) => {
+    
     setSelected(item);
     i18next.changeLanguage(item);
     localStorage.setItem('language', item === "ru" ? "Русский" : "English");
@@ -24,10 +32,9 @@ const DropdownLanguages = () => {
     );
   };
 
-
   return (
     <Dropdown
-      mapLanguage={mapLanguage}
+      data={mapLanguage}
       selected={selected}
       onClickElement={(item: string) => onClickElement(item)}
       ref={refWrapperLanguage}

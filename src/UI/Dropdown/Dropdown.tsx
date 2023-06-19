@@ -19,20 +19,20 @@ import {
 import globe from '../../assets/images/globe.svg';
 import chevrondown from '../../assets/images/chevrondown.svg';
 
-type Data = {
+type Languages = {
   [key: string]: string;
 };
 type DropdownProps = {
   style?: CSSProperties;
   selected: string;
-  mapLanguage: Data;
+  data: Languages | string[];
   onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
 };
 
 const Dropdown = forwardRef(
   (
-    { mapLanguage, selected, style, onClickElement }: DropdownProps,
+    { data, selected, style, onClickElement }: DropdownProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const [isActive, setActive] = useState<boolean>(false);
@@ -46,7 +46,7 @@ const Dropdown = forwardRef(
       setActive(false);
     };
 
-    const dropdownElements = Object.entries(mapLanguage).map(
+    const dropdownElements = Object.entries(data).map(
       (item: string[], index: number) => {
         const shotLang = item[1];
         const fullLang = item[0];
@@ -91,7 +91,7 @@ const Dropdown = forwardRef(
         <StyledButton onClick={toggleList}>
           <img style={{ margin: '0 7px 0 0' }} src={globe} alt='global' />
           <StyledSpan className='dropdown-btn-text'>
-          {i18nextLng ? i18nextLng.toUpperCase() : "RU"}
+          {i18nextLng ?i18nextLng.toUpperCase() : "RU"}
           </StyledSpan>
           <img
             style={{ margin: '0 0 0 7px' }}
