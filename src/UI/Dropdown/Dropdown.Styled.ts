@@ -40,10 +40,13 @@ const StyledUl = styled.ul`
   margin: 0;
   padding: 5px 10px;
   border-radius: 7px;
+  box-shadow: 0px 4px 4px 0px #0000003D;
+
 `;
 
 const StyledLi = styled.li`
   font: var(--font-text-regular);
+
   &:not(:last-child) {
     margin-bottom: 10px;
   }
