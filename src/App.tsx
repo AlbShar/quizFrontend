@@ -34,8 +34,8 @@ function App() {
               <Route path='reportbug' element={<ReportBugPage />} />
               <Route path='contact' element={<Contact />} />
             </Route>
-            <Route path='quiz' element={<Quiz />} />
             <Route path='results' element={<Results />} />
+            <Route path='quiz' element={<Quiz />} />
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

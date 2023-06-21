@@ -15,9 +15,11 @@ const HeaderHome: FC = () => {
         <Container>
           <StyledFlexWrapper>
             <Logo location='header' />
-            <DropdownLanguages />
+            <StyledFlexWrapper gap={37}>
+              <TotalTested />
+              <DropdownLanguages />
+            </StyledFlexWrapper>
           </StyledFlexWrapper>
-          <TotalTested />
         </Container>
       </Header>
       <Outlet />

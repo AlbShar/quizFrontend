@@ -32,12 +32,12 @@ const TotalTested: FC = () => {
   }, [loading]);
 
   if (loading) {
-    return <Spinner width={50} height={50} color='#fcfdff' margin='auto' />;
+    return <Spinner width={50} height={50} color={"#1f2ce0"} margin='0 auto' />;
   }
 
   return (
     <StyledDivWrapper>
-      <StyledSpanText>{t('Протестировано')}</StyledSpanText>
+      <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
       <StyledSpanNumber ref={totalUsersRef}>{allTestedUsers}</StyledSpanNumber>
     </StyledDivWrapper>
   );
