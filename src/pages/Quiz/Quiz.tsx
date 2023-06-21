@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, FC } from 'react';
 
 import Container from '../../components/Container/Container';
 import Answers from '../../modules/Answers/index';
@@ -12,7 +12,12 @@ import ButtonsQuiz from '../../modules/ButtonsQuiz/index';
 
 import { StyledSection, StyledArticle } from './Quiz.Styled';
 
-const Quiz = () => {
+type QuizProps = {
+  lang: string
+};
+
+const Quiz: FC<QuizProps> = ({lang}) => {
+
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
   const [isButtonAcceptVisibility, setButtonAcceptVisibility] =
@@ -46,11 +51,11 @@ const Quiz = () => {
           <Context value={[currentQuestionNumb, setCurrentQuestionNumb]}>
             <ScrollBar quizRef={quizRef} />
             <StyledArticle>
-              <QuantityThemeQuestions />
+              <QuantityThemeQuestions lang={lang}/>
               <Timer />
             </StyledArticle>
-            <NameQuestionAndImg />
-            <Answers showButtonAccept={showButtonAccept} />
+            <NameQuestionAndImg lang={lang}/>
+            <Answers showButtonAccept={showButtonAccept} lang={lang}/>
             <ButtonsQuiz
               showButtonAccept={showButtonAccept}
               isButtonAcceptVisibility={isButtonAcceptVisibility}

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, FC } from 'react';
 
 import HeaderResult from '../../modules/HeaderResult/index';
 import { StyledMain } from '../../styles/Main.Styled';
@@ -10,28 +10,31 @@ import SpentTime from '../../modules/SpentTime/index';
 import ChartBar from '../../modules/ChartBar/index';
 
 import {
-  StyledDiv,
   StyledSection,
   StyledSectionResults,
 } from './Results.Styled';
 
 import type { TPointsByThemes } from '../../types/types';
 
-const Results = () => {
+type ResultsProps = {
+  lang: string
+};
+
+const Results: FC<ResultsProps> = ({lang}) => {
   const [rightAnswers, setRightAnswers] = useState<number>(0);
   const [pointsByTheme, setPointsByTheme] = useState<TPointsByThemes | null>(
     null,
   );
 
-  const setRightUserAnswers = useCallback((points: number) => {
+    const setRightUserAnswers = useCallback((points: number) => {
     setRightAnswers(points);
   }, []);
 
   return (
     <>
-      <HeaderResult />
+      {/* <HeaderResult /> */}
       <StyledMain>
-        <StyledDiv>
+        <div>
           <Container>
             <StyledSectionResults>
               <FinalResult setRightAnswers={setRightUserAnswers} />
@@ -42,8 +45,8 @@ const Results = () => {
               <Doughnut rightAnswers={rightAnswers} />
             </StyledSection>
           </Container>
-          <UserAnswers setPointsByTheme={setPointsByTheme} />
-        </StyledDiv>
+          <UserAnswers setPointsByTheme={setPointsByTheme} lang={lang}/>
+        </div>
       </StyledMain>
     </>
   );

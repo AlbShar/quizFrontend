@@ -37,7 +37,13 @@
     "Ваш_ответ": "Your answer",
     "Правильный_ответ": "Right answer",
     "Объяснение": "Explanation",
-    "Ответы": "Answers"
-
+    "Ответы": "Answers",
+    "Ваш_результат": "Your score",
+    "Затраченное_время": "Spent time",
+    "Подпись_столбчатая_диаграмма": "The graph displays the percentage of correct answers for each topic section. The indicator is calculated as the ratio of the number of correct answers to the total number of topics. If it is less than 50%, then this section needs further study.",
+    "Подпись_круговая_диаграмма": "The graph shows the percentage of questions that were answered correctly and incorrectly.",
+    "сек": "sec",
+    "мин": "min",
+    "из": "from"
 }
   

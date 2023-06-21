@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, memo } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -89,4 +89,4 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
   );
 };
 
-export default BarChart;
+export default memo(BarChart);

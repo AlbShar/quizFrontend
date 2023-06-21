@@ -3,10 +3,8 @@ import { onValue } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-const getThemeQuestion = async (currentQuestionNumb: number) => {
+const getThemeQuestion = async (currentQuestionNumb: number, lang: string) => {
   try {
-    const lang = document.querySelector('html')?.getAttribute('lang');
-
     return await new Promise(function (resolve, reject) {
       onValue(
         ref(db, `questions/question${currentQuestionNumb}/${lang}/theme`),

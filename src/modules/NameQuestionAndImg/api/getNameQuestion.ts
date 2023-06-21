@@ -3,9 +3,7 @@ import { onValue } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-const getNameQuestion = async (currentQuestionNumb: number) => {
-  const lang = document.querySelector('html')?.getAttribute('lang');
-
+const getNameQuestion = async (currentQuestionNumb: number, lang: string) => {
   return await new Promise<string>(function (resolve, reject) {
     onValue(
       ref(db, `questions/question${currentQuestionNumb}/${lang}/name`),

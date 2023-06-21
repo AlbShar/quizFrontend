@@ -3,7 +3,6 @@ import { FC } from 'react';
 import Header from '../../../components/Header/Header';
 import Logo from '../../../components/Logo/Logo';
 import UserInfo from '../components/UserInfo/UserInfo';
-import GetCertificate from '../components/GetCertificate/GetCertificate';
 import FlexWrapper from '../../../components/FlexWrapper/FlexWrapper';
 import Container from '../../../components/Container/Container';
 
@@ -31,7 +30,6 @@ const HeaderResult: FC = () => {
             gap={24}
           >
             <UserInfo />
-            <GetCertificate />
           </FlexWrapper>
         </FlexWrapper>
       </Container>

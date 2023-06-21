@@ -1,4 +1,6 @@
 import { FC, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 import {
   StyledArticle,
@@ -16,6 +18,8 @@ type DoughnutProps = {
 };
 
 const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
+  const { t } = useTranslation();
+
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const percentRightQuestions = +(
     (100 * rightAnswers) /
@@ -34,8 +38,7 @@ const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
         <StyledP>
-          График отображает процент вопросов, на которые были даны верные и
-          неверные ответы
+          {t("Подпись_круговая_диаграмма")}
         </StyledP>
       </StyledArticle>
     );

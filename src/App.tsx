@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 
 import Spinner from './UI/Spinner/Spinner';
 import { GlobalStyles } from './styles/Global';
@@ -13,6 +13,12 @@ const Results = lazy(() => import('./pages/Results/Results'));
 const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
+  const [lang, setLang] = useState<string>('ru');
+
+  const setNewLang = (newLang: string) => {
+    setLang(newLang);
+  }
+
   return (
     <>
       <GlobalStyles />
@@ -28,14 +34,14 @@ function App() {
           }
         >
           <Routes>
-            <Route path='/' element={<HeaderHome />}>
+            <Route path='/' element={<HeaderHome setNewLang={setNewLang}/>}>
               <Route index element={<Homepage />} />
               <Route index element={<Footer />} />
               <Route path='reportbug' element={<ReportBugPage />} />
+              <Route path='quiz' element={<Quiz lang={lang}/>} />
               <Route path='contact' element={<Contact />} />
+              <Route path='results' element={<Results lang={lang}/>} />
             </Route>
-            <Route path='quiz' element={<Quiz />} />
-            <Route path='results' element={<Results />} />
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

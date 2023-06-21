@@ -37,9 +37,7 @@ const StyledUl = styled.ul`
 `;
 
 const StyledImg = styled.img`
-  // filter: invert(100);
-  width: 12px;
-  height: 12px;
+  filter: invert(100);
   margin-left: 4px;
 `;
 

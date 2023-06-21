@@ -7,7 +7,6 @@ const StyledSpanText = styled.span`
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-  color: #ffffffcc;
 `;
 const StyledSpanNumber = styled.span`
   font-family: Inter;
@@ -16,18 +15,25 @@ const StyledSpanNumber = styled.span`
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-  color: #0cd3ff;
 `;
 
 const StyledDivWrapper = styled.div`
-  box-sizing: border-box;
-  border-radius: 2px;
-  padding: 4px 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  gap: 8px;
+  display: none;
+
+  @media screen and (min-width: 459.8px) {
+    display: block;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 8px;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-radius: 7px;
+  }
 `;
 
 export { StyledSpanText, StyledSpanNumber, StyledDivWrapper };

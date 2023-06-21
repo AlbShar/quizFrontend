@@ -19,7 +19,11 @@ type IState = {
   error: boolean;
 };
 
-const NameQuestionAndImg: FC = () => {
+type NameQuestionAndImgProps = {
+  lang: string
+}
+
+const NameQuestionAndImg: FC<NameQuestionAndImgProps> = ({lang}) => {
   const contextValue = useContext(ContextQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const [state, setState] = useState<IState>({
@@ -115,13 +119,14 @@ const NameQuestionAndImg: FC = () => {
   };
 
   useEffect(() => {
+
     Promise.allSettled([
-      getSrcImg(currentQuestionNumb),
-      getNameQuestion(currentQuestionNumb),
+      getSrcImg(currentQuestionNumb, lang),
+      getNameQuestion(currentQuestionNumb, lang),
     ])
       .then(dataLoaded)
       .catch(onErrorHandler);
-  }, [currentQuestionNumb]);
+  }, [currentQuestionNumb, lang]);
 
   return (
     <>
