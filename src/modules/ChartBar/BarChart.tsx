@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import BarChart from '../../components/BarChart/BarChart';
 
@@ -14,16 +15,16 @@ type ChartBarProps = {
   pointsByTheme: TPointsByThemes | null;
 };
 const ChartBar: FC<ChartBarProps> = ({ pointsByTheme }) => {
+  const { t } = useTranslation();
+
   return (
     <StyledArticle>
       <StyledBarChartWrapper>
         <BarChart pointsByTheme={pointsByTheme} />
       </StyledBarChartWrapper>
       <StyledP>
-        График отображает процент правильных ответов по каждому тематическому
-        разделу. Показатель считается как отношение количества верных ответов к
-        общему количеству вопросов тематики. Если показатель менее 50 %, то
-        данный раздел необходимо изучить дополнительно.
+        {t("Подпись_столбчатая_диаграмма")}
+        
       </StyledP>
     </StyledArticle>
   );

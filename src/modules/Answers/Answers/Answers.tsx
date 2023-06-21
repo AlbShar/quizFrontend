@@ -16,9 +16,10 @@ type TState = {
 
 type AnswersProps = {
   showButtonAccept: () => void;
+  lang: string,
 };
 
-const Answers: FC<AnswersProps> = ({ showButtonAccept }) => {
+const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
   const [state, setState] = useState<TState>({
     answers: [],
     loading: true,
@@ -88,12 +89,11 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept }) => {
   useEffect(() => {
     removeAllAttributes(refAnswers);
     if (currentQuestionNumb) {
-      getAnswersDb(currentQuestionNumb)
+      getAnswersDb(currentQuestionNumb, lang)
         .then(answersHasLoaded)
         .catch(onErrorHandler);
     }
-    //eslint-disable-next-line
-  }, [currentQuestionNumb]);
+  }, [currentQuestionNumb, lang]);
 
   return (
     <>

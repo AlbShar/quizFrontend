@@ -3,8 +3,7 @@ import { onValue } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-const getAnswersDb = async (currentQuestionNumb: number) => {
-  const lang = document.querySelector('html')?.getAttribute('lang');
+const getAnswersDb = async (currentQuestionNumb: number, lang: string) => {
 
   return await new Promise(function (resolve, reject) {
     onValue(

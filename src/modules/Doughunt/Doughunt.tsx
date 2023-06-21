@@ -1,4 +1,6 @@
 import { FC, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 import {
   StyledArticle,
@@ -16,6 +18,8 @@ type DoughnutProps = {
 };
 
 const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
+  const { t } = useTranslation();
+
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const percentRightQuestions = +(
     (100 * rightAnswers) /

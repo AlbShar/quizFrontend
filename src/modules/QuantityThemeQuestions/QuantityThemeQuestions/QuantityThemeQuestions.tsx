@@ -17,7 +17,12 @@ type TState = {
   questionTheme: string | null;
   totalQuestionNumber: number | null;
 };
-const QuantityThemeQuestions: FC = () => {
+
+type QuantityThemeQuestionsProps = {
+  lang: string
+};
+
+const QuantityThemeQuestions: FC<QuantityThemeQuestionsProps> = ({lang}) => {
   const { t } = useTranslation();
   const contextValue: [number, (numb: number) => void] | null =
     useContext(ContextQuestionNumb);
@@ -81,10 +86,10 @@ const QuantityThemeQuestions: FC = () => {
 
   useEffect(() => {
     Promise.allSettled([
-      getThemeQuestion(currentQuestionNumb),
+      getThemeQuestion(currentQuestionNumb, lang),
       getTotalQuestionsNumb(),
     ]).then(dataLoaded);
-  }, [currentQuestionNumb]);
+  }, [currentQuestionNumb, lang]);
 
   return (
     <>

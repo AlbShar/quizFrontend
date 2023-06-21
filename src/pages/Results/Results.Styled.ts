@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-const StyledDiv = styled.div`
-  @media screen and (min-width: 1023.8px) {
-    transform: translateY(-100px);
-  }
-`;
-
 const StyledSection = styled.section`
   box-sizing: border-box;
   margin: 18px 0 24px 0;
@@ -58,4 +52,4 @@ const StyledSectionResults = styled.section`
   }
 `;
 
-export { StyledSection, StyledDiv, StyledSectionResults };
+export { StyledSection, StyledSectionResults };

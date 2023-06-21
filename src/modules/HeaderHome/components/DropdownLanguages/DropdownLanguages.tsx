@@ -1,9 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, FC } from 'react';
 import i18next from 'i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
-const DropdownLanguages = () => {
+type DropdownLanguagesProps = {
+  setNewLang: (item: string) => void
+};
+
+const DropdownLanguages: FC<DropdownLanguagesProps> = ({ setNewLang}) => {
   type tMapLanguage = {
     [key: string]: string
   };
@@ -15,7 +19,7 @@ const DropdownLanguages = () => {
   useEffect(() => {
     const i18nextLng = localStorage.getItem('i18nextLng');
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
-      'lang', i18nextLng || "ru"
+      'lang', i18nextLng || 'ru'
     )
   }, [])
 
@@ -23,8 +27,8 @@ const DropdownLanguages = () => {
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
   const onClickElement = (item: string) => {
-    
     setSelected(item);
+    setNewLang(item)
     i18next.changeLanguage(item);
     localStorage.setItem('language', item === "ru" ? "Русский" : "English");
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(

@@ -1,15 +1,19 @@
 import { FC, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { StyledH2, StyledH3, StyledArticle } from './FinalResult.Styled';
 import Spinner from '../../UI/Spinner/Spinner';
 import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
+
 import { getUserAnswers } from './api/getUserAnswers';
+import { StyledH2, StyledH3, StyledArticle } from './FinalResult.Styled';
 
 type FinalResultProps = {
   setRightAnswers: (points: number) => void;
 };
 
 const FinalResult: FC<FinalResultProps> = ({ setRightAnswers }) => {
+  const { t } = useTranslation();
+
   type TState = {
     points:
       | {
@@ -116,7 +120,7 @@ const FinalResult: FC<FinalResultProps> = ({ setRightAnswers }) => {
   const view = () => {
     return (
       <StyledArticle>
-        <StyledH3>Ваш результат</StyledH3>
+        <StyledH3>{t('Ваш_результат')}</StyledH3>
         <StyledH2>
           {getTotalPoints(state.points) + ' из ' + state.totalQuestionNumbers}
         </StyledH2>

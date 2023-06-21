@@ -10,7 +10,6 @@ import SpentTime from '../../modules/SpentTime/index';
 import ChartBar from '../../modules/ChartBar/index';
 
 import {
-  StyledDiv,
   StyledSection,
   StyledSectionResults,
 } from './Results.Styled';
@@ -29,9 +28,9 @@ const Results = () => {
 
   return (
     <>
-      <HeaderResult />
+      {/* <HeaderResult /> */}
       <StyledMain>
-        <StyledDiv>
+        <div>
           <Container>
             <StyledSectionResults>
               <FinalResult setRightAnswers={setRightUserAnswers} />
@@ -43,7 +42,7 @@ const Results = () => {
             </StyledSection>
           </Container>
           <UserAnswers setPointsByTheme={setPointsByTheme} />
-        </StyledDiv>
+        </div>
       </StyledMain>
     </>
   );
