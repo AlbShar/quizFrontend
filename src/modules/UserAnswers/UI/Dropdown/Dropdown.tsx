@@ -1,5 +1,5 @@
 import { FC, CSSProperties, useEffect } from 'react';
-
+import chevrondown from "../../../../assets/images/chevrondown.svg";
 import {
   StyleArticleDropdown,
   StyledButton,
@@ -64,7 +64,7 @@ const Dropdown = ({
           {selected || data[0]}
         </StyledSpan>
         <StyledImg
-          src={require('../../../../assets/images/chevrondown.svg')}
+          src={chevrondown}
           alt='Кнопка вниз'
         />
       </StyledButton>

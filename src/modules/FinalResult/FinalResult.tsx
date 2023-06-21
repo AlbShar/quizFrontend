@@ -122,7 +122,7 @@ const FinalResult: FC<FinalResultProps> = ({ setRightAnswers }) => {
       <StyledArticle>
         <StyledH3>{t('Ваш_результат')}</StyledH3>
         <StyledH2>
-          {getTotalPoints(state.points) + ' из ' + state.totalQuestionNumbers}
+          {`${getTotalPoints(state.points)} ${t('из')} ${ state.totalQuestionNumbers}`}
         </StyledH2>
       </StyledArticle>
     );

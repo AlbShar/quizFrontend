@@ -42,7 +42,7 @@ const SpentTime: FC = () => {
     return (
       <StyledArticle>
         <StyledH3>{t("Затраченное_время")}</StyledH3>
-        <StyledH2>{transformSecondsToMinutes(state.time)}</StyledH2>
+        <StyledH2>{transformSecondsToMinutes(state.time, t('сек'), t('мин'))}</StyledH2>
       </StyledArticle>
     );
   };

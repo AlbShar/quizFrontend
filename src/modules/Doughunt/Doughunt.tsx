@@ -38,8 +38,7 @@ const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
         <StyledP>
-          График отображает процент вопросов, на которые были даны верные и
-          неверные ответы
+          {t("Подпись_круговая_диаграмма")}
         </StyledP>
       </StyledArticle>
     );

@@ -40,7 +40,7 @@ function App() {
               <Route path='reportbug' element={<ReportBugPage />} />
               <Route path='quiz' element={<Quiz lang={lang}/>} />
               <Route path='contact' element={<Contact />} />
-              <Route path='results' element={<Results />} />
+              <Route path='results' element={<Results lang={lang}/>} />
             </Route>
             <Route path='*' element={<Page404 />} />
           </Routes>

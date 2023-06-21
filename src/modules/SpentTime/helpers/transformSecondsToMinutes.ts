@@ -1,15 +1,16 @@
-const transformSecondsToMinutes = (seconds: unknown): string | false | null => {
+const transformSecondsToMinutes = (seconds: unknown, sec: string, min: string): string | false | null => {
+
   let result = '';
 
   if (typeof seconds === 'number') {
     if (seconds % 60 === 0) {
-      result = `${seconds / 60} мин`;
+      result = `${seconds / 60} ${sec}`;
     } else if (seconds < 60) {
-      result = `${seconds} сек`;
+      result = `${seconds}  ${sec}`;
     } else if (seconds > 60) {
       const minutes = Math.floor(seconds / 60);
       const leftSeconds = seconds - minutes * 60;
-      result = `${minutes} мин ${leftSeconds} сек`;
+      result = `${minutes}  ${min} ${leftSeconds}  ${sec}`;
     }
     return result;
   } else if (typeof seconds === 'boolean') {

@@ -35,8 +35,9 @@ import type { TPointsByThemes } from '../../../types/types';
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
+  lang: string,
 };
-const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
+const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -143,13 +144,12 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
     return updateUserAnswers;
   };
 
-  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB) => {
-    const lang: string =
-      document.querySelector('html')?.getAttribute('lang') || 'ru';
-    const updateAnswerOptions = Object.fromEntries(
+  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB, lang: string) => {
+     const updateAnswerOptions = Object.fromEntries(
       Object.entries(res).map(([key, value]) => [
+        
         getNumberFromKey(key),
-        value[lang],
+        value[`${lang}`],
       ]),
     );
     return updateAnswerOptions;
@@ -162,8 +162,8 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
 
     const data = {
       userAnswers: transformUserAnswers(userAnswers as TAnswersDB),
-      answerOptions: transformData(answerOptions as TAnswerOptionsLangDB),
-      infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB),
+      answerOptions: transformData(answerOptions as TAnswerOptionsLangDB, lang),
+      infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB, lang),
     };
 
     const generalInfo = {};
@@ -201,7 +201,7 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
         ),
       )
       .catch(onError);
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     if (infoQuestionsAndAnswers) {

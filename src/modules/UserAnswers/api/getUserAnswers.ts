@@ -16,8 +16,9 @@ type TAnswersDB = {
 
 const getUserAnswers = () => {
   return new Promise<TAnswersDB>(function (resolve, reject) {
-    onValue(ref(db, `users/user${getIdUser('idUser')}/answers`), (snapshot) => {
+    onValue(ref(db, `users/user${getIdUser('idUser')}/answers/`), (snapshot) => {
       resolve(snapshot.val());
+      
     });
   });
 };
