@@ -6,16 +6,21 @@ const StyleArticleDropdown = styled.article`
 `;
 
 const StyledButton = styled.button`
+box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: white;
   cursor: pointer;
   border: 1px solid black;
+  background-color: #5557ff;
+  border-radius: 7px;
+  padding: 11px;
+  max-width: 88px;
+  max-height: 44px;
 `;
 
 const StyledSpan = styled.span`
-  color: black;
+  color: #ffffff;
   font: var(--font-little-text-regular);
 
   @media screen and (min-width: 767.8px) {
@@ -24,37 +29,27 @@ const StyledSpan = styled.span`
 `;
 
 const StyledUl = styled.ul`
+  box-sizing: border-box ;
+  max-width: 88px;
   z-index: 2;
   left: 0px;
-  top: 30px;
+  top: 60px;
   background-color: white;
   position: absolute;
   list-style-type: none;
-  font: var(--font-text-bold);
   margin: 0;
   padding: 5px 10px;
-  border-radius: 10px 0 0 10px;
-`;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px 0px #0000003D;
 
-const StyledImg = styled.img`
-  // filter: invert(100);
-  width: 12px;
-  height: 12px;
-  margin-left: 4px;
 `;
 
 const StyledLi = styled.li`
   font: var(--font-text-regular);
+
   &:not(:last-child) {
     margin-bottom: 10px;
   }
 `;
 
-export {
-  StyleArticleDropdown,
-  StyledButton,
-  StyledUl,
-  StyledLi,
-  StyledImg,
-  StyledSpan,
-};
+export { StyleArticleDropdown, StyledButton, StyledUl, StyledLi, StyledSpan };

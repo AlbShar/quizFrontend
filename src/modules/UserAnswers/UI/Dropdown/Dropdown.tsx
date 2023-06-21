@@ -64,7 +64,7 @@ const Dropdown = ({
           {selected || data[0]}
         </StyledSpan>
         <StyledImg
-          src={require('../../../../assets/images/chevrondown.png')}
+          src={require('../../../../assets/images/chevrondown.svg')}
           alt='Кнопка вниз'
         />
       </StyledButton>

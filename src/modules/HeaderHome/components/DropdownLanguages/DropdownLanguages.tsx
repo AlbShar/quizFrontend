@@ -1,37 +1,40 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import i18next from 'i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
 const DropdownLanguages = () => {
-  const data: string[] = ['Русский', 'English'];
-  const language: string = localStorage.getItem('language') || 'Русский';
-  const [selected, setSelected] = useState<string>(language);
-  const refWrapperLanguage = useRef<HTMLDivElement>(null);
-  const lang = document.querySelector('html')?.getAttribute('lang');
-
-
-  type IMapLanguage = Record<(typeof data)[number], string>;
-
-  const mapLanguage: IMapLanguage = {
-    Русский: 'ru',
-    English: 'en',
+  type tMapLanguage = {
+    [key: string]: string
+  };
+  const mapLanguage: tMapLanguage = {
+    'Русский': 'ru',
+    'English': 'en',
   };
 
-  const onClickElement = (item: string) => {
-    const lang = mapLanguage[item as keyof IMapLanguage];
-    setSelected(item);
-    i18next.changeLanguage(lang);
-    localStorage.setItem('language', item);
+  useEffect(() => {
+    const i18nextLng = localStorage.getItem('i18nextLng');
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
-      'lang', lang
+      'lang', i18nextLng || "ru"
+    )
+  }, [])
+
+  const [selected, setSelected] = useState<string>(mapLanguage['Русский']);
+  const refWrapperLanguage = useRef<HTMLDivElement>(null);
+
+  const onClickElement = (item: string) => {
+    
+    setSelected(item);
+    i18next.changeLanguage(item);
+    localStorage.setItem('language', item === "ru" ? "Русский" : "English");
+    (document.querySelector('html') as HTMLHtmlElement).setAttribute(
+      'lang', item
     );
   };
 
-
   return (
     <Dropdown
-      data={data}
+      data={mapLanguage}
       selected={selected}
       onClickElement={(item: string) => onClickElement(item)}
       ref={refWrapperLanguage}

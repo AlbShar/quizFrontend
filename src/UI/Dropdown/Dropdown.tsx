@@ -5,7 +5,7 @@ import {
   RefObject,
   forwardRef,
   Ref,
-  useState
+  useState,
 } from 'react';
 
 import {
@@ -13,55 +13,62 @@ import {
   StyledButton,
   StyledUl,
   StyledLi,
-  StyledImg,
   StyledSpan,
 } from './Dropdown.Styled';
 
-require('../../assets/images/chevrondown.png');
+import globe from '../../assets/images/globe.svg';
+import chevrondown from '../../assets/images/chevrondown.svg';
 
+type Languages = {
+  [key: string]: string;
+};
 type DropdownProps = {
   style?: CSSProperties;
   selected: string;
-  data: string[];
+  data: Languages | string[];
   onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
 };
 
 const Dropdown = forwardRef(
   (
-    {
-      data,
-      selected,
-      style,
-      onClickElement,
-    }: DropdownProps,
+    { data, selected, style, onClickElement }: DropdownProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const [isActive, setActive] = useState<boolean>(false);
+    const i18nextLng = localStorage.getItem('i18nextLng');
 
     const toggleList = () => {
       setActive((isActive) => !isActive);
     };
-  
+
     const hideList = () => {
       setActive(false);
     };
 
-
-    const dropdownElements = data.map((item: string, index: number) => {
-      return (
-        <StyledLi
-          key={index + 1}
-          tabIndex={0}
-          onClick={() => {
-            onClickElement && onClickElement(item);
-            toggleList();
-          }}
-        >
-          {item}
-        </StyledLi>
-      );
-    });
+    const dropdownElements = Object.entries(data).map(
+      (item: string[], index: number) => {
+        const shotLang = item[1];
+        const fullLang = item[0];
+        return (
+          <StyledLi
+            key={index + 1}
+            tabIndex={0}
+            onClick={() => {
+              onClickElement && onClickElement(shotLang);
+              toggleList();
+            }}
+          >
+            <div style={{ display: 'inline-flex', alignItems: "baseline", gap: 2, justifyContent: "center" }}>
+              <span style={{ fontSize: 16, fontWeight: 700 }}>
+                {shotLang.toUpperCase()}
+              </span>
+              <span style={{ fontSize: 12, fontWeight: 400 }}>{fullLang}</span>
+            </div>
+          </StyledLi>
+        );
+      },
+    );
 
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
@@ -82,11 +89,13 @@ const Dropdown = forwardRef(
     return (
       <StyleArticleDropdown ref={ref} style={style} id='wrapper'>
         <StyledButton onClick={toggleList}>
+          <img style={{ margin: '0 7px 0 0' }} src={globe} alt='global' />
           <StyledSpan className='dropdown-btn-text'>
-            {selected || data[0]}
+          {i18nextLng ?i18nextLng.toUpperCase() : "RU"}
           </StyledSpan>
-          <StyledImg
-            src={require('../../assets/images/chevrondown.png')}
+          <img
+            style={{ margin: '0 0 0 7px' }}
+            src={chevrondown}
             alt='Кнопка вниз'
           />
         </StyledButton>
