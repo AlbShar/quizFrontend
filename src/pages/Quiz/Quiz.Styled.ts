@@ -7,7 +7,7 @@ const StyledSection = styled.section`
   border-radius: 7px;
 
   @media screen and (min-width: 1123.8px) {
-    padding: 0 40px 47px 40px;
+    padding: 0 40px 95px 40px;
     margin: 0 0 72px 0;
   }
 `;

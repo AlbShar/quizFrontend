@@ -11,7 +11,7 @@ box-sizing: border-box;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 1px solid black;
+  border: none;
   background-color: #5557ff;
   border-radius: 7px;
   padding: 11px;
@@ -41,7 +41,7 @@ const StyledUl = styled.ul`
   padding: 5px 10px;
   border-radius: 7px;
   box-shadow: 0px 4px 4px 0px #0000003D;
-
+  
 `;
 
 const StyledLi = styled.li`

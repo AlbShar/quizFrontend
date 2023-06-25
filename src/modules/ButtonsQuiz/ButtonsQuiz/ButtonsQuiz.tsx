@@ -15,13 +15,13 @@ import { resetQuantityPause } from '../../../helpers/incrementQuantityPause';
 import { StyledArticle } from './ButtonsQuiz.Styled';
 
 type TButtonsQuiz = {
-  isButtonAcceptVisibility: boolean;
+  isBtnDisabled: boolean;
   showButtonAccept: () => void;
   hideButtonAccept: () => void;
 };
 
 const ButtonsQuiz: FC<TButtonsQuiz> = ({
-  isButtonAcceptVisibility,
+  isBtnDisabled,
   showButtonAccept,
   hideButtonAccept,
 }) => {
@@ -75,11 +75,11 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   return (
     <StyledArticle>
       <BtnBack showButtonAccept={showButtonAccept} />
-      {isButtonAcceptVisibility &&
+      {
         (totalQuestionsNumbers === currentQuestionNumb ? (
           <ButtonLink onClickButtonHandler={onClickButtonHandler} />
         ) : (
-          <ButtonQuiz onClickButtonHandler={onClickButtonHandler} />
+          <ButtonQuiz isDisabled={isBtnDisabled} onClickButtonHandler={onClickButtonHandler} />
         ))}
     </StyledArticle>
   );
