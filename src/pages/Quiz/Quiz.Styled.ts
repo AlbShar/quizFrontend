@@ -15,6 +15,7 @@ const StyledArticle = styled.article`
   justify-content: space-between;
   align-items: center;
   max-width: 540px;
+  padding: 20px 0;
 
   @media screen and (min-width: 459.8px) {
     max-width: 100%;

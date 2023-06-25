@@ -4,7 +4,6 @@ const StyledH1 = styled.h1`
   font: var(--font-title4);
   color: black;
   padding: 0;
-  margin: 20px 0;
   position: relative;
   flex: 0 1 85%;
 

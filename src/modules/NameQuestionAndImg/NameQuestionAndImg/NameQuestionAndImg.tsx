@@ -1,9 +1,9 @@
 import { useEffect, useContext, FC, useState } from 'react';
 
 import { ContextQuestionNumb } from '../../../components/Context';
-import Spinner from '../../../UI/Spinner/Spinner';
 import { getSrcImg } from '../api/getSrcImg';
 import { getNameQuestion } from '../api/getNameQuestion';
+import SkeletonQuestion from '../UI/SkeletonQuestion';
 
 import {
   StyledH2,
@@ -35,7 +35,7 @@ const NameQuestionAndImg: FC<NameQuestionAndImgProps> = ({lang}) => {
   const errorMessage = 'ERROR!!';
   const error = state.error ? errorMessage : null;
   const spinner = state.loading ? (
-    <Spinner width={50} height={50} color='#1f2ce0' margin='0' />
+    <SkeletonQuestion/>
   ) : null;
 
   const view = () => {

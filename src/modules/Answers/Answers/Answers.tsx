@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext, FC } from 'react';
 
+import SkeletonAnswers from '../UI/SkeletonAnswers';
 import { getAnswersDb } from '../api/getAnswersDb';
 import Answer from '../components/Answer/Answer';
 import { ContextQuestionNumb } from '../../../components/Context';
-import Spinner from '../../../UI/Spinner/Spinner';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
 
 import { StyledArticle, StyledUl } from './Answers.Styled';
@@ -70,8 +70,8 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
     </Answer>
   ));
 
-  const spinner = state.loading ? (
-    <Spinner width={50} height={50} color='#1f2ce0' margin='' />
+  const skeleton = state.loading ? (
+    <SkeletonAnswers/>
   ) : null;
   const errorMessage = 'ERROR!';
   const error = state.error ? errorMessage : null;
@@ -79,6 +79,7 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
   const content = !(state.loading || state.error) ? (
     <StyledArticle id='answersAll'>
       <StyledUl>{answersItems}</StyledUl>
+      
     </StyledArticle>
   ) : null;
 
@@ -98,7 +99,7 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
   return (
     <>
       {' '}
-      {spinner} {content} {error}
+      {skeleton} {content} {error}
     </>
   );
 };
