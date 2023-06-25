@@ -9,13 +9,16 @@ const StyledH1 = styled.h1`
   flex: 0 1 85%;
 
   @media screen and (min-width: 459.8px) {
-    font: var(--font-title4);
+    font: var(--font-bold);
   }
 `;
 
 const StyledSpanQuestionQuantity = styled.span`
-  font: var(--font-text-regular);
-  color: var(--color-quantity-questions);
+  color: #000;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 24px;
   padding: 0 0 0 5px;
 `;
 

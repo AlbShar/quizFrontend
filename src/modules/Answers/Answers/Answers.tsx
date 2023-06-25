@@ -33,7 +33,7 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
   };
 
   const onFocusUserAnswer = (id: number) => {
-    const styleBorder = 'border: 2px solid rgb(103, 104, 215)';
+    const style = 'background-color: #B7B7FF';
     const currentAnswer: HTMLLIElement[] = refAnswers.filter(
       (answerItem) => answerItem.dataset.useranswer,
     );
@@ -43,7 +43,7 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
     }
 
     removeAllAttributes(refAnswers);
-    refAnswers[id].setAttribute('style', styleBorder);
+    refAnswers[id].setAttribute('style', style);
     refAnswers[id].setAttribute('data-useranswer', 'true');
     refAnswers[id].focus();
   };

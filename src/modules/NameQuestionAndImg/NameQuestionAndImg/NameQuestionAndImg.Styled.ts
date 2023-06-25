@@ -11,7 +11,7 @@ const StyledH2 = styled.h2`
   margin: 20px 0;
 
   @media screen and (min-width: 459.8px) {
-    font: var(--font-title4);
+    font: var(--font-semi-bold);
   }
 `;
 
