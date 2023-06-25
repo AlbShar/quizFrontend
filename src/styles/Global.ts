@@ -61,6 +61,12 @@ body {
     --font-title3: 800 32px/42px var(--font-family-default);
     --font-title4: 800 24px/36px var(--font-family-default);
     --font-title5: 800 20px/32px var(--font-family-default);
+
+    --font-bold: 700 16px/24px var(--font-family-default);
+    --font-regular: 500 18px/24px var(--font-family-default);
+    --font-semi-bold: 600 35px/44px var(--font-family-default);
+    --font-extra-bold: 800 48px/60px var(--font-family-default);
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;    
 }

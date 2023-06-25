@@ -2,7 +2,7 @@ import { useEffect, useContext, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextQuestionNumb } from '../../../components/Context';
-import Spinner from '../../../UI/Spinner/Spinner';
+import SkeletonTheme from '../UI/SkeletonTheme';
 import { getThemeQuestion } from '../api/getThemeQuestion';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
@@ -45,10 +45,11 @@ const QuantityThemeQuestions: FC<QuantityThemeQuestionsProps> = ({lang}) => {
           {state.questionTheme}
         </StyledSpanThemeQuestion>
       </StyledH1>
+      
     );
   };
-  const spinner = state.loading ? (
-    <Spinner width={50} height={50} color='#1f2ce0' margin='' />
+  const skeleton = state.loading ? (
+    <SkeletonTheme/>
   ) : null;
   const content = !state.loading ? view() : null;
 
@@ -93,7 +94,7 @@ const QuantityThemeQuestions: FC<QuantityThemeQuestionsProps> = ({lang}) => {
 
   return (
     <>
-      {spinner}
+      {skeleton}
       {content}
     </>
   );
