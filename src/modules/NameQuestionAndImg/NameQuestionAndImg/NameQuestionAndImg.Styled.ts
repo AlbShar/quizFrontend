@@ -8,7 +8,7 @@ const StyledH2 = styled.h2`
   font: var(--font-title4);
   color: black;
   padding: 0;
-  margin: 20px 0;
+  margin: 0 0 20px 0;
 
   @media screen and (min-width: 459.8px) {
     font: var(--font-semi-bold);

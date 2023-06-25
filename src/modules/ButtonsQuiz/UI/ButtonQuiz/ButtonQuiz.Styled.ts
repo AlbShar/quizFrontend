@@ -19,7 +19,7 @@ const StyledButtonQuiz = styled(StyledButton)`
   box-sizing: border-box;
   position: absolute;
   right: 0;
-  top: 22px;
+  top: 0;
   display: inline-flex;
   gap: 20px; 
   align-items: center;
