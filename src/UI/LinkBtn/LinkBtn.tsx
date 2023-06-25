@@ -3,7 +3,6 @@ import './link.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MouseEvent } from 'react';
-
 import { StyledButton } from './LinkBtn.Styled';
 
 interface LinkInt {
