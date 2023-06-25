@@ -4,6 +4,7 @@ const StyledSection = styled.section`
   background-color: #fff;
   padding: 0 8px 47px 8px;
   margin: 0 0 15px 0;
+  border-radius: 7px;
 
   @media screen and (min-width: 1123.8px) {
     padding: 0 40px 47px 40px;
