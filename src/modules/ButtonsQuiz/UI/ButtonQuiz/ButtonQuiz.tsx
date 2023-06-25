@@ -1,39 +1,23 @@
-import { useContext, FC, MouseEvent } from 'react';
+import { FC, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ref, onValue } from 'firebase/database';
-
-import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
-import { ContextQuestionNumb } from '../../../../components/Context';
-import db from '../../../../config/firebase/firebaseConfig';
+import rightArrow from '../../../../assets/images/rightArrow.svg';
 
 import { StyledButtonQuiz } from './ButtonQuiz.Styled';
 
 type TButtonsQuiz = {
   onClickButtonHandler: (e: MouseEvent) => void;
+  isDisabled: boolean
 };
 
-const ButtonQuiz: FC<TButtonsQuiz> = ({ onClickButtonHandler }) => {
+const ButtonQuiz: FC<TButtonsQuiz> = ({ onClickButtonHandler, isDisabled }) => {
   const { t } = useTranslation();
-  
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextQuestionNumb,
-    //eslint-disable-next-line
-  ) || [1, () => {}];
-  let totalQuestionsNumbers;
-  onValue(ref(db, 'questions'), (snapshot) => {
-    totalQuestionsNumbers = Object.entries(snapshot.val()).length;
-  });
-  const isLastQuestion = totalQuestionsNumbers === currentQuestionNumb;
 
   return (
     <>
-      {isLastQuestion ? (
-        <LinkBtn text='Закончить тест' pageTo='/contact' />
-      ) : (
-        <StyledButtonQuiz onClick={onClickButtonHandler}>
-          {t('Принять')}
-        </StyledButtonQuiz>
-      )}
+      <StyledButtonQuiz onClick={onClickButtonHandler} disabled={isDisabled}>
+        <div>{t('Принять')}</div>
+        <img src={rightArrow} alt='rightArrow' />
+      </StyledButtonQuiz>
     </>
   );
 };

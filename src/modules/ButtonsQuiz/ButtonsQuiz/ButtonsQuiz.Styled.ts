@@ -6,7 +6,7 @@ const StyledArticle = styled.article`
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  margin-top: 32px;
+  margin-top: 62px;
   max-width: 100%;
   padding: 5px;
 `;

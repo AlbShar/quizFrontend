@@ -20,15 +20,15 @@ const Quiz: FC<QuizProps> = ({lang}) => {
 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
-  const [isButtonAcceptVisibility, setButtonAcceptVisibility] =
-    useState<boolean>(false);
+  const [isBtnDisabled, setIsBtnDisabled] =
+    useState<boolean>(true);
 
   const showButtonAccept = () => {
-    setButtonAcceptVisibility(true);
+    setIsBtnDisabled(false);
   };
 
   const hideButtonAccept = () => {
-    setButtonAcceptVisibility(false);
+    setIsBtnDisabled(true);
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const Quiz: FC<QuizProps> = ({lang}) => {
             <Answers showButtonAccept={showButtonAccept} lang={lang}/>
             <ButtonsQuiz
               showButtonAccept={showButtonAccept}
-              isButtonAcceptVisibility={isButtonAcceptVisibility}
+              isBtnDisabled={isBtnDisabled}
               hideButtonAccept={hideButtonAccept}
             />
           </Context>
