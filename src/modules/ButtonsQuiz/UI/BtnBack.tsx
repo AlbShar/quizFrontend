@@ -37,7 +37,7 @@ const BtnBack: FC<TBtnBack> = ({ setIsBtnNextDisabled,isBtnBackDisabled, setIsBt
   return (
     <>
       {
-        <StyledButton id='btnBack' onClick={onClickBackBtn} disabled={isBtnBackDisabled}>
+        <StyledButton style={{justifyContent: "flex-start"}} id='btnBack' onClick={onClickBackBtn} disabled={isBtnBackDisabled}>
           <img
             src={leftArrow}
             alt='Кнопка назад'

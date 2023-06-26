@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 3px 10px;
   border: none;
   font: var(--font-button);
@@ -13,7 +16,7 @@ const StyledButton = styled.button`
   background-color: #585AFF;
   max-width: 190px;
   width: 100%;
-  max-height: 50px;
+  max-height: 56px;
 
   &:disabled {
     background-color: rgba(88, 90, 255, 0.49);
@@ -21,7 +24,7 @@ const StyledButton = styled.button`
   }
 
   @media screen and (min-width: 767.8px) {
-    padding: 16px 54px;
+    padding: 16px 18px;
     max-width: 300px;
   }
 `;

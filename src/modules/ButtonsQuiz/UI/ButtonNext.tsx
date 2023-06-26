@@ -16,7 +16,7 @@ const ButtonNext: FC<TButtonsQuiz> = ({ onClickButtonHandler, isBtnNextDisabled 
 
   return (
     <>
-      <StyledButton onClick={onClickButtonHandler} disabled={isBtnNextDisabled}>
+      <StyledButton style={{justifyContent: "flex-end"}} onClick={onClickButtonHandler} disabled={isBtnNextDisabled}>
         <StyledSpan>{t('Принять')}</StyledSpan>
         <img src={rightArrow} alt='rightArrow' />
       </StyledButton>
