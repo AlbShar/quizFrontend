@@ -1,4 +1,4 @@
-import { useContext, MouseEvent, FC } from 'react';
+import { useContext, MouseEvent, FC, useState } from 'react';
 
 import { ContextQuestionNumb } from '../../../components/Context';
 import { getIdUser } from '../../../helpers/getIdUser';
@@ -11,30 +11,33 @@ import { StyledButton, StyledSpan } from './Buttons.Styled';
 
 
 type TBtnBack = {
-  showButtonAccept: () => void;
+  setIsBtnNextDisabled: (item: boolean) => void;
+  setIsBtnBackDisabled: (item: boolean) => void;
+  isBtnBackDisabled: boolean;
 };
-const BtnBack: FC<TBtnBack> = ({ showButtonAccept }) => {
+const BtnBack: FC<TBtnBack> = ({ setIsBtnNextDisabled,isBtnBackDisabled, setIsBtnBackDisabled }) => {
 
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
     //eslint-disable-next-line
   ) || [1, () => {}];
 
+
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
     setCurrentQuestionNumb(--currentQuestionNumb);
-    showButtonAccept();
+    setIsBtnNextDisabled(false);
+    setIsBtnBackDisabled(true);
     highlightPreviousAnswer({
       idUser: getIdUser('idUser'),
       currentQuestionNumb,
       selectorAnswers: '#answersAll ul li',
     });
-    e.currentTarget.style.display = 'none';
   };
 
   return (
     <>
       {
-        <StyledButton id='btnBack' onClick={onClickBackBtn} disabled={currentQuestionNumb === 1}>
+        <StyledButton id='btnBack' onClick={onClickBackBtn} disabled={isBtnBackDisabled}>
           <img
             src={leftArrow}
             alt='Кнопка назад'

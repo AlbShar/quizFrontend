@@ -8,15 +8,15 @@ import { StyledButton, StyledSpan } from './Buttons.Styled';
 
 type TButtonsQuiz = {
   onClickButtonHandler: (e: MouseEvent) => void;
-  isDisabled: boolean
+  isBtnNextDisabled: boolean;
 };
 
-const ButtonNext: FC<TButtonsQuiz> = ({ onClickButtonHandler, isDisabled }) => {
+const ButtonNext: FC<TButtonsQuiz> = ({ onClickButtonHandler, isBtnNextDisabled }) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <StyledButton onClick={onClickButtonHandler} disabled={isDisabled}>
+      <StyledButton onClick={onClickButtonHandler} disabled={isBtnNextDisabled}>
         <StyledSpan>{t('Принять')}</StyledSpan>
         <img src={rightArrow} alt='rightArrow' />
       </StyledButton>
