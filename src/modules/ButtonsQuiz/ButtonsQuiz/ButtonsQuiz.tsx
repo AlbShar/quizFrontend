@@ -85,6 +85,7 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
           pageTo='/contact'
           onClick={onClickButtonHandler}
           id='btnFinish'
+          isDisabledBtn={isBtnNextDisabled}
         />
       ) : (
         <ButtonNext

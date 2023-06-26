@@ -10,19 +10,19 @@ const StyledButton = styled.button`
   color: white;
   text-decoration: none;
   border-radius: 7px;
-  background-color: rgba(88, 90, 255, 0.49);
+  background-color: #585AFF;
   max-width: 190px;
   width: 100%;
   max-height: 50px;
 
   &:disabled {
-    filter: grayscale(0.7);
+    background-color: rgba(88, 90, 255, 0.49);
     cursor: not-allowed;
   }
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 54px;
-    max-width: 260px;
+    max-width: 300px;
   }
 `;
 
