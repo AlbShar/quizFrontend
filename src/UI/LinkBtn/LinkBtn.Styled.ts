@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  padding: 8px 33px;
-  background-color: var(--color-button);
+  box-sizing: border-box;
+  padding: 3px 10px;
   border: none;
   font: var(--font-button);
   text-transform: uppercase;
   cursor: pointer;
   color: white;
   text-decoration: none;
+  border-radius: 7px;
+  background-color: rgba(88, 90, 255, 0.49);
+  max-width: 190px;
+  width: 100%;
+  max-height: 50px;
 
   &:disabled {
     filter: grayscale(0.7);
@@ -16,7 +21,8 @@ const StyledButton = styled.button`
   }
 
   @media screen and (min-width: 767.8px) {
-    padding: 12px 80px;
+    padding: 16px 54px;
+    max-width: 260px;
   }
 `;
 
