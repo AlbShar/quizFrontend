@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-const StyledButtonBack = styled.button`
+const StyledButton = styled.button`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 8px 13px;
+  justify-content: center;
+  padding: 8px 18px;
   border: none;
   gap: 8px;
   cursor: pointer;
@@ -20,28 +21,12 @@ const StyledButtonBack = styled.button`
   }
 
   @media screen and (min-width: 768.8px) {
-    padding: 16px 24px;
+    padding: 16px 18px;
     max-width: 170px;
     max-height: 56px;
-    gap: 23px;
+    gap: 30px;
   }
 `;
-
-const StyledArticle = styled.article`
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  margin-top: 32px;
-  max-width: 540px;
-  padding: 5px;
-
-  @media screen and (min-width: 768.8px) {
-    max-width: 100%;
-  }
-`;
-
 
 
 const StyledSpan = styled.span`
@@ -50,4 +35,4 @@ const StyledSpan = styled.span`
   text-transform: uppercase;
 `;
 
-export { StyledArticle, StyledButtonBack, StyledSpan };
+export { StyledButton, StyledSpan };

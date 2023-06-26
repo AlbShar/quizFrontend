@@ -2,15 +2,15 @@ import { useContext, FC, MouseEvent } from 'react';
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-import BtnBack from '../UI/BtnBack/BtnBack';
-import ButtonQuiz from '../UI/ButtonQuiz/ButtonQuiz';
-import ButtonLink from '../UI/ButtonLink/ButtonLink';
+import BtnBack from '../UI/BtnBack';
+import ButtonNext from '../UI/ButtonNext';
 import db from '../../../config/firebase/firebaseConfig';
 import { ContextQuestionNumb } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { setQunatityPause } from '../api/setQuantityPause';
 import { resetQuantityPause } from '../../../helpers/incrementQuantityPause';
+import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
 
 import { StyledArticle } from './ButtonsQuiz.Styled';
 
@@ -25,10 +25,9 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   showButtonAccept,
   hideButtonAccept,
 }) => {
- 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
-     //eslint-disable-next-line
+    //eslint-disable-next-line
   ) || [0, () => {}];
 
   let totalQuestionsNumbers = 0;
@@ -75,12 +74,19 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   return (
     <StyledArticle>
       <BtnBack showButtonAccept={showButtonAccept} />
-      {
-        (totalQuestionsNumbers === currentQuestionNumb ? (
-          <ButtonLink onClickButtonHandler={onClickButtonHandler} />
-        ) : (
-          <ButtonQuiz isDisabled={isBtnDisabled} onClickButtonHandler={onClickButtonHandler} />
-        ))}
+      {totalQuestionsNumbers === currentQuestionNumb ? (
+        <LinkBtn
+          text='Закончить тест'
+          pageTo='/contact'
+          onClick={onClickButtonHandler}
+          id='btnFinish'
+        />
+      ) : (
+        <ButtonNext
+          isDisabled={isBtnDisabled}
+          onClickButtonHandler={onClickButtonHandler}
+        />
+      )}
     </StyledArticle>
   );
 };
