@@ -73,8 +73,8 @@ const Timer: FC = () => {
   return (
     <StyledDivTimer ref={timerRef}>
       <StyledButtonPause onClick={onClickButtonHandler}>
-        {t('Паузa').toUpperCase()}
-        <img src={pause} alt="pause"/>
+        {t('Пауза')}
+        <img src={pause} alt='pause' />
       </StyledButtonPause>
       <StyledSpanTimer>{elementNumbersTimer}</StyledSpanTimer>
       {isModal && (

@@ -23,6 +23,7 @@ const StyledButtonPause = styled.button`
   display: inline-flex;
   gap: 10px;
   padding: 5px 10px;
+  text-transform: uppercase;
 
   @media screen and (min-width: 459.8px) {
     margin: 0 0 10px 0;
