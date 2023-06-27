@@ -19,13 +19,14 @@ const BtnBack: FC<TBtnBack> = ({
   setIsBtnBackDisabled,
 }) => {
   const { t } = useTranslation();
+  //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
     //eslint-disable-next-line
   ) || [1, () => {}];
 
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
-    setCurrentQuestionNumb(currentQuestionNumb-1);
+    setCurrentQuestionNumb(currentQuestionNumb - 1);
     setIsBtnNextDisabled(false);
     setIsBtnBackDisabled(true);
     highlightPreviousAnswer({

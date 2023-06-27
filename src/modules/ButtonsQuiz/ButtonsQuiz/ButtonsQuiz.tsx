@@ -1,10 +1,7 @@
 import { useContext, FC, MouseEvent, useState, useEffect } from 'react';
-import { ref } from 'firebase/database';
-import { onValue } from 'firebase/database';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
-import db from '../../../config/firebase/firebaseConfig';
 import { ContextQuestionNumb } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import { getIdUser } from '../../../helpers/getIdUser';
