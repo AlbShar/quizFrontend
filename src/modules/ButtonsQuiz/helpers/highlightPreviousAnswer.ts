@@ -12,7 +12,7 @@ const highlightPreviousAnswer = ({
   currentQuestionNumb,
   selectorAnswers,
 }: IPreviousAnswer) => {
-  const refer = `users/user${idUser}/answers/answer${currentQuestionNumb}`;
+  const refer = `users/user${idUser}/answers/answer${currentQuestionNumb-1}`;
   let userAnswerDb = '';
   try {
     onValue(
@@ -28,7 +28,7 @@ const highlightPreviousAnswer = ({
                 answerItem.setAttribute('data-useranswer', 'true');
               }
             });
-        }, 1);
+        }, 10);
       },
       {
         onlyOnce: true,

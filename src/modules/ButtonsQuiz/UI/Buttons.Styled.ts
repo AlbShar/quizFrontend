@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   &:disabled {
     background-color: #b7b7ff;
     cursor: not-allowed;
-  }
+}
 
   @media screen and (min-width: 768.8px) {
     padding: 16px 18px;

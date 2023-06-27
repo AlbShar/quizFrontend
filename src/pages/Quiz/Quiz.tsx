@@ -43,11 +43,11 @@ const Quiz: FC<QuizProps> = ({lang}) => {
           <Context value={[currentQuestionNumb, setCurrentQuestionNumb]}>
             <ScrollBar quizRef={quizRef} />
             <StyledArticle>
-              <QuantityThemeQuestions lang={lang}/>
+              <QuantityThemeQuestions lang={lang} />
               <Timer />
             </StyledArticle>
-            <NameQuestionAndImg lang={lang}/>
-            <Answers setIsBtnNextDisabled={setIsBtnNextDisabled} lang={lang}/>
+            <NameQuestionAndImg lang={lang} />
+            <Answers setIsBtnNextDisabled={setIsBtnNextDisabled} lang={lang} />
             <ButtonsQuiz
               setIsBtnNextDisabled={setIsBtnNextDisabled}
               isBtnNextDisabled={isBtnNextDisabled}
