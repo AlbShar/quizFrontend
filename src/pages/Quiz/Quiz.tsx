@@ -20,16 +20,8 @@ const Quiz: FC<QuizProps> = ({lang}) => {
 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
-  const [isBtnDisabled, setIsBtnDisabled] =
+  const [isBtnNextDisabled, setIsBtnNextDisabled] =
     useState<boolean>(true);
-
-  const showButtonAccept = () => {
-    setIsBtnDisabled(false);
-  };
-
-  const hideButtonAccept = () => {
-    setIsBtnDisabled(true);
-  };
 
   useEffect(() => {
     const showWarningWindow = (event: BeforeUnloadEvent) => {
@@ -55,11 +47,10 @@ const Quiz: FC<QuizProps> = ({lang}) => {
               <Timer />
             </StyledArticle>
             <NameQuestionAndImg lang={lang}/>
-            <Answers showButtonAccept={showButtonAccept} lang={lang}/>
+            <Answers setIsBtnNextDisabled={setIsBtnNextDisabled} lang={lang}/>
             <ButtonsQuiz
-              showButtonAccept={showButtonAccept}
-              isBtnDisabled={isBtnDisabled}
-              hideButtonAccept={hideButtonAccept}
+              setIsBtnNextDisabled={setIsBtnNextDisabled}
+              isBtnNextDisabled={isBtnNextDisabled}
             />
           </Context>
         </StyledSection>

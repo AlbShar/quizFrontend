@@ -1,22 +1,31 @@
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  padding: 8px 33px;
-  background-color: var(--color-button);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 10px;
   border: none;
   font: var(--font-button);
   text-transform: uppercase;
   cursor: pointer;
   color: white;
   text-decoration: none;
+  border-radius: 7px;
+  background-color: #585AFF;
+  max-width: 190px;
+  width: 100%;
+  max-height: 56px;
 
   &:disabled {
-    filter: grayscale(0.7);
+    background-color: rgba(88, 90, 255, 0.49);
     cursor: not-allowed;
   }
 
   @media screen and (min-width: 767.8px) {
-    padding: 12px 80px;
+    padding: 16px 18px;
+    max-width: 300px;
   }
 `;
 

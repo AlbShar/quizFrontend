@@ -1,40 +1,43 @@
-import { useContext, FC, MouseEvent } from 'react';
+import { useContext, FC, MouseEvent, useState, useEffect } from 'react';
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-import BtnBack from '../UI/BtnBack/BtnBack';
-import ButtonQuiz from '../UI/ButtonQuiz/ButtonQuiz';
-import ButtonLink from '../UI/ButtonLink/ButtonLink';
+import BtnBack from '../UI/BtnBack';
+import ButtonNext from '../UI/ButtonNext';
 import db from '../../../config/firebase/firebaseConfig';
 import { ContextQuestionNumb } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { setQunatityPause } from '../api/setQuantityPause';
 import { resetQuantityPause } from '../../../helpers/incrementQuantityPause';
+import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
+import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 import { StyledArticle } from './ButtonsQuiz.Styled';
 
 type TButtonsQuiz = {
-  isBtnDisabled: boolean;
-  showButtonAccept: () => void;
-  hideButtonAccept: () => void;
+  isBtnNextDisabled: boolean;
+  setIsBtnNextDisabled: (item: boolean) => void;
 };
 
 const ButtonsQuiz: FC<TButtonsQuiz> = ({
-  isBtnDisabled,
-  showButtonAccept,
-  hideButtonAccept,
+  isBtnNextDisabled,
+  setIsBtnNextDisabled,
 }) => {
- 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
-     //eslint-disable-next-line
+    //eslint-disable-next-line
   ) || [0, () => {}];
+  const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
+  const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 
-  let totalQuestionsNumbers = 0;
-  onValue(ref(db, 'questions'), (snapshot) => {
-    totalQuestionsNumbers = Object.entries(snapshot.val()).length;
-  });
+  useEffect(() => {
+    getTotalQuestionsNumb().then((questionsNumber) => {
+      if (questionsNumber) {
+        setTotalQuestionsNumbers(questionsNumber);
+      }
+    });
+  }, []);
 
   const sendAnswersToDb = () => {
     const answersItem =
@@ -59,28 +62,37 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   };
 
   const onClickButtonHandler = (e: MouseEvent) => {
-    const btnBack = document.querySelector('#btnBack');
     sendAnswersToDb();
+
     if (e.currentTarget.closest('#btnFinish')) {
       onClickTheLastQuestion();
       return;
     }
-    hideButtonAccept();
-
-    if ((btnBack as HTMLButtonElement)?.style.display === 'none') {
-      (btnBack as HTMLButtonElement).style.display = 'flex';
-    }
+    setIsBtnNextDisabled(true);
+    setIsBtnBackDisabled(false);
   };
 
   return (
     <StyledArticle>
-      <BtnBack showButtonAccept={showButtonAccept} />
-      {
-        (totalQuestionsNumbers === currentQuestionNumb ? (
-          <ButtonLink onClickButtonHandler={onClickButtonHandler} />
-        ) : (
-          <ButtonQuiz isDisabled={isBtnDisabled} onClickButtonHandler={onClickButtonHandler} />
-        ))}
+      <BtnBack
+        setIsBtnNextDisabled={setIsBtnNextDisabled}
+        isBtnBackDisabled={isBtnBackDisabled}
+        setIsBtnBackDisabled={setIsBtnBackDisabled}
+      />
+      {totalQuestionsNumbers === currentQuestionNumb ? (
+        <LinkBtn
+          text='Закончить тест'
+          pageTo='/contact'
+          onClick={onClickButtonHandler}
+          id='btnFinish'
+          isDisabledBtn={isBtnNextDisabled}
+        />
+      ) : (
+        <ButtonNext
+          isBtnNextDisabled={isBtnNextDisabled}
+          onClickButtonHandler={onClickButtonHandler}
+        />
+      )}
     </StyledArticle>
   );
 };

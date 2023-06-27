@@ -17,7 +17,7 @@ const LinkBtn: FC<LinkInt> = ({
   pageTo,
   onClick,
   id,
-  isDisabledBtn = false,
+  isDisabledBtn,
 }) => {
   const { t } = useTranslation();
 

@@ -15,11 +15,11 @@ type TState = {
 };
 
 type AnswersProps = {
-  showButtonAccept: () => void;
+  setIsBtnNextDisabled: (item: boolean) => void;
   lang: string,
 };
 
-const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
+const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled, lang }) => {
   const [state, setState] = useState<TState>({
     answers: [],
     loading: true,
@@ -39,7 +39,7 @@ const Answers: FC<AnswersProps> = ({ showButtonAccept, lang }) => {
     );
     const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
     if (!isCurrentAnswer) {
-      showButtonAccept();
+      setIsBtnNextDisabled(false)
     }
 
     removeAllAttributes(refAnswers);
