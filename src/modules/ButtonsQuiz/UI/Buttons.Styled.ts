@@ -15,7 +15,7 @@ const StyledButton = styled.button`
   max-height: 56px;
 
   &:disabled {
-    background-color: #B7B7FF;
+    background-color: #b7b7ff;
     cursor: not-allowed;
   }
 
@@ -26,7 +26,6 @@ const StyledButton = styled.button`
     gap: 30px;
   }
 `;
-
 
 const StyledSpan = styled.span`
   color: #fff;
