@@ -1,12 +1,11 @@
-import { useContext, MouseEvent, FC, useState } from 'react';
+import { useContext, MouseEvent, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ContextQuestionNumb } from '../../../components/Context';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 import leftArrow from "../../../assets/images/leftArrow.svg";
 
-
-// import { StyledButtonBack, StyledSpan } from './BtnBack.Styled';
 import { StyledButton, StyledSpan } from './Buttons.Styled';
 
 
@@ -16,7 +15,7 @@ type TBtnBack = {
   isBtnBackDisabled: boolean;
 };
 const BtnBack: FC<TBtnBack> = ({ setIsBtnNextDisabled,isBtnBackDisabled, setIsBtnBackDisabled }) => {
-
+  const { t } = useTranslation();
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextQuestionNumb,
     //eslint-disable-next-line
@@ -42,7 +41,7 @@ const BtnBack: FC<TBtnBack> = ({ setIsBtnNextDisabled,isBtnBackDisabled, setIsBt
             src={leftArrow}
             alt='Кнопка назад'
           />
-          <StyledSpan>Назад</StyledSpan>
+          <StyledSpan>{t('назад')}</StyledSpan>
         </StyledButton>
       }
     </>
