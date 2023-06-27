@@ -6,8 +6,13 @@ import { incrementQuantityPause } from '../../../helpers/incrementQuantityPause'
 import Modal from '../../../UI/Modal/Modal';
 import getFullNumb from '../helpers/getFullNumb';
 import Portal from '../../../components/Portal/Portal';
+import pause from "../../../assets/images/pause.svg"
 
-import { StyledDivTimer, StyledButtonPause } from './Timer.Styled';
+import {
+  StyledDivTimer,
+  StyledButtonPause,
+  StyledSpanTimer,
+} from './Timer.Styled';
 
 type TState = {
   isModal: boolean;
@@ -17,12 +22,11 @@ type TState = {
 
 const Timer: FC = () => {
   const { t } = useTranslation();
-  const [{ isCounting, isModal, timeLeft }, setState] =
-    useState<TState>({
-      isModal: false,
-      isCounting: true,
-      timeLeft: 0,
-    });
+  const [{ isCounting, isModal, timeLeft }, setState] = useState<TState>({
+    isModal: false,
+    isCounting: true,
+    timeLeft: 0,
+  });
   const timerRef = useRef<HTMLDivElement>(null);
 
   const hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
@@ -43,13 +47,13 @@ const Timer: FC = () => {
     setState((state) => ({ ...state, isCounting: true, isModal: false }));
   };
 
-   const onClickButtonHandler = () => {
+  const onClickButtonHandler = () => {
     stopTimer();
     incrementQuantityPause();
   };
 
   useEffect(() => {
-      const startTimer = () => {
+    const startTimer = () => {
       isCounting && setState((state) => ({ ...state, timeLeft: timeLeft + 1 }));
     };
 
@@ -66,11 +70,13 @@ const Timer: FC = () => {
     };
   }, [timeLeft, isCounting]);
 
- 
-
   return (
     <StyledDivTimer ref={timerRef}>
-      <span>{elementNumbersTimer}</span>
+      <StyledButtonPause onClick={onClickButtonHandler}>
+        {t('Паузa').toUpperCase()}
+        <img src={pause} alt="pause"/>
+      </StyledButtonPause>
+      <StyledSpanTimer>{elementNumbersTimer}</StyledSpanTimer>
       {isModal && (
         <Portal>
           <Modal
@@ -80,12 +86,8 @@ const Timer: FC = () => {
           />
         </Portal>
       )}
-      <StyledButtonPause onClick={onClickButtonHandler}>
-        {t('Пауза')}
-      </StyledButtonPause>
     </StyledDivTimer>
   );
 };
-
 
 export default Timer;
