@@ -1,4 +1,4 @@
-"use strict";(globalThis.webpackChunkquizfrontend=globalThis.webpackChunkquizfrontend||[]).push([[812],{1587:(e,t,n)=>{n.d(t,{Z:()=>l});var r=n(1087),i=n(7879),o=n(7691);const a=o.ZP.button`
+"use strict";(globalThis.webpackChunkquizfrontend=globalThis.webpackChunkquizfrontend||[]).push([[461],{1587:(e,t,n)=>{n.d(t,{Z:()=>l});var r=n(1087),i=n(7879),o=n(7691);const a=o.ZP.button`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -65,7 +65,7 @@ padding: 0 5px;
 @media screen and (min-width: 1299.8px) {
   max-width: 1190px;
 }
-`;var i=n(184);const o=e=>{let{children:t}=e;return(0,i.jsx)(r,{children:t})}},4530:(e,t,n)=>{n.d(t,{Z:()=>s});var r=n(2426),i=n(408);const o={apiKey:{NODE_ENV:"production",PUBLIC_URL:"/quizFrontend",WDS_SOCKET_HOST:void 0,WDS_SOCKET_PATH:void 0,WDS_SOCKET_PORT:void 0,FAST_REFRESH:!0}.REACT_APP_API_KEY,authDomain:"quizfrontend-ac9ee.firebaseapp.com",databaseURL:"https://quizfrontend-ac9ee-default-rtdb.europe-west1.firebasedatabase.app",projectId:"quizfrontend-ac9ee",storageBucket:"quizfrontend-ac9ee.appspot.com",messagingSenderId:"598479422146",appId:"1:598479422146:web:812463d02e2684ad0bf15b"},a=(0,r.ZF)(o),s=(0,i.N8)(a)},3218:(e,t,n)=>{n.d(t,{k:()=>r});const r=e=>{const t=localStorage.getItem(e);if(null===t||void 0===t)throw new Error(`Value not found for key '${e}'`);try{return`${t}`}catch(n){throw n instanceof Error?new Error(`Invalid JSON data for key '${e}': ${n.message}`):new Error(`Unknown error caught: ${n}`)}}},8812:(e,t,n)=>{n.r(t),n.d(t,{default:()=>Ge});var r=n(2791),i=n(9856),o=n(3366),a=n(7462),s=n(8182),l=n(2554),d=n(4419);function c(e){return String(e).match(/[\d.\-+]*\s*(.*)/)[1]||""}function u(e){return parseFloat(e)}var p=n(2065),x=n(6934),h=n(1402),m=n(5878),g=n(1217);function f(e){return(0,g.Z)("MuiSkeleton",e)}(0,m.Z)("MuiSkeleton",["root","text","rectangular","rounded","circular","pulse","wave","withChildren","fitContent","heightAuto"]);var b=n(184);const w=["animation","className","component","height","style","variant","width"];let v,j,y,k,Z=e=>e;const S=(0,l.F4)(v||(v=Z`
+`;var i=n(184);const o=e=>{let{children:t}=e;return(0,i.jsx)(r,{children:t})}},4530:(e,t,n)=>{n.d(t,{Z:()=>s});var r=n(2426),i=n(408);const o={apiKey:{NODE_ENV:"production",PUBLIC_URL:"/quizFrontend",WDS_SOCKET_HOST:void 0,WDS_SOCKET_PATH:void 0,WDS_SOCKET_PORT:void 0,FAST_REFRESH:!0}.REACT_APP_API_KEY,authDomain:"quizfrontend-ac9ee.firebaseapp.com",databaseURL:"https://quizfrontend-ac9ee-default-rtdb.europe-west1.firebasedatabase.app",projectId:"quizfrontend-ac9ee",storageBucket:"quizfrontend-ac9ee.appspot.com",messagingSenderId:"598479422146",appId:"1:598479422146:web:812463d02e2684ad0bf15b"},a=(0,r.ZF)(o),s=(0,i.N8)(a)},3218:(e,t,n)=>{n.d(t,{k:()=>r});const r=e=>{const t=localStorage.getItem(e);if(null===t||void 0===t)throw new Error(`Value not found for key '${e}'`);try{return`${t}`}catch(n){throw n instanceof Error?new Error(`Invalid JSON data for key '${e}': ${n.message}`):new Error(`Unknown error caught: ${n}`)}}},7461:(e,t,n)=>{n.r(t),n.d(t,{default:()=>Je});var r=n(2791),i=n(9856),o=n(3366),a=n(7462),s=n(8182),l=n(2554),d=n(4419);function c(e){return String(e).match(/[\d.\-+]*\s*(.*)/)[1]||""}function u(e){return parseFloat(e)}var p=n(2065),x=n(6934),h=n(1402),m=n(5878),g=n(1217);function f(e){return(0,g.Z)("MuiSkeleton",e)}(0,m.Z)("MuiSkeleton",["root","text","rectangular","rounded","circular","pulse","wave","withChildren","fitContent","heightAuto"]);var b=n(184);const w=["animation","className","component","height","style","variant","width"];let v,j,y,k,Z=e=>e;const S=(0,l.F4)(v||(v=Z`
   0% {
     opacity: 1;
   }
@@ -267,40 +267,53 @@ padding: 0 5px;
   position: absolute;
   top: 10px;
   right: 20px;
-`,Ce=e=>{let{title:t,subTitle:n,onClickHandler:r}=e;return(0,b.jsx)(je,{id:"notification",children:(0,b.jsxs)(ke,{children:[(0,b.jsx)(Ze,{className:"notification__title",children:t}),(0,b.jsx)(Pe,{className:"notification__close",onClick:r,children:"\u2716"}),(0,b.jsx)(Se,{className:"notification__text",children:n}),(0,b.jsx)(ye,{onClick:r,children:"\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c"})]})})},$e=e=>1===`${e}`.length?`0${e}`:`${e}`;var Ee=n(4164);const qe=e=>{let{children:t}=e;const n=document.createElement("article"),i=document.querySelector("#root");return null===i||void 0===i||i.append(n),(0,r.useEffect)((()=>()=>{n.remove()})),Ee.createPortal(t,n)},Ne=W.ZP.div`
+`,Ce=e=>{let{title:t,subTitle:n,onClickHandler:r}=e;return(0,b.jsx)(je,{id:"notification",children:(0,b.jsxs)(ke,{children:[(0,b.jsx)(Ze,{className:"notification__title",children:t}),(0,b.jsx)(Pe,{className:"notification__close",onClick:r,children:"\u2716"}),(0,b.jsx)(Se,{className:"notification__text",children:n}),(0,b.jsx)(ye,{onClick:r,children:"\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c"})]})})},$e=e=>1===`${e}`.length?`0${e}`:`${e}`;var Ee=n(4164);const qe=e=>{let{children:t}=e;const n=document.createElement("article"),i=document.querySelector("#root");return null===i||void 0===i||i.append(n),(0,r.useEffect)((()=>()=>{n.remove()})),Ee.createPortal(t,n)};const Ne=n.p+"static/media/pause.1aed0e09903948173d4a13b1390dee29.svg",Ae=W.ZP.div`
   font: var(--font-little-text-regular);
   text-align: center;
 
+  @media screen and (min-width: 767.8px) {
+    font: var(--font-text-regular);
+    width: 100%;
+    max-width: 274px;
+  }
+`,Re=W.ZP.button`
+  border-radius: 7px;
+  background-color: #b7b7ff;
+  color: #fff;
+  font: var(--font-little-text-regular);
+  font-weight: 700;
+  border: 1px solid var(--color-border-answer);
+  cursor: pointer;
+  margin: 0 0 5px 0;
+  display: inline-flex;
+  gap: 10px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+
   @media screen and (min-width: 459.8px) {
-    display: block;
+    margin: 0 0 10px 0;
   }
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-regular);
-  }
-`,Ae=W.ZP.button`
-  color: black;
-  font: var(--font-little-text-regular);
-  background-color: transparent;
-  border: 1px solid var(--color-border-answer);
-  cursor: pointer;
-  margin: 0 0 0 5px;
-
-  @media screen and (min-width: 459.8px) {
-    margin: 0 0 0 10px;
+    margin: 0 38px 0 0;
+    padding: 10px 14px;
+    gap: 36px;
+    font: var(--font-bold);
   }
 
   &:hover {
-    border: 1px solid #6768d7;
-    transition: all ease 0.3s;
+    background-color: #5557ff;
+    transition: all ease 0.5s;
   }
-`,Re=()=>{const{t:e}=(0,ue.$)(),[{isCounting:t,isModal:n,timeLeft:i},o]=(0,r.useState)({isModal:!1,isCounting:!0,timeLeft:0}),a=(0,r.useRef)(null),s=[`${$e(Math.floor(i/3600)%60)}:`,`${$e(Math.floor(i/60)%60)}:`,$e(Math.floor(i%60))].map(((e,t)=>(0,b.jsx)("span",{children:e},t+1))),l=e("\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a1_\u043f\u0430\u0443\u0437\u0430"),d=e("\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a2_\u043f\u0430\u0443\u0437\u0430");return(0,r.useEffect)((()=>{const e=setTimeout((()=>{t&&o((e=>({...e,timeLeft:i+1})))}),1e3);return()=>{(e=>{try{const t=localStorage.getItem("idUser"),n=(0,L.iH)(K.Z,`users/user${t}/userInfo`);(0,L.Vx)(n,{time:e})}catch(t){console.error(t)}})(i),clearTimeout(e)}}),[i,t]),(0,b.jsxs)(Ne,{ref:a,children:[(0,b.jsx)("span",{children:s}),n&&(0,b.jsx)(qe,{children:(0,b.jsx)(Ce,{title:l,subTitle:d,onClickHandler:()=>{o((e=>({...e,isCounting:!0,isModal:!1})))}})}),(0,b.jsx)(Ae,{onClick:()=>{o((e=>({...e,isCounting:!1,isModal:!0}))),we++},children:e("\u041f\u0430\u0443\u0437\u0430")})]})};const Be=W.ZP.div`
+`,Be=W.ZP.span`
+  font: var(--font-bold);
+`,Ie=()=>{const{t:e}=(0,ue.$)(),[{isCounting:t,isModal:n,timeLeft:i},o]=(0,r.useState)({isModal:!1,isCounting:!0,timeLeft:0}),a=(0,r.useRef)(null),s=[`${$e(Math.floor(i/3600)%60)}:`,`${$e(Math.floor(i/60)%60)}:`,$e(Math.floor(i%60))].map(((e,t)=>(0,b.jsx)("span",{children:e},t+1))),l=e("\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a1_\u043f\u0430\u0443\u0437\u0430"),d=e("\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a2_\u043f\u0430\u0443\u0437\u0430");return(0,r.useEffect)((()=>{const e=setTimeout((()=>{t&&o((e=>({...e,timeLeft:i+1})))}),1e3);return()=>{(e=>{try{const t=localStorage.getItem("idUser"),n=(0,L.iH)(K.Z,`users/user${t}/userInfo`);(0,L.Vx)(n,{time:e})}catch(t){console.error(t)}})(i),clearTimeout(e)}}),[i,t]),(0,b.jsxs)(Ae,{ref:a,children:[(0,b.jsxs)(Re,{onClick:()=>{o((e=>({...e,isCounting:!1,isModal:!0}))),we++},children:[e("\u041f\u0430\u0443\u0437\u0430"),(0,b.jsx)("img",{src:Ne,alt:"pause"})]}),(0,b.jsx)(Be,{children:s}),n&&(0,b.jsx)(qe,{children:(0,b.jsx)(Ce,{title:l,subTitle:d,onClickHandler:()=>{o((e=>({...e,isCounting:!0,isModal:!1})))}})})]})};const Te=W.ZP.div`
   box-sizing: border-box;
   height: 6px;
   background-color: var(--color-scroll-bar);
   border-radius: 2px 4px 4px 0;
   width: 370px;
-`,Ie=e=>{let{quizRef:t}=e;const n=(0,r.useContext)(X),i=n?n[0]:1,o=(0,r.useRef)(null);return(0,r.useEffect)((()=>{!async function(e){let{currentQuestionNumb:t,quizRef:n,scrollBarElementRef:r}=e;try{const e=await(0,he.r)(),i=n.current,o=r.current;if(i&&e&&o){const n=(i.clientWidth-parseInt(getComputedStyle(i).paddingRight)-parseInt(getComputedStyle(i).paddingLeft))/e;o.style.width=t*n+"px"}}catch(i){throw i instanceof Error?new Error(`${i.message}`):new Error(`Unknown error caught: ${i}`)}}({currentQuestionNumb:i,quizRef:t,scrollBarElementRef:o})})),(0,b.jsx)(Be,{ref:o})};var Te=n(9922),Fe=n(3218);const ze=n.p+"static/media/leftArrow.ffd35a492cc0b13d0f52b0e89016538e.svg",De=W.ZP.button`
+`,Fe=e=>{let{quizRef:t}=e;const n=(0,r.useContext)(X),i=n?n[0]:1,o=(0,r.useRef)(null);return(0,r.useEffect)((()=>{!async function(e){let{currentQuestionNumb:t,quizRef:n,scrollBarElementRef:r}=e;try{const e=await(0,he.r)(),i=n.current,o=r.current;if(i&&e&&o){const n=(i.clientWidth-parseInt(getComputedStyle(i).paddingRight)-parseInt(getComputedStyle(i).paddingLeft))/e;o.style.width=t*n+"px"}}catch(i){throw i instanceof Error?new Error(`${i.message}`):new Error(`Unknown error caught: ${i}`)}}({currentQuestionNumb:i,quizRef:t,scrollBarElementRef:o})})),(0,b.jsx)(Te,{ref:o})};var ze=n(9922),De=n(3218);const Me=n.p+"static/media/leftArrow.ffd35a492cc0b13d0f52b0e89016538e.svg",_e=W.ZP.button`
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -325,11 +338,11 @@ padding: 0 5px;
     max-height: 56px;
     gap: 30px;
   }
-`,Me=W.ZP.span`
+`,Qe=W.ZP.span`
   color: #fff;
   font: var(--font-bold);
   text-transform: uppercase;
-`,_e=e=>{let{setIsBtnNextDisabled:t,isBtnBackDisabled:n,setIsBtnBackDisabled:i}=e;const{t:o}=(0,ue.$)();let[a,s]=(0,r.useContext)(X)||[1,()=>{}];return(0,b.jsx)(b.Fragment,{children:(0,b.jsxs)(De,{style:{justifyContent:"flex-start"},id:"btnBack",onClick:e=>{s(a-1),t(!1),i(!0),(e=>{let{idUser:t,currentQuestionNumb:n,selectorAnswers:r}=e;const i=`users/user${t}/answers/answer${n-1}`;let o="";try{(0,L.jM)((0,L.iH)(K.Z,i),(e=>{setTimeout((()=>{document.querySelectorAll(r).forEach((t=>{o=e.val().userAnswer,t.textContent===o&&(t.style.backgroundColor="#B7B7FF",t.setAttribute("data-useranswer","true"))}))}),10)}),{onlyOnce:!0})}catch(a){if(!o)throw new Error(`The value of variable 'userAnswerDb' is ${o}. ${a}`);throw new Error(`Unknown mistake: ${a}`)}})({idUser:(0,Fe.k)("idUser"),currentQuestionNumb:a,selectorAnswers:"#answersAll ul li"})},disabled:n,children:[(0,b.jsx)("img",{src:ze,alt:"\u041a\u043d\u043e\u043f\u043a\u0430 \u043d\u0430\u0437\u0430\u0434"}),(0,b.jsx)(Me,{children:o("\u043d\u0430\u0437\u0430\u0434")})]})})};const Qe=n.p+"static/media/rightArrow.68d8ba69dceb545c90c48c34f34567b7.svg",Ue=e=>{let{onClickButtonHandler:t,isBtnNextDisabled:n}=e;const{t:r}=(0,ue.$)();return(0,b.jsx)(b.Fragment,{children:(0,b.jsxs)(De,{style:{justifyContent:"flex-end"},onClick:t,disabled:n,children:[(0,b.jsx)(Me,{children:r("\u041f\u0440\u0438\u043d\u044f\u0442\u044c")}),(0,b.jsx)("img",{src:Qe,alt:"rightArrow"})]})})},He=async e=>{var t,n;let{currentQuestionNumb:r,selectorQuestion:i,userAnswer:o,selectorTheme:a,idUser:s}=e;const l=null===(t=document.querySelector(a))||void 0===t?void 0:t.textContent,d=null===(n=document.querySelector(i))||void 0===n?void 0:n.textContent,c=await(async e=>{try{var t;const n=null===(t=document.querySelector("html"))||void 0===t?void 0:t.getAttribute("lang");return await new Promise((function(t,r){(0,L.jM)((0,L.iH)(K.Z,`questions/question${e}/${n}/rightAnswer`),(e=>{const n=e.val();t(n)}))}))}catch(n){console.error(n)}})(r);try{const e=(0,L.iH)(K.Z,`users/user${s}/answers/answer${r}`);(0,L.t8)(e,{question:d,userAnswer:o,theme:l,point:c===o?1:0,quantityPause:we})}catch(u){throw l?d?new Error(`Unknown mistake: ${u}`):new Error(`The value of variable 'question' is ${d}. ${u}`):new Error(`The value of variable 'theme' is ${l}. ${u}`)}};var Oe=n(1587);const Le=W.ZP.article`
+`,Ue=e=>{let{setIsBtnNextDisabled:t,isBtnBackDisabled:n,setIsBtnBackDisabled:i}=e;const{t:o}=(0,ue.$)();let[a,s]=(0,r.useContext)(X)||[1,()=>{}];return(0,b.jsx)(b.Fragment,{children:(0,b.jsxs)(_e,{style:{justifyContent:"flex-start"},id:"btnBack",onClick:e=>{s(a-1),t(!1),i(!0),(e=>{let{idUser:t,currentQuestionNumb:n,selectorAnswers:r}=e;const i=`users/user${t}/answers/answer${n-1}`;let o="";try{(0,L.jM)((0,L.iH)(K.Z,i),(e=>{setTimeout((()=>{document.querySelectorAll(r).forEach((t=>{o=e.val().userAnswer,t.textContent===o&&(t.style.backgroundColor="#B7B7FF",t.setAttribute("data-useranswer","true"))}))}),10)}),{onlyOnce:!0})}catch(a){if(!o)throw new Error(`The value of variable 'userAnswerDb' is ${o}. ${a}`);throw new Error(`Unknown mistake: ${a}`)}})({idUser:(0,De.k)("idUser"),currentQuestionNumb:a,selectorAnswers:"#answersAll ul li"})},disabled:n,children:[(0,b.jsx)("img",{src:Me,alt:"\u041a\u043d\u043e\u043f\u043a\u0430 \u043d\u0430\u0437\u0430\u0434"}),(0,b.jsx)(Qe,{children:o("\u043d\u0430\u0437\u0430\u0434")})]})})};const He=n.p+"static/media/rightArrow.68d8ba69dceb545c90c48c34f34567b7.svg",Oe=e=>{let{onClickButtonHandler:t,isBtnNextDisabled:n}=e;const{t:r}=(0,ue.$)();return(0,b.jsx)(b.Fragment,{children:(0,b.jsxs)(_e,{style:{justifyContent:"flex-end"},onClick:t,disabled:n,children:[(0,b.jsx)(Qe,{children:r("\u041f\u0440\u0438\u043d\u044f\u0442\u044c")}),(0,b.jsx)("img",{src:He,alt:"rightArrow"})]})})},Le=async e=>{var t,n;let{currentQuestionNumb:r,selectorQuestion:i,userAnswer:o,selectorTheme:a,idUser:s}=e;const l=null===(t=document.querySelector(a))||void 0===t?void 0:t.textContent,d=null===(n=document.querySelector(i))||void 0===n?void 0:n.textContent,c=await(async e=>{try{var t;const n=null===(t=document.querySelector("html"))||void 0===t?void 0:t.getAttribute("lang");return await new Promise((function(t,r){(0,L.jM)((0,L.iH)(K.Z,`questions/question${e}/${n}/rightAnswer`),(e=>{const n=e.val();t(n)}))}))}catch(n){console.error(n)}})(r);try{const e=(0,L.iH)(K.Z,`users/user${s}/answers/answer${r}`);(0,L.t8)(e,{question:d,userAnswer:o,theme:l,point:c===o?1:0,quantityPause:we})}catch(u){throw l?d?new Error(`Unknown mistake: ${u}`):new Error(`The value of variable 'question' is ${d}. ${u}`):new Error(`The value of variable 'theme' is ${l}. ${u}`)}};var Ke=n(1587);const We=W.ZP.article`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -338,7 +351,7 @@ padding: 0 5px;
   margin-top: 62px;
   max-width: 100%;
   padding: 5px;
-`,Ke=e=>{let{isBtnNextDisabled:t,setIsBtnNextDisabled:n}=e;const[i,o]=(0,r.useContext)(X)||[0,()=>{}],[a,s]=(0,r.useState)(0),[l,d]=(0,r.useState)(!0);(0,r.useEffect)((()=>{(0,he.r)().then((e=>{e&&s(e)}))}),[]);const c=()=>{(()=>{try{const e=localStorage.getItem("idUser"),t=(0,L.iH)(K.Z,`users/user${e}/userInfo`);(0,L.t8)(t,{quiantityPause:we})}catch(e){console.error(e)}})(),we=0},u=e=>{document.querySelectorAll("#answersAll ul li").forEach((e=>{e.dataset.useranswer&&(o(i+1),He({currentQuestionNumb:i,selectorQuestion:"#questionTitle",userAnswer:e.textContent||"No anwser",selectorTheme:"#themeQuestion",idUser:(0,Fe.k)("idUser")}))})),e.currentTarget.closest("#btnFinish")?c():(n(!0),d(!1))};return(0,b.jsxs)(Le,{children:[(0,b.jsx)(_e,{setIsBtnNextDisabled:n,isBtnBackDisabled:l,setIsBtnBackDisabled:d}),a===i?(0,b.jsx)(Oe.Z,{text:"\u0417\u0430\u043a\u043e\u043d\u0447\u0438\u0442\u044c \u0442\u0435\u0441\u0442",pageTo:"/contact",onClick:u,id:"btnFinish",isDisabledBtn:t}):(0,b.jsx)(Ue,{isBtnNextDisabled:t,onClickButtonHandler:u})]})},We=W.ZP.section`
+`,Ve=e=>{let{isBtnNextDisabled:t,setIsBtnNextDisabled:n}=e;const[i,o]=(0,r.useContext)(X)||[0,()=>{}],[a,s]=(0,r.useState)(0),[l,d]=(0,r.useState)(!0);(0,r.useEffect)((()=>{(0,he.r)().then((e=>{e&&s(e)}))}),[]);const c=()=>{(()=>{try{const e=localStorage.getItem("idUser"),t=(0,L.iH)(K.Z,`users/user${e}/userInfo`);(0,L.t8)(t,{quiantityPause:we})}catch(e){console.error(e)}})(),we=0},u=e=>{document.querySelectorAll("#answersAll ul li").forEach((e=>{e.dataset.useranswer&&(o(i+1),Le({currentQuestionNumb:i,selectorQuestion:"#questionTitle",userAnswer:e.textContent||"No anwser",selectorTheme:"#themeQuestion",idUser:(0,De.k)("idUser")}))})),e.currentTarget.closest("#btnFinish")?c():(n(!0),d(!1))};return(0,b.jsxs)(We,{children:[(0,b.jsx)(Ue,{setIsBtnNextDisabled:n,isBtnBackDisabled:l,setIsBtnBackDisabled:d}),a===i?(0,b.jsx)(Ke.Z,{text:"\u0417\u0430\u043a\u043e\u043d\u0447\u0438\u0442\u044c \u0442\u0435\u0441\u0442",pageTo:"/contact",onClick:u,id:"btnFinish",isDisabledBtn:t}):(0,b.jsx)(Oe,{isBtnNextDisabled:t,onClickButtonHandler:u})]})},Ge=W.ZP.section`
   background-color: #fff;
   padding: 0 8px 47px 8px;
   margin: 0 0 15px 0;
@@ -348,7 +361,7 @@ padding: 0 5px;
     padding: 0 40px 55px 40px;
     margin: 0 0 72px 0;
   }
-`,Ve=W.ZP.article`
+`,Xe=W.ZP.article`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -358,7 +371,7 @@ padding: 0 5px;
   @media screen and (min-width: 459.8px) {
     max-width: 100%;
   }
-`,Ge=e=>{let{lang:t}=e;const[n,o]=(0,r.useState)(1),a=(0,r.useRef)(null),[s,l]=(0,r.useState)(!0);return(0,r.useEffect)((()=>{const e=e=>{e.preventDefault(),e.returnValue="\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u0443 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443? \u0412\u0441\u0435 \u043d\u0435\u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u043e\u0442\u0435\u0440\u044f\u043d\u044b."};return window.addEventListener("beforeunload",e),()=>{window.removeEventListener("beforeunload",e)}}),[]),(0,b.jsx)(Te.P,{children:(0,b.jsx)(i.Z,{children:(0,b.jsx)(We,{ref:a,children:(0,b.jsxs)(J,{value:[n,o],children:[(0,b.jsx)(Ie,{quizRef:a}),(0,b.jsxs)(Ve,{children:[(0,b.jsx)(be,{lang:t}),(0,b.jsx)(Re,{})]}),(0,b.jsx)(ce,{lang:t}),(0,b.jsx)(ne,{setIsBtnNextDisabled:l,lang:t}),(0,b.jsx)(Ke,{setIsBtnNextDisabled:l,isBtnNextDisabled:s})]})})})})}},9922:(e,t,n)=>{n.d(t,{P:()=>r});const r=n(7691).ZP.main`
+`,Je=e=>{let{lang:t}=e;const[n,o]=(0,r.useState)(1),a=(0,r.useRef)(null),[s,l]=(0,r.useState)(!0);return(0,r.useEffect)((()=>{const e=e=>{e.preventDefault(),e.returnValue="\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u0443 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443? \u0412\u0441\u0435 \u043d\u0435\u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u043e\u0442\u0435\u0440\u044f\u043d\u044b."};return window.addEventListener("beforeunload",e),()=>{window.removeEventListener("beforeunload",e)}}),[]),(0,b.jsx)(ze.P,{children:(0,b.jsx)(i.Z,{children:(0,b.jsx)(Ge,{ref:a,children:(0,b.jsxs)(J,{value:[n,o],children:[(0,b.jsx)(Fe,{quizRef:a}),(0,b.jsxs)(Xe,{children:[(0,b.jsx)(be,{lang:t}),(0,b.jsx)(Ie,{})]}),(0,b.jsx)(ce,{lang:t}),(0,b.jsx)(ne,{setIsBtnNextDisabled:l,lang:t}),(0,b.jsx)(Ve,{setIsBtnNextDisabled:l,isBtnNextDisabled:s})]})})})})}},9922:(e,t,n)=>{n.d(t,{P:()=>r});const r=n(7691).ZP.main`
   flex: 1 1 auto;
 `}}]);
-//# sourceMappingURL=812.026b6e53.chunk.js.map
+//# sourceMappingURL=461.830fbbaa.chunk.js.map
