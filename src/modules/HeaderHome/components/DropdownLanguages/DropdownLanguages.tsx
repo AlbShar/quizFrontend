@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext} from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 
 import { ContextLanguage } from '../../../../components/Context';
@@ -6,7 +6,8 @@ import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
-  const [, setLang] = useContext(ContextLanguage) ?? [null, () => {}];
+  const [, setLang]: [string, (lang: string) => void] =
+    useContext(ContextLanguage);
 
   type tMapLanguage = {
     [key: string]: string;

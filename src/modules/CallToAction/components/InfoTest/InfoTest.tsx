@@ -7,11 +7,7 @@ import Spinner from '../../../../UI/Spinner/Spinner';
 
 import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
 
-export interface IInfoTestBlock {
-  alt: string;
-  text: string;
-  srcIcon: string;
-}
+import type {InfoTestBlock} from "../../../../types/types";
 
 const InfoTest: FC = () => {
   const { t } = useTranslation();
@@ -22,23 +18,23 @@ const InfoTest: FC = () => {
   const errorMessage =  "ERROR";
   
 
- const infoTestBlock: IInfoTestBlock[] = [
-    {
-      text: `~ ${quantityQuestions} ${t('Время')}`,
-      srcIcon: require('../../icons/clock.png'),
-      alt: 'icon of clock',
-    },
-    {
-      text: t('Возрастающая_сложность'),
-      srcIcon: require('../../icons/helpcircle.png'),
-      alt: 'icon of question in circle',
-    },
-    {
-      text: `${quantityQuestions} ${t('Вопросов')}`,
-      srcIcon: require('../../icons/barchart.png'),
-      alt: 'icon of bar chart',
-    },
-  ];
+ const infoTestBlock: InfoTestBlock[] = [
+   {
+     text: `~ ${quantityQuestions} ${t('Время')}`,
+     srcIcon: require('../../icons/clock.png'),
+     alt: 'icon of clock',
+   },
+   {
+     text: t('Возрастающая_сложность'),
+     srcIcon: require('../../icons/helpcircle.png'),
+     alt: 'icon of question in circle',
+   },
+   {
+     text: `${quantityQuestions} ${t('Вопросов')}`,
+     srcIcon: require('../../icons/barchart.png'),
+     alt: 'icon of bar chart',
+   },
+ ];
 
   const view = infoTestBlock.map((item, index) => {
     return (

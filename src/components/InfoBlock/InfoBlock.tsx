@@ -8,7 +8,7 @@ import {
   StyledDivWrapper,
 } from './InfoBlock.styled';
 
-interface Info {
+type InfoBlockProps =  {
   title: string;
   text: string;
   imgSrc: string;
@@ -17,7 +17,13 @@ interface Info {
   children?: ReactNode;
 }
 
-const InfoBlock: FC<Info> = ({ title, text, imgSrc, imgAlt, idForText }) => {
+const InfoBlock: FC<InfoBlockProps> = ({
+  title,
+  text,
+  imgSrc,
+  imgAlt,
+  idForText,
+}) => {
   return (
     <StyledFeatureArticle>
       <details>

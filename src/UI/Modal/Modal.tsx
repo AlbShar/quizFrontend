@@ -9,12 +9,12 @@ import {
   StyledButtonModal,
 } from './Modal.Styled';
 
-interface IModalProps {
+type ModalProps = {
   title: string;
   subTitle: string;
   onClickHandler?: () => void;
 }
-const Modal: FC<IModalProps> = ({ title, subTitle, onClickHandler }) => {
+const Modal: FC<ModalProps> = ({ title, subTitle, onClickHandler }) => {
   return (
     <StyleDivModal id='notification'>
       <StyledDivWrapper>

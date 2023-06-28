@@ -4,13 +4,16 @@ import { setWidthScrollBar } from '../helpers/setWidthScrollBar';
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
 
 import { StyledDivScrollBar } from './SrollBar.Styled';
-interface IScrollBar {
+
+type ScrollBarProps = {
   quizRef: RefObject<HTMLTableSectionElement>;
 }
-const ScrollBar: FC<IScrollBar> = ({ quizRef }) => {
-  const contextValue: [number, (numb: number) => void] | null =
-    useContext(ContextCurrentQuestionNumb);
-  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+
+const ScrollBar: FC<ScrollBarProps> = ({ quizRef }) => {
+  
+ const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
+   ContextCurrentQuestionNumb
+ );
   const scrollBarElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

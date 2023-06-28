@@ -22,14 +22,10 @@ type TState = {
 const QuantityThemeQuestions: FC = () => {
   const { t } = useTranslation();
 
-  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
+  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
-  const currentValueLanguage: [string, (lang: string) => void] | null =
-    useContext(ContextLanguage);
-
-  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
-  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const [state, setState] = useState<TState>({
     loading: true,

@@ -1,12 +1,10 @@
-import React, { FC } from 'react';
-
 import { ContainerStyled } from './Container.styled';
 
-interface IContainer {
+type ContainerProps = {
   children: React.ReactNode;
-}
+};
 
-const Container: FC<IContainer> = ({ children }) => {
+const Container = ({ children }: ContainerProps): JSX.Element => {
   return <ContainerStyled>{children}</ContainerStyled>;
 };
 

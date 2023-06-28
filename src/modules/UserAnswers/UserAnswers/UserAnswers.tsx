@@ -38,10 +38,7 @@ type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
 const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
-    const currentValueLanguage: [string, (lang: string) => void] | null =
-      useContext(ContextLanguage);
-
-    const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -148,10 +145,12 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
     return updateUserAnswers;
   };
 
-  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB, lang: string) => {
-     const updateAnswerOptions = Object.fromEntries(
+  const transformData = (
+    res: TAnswerOptionsLangDB | TInfoQuiestionsDB,
+    lang: string,
+  ) => {
+    const updateAnswerOptions = Object.fromEntries(
       Object.entries(res).map(([key, value]) => [
-        
         getNumberFromKey(key),
         value[`${lang}`],
       ]),

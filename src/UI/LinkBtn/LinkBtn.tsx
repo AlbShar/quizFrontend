@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { MouseEvent } from 'react';
 import { StyledButton } from './LinkBtn.Styled';
 
-interface LinkInt {
+type LinkBtnProps = {
   text: string;
   id?: string;
   pageTo: string;
   onClick?: (e: MouseEvent) => void;
   isDisabledBtn?: boolean;
-}
-const LinkBtn: FC<LinkInt> = ({
+};
+const LinkBtn: FC<LinkBtnProps> = ({
   text,
   pageTo,
   onClick,

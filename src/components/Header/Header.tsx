@@ -1,12 +1,10 @@
-import { FC } from 'react';
-
 import { HeaderStyled } from './Header.Styled';
 
-interface IHeader {
+type HeaderProps = {
   children: React.ReactNode;
   height?: number;
 }
-const Header: FC<IHeader> = ({ children, height }) => {
+const Header = ({ children, height }: HeaderProps): JSX.Element => {
   return <HeaderStyled height={height}>{children}</HeaderStyled>;
 };
 

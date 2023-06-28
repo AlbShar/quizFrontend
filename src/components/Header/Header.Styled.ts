@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-interface IHeader {
+type HeaderStyledProps = {
   height?: number;
-}
-export const HeaderStyled = styled.header<IHeader>`
+};
+export const HeaderStyled = styled.header<HeaderStyledProps>`
   box-sizing: border-box;
   background: #EEEEFF;
   width: 100%;

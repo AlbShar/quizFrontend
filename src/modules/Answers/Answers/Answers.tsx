@@ -25,14 +25,11 @@ const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled }) => {
     loading: true,
     error: false,
   });
-  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
+  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
-  const currentValueLanguage: [string, (lang: string) => void] | null =
-    useContext(ContextLanguage);
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
-  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
-  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
   const refAnswers: HTMLLIElement[] = [];
   const setRefAnswer = (elem: HTMLLIElement) => {
     refAnswers.push(elem as HTMLLIElement);

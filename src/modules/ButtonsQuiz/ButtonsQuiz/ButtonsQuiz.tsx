@@ -22,9 +22,8 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   setIsBtnNextDisabled,
 }) => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextCurrentQuestionNumb,
-    //eslint-disable-next-line
-  ) || [0, () => {}];
+    ContextCurrentQuestionNumb
+  );
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 

@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { StyledButton } from './Button.Styled';
 
-interface Btn {
+type ButtonProps = {
   text: string;
   action: () => void;
 }
-const Button: FC<Btn> = ({ text, action }) => {
+const Button: FC<ButtonProps> = ({ text, action }) => {
   const { t } = useTranslation();
 
   return (

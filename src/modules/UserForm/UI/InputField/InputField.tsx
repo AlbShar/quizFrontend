@@ -6,7 +6,7 @@ import { clearAnimateInputAndText } from '../../helpers/clearAnimateInputAndText
 
 import { StyledInputField } from './InputField.Style';
 
-interface InputFieldProps {
+type InputFieldProps = {
   type: string;
   id: string;
   name: string;

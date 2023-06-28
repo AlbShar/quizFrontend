@@ -33,11 +33,11 @@ const StyledPicture = styled.picture`
   }
 `;
 
-interface Img {
+type StyledImgProps = {
   currentQuestionNumb?: number;
 }
 
-const StyledImg = styled.img<Img>`
+const StyledImg = styled.img<StyledImgProps>`
   width: 100%;
   height: auto;
   border-radius: 5px;

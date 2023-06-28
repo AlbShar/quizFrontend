@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, FC } from 'react';
+import { useState, useRef, useEffect} from 'react';
 
 import Container from '../../components/Container/Container';
 import Answers from '../../modules/Answers/index';

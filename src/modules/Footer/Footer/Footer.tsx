@@ -13,15 +13,14 @@ import {
   StyledUl,
 } from './Footer.Styled';
 
+import type { FooterInfo } from '../../../types/types';
+
 const Footer = () => {
-  interface InfoFooter {
-    text: string;
-    link: '/reportbug' | '/reestablish' | '/politics';
-  }
+  
 
   const { t } = useTranslation();
 
-  const infoMiddleFooter: InfoFooter[] = [
+  const infoMiddleFooter: FooterInfo[] = [
     { text: t('Сообщить'), link: '/reportbug' },
     { text: t('Восстановить'), link: '/reestablish' },
     { text: t('Политика'), link: '/politics' },

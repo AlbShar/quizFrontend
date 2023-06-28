@@ -5,7 +5,7 @@ import { quiantityPause } from '../../../helpers/incrementQuantityPause';
 
 import { getRightAnswerDB } from './getRightAnswerDB';
 
-interface IUserAnswer {
+type UserAnswerProps = {
   currentQuestionNumb: number;
   selectorQuestion: '#questionTitle';
   userAnswer: string;
@@ -19,7 +19,7 @@ const sendUserAnswerDB = async ({
   userAnswer,
   selectorTheme,
   idUser,
-}: IUserAnswer) => {
+}: UserAnswerProps): Promise<void> => {
   const theme =
     document.querySelector<HTMLSpanElement>(selectorTheme)?.textContent;
   const question =

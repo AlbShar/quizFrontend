@@ -1,4 +1,4 @@
-import { useEffect, useContext, FC, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
@@ -20,16 +20,11 @@ type IState = {
   error: boolean;
 };
 
-
 const NameQuestionAndImg = () => {
-  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
-    ContextCurrentQuestionNumb,
+  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
+    ContextCurrentQuestionNumb
   );
-  const currentValueLanguage: [string, (lang: string) => void] | null =
-    useContext(ContextLanguage);
-
-  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
-  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const [state, setState] = useState<IState>({
     question: '',
@@ -39,9 +34,7 @@ const NameQuestionAndImg = () => {
   });
   const errorMessage = 'ERROR!!';
   const error = state.error ? errorMessage : null;
-  const spinner = state.loading ? (
-    <SkeletonQuestion/>
-  ) : null;
+  const spinner = state.loading ? <SkeletonQuestion /> : null;
 
   const view = () => {
     if (!state.srcImg) {
@@ -124,7 +117,6 @@ const NameQuestionAndImg = () => {
   };
 
   useEffect(() => {
-
     Promise.allSettled([
       getSrcImg(currentQuestionNumb, lang),
       getNameQuestion(currentQuestionNumb, lang),

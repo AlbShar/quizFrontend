@@ -21,9 +21,8 @@ const BtnBack: FC<TBtnBack> = ({
   const { t } = useTranslation();
   //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextCurrentQuestionNumb,
-    //eslint-disable-next-line
-  ) || [1, () => {}];
+    ContextCurrentQuestionNumb
+  );
 
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
     setCurrentQuestionNumb(currentQuestionNumb - 1);

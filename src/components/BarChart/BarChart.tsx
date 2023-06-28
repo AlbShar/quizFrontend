@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,7 +27,7 @@ type BarChartProps = {
   pointsByTheme: TPointsByThemes | null;
 };
 
-const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
+const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const colors = ['black', 'red', 'blue'];
 

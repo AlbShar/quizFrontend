@@ -1,24 +1,13 @@
 import { createContext } from 'react';
 
+const ContextCurrentQuestionNumb = createContext<
+  [number, (item: number) => void]
+  // eslint-disable-next-line
+>([1, () => {}]);
 
-const ContextCurrentQuestionNumb = createContext<[number, (item: number) => void] | null>(null);
-
-const ContextLanguage = createContext<[string, (item: string) => void] | null>(null);
-
+const ContextLanguage = createContext<[string, (item: string) => void]>(
+  // eslint-disable-next-line
+  ['ru', () => {}],
+);
 
 export { ContextCurrentQuestionNumb, ContextLanguage };
-
-/*type ContextProps<T> = {
-  children: React.ReactNode;
-  value: [T, (item: T) => void];
-};
-
-const Context = <T,>({ children, value }: ContextProps<T>): JSX.Element => {
-  return (
-    <ContextCurrentQuestionNumb.Provider value={value}>
-      {children}
-    </ContextCurrentQuestionNumb.Provider>
-  );
-};
-
-export default Context;*/
