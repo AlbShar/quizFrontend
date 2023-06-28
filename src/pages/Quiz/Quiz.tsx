@@ -7,16 +7,14 @@ import QuantityThemeQuestions from '../../modules/QuantityThemeQuestions/index';
 import Timer from '../../modules/Timer/index';
 import ScrollBar from '../../modules/ScrollBar/index';
 import { StyledMain } from '../../styles/Main.Styled';
-import Context from '../../components/Context';
+import {ContextCurrentQuestionNumb} from '../../components/Context';
 import ButtonsQuiz from '../../modules/ButtonsQuiz/index';
 
 import { StyledSection, StyledArticle } from './Quiz.Styled';
 
-type QuizProps = {
-  lang: string
-};
 
-const Quiz: FC<QuizProps> = ({lang}) => {
+
+const Quiz = () => {
 
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
@@ -40,19 +38,19 @@ const Quiz: FC<QuizProps> = ({lang}) => {
     <StyledMain>
       <Container>
         <StyledSection ref={quizRef}>
-          <Context value={[currentQuestionNumb, setCurrentQuestionNumb]}>
+          <ContextCurrentQuestionNumb.Provider value={[currentQuestionNumb, setCurrentQuestionNumb]}>
             <ScrollBar quizRef={quizRef} />
             <StyledArticle>
-              <QuantityThemeQuestions lang={lang} />
+              <QuantityThemeQuestions/>
               <Timer />
             </StyledArticle>
-            <NameQuestionAndImg lang={lang} />
-            <Answers setIsBtnNextDisabled={setIsBtnNextDisabled} lang={lang} />
+            <NameQuestionAndImg/>
+            <Answers setIsBtnNextDisabled={setIsBtnNextDisabled}/>
             <ButtonsQuiz
               setIsBtnNextDisabled={setIsBtnNextDisabled}
               isBtnNextDisabled={isBtnNextDisabled}
             />
-          </Context>
+          </ContextCurrentQuestionNumb.Provider>
         </StyledSection>
       </Container>
     </StyledMain>

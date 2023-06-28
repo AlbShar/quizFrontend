@@ -1,7 +1,8 @@
 import { useEffect, useContext, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import { ContextLanguage } from '../../../components/Context';
 import SkeletonTheme from '../UI/SkeletonTheme';
 import { getThemeQuestion } from '../api/getThemeQuestion';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
@@ -18,15 +19,17 @@ type TState = {
   totalQuestionNumber: number | null;
 };
 
-type QuantityThemeQuestionsProps = {
-  lang: string
-};
-
-const QuantityThemeQuestions: FC<QuantityThemeQuestionsProps> = ({lang}) => {
+const QuantityThemeQuestions: FC = () => {
   const { t } = useTranslation();
-  const contextValue: [number, (numb: number) => void] | null =
-    useContext(ContextQuestionNumb);
-  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+
+  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
+    ContextCurrentQuestionNumb,
+  );
+  const currentValueLanguage: [string, (lang: string) => void] | null =
+    useContext(ContextLanguage);
+
+  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
+  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
 
   const [state, setState] = useState<TState>({
     loading: true,
@@ -45,12 +48,9 @@ const QuantityThemeQuestions: FC<QuantityThemeQuestionsProps> = ({lang}) => {
           {state.questionTheme}
         </StyledSpanThemeQuestion>
       </StyledH1>
-      
     );
   };
-  const skeleton = state.loading ? (
-    <SkeletonTheme/>
-  ) : null;
+  const skeleton = state.loading ? <SkeletonTheme /> : null;
   const content = !state.loading ? view() : null;
 
   const dataLoaded = (res) => {

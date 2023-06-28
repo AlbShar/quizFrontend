@@ -16,11 +16,9 @@ import {
 
 import type { TPointsByThemes } from '../../types/types';
 
-type ResultsProps = {
-  lang: string
-};
 
-const Results: FC<ResultsProps> = ({lang}) => {
+
+const Results = () => {
   const [rightAnswers, setRightAnswers] = useState<number>(0);
   const [pointsByTheme, setPointsByTheme] = useState<TPointsByThemes | null>(
     null,
@@ -45,7 +43,7 @@ const Results: FC<ResultsProps> = ({lang}) => {
               <Doughnut rightAnswers={rightAnswers} />
             </StyledSection>
           </Container>
-          <UserAnswers setPointsByTheme={setPointsByTheme} lang={lang}/>
+          <UserAnswers setPointsByTheme={setPointsByTheme}/>
         </div>
       </StyledMain>
     </>

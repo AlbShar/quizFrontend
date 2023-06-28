@@ -1,7 +1,7 @@
 import { useEffect, useContext, FC, useRef, RefObject } from 'react';
 
 import { setWidthScrollBar } from '../helpers/setWidthScrollBar';
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
 
 import { StyledDivScrollBar } from './SrollBar.Styled';
 interface IScrollBar {
@@ -9,7 +9,7 @@ interface IScrollBar {
 }
 const ScrollBar: FC<IScrollBar> = ({ quizRef }) => {
   const contextValue: [number, (numb: number) => void] | null =
-    useContext(ContextQuestionNumb);
+    useContext(ContextCurrentQuestionNumb);
   const currentQuestionNumb = contextValue ? contextValue[0] : 1;
   const scrollBarElementRef = useRef<HTMLDivElement>(null);
 

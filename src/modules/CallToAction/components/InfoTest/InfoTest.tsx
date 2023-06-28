@@ -17,18 +17,12 @@ const InfoTest: FC = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
 
-  const dataHasLoaded = (numbQuestions) => {
-    setIsLoading(false);
-    setQuantityQuestions(numbQuestions);
+  const errorMessage =  "ERROR";
+  
 
-  };
-
-  useEffect(() => {
-    getTotalQuestionsNumb().then(dataHasLoaded);
-  }, []);
-
-  const infoTestBlock: IInfoTestBlock[] = [
+ const infoTestBlock: IInfoTestBlock[] = [
     {
       text: `~ ${quantityQuestions} ${t('Время')}`,
       srcIcon: require('../../icons/clock.png'),
@@ -45,7 +39,8 @@ const InfoTest: FC = () => {
       alt: 'icon of bar chart',
     },
   ];
-  const elementsInfoTestBlock = infoTestBlock.map((item, index) => {
+
+  const view = infoTestBlock.map((item, index) => {
     return (
       <StyledLi key={index + 1}>
         <StyledImg src={item.srcIcon} alt={item.alt} />
@@ -54,14 +49,34 @@ const InfoTest: FC = () => {
     );
   });
 
+  const content = !(isLoading || isError) ? view : null;
+  const spinner = isLoading ? (
+    <Spinner width={50} height={50} color='#fcfdff' margin='auto' />
+  ) : null;
+  const error = isError ? errorMessage : null;
+
+  const dataHasLoaded = (numbQuestions) => {
+    setIsLoading(false);
+    setQuantityQuestions(numbQuestions);
+  };
+
+  const onError = (error: any) => {
+    setIsError(true);
+    setIsLoading(false);
+    throw new Error(error)
+  };
+
+  useEffect(() => {
+    getTotalQuestionsNumb().then(dataHasLoaded).catch(onError);
+  }, []);
+
+ 
+  
+
   return (
     <nav>
       <StyledUl>
-        {isLoading ? (
-          <Spinner width={50} height={50} color='#fcfdff' margin='auto' />
-        ) : (
-          elementsInfoTestBlock
-        )}
+        {content} {spinner} {error}
       </StyledUl>
     </nav>
   );

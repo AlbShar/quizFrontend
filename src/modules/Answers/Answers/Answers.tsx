@@ -3,7 +3,8 @@ import { useEffect, useState, useContext, FC } from 'react';
 import SkeletonAnswers from '../UI/SkeletonAnswers';
 import { getAnswersDb } from '../api/getAnswersDb';
 import Answer from '../components/Answer/Answer';
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import { ContextLanguage } from '../../../components/Context';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
 
 import { StyledArticle, StyledUl } from './Answers.Styled';
@@ -16,17 +17,22 @@ type TState = {
 
 type AnswersProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
-  lang: string,
 };
 
-const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled, lang }) => {
+const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled }) => {
   const [state, setState] = useState<TState>({
     answers: [],
     loading: true,
     error: false,
   });
-  const contextValue = useContext(ContextQuestionNumb);
-  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
+    ContextCurrentQuestionNumb,
+  );
+  const currentValueLanguage: [string, (lang: string) => void] | null =
+    useContext(ContextLanguage);
+
+  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
+  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
   const refAnswers: HTMLLIElement[] = [];
   const setRefAnswer = (elem: HTMLLIElement) => {
     refAnswers.push(elem as HTMLLIElement);
@@ -39,7 +45,7 @@ const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled, lang }) => {
     );
     const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
     if (!isCurrentAnswer) {
-      setIsBtnNextDisabled(false)
+      setIsBtnNextDisabled(false);
     }
 
     removeAllAttributes(refAnswers);
@@ -70,16 +76,13 @@ const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled, lang }) => {
     </Answer>
   ));
 
-  const skeleton = state.loading ? (
-    <SkeletonAnswers/>
-  ) : null;
+  const skeleton = state.loading ? <SkeletonAnswers /> : null;
   const errorMessage = 'ERROR!';
   const error = state.error ? errorMessage : null;
 
   const content = !(state.loading || state.error) ? (
     <StyledArticle id='answersAll'>
       <StyledUl>{answersItems}</StyledUl>
-      
     </StyledArticle>
   ) : null;
 

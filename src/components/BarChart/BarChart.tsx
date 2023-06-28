@@ -36,7 +36,7 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
     plugins: {
       legend: {
         position: 'bottom' as const,
-        align: 'start' as const,
+        align: 'center' as const,
       },
       title: {
         display: false,
@@ -44,8 +44,9 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
     },
     scales: {
       y: {
+        max: 100,
         ticks: {
-          stepSize: 20,
+          stepSize: 25,
         },
       },
     },

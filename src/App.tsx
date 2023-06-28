@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense, useState } from 'react';
 
 import Spinner from './UI/Spinner/Spinner';
-import { GlobalStyles } from './styles/Global';
+import { GlobalStyles } from './styles/Global'
+import {ContextLanguage} from './components/Context';
+
 const HeaderHome = lazy(() => import('./modules/HeaderHome/index'));
 const Footer = lazy(() => import('./modules/Footer/index'));
 const ReportBugPage = lazy(() => import('./pages/ReportBugPage/ReportBugPage'));
@@ -13,16 +15,13 @@ const Results = lazy(() => import('./pages/Results/Results'));
 const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
-  const [lang, setLang] = useState<string>('ru');
-
-  const setNewLang = (newLang: string) => {
-    setLang(newLang);
-  }
+  const [lang, setLang] = useState<string>(localStorage.getItem('i18nextLng') || "ru");
 
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter basename="/quizFrontend">
+      <ContextLanguage.Provider value={[lang, setLang]}>
+        <BrowserRouter basename='/quizFrontend'>
         <Suspense
           fallback={
             <Spinner
@@ -34,18 +33,20 @@ function App() {
           }
         >
           <Routes>
-            <Route path='/' element={<HeaderHome setNewLang={setNewLang}/>}>
+            <Route path='/' element={<HeaderHome/>}>
               <Route index element={<Homepage />} />
               <Route index element={<Footer />} />
               <Route path='reportbug' element={<ReportBugPage />} />
-              <Route path='quiz' element={<Quiz lang={lang}/>} />
+              <Route path='quiz' element={<Quiz/>} />
               <Route path='contact' element={<Contact />} />
-              <Route path='results' element={<Results lang={lang}/>} />
+              <Route path='results' element={<Results/>} />
             </Route>
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </ContextLanguage.Provider>
+      
     </>
   );
 }

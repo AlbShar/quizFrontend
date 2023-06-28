@@ -1,38 +1,40 @@
-import { useState, useRef, useEffect, FC } from 'react';
+import { useState, useRef, useEffect, useContext} from 'react';
 import i18next from 'i18next';
 
+import { ContextLanguage } from '../../../../components/Context';
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
-type DropdownLanguagesProps = {
-  setNewLang: (item: string) => void
-};
+const DropdownLanguages = () => {
+  // eslint-disable-next-line
+  const [, setLang] = useContext(ContextLanguage) ?? [null, () => {}];
 
-const DropdownLanguages: FC<DropdownLanguagesProps> = ({ setNewLang}) => {
   type tMapLanguage = {
-    [key: string]: string
+    [key: string]: string;
   };
   const mapLanguage: tMapLanguage = {
-    'Русский': 'ru',
-    'English': 'en',
+    Русский: 'ru',
+    English: 'en',
   };
 
   useEffect(() => {
     const i18nextLng = localStorage.getItem('i18nextLng');
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
-      'lang', i18nextLng || 'ru'
-    )
-  }, [])
+      'lang',
+      i18nextLng || 'ru',
+    );
+  }, []);
 
   const [selected, setSelected] = useState<string>(mapLanguage['Русский']);
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
   const onClickElement = (item: string) => {
     setSelected(item);
-    setNewLang(item)
+    setLang(item);
     i18next.changeLanguage(item);
-    localStorage.setItem('language', item === "ru" ? "Русский" : "English");
+    localStorage.setItem('language', item === 'ru' ? 'Русский' : 'English');
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
-      'lang', item
+      'lang',
+      item,
     );
   };
 

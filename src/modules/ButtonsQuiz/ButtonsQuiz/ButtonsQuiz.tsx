@@ -2,7 +2,7 @@ import { useContext, FC, MouseEvent, useState, useEffect } from 'react';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { setQunatityPause } from '../api/setQuantityPause';
@@ -22,7 +22,7 @@ const ButtonsQuiz: FC<TButtonsQuiz> = ({
   setIsBtnNextDisabled,
 }) => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextQuestionNumb,
+    ContextCurrentQuestionNumb,
     //eslint-disable-next-line
   ) || [0, () => {}];
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);

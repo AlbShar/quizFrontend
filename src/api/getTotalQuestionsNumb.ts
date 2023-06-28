@@ -3,20 +3,27 @@ import { onValue } from 'firebase/database';
 
 import db from '../config/firebase/firebaseConfig';
 
-// Fix: 11 строку вынести в отдельную строку
 const getTotalQuestionsNumb = async () => {
-  try {
-    return await new Promise<number>(function (resolve, reject) {
-      onValue(ref(db, 'questions'), (snapshot) => {
-        const totalQuestionsNumb: number = Object.entries(
-          snapshot.val(),
-        ).length;
+  const refer = 'questions';
+
+  return await new Promise<number>(function (resolve, reject) {
+    onValue(ref(db, refer), (snapshot) => {
+      
+      if (!snapshot.exists()) {
+        reject(`No questions found. Check your path (refer variable). Value - ${refer}`);
+      }
+
+      const totalQuestionsNumb: number = Object.entries(snapshot.val()).length;
+
+      if (totalQuestionsNumb) {
         resolve(totalQuestionsNumb);
-      });
+      } else {
+        reject(
+          `Value of totalQuestionsNumb (${totalQuestionsNumb}) variable is falsy. Check them.)`,
+        );
+      }
     });
-  } catch (error) {
-    console.error(error);
-  }
+  });
 };
 
 export { getTotalQuestionsNumb };

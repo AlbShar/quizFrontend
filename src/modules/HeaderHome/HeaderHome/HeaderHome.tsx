@@ -1,4 +1,3 @@
-import { FC, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Container from '../../../components/Container/Container';
@@ -8,11 +7,8 @@ import TotalTested from '../components/TotalTested/TotalTested';
 import Header from '../../../components/Header/Header';
 import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';
 
-type HeaderHomeProps = {
-  setNewLang: (item: string) => void
-};
 
-const HeaderHome: FC<HeaderHomeProps> = ({setNewLang}) => {
+const HeaderHome = (): JSX.Element => {
   return (
     <>
       <Header>
@@ -21,7 +17,7 @@ const HeaderHome: FC<HeaderHomeProps> = ({setNewLang}) => {
             <Logo location='header' />
             <StyledFlexWrapper gap={37}>
               <TotalTested />
-              <DropdownLanguages setNewLang={setNewLang}/>
+              <DropdownLanguages/>
             </StyledFlexWrapper>
           </StyledFlexWrapper>
         </Container>

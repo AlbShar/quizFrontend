@@ -1,19 +1,24 @@
-import { FC, createContext } from 'react';
-export const ContextQuestionNumb = createContext<IContext['value'] | null>(
-  null,
-);
+import { createContext } from 'react';
 
-interface IContext {
+
+const ContextCurrentQuestionNumb = createContext<[number, (item: number) => void] | null>(null);
+
+const ContextLanguage = createContext<[string, (item: string) => void] | null>(null);
+
+
+export { ContextCurrentQuestionNumb, ContextLanguage };
+
+/*type ContextProps<T> = {
   children: React.ReactNode;
-  value: [number, (numb: number) => void];
-}
+  value: [T, (item: T) => void];
+};
 
-const Context: FC<IContext> = ({ children, value }) => {
+const Context = <T,>({ children, value }: ContextProps<T>): JSX.Element => {
   return (
-    <ContextQuestionNumb.Provider value={value}>
+    <ContextCurrentQuestionNumb.Provider value={value}>
       {children}
-    </ContextQuestionNumb.Provider>
+    </ContextCurrentQuestionNumb.Provider>
   );
 };
 
-export default Context;
+export default Context;*/

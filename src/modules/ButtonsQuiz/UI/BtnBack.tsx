@@ -1,7 +1,7 @@
 import { useContext, MouseEvent, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 import leftArrow from '../../../assets/images/leftArrow.svg';
@@ -21,7 +21,7 @@ const BtnBack: FC<TBtnBack> = ({
   const { t } = useTranslation();
   //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextQuestionNumb,
+    ContextCurrentQuestionNumb,
     //eslint-disable-next-line
   ) || [1, () => {}];
 

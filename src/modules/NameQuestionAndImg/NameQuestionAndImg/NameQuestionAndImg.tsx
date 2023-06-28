@@ -1,6 +1,7 @@
 import { useEffect, useContext, FC, useState } from 'react';
 
-import { ContextQuestionNumb } from '../../../components/Context';
+import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import { ContextLanguage } from '../../../components/Context';
 import { getSrcImg } from '../api/getSrcImg';
 import { getNameQuestion } from '../api/getNameQuestion';
 import SkeletonQuestion from '../UI/SkeletonQuestion';
@@ -19,13 +20,17 @@ type IState = {
   error: boolean;
 };
 
-type NameQuestionAndImgProps = {
-  lang: string
-}
 
-const NameQuestionAndImg: FC<NameQuestionAndImgProps> = ({lang}) => {
-  const contextValue = useContext(ContextQuestionNumb);
-  const currentQuestionNumb = contextValue ? contextValue[0] : 1;
+const NameQuestionAndImg = () => {
+  const contextValueNumb: [number, (numb: number) => void] | null = useContext(
+    ContextCurrentQuestionNumb,
+  );
+  const currentValueLanguage: [string, (lang: string) => void] | null =
+    useContext(ContextLanguage);
+
+  const currentQuestionNumb = contextValueNumb ? contextValueNumb[0] : 1;
+  const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
+
   const [state, setState] = useState<IState>({
     question: '',
     loading: true,

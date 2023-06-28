@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from 'react';
+import { useState, FC, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Container from '../../../components/Container/Container';
@@ -9,6 +9,7 @@ import { getUserAnswers } from '../api/getUserAnswers';
 import { getInfoQuestions } from '../api/getInfoQuestions';
 import Spinner from '../../../UI/Spinner/Spinner';
 import { getNumberFromKey } from '../helpers/getNumberFromKey';
+import { ContextLanguage } from '../../../components/Context';
 import filterByRightAnswer from '../helpers/filterByRightAnswer';
 import filterByThemes from '../helpers/filterByThemes';
 import getThemes from '../helpers/getThemes';
@@ -35,9 +36,12 @@ import type { TPointsByThemes } from '../../../types/types';
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
-  lang: string,
 };
-const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
+const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
+    const currentValueLanguage: [string, (lang: string) => void] | null =
+      useContext(ContextLanguage);
+
+    const lang = currentValueLanguage ? currentValueLanguage[0] : 'ru';
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
