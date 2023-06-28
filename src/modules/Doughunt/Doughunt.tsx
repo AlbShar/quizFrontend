@@ -1,6 +1,9 @@
-import { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
+import ChartDoughnut from '../../components/ChartDoughnut/ChartDoughnut';
+import Spinner from '../../UI/Spinner/Spinner';
 
 import {
   StyledArticle,
@@ -9,15 +12,12 @@ import {
   StyledDoughuntWrapper,
 } from './Doughunt.Styled';
 
-import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
-import ChartDoughnut from '../../components/ChartDoughnut/ChartDoughnut';
-import Spinner from '../../UI/Spinner/Spinner';
 
 type DoughnutProps = {
   rightAnswers: number;
 };
 
-const Doughnut: FC<DoughnutProps> = ({ rightAnswers }) => {
+const Doughnut = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   const { t } = useTranslation();
 
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);

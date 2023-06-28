@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import {
   StyleDivModal,
   StyledDivWrapper,
@@ -13,8 +11,12 @@ type ModalProps = {
   title: string;
   subTitle: string;
   onClickHandler?: () => void;
-}
-const Modal: FC<ModalProps> = ({ title, subTitle, onClickHandler }) => {
+};
+const Modal = ({
+  title,
+  subTitle,
+  onClickHandler,
+}: ModalProps): JSX.Element => {
   return (
     <StyleDivModal id='notification'>
       <StyledDivWrapper>

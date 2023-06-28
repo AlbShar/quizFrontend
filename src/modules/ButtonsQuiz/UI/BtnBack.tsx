@@ -1,4 +1,4 @@
-import { useContext, MouseEvent, FC } from 'react';
+import { useContext, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
@@ -8,20 +8,20 @@ import leftArrow from '../../../assets/images/leftArrow.svg';
 
 import { StyledButton, StyledSpan } from './Buttons.Styled';
 
-type TBtnBack = {
+type BtnBackProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
   setIsBtnBackDisabled: (item: boolean) => void;
   isBtnBackDisabled: boolean;
 };
-const BtnBack: FC<TBtnBack> = ({
+const BtnBack = ({
   setIsBtnNextDisabled,
   isBtnBackDisabled,
   setIsBtnBackDisabled,
-}) => {
+}: BtnBackProps): JSX.Element => {
   const { t } = useTranslation();
   //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextCurrentQuestionNumb
+    ContextCurrentQuestionNumb,
   );
 
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {

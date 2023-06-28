@@ -1,8 +1,8 @@
-import { FC } from 'react';
 import './link.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MouseEvent } from 'react';
+
 import { StyledButton } from './LinkBtn.Styled';
 
 type LinkBtnProps = {
@@ -12,13 +12,13 @@ type LinkBtnProps = {
   onClick?: (e: MouseEvent) => void;
   isDisabledBtn?: boolean;
 };
-const LinkBtn: FC<LinkBtnProps> = ({
+const LinkBtn = ({
   text,
   pageTo,
   onClick,
   id,
   isDisabledBtn,
-}) => {
+}: LinkBtnProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (

@@ -1,22 +1,28 @@
-import { FC, MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import rightArrow from '../../../assets/images/rightArrow.svg';
 
-// import { StyledButtonBack, StyledSpan } from './BtnBack.Styled';
 import { StyledButton, StyledSpan } from './Buttons.Styled';
 
-type TButtonsQuiz = {
+type ButtonNextProps = {
   onClickButtonHandler: (e: MouseEvent) => void;
   isBtnNextDisabled: boolean;
 };
 
-const ButtonNext: FC<TButtonsQuiz> = ({ onClickButtonHandler, isBtnNextDisabled }) => {
+const ButtonNext = ({
+  onClickButtonHandler,
+  isBtnNextDisabled,
+}: ButtonNextProps) : JSX.Element => {
   const { t } = useTranslation();
 
   return (
     <>
-      <StyledButton style={{justifyContent: "flex-end"}} onClick={onClickButtonHandler} disabled={isBtnNextDisabled}>
+      <StyledButton
+        style={{ justifyContent: 'flex-end' }}
+        onClick={onClickButtonHandler}
+        disabled={isBtnNextDisabled}
+      >
         <StyledSpan>{t('Принять')}</StyledSpan>
         <img src={rightArrow} alt='rightArrow' />
       </StyledButton>

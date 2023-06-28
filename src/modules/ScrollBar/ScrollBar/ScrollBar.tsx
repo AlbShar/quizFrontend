@@ -1,4 +1,4 @@
-import { useEffect, useContext, FC, useRef, RefObject } from 'react';
+import { useEffect, useContext, useRef, RefObject } from 'react';
 
 import { setWidthScrollBar } from '../helpers/setWidthScrollBar';
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
@@ -9,11 +9,10 @@ type ScrollBarProps = {
   quizRef: RefObject<HTMLTableSectionElement>;
 }
 
-const ScrollBar: FC<ScrollBarProps> = ({ quizRef }) => {
-  
- const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
-   ContextCurrentQuestionNumb
- );
+const ScrollBar = ({ quizRef }: ScrollBarProps): JSX.Element => {
+  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
+    ContextCurrentQuestionNumb,
+  );
   const scrollBarElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

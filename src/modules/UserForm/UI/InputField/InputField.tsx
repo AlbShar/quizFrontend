@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, memo, FocusEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, memo, FocusEvent, KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { setAnimateInputAndText } from '../../helpers/setAnimateInputAndText';
@@ -25,7 +25,7 @@ type InputFieldProps = {
   keyHint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 }
 
-const InputField: FC<InputFieldProps> = ({
+const InputField = ({
   isFirstRender,
   isValueValidate,
   type,
@@ -38,7 +38,7 @@ const InputField: FC<InputFieldProps> = ({
   onError,
   keyHint,
   onValidateInput,
-}) => {
+}: InputFieldProps): JSX.Element => {
   const { t } = useTranslation();
   const autocompleteValue = id === 'email' ? 'username' : 'on';
 

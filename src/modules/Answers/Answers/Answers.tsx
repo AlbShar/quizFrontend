@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, FC } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import SkeletonAnswers from '../UI/SkeletonAnswers';
 import { getAnswersDb } from '../api/getAnswersDb';
@@ -19,7 +19,7 @@ type AnswersProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
 };
 
-const Answers: FC<AnswersProps> = ({ setIsBtnNextDisabled }) => {
+const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
   const [state, setState] = useState<TState>({
     answers: [],
     loading: true,

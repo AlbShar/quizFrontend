@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -14,7 +13,7 @@ type PiechartProps = {
   dataPieChart: number[];
 };
 
-const ChartDoughnut: FC<PiechartProps> = ({ dataPieChart }) => {
+const ChartDoughnut = ({ dataPieChart }: PiechartProps): JSX.Element => {
   const data = {
     labels: ['Верно', 'Неверно'],
     datasets: [

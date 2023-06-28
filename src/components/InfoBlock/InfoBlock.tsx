@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import {
   StyledFeatureArticle,
@@ -17,13 +17,14 @@ type InfoBlockProps =  {
   children?: ReactNode;
 }
 
-const InfoBlock: FC<InfoBlockProps> = ({
+const InfoBlock = ({
   title,
   text,
   imgSrc,
   imgAlt,
   idForText,
-}) => {
+}: InfoBlockProps): JSX.Element => {
+
   return (
     <StyledFeatureArticle>
       <details>
@@ -35,6 +36,7 @@ const InfoBlock: FC<InfoBlockProps> = ({
       </details>
     </StyledFeatureArticle>
   );
+  
 };
 
 export default InfoBlock;

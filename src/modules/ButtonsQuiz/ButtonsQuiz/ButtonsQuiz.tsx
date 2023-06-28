@@ -1,4 +1,4 @@
-import { useContext, FC, MouseEvent, useState, useEffect } from 'react';
+import { useContext, MouseEvent, useState, useEffect } from 'react';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
@@ -12,17 +12,17 @@ import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 import { StyledArticle } from './ButtonsQuiz.Styled';
 
-type TButtonsQuiz = {
+type ButtonsQuizProps = {
   isBtnNextDisabled: boolean;
   setIsBtnNextDisabled: (item: boolean) => void;
 };
 
-const ButtonsQuiz: FC<TButtonsQuiz> = ({
+const ButtonsQuiz = ({
   isBtnNextDisabled,
   setIsBtnNextDisabled,
-}) => {
+}: ButtonsQuizProps): JSX.Element => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
-    ContextCurrentQuestionNumb
+    ContextCurrentQuestionNumb,
   );
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);

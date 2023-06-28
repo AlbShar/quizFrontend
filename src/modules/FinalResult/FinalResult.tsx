@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Spinner from '../../UI/Spinner/Spinner';
@@ -11,7 +11,7 @@ type FinalResultProps = {
   setRightAnswers: (points: number) => void;
 };
 
-const FinalResult: FC<FinalResultProps> = ({ setRightAnswers }) => {
+const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   const { t } = useTranslation();
 
   type TState = {

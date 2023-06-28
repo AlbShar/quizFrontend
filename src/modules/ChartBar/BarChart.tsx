@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BarChart from '../../components/BarChart/BarChart';
@@ -14,7 +13,7 @@ import type { TPointsByThemes } from '../../types/types';
 type ChartBarProps = {
   pointsByTheme: TPointsByThemes | null;
 };
-const ChartBar: FC<ChartBarProps> = ({ pointsByTheme }) => {
+const ChartBar= ({ pointsByTheme }: ChartBarProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (
@@ -22,10 +21,7 @@ const ChartBar: FC<ChartBarProps> = ({ pointsByTheme }) => {
       <StyledBarChartWrapper>
         <BarChart pointsByTheme={pointsByTheme} />
       </StyledBarChartWrapper>
-      <StyledP>
-        {t("Подпись_столбчатая_диаграмма")}
-        
-      </StyledP>
+      <StyledP>{t('Подпись_столбчатая_диаграмма')}</StyledP>
     </StyledArticle>
   );
 };

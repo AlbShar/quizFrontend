@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
 import { getIdUser } from '../../../../helpers/getIdUser';
 import { sendUserInfoDB } from '../../api/sendUserInfoDb';
@@ -10,7 +8,11 @@ type ButtonProps = {
   isDisabledBtn: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ userName, userEmail, isDisabledBtn }) => {
+const Button = ({
+  userName,
+  userEmail,
+  isDisabledBtn,
+}: ButtonProps): JSX.Element => {
   const onClickLinkBtn = () => {
     sendUserInfoDB(getIdUser('idUser'), userName, userEmail);
   };

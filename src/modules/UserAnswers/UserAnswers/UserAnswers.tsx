@@ -1,4 +1,4 @@
-import { useState, FC, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Container from '../../../components/Container/Container';
@@ -37,7 +37,9 @@ import type { TPointsByThemes } from '../../../types/types';
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
-const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme }) => {
+const UserAnswers = ({
+  setPointsByTheme,
+}: UserAnwersProps): JSX.Element => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
