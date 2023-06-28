@@ -1,22 +1,19 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
 import Spinner from '../../../../UI/Spinner/Spinner';
-
+import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
 
 import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
 
 import type {InfoTestBlock} from "../../../../types/types";
 
-const InfoTest: FC = () => {
+const InfoTest = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
-
-  const errorMessage =  "ERROR";
-  
 
  const infoTestBlock: InfoTestBlock[] = [
    {
@@ -49,7 +46,7 @@ const InfoTest: FC = () => {
   const spinner = isLoading ? (
     <Spinner width={50} height={50} color='#fcfdff' margin='auto' />
   ) : null;
-  const error = isError ? errorMessage : null;
+  const error = isError ? <ErrorMessage/> : null;
 
   const dataHasLoaded = (numbQuestions) => {
     setIsLoading(false);

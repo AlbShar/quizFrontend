@@ -1,6 +1,7 @@
-import { FC, useState, useEffect } from 'react';
+import {useState, useEffect } from 'react';
 
 import Spinner from '../../../../UI/Spinner/Spinner';
+import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
 import { getUserInfo } from '../../api/getUserInfo';
 
 import {
@@ -11,6 +12,7 @@ import {
 } from './UserInfo.Styled';
 import { StyledSection } from './UserInfo.Styled';
 
+
 type TUserInfoDB = {
   name: string;
   email: string;
@@ -18,7 +20,7 @@ type TUserInfoDB = {
   time: number;
 };
 
-const UserInfo: FC = () => {
+const UserInfo = () => {
   type TUserInfo = {
     name: string;
     email: string;
@@ -49,7 +51,6 @@ const UserInfo: FC = () => {
       </StyledSection>
     );
   };
-  const errorMessage = 'ERROR!!!';
 
   const spinner = userInfo.loading ? (
     <Spinner width={60} height={60} color='#fcfdff' margin='0 auto' />
@@ -57,7 +58,7 @@ const UserInfo: FC = () => {
     false
   );
   const content = !(userInfo.loading || userInfo.error) ? view() : false;
-  const error = userInfo.error ? errorMessage : false;
+  const error = userInfo.error ? <ErrorMessage/> : false;
 
   const userInfoHasLoaded = (userInfo: TUserInfoDB) => {
     const { name, email } = userInfo;

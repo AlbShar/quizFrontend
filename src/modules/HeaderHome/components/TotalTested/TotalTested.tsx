@@ -11,7 +11,7 @@ import {
   StyledDivWrapper,
 } from './TotalTested.styled';
 
-const TotalTested: FC = () => {
+const TotalTested = () => {
   const { t } = useTranslation();
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);

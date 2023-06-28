@@ -1,11 +1,11 @@
-import { useEffect, FC } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import InfoBlock from '../InfoBlock/InfoBlock';
 import { convertJSONToText } from '../../helpers/convertJSONToText';
 import { InfoBlocks, JSONText } from '../../types/types';
 
-const GeneralInfoTest: FC = () => {
+const GeneralInfoTest = () => {
   const { t } = useTranslation();
   const dataReportBug: InfoBlocks[] = [
     {

@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Header from '../../../components/Header/Header';
 import Logo from '../../../components/Logo/Logo';
 import UserInfo from '../components/UserInfo/UserInfo';
@@ -8,7 +6,7 @@ import Container from '../../../components/Container/Container';
 
 import { StyledH1, StyledH2, StyledArticle } from './HeaderResult.Styled';
 
-const HeaderResult: FC = () => {
+const HeaderResult = () => {
   return (
     <Header height={235}>
       <Container>

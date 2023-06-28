@@ -6,6 +6,7 @@ import Answer from '../components/Answer/Answer';
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 import { StyledArticle, StyledUl } from './Answers.Styled';
 
@@ -74,8 +75,7 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
   ));
 
   const skeleton = state.loading ? <SkeletonAnswers /> : null;
-  const errorMessage = 'ERROR!';
-  const error = state.error ? errorMessage : null;
+  const error = state.error ? <ErrorMessage/> : null;
 
   const content = !(state.loading || state.error) ? (
     <StyledArticle id='answersAll'>
@@ -83,8 +83,14 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
     </StyledArticle>
   ) : null;
 
-  const onErrorHandler = () => {
+  const onErrorHandler = (error: unknown) => {
     setState((state) => ({ ...state, error: true, loading: false }));
+    
+    if (error instanceof Error) {
+      throw new Error(`${error.message}`);
+    } else {
+      throw new Error(`Unknown error caught: ${error}`);
+    }
   };
 
   useEffect(() => {

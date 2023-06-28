@@ -33,6 +33,7 @@ import type {
   TQuestionAndAnswer,
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
@@ -49,13 +50,12 @@ const UserAnswers = ({
   const [filterTheme, setFilterTheme] = useState<string>('');
   const [filterRight, setFilterRight] = useState<string>('');
 
-  const errorMessage = 'ERORR!';
   const loading = isLoading ? (
     <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : (
     false
   );
-  const error = isError ? errorMessage : false;
+  const error = isError ? <ErrorMessage/> : false;
   const view = () => {
     if (infoQuestionsAndAnswers) {
       const visibleData: TInfoQuestionsAndAnswers = filterByRightAnswer(

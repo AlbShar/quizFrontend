@@ -1,7 +1,6 @@
 import {
   useState,
   ChangeEvent,
-  FC,
   useEffect,
   FocusEvent,
   KeyboardEvent,
@@ -41,7 +40,7 @@ type TDataInputs = {
   keyHint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 };
 
-const UserForm: FC = () => {
+const UserForm = () => {
   const { t } = useTranslation();
 
   const {

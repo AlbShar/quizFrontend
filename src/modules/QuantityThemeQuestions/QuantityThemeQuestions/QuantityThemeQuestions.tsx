@@ -1,4 +1,4 @@
-import { useEffect, useContext, FC, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
@@ -19,7 +19,7 @@ type TState = {
   totalQuestionNumber: number | null;
 };
 
-const QuantityThemeQuestions: FC = () => {
+const QuantityThemeQuestions = () => {
   const { t } = useTranslation();
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(

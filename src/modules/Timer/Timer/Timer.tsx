@@ -1,4 +1,4 @@
-import { useState, useEffect, FC, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
@@ -20,7 +20,7 @@ type TState = {
   timeLeft: number;
 };
 
-const Timer: FC = () => {
+const Timer = () => {
   const { t } = useTranslation();
   const [{ isCounting, isModal, timeLeft }, setState] = useState<TState>({
     isModal: false,

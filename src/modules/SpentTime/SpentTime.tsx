@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -10,8 +10,9 @@ import Spinner from '../../UI/Spinner/Spinner';
 
 import { getUserInfo } from './api/getUserInfo';
 import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
+import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
 
-const SpentTime: FC = () => {
+const SpentTime = (): JSX.Element => {
   const { t } = useTranslation();
 
   type TState = {
@@ -51,8 +52,7 @@ const SpentTime: FC = () => {
   ) : (
     false
   );
-  const errorMessage = 'ERROR!';
-  const error = state.error ? errorMessage : false;
+  const error = state.error ? <ErrorMessage/> : false;
   const content = !(state.loading || state.error) ? view() : false;
 
   const onError = (error: any): never => {

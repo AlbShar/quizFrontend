@@ -12,6 +12,7 @@ import {
   StyledPicture,
   StyledImg,
 } from './NameQuestionAndImg.Styled';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 type IState = {
   question: string;
@@ -32,8 +33,7 @@ const NameQuestionAndImg = () => {
     srcImg: '',
     error: false,
   });
-  const errorMessage = 'ERROR!!';
-  const error = state.error ? errorMessage : null;
+  const error = state.error ? <ErrorMessage/> : null;
   const spinner = state.loading ? <SkeletonQuestion /> : null;
 
   const view = () => {

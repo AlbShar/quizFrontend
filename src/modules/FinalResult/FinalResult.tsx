@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import Spinner from '../../UI/Spinner/Spinner';
 import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
+import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
 
 import { getUserAnswers } from './api/getUserAnswers';
 import { StyledH2, StyledH3, StyledArticle } from './FinalResult.Styled';
-
 type FinalResultProps = {
   setRightAnswers: (points: number) => void;
 };
@@ -133,8 +133,7 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   ) : (
     false
   );
-  const errorMessage = 'ERROR!';
-  const error = state.error ? errorMessage : false;
+  const error = state.error ? <ErrorMessage/> : false;
   const content = !(state.loading || state.error) ? view() : false;
 
   return (
