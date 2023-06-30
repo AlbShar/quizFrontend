@@ -5,7 +5,7 @@ import Spinner from './UI/Spinner/Spinner';
 import { GlobalStyles } from './styles/Global'
 import {ContextLanguage} from './components/Context';
 
-const HeaderHome = lazy(() => import('./modules/HeaderHome/index'));
+const Header = lazy(() => import('./modules/Header/index'));
 const Footer = lazy(() => import('./modules/Footer/index'));
 const ReportBugPage = lazy(() => import('./pages/ReportBugPage/ReportBugPage'));
 const Homepage = lazy(() => import('./pages/Homepage/Homepage'));
@@ -33,7 +33,7 @@ function App() {
           }
         >
           <Routes>
-            <Route path='/' element={<HeaderHome/>}>
+            <Route path='/' element={<Header/>}>
               <Route index element={<Homepage />} />
               <Route index element={<Footer />} />
               <Route path='reportbug' element={<ReportBugPage />} />

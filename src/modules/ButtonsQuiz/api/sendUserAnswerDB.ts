@@ -11,6 +11,7 @@ type UserAnswerProps = {
   userAnswer: string;
   selectorTheme: '#themeQuestion';
   idUser: string;
+  lang: string;
 }
 
 const sendUserAnswerDB = async ({
@@ -19,12 +20,13 @@ const sendUserAnswerDB = async ({
   userAnswer,
   selectorTheme,
   idUser,
+  lang
 }: UserAnswerProps): Promise<void> => {
   const theme =
     document.querySelector<HTMLSpanElement>(selectorTheme)?.textContent;
   const question =
     document.querySelector<HTMLHeadingElement>(selectorQuestion)?.textContent;
-  const rightAnswer = await getRightAnswerDB(currentQuestionNumb);
+  const rightAnswer = await getRightAnswerDB(currentQuestionNumb, lang);
 
   try {
     const referenceUserAnswers = ref(

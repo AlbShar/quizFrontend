@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Container from '../../../components/Container/Container';
 import Logo from '../../../components/Logo/Logo';
-import { StyledFlexWrapper } from '../../../styles/FlexWrapper.Styled';
+import { StyledFlexWrapper } from './Footer.Styled';
 
 import {
   StyledFooter,
@@ -39,7 +39,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <StyledFlexWrapper widthFlexStart={767.8} gap={15} jc={'flex-start'}>
+        <StyledFlexWrapper>
           <Logo location='footer' />
           <StyledSection>
             <nav>

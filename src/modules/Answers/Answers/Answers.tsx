@@ -10,22 +10,18 @@ import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 import { StyledArticle, StyledUl } from './Answers.Styled';
 
-type TState = {
-  loading: boolean;
-  answers: string[];
-  error: boolean;
-};
+import type { AnswersType } from '../type';
+
 
 type AnswersProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
 };
 
 const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
-  const [state, setState] = useState<TState>({
-    answers: [],
-    loading: true,
-    error: false,
-  });
+  const [answers, setAnsewrs] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
+
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
@@ -36,11 +32,12 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
     refAnswers.push(elem as HTMLLIElement);
   };
 
-  const onFocusUserAnswer = (id: number) => {
+  const onClickAnswer = (id: number, e) => {
     const style = 'background-color: #B7B7FF';
     const currentAnswer: HTMLLIElement[] = refAnswers.filter(
       (answerItem) => answerItem.dataset.useranswer,
     );
+    console.log(e.target.textContent);
     const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
     if (!isCurrentAnswer) {
       setIsBtnNextDisabled(false);
@@ -52,40 +49,37 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
     refAnswers[id].focus();
   };
 
-  const answersHasLoaded = (response) => {
+  const answersHasLoaded = (response: AnswersType) => {
     const answers = Object.entries(response).map((item) => item.join('. '));
     if (Array.isArray(answers)) {
-      setState((state) => ({
-        ...state,
-        answers: answers as string[],
-        loading: false,
-      }));
+      setAnsewrs(answers);
+      setIsLoading(false);
     }
   };
 
-  const answersItems = state.answers.map((answer, index) => (
+  const answersItems = answers.map((answer, index) => (
     <Answer
       index={index}
       setRef={setRefAnswer}
-      onFocusUserAnswer={onFocusUserAnswer}
+      onClickAnswer={onClickAnswer}
       key={index + 1}
     >
       {answer}
     </Answer>
   ));
 
-  const skeleton = state.loading ? <SkeletonAnswers /> : null;
-  const error = state.error ? <ErrorMessage/> : null;
+  const skeleton = isLoading ? <SkeletonAnswers /> : null;
+  const error = isError ? <ErrorMessage /> : null;
 
-  const content = !(state.loading || state.error) ? (
+  const content = !(isLoading || isError) ? (
     <StyledArticle id='answersAll'>
       <StyledUl>{answersItems}</StyledUl>
     </StyledArticle>
   ) : null;
 
   const onErrorHandler = (error: unknown) => {
-    setState((state) => ({ ...state, error: true, loading: false }));
-    
+    setIsLoading(false);
+    setIsError(true);
     if (error instanceof Error) {
       throw new Error(`${error.message}`);
     } else {
@@ -94,17 +88,17 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
   };
 
   useEffect(() => {
-    removeAllAttributes(refAnswers);
-    if (currentQuestionNumb) {
-      getAnswersDb(currentQuestionNumb, lang)
-        .then(answersHasLoaded)
-        .catch(onErrorHandler);
-    }
+    getAnswersDb(currentQuestionNumb, lang)
+      .then(answersHasLoaded)
+      .catch(onErrorHandler);
   }, [currentQuestionNumb, lang]);
+
+  useEffect(() => {
+    removeAllAttributes(refAnswers);
+  }, [currentQuestionNumb]);
 
   return (
     <>
-      {' '}
       {skeleton} {content} {error}
     </>
   );

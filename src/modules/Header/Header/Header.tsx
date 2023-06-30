@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom';
 
 import Container from '../../../components/Container/Container';
-import Logo from '../../../components/Logo/Logo';
-import { StyledFlexWrapper } from '../../../styles/FlexWrapper.Styled';
-import TotalTested from '../components/TotalTested/TotalTested';
-import Header from '../../../components/Header/Header';
 import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';
+import Logo from '../../../components/Logo/Logo';
+import TotalTested from '../components/TotalTested/TotalTested';
 
 
-const HeaderHome = (): JSX.Element => {
+import { StyledFlexWrapper, StyledHeader } from './Header.styled';
+
+const Header = (): JSX.Element => {
   return (
     <>
-      <Header>
+      <StyledHeader>
         <Container>
           <StyledFlexWrapper>
             <Logo location='header' />
@@ -21,9 +21,9 @@ const HeaderHome = (): JSX.Element => {
             </StyledFlexWrapper>
           </StyledFlexWrapper>
         </Container>
-      </Header>
+      </StyledHeader>
       <Outlet />
     </>
   );
 };
-export default HeaderHome;
+export default Header;

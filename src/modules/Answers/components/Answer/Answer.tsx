@@ -5,7 +5,7 @@ import { StyledLi } from './Answer.Styled';
 type AnswerProps = {
   children: ReactNode;
   setRef: (elem: any) => void;
-  onFocusUserAnswer: (id: number) => void;
+  onClickAnswer: (id: number, e) => void;
   index: number;
 };
 
@@ -13,19 +13,21 @@ const Answer = ({
   children,
   index,
   setRef,
-  onFocusUserAnswer,
+  onClickAnswer,
 }: AnswerProps): JSX.Element => {
+
   const handleKeyboardClick: KeyboardEventHandler<HTMLLIElement> = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      onFocusUserAnswer(index);
+      onClickAnswer(index, e);
     }
   };
+
   return (
     <StyledLi
       ref={setRef}
       tabIndex={0}
-      onClick={() => onFocusUserAnswer(index)}
+      onClick={(e) => onClickAnswer(index, e)}
       onKeyDown={handleKeyboardClick}
     >
       {children}

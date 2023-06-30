@@ -11,6 +11,19 @@ const StyledFooter = styled.footer`
   }
 `;
 
+const StyledFlexWrapper = styled.div`
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 767.8px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+`;
+
 //#region StyledSections
 
 const StyledSection = styled.section`
@@ -69,4 +82,4 @@ const StyledLi = styled.li`
 
 //#endregion
 
-export { StyledFooter, StyledSection, StyledLi, StyledUl };
+export { StyledFooter, StyledSection, StyledLi, StyledUl, StyledFlexWrapper };

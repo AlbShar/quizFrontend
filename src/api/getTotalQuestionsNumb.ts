@@ -3,6 +3,14 @@ import { onValue } from 'firebase/database';
 
 import db from '../config/firebase/firebaseConfig';
 
+type Data = {
+  [key: string]: string
+};
+
+const transformData = (data: Data): number => {
+  return Object.entries(data).length;
+};
+
 const getTotalQuestionsNumb = async () => {
   const refer = 'questions';
 
@@ -13,7 +21,7 @@ const getTotalQuestionsNumb = async () => {
         reject(`No questions found. Check your path (refer variable). Value - ${refer}`);
       }
 
-      const totalQuestionsNumb: number = Object.entries(snapshot.val()).length;
+      const totalQuestionsNumb = transformData(snapshot.val());
 
       if (totalQuestionsNumb) {
         resolve(totalQuestionsNumb);

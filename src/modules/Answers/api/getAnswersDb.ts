@@ -3,14 +3,12 @@ import { onValue } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-type Answers = {
-  [key: string]: string
-};
+import type { AnswersType } from '../type';
 
 const getAnswersDb = async (
   currentQuestionNumb: number,
   lang: string,
-): Promise<Answers> => {
+): Promise<AnswersType> => {
   const refer = `answers/answers${currentQuestionNumb}/${lang}`;
 
   return await new Promise(function (resolve, reject) {

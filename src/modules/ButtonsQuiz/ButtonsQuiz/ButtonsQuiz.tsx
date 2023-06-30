@@ -2,7 +2,10 @@ import { useContext, MouseEvent, useState, useEffect } from 'react';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import {
+  ContextCurrentQuestionNumb,
+  ContextLanguage,
+} from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import { getIdUser } from '../../../helpers/getIdUser';
 import { setQunatityPause } from '../api/setQuantityPause';
@@ -24,6 +27,8 @@ const ButtonsQuiz = ({
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
+  const [lang] = useContext(ContextLanguage);
+
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 
@@ -47,6 +52,7 @@ const ButtonsQuiz = ({
           userAnswer: asnwerItem.textContent || 'No anwser',
           selectorTheme: '#themeQuestion',
           idUser: getIdUser('idUser'),
+          lang
         });
       }
     });

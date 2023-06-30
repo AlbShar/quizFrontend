@@ -1,6 +1,5 @@
 import { useState, useCallback, FC } from 'react';
 
-import HeaderResult from '../../modules/HeaderResult/index';
 import { StyledMain } from '../../styles/Main.Styled';
 import UserAnswers from '../../modules/UserAnswers';
 import Container from '../../components/Container/Container';
@@ -30,7 +29,6 @@ const Results = () => {
 
   return (
     <>
-      {/* <HeaderResult /> */}
       <StyledMain>
         <div>
           <Container>
