@@ -12,12 +12,15 @@ import { StyledArticle, StyledUl } from './Answers.Styled';
 
 import type { AnswersType } from '../type';
 
-
 type AnswersProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
+  setUserAnswer: (item: string) => void;
 };
 
-const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
+const Answers = ({
+  setIsBtnNextDisabled,
+  setUserAnswer,
+}: AnswersProps): JSX.Element => {
   const [answers, setAnsewrs] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -34,10 +37,14 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
 
   const onClickAnswer = (id: number, e) => {
     const style = 'background-color: #B7B7FF';
-    const currentAnswer: HTMLLIElement[] = refAnswers.filter(
-      (answerItem) => answerItem.dataset.useranswer,
-    );
-    console.log(e.target.textContent);
+
+    setUserAnswer(e.target.textContent);
+    removeAllAttributes(refAnswers);
+    refAnswers[id].setAttribute('style', style);
+    refAnswers[id].focus();
+    setIsBtnNextDisabled(false);
+
+    /* console.log(userAnswer);
     const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
     if (!isCurrentAnswer) {
       setIsBtnNextDisabled(false);
@@ -46,7 +53,7 @@ const Answers = ({ setIsBtnNextDisabled }: AnswersProps): JSX.Element => {
     removeAllAttributes(refAnswers);
     refAnswers[id].setAttribute('style', style);
     refAnswers[id].setAttribute('data-useranswer', 'true');
-    refAnswers[id].focus();
+    refAnswers[id].focus();*/
   };
 
   const answersHasLoaded = (response: AnswersType) => {

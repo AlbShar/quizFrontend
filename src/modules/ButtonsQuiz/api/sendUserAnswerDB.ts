@@ -1,7 +1,6 @@
 import { ref, set } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
-import { quiantityPause } from '../../../helpers/incrementQuantityPause';
 
 import { getRightAnswerDB } from './getRightAnswerDB';
 
@@ -38,7 +37,6 @@ const sendUserAnswerDB = async ({
       userAnswer: userAnswer,
       theme: theme,
       point: rightAnswer === userAnswer ? 1 : 0,
-      quantityPause: quiantityPause,
     });
   } catch (error) {
     if (!theme) {

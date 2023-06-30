@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
-import { incrementQuantityPause } from '../../../helpers/incrementQuantityPause';
 import Modal from '../../../UI/Modal/Modal';
 import getFullNumb from '../helpers/getFullNumb';
 import Portal from '../../../components/Portal/Portal';
-import pause from "../../../assets/images/pause.svg"
+import pause from '../../../assets/images/pause.svg';
 
 import {
   StyledDivTimer,
@@ -14,24 +13,15 @@ import {
   StyledSpanTimer,
 } from './Timer.Styled';
 
-type TState = {
-  isModal: boolean;
-  isCounting: boolean;
-  timeLeft: number;
-};
-
 const Timer = () => {
   const { t } = useTranslation();
-  const [{ isCounting, isModal, timeLeft }, setState] = useState<TState>({
-    isModal: false,
-    isCounting: true,
-    timeLeft: 0,
-  });
+  const [isCounting, setIsCounting] = useState<boolean>(true);
+  const [isModal, setIsModal] = useState<boolean>(false);
+  const [time, setTime] = useState<number>(0);
   const timerRef = useRef<HTMLDivElement>(null);
-
-  const hours: string = getFullNumb(Math.floor(timeLeft / 3600) % 60);
-  const minutes: string = getFullNumb(Math.floor(timeLeft / 60) % 60);
-  const seconds: string = getFullNumb(Math.floor(timeLeft % 60));
+  const hours: string = getFullNumb(Math.floor(time / 3600) % 60);
+  const minutes: string = getFullNumb(Math.floor(time / 60) % 60);
+  const seconds: string = getFullNumb(Math.floor(time % 60));
   const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
@@ -40,21 +30,18 @@ const Timer = () => {
   const subtitleModal = t('Заголовок2_пауза');
 
   const stopTimer = () => {
-    setState((state) => ({ ...state, isCounting: false, isModal: true }));
+    setIsCounting(false);
+    setIsModal(true);
   };
 
   const restoreTimer = () => {
-    setState((state) => ({ ...state, isCounting: true, isModal: false }));
-  };
-
-  const onClickButtonHandler = () => {
-    stopTimer();
-    incrementQuantityPause();
+    setIsCounting(true);
+    setIsModal(false);
   };
 
   useEffect(() => {
     const startTimer = () => {
-      isCounting && setState((state) => ({ ...state, timeLeft: timeLeft + 1 }));
+      isCounting && setTime((time) => time + 1);
     };
 
     const timerId = setTimeout(() => {
@@ -62,17 +49,18 @@ const Timer = () => {
     }, 1000);
 
     return () => {
-      /* If I copy 'timerRef.current' to a variable inside the useEffect,
-       the cleanup function doesn't run, when Timer unmountes */
-      // eslint-disable-next-line
-      sendDbTimeLeft(timeLeft);
       clearTimeout(timerId);
+      if (!timerRef.current) {
+        sendDbTimeLeft(time);
+      }
     };
-  }, [timeLeft, isCounting]);
+  }, [time, isCounting]);
+
+
 
   return (
     <StyledDivTimer ref={timerRef}>
-      <StyledButtonPause onClick={onClickButtonHandler}>
+      <StyledButtonPause onClick={stopTimer}>
         {t('Пауза')}
         <img src={pause} alt='pause' />
       </StyledButtonPause>
