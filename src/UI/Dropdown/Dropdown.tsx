@@ -16,6 +16,7 @@ import {
   StyledSpan,
 } from './Dropdown.Styled';
 
+
 import globe from '../../assets/images/globe.svg';
 import chevrondown from '../../assets/images/chevrondown.svg';
 
@@ -36,7 +37,6 @@ const Dropdown = forwardRef(
     ref: Ref<HTMLDivElement>,
   ) => {
     const [isActive, setActive] = useState<boolean>(false);
-    const i18nextLng = localStorage.getItem('i18nextLng');
 
     const toggleList = () => {
       setActive((isActive) => !isActive);
@@ -91,7 +91,7 @@ const Dropdown = forwardRef(
         <StyledButton onClick={toggleList}>
           <img style={{ margin: '0 7px 0 0' }} src={globe} alt='global' />
           <StyledSpan className='dropdown-btn-text'>
-          {i18nextLng ?i18nextLng.toUpperCase() : "RU"}
+          {selected.toUpperCase() || "RU"}
           </StyledSpan>
           <img
             style={{ margin: '0 0 0 7px' }}

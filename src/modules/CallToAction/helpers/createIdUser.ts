@@ -10,7 +10,6 @@ const createIdUser = (): string => {
   if (pushedRef && pushedRef.key) {
     const idUser = pushedRef.key;
     return idUser;
-    // localStorage.setItem('idUser', idUser);
   } else {
     return ''
   }

@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 
+import { setValueToLocalStorage } from '../../../../helpers/setValueToLocalStorage';
 import { ContextLanguage } from '../../../../components/Context';
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
-  const [, setLang]: [string, (lang: string) => void] =
+  const [lang, setLang]: [string, (lang: string) => void] =
     useContext(ContextLanguage);
 
   type tMapLanguage = {
@@ -18,10 +19,9 @@ const DropdownLanguages = () => {
   };
 
   useEffect(() => {
-    const i18nextLng = localStorage.getItem('i18nextLng');
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
       'lang',
-      i18nextLng || 'ru',
+      lang || 'ru',
     );
   }, []);
 
@@ -29,10 +29,11 @@ const DropdownLanguages = () => {
   const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
   const onClickElement = (item: string) => {
+    const language = item === 'ru' ? 'Русский' : 'English';
     setSelected(item);
     setLang(item);
     i18next.changeLanguage(item);
-    localStorage.setItem('language', item === 'ru' ? 'Русский' : 'English');
+    setValueToLocalStorage('language', language);
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(
       'lang',
       item,
@@ -42,7 +43,7 @@ const DropdownLanguages = () => {
   return (
     <Dropdown
       data={mapLanguage}
-      selected={selected}
+      selected={lang}
       onClickElement={(item: string) => onClickElement(item)}
       ref={refWrapperLanguage}
     />
