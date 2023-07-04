@@ -10,5 +10,9 @@ const ContextLanguage = createContext<[string, (item: string) => void]>(
   ['ru', () => {}],
 );
 
+const ContextIdUser = createContext<[string, (item: string) => void]>(
+  // eslint-disable-next-line
+  ['', () => {}],
+);
 
-export { ContextCurrentQuestionNumb, ContextLanguage };
+export { ContextCurrentQuestionNumb, ContextLanguage, ContextIdUser };

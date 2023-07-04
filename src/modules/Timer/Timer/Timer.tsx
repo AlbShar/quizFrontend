@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { ContextIdUser } from '../../../components/Context';
 import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
 import Modal from '../../../UI/Modal/Modal';
 import getFullNumb from '../helpers/getFullNumb';
@@ -18,11 +19,15 @@ const Timer = () => {
   const [isCounting, setIsCounting] = useState<boolean>(true);
   const [isModal, setIsModal] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);
+      const [idUser]: [string, (lang: string) => void] =
+        useContext(ContextIdUser);
+
   const timerRef = useRef<HTMLDivElement>(null);
   const hours: string = getFullNumb(Math.floor(time / 3600) % 60);
   const minutes: string = getFullNumb(Math.floor(time / 60) % 60);
   const seconds: string = getFullNumb(Math.floor(time % 60));
   const timer: string[] = [`${hours}:`, `${minutes}:`, seconds];
+
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
   ));
@@ -51,7 +56,7 @@ const Timer = () => {
     return () => {
       clearTimeout(timerId);
       if (!timerRef.current) {
-        sendDbTimeLeft(time);
+        sendDbTimeLeft(time, idUser);
       }
     };
   }, [time, isCounting]);

@@ -3,10 +3,17 @@ import { ref } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-export const createIdUser = () => {
+const createIdUser = (): string => {
+
   const pushedRef = push(ref(db, 'users/user'));
+
   if (pushedRef && pushedRef.key) {
     const idUser = pushedRef.key;
-    localStorage.setItem('idUser', idUser);
+    return idUser;
+    // localStorage.setItem('idUser', idUser);
+  } else {
+    return ''
   }
 };
+
+export {createIdUser};

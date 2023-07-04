@@ -5,9 +5,9 @@ import ButtonNext from '../UI/ButtonNext';
 import {
   ContextCurrentQuestionNumb,
   ContextLanguage,
+  ContextIdUser,
 } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
-import { getIdUser } from '../../../helpers/getIdUser';
 import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
@@ -28,6 +28,8 @@ const ButtonsQuiz = ({
     ContextCurrentQuestionNumb,
   );
   const [lang] = useContext(ContextLanguage);
+  const [idUser]: [string, (lang: string) => void] =
+    useContext(ContextIdUser);
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
@@ -47,7 +49,7 @@ const ButtonsQuiz = ({
       selectorQuestion: '#questionTitle',
       userAnswer: userAnswer,
       selectorTheme: '#themeQuestion',
-      idUser: getIdUser('idUser'),
+      idUser: idUser,
       lang,
     });
   };
@@ -57,6 +59,7 @@ const ButtonsQuiz = ({
     sendAnswersToDb();
     setIsBtnNextDisabled(true);
     setIsBtnBackDisabled(false);
+    
   };
 
   return (

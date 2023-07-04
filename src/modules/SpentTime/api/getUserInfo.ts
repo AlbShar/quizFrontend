@@ -1,7 +1,6 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-import { getIdUser } from '../../../helpers/getIdUser';
 import db from '../../../config/firebase/firebaseConfig';
 
 type TUserInfoDB = {
@@ -11,14 +10,11 @@ type TUserInfoDB = {
   time: number;
 };
 
-const getUserInfo = () => {
+const getUserInfo = (idUser: string) => {
   return new Promise<TUserInfoDB>(function (resolve, reject) {
-    onValue(
-      ref(db, `users/user${getIdUser('idUser')}/userInfo`),
-      (snapshot) => {
-        resolve(snapshot.val());
-      },
-    );
+    onValue(ref(db, `users/user${idUser}/userInfo`), (snapshot) => {
+      resolve(snapshot.val());
+    });
   });
 };
 

@@ -3,7 +3,8 @@ import { lazy, Suspense, useState } from 'react';
 
 import Spinner from './UI/Spinner/Spinner';
 import { GlobalStyles } from './styles/Global'
-import {ContextLanguage} from './components/Context';
+import {ContextLanguage, ContextIdUser} from './components/Context';
+import { getValueFromLocalStorage } from './helpers/getValueFromLocalStorage';
 
 const Header = lazy(() => import('./modules/Header/index'));
 const Footer = lazy(() => import('./modules/Footer/index'));
@@ -15,38 +16,42 @@ const Results = lazy(() => import('./pages/Results/Results'));
 const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
-  const [lang, setLang] = useState<string>(localStorage.getItem('i18nextLng') || "ru");
+  const [lang, setLang] = useState<string>(
+    getValueFromLocalStorage('i18nextLng') || 'ru',
+  );
+  const [idUser, setIdUser] = useState<string>('');
 
   return (
     <>
       <GlobalStyles />
       <ContextLanguage.Provider value={[lang, setLang]}>
-        <BrowserRouter basename='/quizFrontend'>
-        <Suspense
-          fallback={
-            <Spinner
-              width={250}
-              height={250}
-              color={'#1f2ce0'}
-              margin={'0 auto'}
-            />
-          }
-        >
-          <Routes>
-            <Route path='/' element={<Header/>}>
-              <Route index element={<Homepage />} />
-              <Route index element={<Footer />} />
-              <Route path='reportbug' element={<ReportBugPage />} />
-              <Route path='quiz' element={<Quiz/>} />
-              <Route path='contact' element={<Contact />} />
-              <Route path='results' element={<Results/>} />
-            </Route>
-            <Route path='*' element={<Page404 />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+        <ContextIdUser.Provider value={[idUser, setIdUser]}>
+          <BrowserRouter basename='/quizFrontend'>
+            <Suspense
+              fallback={
+                <Spinner
+                  width={250}
+                  height={250}
+                  color={'#1f2ce0'}
+                  margin={'0 auto'}
+                />
+              }
+            >
+              <Routes>
+                <Route path='/' element={<Header />}>
+                  <Route index element={<Homepage />} />
+                  <Route index element={<Footer />} />
+                  <Route path='reportbug' element={<ReportBugPage />} />
+                  <Route path='quiz' element={<Quiz />} />
+                  <Route path='contact' element={<Contact />} />
+                  <Route path='results' element={<Results />} />
+                </Route>
+                <Route path='*' element={<Page404 />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </ContextIdUser.Provider>
       </ContextLanguage.Provider>
-      
     </>
   );
 }

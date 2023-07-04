@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -11,10 +11,12 @@ import Spinner from '../../UI/Spinner/Spinner';
 import { getUserInfo } from './api/getUserInfo';
 import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
 import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
+import { ContextIdUser } from '../../components/Context';
 
 const SpentTime = (): JSX.Element => {
   const { t } = useTranslation();
-
+  const [idUser]: [string, (lang: string) => void] =
+    useContext(ContextIdUser);
   type TState = {
     loading: boolean;
     error: boolean;
@@ -61,7 +63,7 @@ const SpentTime = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getUserInfo().then(timeHasLoaded).catch(onError);
+    getUserInfo(idUser).then(timeHasLoaded).catch(onError);
   }, []);
 
   return (

@@ -1,8 +1,10 @@
 import { useContext, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
-import { getIdUser } from '../../../helpers/getIdUser';
+import {
+  ContextCurrentQuestionNumb,
+  ContextIdUser,
+} from '../../../components/Context';
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 import leftArrow from '../../../assets/images/leftArrow.svg';
 
@@ -23,13 +25,14 @@ const BtnBack = ({
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
     setCurrentQuestionNumb(currentQuestionNumb - 1);
     setIsBtnNextDisabled(false);
     setIsBtnBackDisabled(true);
     highlightPreviousAnswer({
-      idUser: getIdUser('idUser'),
+      idUser: idUser,
       currentQuestionNumb,
       selectorAnswers: '#answersAll ul li',
     });

@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Spinner from '../../UI/Spinner/Spinner';
 import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
 import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
+import {
+  ContextIdUser
+} from '../../components/Context';
 
 import { getUserAnswers } from './api/getUserAnswers';
 import { StyledH2, StyledH3, StyledArticle } from './FinalResult.Styled';
@@ -13,6 +16,8 @@ type FinalResultProps = {
 
 const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   const { t } = useTranslation();
+    const [idUser]: [string, (lang: string) => void] =
+      useContext(ContextIdUser);
 
   type TState = {
     points:
@@ -112,7 +117,7 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   };
 
   useEffect(() => {
-    Promise.allSettled([getTotalQuestionsNumb(), getUserAnswers()])
+    Promise.allSettled([getTotalQuestionsNumb(), getUserAnswers(idUser)])
       .then(dataHasLoaded)
       .catch(onError);
   }, []);

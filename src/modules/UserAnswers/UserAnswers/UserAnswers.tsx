@@ -9,11 +9,12 @@ import { getUserAnswers } from '../api/getUserAnswers';
 import { getInfoQuestions } from '../api/getInfoQuestions';
 import Spinner from '../../../UI/Spinner/Spinner';
 import { getNumberFromKey } from '../helpers/getNumberFromKey';
-import { ContextLanguage } from '../../../components/Context';
+import { ContextLanguage, ContextIdUser } from '../../../components/Context';
 import filterByRightAnswer from '../helpers/filterByRightAnswer';
 import filterByThemes from '../helpers/filterByThemes';
 import getThemes from '../helpers/getThemes';
 import getPointsByThemes from '../helpers/getPointsByThemes';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 import {
   StyledLi,
@@ -33,15 +34,16 @@ import type {
   TQuestionAndAnswer,
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
+
+
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
-const UserAnswers = ({
-  setPointsByTheme,
-}: UserAnwersProps): JSX.Element => {
+const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -55,7 +57,7 @@ const UserAnswers = ({
   ) : (
     false
   );
-  const error = isError ? <ErrorMessage/> : false;
+  const error = isError ? <ErrorMessage /> : false;
   const view = () => {
     if (infoQuestionsAndAnswers) {
       const visibleData: TInfoQuestionsAndAnswers = filterByRightAnswer(
@@ -199,7 +201,11 @@ const UserAnswers = ({
   };
 
   useEffect(() => {
-    Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
+    Promise.all([
+      getUserAnswers(idUser),
+      getAnswerOptions(),
+      getInfoQuestions(),
+    ])
       .then((value) =>
         transformQuestionsAndAnswersDB(
           value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[],

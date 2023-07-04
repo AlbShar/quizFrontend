@@ -43,17 +43,6 @@ const Answers = ({
     refAnswers[id].setAttribute('style', style);
     refAnswers[id].focus();
     setIsBtnNextDisabled(false);
-
-    /* console.log(userAnswer);
-    const isCurrentAnswer: boolean = currentAnswer.length ? true : false;
-    if (!isCurrentAnswer) {
-      setIsBtnNextDisabled(false);
-    }
-
-    removeAllAttributes(refAnswers);
-    refAnswers[id].setAttribute('style', style);
-    refAnswers[id].setAttribute('data-useranswer', 'true');
-    refAnswers[id].focus();*/
   };
 
   const answersHasLoaded = (response: AnswersType) => {
