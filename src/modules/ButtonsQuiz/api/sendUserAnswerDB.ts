@@ -31,7 +31,7 @@ const sendUserAnswerDB = async ({
   const isRigthAnswer = rightAnswer === userAnswer ? 1 : 0;
 
   try {
-    if (!theme || !question || !isRigthAnswer) {
+    if (!theme || !question) {
       throw new Error(`There is no data information about question`);
     }
 
