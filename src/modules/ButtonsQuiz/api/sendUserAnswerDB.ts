@@ -25,28 +25,27 @@ const sendUserAnswerDB = async ({
     document.querySelector<HTMLSpanElement>(selectorTheme)?.textContent;
   const question =
     document.querySelector<HTMLHeadingElement>(selectorQuestion)?.textContent;
+
+  const refer = `users/user${idUser}/answers/answer${currentQuestionNumb}`;
   const rightAnswer = await getRightAnswerDB(currentQuestionNumb, lang);
+  const isRigthAnswer = rightAnswer === userAnswer ? 1 : 0;
 
   try {
-    const referenceUserAnswers = ref(
-      db,
-      `users/user${idUser}/answers/answer${currentQuestionNumb}`,
-    );
-    set(referenceUserAnswers, {
+    if (!theme || !question || !isRigthAnswer) {
+      throw new Error(`There is no data information about question`);
+    }
+
+    set(ref(db, refer), {
       question: question,
       userAnswer: userAnswer,
       theme: theme,
-      point: rightAnswer === userAnswer ? 1 : 0,
+      point: isRigthAnswer,
     });
-  } catch (error) {
-    if (!theme) {
-      throw new Error(`The value of variable 'theme' is ${theme}. ${error}`);
-    } else if (!question) {
-      throw new Error(
-        `The value of variable 'question' is ${question}. ${error}`,
-      );
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
     } else {
-      throw new Error(`Unknown mistake: ${error}`);
+      throw new Error(`Unknown mistake: ${e}`);
     }
   }
 };

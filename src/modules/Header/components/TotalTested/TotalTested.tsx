@@ -1,7 +1,8 @@
-import { FC, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
 import Spinner from '../../../../UI/Spinner/Spinner';
 import { getAllTestedUsers } from '../../api/getAllTestedUsers';
 
@@ -15,31 +16,50 @@ const TotalTested = () => {
   const { t } = useTranslation();
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [allTestedUsers, SetAllTestedUsers] = useState<number>(0);
-  const loadingIsOver = () => {
-    setLoading(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [allTestedUsers, setAllTestedUsers] = useState<number>(0);
+
+  const error = isError ? <ErrorMessage /> : null;
+  const spinner = loading ? (
+    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
+  ) : null;
+  const view = () => {
+    return (
+      <StyledDivWrapper>
+        <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
+        <StyledSpanNumber ref={totalUsersRef}>
+          {allTestedUsers}
+        </StyledSpanNumber>
+      </StyledDivWrapper>
+    );
+  };
+  const content = !(loading || isError) ? view() : null;
+
+  const dataHasLoaded = (res: number) => {
+      setLoading(false);
+      setAllTestedUsers(res);
   };
 
-  const setTestedUsers = (num: number) => {
-    SetAllTestedUsers(num);
+  const onErrorHandler = (error: unknown) => {
+    setLoading(false);
+    setIsError(true);
+
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error(`Unknown error caught: ${error}`);
+    }
   };
+
 
   useEffect(() => {
-    getAllTestedUsers().then((allTestedUsers) => {
-      loadingIsOver();
-      setTestedUsers(allTestedUsers);
-    });
-  }, [loading]);
-
-  if (loading) {
-    return <Spinner width={50} height={50} color={"#1f2ce0"} margin='0 auto' />;
-  }
+    getAllTestedUsers().then(dataHasLoaded).catch(onErrorHandler);
+  }, []);
 
   return (
-    <StyledDivWrapper>
-      <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
-      <StyledSpanNumber ref={totalUsersRef}>{allTestedUsers}</StyledSpanNumber>
-    </StyledDivWrapper>
+    <>
+      {content} {spinner} {error}
+    </>
   );
 };
 

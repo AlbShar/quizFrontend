@@ -54,13 +54,14 @@ const InfoTest = () => {
   };
 
   const onError = (error: any) => {
+    console.log('error')
     setIsError(true);
     setIsLoading(false);
     throw new Error(error)
   };
 
   useEffect(() => {
-    getTotalQuestionsNumb().then(dataHasLoaded).catch(onError);
+    getTotalQuestionsNumb().then(dataHasLoaded).catch(error => onError(error));
   }, []);
 
  
