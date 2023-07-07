@@ -13,8 +13,10 @@ async function setWidthScrollBar({
   scrollBarElementRef,
 }: WidthScrollBarProps) {
   try {
-    const totalQuestionsNumb: number | undefined =
-      await getTotalQuestionsNumb();
+    const url = 'questions';
+    const totalQuestionsNumb: number | undefined = await getTotalQuestionsNumb(
+      url,
+    );
 
     const quizElement = quizRef.current;
     const scrollBarElement = scrollBarElementRef.current;

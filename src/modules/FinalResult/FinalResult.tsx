@@ -117,7 +117,9 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   };
 
   useEffect(() => {
-    Promise.allSettled([getTotalQuestionsNumb(), getUserAnswers(idUser)])
+    const url = 'questions';
+    
+    Promise.allSettled([getTotalQuestionsNumb(url), getUserAnswers(idUser)])
       .then(dataHasLoaded)
       .catch(onError);
   }, []);

@@ -28,18 +28,19 @@ const ButtonsQuiz = ({
     ContextCurrentQuestionNumb,
   );
   const [lang] = useContext(ContextLanguage);
-  const [idUser]: [string, (lang: string) => void] =
-    useContext(ContextIdUser);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 
+  const setQuestionsNumber = async () => {
+    const url = 'questions';
+    const questionsNumber = await getTotalQuestionsNumb(url);
+    setTotalQuestionsNumbers(questionsNumber as number);
+  };
+
   useEffect(() => {
-    getTotalQuestionsNumb().then((questionsNumber) => {
-      if (questionsNumber) {
-        setTotalQuestionsNumbers(questionsNumber);
-      }
-    });
+    setQuestionsNumber();
   }, []);
 
   const sendAnswersToDb = () => {
@@ -54,12 +55,10 @@ const ButtonsQuiz = ({
     });
   };
 
-
   const onClickButtonHandler = (e: MouseEvent) => {
     sendAnswersToDb();
     setIsBtnNextDisabled(true);
     setIsBtnBackDisabled(false);
-    
   };
 
   return (

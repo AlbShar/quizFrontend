@@ -82,9 +82,10 @@ const QuantityThemeQuestions = () => {
   };
 
   useEffect(() => {
+    const url = 'questions';
     Promise.allSettled([
       getThemeQuestion(currentQuestionNumb, lang),
-      getTotalQuestionsNumb(),
+      getTotalQuestionsNumb(url),
     ]).then(dataLoaded);
   }, [currentQuestionNumb, lang]);
 

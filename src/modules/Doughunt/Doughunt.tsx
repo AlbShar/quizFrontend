@@ -12,7 +12,6 @@ import {
   StyledDoughuntWrapper,
 } from './Doughunt.Styled';
 
-
 type DoughnutProps = {
   rightAnswers: number;
 };
@@ -37,9 +36,7 @@ const Doughnut = ({ rightAnswers }: DoughnutProps): JSX.Element => {
           />
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
-        <StyledP>
-          {t("Подпись_круговая_диаграмма")}
-        </StyledP>
+        <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
       </StyledArticle>
     );
   };
@@ -48,13 +45,15 @@ const Doughnut = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   ) : null;
   const content = !isLoading ? view() : null;
 
+  const setQuestionsNumber = async () => {
+    const url = 'questions';
+    const questionsNumber = await getTotalQuestionsNumb(url);
+    setTotalQuestionNumbers(questionsNumber as number);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    getTotalQuestionsNumb().then((res) => {
-      if (res) {
-        setTotalQuestionNumbers(res);
-        setIsLoading(false);
-      }
-    });
+    setQuestionsNumber();
   }, []);
 
   return (

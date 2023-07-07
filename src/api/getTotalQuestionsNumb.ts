@@ -1,32 +1,27 @@
-import { ref } from 'firebase/database';
-import { onValue } from 'firebase/database';
+import { getDataFromDB } from './getDataFromDB';
 
-import db from '../config/firebase/firebaseConfig';
-import { useHandleResponseAndError } from '../hooks/useHandleResponseAndError';
-
-type Data = {
+type TotalQuestions = {
   [key: string]: string;
 };
 
-const transformData = (data: Data): number => {
+const transformData = (data: TotalQuestions): number => {
   return Object.entries(data).length;
 };
 
-const getTotalQuestionsNumb = async () => {
-  const refer = 'questions';
+const getTotalQuestionsNumb = async (url: string): Promise<number> => {
+  try {
+    const response = await getDataFromDB<TotalQuestions>(url);
 
-    return await new Promise<number>(function (resolve, reject) {
-      onValue(ref(db, refer), (snapshot) => {
-        const { getValue } = useHandleResponseAndError(
-          snapshot,
-          refer,
-          reject,
-          transformData,
-        );
-
-        resolve(getValue());
-      });
-    });
+    if (response) {
+      const data = transformData(response as TotalQuestions);
+      return data;
+    } else {
+        throw new Error(`No response found. Check your url. Value - ${url}`);
+    }
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 };
 
 export { getTotalQuestionsNumb };

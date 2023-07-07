@@ -53,15 +53,18 @@ const InfoTest = () => {
     setQuantityQuestions(numbQuestions);
   };
 
-  const onError = (error: any) => {
-    console.log('error')
+  const onError = (error) => {
     setIsError(true);
     setIsLoading(false);
-    throw new Error(error)
+    console.error(error)
   };
 
   useEffect(() => {
-    getTotalQuestionsNumb().then(dataHasLoaded).catch(error => onError(error));
+    const url = 'questions';
+
+    getTotalQuestionsNumb(url)
+      .then(dataHasLoaded)
+      .catch(onError);
   }, []);
 
  
