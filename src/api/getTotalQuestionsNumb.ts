@@ -11,13 +11,9 @@ const transformData = (data: TotalQuestions): number => {
 const getTotalQuestionsNumb = async (url: string): Promise<number> => {
   try {
     const response = await getDataFromDB<TotalQuestions>(url);
+    const data = transformData(response as TotalQuestions);
+    return data;
 
-    if (response) {
-      const data = transformData(response as TotalQuestions);
-      return data;
-    } else {
-        throw new Error(`No response found. Check your url. Value - ${url}`);
-    }
   } catch (e) {
     console.error(e);
     throw e;

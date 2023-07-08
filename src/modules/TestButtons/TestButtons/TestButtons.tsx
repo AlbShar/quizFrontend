@@ -1,4 +1,10 @@
-import { useContext, MouseEvent, useState, useEffect } from 'react';
+import {
+  useContext,
+  MouseEvent,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
@@ -11,19 +17,19 @@ import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
-import { StyledArticle } from './ButtonsQuiz.Styled';
+import { StyledArticle } from './TestButtons.Styled';
 
-type ButtonsQuizProps = {
+type TestButtonsProps = {
   isBtnNextDisabled: boolean;
   setIsBtnNextDisabled: (item: boolean) => void;
   userAnswer: string;
 };
 
-const ButtonsQuiz = ({
+const TestButtons = ({
   isBtnNextDisabled,
   setIsBtnNextDisabled,
   userAnswer,
-}: ButtonsQuizProps): JSX.Element => {
+}: TestButtonsProps): JSX.Element => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
@@ -33,11 +39,11 @@ const ButtonsQuiz = ({
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 
-  const setQuestionsNumber = async () => {
+  const setQuestionsNumber = useCallback(async () => {
     const url = 'questions';
     const questionsNumber = await getTotalQuestionsNumb(url);
     setTotalQuestionsNumbers(questionsNumber as number);
-  };
+  }, []);
 
   useEffect(() => {
     setQuestionsNumber();
@@ -46,11 +52,9 @@ const ButtonsQuiz = ({
   const sendAnswersToDb = () => {
     setCurrentQuestionNumb(currentQuestionNumb + 1);
     sendUserAnswerDB({
+      userAnswer,
+      idUser,
       currentQuestionNumb,
-      selectorQuestion: '#questionTitle',
-      userAnswer: userAnswer,
-      selectorTheme: '#themeQuestion',
-      idUser: idUser,
       lang,
     });
   };
@@ -86,4 +90,4 @@ const ButtonsQuiz = ({
   );
 };
 
-export default ButtonsQuiz;
+export default TestButtons;

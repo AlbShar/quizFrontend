@@ -1,7 +1,4 @@
-import { ref } from 'firebase/database';
-import { onValue } from 'firebase/database';
-
-import db from '../../../config/firebase/firebaseConfig';
+import { getDataFromDB } from '../../../api/getDataFromDB';
 
 type Users = {
   [key in string]: object
@@ -11,31 +8,18 @@ const transformData = (res: Users): number => {
   return Object.entries(res).length;
 };
 
-const getAllTestedUsers = () => {
-    const refer = 'users';
+const getAllTestedUsers = async () => {
+    const url = 'users';
 
-      return new Promise<number>(function (resolve, reject) {
-        onValue(ref(db, refer), (snapshot) => {
-           if (!snapshot.exists()) {
-             reject(
-               new Error(
-                 `No quantityTested found. Check your path (refer variable). Value - ${refer}`,
-               ),
-             );
-           }
-          const quantityTested = transformData(snapshot.val());
+    try {
+      const response = await getDataFromDB<Users>(url);
+      const data = transformData(response as Users);
 
-          if (quantityTested) {
-            resolve(quantityTested);
-          } else {
-            reject(
-              new Error(
-                `Value of quantityTested (${quantityTested}) variable is unavailable. Check it`,
-              ),
-            );
-          }
-        });
-      });
+      return data;
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
   
 };
 

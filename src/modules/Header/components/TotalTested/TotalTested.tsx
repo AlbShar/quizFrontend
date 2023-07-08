@@ -40,15 +40,10 @@ const TotalTested = () => {
       setAllTestedUsers(res);
   };
 
-  const onErrorHandler = (error: unknown) => {
+  const onErrorHandler = (error) => {
     setLoading(false);
     setIsError(true);
-
-    if (error instanceof Error) {
-      throw new Error(error.message);
-    } else {
-      throw new Error(`Unknown error caught: ${error}`);
-    }
+    throw new Error(error.message);
   };
 
 

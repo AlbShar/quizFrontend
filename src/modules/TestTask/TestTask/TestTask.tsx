@@ -2,46 +2,42 @@ import { useEffect, useContext, useState } from 'react';
 
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
-import { getSrcImg } from '../api/getSrcImg';
-import { getNameQuestion } from '../api/getNameQuestion';
 import SkeletonQuestion from '../UI/SkeletonQuestion';
+import { getDataFromDB } from '../../../api/getDataFromDB';
 
 import {
   StyledH2,
   StyledArticleQuestion,
   StyledPicture,
   StyledImg,
-} from './NameQuestionAndImg.Styled';
+} from './TestTask.Styled';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
-type IState = {
-  question: string;
-  loading?: boolean;
-  srcImg?: string | undefined;
-  error: boolean;
-};
-
-const NameQuestionAndImg = () => {
+const TestTask = () => {
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
-    ContextCurrentQuestionNumb
+    ContextCurrentQuestionNumb,
   );
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
-  const [state, setState] = useState<IState>({
-    question: '',
-    loading: true,
-    srcImg: '',
-    error: false,
-  });
-  const error = state.error ? <ErrorMessage/> : null;
-  const spinner = state.loading ? <SkeletonQuestion /> : null;
+  const [questionName, setQuestionName] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [srcImg, setSrcImg] = useState<string>('');
+  const [isError, setIsError] = useState<boolean>(false);
+
+  const error = isError ? <ErrorMessage /> : null;
+  const spinner = isLoading ? <SkeletonQuestion /> : null;
+
+  const urls = [
+    `questions/question${currentQuestionNumb}/${lang}/img`,
+    `questions/question${currentQuestionNumb}/${lang}/name`,
+  ];
 
   const view = () => {
-    if (!state.srcImg) {
+    if (!srcImg) {
       return (
         <StyledArticleQuestion>
           <StyledH2 id='questionTitle' tabIndex={0}>
-            {state.question}
+            {questionName}
           </StyledH2>
         </StyledArticleQuestion>
       );
@@ -49,48 +45,52 @@ const NameQuestionAndImg = () => {
     return (
       <StyledArticleQuestion>
         <StyledH2 id='questionTitle' tabIndex={0}>
-          {state.question}
+          {questionName}
         </StyledH2>
         <StyledPicture>
           <source
             type='image/png'
             media='(min-width: 320px)'
-            srcSet={state.srcImg}
+            srcSet={srcImg}
             width='120'
             height='auto'
           ></source>
           <source
             type='image/png'
             media='(min-width: 487px)'
-            srcSet={state.srcImg}
+            srcSet={srcImg}
             width='768'
             height='auto'
           ></source>
           <source
             type='image/png'
             media='(min-width: 769px)'
-            srcSet={state.srcImg}
+            srcSet={srcImg}
             width='1024'
             height='auto'
           ></source>
-          <StyledImg
-            src={state.srcImg}
-            width='1024'
-            height='auto'
-            alt='Код на JS'
-          />
+          <StyledImg src={srcImg} width='1024' height='auto' alt='Код на JS' />
         </StyledPicture>
       </StyledArticleQuestion>
     );
   };
 
-  const content = !(state.loading || state.error) ? view() : null;
+  const content = !(isLoading || isError) ? view() : null;
 
   const dataLoaded = (result) => {
+    result.forEach((result, num) => {
+      if (result.status === 'rejected') {
+        throw new Error(`${urls[num]}: ${result.reason}`);
+      }
+    });
+
     type TDataInfo = {
-      [key: string]: string;
+      src: string;
+      question: string;
     };
+
     const dataInfo: TDataInfo = { src: '', question: '' };
+
     result.forEach((item) => {
       if (item.value.startsWith('http')) {
         dataInfo.src = item.value;
@@ -103,24 +103,20 @@ const NameQuestionAndImg = () => {
       }
     });
 
-    setState((state) => ({
-      ...state,
-      loading: false,
-      question: dataInfo.question,
-      srcImg: dataInfo.src,
-    }));
+    setQuestionName(dataInfo.question);
+    setIsLoading(false);
+    setSrcImg(dataInfo.src);
   };
 
   const onErrorHandler = (error): never => {
-    setState((state) => ({ ...state, loading: false, error: true }));
+    setIsLoading(false);
+    setIsError(true);
+
     throw new Error(error);
   };
 
   useEffect(() => {
-    Promise.allSettled([
-      getSrcImg(currentQuestionNumb, lang),
-      getNameQuestion(currentQuestionNumb, lang),
-    ])
+    Promise.allSettled(urls.map((url) => getDataFromDB(url)))
       .then(dataLoaded)
       .catch(onErrorHandler);
   }, [currentQuestionNumb, lang]);
@@ -132,4 +128,4 @@ const NameQuestionAndImg = () => {
   );
 };
 
-export default NameQuestionAndImg;
+export default TestTask;

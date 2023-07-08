@@ -9,15 +9,14 @@ import {
 } from '../../components/Context';
 
 import { getUserAnswers } from './api/getUserAnswers';
-import { StyledH2, StyledH3, StyledArticle } from './FinalResult.Styled';
+import { StyledH2, StyledH3, StyledArticle } from './Score.Styled';
 type FinalResultProps = {
   setRightAnswers: (points: number) => void;
 };
 
-const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
+const Score = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   const { t } = useTranslation();
-    const [idUser]: [string, (lang: string) => void] =
-      useContext(ContextIdUser);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   type TState = {
     points:
@@ -118,7 +117,7 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
 
   useEffect(() => {
     const url = 'questions';
-    
+
     Promise.allSettled([getTotalQuestionsNumb(url), getUserAnswers(idUser)])
       .then(dataHasLoaded)
       .catch(onError);
@@ -129,7 +128,9 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
       <StyledArticle>
         <StyledH3>{t('Ваш_результат')}</StyledH3>
         <StyledH2>
-          {`${getTotalPoints(state.points)} ${t('из')} ${ state.totalQuestionNumbers}`}
+          {`${getTotalPoints(state.points)} ${t('из')} ${
+            state.totalQuestionNumbers
+          }`}
         </StyledH2>
       </StyledArticle>
     );
@@ -140,7 +141,7 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   ) : (
     false
   );
-  const error = state.error ? <ErrorMessage/> : false;
+  const error = state.error ? <ErrorMessage /> : false;
   const content = !(state.loading || state.error) ? view() : false;
 
   return (
@@ -150,4 +151,4 @@ const FinalResult = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   );
 };
 
-export default FinalResult;
+export default Score;

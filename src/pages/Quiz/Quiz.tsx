@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 
 import Container from '../../components/Container/Container';
-import Answers from '../../modules/Answers/index';
-import NameQuestionAndImg from '../../modules/NameQuestionAndImg/index';
-import QuantityThemeQuestions from '../../modules/QuantityThemeQuestions/index';
+import AnswerOptions from '../../modules/TestAnswerOptions/index';
+import TestTask from '../../modules/TestTask/index';
+import TestInfo from '../../modules/TestInfo/index';
 import Timer from '../../modules/Timer/index';
 import ScrollBar from '../../modules/ScrollBar/index';
 import { StyledMain } from '../../styles/Main.Styled';
 import { ContextCurrentQuestionNumb } from '../../components/Context';
-import ButtonsQuiz from '../../modules/ButtonsQuiz/index';
+import TestButtons from '../../modules/TestButtons/index';
 
 import { StyledSection, StyledArticle } from './Quiz.Styled';
 
@@ -41,15 +41,15 @@ const Quiz = () => {
           >
             <ScrollBar quizRef={quizRef} />
             <StyledArticle>
-              <QuantityThemeQuestions />
+              <TestInfo />
               <Timer />
             </StyledArticle>
-            <NameQuestionAndImg />
-            <Answers
+            <TestTask />
+            <AnswerOptions
               setIsBtnNextDisabled={setIsBtnNextDisabled}
               setUserAnswer={setUserAnswer}
             />
-            <ButtonsQuiz
+            <TestButtons
               setIsBtnNextDisabled={setIsBtnNextDisabled}
               isBtnNextDisabled={isBtnNextDisabled}
               userAnswer={userAnswer}

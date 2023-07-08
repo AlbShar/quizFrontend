@@ -5,7 +5,7 @@ import {
   StyledH2,
   StyledH3,
   StyledArticle,
-} from '../SpentTime/SpentTime.Styled';
+} from '../ResultTime/ResultTime.Styled';
 import Spinner from '../../UI/Spinner/Spinner';
 
 import { getUserInfo } from './api/getUserInfo';
@@ -13,10 +13,9 @@ import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
 import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
 import { ContextIdUser } from '../../components/Context';
 
-const SpentTime = (): JSX.Element => {
+const ResultTime = (): JSX.Element => {
   const { t } = useTranslation();
-  const [idUser]: [string, (lang: string) => void] =
-    useContext(ContextIdUser);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   type TState = {
     loading: boolean;
     error: boolean;
@@ -44,8 +43,10 @@ const SpentTime = (): JSX.Element => {
   const view = () => {
     return (
       <StyledArticle>
-        <StyledH3>{t("Затраченное_время")}</StyledH3>
-        <StyledH2>{transformSecondsToMinutes(state.time, t('сек'), t('мин'))}</StyledH2>
+        <StyledH3>{t('Затраченное_время')}</StyledH3>
+        <StyledH2>
+          {transformSecondsToMinutes(state.time, t('сек'), t('мин'))}
+        </StyledH2>
       </StyledArticle>
     );
   };
@@ -54,7 +55,7 @@ const SpentTime = (): JSX.Element => {
   ) : (
     false
   );
-  const error = state.error ? <ErrorMessage/> : false;
+  const error = state.error ? <ErrorMessage /> : false;
   const content = !(state.loading || state.error) ? view() : false;
 
   const onError = (error: any): never => {
@@ -73,4 +74,4 @@ const SpentTime = (): JSX.Element => {
   );
 };
 
-export default SpentTime;
+export default ResultTime;

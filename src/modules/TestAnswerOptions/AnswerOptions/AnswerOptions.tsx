@@ -1,26 +1,26 @@
 import { useEffect, useState, useContext } from 'react';
 
 import SkeletonAnswers from '../UI/SkeletonAnswers';
-import { getAnswersDb } from '../api/getAnswersDb';
+import { getAnswersOptions } from '../api/getAnswersOptions';
 import Answer from '../components/Answer/Answer';
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
-import { StyledArticle, StyledUl } from './Answers.Styled';
+import { StyledArticle, StyledUl } from './AnswerOptions.Styled';
 
 import type { AnswersType } from '../type';
 
-type AnswersProps = {
+type AnswerOptionsProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
   setUserAnswer: (item: string) => void;
 };
 
-const Answers = ({
+const AnswerOptions = ({
   setIsBtnNextDisabled,
   setUserAnswer,
-}: AnswersProps): JSX.Element => {
+}: AnswerOptionsProps): JSX.Element => {
   const [answers, setAnsewrs] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -35,10 +35,15 @@ const Answers = ({
     refAnswers.push(elem as HTMLLIElement);
   };
 
-  const onClickAnswer = (id: number, e) => {
+  const onClickAnswer = (id: number, e: MouseEvent) => {
     const style = 'background-color: #B7B7FF';
 
-    setUserAnswer(e.target.textContent);
+    if (e.target) {
+      const targetElement = e.target as HTMLElement;
+      const textContent = targetElement.textContent || '';
+      setUserAnswer(textContent);
+    }
+
     removeAllAttributes(refAnswers);
     refAnswers[id].setAttribute('style', style);
     refAnswers[id].focus();
@@ -73,24 +78,21 @@ const Answers = ({
     </StyledArticle>
   ) : null;
 
-  const onErrorHandler = (error: unknown) => {
+  const onErrorHandler = (error) => {
     setIsLoading(false);
     setIsError(true);
-    if (error instanceof Error) {
-      throw new Error(`${error.message}`);
-    } else {
-      throw new Error(`Unknown error caught: ${error}`);
-    }
+    throw new Error(`${error.message}`);
   };
 
   useEffect(() => {
-    getAnswersDb(currentQuestionNumb, lang)
-      .then(answersHasLoaded)
-      .catch(onErrorHandler);
+    const url = `answers/answers${currentQuestionNumb}/${lang}`;
+
+    getAnswersOptions(url).then(answersHasLoaded).catch(onErrorHandler);
   }, [currentQuestionNumb, lang]);
 
   useEffect(() => {
     removeAllAttributes(refAnswers);
+    //eslint-disable-next-line
   }, [currentQuestionNumb]);
 
   return (
@@ -100,4 +102,4 @@ const Answers = ({
   );
 };
 
-export default Answers;
+export default AnswerOptions;

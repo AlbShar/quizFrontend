@@ -14,7 +14,11 @@ const getDataFromDB = async <TData>(url: string) => {
       if (value) {
         return resolve(value);
       } else {
-        reject(new Error(`Value  (${value})  is unavailable. Check it`));
+        reject(
+          new Error(
+            `Value (${value}) from Firebase Database not found. Check url (${url})`,
+          ),
+        );
       }
     });
   });

@@ -11,7 +11,7 @@ import {
   StyledH1,
   StyledSpanThemeQuestion,
   StyledSpanQuestionQuantity,
-} from './QuantityThemeQuestions.Styled';
+} from './TestInfo.Styled';
 
 type TState = {
   loading: boolean;
@@ -19,7 +19,7 @@ type TState = {
   totalQuestionNumber: number | null;
 };
 
-const QuantityThemeQuestions = () => {
+const TestInfo = () => {
   const { t } = useTranslation();
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
@@ -97,4 +97,4 @@ const QuantityThemeQuestions = () => {
   );
 };
 
-export default QuantityThemeQuestions;
+export default TestInfo;
