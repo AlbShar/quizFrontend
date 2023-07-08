@@ -2,8 +2,8 @@ import './footer.css';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import Container from '../../../components/Container/Container';
-import Logo from '../../../components/Logo/Logo';
+import Container from '../Container/Container';
+import Logo from '../Logo/Logo';
 import { StyledFlexWrapper } from './Footer.Styled';
 
 import {
@@ -13,7 +13,7 @@ import {
   StyledUl,
 } from './Footer.Styled';
 
-import type { FooterInfo } from '../../../types/types';
+import type { FooterInfo } from '../../types/types';
 
 const Footer = () => {
   

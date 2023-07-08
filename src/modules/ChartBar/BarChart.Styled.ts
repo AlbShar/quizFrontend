@@ -35,7 +35,7 @@ const StyledP = styled.article`
   margin: 12px 0 0 0;
 `;
 
-const StyledBarChartWrapper = styled.span`
+const StyledBarChartWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 220px;

@@ -7,7 +7,7 @@ import {ContextLanguage, ContextIdUser} from './components/Context';
 import { getValueFromLocalStorage } from './helpers/getValueFromLocalStorage';
 
 const Header = lazy(() => import('./modules/Header/index'));
-const Footer = lazy(() => import('./modules/Footer/index'));
+const Footer = lazy(() => import('./components/Footer/Footer'));
 const ReportBugPage = lazy(() => import('./pages/ReportBugPage/ReportBugPage'));
 const Homepage = lazy(() => import('./pages/Homepage/Homepage'));
 const Quiz = lazy(() => import('./pages/Quiz/Quiz'));

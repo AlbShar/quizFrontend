@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 `;
 
 export { StyledSpan, StyledDiv };

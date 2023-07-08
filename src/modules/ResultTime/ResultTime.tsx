@@ -7,11 +7,12 @@ import {
   StyledArticle,
 } from '../ResultTime/ResultTime.Styled';
 import Spinner from '../../UI/Spinner/Spinner';
+import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
+import { ContextIdUser } from '../../components/Context';
 
 import { getUserInfo } from './api/getUserInfo';
 import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
-import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
-import { ContextIdUser } from '../../components/Context';
+
 
 const ResultTime = (): JSX.Element => {
   const { t } = useTranslation();
@@ -35,9 +36,14 @@ const ResultTime = (): JSX.Element => {
     time: 0,
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [time, setTime] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
+
   const timeHasLoaded = (userInfo: TUserInfoDB) => {
     const { time } = userInfo;
-    setState((state) => ({ ...state, loading: false, time }));
+    setIsLoading(false);
+    setTime(time);
   };
 
   const view = () => {
@@ -50,16 +56,17 @@ const ResultTime = (): JSX.Element => {
       </StyledArticle>
     );
   };
-  const spinner = state.loading ? (
+  const spinner = isLoading ? (
     <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : (
     false
   );
-  const error = state.error ? <ErrorMessage /> : false;
-  const content = !(state.loading || state.error) ? view() : false;
+  const error = isError ? <ErrorMessage /> : false;
+  const content = !(isLoading || isError) ? view() : false;
 
   const onError = (error: any): never => {
-    setState((state) => ({ ...state, loading: false, error: true }));
+    setIsLoading(false);
+    setIsError(true);
     throw new Error(error);
   };
 

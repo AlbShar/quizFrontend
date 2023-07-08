@@ -188,7 +188,8 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
   };
 
   const onError = (error: any): never => {
-    setIsError((isError) => !isError);
+    setIsError(true);
+    setIsLoading(false);
     throw new Error(error);
   };
 
