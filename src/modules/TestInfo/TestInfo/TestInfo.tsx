@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextCurrentQuestionNumb } from '../../../components/Context';
@@ -6,6 +6,8 @@ import { ContextLanguage } from '../../../components/Context';
 import SkeletonTheme from '../UI/SkeletonTheme';
 import { getThemeQuestion } from '../api/getThemeQuestion';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
+import ScrollBar from '../components/ScrollBar/ScrollBar';
+import Timer from '../components/Timer/Timer';
 
 import {
   StyledH1,
@@ -19,7 +21,11 @@ type TState = {
   totalQuestionNumber: number | null;
 };
 
-const TestInfo = () => {
+type TestInfoProps = {
+  quizRef: RefObject<HTMLTableSectionElement>;
+};
+
+const TestInfo = ({ quizRef }: TestInfoProps) => {
   const { t } = useTranslation();
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
@@ -35,15 +41,19 @@ const TestInfo = () => {
 
   const view = () => {
     return (
-      <StyledH1 id='questionName'>
-        {t('Вопрос')} {currentQuestionNumb}
+      <>
+        <ScrollBar quizRef={quizRef} />
+        <StyledH1 id='questionName'>
+          {t('Вопрос')} {currentQuestionNumb}
+        </StyledH1>
         <StyledSpanQuestionQuantity id='totalQuestionQuantity' tabIndex={0}>
           {`/ ${state.totalQuestionNumber}`}
         </StyledSpanQuestionQuantity>
         <StyledSpanThemeQuestion id='themeQuestion'>
           {state.questionTheme}
         </StyledSpanThemeQuestion>
-      </StyledH1>
+        <Timer/>
+      </>
     );
   };
   const skeleton = state.loading ? <SkeletonTheme /> : null;

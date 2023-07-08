@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ContextIdUser } from '../../../components/Context';
-import { sendDbTimeLeft } from '../api/sendDbTimeLeft';
-import Modal from '../../../UI/Modal/Modal';
-import getFullNumb from '../helpers/getFullNumb';
-import Portal from '../../../components/Portal/Portal';
-import pause from '../../../assets/images/pause.svg';
+import { ContextIdUser } from '../../../../components/Context';
+import { sendDbTimeLeft } from '../../api/sendDbTimeLeft';
+import Modal from '../../../../UI/Modal/Modal';
+import getFullNumb from '../../helpers/getFullNumb';
+import Portal from '../../../../components/Portal/Portal';
+import pause from '../../../../assets/images/pause.svg';
 
 import {
   StyledDivTimer,

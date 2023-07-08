@@ -4,8 +4,6 @@ import Container from '../../components/Container/Container';
 import AnswerOptions from '../../modules/TestAnswerOptions/index';
 import TestTask from '../../modules/TestTask/index';
 import TestInfo from '../../modules/TestInfo/index';
-import Timer from '../../modules/Timer/index';
-import ScrollBar from '../../modules/ScrollBar/index';
 import { StyledMain } from '../../styles/Main.Styled';
 import { ContextCurrentQuestionNumb } from '../../components/Context';
 import TestButtons from '../../modules/TestButtons/index';
@@ -39,10 +37,8 @@ const Quiz = () => {
           <ContextCurrentQuestionNumb.Provider
             value={[currentQuestionNumb, setCurrentQuestionNumb]}
           >
-            <ScrollBar quizRef={quizRef} />
             <StyledArticle>
-              <TestInfo />
-              <Timer />
+              <TestInfo quizRef={quizRef} />
             </StyledArticle>
             <TestTask />
             <AnswerOptions

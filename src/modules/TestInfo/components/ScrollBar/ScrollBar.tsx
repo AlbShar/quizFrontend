@@ -1,7 +1,7 @@
 import { useEffect, useContext, useRef, RefObject } from 'react';
 
-import { setWidthScrollBar } from '../helpers/setWidthScrollBar';
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import { setWidthScrollBar } from '../../helpers/setWidthScrollBar';
+import { ContextCurrentQuestionNumb } from '../../../../components/Context';
 
 import { StyledDivScrollBar } from './SrollBar.Styled';
 
