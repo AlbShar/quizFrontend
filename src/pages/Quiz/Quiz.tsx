@@ -8,7 +8,7 @@ import { StyledMain } from '../../styles/Main.Styled';
 import { ContextCurrentQuestionNumb } from '../../components/Context';
 import TestButtons from '../../modules/TestButtons/index';
 
-import { StyledSection, StyledArticle } from './Quiz.Styled';
+import { StyledSection } from './Quiz.Styled';
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);

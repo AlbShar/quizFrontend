@@ -13,15 +13,12 @@ const StyledLi = styled.li`
   border: none;
 
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   @media screen and (min-width: 767.8px) {
     font: var(--font-regular);
     padding: 15px 20px;
 
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
   }
   
 `;

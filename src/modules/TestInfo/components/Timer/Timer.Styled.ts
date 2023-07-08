@@ -1,44 +1,48 @@
 import styled from 'styled-components';
 
 const StyledDivTimer = styled.div`
+  display: flex;
   font: var(--font-little-text-regular);
-  text-align: center;
+  align-items: center;
+  flex-direction: column;
 
   @media screen and (min-width: 767.8px) {
     font: var(--font-text-regular);
+    flex-direction: row;
     width: 100%;
     max-width: 274px;
+    gap: 66px;
+  }
+`;
+
+const StyledImg = styled.img`
+  @media screen and (max-width: 767.8px) {
+    width: 20px;
   }
 `;
 
 const StyledButtonPause = styled.button`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
   border-radius: 7px;
-  background-color: #b7b7ff;
-  color: #fff;
+  color: #000000;
   font: var(--font-little-text-regular);
   font-weight: 700;
-  border: 1px solid var(--color-border-answer);
+  border: none;
   cursor: pointer;
-  margin: 0 0 5px 0;
-  display: inline-flex;
-  gap: 10px;
-  padding: 5px 10px;
+  margin: 0;
+  gap: 5px;
+  padding: 5px;
   text-transform: uppercase;
 
-  @media screen and (min-width: 459.8px) {
-    margin: 0 0 10px 0;
-  }
-
   @media screen and (min-width: 767.8px) {
-    margin: 0 38px 0 0;
-    padding: 10px 14px;
-    gap: 36px;
+    padding: 10px;
     font: var(--font-bold);
-  }
-
-  &:hover {
-    background-color: #5557ff;
-    transition: all ease 0.5s;
+    max-width: 120px;
+    width: 100%;
   }
 `;
 
@@ -46,4 +50,4 @@ const StyledSpanTimer = styled.span`
   font: var(--font-bold);
 `;
 
-export { StyledDivTimer, StyledButtonPause, StyledSpanTimer };
+export { StyledDivTimer, StyledButtonPause, StyledSpanTimer, StyledImg };

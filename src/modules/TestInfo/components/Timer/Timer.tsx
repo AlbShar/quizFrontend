@@ -12,6 +12,7 @@ import {
   StyledDivTimer,
   StyledButtonPause,
   StyledSpanTimer,
+  StyledImg,
 } from './Timer.Styled';
 
 const Timer = () => {
@@ -66,8 +67,8 @@ const Timer = () => {
   return (
     <StyledDivTimer ref={timerRef}>
       <StyledButtonPause onClick={stopTimer}>
+        <StyledImg src={pause} alt='pause' />
         {t('Пауза')}
-        <img src={pause} alt='pause' />
       </StyledButtonPause>
       <StyledSpanTimer>{elementNumbersTimer}</StyledSpanTimer>
       {isModal && (
