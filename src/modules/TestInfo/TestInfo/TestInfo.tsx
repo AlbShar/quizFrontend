@@ -13,6 +13,7 @@ import {
   StyledH1,
   StyledSpanThemeQuestion,
   StyledSpanQuestionQuantity,
+  StyledArticle,
 } from './TestInfo.Styled';
 
 type TState = {
@@ -41,19 +42,25 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
 
   const view = () => {
     return (
-      <>
-        <ScrollBar quizRef={quizRef} />
-        <StyledH1 id='questionName'>
-          {t('Вопрос')} {currentQuestionNumb}
-        </StyledH1>
-        <StyledSpanQuestionQuantity id='totalQuestionQuantity' tabIndex={0}>
-          {`/ ${state.totalQuestionNumber}`}
-        </StyledSpanQuestionQuantity>
-        <StyledSpanThemeQuestion id='themeQuestion'>
-          {state.questionTheme}
-        </StyledSpanThemeQuestion>
-        <Timer/>
-      </>
+      <section>
+        <article style={{ backgroundColor: '#EEEEFF' }}>
+          <ScrollBar quizRef={quizRef} />
+        </article>
+        <StyledArticle>
+          <div>
+            <StyledH1 id='questionName'>
+              {t('Вопрос')} {currentQuestionNumb}
+            </StyledH1>
+            <StyledSpanQuestionQuantity id='totalQuestionQuantity' tabIndex={0}>
+              {`/ ${state.totalQuestionNumber}`}
+            </StyledSpanQuestionQuantity>
+            <StyledSpanThemeQuestion id='themeQuestion'>
+              {state.questionTheme}
+            </StyledSpanThemeQuestion>
+          </div>
+          <Timer />
+        </StyledArticle>
+      </section>
     );
   };
   const skeleton = state.loading ? <SkeletonTheme /> : null;

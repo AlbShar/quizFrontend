@@ -37,9 +37,7 @@ const Quiz = () => {
           <ContextCurrentQuestionNumb.Provider
             value={[currentQuestionNumb, setCurrentQuestionNumb]}
           >
-            <StyledArticle>
-              <TestInfo quizRef={quizRef} />
-            </StyledArticle>
+            <TestInfo quizRef={quizRef} />
             <TestTask />
             <AnswerOptions
               setIsBtnNextDisabled={setIsBtnNextDisabled}

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledH1 = styled.h1`
+  display: inline-block;
   font: var(--font-title4);
   color: black;
   padding: 0;
@@ -31,4 +32,21 @@ const StyledSpanThemeQuestion = styled(StyledSpanQuestionQuantity)`
   }
 `;
 
-export { StyledH1, StyledSpanThemeQuestion, StyledSpanQuestionQuantity };
+const StyledArticle = styled.article`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 540px;
+  padding: 20px 0;
+
+  @media screen and (min-width: 459.8px) {
+    max-width: 100%;
+  }
+`;
+
+export {
+  StyledH1,
+  StyledSpanThemeQuestion,
+  StyledSpanQuestionQuantity,
+  StyledArticle,
+};
