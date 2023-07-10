@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextIdUser } from '../../../../components/Context';
-import { sendDbTimeLeft } from '../../api/sendDbTimeLeft';
+import { sendTimeToDB } from '../../api/sendTimeToDB';
 import Modal from '../../../../UI/Modal/Modal';
 import getFullNumb from '../../helpers/getFullNumb';
 import Portal from '../../../../components/Portal/Portal';
@@ -20,8 +20,7 @@ const Timer = () => {
   const [isCounting, setIsCounting] = useState<boolean>(true);
   const [isModal, setIsModal] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);
-      const [idUser]: [string, (lang: string) => void] =
-        useContext(ContextIdUser);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const timerRef = useRef<HTMLDivElement>(null);
   const hours: string = getFullNumb(Math.floor(time / 3600) % 60);
@@ -46,6 +45,8 @@ const Timer = () => {
   };
 
   useEffect(() => {
+    const url = `users/user${idUser}/userInfo`;
+
     const startTimer = () => {
       isCounting && setTime((time) => time + 1);
     };
@@ -57,11 +58,10 @@ const Timer = () => {
     return () => {
       clearTimeout(timerId);
       if (!timerRef.current) {
-        sendDbTimeLeft(time, idUser);
+        sendTimeToDB(time, url);
       }
     };
   }, [time, isCounting]);
-
 
 
   return (

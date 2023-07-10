@@ -1,3 +1,3 @@
-import ResultTime from './ResultTime';
+import ResultTime from './Time/ResultTime';
 
 export default ResultTime;

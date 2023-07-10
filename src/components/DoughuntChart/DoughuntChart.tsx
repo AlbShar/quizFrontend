@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  LinearScale,
+} from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 
 import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
-import ChartDoughnut from '../../components/ChartDoughnut/ChartDoughnut';
 import Spinner from '../../UI/Spinner/Spinner';
 
 import {
@@ -10,39 +17,55 @@ import {
   StyledP,
   StyledSpan,
   StyledDoughuntWrapper,
-} from './Doughunt.Styled';
+} from './DoughuntChart.Styled';
+
+ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
 
 type DoughnutProps = {
   rightAnswers: number;
 };
 
-const Doughnut = ({ rightAnswers }: DoughnutProps): JSX.Element => {
+const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   const { t } = useTranslation();
 
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const percentRightQuestions = +(
     (100 * rightAnswers) /
     totalQuestionNumbers
   ).toFixed(1);
   const percentWrongQuestions = +(100 - percentRightQuestions).toFixed(1);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const data = {
+    labels: ['Верно', 'Неверно'],
+    datasets: [
+      {
+        label: '%',
+        data: [percentRightQuestions, percentWrongQuestions],
+        backgroundColor: ['green', 'red'],
+        borderColor: ['green', 'red'],
+        cutout: '75%',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const spinner = isLoading ? (
+    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
+  ) : null;
+  
   const view = () => {
     return (
       <StyledArticle>
         <StyledDoughuntWrapper>
-          <ChartDoughnut
-            dataPieChart={[percentRightQuestions, percentWrongQuestions]}
-          />
+          <Doughnut data={data}></Doughnut>
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
         <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
       </StyledArticle>
     );
   };
-  const spinner = isLoading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
-  ) : null;
   const content = !isLoading ? view() : null;
 
   const setQuestionsNumber = async () => {
@@ -63,4 +86,4 @@ const Doughnut = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   );
 };
 
-export default Doughnut;
+export default DoughnutChart;

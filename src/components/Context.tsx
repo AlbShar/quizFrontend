@@ -15,4 +15,10 @@ const ContextIdUser = createContext<[string, (item: string) => void]>(
   ['', () => {}],
 );
 
-export { ContextCurrentQuestionNumb, ContextLanguage, ContextIdUser };
+
+
+export {
+  ContextCurrentQuestionNumb,
+  ContextLanguage,
+  ContextIdUser,
+};

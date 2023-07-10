@@ -1,12 +1,12 @@
-import { useState, useCallback, FC } from 'react';
+import { useState, useCallback } from 'react';
 
 import { StyledMain } from '../../styles/Main.Styled';
 import UserAnswers from '../../modules/UserAnswers';
 import Container from '../../components/Container/Container';
-import Doughnut from '../../modules/Doughunt/index';
+import DoughuntChart from '../../components/DoughuntChart/DoughuntChart';
 import Score from '../../modules/Score/index';
 import ResultTime from '../../modules/ResultTime/index';
-import ChartBar from '../../modules/ChartBar/index';
+import BarChart from '../../components/BarChart/BarChart';
 
 import {
   StyledSection,
@@ -37,8 +37,8 @@ const Results = () => {
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
-              <ChartBar pointsByTheme={pointsByTheme} />
-              <Doughnut rightAnswers={rightAnswers} />
+              <BarChart pointsByTheme={pointsByTheme} />
+              <DoughuntChart rightAnswers={rightAnswers} />
             </StyledSection>
           </Container>
           <UserAnswers setPointsByTheme={setPointsByTheme} />

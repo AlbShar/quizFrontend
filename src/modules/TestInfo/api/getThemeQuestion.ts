@@ -1,21 +1,13 @@
-import { ref } from 'firebase/database';
-import { onValue } from 'firebase/database';
+import { getDataFromDB } from '../../../api/getDataFromDB';
 
-import db from '../../../config/firebase/firebaseConfig';
-
-const getThemeQuestion = async (currentQuestionNumb: number, lang: string) => {
+const getThemeQuestion = async (url: string) => {
   try {
-    return await new Promise(function (resolve, reject) {
-      onValue(
-        ref(db, `questions/question${currentQuestionNumb}/${lang}/theme`),
-        (snapshot) => {
-          const themQuestion = snapshot.val();
-          resolve(themQuestion);
-        },
-      );
-    });
-  } catch (error) {
-    console.error(error);
+    const response = await getDataFromDB<string>(url);
+
+    return response;
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 };
 

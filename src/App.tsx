@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { lazy, Suspense, useState } from 'react';
 
 import Spinner from './UI/Spinner/Spinner';
-import { GlobalStyles } from './styles/Global'
-import {ContextLanguage, ContextIdUser} from './components/Context';
+import { GlobalStyles } from './styles/Global';
+import { ContextLanguage, ContextIdUser } from './components/Context';
 import { getValueFromLocalStorage } from './helpers/getValueFromLocalStorage';
 
 const Header = lazy(() => import('./modules/Header/index'));
@@ -19,14 +19,16 @@ function App() {
   const [lang, setLang] = useState<string>(
     getValueFromLocalStorage('i18nextLng') || 'ru',
   );
-  const [idUser, setIdUser] = useState<string>(getValueFromLocalStorage('idUser'));
+  const [idUser, setIdUser] = useState<string>(
+    getValueFromLocalStorage('idUser'),
+  );
 
   return (
     <>
       <GlobalStyles />
-      <ContextLanguage.Provider value={[lang, setLang]}>
-        <ContextIdUser.Provider value={[idUser, setIdUser]}>
-          <BrowserRouter basename='/quizFrontend'>
+      <BrowserRouter basename='/quizFrontend'>
+        <ContextLanguage.Provider value={[lang, setLang]}>
+          <ContextIdUser.Provider value={[idUser, setIdUser]}>
             <Suspense
               fallback={
                 <Spinner
@@ -49,9 +51,9 @@ function App() {
                 <Route path='*' element={<Page404 />} />
               </Routes>
             </Suspense>
-          </BrowserRouter>
-        </ContextIdUser.Provider>
-      </ContextLanguage.Provider>
+          </ContextIdUser.Provider>
+        </ContextLanguage.Provider>
+      </BrowserRouter>
     </>
   );
 }

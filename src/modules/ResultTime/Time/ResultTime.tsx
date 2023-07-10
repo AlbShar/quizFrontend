@@ -5,13 +5,14 @@ import {
   StyledH2,
   StyledH3,
   StyledArticle,
-} from '../ResultTime/ResultTime.Styled';
-import Spinner from '../../UI/Spinner/Spinner';
-import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
-import { ContextIdUser } from '../../components/Context';
+} from './ResultTime.Styled';
 
-import { getUserInfo } from './api/getUserInfo';
-import { transformSecondsToMinutes } from './helpers/transformSecondsToMinutes';
+import Spinner from '../../../UI/Spinner/Spinner';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
+import { ContextIdUser } from '../../../components/Context';
+
+import { getUserInfo } from '../api/getUserInfo';
+import { transformSecondsToMinutes } from '../helpers/transformSecondsToMinutes';
 
 
 const ResultTime = (): JSX.Element => {

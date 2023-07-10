@@ -16,7 +16,7 @@ import {
   StyledSpan,
   StyledPForm,
   StyledFieldset,
-  StyledDivWarning,
+  StyledSpanWarning,
 } from './UserForm.Styled';
 
 type TDataInputs = {
@@ -163,7 +163,7 @@ const UserForm = () => {
             keyHint={keyHint}
           />
           {isFirstRender ? null : isValidation ? null : (
-            <StyledDivWarning>{warningMessage}</StyledDivWarning>
+            <StyledSpanWarning>{warningMessage}</StyledSpanWarning>
           )}
         </label>
       </StyledPForm>
