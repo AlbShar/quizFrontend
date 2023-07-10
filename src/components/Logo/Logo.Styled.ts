@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface LogoImg {
+type StyledImgProps = {
   location: string;
 }
 
-export const StyledImg = styled.img<LogoImg>`
+export const StyledImg = styled.img<StyledImgProps>`
   width: 86px;
   height: 42px;
   cursor: pointer;

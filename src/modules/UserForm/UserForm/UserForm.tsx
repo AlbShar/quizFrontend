@@ -1,7 +1,6 @@
 import {
   useState,
   ChangeEvent,
-  FC,
   useEffect,
   FocusEvent,
   KeyboardEvent,
@@ -17,7 +16,7 @@ import {
   StyledSpan,
   StyledPForm,
   StyledFieldset,
-  StyledDivWarning,
+  StyledSpanWarning,
 } from './UserForm.Styled';
 
 type TDataInputs = {
@@ -41,7 +40,7 @@ type TDataInputs = {
   keyHint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 };
 
-const UserForm: FC = () => {
+const UserForm = () => {
   const { t } = useTranslation();
 
   const {
@@ -164,7 +163,7 @@ const UserForm: FC = () => {
             keyHint={keyHint}
           />
           {isFirstRender ? null : isValidation ? null : (
-            <StyledDivWarning>{warningMessage}</StyledDivWarning>
+            <StyledSpanWarning>{warningMessage}</StyledSpanWarning>
           )}
         </label>
       </StyledPForm>

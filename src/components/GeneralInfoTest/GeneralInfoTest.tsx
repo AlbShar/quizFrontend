@@ -4,21 +4,11 @@ import { useTranslation } from 'react-i18next';
 import InfoBlock from '../InfoBlock/InfoBlock';
 import { convertJSONToText } from '../../helpers/convertJSONToText';
 
-export interface IInfoBlocks {
-  title: string;
-  img?: string;
-  id?: string;
-  alt?: string;
-  text: string;
-}
-export interface IJSONText {
-  selector: string;
-  json: string;
-}
+import type { InfoBlocks, JSONText } from '../../types/types';
 
 const GeneralInfoTest = () => {
   const { t } = useTranslation();
-  const generalInfo: IInfoBlocks[] = [
+  const generalInfo: InfoBlocks[] = [
     {
       title: t('Особенности_теста'),
       img: require('./images/variants.png'),
@@ -48,7 +38,7 @@ const GeneralInfoTest = () => {
     />
   ));
 
-  const JSONText: [IJSONText] = [
+  const JSONText: [JSONText] = [
     { selector: '#generalInfoTestText', json: t('Данный_тест') },
   ];
 

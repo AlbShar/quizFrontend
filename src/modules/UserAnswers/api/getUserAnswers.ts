@@ -1,7 +1,6 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-import { getIdUser } from '../../../helpers/getIdUser';
 import db from '../../../config/firebase/firebaseConfig';
 
 type TAnswersDB = {
@@ -14,11 +13,10 @@ type TAnswersDB = {
   };
 };
 
-const getUserAnswers = () => {
+const getUserAnswers = (idUser: string) => {
   return new Promise<TAnswersDB>(function (resolve, reject) {
-    onValue(ref(db, `users/user${getIdUser('idUser')}/answers/`), (snapshot) => {
+    onValue(ref(db, `users/user${idUser}/answers/`), (snapshot) => {
       resolve(snapshot.val());
-      
     });
   });
 };

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import Dropdown from '../../UI/Dropdown/Dropdown';
 
@@ -6,7 +6,9 @@ type FilterByRightProps = {
   setFilterByRightAnswer: (newFilter: string) => void;
 };
 
-const FilterByRight: FC<FilterByRightProps> = ({ setFilterByRightAnswer }) => {
+const FilterByRight = ({
+  setFilterByRightAnswer,
+}: FilterByRightProps): JSX.Element => {
   const data: string[] = ['Все вопросы', 'Верно', 'Неверно'];
 
   const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);

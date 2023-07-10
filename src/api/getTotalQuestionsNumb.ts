@@ -1,21 +1,22 @@
-import { ref } from 'firebase/database';
-import { onValue } from 'firebase/database';
+import { getDataFromDB } from './getDataFromDB';
 
-import db from '../config/firebase/firebaseConfig';
+type TotalQuestions = {
+  [key: string]: string;
+};
 
-// Fix: 11 строку вынести в отдельную строку
-const getTotalQuestionsNumb = async () => {
+const transformData = (data: TotalQuestions): number => {
+  return Object.entries(data).length;
+};
+
+const getTotalQuestionsNumb = async (url: string): Promise<number> => {
   try {
-    return await new Promise<number>(function (resolve, reject) {
-      onValue(ref(db, 'questions'), (snapshot) => {
-        const totalQuestionsNumb: number = Object.entries(
-          snapshot.val(),
-        ).length;
-        resolve(totalQuestionsNumb);
-      });
-    });
-  } catch (error) {
-    console.error(error);
+    const response = await getDataFromDB<TotalQuestions>(url);
+    const data = transformData(response as TotalQuestions);
+    return data;
+
+  } catch (e) {
+    console.error(e);
+    throw e;
   }
 };
 

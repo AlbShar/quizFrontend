@@ -1,19 +1,24 @@
-import { FC, createContext } from 'react';
-export const ContextQuestionNumb = createContext<IContext['value'] | null>(
-  null,
+import { createContext } from 'react';
+
+const ContextCurrentQuestionNumb = createContext<
+  [number, (item: number) => void]
+  // eslint-disable-next-line
+>([1, () => {}]);
+
+const ContextLanguage = createContext<[string, (item: string) => void]>(
+  // eslint-disable-next-line
+  ['ru', () => {}],
 );
 
-interface IContext {
-  children: React.ReactNode;
-  value: [number, (numb: number) => void];
-}
+const ContextIdUser = createContext<[string, (item: string) => void]>(
+  // eslint-disable-next-line
+  ['', () => {}],
+);
 
-const Context: FC<IContext> = ({ children, value }) => {
-  return (
-    <ContextQuestionNumb.Provider value={value}>
-      {children}
-    </ContextQuestionNumb.Provider>
-  );
+
+
+export {
+  ContextCurrentQuestionNumb,
+  ContextLanguage,
+  ContextIdUser,
 };
-
-export default Context;

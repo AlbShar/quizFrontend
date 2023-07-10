@@ -29,9 +29,10 @@ const StyledFieldset = styled.fieldset`
   }
 `;
 
-const StyledDivWarning = styled.div`
+const StyledSpanWarning = styled.span`
+  display: block;
   font: var(--font-little-text-regular);
   color: red;
 `;
 
-export { StyledSpan, StyledPForm, StyledFieldset, StyledDivWarning };
+export { StyledSpan, StyledPForm, StyledFieldset, StyledSpanWarning };

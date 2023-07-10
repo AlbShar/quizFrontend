@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { useContext } from 'react';
 
 import LinkBtn from '../../../../UI/LinkBtn/LinkBtn';
-import { getIdUser } from '../../../../helpers/getIdUser';
 import { sendUserInfoDB } from '../../api/sendUserInfoDb';
+import { ContextIdUser } from '../../../../components/Context';
 
 type ButtonProps = {
   userName: string;
@@ -10,9 +10,16 @@ type ButtonProps = {
   isDisabledBtn: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ userName, userEmail, isDisabledBtn }) => {
+const Button = ({
+  userName,
+  userEmail,
+  isDisabledBtn,
+}: ButtonProps): JSX.Element => {
+    const [idUser]: [string, (lang: string) => void] =
+      useContext(ContextIdUser);
+
   const onClickLinkBtn = () => {
-    sendUserInfoDB(getIdUser('idUser'), userName, userEmail);
+    sendUserInfoDB(idUser, userName, userEmail);
   };
 
   return (

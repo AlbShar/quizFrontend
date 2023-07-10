@@ -3,7 +3,7 @@ import { ref } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
-interface IUserData {
+type UserData = {
   name: string | 'User';
   email: string | 'No email';
 }
@@ -18,7 +18,7 @@ const sendUserInfoDB = async (
     update(referenceUserAnswers, {
       name: userName,
       email: userEmail,
-    } as IUserData);
+    } as UserData);
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new Error(`${error.message}`);

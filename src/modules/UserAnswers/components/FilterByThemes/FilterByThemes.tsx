@@ -1,16 +1,16 @@
-import { useState, FC } from 'react';
+import { useState } from 'react';
 
 import Dropdown from '../../UI/Dropdown/Dropdown';
 
-type TFilterByThemesProps = {
+type FilterByThemesProps = {
   themesNames: string[];
   setFilterByTheme: (item: string) => void;
 };
 
-const FilterByThemes: FC<TFilterByThemesProps> = ({
+const FilterByThemes = ({
   themesNames,
   setFilterByTheme,
-}) => {
+}: FilterByThemesProps): JSX.Element => {
   const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
   const [isShowList, setIsShowList] = useState<boolean>(false);
 

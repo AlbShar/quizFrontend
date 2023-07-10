@@ -1,24 +1,24 @@
-import { FC } from 'react';
 import './link.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MouseEvent } from 'react';
+
 import { StyledButton } from './LinkBtn.Styled';
 
-interface LinkInt {
+type LinkBtnProps = {
   text: string;
   id?: string;
   pageTo: string;
   onClick?: (e: MouseEvent) => void;
   isDisabledBtn?: boolean;
-}
-const LinkBtn: FC<LinkInt> = ({
+};
+const LinkBtn = ({
   text,
   pageTo,
   onClick,
   id,
   isDisabledBtn,
-}) => {
+}: LinkBtnProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (

@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Container from '../../../components/Container/Container';
@@ -9,10 +9,12 @@ import { getUserAnswers } from '../api/getUserAnswers';
 import { getInfoQuestions } from '../api/getInfoQuestions';
 import Spinner from '../../../UI/Spinner/Spinner';
 import { getNumberFromKey } from '../helpers/getNumberFromKey';
+import { ContextLanguage, ContextIdUser } from '../../../components/Context';
 import filterByRightAnswer from '../helpers/filterByRightAnswer';
 import filterByThemes from '../helpers/filterByThemes';
 import getThemes from '../helpers/getThemes';
 import getPointsByThemes from '../helpers/getPointsByThemes';
+import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 import {
   StyledLi,
@@ -33,11 +35,15 @@ import type {
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
 
+
+
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
-  lang: string,
 };
-const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
+const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+
   const { t } = useTranslation();
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
@@ -46,13 +52,12 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
   const [filterTheme, setFilterTheme] = useState<string>('');
   const [filterRight, setFilterRight] = useState<string>('');
 
-  const errorMessage = 'ERORR!';
   const loading = isLoading ? (
     <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : (
     false
   );
-  const error = isError ? errorMessage : false;
+  const error = isError ? <ErrorMessage /> : false;
   const view = () => {
     if (infoQuestionsAndAnswers) {
       const visibleData: TInfoQuestionsAndAnswers = filterByRightAnswer(
@@ -144,10 +149,12 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
     return updateUserAnswers;
   };
 
-  const transformData = (res: TAnswerOptionsLangDB | TInfoQuiestionsDB, lang: string) => {
-     const updateAnswerOptions = Object.fromEntries(
+  const transformData = (
+    res: TAnswerOptionsLangDB | TInfoQuiestionsDB,
+    lang: string,
+  ) => {
+    const updateAnswerOptions = Object.fromEntries(
       Object.entries(res).map(([key, value]) => [
-        
         getNumberFromKey(key),
         value[`${lang}`],
       ]),
@@ -181,7 +188,8 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
   };
 
   const onError = (error: any): never => {
-    setIsError((isError) => !isError);
+    setIsError(true);
+    setIsLoading(false);
     throw new Error(error);
   };
 
@@ -194,7 +202,11 @@ const UserAnswers: FC<UserAnwersProps> = ({ setPointsByTheme, lang }) => {
   };
 
   useEffect(() => {
-    Promise.all([getUserAnswers(), getAnswerOptions(), getInfoQuestions()])
+    Promise.all([
+      getUserAnswers(idUser),
+      getAnswerOptions(),
+      getInfoQuestions(),
+    ])
       .then((value) =>
         transformQuestionsAndAnswersDB(
           value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[],

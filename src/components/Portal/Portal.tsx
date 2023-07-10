@@ -1,10 +1,11 @@
-import React, { ReactNode, FC, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
 
 type PortalProps = {
   children: ReactNode;
 };
-const Portal: FC<PortalProps> = ({ children }) => {
+
+const Portal = ({ children }: PortalProps): JSX.Element => {
   const container = document.createElement('article');
   const root = document.querySelector('#root');
   root?.append(container);

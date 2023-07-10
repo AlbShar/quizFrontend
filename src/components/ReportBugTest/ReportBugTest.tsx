@@ -1,13 +1,13 @@
-import { useEffect, FC } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import InfoBlock from '../InfoBlock/InfoBlock';
 import { convertJSONToText } from '../../helpers/convertJSONToText';
-import { IInfoBlocks, IJSONText } from '../GeneralInfoTest/GeneralInfoTest';
+import { InfoBlocks, JSONText } from '../../types/types';
 
-const GeneralInfoTest: FC = () => {
+const GeneralInfoTest = () => {
   const { t } = useTranslation();
-  const dataReportBug: IInfoBlocks[] = [
+  const dataReportBug: InfoBlocks[] = [
     {
       title: t('Сообщить'),
       img: require('./images/mistake.jpg'),
@@ -27,7 +27,7 @@ const GeneralInfoTest: FC = () => {
     />
   ));
 
-  const JSONText: IJSONText[] = [
+  const JSONText: JSONText[] = [
     { selector: '#reportBugText', json: t('Если_вы_нашли_ошибку') },
   ];
 

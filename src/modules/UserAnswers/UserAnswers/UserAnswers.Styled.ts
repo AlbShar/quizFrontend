@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface ISpan {
+type StyledSpanResultProps = {
   isRight: boolean;
 }
 
@@ -81,7 +81,7 @@ const StyledSection = styled.section`
   align-items: start;
 `;
 
-const StyledSpanResult = styled.span<ISpan>`
+const StyledSpanResult = styled.span<StyledSpanResultProps>`
   position: absolute;
   color: ${({ isRight }) => (isRight ? 'green' : 'red')};
   top: 5px;

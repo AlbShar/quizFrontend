@@ -1,4 +1,5 @@
-import { FC, useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +12,12 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 import Spinner from '../../UI/Spinner/Spinner';
+import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
+import {
+  StyledArticle,
+  StyledP,
+  StyledBarChartWrapper,
+} from './BatChart.Styled';
 
 import type { TPointsByThemes } from '../../types/types';
 
@@ -27,16 +34,19 @@ type BarChartProps = {
   pointsByTheme: TPointsByThemes | null;
 };
 
-const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
+const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
   const colors = ['black', 'red', 'blue'];
+  const { t } = useTranslation();
+
 
   const options = {
     maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'bottom' as const,
-        align: 'start' as const,
+        align: 'center' as const,
       },
       title: {
         display: false,
@@ -44,8 +54,9 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
     },
     scales: {
       y: {
+        max: 100,
         ticks: {
-          stepSize: 20,
+          stepSize: 25,
         },
       },
     },
@@ -71,20 +82,32 @@ const BarChart: FC<BarChartProps> = ({ pointsByTheme }) => {
       : [],
   };
 
+  const view = () => {
+    return (
+      <StyledArticle>
+        <StyledBarChartWrapper>
+          <Bar options={options} data={data} />
+        </StyledBarChartWrapper>
+        <StyledP>{t('Подпись_столбчатая_диаграмма')}</StyledP>
+      </StyledArticle>
+    );
+  };
+
   const spinner = isLoading ? (
     <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : null;
-  const content = !isLoading ? <Bar options={options} data={data} /> : null;
+  const content = !(isLoading || isError) ? view() : null;
+  const error = isError ? <ErrorMessage/> : null;
 
   useEffect(() => {
     if (pointsByTheme) {
       setIsLoading(false);
-    }
+    } 
   }, [pointsByTheme]);
 
   return (
     <>
-      {content} {spinner}
+      {content} {spinner} {error}
     </>
   );
 };

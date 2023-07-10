@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import {
   StyleDivModal,
   StyledDivWrapper,
@@ -9,12 +7,16 @@ import {
   StyledButtonModal,
 } from './Modal.Styled';
 
-interface IModalProps {
+type ModalProps = {
   title: string;
   subTitle: string;
   onClickHandler?: () => void;
-}
-const Modal: FC<IModalProps> = ({ title, subTitle, onClickHandler }) => {
+};
+const Modal = ({
+  title,
+  subTitle,
+  onClickHandler,
+}: ModalProps): JSX.Element => {
   return (
     <StyleDivModal id='notification'>
       <StyledDivWrapper>
