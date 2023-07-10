@@ -1,10 +1,11 @@
-const getValueFromLocalStorage = <T extends string>(key: T): T => {
+const getValueFromLocalStorage = <T extends string>(key: T) => {
   try {
     const value = localStorage.getItem(key);
-    if (value === null || value === undefined) {
-      throw new Error(`Value not found for key in LocalStorage '${key}'`);
+    if (!value) {
+      return ''
+    } else {
+      return value;
     }
-    return value as T;
   } catch (e: unknown) {
     if (e instanceof DOMException && e.code === DOMException.SECURITY_ERR) {
       throw new Error(
