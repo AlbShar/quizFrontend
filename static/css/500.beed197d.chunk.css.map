@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/500.beed197d.chunk.css","mappings":"AAAA,mBACI,iCAAkC,CAClC,oCAAqC,CACrC,oBACJ","sources":["components/Footer/footer.css"],"sourcesContent":[".footer__list-link {\r\n    color: var(--color-footer-content);\r\n    font: var(--font-little-text-regular);\r\n    text-decoration: none;\r\n}\r\n"],"names":[],"sourceRoot":""}
