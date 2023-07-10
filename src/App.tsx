@@ -19,7 +19,7 @@ function App() {
   const [lang, setLang] = useState<string>(
     getValueFromLocalStorage('i18nextLng') || 'ru',
   );
-  const [idUser, setIdUser] = useState<string>('');
+  const [idUser, setIdUser] = useState<string>(getValueFromLocalStorage('idUser'));
 
   return (
     <>

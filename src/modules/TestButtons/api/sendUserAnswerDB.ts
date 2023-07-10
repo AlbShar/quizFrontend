@@ -19,6 +19,8 @@ const sendUserAnswerDB = async ({
 }: UserAnswerProps): Promise<void> => {
   const questionName =
     document.querySelector<HTMLHeadingElement>('#questionTitle')?.textContent;
+    const themeName =
+      document.querySelector<HTMLHeadingElement>('#themeQuestion')?.textContent;
   const url = `users/user${idUser}/answers/answer${currentQuestionNumb}`;
 
   try {
@@ -29,6 +31,7 @@ const sendUserAnswerDB = async ({
       question: questionName,
       userAnswer: userAnswer,
       point: isRigthAnswer,
+      theme: themeName,
     });
   } catch (e) {
     console.error(e);

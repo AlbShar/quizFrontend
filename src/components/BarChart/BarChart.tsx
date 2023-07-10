@@ -83,10 +83,7 @@ const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
   useEffect(() => {
     if (pointsByTheme) {
       setIsLoading(false);
-    } else {
-      setIsLoading(false);
-      setIsError(true);
-    }
+    } 
   }, [pointsByTheme]);
 
   return (

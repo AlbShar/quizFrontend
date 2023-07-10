@@ -5,6 +5,7 @@ import InfoTest from '../components/InfoTest/InfoTest';
 import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
 import { createIdUser } from '../helpers/createIdUser';
 import { ContextIdUser } from '../../../components/Context';
+import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 
 import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
 
@@ -13,17 +14,19 @@ const CallToAction = () => {
   const [idUser, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
 
+    const startTest = () => {
+      const id = createIdUser();
+      setIdUser(id);
+      setValueToLocalStorage('idUser', id);
+    };
+
   return (
     <StyledCallToAction id='CallToAction'>
       <StyledH1>{t('Тест_для_Frontend_разработчиков')}</StyledH1>
       <InfoTest />
       <StyledP>{t('Добро_пожаловать')}</StyledP>
       <StyledP>{t('Тест_будет')}</StyledP>
-      <LinkBtn
-        pageTo='quiz'
-        onClick={() => setIdUser(createIdUser())}
-        text='Начать тест'
-      ></LinkBtn>
+      <LinkBtn pageTo='quiz' onClick={startTest} text='Начать тест'></LinkBtn>
     </StyledCallToAction>
   );
 };

@@ -51,7 +51,7 @@ const ResultTime = (): JSX.Element => {
       <StyledArticle>
         <StyledH3>{t('Затраченное_время')}</StyledH3>
         <StyledH2>
-          {transformSecondsToMinutes(state.time, t('сек'), t('мин'))}
+          {transformSecondsToMinutes(time, t('сек'), t('мин'))}
         </StyledH2>
       </StyledArticle>
     );
