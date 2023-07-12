@@ -24,7 +24,9 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
 
   const infoTestBlock: InfoTestBlock[] = [
     {
-      text: ` ${profession ? '~' + quantityQuestions : '-'} ${t('Время')}`,
+      text: ` ${isChooseProfession ? '~' + quantityQuestions : '-'} ${t(
+        'Время',
+      )}`,
       srcIcon: require('../../icons/clock.png'),
       alt: 'icon of clock',
     },
@@ -34,7 +36,7 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
       alt: 'icon of question in circle',
     },
     {
-      text: `${profession ? quantityQuestions : '-'} ${t('Вопросов')}`,
+      text: `${isChooseProfession ? quantityQuestions : '-'} ${t('Вопросов')}`,
       srcIcon: require('../../icons/barchart.png'),
       alt: 'icon of bar chart',
     },

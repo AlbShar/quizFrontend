@@ -1,7 +1,10 @@
 import { useEffect, useContext, useState, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import {
+  ContextCurrentQuestionNumb,
+  ContextProfession,
+} from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
 import SkeletonTheme from '../UI/SkeletonTheme';
 import { getThemeQuestion } from '../api/getThemeQuestion';
@@ -27,6 +30,9 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
+  const [profession]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
+
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -58,7 +64,7 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
   };
   const skeleton = isLoading ? <SkeletonTheme /> : null;
   const content = !(isLoading || isError) ? view() : null;
-  const error = isError ? <ErrorMessage/> : null;
+  const error = isError ? <ErrorMessage /> : null;
 
   const dataLoaded = (res) => {
     type TArrayItems = {
@@ -79,7 +85,6 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
       }
     });
 
-
     setIsLoading(false);
     setTheme(`${items.theme}`);
     setTotalQuestionNumber(items.totalQuestionNumber as number);
@@ -98,13 +103,13 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
   };
 
   useEffect(() => {
-    const url1 = `questions/question${currentQuestionNumb}/${lang}/theme`;
-    const url2 = `questions`;
-    
+    const url1 = `${profession}/questions/question${currentQuestionNumb}/${lang}/theme`;
+    const url2 = `${profession}/questions`;
+
     Promise.allSettled([getThemeQuestion(url1), getTotalQuestionsNumb(url2)])
       .then(dataLoaded)
       .catch(onError);
-  }, [currentQuestionNumb, lang]);
+  }, [currentQuestionNumb, lang, profession]);
 
   return (
     <>

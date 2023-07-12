@@ -20,14 +20,16 @@ const Results = lazy(() => import('./pages/Results/Results'));
 const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
+  const [profession, setProfession] = useState<string>(
+    getValueFromLocalStorage('profession'),
+  );
   const [isChooseProfession, setChooseProfession] = useState<boolean>(false);
-  const [profession, setProfession] = useState<string>(getValueFromLocalStorage('profession'));
 
   const [lang, setLang] = useState<string>(
     getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
   );
   const [idUser, setIdUser] = useState<string>(
-    getValueFromLocalStorage('idUser')
+    getValueFromLocalStorage('idUser'),
   );
 
   return (
@@ -50,7 +52,7 @@ function App() {
                 <Routes>
                   <Route
                     path='/'
-                    element={<Header />}
+                    element={<Header isChooseProfession={isChooseProfession} />}
                   >
                     <Route
                       index

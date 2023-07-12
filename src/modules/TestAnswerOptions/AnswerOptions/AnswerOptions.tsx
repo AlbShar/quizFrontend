@@ -95,7 +95,7 @@ const AnswerOptions = ({
     const url = `${profession}/answers/answers${currentQuestionNumb}/${lang}`;
 
     getAnswersOptions(url).then(answersHasLoaded).catch(onErrorHandler);
-  }, [currentQuestionNumb, lang]);
+  }, [currentQuestionNumb, lang, profession]);
 
   useEffect(() => {
     removeAllAttributes(refAnswers);

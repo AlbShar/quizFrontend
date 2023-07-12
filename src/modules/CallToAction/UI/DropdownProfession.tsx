@@ -10,9 +10,9 @@ type DropdownProfessionProps = {
 const DropdownProfession = ({
   setChooseProfession,
 }: DropdownProfessionProps) => {
-  const [profession, setProfession]: [string, (lang: string) => void] =
+  const [, setProfession]: [string, (lang: string) => void] =
       useContext(ContextProfession);
-  const [selected, setSelected] = useState<string>(profession || 'Направление теста');
+  const [selected, setSelected] = useState<string>('Направление теста');
   const data = ['Frontend разработчик', 'Тестировщик ПО'];
   const refWrapper = useRef<HTMLDivElement>(null);
   const shortDataForDB = {

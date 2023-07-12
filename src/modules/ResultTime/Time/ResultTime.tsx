@@ -9,7 +9,7 @@ import {
 
 import Spinner from '../../../UI/Spinner/Spinner';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
-import { ContextIdUser } from '../../../components/Context';
+import { ContextIdUser, ContextProfession } from '../../../components/Context';
 
 import { getUserInfo } from '../api/getUserInfo';
 import { transformSecondsToMinutes } from '../helpers/transformSecondsToMinutes';
@@ -40,6 +40,9 @@ const ResultTime = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [time, setTime] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
+    const [profession]: [string, (lang: string) => void] =
+      useContext(ContextProfession);
+
 
   const timeHasLoaded = (userInfo: TUserInfoDB) => {
     const { time } = userInfo;
@@ -72,7 +75,8 @@ const ResultTime = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getUserInfo(idUser).then(timeHasLoaded).catch(onError);
+      const url = `${profession}/users/user${idUser}/userInfo`;
+      getUserInfo(url).then(timeHasLoaded).catch(onError);
   }, []);
 
   return (

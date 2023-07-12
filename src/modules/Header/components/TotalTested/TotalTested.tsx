@@ -14,8 +14,11 @@ import {
 import { ContextProfession } from '../../../../components/Context';
 
 
+type TotalTestedProps = {
+  isChooseProfession: boolean;
+};
 
-const TotalTested = () => {
+const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   const { t } = useTranslation();
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,7 +36,7 @@ const TotalTested = () => {
       <StyledDivWrapper>
         <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
-          {profession ? allTestedUsers : '-'}
+          {isChooseProfession ? allTestedUsers : '-'}
         </StyledSpanNumber>
       </StyledDivWrapper>
     );

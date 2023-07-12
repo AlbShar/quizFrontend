@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import InfoTest from '../components/InfoTest/InfoTest';
@@ -43,7 +43,12 @@ const CallToAction = ({
         }}
       >
         <DropdownProfession setChooseProfession={setChooseProfession} />
-        <LinkBtn pageTo='quiz' onClick={startTest} text='Начать тест'></LinkBtn>
+        <LinkBtn
+          pageTo='quiz'
+          onClick={startTest}
+          text='Начать тест'
+          isDisabledBtn={!isChooseProfession}
+        ></LinkBtn>
       </div>
     </StyledCallToAction>
   );

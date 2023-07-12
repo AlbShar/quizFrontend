@@ -13,6 +13,7 @@ const Homepage = ({
   isChooseProfession,
   setChooseProfession,
 }: HomepageProps) => {
+
   return (
     <>
       <StyledMain>

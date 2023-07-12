@@ -22,7 +22,7 @@ const ScrollBar = ({ quizRef }: ScrollBarProps): JSX.Element => {
   const scrollBarElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const url = `${profession}`;
+    const url = `${profession}/questions`;
     setWidthScrollBar({ currentQuestionNumb, quizRef, scrollBarElementRef, url });
   });
 
