@@ -1,8 +1,8 @@
-const getValueFromLocalStorage = <T extends string>(key: T) => {
+const getValueFromLocalStorage = <T extends string>(key: T, defaultValue = '') => {
   try {
     const value = localStorage.getItem(key);
     if (!value) {
-      return ''
+      return defaultValue;
     } else {
       return value;
     }

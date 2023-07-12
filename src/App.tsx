@@ -17,10 +17,10 @@ const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
   const [lang, setLang] = useState<string>(
-    getValueFromLocalStorage('i18nextLng') || 'ru',
+    getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
   );
   const [idUser, setIdUser] = useState<string>(
-    getValueFromLocalStorage('idUser').slice(0, 2)
+    getValueFromLocalStorage('idUser')
   );
 
   return (
