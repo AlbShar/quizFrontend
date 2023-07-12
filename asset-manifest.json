@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quizFrontend/static/css/main.1b8b0dd8.css",
-    "main.js": "/quizFrontend/static/js/main.c785dae1.js",
+    "main.js": "/quizFrontend/static/js/main.9fa6995f.js",
     "static/js/566.c760eebb.chunk.js": "/quizFrontend/static/js/566.c760eebb.chunk.js",
     "static/css/500.beed197d.chunk.css": "/quizFrontend/static/css/500.beed197d.chunk.css",
     "static/js/500.c5ca1c44.chunk.js": "/quizFrontend/static/js/500.c5ca1c44.chunk.js",
@@ -30,7 +30,7 @@
     "static/media/chevrondown.svg": "/quizFrontend/static/media/chevrondown.155409e0c48ea57ccaa9ebaf346774a8.svg",
     "static/media/leftArrow.svg": "/quizFrontend/static/media/leftArrow.ffd35a492cc0b13d0f52b0e89016538e.svg",
     "static/media/rightArrow.svg": "/quizFrontend/static/media/rightArrow.68d8ba69dceb545c90c48c34f34567b7.svg",
-    "main.c785dae1.js.map": "/quizFrontend/static/js/main.c785dae1.js.map",
+    "main.9fa6995f.js.map": "/quizFrontend/static/js/main.9fa6995f.js.map",
     "566.c760eebb.chunk.js.map": "/quizFrontend/static/js/566.c760eebb.chunk.js.map",
     "500.beed197d.chunk.css.map": "/quizFrontend/static/css/500.beed197d.chunk.css.map",
     "500.c5ca1c44.chunk.js.map": "/quizFrontend/static/js/500.c5ca1c44.chunk.js.map",
@@ -51,6 +51,6 @@
   },
   "entrypoints": [
     "static/css/main.1b8b0dd8.css",
-    "static/js/main.c785dae1.js"
+    "static/js/main.9fa6995f.js"
   ]
 }
