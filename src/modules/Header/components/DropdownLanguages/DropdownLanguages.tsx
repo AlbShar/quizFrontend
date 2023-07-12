@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import { setValueToLocalStorage } from '../../../../helpers/setValueToLocalStorage';
 import { ContextLanguage } from '../../../../components/Context';
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
+import globe from '../../../../assets/images/globe.svg';
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
@@ -46,6 +47,7 @@ const DropdownLanguages = () => {
       selected={lang}
       onClickElement={(item: string) => onClickElement(item)}
       ref={refWrapperLanguage}
+      srcImg={globe}
     />
   );
 };

@@ -15,6 +15,7 @@ box-sizing: border-box;
   background-color: #5557ff;
   border-radius: 7px;
   padding: 11px;
+  width: 100%;
   max-width: 88px;
   max-height: 44px;
 `;
@@ -30,7 +31,6 @@ const StyledSpan = styled.span`
 
 const StyledUl = styled.ul`
   box-sizing: border-box ;
-  max-width: 88px;
   z-index: 2;
   left: 0px;
   top: 60px;
@@ -41,6 +41,7 @@ const StyledUl = styled.ul`
   padding: 5px 10px;
   border-radius: 7px;
   box-shadow: 0px 4px 4px 0px #0000003D;
+  width: auto;
   
 `;
 

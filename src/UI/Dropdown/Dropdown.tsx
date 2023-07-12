@@ -17,7 +17,6 @@ import {
 } from './Dropdown.Styled';
 
 
-import globe from '../../assets/images/globe.svg';
 import chevrondown from '../../assets/images/chevrondown.svg';
 
 type Languages = {
@@ -29,11 +28,12 @@ type DropdownProps = {
   data: Languages | string[];
   onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
+  srcImg?: string 
 };
 
 const Dropdown = forwardRef(
   (
-    { data, selected, style, onClickElement }: DropdownProps,
+    { data, selected, style, onClickElement, srcImg = '' }: DropdownProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const [isActive, setActive] = useState<boolean>(false);
@@ -59,7 +59,14 @@ const Dropdown = forwardRef(
               toggleList();
             }}
           >
-            <div style={{ display: 'inline-flex', alignItems: "baseline", gap: 2, justifyContent: "center" }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'baseline',
+                gap: 2,
+                justifyContent: 'center',
+              }}
+            >
               <span style={{ fontSize: 16, fontWeight: 700 }}>
                 {shotLang.toUpperCase()}
               </span>
@@ -87,12 +94,15 @@ const Dropdown = forwardRef(
     }, [ref]);
 
     return (
-      <StyleArticleDropdown ref={ref} style={style} id='wrapper'>
-        <StyledButton onClick={toggleList}>
-          <img style={{ margin: '0 7px 0 0' }} src={globe} alt='global' />
+      <StyleArticleDropdown ref={ref} id='wrapper'>
+        <StyledButton onClick={toggleList} style={style}>
+          {srcImg ? (
+            <img style={{ margin: '0 7px 0 0' }} src={srcImg} alt='global' />
+          ) : null}
           <StyledSpan className='dropdown-btn-text'>
-          {selected.toUpperCase() || "RU"}
+            {selected.toUpperCase() || 'RU'}
           </StyledSpan>
+
           <img
             style={{ margin: '0 0 0 7px' }}
             src={chevrondown}

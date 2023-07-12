@@ -6,7 +6,7 @@ import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
 import { createIdUser } from '../helpers/createIdUser';
 import { ContextIdUser } from '../../../components/Context';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
-
+import DropdownProfession from '../UI/DropdownProfession';
 import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
 
 const CallToAction = () => {
@@ -14,11 +14,11 @@ const CallToAction = () => {
   const [idUser, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
 
-    const startTest = () => {
-      const id = createIdUser();
-      setIdUser(id);
-      setValueToLocalStorage('idUser', id);
-    };
+  const startTest = () => {
+    const id = createIdUser();
+    setIdUser(id);
+    setValueToLocalStorage('idUser', id);
+  };
 
   return (
     <StyledCallToAction id='CallToAction'>
@@ -26,7 +26,10 @@ const CallToAction = () => {
       <InfoTest />
       <StyledP>{t('Добро_пожаловать')}</StyledP>
       <StyledP>{t('Тест_будет')}</StyledP>
-      <LinkBtn pageTo='quiz' onClick={startTest} text='Начать тест'></LinkBtn>
+      <div style={{display: 'flex', width: 600, justifyContent: 'space-between', alignItems: "center"}}>
+        <DropdownProfession />
+        <LinkBtn pageTo='quiz' onClick={startTest} text='Начать тест'></LinkBtn>
+      </div>
     </StyledCallToAction>
   );
 };
