@@ -8,6 +8,7 @@ import TotalTested from '../components/TotalTested/TotalTested';
 
 import { StyledFlexWrapper, StyledHeader } from './Header.styled';
 
+
 const Header = (): JSX.Element => {
   return (
     <>
@@ -17,7 +18,7 @@ const Header = (): JSX.Element => {
             <Logo location='header' />
             <StyledFlexWrapper gap={37}>
               <TotalTested />
-              <DropdownLanguages/>
+              <DropdownLanguages />
             </StyledFlexWrapper>
           </StyledFlexWrapper>
         </Container>

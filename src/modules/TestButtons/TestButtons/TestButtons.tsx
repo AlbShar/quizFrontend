@@ -12,6 +12,7 @@ import {
   ContextCurrentQuestionNumb,
   ContextLanguage,
   ContextIdUser,
+  ContextProfession,
 } from '../../../components/Context';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
 import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
@@ -35,12 +36,15 @@ const TestButtons = ({
   );
   const [lang] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+  const [profession]: [string, (lang: string) => void] =
+        useContext(ContextProfession);
+
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
 
   const setQuestionsNumber = useCallback(async () => {
-    const url = 'questions';
+    const url = `${profession}/questions`;
     const questionsNumber = await getTotalQuestionsNumb(url);
     setTotalQuestionsNumbers(questionsNumber as number);
   }, []);

@@ -1,37 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
 import Spinner from '../../../../UI/Spinner/Spinner';
 import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
+import { ContextProfession } from '../../../../components/Context';
 
 import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
 
-import type {InfoTestBlock} from "../../../../types/types";
+import type { InfoTestBlock } from '../../../../types/types';
 
-const InfoTest = () => {
+type InfoTestProps = {
+  isChooseProfession: boolean;
+};
+
+const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
+  const [profession]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
 
- const infoTestBlock: InfoTestBlock[] = [
-   {
-     text: `~ ${quantityQuestions} ${t('Время')}`,
-     srcIcon: require('../../icons/clock.png'),
-     alt: 'icon of clock',
-   },
-   {
-     text: t('Возрастающая_сложность'),
-     srcIcon: require('../../icons/helpcircle.png'),
-     alt: 'icon of question in circle',
-   },
-   {
-     text: `${quantityQuestions} ${t('Вопросов')}`,
-     srcIcon: require('../../icons/barchart.png'),
-     alt: 'icon of bar chart',
-   },
- ];
+  const infoTestBlock: InfoTestBlock[] = [
+    {
+      text: ` ${profession ? '~' + quantityQuestions : '-'} ${t('Время')}`,
+      srcIcon: require('../../icons/clock.png'),
+      alt: 'icon of clock',
+    },
+    {
+      text: t('Возрастающая_сложность'),
+      srcIcon: require('../../icons/helpcircle.png'),
+      alt: 'icon of question in circle',
+    },
+    {
+      text: `${profession ? quantityQuestions : '-'} ${t('Вопросов')}`,
+      srcIcon: require('../../icons/barchart.png'),
+      alt: 'icon of bar chart',
+    },
+  ];
 
   const view = infoTestBlock.map((item, index) => {
     return (
@@ -46,7 +53,7 @@ const InfoTest = () => {
   const spinner = isLoading ? (
     <Spinner width={50} height={50} color='#fcfdff' margin='auto' />
   ) : null;
-  const error = isError ? <ErrorMessage/> : null;
+  const error = isError ? <ErrorMessage /> : null;
 
   const dataHasLoaded = (numbQuestions) => {
     setIsLoading(false);
@@ -56,19 +63,17 @@ const InfoTest = () => {
   const onError = (error) => {
     setIsError(true);
     setIsLoading(false);
-    console.error(error)
+    console.error(error);
   };
 
   useEffect(() => {
-    const url = 'questions';
-
-    getTotalQuestionsNumb(url)
-      .then(dataHasLoaded)
-      .catch(onError);
-  }, []);
-
- 
-  
+    if (profession) {
+      const url = `${profession}/questions`;
+      getTotalQuestionsNumb(url).then(dataHasLoaded).catch(onError);
+    } else {
+      setIsLoading(false);
+    }
+  }, [profession]);
 
   return (
     <nav>

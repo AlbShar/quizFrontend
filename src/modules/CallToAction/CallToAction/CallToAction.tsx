@@ -9,7 +9,15 @@ import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage'
 import DropdownProfession from '../UI/DropdownProfession';
 import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
 
-const CallToAction = () => {
+type CallToActionProps = {
+  isChooseProfession: boolean;
+  setChooseProfession: (item: boolean) => void;
+};
+
+const CallToAction = ({
+  isChooseProfession,
+  setChooseProfession,
+}: CallToActionProps) => {
   const { t } = useTranslation();
   const [idUser, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
@@ -23,11 +31,18 @@ const CallToAction = () => {
   return (
     <StyledCallToAction id='CallToAction'>
       <StyledH1>{t('Тест_для_Frontend_разработчиков')}</StyledH1>
-      <InfoTest />
+      <InfoTest isChooseProfession={isChooseProfession} />
       <StyledP>{t('Добро_пожаловать')}</StyledP>
       <StyledP>{t('Тест_будет')}</StyledP>
-      <div style={{display: 'flex', width: 600, justifyContent: 'space-between', alignItems: "center"}}>
-        <DropdownProfession />
+      <div
+        style={{
+          display: 'flex',
+          width: 600,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <DropdownProfession setChooseProfession={setChooseProfession} />
         <LinkBtn pageTo='quiz' onClick={startTest} text='Начать тест'></LinkBtn>
       </div>
     </StyledCallToAction>

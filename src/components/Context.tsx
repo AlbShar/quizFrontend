@@ -15,10 +15,16 @@ const ContextIdUser = createContext<[string, (item: string) => void]>(
   ['', () => {}],
 );
 
+const ContextProfession = createContext<[string, (item: string) => void]>(
+  // eslint-disable-next-line
+  ['', () => {}],
+);
+
 
 
 export {
   ContextCurrentQuestionNumb,
   ContextLanguage,
   ContextIdUser,
+  ContextProfession,
 };

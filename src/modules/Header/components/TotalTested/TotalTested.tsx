@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,6 +11,9 @@ import {
   StyledSpanNumber,
   StyledDivWrapper,
 } from './TotalTested.styled';
+import { ContextProfession } from '../../../../components/Context';
+
+
 
 const TotalTested = () => {
   const { t } = useTranslation();
@@ -18,6 +21,8 @@ const TotalTested = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [allTestedUsers, setAllTestedUsers] = useState<number>(0);
+  const [profession]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
 
   const error = isError ? <ErrorMessage /> : null;
   const spinner = loading ? (
@@ -28,7 +33,7 @@ const TotalTested = () => {
       <StyledDivWrapper>
         <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
-          {allTestedUsers}
+          {profession ? allTestedUsers : '-'}
         </StyledSpanNumber>
       </StyledDivWrapper>
     );
@@ -36,8 +41,8 @@ const TotalTested = () => {
   const content = !(loading || isError) ? view() : null;
 
   const dataHasLoaded = (res: number) => {
-      setLoading(false);
-      setAllTestedUsers(res);
+    setLoading(false);
+    setAllTestedUsers(res);
   };
 
   const onErrorHandler = (error) => {
@@ -46,10 +51,15 @@ const TotalTested = () => {
     throw new Error(error.message);
   };
 
-
   useEffect(() => {
-    getAllTestedUsers().then(dataHasLoaded).catch(onErrorHandler);
-  }, []);
+    console.log(`${profession}/users`);
+    if (profession) {
+      const url = `${profession}/users`;
+      getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
+    } else {
+      setLoading(false);
+    }
+  }, [profession]);
 
   return (
     <>

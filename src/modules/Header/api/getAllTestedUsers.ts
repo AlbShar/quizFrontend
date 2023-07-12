@@ -9,8 +9,7 @@ const transformData = (res: Users): number => {
   return Object.entries(res).length;
 };
 
-const getAllTestedUsers = async () => {
-    const url = `users`;
+const getAllTestedUsers = async (url: string) => {
 
     try {
       const response = await getDataFromDB<Users>(url);
@@ -19,7 +18,7 @@ const getAllTestedUsers = async () => {
       return data;
     } catch (e) {
       console.error(e);
-      return 0;
+      throw e;
     }
   
 };

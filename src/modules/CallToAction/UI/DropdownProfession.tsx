@@ -1,19 +1,31 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import Dropdown from '../../../UI/Dropdown/Dropdown';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
+import { ContextProfession } from '../../../components/Context';
 
-const DropdownProfession = () => {
-  const [selected, setSelected] = useState<string>('Направление теста');
+type DropdownProfessionProps = {
+  setChooseProfession: (item: boolean) => void;
+};
+
+const DropdownProfession = ({
+  setChooseProfession,
+}: DropdownProfessionProps) => {
+  const [profession, setProfession]: [string, (lang: string) => void] =
+      useContext(ContextProfession);
+  const [selected, setSelected] = useState<string>(profession || 'Направление теста');
   const data = ['Frontend разработчик', 'Тестировщик ПО'];
   const refWrapper = useRef<HTMLDivElement>(null);
   const shortDataForDB = {
     'Frontend разработчик': 'Frontend',
     'Тестировщик ПО': 'QA',
   };
+  
 
   const onClickProfession = (item: string) => {
     setValueToLocalStorage('profession', shortDataForDB[item]);
+    setProfession(shortDataForDB[item]);
     setSelected(item);
+    setChooseProfession(true);
   };
 
   return (

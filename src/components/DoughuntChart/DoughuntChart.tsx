@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
@@ -11,6 +11,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
 import Spinner from '../../UI/Spinner/Spinner';
+import { ContextProfession } from '../Context';
 
 import {
   StyledArticle,
@@ -30,6 +31,10 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
 
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [profession, ]: [string, (lang: string) => void] =
+      useContext(ContextProfession);
+
+  
 
   const percentRightQuestions = +(
     (100 * rightAnswers) /
@@ -69,7 +74,7 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   const content = !isLoading ? view() : null;
 
   const setQuestionsNumber = async () => {
-    const url = 'questions';
+    const url = `${profession}/questions`;
     const questionsNumber = await getTotalQuestionsNumb(url);
     setTotalQuestionNumbers(questionsNumber as number);
     setIsLoading(false);
