@@ -1,4 +1,5 @@
 import { getDataFromDB } from '../../../api/getDataFromDB';
+import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
 
 type Users = {
   [key in string]: object
@@ -9,7 +10,7 @@ const transformData = (res: Users): number => {
 };
 
 const getAllTestedUsers = async () => {
-    const url = 'users';
+    const url = `users`;
 
     try {
       const response = await getDataFromDB<Users>(url);
@@ -18,7 +19,7 @@ const getAllTestedUsers = async () => {
       return data;
     } catch (e) {
       console.error(e);
-      throw e;
+      return 0;
     }
   
 };

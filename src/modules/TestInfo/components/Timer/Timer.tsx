@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { getValueFromLocalStorage } from '../../../../helpers/getValueFromLocalStorage';
 import { ContextIdUser } from '../../../../components/Context';
 import { sendTimeToDB } from '../../api/sendTimeToDB';
 import Modal from '../../../../UI/Modal/Modal';
@@ -45,7 +46,8 @@ const Timer = () => {
   };
 
   useEffect(() => {
-    const url = `users/user${idUser}/userInfo`;
+    const profession = getValueFromLocalStorage('profession');
+    const url = `${profession}/users/user${idUser}/userInfo`;
 
     const startTimer = () => {
       isCounting && setTime((time) => time + 1);

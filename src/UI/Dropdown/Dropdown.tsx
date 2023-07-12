@@ -16,19 +16,18 @@ import {
   StyledSpan,
 } from './Dropdown.Styled';
 
-
 import chevrondown from '../../assets/images/chevrondown.svg';
 
-type Languages = {
+type TLanguages = {
   [key: string]: string;
 };
 type DropdownProps = {
   style?: CSSProperties;
   selected: string;
-  data: Languages | string[];
+  data: TLanguages | string[];
   onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
-  srcImg?: string 
+  srcImg?: string;
 };
 
 const Dropdown = forwardRef(
@@ -45,37 +44,69 @@ const Dropdown = forwardRef(
     const hideList = () => {
       setActive(false);
     };
-
-    const dropdownElements = Object.entries(data).map(
-      (item: string[], index: number) => {
-        const shotLang = item[1];
-        const fullLang = item[0];
-        return (
-          <StyledLi
-            key={index + 1}
-            tabIndex={0}
-            onClick={() => {
-              onClickElement && onClickElement(shotLang);
-              toggleList();
-            }}
-          >
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'baseline',
-                gap: 2,
-                justifyContent: 'center',
+    const transformData = (data: unknown) => {
+      if (Array.isArray(data)) {
+        return data.map((item: string, index: number) => {
+          return (
+            <StyledLi
+              style={{ padding: '10px 0', width: 300 }}
+              key={index + 1}
+              tabIndex={0}
+              onClick={() => {
+                onClickElement && onClickElement(item);
+                toggleList();
               }}
             >
-              <span style={{ fontSize: 16, fontWeight: 700 }}>
-                {shotLang.toUpperCase()}
-              </span>
-              <span style={{ fontSize: 12, fontWeight: 400 }}>{fullLang}</span>
-            </div>
-          </StyledLi>
-        );
-      },
-    );
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'baseline',
+                  gap: 2,
+                  justifyContent: 'center',
+                }}
+              >
+                <span style={{ fontSize: 16, fontWeight: 700 }}>
+                  {item.toUpperCase()}
+                </span>
+              </div>
+            </StyledLi>
+          );
+        });
+      } else {
+        return Object.entries(data as TLanguages).map((item: string[], index: number) => {
+          const shotLang = item[1];
+          const fullLang = item[0];
+          return (
+            <StyledLi
+              key={index + 1}
+              tabIndex={0}
+              onClick={() => {
+                onClickElement && onClickElement(shotLang);
+                toggleList();
+              }}
+            >
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'baseline',
+                  gap: 2,
+                  justifyContent: 'center',
+                }}
+              >
+                <span style={{ fontSize: 16, fontWeight: 700 }}>
+                  {shotLang.toUpperCase()}
+                </span>
+                <span style={{ fontSize: 12, fontWeight: 400 }}>
+                  {fullLang}
+                </span>
+              </div>
+            </StyledLi>
+          );
+        });
+      }
+    };
+
+    const dropdownElements = transformData(data);
 
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
@@ -97,10 +128,10 @@ const Dropdown = forwardRef(
       <StyleArticleDropdown ref={ref} id='wrapper'>
         <StyledButton onClick={toggleList} style={style}>
           {srcImg ? (
-            <img style={{ margin: '0 7px 0 0' }} src={srcImg} alt='global' />
+            <img style={{ margin: '0 7px 0 0' }} src={srcImg} alt='img' />
           ) : null}
           <StyledSpan className='dropdown-btn-text'>
-            {selected.toUpperCase() || 'RU'}
+            {selected.toUpperCase() || ''}
           </StyledSpan>
 
           <img

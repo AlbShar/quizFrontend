@@ -3,6 +3,8 @@ import { onValue } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
 
+import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
+
 type TUserInfoDB = {
   name: string;
   email: string;
@@ -11,10 +13,14 @@ type TUserInfoDB = {
 };
 
 const getUserInfo = (idUser: string) => {
+  const profession = getValueFromLocalStorage('profession');
   return new Promise<TUserInfoDB>(function (resolve, reject) {
-    onValue(ref(db, `users/user${idUser}/userInfo`), (snapshot) => {
-      resolve(snapshot.val());
-    });
+    onValue(
+      ref(db, `${profession}/users/user${idUser}/userInfo`),
+      (snapshot) => {
+        resolve(snapshot.val());
+      },
+    );
   });
 };
 

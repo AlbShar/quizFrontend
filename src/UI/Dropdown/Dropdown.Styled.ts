@@ -16,8 +16,8 @@ box-sizing: border-box;
   border-radius: 7px;
   padding: 11px;
   width: 100%;
-  max-width: 88px;
-  max-height: 44px;
+  width: 88px;
+  height: 44px;
 `;
 
 const StyledSpan = styled.span`

@@ -99,7 +99,7 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
 
   useEffect(() => {
     const url1 = `questions/question${currentQuestionNumb}/${lang}/theme`;
-    const url2 = 'questions';
+    const url2 = `questions`;
     
     Promise.allSettled([getThemeQuestion(url1), getTotalQuestionsNumb(url2)])
       .then(dataLoaded)
