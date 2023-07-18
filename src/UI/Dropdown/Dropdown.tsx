@@ -22,7 +22,7 @@ type TLanguages = {
   [key: string]: string;
 };
 type DropdownProps = {
-  style?: CSSProperties;
+  customStyle?: string;
   selected: string;
   data: TLanguages | string[];
   onClickElement?: (item: string) => void;
@@ -36,7 +36,7 @@ const Dropdown = forwardRef(
     {
       data,
       selected,
-      style,
+      customStyle,
       onClickElement,
       srcImg = '',
       srcArrowDown,
@@ -136,7 +136,7 @@ const Dropdown = forwardRef(
 
     return (
       <StyleArticleDropdown ref={ref} id='wrapper'>
-        <StyledButton onClick={toggleList} style={style}>
+        <StyledButton onClick={toggleList} customStyle={customStyle || ''}>
           {srcImg ? (
             <img style={{ margin: '0 7px 0 0' }} src={srcImg} alt='img' />
           ) : null}

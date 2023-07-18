@@ -44,7 +44,8 @@ const DropdownLanguages = () => {
   };
 
   return (
-    <Dropdown
+    <div>
+      <Dropdown
       data={mapLanguage}
       selected={lang}
       onClickElement={(item: string) => onClickElement(item)}
@@ -52,6 +53,8 @@ const DropdownLanguages = () => {
       srcImg={globe}
       srcArrowDown={arrowDownSmall}
     />
+    </div>
+    
   );
 };
 

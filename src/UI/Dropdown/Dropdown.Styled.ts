@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+
 const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
   height: 100%;
 `;
 
-const StyledButton = styled.button`
+
+const StyledButton = styled.button<{ customStyle?: string }>`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -20,6 +22,7 @@ const StyledButton = styled.button`
   max-width: 320px;
   height: 100%;
   color: #fff;
+  ${(props) => props.customStyle || ''};
 `;
 
 const StyledSpan = styled.span`
@@ -36,8 +39,8 @@ const StyledUl = styled.ul`
   padding: 5px 10px;
   border-radius: 7px;
   box-shadow: 0px 4px 4px 0px #0000003D;
-  width: auto;
-  
+  width: 100%;
+  position: absolute;
 `;
 
 const StyledLi = styled.li`
