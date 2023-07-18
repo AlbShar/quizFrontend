@@ -7,6 +7,8 @@ import {
   Ref,
   useState,
 } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import "./style.css";
 
 import {
   StyleArticleDropdown,
@@ -15,8 +17,6 @@ import {
   StyledLi,
   StyledSpan,
 } from './Dropdown.Styled';
-
-import chevrondown from '../../assets/images/chevrondown.svg';
 
 type TLanguages = {
   [key: string]: string;
@@ -150,7 +150,9 @@ const Dropdown = forwardRef(
             alt='Кнопка вниз'
           />
         </StyledButton>
-        {isActive && <StyledUl>{dropdownElements}</StyledUl>}
+        <CSSTransition in={isActive} timeout={300} classNames='list'>
+          {<>{isActive && <StyledUl>{dropdownElements}</StyledUl>}</>}
+        </CSSTransition>
       </StyleArticleDropdown>
     );
   },
