@@ -27,26 +27,32 @@ const StyledButton = styled.button<{ customStyle?: string }>`
 
 const StyledSpan = styled.span`
   font-family: Inter;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
+
+  @media screen and (min-width: 767.8px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledUl = styled.ul`
-  box-sizing: border-box ;
+  box-sizing: border-box;
   background-color: white;
   list-style-type: none;
-  margin: 10px 0 0 0 ;
+  margin: 10px 0 0 0;
   padding: 5px 10px;
   border-radius: 7px;
-  box-shadow: 0px 4px 4px 0px #0000003D;
+  box-shadow: 0px 4px 4px 0px #0000003d;
   width: 100%;
   position: absolute;
+  
 `;
 
 const StyledLi = styled.li`
-  font: var(--font-text-regular);
+  font-family: Inter;
+  // padding: 5px 0;
 
-  &:not(:last-child) {
+   &:not(:last-child) {
     margin-bottom: 10px;
   }
 `;

@@ -14,9 +14,10 @@ const StyledButton = styled.button`
   text-decoration: none;
   border-radius: 7px;
   background-color: #585AFF;
-  max-width: 190px;
+  max-width: 350px;
   width: 100%;
   max-height: 56px;
+  height: 100%;
 
   &:disabled {
     background-color: rgba(88, 90, 255, 0.49);

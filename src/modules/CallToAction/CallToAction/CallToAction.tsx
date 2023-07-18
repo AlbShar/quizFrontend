@@ -12,6 +12,7 @@ import {
   StyledH1,
   StyledP,
   StyledDiv,
+  StyledDivWrapper,
 } from './CallToAction.styled';
 
 type CallToActionProps = {
@@ -41,12 +42,15 @@ const CallToAction = ({
       <StyledP>{t('Тест_будет')}</StyledP>
       <StyledDiv>
         <DropdownProfession setChooseProfession={setChooseProfession} />
-        <LinkBtn
+        <StyledDivWrapper>
+          <LinkBtn
           pageTo='quiz'
           onClick={startTest}
           text='Начать тест'
           isDisabledBtn={!isChooseProfession}
         ></LinkBtn>
+        </StyledDivWrapper>
+        
       </StyledDiv>
     </StyledCallToAction>
   );

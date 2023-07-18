@@ -49,4 +49,13 @@ const StyledDiv = styled.div`
   }
 `;
 
-export { StyledCallToAction, StyledH1, StyledP, StyledDiv };
+const StyledDivWrapper = styled.div`
+  width: 250px;
+  height: 45px;
+
+  @media screen and (min-width: 767.8px) {
+    height: 56px;
+  }
+`;
+
+export { StyledCallToAction, StyledH1, StyledP, StyledDiv, StyledDivWrapper };

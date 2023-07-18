@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledDropdownWrapper = styled.section`
-  width: 240px;
+  width: 250px;
   height: 45px;
 
   @media screen and (min-width: 767.8px) {
