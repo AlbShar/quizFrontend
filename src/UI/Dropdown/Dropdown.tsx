@@ -16,6 +16,8 @@ import {
   StyledUl,
   StyledLi,
   StyledSpan,
+  StyledImgLeft,
+  StyledImgRight,
 } from './Dropdown.Styled';
 
 type TLanguages = {
@@ -136,19 +138,16 @@ const Dropdown = forwardRef(
 
     return (
       <StyleArticleDropdown ref={ref} id='wrapper'>
-        <StyledButton onClick={toggleList} customStyle={customStyle || ''}>
-          {srcImg ? (
-            <img style={{ margin: '0 7px 0 0' }} src={srcImg} alt='img' />
-          ) : null}
-          <StyledSpan className='dropdown-btn-text'>
+        <StyledButton onClick={toggleList}>
+          {srcImg ? <StyledImgLeft src={srcImg} alt='img' /> : null}
+          <StyledSpan
+            className='dropdown-btn-text'
+            customStyle={customStyle || ''}
+          >
             {selected.toUpperCase() || ''}
           </StyledSpan>
 
-          <img
-            style={{ margin: '0 0 0 7px' }}
-            src={srcArrowDown}
-            alt='Кнопка вниз'
-          />
+          <StyledImgRight src={srcArrowDown} alt='Кнопка вниз' />
         </StyledButton>
         <CSSTransition in={isActive} timeout={300} classNames='list'>
           {<>{isActive && <StyledUl>{dropdownElements}</StyledUl>}</>}

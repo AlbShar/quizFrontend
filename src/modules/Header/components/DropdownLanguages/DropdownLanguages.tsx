@@ -44,17 +44,17 @@ const DropdownLanguages = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: 88, height: 44, border: '1px solid red' }}>
       <Dropdown
-      data={mapLanguage}
-      selected={lang}
-      onClickElement={(item: string) => onClickElement(item)}
-      ref={refWrapperLanguage}
-      srcImg={globe}
-      srcArrowDown={arrowDownSmall}
-    />
+        data={mapLanguage}
+        selected={lang}
+        onClickElement={(item: string) => onClickElement(item)}
+        ref={refWrapperLanguage}
+        srcImg={globe}
+        srcArrowDown={arrowDownSmall}
+        customStyle={'margin: 0 0 0 13px'}
+      />
     </div>
-    
   );
 };
 

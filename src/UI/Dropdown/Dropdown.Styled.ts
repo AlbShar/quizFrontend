@@ -8,31 +8,43 @@ const StyleArticleDropdown = styled.article`
 `;
 
 
-const StyledButton = styled.button<{ customStyle?: string }>`
+const StyledButton = styled.button`
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   cursor: pointer;
   border: none;
   background-color: #5557ff;
   border-radius: 7px;
-  padding: 11px;
+  padding: 0;
   width: 100%;
+  text-align: center;
   max-width: 320px;
   height: 100%;
   color: #fff;
-  ${(props) => props.customStyle || ''};
 `;
 
-const StyledSpan = styled.span`
+const StyledSpan = styled.span<{ customStyle?: string }>`
   font-family: Inter;
   font-size: 14px;
   font-weight: 700;
+  display: inline-block;
+  ${(props) => props.customStyle || ''};
 
   @media screen and (min-width: 767.8px) {
     font-size: 16px;
   }
+`;
+
+const StyledImgLeft = styled.img`
+  position: absolute;
+  left: 10px;
+  top: 26%;
+`;
+
+const StyledImgRight = styled.img`
+  position: absolute;
+  right: 10px;
+  top: 40%;
 `;
 
 const StyledUl = styled.ul`
@@ -51,11 +63,18 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   font-family: Inter;
-  // padding: 5px 0;
 
    &:not(:last-child) {
     margin-bottom: 10px;
   }
 `;
 
-export { StyleArticleDropdown, StyledButton, StyledUl, StyledLi, StyledSpan };
+export {
+  StyleArticleDropdown,
+  StyledButton,
+  StyledUl,
+  StyledLi,
+  StyledSpan,
+  StyledImgLeft,
+  StyledImgRight,
+};
