@@ -55,7 +55,6 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   };
 
   useEffect(() => {
-    console.log(`${profession}/users`);
     if (profession) {
       const url = `${profession}/users`;
       getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);

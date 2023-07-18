@@ -79,6 +79,7 @@ const StyledSection = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: start;
+  gap: 15px;
 `;
 
 const StyledSpanResult = styled.span<StyledSpanResultProps>`

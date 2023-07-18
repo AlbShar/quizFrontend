@@ -4,6 +4,7 @@ import Dropdown from '../../../UI/Dropdown/Dropdown';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import { ContextProfession } from '../../../components/Context';
 import { StyledDropdownWrapper } from './DropdownProfession.Styled';
+import { useTranslation } from 'react-i18next';
 
 import arrowDownLarge from '../../../assets/images/arrowDownLarge.svg';
 
@@ -16,8 +17,10 @@ const DropdownProfession = ({
 }: DropdownProfessionProps) => {
   const [, setProfession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
-  const [selected, setSelected] = useState<string>('Направление теста');
-  const data = ['Frontend разработчик', 'Тестировщик ПО'];
+  const { t } = useTranslation();
+
+  const [selected, setSelected] = useState<string>('');
+
   const refWrapper = useRef<HTMLDivElement>(null);
   const customStyleButton = `
   gap: 10px; 
@@ -27,14 +30,15 @@ const DropdownProfession = ({
     gap: 39px; 
   }`;
 
-  const shortDataForDB = {
-    'Frontend разработчик': 'Frontend',
-    'Тестировщик ПО': 'QA',
+  const dataProfessions = {
+    [t('Frontend_разработчик')]: 'Frontend',
+    [t('Тестировщик_ПО')]: 'QA',
   };
+  const data = Object.keys(dataProfessions);
 
   const onClickProfession = (item: string) => {
-    setValueToLocalStorage('profession', shortDataForDB[item]);
-    setProfession(shortDataForDB[item]);
+    setValueToLocalStorage('profession', dataProfessions[item]);
+    setProfession(dataProfessions[item]);
     setSelected(item);
     setChooseProfession(true);
   };
@@ -42,7 +46,7 @@ const DropdownProfession = ({
   return (
     <StyledDropdownWrapper>
       <Dropdown
-        selected={selected}
+        selected={selected || t('направление_теста')}
         data={data}
         ref={refWrapper}
         onClickElement={onClickProfession}

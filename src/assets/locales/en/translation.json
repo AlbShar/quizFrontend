@@ -45,6 +45,9 @@
     "сек": "sec",
     "мин": "min",
     "из": "from",
-    "назад": "back"
+    "назад": "back",
+    "направление_теста": "test direction",
+    "Frontend_разработчик": "Frontend developer",
+    "Тестировщик_ПО": "QA engineer"
 }
   
