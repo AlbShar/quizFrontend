@@ -6,6 +6,8 @@ import { ContextLanguage } from '../../../../components/Context';
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import globe from '../../../../assets/images/globe.svg';
 
+import arrowDownSmall from '../../icons/arrowDownSmall.svg';
+
 const DropdownLanguages = () => {
   // eslint-disable-next-line
   const [lang, setLang]: [string, (lang: string) => void] =
@@ -48,6 +50,7 @@ const DropdownLanguages = () => {
       onClickElement={(item: string) => onClickElement(item)}
       ref={refWrapperLanguage}
       srcImg={globe}
+      srcArrowDown={arrowDownSmall}
     />
   );
 };

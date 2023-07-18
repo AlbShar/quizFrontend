@@ -3,10 +3,11 @@ import styled from 'styled-components';
 const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
+  height: 100%;
 `;
 
 const StyledButton = styled.button`
-box-sizing: border-box;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,28 +17,22 @@ box-sizing: border-box;
   border-radius: 7px;
   padding: 11px;
   width: 100%;
-  width: 88px;
-  height: 44px;
+  max-width: 320px;
+  height: 100%;
+  color: #fff;
 `;
 
 const StyledSpan = styled.span`
-  color: #ffffff;
-  font: var(--font-little-text-regular);
-
-  @media screen and (min-width: 767.8px) {
-    font: var(--font-text-regular);
-  }
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
 `;
 
 const StyledUl = styled.ul`
   box-sizing: border-box ;
-  z-index: 2;
-  left: 0px;
-  top: 60px;
   background-color: white;
-  position: absolute;
   list-style-type: none;
-  margin: 0;
+  margin: 10px 0 0 0 ;
   padding: 5px 10px;
   border-radius: 7px;
   box-shadow: 0px 4px 4px 0px #0000003D;

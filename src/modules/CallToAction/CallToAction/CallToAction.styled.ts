@@ -34,4 +34,19 @@ const StyledP = styled.p`
   }
 `;
 
-export { StyledCallToAction, StyledH1, StyledP };
+const StyledDiv = styled.div`
+  display: flex;
+  width: auto;
+  gap: 10px;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @media screen and (min-width: 767.8px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 45px;
+    align-items: center;
+  }
+`;
+
+export { StyledCallToAction, StyledH1, StyledP, StyledDiv };

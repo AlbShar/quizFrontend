@@ -28,11 +28,19 @@ type DropdownProps = {
   onClickElement?: (item: string) => void;
   ref: RefObject<HTMLDivElement>;
   srcImg?: string;
+  srcArrowDown: string;
 };
 
 const Dropdown = forwardRef(
   (
-    { data, selected, style, onClickElement, srcImg = '' }: DropdownProps,
+    {
+      data,
+      selected,
+      style,
+      onClickElement,
+      srcImg = '',
+      srcArrowDown,
+    }: DropdownProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const [isActive, setActive] = useState<boolean>(false);
@@ -73,36 +81,38 @@ const Dropdown = forwardRef(
           );
         });
       } else {
-        return Object.entries(data as TLanguages).map((item: string[], index: number) => {
-          const shotLang = item[1];
-          const fullLang = item[0];
-          return (
-            <StyledLi
-              key={index + 1}
-              tabIndex={0}
-              onClick={() => {
-                onClickElement && onClickElement(shotLang);
-                toggleList();
-              }}
-            >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'baseline',
-                  gap: 2,
-                  justifyContent: 'center',
+        return Object.entries(data as TLanguages).map(
+          (item: string[], index: number) => {
+            const shotLang = item[1];
+            const fullLang = item[0];
+            return (
+              <StyledLi
+                key={index + 1}
+                tabIndex={0}
+                onClick={() => {
+                  onClickElement && onClickElement(shotLang);
+                  toggleList();
                 }}
               >
-                <span style={{ fontSize: 16, fontWeight: 700 }}>
-                  {shotLang.toUpperCase()}
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 400 }}>
-                  {fullLang}
-                </span>
-              </div>
-            </StyledLi>
-          );
-        });
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'baseline',
+                    gap: 2,
+                    justifyContent: 'center',
+                  }}
+                >
+                  <span style={{ fontSize: 16, fontWeight: 700 }}>
+                    {shotLang.toUpperCase()}
+                  </span>
+                  <span style={{ fontSize: 12, fontWeight: 400 }}>
+                    {fullLang}
+                  </span>
+                </div>
+              </StyledLi>
+            );
+          },
+        );
       }
     };
 
@@ -136,7 +146,7 @@ const Dropdown = forwardRef(
 
           <img
             style={{ margin: '0 0 0 7px' }}
-            src={chevrondown}
+            src={srcArrowDown}
             alt='Кнопка вниз'
           />
         </StyledButton>

@@ -1,7 +1,11 @@
 import { useRef, useState, useContext } from 'react';
+
 import Dropdown from '../../../UI/Dropdown/Dropdown';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import { ContextProfession } from '../../../components/Context';
+import { StyledDropdownWrapper } from './DropdownProfession.Styled';
+
+import arrowDownLarge from "../../../assets/images/arrowDownLarge.svg";
 
 type DropdownProfessionProps = {
   setChooseProfession: (item: boolean) => void;
@@ -15,6 +19,11 @@ const DropdownProfession = ({
   const [selected, setSelected] = useState<string>('Направление теста');
   const data = ['Frontend разработчик', 'Тестировщик ПО'];
   const refWrapper = useRef<HTMLDivElement>(null);
+  const customStyleButton = {
+    gap: 10,
+    justifyContent: 'flex-end'
+  };
+
   const shortDataForDB = {
     'Frontend разработчик': 'Frontend',
     'Тестировщик ПО': 'QA',
@@ -29,15 +38,16 @@ const DropdownProfession = ({
   };
 
   return (
-    <>
+    <StyledDropdownWrapper>
       <Dropdown
         selected={selected}
         data={data}
         ref={refWrapper}
-        style={{ width: 320, height: 56 }}
         onClickElement={onClickProfession}
+        style={customStyleButton}
+        srcArrowDown={arrowDownLarge}
       />
-    </>
+    </StyledDropdownWrapper>
   );
 };
 

@@ -7,7 +7,12 @@ import { createIdUser } from '../helpers/createIdUser';
 import { ContextIdUser } from '../../../components/Context';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import DropdownProfession from '../UI/DropdownProfession';
-import { StyledCallToAction, StyledH1, StyledP } from './CallToAction.styled';
+import {
+  StyledCallToAction,
+  StyledH1,
+  StyledP,
+  StyledDiv,
+} from './CallToAction.styled';
 
 type CallToActionProps = {
   isChooseProfession: boolean;
@@ -34,14 +39,7 @@ const CallToAction = ({
       <InfoTest isChooseProfession={isChooseProfession} />
       <StyledP>{t('Добро_пожаловать')}</StyledP>
       <StyledP>{t('Тест_будет')}</StyledP>
-      <div
-        style={{
-          display: 'flex',
-          width: 600,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+      <StyledDiv>
         <DropdownProfession setChooseProfession={setChooseProfession} />
         <LinkBtn
           pageTo='quiz'
@@ -49,7 +47,7 @@ const CallToAction = ({
           text='Начать тест'
           isDisabledBtn={!isChooseProfession}
         ></LinkBtn>
-      </div>
+      </StyledDiv>
     </StyledCallToAction>
   );
 };
