@@ -1,4 +1,4 @@
-import { useRef, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import Dropdown from '../../../UI/Dropdown/Dropdown';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
@@ -21,34 +21,32 @@ const DropdownProfession = ({
 
   const [selected, setSelected] = useState<string>('');
 
-  const refWrapper = useRef<HTMLDivElement>(null);
   const customStyleButton = `
-  gap: 10px; 
-  justify-content: flex-end; 
+      gap: 10px; 
+      justify-content: flex-end; 
 
-  @media screen and (min-width: 767.8px) {
-    gap: 39px; 
-  }`;
+      @media screen and (min-width: 767.8px) {
+        gap: 39px; 
+        }`;
 
   const dataProfessions = {
     [t('Frontend_разработчик')]: 'Frontend',
     [t('Тестировщик_ПО')]: 'QA',
   };
-  const data = Object.keys(dataProfessions);
+  const listProfessions = Object.keys(dataProfessions);
 
   const onClickProfession = (item: string) => {
     setValueToLocalStorage('profession', dataProfessions[item]);
     setProfession(dataProfessions[item]);
     setSelected(item);
-    setChooseProfession(true);
+    setChooseProfession(true)
   };
 
   return (
     <StyledDropdownWrapper>
       <Dropdown
         selected={selected || t('направление_теста')}
-        data={data}
-        ref={refWrapper}
+        data={listProfessions}
         onClickElement={onClickProfession}
         customStyle={customStyleButton}
         srcArrowDown={arrowDownLarge}

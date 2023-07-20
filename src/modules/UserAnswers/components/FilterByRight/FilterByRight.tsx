@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from "../../../../assets/images/chevrondown.svg";
@@ -14,7 +14,6 @@ const FilterByRight = ({
   const data: string[] = ['Все вопросы', 'Верно', 'Неверно'];
 
   const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);
-  const refWrapper = useRef<HTMLDivElement>(null);
 
 
   const themeHasChoosen = (item: string) => {
@@ -28,7 +27,6 @@ const FilterByRight = ({
       <Dropdown
         data={data}
         selected={typeAnswer}
-        ref={refWrapper}
         onClickElement={themeHasChoosen}
         srcArrowDown={chevrondown}
       />

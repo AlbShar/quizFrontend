@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from '../../../../assets/images/chevrondown.svg';
@@ -14,7 +14,6 @@ const FilterByThemes = ({
   setFilterByTheme,
 }: FilterByThemesProps): JSX.Element => {
   const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
-  const refWrapper = useRef<HTMLDivElement>(null);
 
   const themeHasChoosen = (item: string) => {
     setSelectedTheme(item);
@@ -26,7 +25,6 @@ const FilterByThemes = ({
       <Dropdown
       data={themesNames}
       selected={selectedTheme}
-      ref={refWrapper}
       onClickElement={themeHasChoosen}
       srcArrowDown={chevrondown}
     />

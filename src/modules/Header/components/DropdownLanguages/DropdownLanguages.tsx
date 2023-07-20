@@ -49,7 +49,6 @@ const DropdownLanguages = () => {
         data={mapLanguage}
         selected={lang}
         onClickElement={(item: string) => onClickElement(item)}
-        ref={refWrapperLanguage}
         srcImg={globe}
         srcArrowDown={arrowDownSmall}
         customStyle={'margin: 0 0 0 13px'}
