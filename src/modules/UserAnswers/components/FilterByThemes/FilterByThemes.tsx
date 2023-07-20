@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from '../../../../assets/images/chevrondown.svg';
+import { StyledWrapperDropdown } from '../Filters.Styled';
 
 type FilterByThemesProps = {
   themesNames: string[];
@@ -21,13 +22,16 @@ const FilterByThemes = ({
   };
 
   return (
-    <Dropdown
+    <StyledWrapperDropdown>
+      <Dropdown
       data={themesNames}
       selected={selectedTheme}
       ref={refWrapper}
       onClickElement={themeHasChoosen}
       srcArrowDown={chevrondown}
     />
+    </StyledWrapperDropdown>
+    
   );
 };
 

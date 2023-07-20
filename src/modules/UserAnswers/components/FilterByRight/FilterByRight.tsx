@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from "../../../../assets/images/chevrondown.svg";
+import {StyledWrapperDropdown} from "../Filters.Styled";
 
 type FilterByRightProps = {
   setFilterByRightAnswer: (newFilter: string) => void;
@@ -23,13 +24,15 @@ const FilterByRight = ({
 
 
   return (
-    <Dropdown
-      data={data}
-      selected={typeAnswer}
-      ref={refWrapper}
-      onClickElement={themeHasChoosen}
-      srcArrowDown={chevrondown}
-    />
+    <StyledWrapperDropdown>
+      <Dropdown
+        data={data}
+        selected={typeAnswer}
+        ref={refWrapper}
+        onClickElement={themeHasChoosen}
+        srcArrowDown={chevrondown}
+      />
+    </StyledWrapperDropdown>
   );
 };
 

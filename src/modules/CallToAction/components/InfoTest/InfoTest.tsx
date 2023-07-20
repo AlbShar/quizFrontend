@@ -1,44 +1,63 @@
 import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { getQuantityThemes } from '../../api/getInfoQuestions';
 import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
 import Spinner from '../../../../UI/Spinner/Spinner';
 import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import { ContextProfession } from '../../../../components/Context';
-
+import { getValueFromLocalStorage } from '../../../../helpers/getValueFromLocalStorage';
 import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
 
 import type { InfoTestBlock } from '../../../../types/types';
+import {
+  ContextLanguage,
+  ContextProfession,
+} from '../../../../components/Context';
 
 type InfoTestProps = {
   isChooseProfession: boolean;
 };
 
 const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
+  const [profession,]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
+  const [lang, setLang]: [string, (lang: string) => void] =
+    useContext(ContextLanguage);
+  const [quantityThemes, setQuantityThemes] = useState<number>(0);
+  const url = `${profession}/questions`;
+
+  const updateQuantityThemes = (quantity: number) => {
+    setQuantityThemes(quantity);
+  };
+
+  useEffect(() => {
+    getQuantityThemes(url, lang).then(updateQuantityThemes);
+  }, [profession]);
+
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
-  const [profession]: [string, (lang: string) => void] =
-    useContext(ContextProfession);
 
   const infoTestBlock: InfoTestBlock[] = [
     {
-      text: ` ${isChooseProfession ? '~' + quantityQuestions : '-'} ${t(
+      text: ` ${isChooseProfession ? '~' + quantityQuestions : '_'} ${t(
         'Время',
       )}`,
       srcIcon: require('../../icons/clock.png'),
       alt: 'icon of clock',
     },
     {
-      text: t('Возрастающая_сложность'),
-      srcIcon: require('../../icons/helpcircle.png'),
-      alt: 'icon of question in circle',
-    },
-    {
-      text: `${isChooseProfession ? quantityQuestions : '-'} ${t('Вопросов')}`,
+      text: `${isChooseProfession ? quantityQuestions : '_'} ${t('Вопросов')}`,
       srcIcon: require('../../icons/barchart.png'),
       alt: 'icon of bar chart',
+    },
+    {
+      text: `${isChooseProfession ? quantityThemes : '_'} ${t(
+        'Блока',
+      )}`,
+      srcIcon: require('../../icons/helpcircle.png'),
+      alt: 'icon of question in circle',
     },
   ];
 
@@ -76,6 +95,12 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
       setIsLoading(false);
     }
   }, [profession]);
+
+  // if (!isChooseProfession) {
+  //   return (
+  //       <SkeletonInfo />
+  //   );
+  // }
 
   return (
     <nav>

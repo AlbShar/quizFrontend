@@ -44,7 +44,7 @@ const DropdownLanguages = () => {
   };
 
   return (
-    <div style={{ width: 88, height: 44, border: '1px solid red' }}>
+    <div style={{ width: 88, height: 44 }}>
       <Dropdown
         data={mapLanguage}
         selected={lang}
