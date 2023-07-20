@@ -25,9 +25,11 @@ const sendUserAnswerDB = async ({
   const url = `${profession}/users/user${idUser}/answers/answer${currentQuestionNumb}`;
 
   try {
-    const rightAnswer = await getRightAnswerDB(currentQuestionNumb, lang);
+    const rightAnswer = await getRightAnswerDB(
+      profession, currentQuestionNumb,
+      lang,
+    );
     const isRigthAnswer = rightAnswer === userAnswer ? 1 : 0;
-
     set(ref(db, url), {
       question: questionName,
       userAnswer: userAnswer,

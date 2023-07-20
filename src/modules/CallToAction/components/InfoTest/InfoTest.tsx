@@ -16,10 +16,14 @@ import {
 
 type InfoTestProps = {
   isChooseProfession: boolean;
+  setChooseProfession: (item: boolean) => void;
 };
 
-const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
-  const [profession,]: [string, (lang: string) => void] =
+const InfoTest = ({
+  isChooseProfession,
+  setChooseProfession,
+}: InfoTestProps) => {
+  const [profession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
   const [lang, setLang]: [string, (lang: string) => void] =
     useContext(ContextLanguage);
@@ -33,6 +37,10 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
   useEffect(() => {
     getQuantityThemes(url, lang).then(updateQuantityThemes);
   }, [profession]);
+
+  useEffect(() => {
+    setChooseProfession(false);
+  }, []);
 
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,14 +57,12 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
     },
     {
       text: `${isChooseProfession ? quantityQuestions : '_'} ${t('Вопросов')}`,
-      srcIcon: require('../../icons/barchart.png'),
+      srcIcon: require('../../icons/helpcircle.png'),
       alt: 'icon of bar chart',
     },
     {
-      text: `${isChooseProfession ? quantityThemes : '_'} ${t(
-        'Блока',
-      )}`,
-      srcIcon: require('../../icons/helpcircle.png'),
+      text: `${isChooseProfession ? quantityThemes : '_'} ${t('Блока')}`,
+      srcIcon: require('../../icons/barchart.png'),
       alt: 'icon of question in circle',
     },
   ];
@@ -95,12 +101,6 @@ const InfoTest = ({ isChooseProfession }: InfoTestProps) => {
       setIsLoading(false);
     }
   }, [profession]);
-
-  // if (!isChooseProfession) {
-  //   return (
-  //       <SkeletonInfo />
-  //   );
-  // }
 
   return (
     <nav>

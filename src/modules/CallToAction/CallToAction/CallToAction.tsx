@@ -37,20 +37,22 @@ const CallToAction = ({
   return (
     <StyledCallToAction id='CallToAction'>
       <StyledH1>{t('Тест_для_Frontend_разработчиков')}</StyledH1>
-      <InfoTest isChooseProfession={isChooseProfession} />
+      <InfoTest
+        isChooseProfession={isChooseProfession}
+        setChooseProfession={setChooseProfession}
+      />
       <StyledP>{t('Добро_пожаловать')}</StyledP>
       <StyledP>{t('Тест_будет')}</StyledP>
       <StyledDiv>
         <DropdownProfession setChooseProfession={setChooseProfession} />
         <StyledDivWrapper>
           <LinkBtn
-          pageTo='quiz'
-          onClick={startTest}
-          text='Начать тест'
-          isDisabledBtn={!isChooseProfession}
-        ></LinkBtn>
+            pageTo='quiz'
+            onClick={startTest}
+            text='Начать тест'
+            isDisabledBtn={!isChooseProfession}
+          ></LinkBtn>
         </StyledDivWrapper>
-        
       </StyledDiv>
     </StyledCallToAction>
   );
