@@ -74,7 +74,7 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   font-family: Inter;
-  padding: 5px 0;
+  padding: 3px 0;
   width: 300px;
 
   &:not(:last-child) {
@@ -82,7 +82,7 @@ const StyledLi = styled.li`
   }
 
   @media screen and (min-width: 767.8px) {
-    padding: 10px 0;
+   padding: 5px 0;
   }
 `;
 
