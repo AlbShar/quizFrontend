@@ -10,6 +10,7 @@ import {
   StyledSpan,
   StyledImgLeft,
   StyledImgRight,
+  StyledSpanList,
 } from './Dropdown.Styled';
 
 type TLanguages = {
@@ -47,7 +48,6 @@ const Dropdown = ({
       return data.map((item: string, index: number) => {
         return (
           <StyledLi
-            style={{ padding: '10px 0', width: 300 }}
             key={index + 1}
             tabIndex={0}
             onClick={() => {
@@ -63,9 +63,9 @@ const Dropdown = ({
                 justifyContent: 'center',
               }}
             >
-              <span style={{ fontSize: 16, fontWeight: 700 }}>
-                {item.toUpperCase()}
-              </span>
+              <StyledSpanList>
+                {item}
+              </StyledSpanList>
             </div>
           </StyledLi>
         );

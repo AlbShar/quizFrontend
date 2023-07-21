@@ -4,17 +4,21 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-around;
   box-sizing: border-box;
   list-style-type: none;
   margin: 26px 0 0 0;
   padding: 8px 12px;
-  background-color: var(--color-call-action-info);
+  border-radius: 7px;
+  background-color: #fff;
+  max-width: 250px;
 
-  @media screen and (min-width: 459.8px) {
-    max-width: 685px;
+  @media screen and (min-width: 767.8px) {
+    max-width: 577px;
     padding: 24px;
     flex-direction: row;
+    max-height: 58px;
+    align-items: center;
   }
 `;
 
@@ -35,7 +39,7 @@ const StyledLi = styled.li`
     margin-bottom: 5px;
   }
 
-  @media screen and (min-width: 459.8px) {
+  @media screen and (min-width: 767.8px) {
     font: var(--font-text-bold);
 
     &:not(:last-child) {
@@ -43,9 +47,10 @@ const StyledLi = styled.li`
     }
 
     &:not(:last-child):after {
+      color: black;
       position: relative;
       content: '/';
-      left: 12px;
+      left: 30px;
     }
   }
 `;

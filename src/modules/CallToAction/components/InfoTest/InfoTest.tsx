@@ -5,7 +5,6 @@ import { getQuantityThemes } from '../../api/getInfoQuestions';
 import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
 import Spinner from '../../../../UI/Spinner/Spinner';
 import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import { getValueFromLocalStorage } from '../../../../helpers/getValueFromLocalStorage';
 import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
 
 import type { InfoTestBlock } from '../../../../types/types';
@@ -13,6 +12,10 @@ import {
   ContextLanguage,
   ContextProfession,
 } from '../../../../components/Context';
+
+import clock from "../../icons/clock.svg";
+import barChart from "../../icons/bar-chart.svg";
+import helpCircle from "../../icons/help-circle.svg";
 
 type InfoTestProps = {
   isChooseProfession: boolean;
@@ -52,18 +55,18 @@ const InfoTest = ({
       text: ` ${isChooseProfession ? '~' + quantityQuestions : '_'} ${t(
         'Время',
       )}`,
-      srcIcon: require('../../icons/clock.png'),
+      srcIcon: clock,
       alt: 'icon of clock',
     },
     {
       text: `${isChooseProfession ? quantityQuestions : '_'} ${t('Вопросов')}`,
-      srcIcon: require('../../icons/helpcircle.png'),
-      alt: 'icon of bar chart',
+      srcIcon: helpCircle,
+      alt: 'icon of question in circle',
     },
     {
       text: `${isChooseProfession ? quantityThemes : '_'} ${t('Блока')}`,
-      srcIcon: require('../../icons/barchart.png'),
-      alt: 'icon of question in circle',
+      srcIcon: barChart,
+      alt: ' icon of bar chart ',
     },
   ];
 
@@ -71,7 +74,7 @@ const InfoTest = ({
     return (
       <StyledLi key={index + 1}>
         <StyledImg src={item.srcIcon} alt={item.alt} />
-        <span>{item.text}</span>
+        <span style={{color: 'black'}}>{item.text}</span>
       </StyledLi>
     );
   });

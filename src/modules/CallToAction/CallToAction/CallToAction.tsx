@@ -10,7 +10,7 @@ import DropdownProfession from '../UI/DropdownProfession';
 import {
   StyledCallToAction,
   StyledH1,
-  StyledP,
+  StyledH2,
   StyledDiv,
   StyledDivWrapper,
 } from './CallToAction.styled';
@@ -36,13 +36,13 @@ const CallToAction = ({
 
   return (
     <StyledCallToAction id='CallToAction'>
-      <StyledH1>{t('Тест_для_Frontend_разработчиков')}</StyledH1>
+      <StyledH1>{t('Тест_для')}</StyledH1>
       <InfoTest
         isChooseProfession={isChooseProfession}
         setChooseProfession={setChooseProfession}
       />
-      <StyledP>{t('Добро_пожаловать')}</StyledP>
-      <StyledP>{t('Тест_будет')}</StyledP>
+      <StyledH2>{t('Добро_пожаловать')}</StyledH2>
+      <StyledH2>{t('Тест_будет')}</StyledH2>
       <StyledDiv>
         <DropdownProfession setChooseProfession={setChooseProfession} />
         <StyledDivWrapper>

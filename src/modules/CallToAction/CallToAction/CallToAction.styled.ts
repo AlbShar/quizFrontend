@@ -25,12 +25,12 @@ const StyledH1 = styled.h1`
         font: var(--font-title2);
 `;
 
-const StyledP = styled.p`
-  font: var(--font-little-text-regular);
+const StyledH2 = styled.h2`
+  font: var(--font-h2-little);
   color: white;
 
-  @media screen and (min-width: 459.8px) {
-    font: var(--font-text-regular);
+  @media screen and (min-width: 767.8px) {
+    font: var(--font-h2-large);
   }
 `;
 
@@ -58,4 +58,4 @@ const StyledDivWrapper = styled.div`
   }
 `;
 
-export { StyledCallToAction, StyledH1, StyledP, StyledDiv, StyledDivWrapper };
+export { StyledCallToAction, StyledH1, StyledH2, StyledDiv, StyledDivWrapper };

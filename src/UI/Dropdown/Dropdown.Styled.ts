@@ -35,6 +35,17 @@ const StyledSpan = styled.span<{ customStyle?: string }>`
   }
 `;
 
+const StyledSpanList = styled.span`
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 700;
+
+  @media screen and (min-width: 767.8px) {
+    font-size: 16px;
+  }
+`;
+
 const StyledImgLeft = styled.img`
   position: absolute;
   left: 10px;
@@ -63,9 +74,15 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   font-family: Inter;
+  padding: 5px 0;
+  width: 300px;
 
-   &:not(:last-child) {
+  &:not(:last-child) {
     margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 767.8px) {
+    padding: 10px 0;
   }
 `;
 
@@ -77,4 +94,5 @@ export {
   StyledSpan,
   StyledImgLeft,
   StyledImgRight,
+  StyledSpanList,
 };
