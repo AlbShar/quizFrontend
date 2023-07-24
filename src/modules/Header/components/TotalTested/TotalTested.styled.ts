@@ -32,6 +32,7 @@ const StyledDivWrapper = styled.div`
     background-color: #FFFFFF;
     color: #000000;
     border-radius: 7px;
+    height: 56px;
   }
 `;
 

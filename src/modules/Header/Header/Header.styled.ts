@@ -7,7 +7,7 @@ type FlexWrapper = {
 
 const StyledFlexWrapper = styled.div<FlexWrapper>`
   display: flex;
-  align-items: center;
+  align-items: strech;
   justify-content: space-between;
   gap: ${({ gap }) => (gap ? gap + 'px' : '')};
 `;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
-  height: 100%;
   width: 100%;
 `;
 
@@ -19,9 +18,13 @@ const StyledButton = styled.button`
   border-radius: 7px;
   padding: 0 15px;
   text-align: center;
-  height: 100%;
+  min-height: 45px;
   width: 100%;
   color: #fff;
+
+  @media screen and (min-width: 767.8px) {
+    min-height: 56px;
+  }
 `;
 
 const StyledSpan = styled.span<{ customStyle?: string }>`
