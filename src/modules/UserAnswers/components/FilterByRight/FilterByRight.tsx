@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import Dropdown from '../../UI/Dropdown/Dropdown';
+import Dropdown from '../../../../UI/Dropdown/Dropdown';
+import chevrondown from "../../../../assets/images/chevrondown.svg";
+import {StyledWrapperDropdown} from "../Filters.Styled";
 
 type FilterByRightProps = {
   setFilterByRightAnswer: (newFilter: string) => void;
@@ -12,32 +14,23 @@ const FilterByRight = ({
   const data: string[] = ['Все вопросы', 'Верно', 'Неверно'];
 
   const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);
-  const [isShowList, setIsShowList] = useState<boolean>(false);
 
-  const toggleListThemes = () => {
-    setIsShowList((isShowList) => !isShowList);
-  };
 
   const themeHasChoosen = (item: string) => {
-    toggleListThemes();
     setTypeAnswer(item);
     setFilterByRightAnswer(item);
   };
 
-  const hideListFilters = () => {
-    setIsShowList(false);
-  };
 
   return (
-    <Dropdown
-      toggleListThemes={toggleListThemes}
-      data={data}
-      selected={typeAnswer}
-      isActive={isShowList}
-      themeHasChoosen={(item: string) => themeHasChoosen(item)}
-      hideListFilters={hideListFilters}
-      idWrapper='wrapperTypeAnswer'
-    />
+    <StyledWrapperDropdown>
+      <Dropdown
+        data={data}
+        selected={typeAnswer}
+        onClickElement={themeHasChoosen}
+        srcArrowDown={chevrondown}
+      />
+    </StyledWrapperDropdown>
   );
 };
 

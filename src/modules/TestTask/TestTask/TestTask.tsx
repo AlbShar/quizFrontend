@@ -1,7 +1,10 @@
 import { useEffect, useContext, useState } from 'react';
 
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
-import { ContextLanguage } from '../../../components/Context';
+import {
+  ContextLanguage,
+  ContextProfession,
+  ContextCurrentQuestionNumb,
+} from '../../../components/Context';
 import SkeletonQuestion from '../UI/SkeletonQuestion';
 import { getDataFromDB } from '../../../api/getDataFromDB';
 
@@ -17,6 +20,9 @@ const TestTask = () => {
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
+  const [profession]: [string, (lang: string) => void] =
+      useContext(ContextProfession);
+
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const [questionName, setQuestionName] = useState<string>('');
@@ -28,8 +34,8 @@ const TestTask = () => {
   const spinner = isLoading ? <SkeletonQuestion /> : null;
 
   const urls = [
-    `questions/question${currentQuestionNumb}/${lang}/img`,
-    `questions/question${currentQuestionNumb}/${lang}/name`,
+    `${profession}/questions/question${currentQuestionNumb}/${lang}/img`,
+    `${profession}/questions/question${currentQuestionNumb}/${lang}/name`,
   ];
 
   const view = () => {

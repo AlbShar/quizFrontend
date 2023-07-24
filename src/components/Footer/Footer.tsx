@@ -22,8 +22,8 @@ const Footer = () => {
 
   const infoMiddleFooter: FooterInfo[] = [
     { text: t('Сообщить'), link: '/reportbug' },
-    { text: t('Восстановить'), link: '/reestablish' },
-    { text: t('Политика'), link: '/politics' },
+    // { text: t('Восстановить'), link: '/reestablish' },
+    // { text: t('Политика'), link: '/politics' },
   ];
 
   const elementsInfoMiddleFooter = infoMiddleFooter.map((item, index) => {

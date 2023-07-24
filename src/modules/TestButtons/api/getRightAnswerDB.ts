@@ -1,7 +1,11 @@
 import { getDataFromDB } from '../../../api/getDataFromDB';
 
-const getRightAnswerDB = async (currentQuestionNumb: number, lang: string) => {
-  const url = `questions/question${currentQuestionNumb}/${lang}/rightAnswer`;
+const getRightAnswerDB = async (
+  profession: string, 
+  currentQuestionNumb: number,
+  lang: string,
+) => {
+  const url = `${profession}/questions/question${currentQuestionNumb}/${lang}/rightAnswer`;
 
   try {
     const response = await getDataFromDB<string>(url);

@@ -1,6 +1,7 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
+
 import db from '../config/firebase/firebaseConfig';
 
 
@@ -8,19 +9,22 @@ import db from '../config/firebase/firebaseConfig';
 const getDataFromDB = async <TData>(url: string) => {
 
   return await new Promise(function (resolve, reject) {
-    onValue(ref(db, url), (snapshot) => {
-      const value: TData = snapshot.val();
+    onValue(
+      ref(db, url),
+      (snapshot) => {
+        const value: TData = snapshot.val();
 
-      if (value) {
-        return resolve(value);
-      } else {
-        reject(
-          new Error(
-            `Value (${value}) from Firebase Database not found. Check url (${url})`,
-          ),
-        );
-      }
-    });
+        if (value) {
+          return resolve(value);
+        } else {
+          reject(
+            new Error(
+              `Value (${value}) from Firebase Database not found. Check url (${url})`,
+            ),
+          );
+        }
+      },
+    );
   });
 };
 

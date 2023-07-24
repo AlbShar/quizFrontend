@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,13 +11,21 @@ import {
   StyledSpanNumber,
   StyledDivWrapper,
 } from './TotalTested.styled';
+import { ContextProfession } from '../../../../components/Context';
 
-const TotalTested = () => {
+
+type TotalTestedProps = {
+  isChooseProfession: boolean;
+};
+
+const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   const { t } = useTranslation();
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [allTestedUsers, setAllTestedUsers] = useState<number>(0);
+  const [profession]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
 
   const error = isError ? <ErrorMessage /> : null;
   const spinner = loading ? (
@@ -26,9 +34,9 @@ const TotalTested = () => {
   const view = () => {
     return (
       <StyledDivWrapper>
-        <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
+        <StyledSpanText>{`${t('Прошли_тест')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
-          {allTestedUsers}
+          {isChooseProfession ? allTestedUsers : '-'}
         </StyledSpanNumber>
       </StyledDivWrapper>
     );
@@ -36,8 +44,8 @@ const TotalTested = () => {
   const content = !(loading || isError) ? view() : null;
 
   const dataHasLoaded = (res: number) => {
-      setLoading(false);
-      setAllTestedUsers(res);
+    setLoading(false);
+    setAllTestedUsers(res);
   };
 
   const onErrorHandler = (error) => {
@@ -46,10 +54,14 @@ const TotalTested = () => {
     throw new Error(error.message);
   };
 
-
   useEffect(() => {
-    getAllTestedUsers().then(dataHasLoaded).catch(onErrorHandler);
-  }, []);
+    if (profession) {
+      const url = `${profession}/users`;
+      getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
+    } else {
+      setLoading(false);
+    }
+  }, [profession]);
 
   return (
     <>

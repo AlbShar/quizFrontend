@@ -1,9 +1,13 @@
 import { useEffect, useState, useContext } from 'react';
 
+import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
 import SkeletonAnswers from '../UI/SkeletonAnswers';
 import { getAnswersOptions } from '../api/getAnswersOptions';
 import Answer from '../components/Answer/Answer';
-import { ContextCurrentQuestionNumb } from '../../../components/Context';
+import {
+  ContextCurrentQuestionNumb,
+  ContextProfession,
+} from '../../../components/Context';
 import { ContextLanguage } from '../../../components/Context';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
@@ -24,6 +28,9 @@ const AnswerOptions = ({
   const [answers, setAnsewrs] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
+    const [profession]: [string, (lang: string) => void] =
+      useContext(ContextProfession);
+
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
@@ -85,10 +92,10 @@ const AnswerOptions = ({
   };
 
   useEffect(() => {
-    const url = `answers/answers${currentQuestionNumb}/${lang}`;
+    const url = `${profession}/answers/answers${currentQuestionNumb}/${lang}`;
 
     getAnswersOptions(url).then(answersHasLoaded).catch(onErrorHandler);
-  }, [currentQuestionNumb, lang]);
+  }, [currentQuestionNumb, lang, profession]);
 
   useEffect(() => {
     removeAllAttributes(refAnswers);

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const StyledFeatureArticle = styled.article`
   background-color: #fff;
+  margin: 0 0 15px 0;
+  border-radius: 0 0 5px 5px;
 `;
 
 const StyledSummary = styled.summary`
@@ -14,8 +16,8 @@ const StyledSummary = styled.summary`
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  margin: 0 0 10px 0;
   cursor: pointer;
+  border-radius: 5px 5px 0 0;
 
   @media screen and (min-width: 459.8px) {
     font: var(--font-title4);

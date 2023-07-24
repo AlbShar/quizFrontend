@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import Dropdown from '../../UI/Dropdown/Dropdown';
+import Dropdown from '../../../../UI/Dropdown/Dropdown';
+import chevrondown from '../../../../assets/images/chevrondown.svg';
+import { StyledWrapperDropdown } from '../Filters.Styled';
 
 type FilterByThemesProps = {
   themesNames: string[];
@@ -12,33 +14,22 @@ const FilterByThemes = ({
   setFilterByTheme,
 }: FilterByThemesProps): JSX.Element => {
   const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
-  const [isShowList, setIsShowList] = useState<boolean>(false);
-
-  const toggleListThemes = () => {
-    setIsShowList((isShowList) => !isShowList);
-  };
 
   const themeHasChoosen = (item: string) => {
-    toggleListThemes();
     setSelectedTheme(item);
     setFilterByTheme(item);
   };
 
-  const hideListFilters = () => {
-    setIsShowList(false);
-  };
-
   return (
-    <Dropdown
-      toggleListThemes={toggleListThemes}
+    <StyledWrapperDropdown>
+      <Dropdown
       data={themesNames}
       selected={selectedTheme}
-      isActive={isShowList}
-      themeHasChoosen={(item: string) => themeHasChoosen(item)}
-      style={{ margin: '0 25px 0 0' }}
-      hideListFilters={hideListFilters}
-      idWrapper='wrapperThemes'
+      onClickElement={themeHasChoosen}
+      srcArrowDown={chevrondown}
     />
+    </StyledWrapperDropdown>
+    
   );
 };
 

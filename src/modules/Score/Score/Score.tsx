@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Spinner from '../../../UI/Spinner/Spinner';
 import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
-import { ContextIdUser } from '../../../components/Context';
+import { ContextIdUser, ContextProfession } from '../../../components/Context';
 import { getUserAnswers } from '../api/getUserAnswers';
 import { getTotalPoints } from '../helpers/getTotalPoints';
 import { answersTransform } from '../helpers/answersTransform';
@@ -22,6 +22,9 @@ type FinalResultProps = {
 const Score = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   const { t } = useTranslation();
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+  const [profession]: [string, (lang: string) => void] =
+        useContext(ContextProfession);
+
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -71,8 +74,8 @@ const Score = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   };
 
   useEffect(() => {
-    const url1 = 'questions';
-    const url2 = `users/user${idUser}/answers`;
+    const url1 = `${profession}/questions`;
+    const url2 = `${profession}/users/user${idUser}/answers`;
 
     Promise.allSettled([getTotalQuestionsNumb(url1), getUserAnswers(url2)])
       .then(dataHasLoaded)

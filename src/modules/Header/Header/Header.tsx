@@ -8,7 +8,11 @@ import TotalTested from '../components/TotalTested/TotalTested';
 
 import { StyledFlexWrapper, StyledHeader } from './Header.styled';
 
-const Header = (): JSX.Element => {
+type HeaderProps = {
+   isChooseProfession: boolean
+};
+
+const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   return (
     <>
       <StyledHeader>
@@ -16,8 +20,8 @@ const Header = (): JSX.Element => {
           <StyledFlexWrapper>
             <Logo location='header' />
             <StyledFlexWrapper gap={37}>
-              <TotalTested />
-              <DropdownLanguages/>
+              <TotalTested isChooseProfession={isChooseProfession} />
+              <DropdownLanguages />
             </StyledFlexWrapper>
           </StyledFlexWrapper>
         </Container>

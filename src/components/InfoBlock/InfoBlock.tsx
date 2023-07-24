@@ -4,15 +4,12 @@ import {
   StyledFeatureArticle,
   StyledSummary,
   StyledP,
-  StyledImg,
   StyledDivWrapper,
 } from './InfoBlock.styled';
 
 type InfoBlockProps =  {
   title: string;
   text: string;
-  imgSrc: string;
-  imgAlt: string;
   idForText?: string;
   children?: ReactNode;
 }
@@ -20,17 +17,14 @@ type InfoBlockProps =  {
 const InfoBlock = ({
   title,
   text,
-  imgSrc,
-  imgAlt,
   idForText,
 }: InfoBlockProps): JSX.Element => {
 
   return (
     <StyledFeatureArticle>
-      <details>
+      <details open>
         <StyledSummary>{title}</StyledSummary>
         <StyledDivWrapper>
-          {!!imgSrc && <StyledImg src={imgSrc} alt={imgAlt} />}
           <StyledP id={idForText}>{text}</StyledP>
         </StyledDivWrapper>
       </details>

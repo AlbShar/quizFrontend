@@ -2,6 +2,7 @@ import { update } from 'firebase/database';
 import { ref } from 'firebase/database';
 
 import db from '../../../config/firebase/firebaseConfig';
+import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
 
 type UserData = {
   name: string | 'User';
@@ -14,7 +15,11 @@ const sendUserInfoDB = async (
   userEmail: string,
 ) => {
   try {
-    const referenceUserAnswers = ref(db, `users/user${idUser}/userInfo`);
+    const profession = getValueFromLocalStorage('profession');
+    const referenceUserAnswers = ref(
+      db,
+      `${profession}/users/user${idUser}/userInfo`,
+    );
     update(referenceUserAnswers, {
       name: userName,
       email: userEmail,
