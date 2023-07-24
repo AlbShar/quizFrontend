@@ -10,8 +10,6 @@ const GeneralInfoTest = () => {
   const dataReportBug: InfoBlocks[] = [
     {
       title: t('Сообщить'),
-      img: require('./images/mistake.jpg'),
-      alt: 'Человек с удивлением смотрит на ноутбук',
       id: 'reportBugText',
       text: t('Если_вы_нашли_ошибку'),
     },
@@ -21,8 +19,6 @@ const GeneralInfoTest = () => {
       key={index + 1}
       title={block.title}
       text={block.text}
-      imgSrc={block.img || ''}
-      imgAlt={block.alt || 'Картинка'}
       idForText={block.id}
     />
   ));

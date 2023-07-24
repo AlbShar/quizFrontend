@@ -34,7 +34,7 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   const view = () => {
     return (
       <StyledDivWrapper>
-        <StyledSpanText>{`${t('Прошли тест')}:`}</StyledSpanText>
+        <StyledSpanText>{`${t('Прошли_тест')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
           {isChooseProfession ? allTestedUsers : '-'}
         </StyledSpanNumber>

@@ -76,7 +76,7 @@ const StyledSpan = styled.span`
 
 const StyledSection = styled.section`
   margin: 24px 0 18px 0;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
@@ -84,6 +84,7 @@ const StyledSection = styled.section`
 
   @media screen and (min-width: 767.8px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 

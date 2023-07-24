@@ -1,5 +1,5 @@
 import { ref, onValue } from 'firebase/database';
-
+import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
 import db from '../../../config/firebase/firebaseConfig';
 
 type highlightPreviousAnswerProps = {
@@ -12,7 +12,10 @@ const highlightPreviousAnswer = ({
   currentQuestionNumb,
   selectorAnswers,
 }: highlightPreviousAnswerProps): void => {
-  const refer = `users/user${idUser}/answers/answer${currentQuestionNumb - 1}`;
+  const profession = getValueFromLocalStorage('profession');
+  const refer = `${profession}/users/user${idUser}/answers/answer${
+    currentQuestionNumb - 1
+  }`;
   let userAnswerDb = '';
   try {
     onValue(

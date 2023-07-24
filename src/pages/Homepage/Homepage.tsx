@@ -16,16 +16,16 @@ const Homepage = ({
 
   return (
     <>
-      <StyledMain>
-        <Container>
-          <CallToAction
+        <Container style={{flex: '1 1 auto'}}>
+          <StyledMain>
+            <CallToAction
             isChooseProfession={isChooseProfession}
             setChooseProfession={setChooseProfession}
           />
           <GeneralInfoTest />
+          </StyledMain>
         </Container>
-      </StyledMain>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -79,7 +79,7 @@ const TestButtons = ({
       {totalQuestionsNumbers === currentQuestionNumb ? (
         <LinkBtn
           text='Закончить тест'
-          pageTo='/contact'
+          pageTo='/results'
           onClick={onClickButtonHandler}
           id='btnFinish'
           isDisabledBtn={isBtnNextDisabled}

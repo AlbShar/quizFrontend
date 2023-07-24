@@ -10,11 +10,9 @@ const GeneralInfoTest = () => {
   const { t } = useTranslation();
   const generalInfo: InfoBlocks[] = [
     {
-      title: t('Особенности_теста'),
-      img: require('./images/variants.png'),
+      title: t('Что_получите'),
       id: 'generalInfoTestText',
-      alt: 'Парень ищет верный ответ',
-      text: t('Данный_тест'),
+      text: t('Благодаря_вопросам'),
     },
     {
       title: t('Как_проходить'),
@@ -22,8 +20,6 @@ const GeneralInfoTest = () => {
     },
     {
       title: t('Результаты_теста'),
-      img: require('./images/chooseVariant.png'),
-      alt: 'Тест с выбранными вариантами ответа',
       text: t('После_прохождения'),
     },
   ];
@@ -32,19 +28,9 @@ const GeneralInfoTest = () => {
       key={index + 1}
       title={block.title}
       text={block.text}
-      imgSrc={block.img || ''}
-      imgAlt={block.alt || 'Картинка'}
       idForText={block.id}
     />
   ));
-
-  const JSONText: [JSONText] = [
-    { selector: '#generalInfoTestText', json: t('Данный_тест') },
-  ];
-
-  useEffect(() => {
-    convertJSONToText(JSONText);
-  });
 
   return <section>{blocksHomepage}</section>;
 };

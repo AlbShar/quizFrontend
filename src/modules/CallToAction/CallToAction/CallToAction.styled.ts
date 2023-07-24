@@ -5,6 +5,7 @@ const StyledCallToAction = styled.section`
   background-color: var(--color-call-action);
   padding: 16px;
   margin: 0 0 13px 0;
+  border-radius: 7px;
 
   @media screen and (min-width: 459.8px) {
     margin: 0 0 32px 0;
@@ -57,5 +58,21 @@ const StyledDivWrapper = styled.div`
     height: 56px;
   }
 `;
+const StyledDropdownProfessionWrapper = styled.div`
+  width: 250px;
+  height: 45px;
 
-export { StyledCallToAction, StyledH1, StyledH2, StyledDiv, StyledDivWrapper };
+  @media screen and (min-width: 767.8px) {
+    width: 320px;
+    height: 56px;
+  }
+`;
+
+export {
+  StyledCallToAction,
+  StyledH1,
+  StyledH2,
+  StyledDiv,
+  StyledDivWrapper,
+  StyledDropdownProfessionWrapper,
+};

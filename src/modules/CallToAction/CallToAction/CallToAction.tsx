@@ -13,6 +13,7 @@ import {
   StyledH2,
   StyledDiv,
   StyledDivWrapper,
+  StyledDropdownProfessionWrapper,
 } from './CallToAction.styled';
 
 type CallToActionProps = {
@@ -44,7 +45,9 @@ const CallToAction = ({
       <StyledH2>{t('Добро_пожаловать')}</StyledH2>
       <StyledH2>{t('Тест_будет')}</StyledH2>
       <StyledDiv>
-        <DropdownProfession setChooseProfession={setChooseProfession} />
+        <StyledDropdownProfessionWrapper>
+          <DropdownProfession setChooseProfession={setChooseProfession} />
+        </StyledDropdownProfessionWrapper>
         <StyledDivWrapper>
           <LinkBtn
             pageTo='quiz'
