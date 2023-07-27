@@ -254,7 +254,7 @@
     width: 320px;
     height: 56px;
   }
-`;const _=n.p+"static/media/arrowDownLarge.5cb9226dd89f16c2e62eb8a7b2afc8b7.svg",z=e=>{let{setChooseProfession:t}=e;const[,n]=(0,o.useContext)(m.Hp),{t:i}=(0,r.$)(),[s,a]=(0,o.useState)(""),d={[i("Frontend_\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a")]:"Frontend",[i("\u041c\u0435\u043d\u0435\u0434\u0436\u0435\u0440")]:"Manager"},c=Object.keys(d);return(0,w.jsx)(C,{children:(0,w.jsx)(k.Z,{selected:s||i("\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435_\u0442\u0435\u0441\u0442\u0430"),data:c,onClickElement:e=>{(0,Z.Z)("profession",d[e]),n(d[e]),a(e),t(!0)},customStyle:"\n      gap: 10px; \n      justify-content: flex-end; \n\n      @media screen and (min-width: 767.8px) {\n        gap: 39px; \n        }",srcArrowDown:_})})},S=x.ZP.section`
+`;const _=n.p+"static/media/arrowDownLarge.5cb9226dd89f16c2e62eb8a7b2afc8b7.svg",z=e=>{let{setChooseProfession:t}=e;const[,n]=(0,o.useContext)(m.Hp),{t:i}=(0,r.$)(),[s,a]=(0,o.useState)(""),d={[i("Frontend_\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a")]:"Frontend","Project Manager":"Manager"},c=Object.keys(d);return(0,w.jsx)(C,{children:(0,w.jsx)(k.Z,{selected:s||i("\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435_\u0442\u0435\u0441\u0442\u0430"),data:c,onClickElement:e=>{(0,Z.Z)("profession",d[e]),n(d[e]),a(e),t(!0)},customStyle:"\n      gap: 10px; \n      justify-content: flex-end; \n\n      @media screen and (min-width: 767.8px) {\n        gap: 39px; \n        }",srcArrowDown:_})})},S=x.ZP.section`
   max-width: 100%;
   background-color: var(--color-call-action);
   padding: 16px;
@@ -316,4 +316,4 @@
   width: 100%;
   
 `}}]);
-//# sourceMappingURL=4.3d30374b.chunk.js.map
+//# sourceMappingURL=4.4b4916f3.chunk.js.map
