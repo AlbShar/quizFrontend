@@ -31,7 +31,7 @@ const DropdownProfession = ({
 
   const dataProfessions = {
     [t('Frontend_разработчик')]: 'Frontend',
-    [t('Менеджер')]: 'Manager',
+    "Project Manager": 'Manager',
   };
   const listProfessions = Object.keys(dataProfessions);
 

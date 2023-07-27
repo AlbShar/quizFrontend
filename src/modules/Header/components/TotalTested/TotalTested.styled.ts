@@ -27,6 +27,7 @@ const StyledDivWrapper = styled.div`
     padding: 10px 24px;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     gap: 8px;
     background-color: #FFFFFF;

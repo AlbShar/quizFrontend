@@ -35,8 +35,6 @@ import type {
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
 
-
-
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
@@ -66,8 +64,8 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
       );
       return (
         <StyledUl>
-          {Object.entries(visibleData as TQuestionAndAnswer[]).map(
-            (userAnswerArr, index) => {
+          {Object.values(visibleData as TQuestionAndAnswer[]).map(
+            (userAnswerArr) => {
               const {
                 descr,
                 img,
@@ -77,16 +75,17 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
                 theme,
                 answerOptions,
                 userAnswer,
-              } = userAnswerArr[1];
-              const isRight = userAnswer.point ? true : false;
+              } = userAnswerArr;
+              const isRight = userAnswer?.point ? true : false;
               const color = isRight ? 'green' : 'red';
               const className = {
                 borderRadius: 10,
                 border: `1px solid ${color}`,
               };
+              console.log(descr.startsWith('http'))
 
               return (
-                <StyledListAnswers style={className} key={index + 1}>
+                <StyledListAnswers style={className} key={id}>
                   <StyledUl>
                     <StyledSpanResult isRight={isRight}>
                       {isRight ? '\u2714' : '\u2718'}
@@ -126,7 +125,13 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
                     )}
                     <StyledLi>
                       <StyledSpan>{`${t('Объяснение')}: `} </StyledSpan>
-                      {descr}
+                      {descr.startsWith('http') ? (
+                        <a href={descr} target='_blank' rel='noreferrer'>
+                          {t('Ссылка')}
+                        </a>
+                      ) : (
+                        descr
+                      )}
                     </StyledLi>
                   </StyledUl>
                 </StyledListAnswers>
@@ -167,11 +172,14 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
   ) => {
     const [userAnswers, answerOptions, infoQuestions] = res;
 
+
     const data = {
       userAnswers: transformUserAnswers(userAnswers as TAnswersDB),
       answerOptions: transformData(answerOptions as TAnswerOptionsLangDB, lang),
       infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB, lang),
     };
+
+
 
     const generalInfo = {};
 

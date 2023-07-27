@@ -5,6 +5,7 @@ import {
   useEffect,
   useCallback,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import BtnBack from '../UI/BtnBack';
 import ButtonNext from '../UI/ButtonNext';
@@ -38,6 +39,8 @@ const TestButtons = ({
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
         useContext(ContextProfession);
+  const { t } = useTranslation();
+
 
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
@@ -78,7 +81,7 @@ const TestButtons = ({
       />
       {totalQuestionsNumbers === currentQuestionNumb ? (
         <LinkBtn
-          text='Закончить тест'
+          text={t('Закончить_тест')}
           pageTo='/results'
           onClick={onClickButtonHandler}
           id='btnFinish'
