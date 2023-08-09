@@ -5,9 +5,21 @@
   max-width: 288px;
   height: 60px;
   border: 1px solid #81868c80;
+  border-radius: 5px;
   padding: 16px 19px;
   font: var(--font-text-bold);
   outline: none;
+}
+
+.input:focus {
+  border: 1px solid #6768d7;
+  transition: all ease 0.3s;
+}
+
+.success {
+  color: green;
+  margin: 10px 0;
+  font: var(--font-text-bold);
 }
 
 .error {
@@ -23,6 +35,7 @@
   background-color: white;
   color: #81868c;
 }
+
 
 .article {
   position: relative;

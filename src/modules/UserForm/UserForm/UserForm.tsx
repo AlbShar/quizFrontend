@@ -183,8 +183,11 @@
 // };
 
 // export default UserForm;
+import { useEffect, useRef, useState } from 'react';
 
 import Button from '../../../UI/Button/Button';
+import emailjs from '@emailjs/browser';
+
 import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
@@ -192,6 +195,31 @@ import './userForm.styles.css';
 
 const UserForm = () => {
   const { t } = useTranslation();
+  const form = useRef<HTMLFormElement>(null);
+  const refsInputs: HTMLInputElement[] = [];
+  const setRef = (elem: HTMLInputElement) => {
+    refsInputs.push(elem as HTMLInputElement);
+  };
+  const [isSuccessSendingEmail, setSuccessSendingEmail] = useState<
+    boolean | null
+  >(null);
+
+  const YOUR_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const YOUR_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  const YOUR_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+  const onFocusFirstInput = () => {
+    refsInputs[0].focus();
+  };
+
+  useEffect(() => {
+    onFocusFirstInput();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => setSuccessSendingEmail(null), 7000);
+  }, [isSuccessSendingEmail]);
+
   type TErrors = {
     [key in string]: string;
   };
@@ -220,12 +248,35 @@ const UserForm = () => {
         }
         return errors;
       }}
-      onSubmit={({ name, email, text }) => {
-        console.log(name, email, text);
+      onSubmit={({ name, email, text }, { resetForm, setSubmitting }) => {
+        const templateParams = {
+          name,
+          email,
+          text,
+        };
+
+        if (form.current && YOUR_SERVICE_ID && YOUR_TEMPLATE_ID) {
+          emailjs
+            .send(
+              YOUR_SERVICE_ID,
+              YOUR_TEMPLATE_ID,
+              templateParams,
+              YOUR_PUBLIC_KEY,
+            )
+            .then(() => {
+              resetForm();
+              setSubmitting(false);
+              setSuccessSendingEmail(true)
+            })
+            .catch((error) => {
+              setSuccessSendingEmail(false);
+              console.log(error.text);
+            });
+        }
       }}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form ref={form}>
           <article className='article'>
             <label htmlFor='name' className='label'>
               {t('Ваше_имя')}
@@ -235,6 +286,7 @@ const UserForm = () => {
               name='name'
               className='input'
               placeholder='Имя и фамилия'
+              innerRef={setRef}
             />
             <ErrorMessage className='error' name='name' component='div' />
           </article>
@@ -247,6 +299,7 @@ const UserForm = () => {
               name='email'
               className='input'
               placeholder='Почта'
+              innerRef={setRef}
             />
             <ErrorMessage className='error' name='email' component='div' />
           </article>
@@ -254,8 +307,23 @@ const UserForm = () => {
             <label htmlFor='text' className='label'>
               Сообщение
             </label>
-            <Field type='textarea' name='text' className='input' as='textarea' />
+            <Field
+              type='textarea'
+              name='text'
+              className='input'
+              as='textarea'
+              innerRef={setRef}
+            />
             <ErrorMessage className='error' name='text' component='div' />
+          </article>
+          <article className='article'>
+            {isSuccessSendingEmail === true ? (
+              <div className='success'>Поздравляю, письмо отправлено!</div>
+            ) : isSuccessSendingEmail === false ? (
+              <div className='error'>
+                Письмо не удалось отправить! Повторите попытку чуть позже
+              </div>
+            ) : null}
           </article>
           <Button text='Отправить' disabled={isSubmitting} />
         </Form>

@@ -11,6 +11,10 @@ const StyledButton = styled.button`
   text-decoration: none;
   border-radius: 7px;
 
+  &:disabled {
+    opacity: 0.5;
+  }
+
   @media screen and (min-width: 767.8px) {
     padding: 12px 80px;
   }
