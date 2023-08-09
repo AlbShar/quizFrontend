@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Container from '../../../components/Container/Container';
 import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';
 import Logo from '../../../components/Logo/Logo';
 import TotalTested from '../components/TotalTested/TotalTested';
-
 
 import { StyledFlexWrapper, StyledHeader } from './Header.styled';
 
@@ -19,6 +19,11 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
         <Container>
           <StyledFlexWrapper>
             <Logo location='header' />
+            <ul>
+              <li>
+                <Link to="/feedback">Обратная связь</Link>
+              </li>
+            </ul>
             <StyledFlexWrapper gap={37}>
               <TotalTested isChooseProfession={isChooseProfession} />
               <DropdownLanguages />

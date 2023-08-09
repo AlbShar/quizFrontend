@@ -12,7 +12,7 @@ import { getValueFromLocalStorage } from './helpers/getValueFromLocalStorage';
 
 const Header = lazy(() => import('./modules/Header/index'));
 const Footer = lazy(() => import('./components/Footer/Footer'));
-const ReportBugPage = lazy(() => import('./pages/ReportBugPage/ReportBugPage'));
+const Feedback = lazy(() => import('./pages/Feedback/Feedback'));
 const Homepage = lazy(() => import('./pages/Homepage/Homepage'));
 const Quiz = lazy(() => import('./pages/Quiz/Quiz'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
@@ -64,7 +64,7 @@ function App() {
                       }
                     />
                     <Route index element={<Footer />} />
-                    <Route path='reportbug' element={<ReportBugPage />} />
+                    <Route path='feedback' element={<Feedback />} />
                     <Route path='quiz' element={<Quiz />} />
                     <Route path='contact' element={<Contact />} />
                     <Route path='results' element={<Results />} />
