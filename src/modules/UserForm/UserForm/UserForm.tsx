@@ -184,28 +184,80 @@
 
 // export default UserForm;
 
-import React from 'react';
+import Button from '../../../UI/Button/Button';
+import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import './userForm.styles.css';
+
 const UserForm = () => {
+  const { t } = useTranslation();
+  type TErrors = {
+    [key in string]: string;
+  };
+
   return (
     <Formik
       initialValues={{ name: '', email: '', text: '' }}
+      validate={({ name, email, text }) => {
+        const errors: TErrors = {};
+        if (!name) {
+          errors.name = 'Введите имя';
+        } else if (name.length < 2) {
+          errors.name = 'Имя не должно содержать меньше 2-х символов';
+        } else if (name.length > 30) {
+          errors.name = 'Максимальная длина - 30 символов';
+        }
+
+        if (!text) {
+          errors.text = 'Введите текст сообщения';
+        }
+
+        if (!email) {
+          errors.email = 'Введите свою почту';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+          errors.email = 'Введите корректный E-mail';
+        }
+        return errors;
+      }}
       onSubmit={({ name, email, text }) => {
         console.log(name, email, text);
       }}
     >
       {({ isSubmitting }) => (
         <Form>
-          <Field type='name' name='name' />
-          <ErrorMessage name='name' component='div' />
-          <Field type='email' name='email' />
-          <ErrorMessage name='email' component='div' />
-          <Field type='textarea' name='text' />
-          <ErrorMessage name='text' component='div' />
-          <button type='submit' disabled={isSubmitting}>
-            Submit
-          </button>
+          <article className='article'>
+            <label htmlFor='name' className='label'>
+              {t('Ваше_имя')}
+            </label>
+            <Field
+              type='name'
+              name='name'
+              className='input'
+              placeholder='Имя и фамилия'
+            />
+            <ErrorMessage className='error' name='name' component='div' />
+          </article>
+          <article className='article'>
+            <label htmlFor='email' className='label'>
+              Email
+            </label>
+            <Field
+              type='email'
+              name='email'
+              className='input'
+              placeholder='Почта'
+            />
+            <ErrorMessage className='error' name='email' component='div' />
+          </article>
+          <article className='article'>
+            <label htmlFor='text' className='label'>
+              Сообщение
+            </label>
+            <Field type='textarea' name='text' className='input' as='textarea' />
+            <ErrorMessage className='error' name='text' component='div' />
+          </article>
+          <Button text='Отправить' disabled={isSubmitting} />
         </Form>
       )}
     </Formik>
