@@ -4,7 +4,6 @@ type FlexWrapper = {
   gap?: number;
 };
 
-
 const StyledFlexWrapper = styled.div<FlexWrapper>`
   display: flex;
   align-items: strech;
@@ -19,6 +18,32 @@ const StyledHeader = styled.header`
   margin: 0 0 12px 0;
   padding: 30px 0;
 }
+
 `;
 
-export { StyledFlexWrapper, StyledHeader };
+const StyledUl = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+
+  @media screen and (min-width: 767.8px) {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    gap: 54px;
+  }
+}`;
+
+const StyledLi = styled.li`
+  cursor: pointer;
+  color: #000;
+  font: var(--font-button);
+}`;
+
+
+
+export { StyledFlexWrapper, StyledHeader, StyledUl, StyledLi };

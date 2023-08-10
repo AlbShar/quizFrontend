@@ -6,7 +6,13 @@ import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages
 import Logo from '../../../components/Logo/Logo';
 import TotalTested from '../components/TotalTested/TotalTested';
 
-import { StyledFlexWrapper, StyledHeader } from './Header.styled';
+import {
+  StyledFlexWrapper,
+  StyledHeader,
+  StyledUl,
+  StyledLi,
+} from './Header.styled';
+import "./link.css";
 
 type HeaderProps = {
    isChooseProfession: boolean
@@ -19,11 +25,13 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
         <Container>
           <StyledFlexWrapper>
             <Logo location='header' />
-            <ul>
-              <li>
-                <Link to="/feedback">Обратная связь</Link>
-              </li>
-            </ul>
+            <StyledUl>
+              <StyledLi>
+                <Link to='/feedback' className='link'>Обратная связь</Link>
+              </StyledLi>
+              <StyledLi>Команда</StyledLi>
+              <StyledLi>Правила</StyledLi>
+            </StyledUl>
             <StyledFlexWrapper gap={37}>
               <TotalTested isChooseProfession={isChooseProfession} />
               <DropdownLanguages />
