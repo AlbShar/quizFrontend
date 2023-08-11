@@ -23,7 +23,7 @@ const sendEmailApi = async (values: TValues): Promise<boolean> => {
         YOUR_PUBLIC_KEY,
       );
 
-      if (response.status === 200) {
+      if (response.text === 'OK') {
         return true;
       } else {
         throw new Error(`EmailJSResponse has status - ${response.status} and text - ${response.text}`);

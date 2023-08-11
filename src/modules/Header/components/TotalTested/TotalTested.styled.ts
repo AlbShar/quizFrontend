@@ -18,9 +18,6 @@ const StyledSpanNumber = styled.span`
 `;
 
 const StyledDivWrapper = styled.div`
-  display: none;
-
-  @media screen and (min-width: 459.8px) {
     display: block;
     box-sizing: border-box;
     border-radius: 2px;
@@ -34,7 +31,6 @@ const StyledDivWrapper = styled.div`
     color: #000000;
     border-radius: 7px;
     height: 56px;
-  }
 `;
 
 export { StyledSpanText, StyledSpanNumber, StyledDivWrapper };

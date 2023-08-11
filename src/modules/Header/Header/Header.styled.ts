@@ -4,11 +4,24 @@ type FlexWrapper = {
   gap?: number;
 };
 
-const StyledFlexWrapper = styled.div<FlexWrapper>`
+const StyledFlexArticle = styled.article<FlexWrapper>`
   display: flex;
-  align-items: strech;
+  align-items: center;
   justify-content: space-between;
   gap: ${({ gap }) => (gap ? gap + 'px' : '')};
+
+  @media screen and (min-width: 767.8px) {
+    align-items: stretch;
+  }
+`;
+
+const StyledFlexSection = styled.section<FlexWrapper>`
+  @media screen and (min-width: 767.8px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid red;
+  }
 `;
 
 const StyledHeader = styled.header`
@@ -21,29 +34,30 @@ const StyledHeader = styled.header`
 
 `;
 
-const StyledUl = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  gap: 10px;
+const StyledListWrapper = styled.div`
+  display: none;
 
   @media screen and (min-width: 767.8px) {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    display: none;
   }
+}`;
+
+
+
+const StyledImg = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 
   @media screen and (min-width: 1023.8px) {
-    gap: 54px;
+    display: none;
   }
 }`;
 
-const StyledLi = styled.li`
-  cursor: pointer;
-  color: #000;
-  font: var(--font-button);
-}`;
-
-
-
-export { StyledFlexWrapper, StyledHeader, StyledUl, StyledLi };
+export {
+  StyledFlexArticle,
+  StyledHeader,
+  StyledFlexSection,
+  StyledImg,
+  StyledListWrapper,
+};

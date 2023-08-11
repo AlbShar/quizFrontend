@@ -35,6 +35,24 @@ body {
   )}px;
 
     background-color: var(--color-main-background); 
+    --font-family-default: "Montserrat", "Arial", sans-serif;
+    --color-white: #FFF;
+    --color-black: #000;
+    --color-purple: #5557FF;
+    --font-text1: 700 50px/22px var(--font-family-default);
+    --font-text2: 600 34px/34px var(--font-family-default);
+    --font-text3: 600 22px/22px var(--font-family-default);
+    --font-text4: 400 22px/26px var(--font-family-default);
+    --font-text5: 400 18px/22px var(--font-family-default);
+    --font-text6: 600 16px/22px var(--font-family-default);
+    --font-text7: 600 14px/22px var(--font-family-default);
+
+
+
+
+
+
+
     --color-footer: #1C232E;
     --color-back-btn: #81868C;
     --color-quantity-questions: #81868C;
@@ -48,7 +66,6 @@ body {
     --color-call-action: #29316D;
     --color-call-action-info: #3E457B;
     --color-header: #252B58;
-    --font-family-default: "Inter", "Arial", sans-serif;
     --line-height-text: 24px;
     --line-height-little-text: 22px;
     --font-text-regular: 400 16px/var(--line-height-text) var(--font-family-default);
