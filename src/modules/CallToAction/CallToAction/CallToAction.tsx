@@ -7,6 +7,7 @@ import { createIdUser } from '../helpers/createIdUser';
 import { ContextIdUser } from '../../../components/Context';
 import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import DropdownProfession from '../UI/DropdownProfession';
+
 import {
   StyledCallToAction,
   StyledH1,
@@ -14,6 +15,7 @@ import {
   StyledDiv,
   StyledDivWrapper,
   StyledDropdownProfessionWrapper,
+  StyledImg,
 } from './CallToAction.styled';
 
 type CallToActionProps = {
@@ -36,28 +38,32 @@ const CallToAction = ({
   };
 
   return (
-    <StyledCallToAction id='CallToAction'>
-      <StyledH1>{t('Тест_для')}</StyledH1>
-      <InfoTest
-        isChooseProfession={isChooseProfession}
-        setChooseProfession={setChooseProfession}
-      />
-      <StyledH2>{t('Добро_пожаловать')}</StyledH2>
-      <StyledH2>{t('Тест_будет')}</StyledH2>
-      <StyledDiv>
-        <StyledDropdownProfessionWrapper>
-          <DropdownProfession setChooseProfession={setChooseProfession} />
-        </StyledDropdownProfessionWrapper>
-        <StyledDivWrapper>
-          <LinkBtn
-            pageTo='quiz'
-            onClick={startTest}
-            text='Начать тест'
-            isDisabledBtn={!isChooseProfession}
-          ></LinkBtn>
-        </StyledDivWrapper>
-      </StyledDiv>
-    </StyledCallToAction>
+      <StyledCallToAction id='CallToAction'>
+        <div>
+
+        </div>
+        <StyledH1>{t('Тест_для')}</StyledH1>
+        <InfoTest
+          isChooseProfession={isChooseProfession}
+          setChooseProfession={setChooseProfession}
+        />
+        <StyledH2>{t('Добро_пожаловать')}</StyledH2>
+        <StyledH2>{t('Тест_будет')}</StyledH2>
+        <StyledDiv>
+          <StyledDropdownProfessionWrapper>
+            <DropdownProfession setChooseProfession={setChooseProfession} />
+          </StyledDropdownProfessionWrapper>
+          <StyledDivWrapper>
+            <LinkBtn
+              pageTo='quiz'
+              onClick={startTest}
+              text='Начать тест'
+              isDisabledBtn={!isChooseProfession}
+            ></LinkBtn>
+          </StyledDivWrapper>
+        </StyledDiv>
+        {/* <StyledImg src={require('../icons/img1.png')} alt='img' /> */}
+      </StyledCallToAction>
   );
 };
 

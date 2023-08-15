@@ -5,7 +5,7 @@ import { StyledMain } from '../../styles/Main.Styled';
 import GeneralInfoTest from '../../components/GeneralInfoTest/GeneralInfoTest';
 
 type HomepageProps = {
-  isChooseProfession: boolean
+  isChooseProfession: boolean;
   setChooseProfession: (item: boolean) => void;
 };
 
@@ -13,18 +13,22 @@ const Homepage = ({
   isChooseProfession,
   setChooseProfession,
 }: HomepageProps) => {
-
   return (
     <>
-        <Container style={{flex: '1 1 auto'}}>
-          <StyledMain>
+      <StyledMain>
+        <div style={{backgroundColor: "var(--color-dark)"}}>
+          <Container style={{ flex: '1 1 auto' }}>
             <CallToAction
-            isChooseProfession={isChooseProfession}
-            setChooseProfession={setChooseProfession}
-          />
+              isChooseProfession={isChooseProfession}
+              setChooseProfession={setChooseProfession}
+            />
+          </Container>
+        </div>
+        <Container style={{ flex: '1 1 auto' }}>
           <GeneralInfoTest />
-          </StyledMain>
         </Container>
+      </StyledMain>
+
       {/* <Footer /> */}
     </>
   );

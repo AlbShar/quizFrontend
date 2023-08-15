@@ -9,8 +9,8 @@ const StyledUl = styled.ul`
   list-style-type: none;
   margin: 26px 0 0 0;
   padding: 8px 12px;
-  border-radius: 7px;
-  background-color: #fff;
+  border-radius: 3px;
+  background-color: var(--color-gray);
   max-width: 250px;
 
   @media screen and (min-width: 767.8px) {
@@ -47,7 +47,7 @@ const StyledLi = styled.li`
     }
 
     &:not(:last-child):after {
-      color: black;
+      color: var(--color-white);
       position: relative;
       content: '/';
       left: 30px;

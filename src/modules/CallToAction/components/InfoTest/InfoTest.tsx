@@ -52,19 +52,19 @@ const InfoTest = ({
 
   const infoTestBlock: InfoTestBlock[] = [
     {
-      text: ` ${isChooseProfession ? '~' + quantityQuestions : '_'} ${t(
+      text: ` ${isChooseProfession ? '~' + quantityQuestions : '0'} ${t(
         'Время',
       )}`,
       srcIcon: clock,
       alt: 'icon of clock',
     },
     {
-      text: `${isChooseProfession ? quantityQuestions : '_'} ${t('Вопросов')}`,
+      text: `${isChooseProfession ? quantityQuestions : '0'} ${t('Вопросов')}`,
       srcIcon: helpCircle,
       alt: 'icon of question in circle',
     },
     {
-      text: `${isChooseProfession ? quantityThemes : '_'} ${t('Блока')}`,
+      text: `${isChooseProfession ? quantityThemes : '0'} ${t('Блока')}`,
       srcIcon: barChart,
       alt: ' icon of bar chart ',
     },
@@ -74,7 +74,7 @@ const InfoTest = ({
     return (
       <StyledLi key={index + 1}>
         <StyledImg src={item.srcIcon} alt={item.alt} />
-        <span style={{color: 'black'}}>{item.text}</span>
+        <span style={{color: 'var(--color-white)'}}>{item.text}</span>
       </StyledLi>
     );
   });

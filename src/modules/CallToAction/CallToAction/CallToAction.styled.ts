@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const StyledCallToAction = styled.section`
   max-width: 100%;
-  background-color: var(--color-call-action);
+  background-color: transparent;
   padding: 16px;
   margin: 0 0 13px 0;
   border-radius: 7px;
+  poisition: relative;
 
   @media screen and (min-width: 459.8px) {
     margin: 0 0 32px 0;
@@ -16,14 +17,16 @@ const StyledCallToAction = styled.section`
   }
 `;
 
+
+
 const StyledH1 = styled.h1`
-    font: var(--font-title4);
-    color: white;
+    font: var(--font-text2);
+    color: var(--color-white);
     padding: 0;
     margin: 0;
 
-    @media screen and (min-width: 459.8px) {
-        font: var(--font-title2);
+    @media screen and (min-width: 767.8px) {
+        font: var(--font-text1);
 `;
 
 const StyledH2 = styled.h2`
@@ -32,6 +35,16 @@ const StyledH2 = styled.h2`
 
   @media screen and (min-width: 767.8px) {
     font: var(--font-h2-large);
+  }
+`;
+
+const StyledImg = styled.img`
+  width: 285px;
+  height: 249px;
+
+  @media screen and (min-width: 1023.8px) {
+    width: 578px;
+    height: 505px;
   }
 `;
 
@@ -75,4 +88,5 @@ export {
   StyledDiv,
   StyledDivWrapper,
   StyledDropdownProfessionWrapper,
+  StyledImg,
 };

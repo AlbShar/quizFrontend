@@ -40,6 +40,7 @@ body {
     --color-black: #000;
     --color-dark: #1C1C1C;
     --color-purple: #5557FF;
+    --color-gray: #3C3C3C;
     --font-text1: 700 50px/22px var(--font-family-default);
     --font-text2: 600 34px/34px var(--font-family-default);
     --font-text3: 600 22px/22px var(--font-family-default);
