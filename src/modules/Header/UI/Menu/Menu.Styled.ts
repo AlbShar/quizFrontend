@@ -8,7 +8,7 @@ const StyledArticle = styled.article`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-black);
+  background-color: var(--color-dark);
   padding: 31px 20px 34px 25px;
 }`;
 

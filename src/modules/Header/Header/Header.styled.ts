@@ -13,10 +13,14 @@ const StyledFlexArticle = styled.article<FlexWrapper>`
   @media screen and (min-width: 767.8px) {
     align-items: stretch;
   }
+
+  &:not(: last-child) {
+    margin: 0 0 13px 0;
+  }
 `;
 
 const StyledFlexSection = styled.section<FlexWrapper>`
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 1023.8px) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +30,7 @@ const StyledFlexSection = styled.section<FlexWrapper>`
 
 const StyledHeader = styled.header`
   box-sizing: border-box;
-  background: #EEEEFF;
+  background: var(--color-dark);
   width: 100%;
   margin: 0 0 12px 0;
   padding: 30px 0;

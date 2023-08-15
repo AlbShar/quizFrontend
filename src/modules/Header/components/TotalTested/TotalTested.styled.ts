@@ -1,36 +1,27 @@
 import styled from 'styled-components';
 
 const StyledSpanText = styled.span`
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
+  color: var(--color-white);
+  font: var(--font-text7)
 `;
 const StyledSpanNumber = styled.span`
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
+  color: var(--color-white);
+  font: var(--font-text7);
 `;
 
 const StyledDivWrapper = styled.div`
-    display: block;
-    box-sizing: border-box;
-    border-radius: 2px;
-    padding: 10px 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 8px;
-    background-color: #FFFFFF;
-    color: #000000;
-    border-radius: 7px;
-    height: 56px;
+  box-sizing: border-box;
+  width: 180px;
+  height: 40px;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  gap: 8px;
+  background-color: var(--color-dark);
+  color: #000000;
 `;
 
 export { StyledSpanText, StyledSpanNumber, StyledDivWrapper };

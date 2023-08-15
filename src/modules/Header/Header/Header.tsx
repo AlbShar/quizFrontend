@@ -72,7 +72,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
                 </Portal>
               )}
             </StyledFlexArticle>
-            <StyledFlexArticle gap={37}>
+            <StyledFlexArticle gap={22}>
               <TotalTested isChooseProfession={isChooseProfession} />
               <DropdownLanguages />
             </StyledFlexArticle>

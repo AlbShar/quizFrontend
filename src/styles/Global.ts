@@ -38,6 +38,7 @@ body {
     --font-family-default: "Montserrat", "Arial", sans-serif;
     --color-white: #FFF;
     --color-black: #000;
+    --color-dark: #1C1C1C;
     --color-purple: #5557FF;
     --font-text1: 700 50px/22px var(--font-family-default);
     --font-text2: 600 34px/34px var(--font-family-default);
