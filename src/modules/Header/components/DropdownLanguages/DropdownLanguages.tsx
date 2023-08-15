@@ -41,7 +41,6 @@ const DropdownLanguages = () => {
   };
 
   return (
-    <div style={{ width: 75, height: 40 }}>
       <Dropdown
         data={mapLanguage}
         selected={lang}
@@ -49,7 +48,6 @@ const DropdownLanguages = () => {
         srcImg={require('../../icons/globe.png')}
         srcArrowDown={arrowDown}
       />
-    </div>
   );
 };
 

@@ -11,7 +11,8 @@ const StyledSpanNumber = styled.span`
 
 const StyledDivWrapper = styled.div`
   box-sizing: border-box;
-  width: 180px;
+  width: 100%;
+  max-width: 200px;
   height: 40px;
   padding: 10px 10px;
   display: flex;

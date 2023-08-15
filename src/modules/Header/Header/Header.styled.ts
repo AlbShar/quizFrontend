@@ -4,7 +4,24 @@ type FlexWrapper = {
   gap?: number;
 };
 
-const StyledFlexArticle = styled.article<FlexWrapper>`
+const StyledFlexTopHeader = styled.article<FlexWrapper>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ gap }) => (gap ? gap + 'px' : '')};
+  margin: 0 0 13px 0;
+
+  @media screen and (min-width: 767.8px) {
+    justify-content: flex-start;
+    gap: 80px;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    margin: 0
+  }
+`;
+
+const StyledFlexBottomHeader = styled.article<FlexWrapper>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,6 +34,10 @@ const StyledFlexArticle = styled.article<FlexWrapper>`
   &:not(: last-child) {
     margin: 0 0 13px 0;
   }
+
+  @media screen and (min-width: 1023.8px) {
+    gap: 27px;
+  }
 `;
 
 const StyledFlexSection = styled.section<FlexWrapper>`
@@ -24,7 +45,6 @@ const StyledFlexSection = styled.section<FlexWrapper>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
   }
 `;
 
@@ -59,7 +79,8 @@ const StyledImg = styled.img`
 }`;
 
 export {
-  StyledFlexArticle,
+  StyledFlexTopHeader,
+  StyledFlexBottomHeader,
   StyledHeader,
   StyledFlexSection,
   StyledImg,

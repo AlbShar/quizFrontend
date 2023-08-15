@@ -10,7 +10,8 @@ import Menu from '../UI/Menu/Menu';
 import Portal from '../../../components/Portal/Portal';
 
 import {
-  StyledFlexArticle,
+  StyledFlexTopHeader,
+  StyledFlexBottomHeader,
   StyledHeader,
   StyledFlexSection,
   StyledImg,
@@ -25,22 +26,22 @@ type HeaderProps = {
 const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   const [isShowBurger, setShowBurger] = useState(true);
   const [isShowMenu, setShowMenu] = useState(false);
+  const handleResize = () => {
+    if (window.innerWidth > 767.8) {
+      setShowBurger(false);
+    } else {
+      setShowBurger(true);
+    }
+  };
 
-   useEffect(() => {
-     const handleResize = () => {
-      if (window.innerWidth > 767.8) {
-        setShowBurger(false);
-      } else {
-        setShowBurger(true);
-      }
-     };
+  useEffect(() => {
+    handleResize();
 
-     window.addEventListener('resize', handleResize);
-
-     return () => {
-       window.removeEventListener('resize', handleResize);
-     };
-   }, []);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const onClickBurgerMenu = () => {
     setShowBurger(false);
@@ -57,7 +58,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
       <StyledHeader>
         <Container>
           <StyledFlexSection>
-            <StyledFlexArticle>
+            <StyledFlexTopHeader>
               <Logo location='header' />
               {isShowBurger ? (
                 <StyledImg
@@ -65,17 +66,17 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
                   alt='menu'
                   onClick={onClickBurgerMenu}
                 />
-              ) : <List/>}
+              ) : <List />}
               {isShowMenu && (
                 <Portal>
                   <Menu onClickCloseBtn={onClickCloseBtn} />
                 </Portal>
               )}
-            </StyledFlexArticle>
-            <StyledFlexArticle gap={22}>
+            </StyledFlexTopHeader>
+            <StyledFlexBottomHeader>
               <TotalTested isChooseProfession={isChooseProfession} />
               <DropdownLanguages />
-            </StyledFlexArticle>
+            </StyledFlexBottomHeader>
           </StyledFlexSection>
         </Container>
       </StyledHeader>

@@ -3,13 +3,15 @@ import { CSSTransition } from 'react-transition-group';
 import './style.css';
 
 import {
-  StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,
   StyledSpan,
   StyledSpanList,
+  StyledSpanShortLang,
+  StyledSpanFullLang,
   StyledImg,
+  StyledDivWrapperLanguages,
 } from './Dropdown.Styled';
 
 type TLanguages = {
@@ -56,31 +58,17 @@ const Dropdown = ({
               toggleList();
             }}
           >
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'baseline',
-                gap: 2,
-                justifyContent: 'center',
-              }}
+            <StyledDivWrapperLanguages
             >
-              <span
-                style={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                }}
+              <StyledSpanShortLang
               >
                 {shotLang.toUpperCase()}
-              </span>
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 400,
-                }}
+              </StyledSpanShortLang>
+              <StyledSpanFullLang
               >
                 {fullLang}
-              </span>
-            </div>
+              </StyledSpanFullLang>
+            </StyledDivWrapperLanguages>
           </StyledLi>
         );
       },
@@ -106,7 +94,7 @@ const Dropdown = ({
   }, []);
 
   return (
-    <StyleArticleDropdown>
+    <div style={{position: 'relative'}}>
       <StyledButton onClick={onClickButton} isClickButton={isClickButton}>
         <StyledImg src={srcImg} alt='img' isClickButton={isClickButton} />
 
@@ -123,7 +111,7 @@ const Dropdown = ({
       <CSSTransition in={isClickButton} timeout={300} classNames='list'>
         {<>{isClickButton && <StyledUl>{dropdownElements}</StyledUl>}</>}
       </CSSTransition>
-    </StyleArticleDropdown>
+    </div>
   );
 };
 

@@ -47,6 +47,7 @@ body {
     --font-text5: 400 18px/22px var(--font-family-default);
     --font-text6: 600 16px/22px var(--font-family-default);
     --font-text7: 600 14px/22px var(--font-family-default);
+    --font-text8: 400 10px/22px var(--font-family-default);
 
 
 

@@ -23,6 +23,14 @@ const StyledLi = styled.li`
   cursor: pointer;
   color: var(--color-white);
   margin: 0 0 13px 0;
+
+  @media screen and (min-width: 767.8px) {
+    margin: 0;
+  }
+
+  &:hover {
+    color: var(--color-purple)
+  }
 }`;
 
 export { StyledUl, StyledLi };
