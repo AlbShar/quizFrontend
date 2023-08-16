@@ -43,7 +43,6 @@ const DropdownProfession = ({
   };
 
   return (
-    <StyledDropdownWrapper>
       <Dropdown
         selected={selected || t('направление_теста')}
         data={listProfessions}
@@ -51,7 +50,6 @@ const DropdownProfession = ({
         customStyle={customStyleButton}
         srcArrowDown={arrowDownLarge}
       />
-    </StyledDropdownWrapper>
   );
 };
 

@@ -1,5 +1,7 @@
 .btn__link {
   color: white;
   text-decoration: none;
+  width: 100%;
+  max-width: 380px;
 }
 

@@ -20,7 +20,7 @@ const StyledButton = styled.button<TProps>`
   background-color: ${({ isClickButton }) =>
     isClickButton ? 'var(--color-purple)' : 'var(--color-white)'};
 
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 1023.8px) {
     width: 91px;
   }
 `;

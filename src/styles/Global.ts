@@ -42,7 +42,7 @@ body {
     --color-purple: #5557FF;
     --color-gray: #3C3C3C;
     --font-text1: 700 50px/22px var(--font-family-default);
-    --font-text2: 600 34px/34px var(--font-family-default);
+    --font-text2: 600 32px/32px var(--font-family-default);
     --font-text3: 600 22px/22px var(--font-family-default);
     --font-text4: 400 22px/26px var(--font-family-default);
     --font-text5: 400 18px/22px var(--font-family-default);

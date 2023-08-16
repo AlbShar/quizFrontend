@@ -16,7 +16,7 @@ const StyledDivTimer = styled.div`
 `;
 
 const StyledImg = styled.img`
-  @media screen and (max-width: 767.8px) {
+  @media screen and (min-width: 767.8px) {
     width: 20px;
   }
 `;

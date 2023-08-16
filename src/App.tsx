@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { lazy, Suspense, useState } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import Spinner from './UI/Spinner/Spinner';
 import { GlobalStyles } from './styles/Global';
@@ -20,6 +21,18 @@ const Results = lazy(() => import('./pages/Results/Results'));
 const Page404 = lazy(() => import('./pages/Page404/Page404'));
 
 function App() {
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 320,
+        sm: 459.8,
+        md: 767.8,
+        lg: 1023.8,
+        xl: 1299.8,
+      },
+    },
+  });
+
   const [profession, setProfession] = useState<string>(
     getValueFromLocalStorage('profession'),
   );
@@ -33,7 +46,7 @@ function App() {
   );
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       <BrowserRouter basename='/quizFrontend'>
         <ContextLanguage.Provider value={[lang, setLang]}>
@@ -76,7 +89,7 @@ function App() {
           </ContextIdUser.Provider>
         </ContextLanguage.Provider>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 

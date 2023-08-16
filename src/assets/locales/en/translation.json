@@ -45,12 +45,13 @@
   "мин": "min",
   "из": "from",
   "назад": "back",
-  "направление_теста": "test direction",
+  "направление_теста": "direction",
   "Frontend_разработчик": "Frontend developer",
   "Тестировщик_ПО": "QA engineer",
   "Менеджер": "Manager",
   "Прошли_тест": "Total Tested",
   "Закончить_тест": "Finish test",
-  "Ссылка": "Link"
+  "Ссылка": "Link",
+  "Сайт_по_тестированию": "An IT testing site where you can test your skills and knowledge."
 }
   

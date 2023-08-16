@@ -12,12 +12,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   color: white;
   text-decoration: none;
-  border-radius: 7px;
-  background-color: #585AFF;
-  max-width: 350px;
+  border-radius: 3px;
+  background-color: #585aff;
   width: 100%;
-  max-height: 56px;
-  height: 100%;
+  max-width: 380px;
+  height: 54px;
 
   &:disabled {
     background-color: rgba(88, 90, 255, 0.49);
@@ -26,7 +25,11 @@ const StyledButton = styled.button`
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 18px;
-    max-width: 230px;
+    width: 150px;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    width: 197px;
   }
 `;
 

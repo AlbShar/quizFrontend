@@ -13,11 +13,12 @@ const StyledFlexTopHeader = styled.article<FlexWrapper>`
 
   @media screen and (min-width: 767.8px) {
     justify-content: flex-start;
-    gap: 80px;
+    gap: 10px;
+    margin: 0;
   }
 
   @media screen and (min-width: 1023.8px) {
-    margin: 0
+    gap: 80px;
   }
 `;
 
@@ -27,12 +28,12 @@ const StyledFlexBottomHeader = styled.article<FlexWrapper>`
   justify-content: space-between;
   gap: ${({ gap }) => (gap ? gap + 'px' : '')};
 
-  @media screen and (min-width: 767.8px) {
-    align-items: stretch;
-  }
-
   &:not(: last-child) {
     margin: 0 0 13px 0;
+  }
+
+  @media screen and (min-width: 767.8px) {
+    align-items: stretch;
   }
 
   @media screen and (min-width: 1023.8px) {
@@ -41,7 +42,7 @@ const StyledFlexBottomHeader = styled.article<FlexWrapper>`
 `;
 
 const StyledFlexSection = styled.section<FlexWrapper>`
-  @media screen and (min-width: 1023.8px) {
+  @media screen and (min-width: 767.8px) {
     display: flex;
     justify-content: space-between;
     align-items: center;

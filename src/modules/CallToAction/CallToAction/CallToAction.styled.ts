@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledCallToAction = styled.section`
   max-width: 100%;
   background-color: transparent;
-  padding: 16px;
+  padding: 0;
   margin: 0 0 13px 0;
   border-radius: 7px;
   poisition: relative;
@@ -12,46 +12,47 @@ const StyledCallToAction = styled.section`
     margin: 0 0 32px 0;
   }
 
-  @media screen and (min-width: 767.8px) {
-    padding: 16px 16px 16px 40px;
-  }
 `;
 
 
 
 const StyledH1 = styled.h1`
-    font: var(--font-text2);
-    color: var(--color-white);
-    padding: 0;
-    margin: 0;
+  font: var(--font-text2);
+  color: var(--color-white);
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  padding: 30px 0 0 0;
 
-    @media screen and (min-width: 767.8px) {
-        font: var(--font-text1);
+  @media screen and (min-width: 767.8px) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text1);
+    line-height: 40px;
+  }
 `;
 
 const StyledH2 = styled.h2`
-  font: var(--font-h2-little);
+  font: var(--font-text5);
   color: white;
+  text-align: left;
 
-  @media screen and (min-width: 767.8px) {
-    font: var(--font-h2-large);
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text4);
   }
 `;
 
 const StyledImg = styled.img`
-  width: 285px;
-  height: 249px;
-
-  @media screen and (min-width: 1023.8px) {
-    width: 578px;
-    height: 505px;
-  }
+    width: 100%;
+    height: auto;
 `;
 
 const StyledDiv = styled.div`
   display: flex;
   width: auto;
-  gap: 10px;
+  gap: 20px;
   align-items: flex-start;
   flex-direction: column;
 
@@ -63,30 +64,11 @@ const StyledDiv = styled.div`
   }
 `;
 
-const StyledDivWrapper = styled.div`
-  width: 250px;
-  height: 45px;
-
-  @media screen and (min-width: 767.8px) {
-    height: 56px;
-  }
-`;
-const StyledDropdownProfessionWrapper = styled.div`
-  width: 250px;
-  height: 45px;
-
-  @media screen and (min-width: 767.8px) {
-    width: 320px;
-    height: 56px;
-  }
-`;
 
 export {
   StyledCallToAction,
   StyledH1,
   StyledH2,
   StyledDiv,
-  StyledDivWrapper,
-  StyledDropdownProfessionWrapper,
   StyledImg,
 };

@@ -11,9 +11,8 @@ const StyledUl = styled.ul`
   padding: 8px 12px;
   border-radius: 3px;
   background-color: var(--color-gray);
-  max-width: 250px;
 
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 1023.8px) {
     max-width: 577px;
     padding: 24px;
     flex-direction: row;
@@ -39,11 +38,11 @@ const StyledLi = styled.li`
     margin-bottom: 5px;
   }
 
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 1023.8px) {
     font: var(--font-text-bold);
 
     &:not(:last-child) {
-      margin: 0 30px 0 0;
+      margin: 0 40px 0 0;
     }
 
     &:not(:last-child):after {

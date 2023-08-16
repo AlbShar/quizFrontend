@@ -5,7 +5,8 @@ const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
   width: 100%;
-`;
+  max-width: 380px;
+  `;
 
 
 const StyledButton = styled.button`
@@ -15,15 +16,19 @@ const StyledButton = styled.button`
   cursor: pointer;
   border: none;
   background-color: #5557ff;
-  border-radius: 7px;
+  border-radius: 3px;
   padding: 0 15px;
   text-align: center;
-  min-height: 45px;
+  height: 54px;
   width: 100%;
   color: #fff;
 
   @media screen and (min-width: 767.8px) {
-    min-height: 56px;
+    width: 228px;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    width: 248px;
   }
 `;
 
@@ -57,9 +62,7 @@ const StyledImgLeft = styled.img`
 `;
 
 const StyledImgRight = styled.img`
-  position: absolute;
-  right: 10px;
-  top: 40%;
+  margin: 0 0 0 19px;
 `;
 
 const StyledUl = styled.ul`
