@@ -41,14 +41,20 @@ body {
     --color-dark: #1C1C1C;
     --color-purple: #5557FF;
     --color-gray: #3C3C3C;
+    --color-light-gray: #F5F5F5; 
+
     --font-text1: 700 50px/22px var(--font-family-default);
     --font-text2: 600 32px/32px var(--font-family-default);
     --font-text3: 600 22px/22px var(--font-family-default);
     --font-text4: 400 22px/26px var(--font-family-default);
     --font-text5: 400 18px/22px var(--font-family-default);
+    --font-text5-bold: 600 18px/22px var(--font-family-default);
     --font-text6: 600 16px/22px var(--font-family-default);
+    --font-text6-regular: 400 16px/22px var(--font-family-default);
     --font-text7: 600 14px/22px var(--font-family-default);
     --font-text8: 400 10px/22px var(--font-family-default);
+    --font-text9: 700 37px/22px var(--font-family-default);
+    --font-text10: 600 24px/22px var(--font-family-default);
 
 
 

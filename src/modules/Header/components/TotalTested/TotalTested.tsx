@@ -29,7 +29,7 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
 
   const error = isError ? <ErrorMessage /> : null;
   const spinner = loading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
+    <Spinner width={50} height={50} color={'#fcfdff'} margin='0 auto' />
   ) : null;
   const view = () => {
     return (

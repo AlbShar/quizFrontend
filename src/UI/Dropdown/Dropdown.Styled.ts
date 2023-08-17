@@ -6,7 +6,11 @@ const StyleArticleDropdown = styled.article`
   position: relative;
   width: 100%;
   max-width: 380px;
-  `;
+
+  @media screen and (min-width: 1023.8px) {
+    width: auto;
+  }
+`;
 
 
 const StyledButton = styled.button`

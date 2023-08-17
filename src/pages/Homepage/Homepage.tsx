@@ -3,6 +3,7 @@ import CallToAction from '../../modules/CallToAction/index';
 import Footer from '../../components/Footer/Footer';
 import { StyledMain } from '../../styles/Main.Styled';
 import GeneralInfoTest from '../../components/GeneralInfoTest/GeneralInfoTest';
+import BenefitInfo from '../../modules/BenefitInfo';
 
 type HomepageProps = {
   isChooseProfession: boolean;
@@ -16,7 +17,7 @@ const Homepage = ({
   return (
     <>
       <StyledMain>
-        <div style={{backgroundColor: "var(--color-dark)"}}>
+        <div style={{ backgroundColor: 'var(--color-dark)' }}>
           <Container style={{ flex: '1 1 auto' }}>
             <CallToAction
               isChooseProfession={isChooseProfession}
@@ -24,11 +25,13 @@ const Homepage = ({
             />
           </Container>
         </div>
-        <Container style={{ flex: '1 1 auto' }}>
-          <GeneralInfoTest />
-        </Container>
+        <div style={{ backgroundColor: 'var(--color-white)', position: 'relative' }}>
+          <Container style={{ flex: '1 1 auto' }}>
+            <BenefitInfo />
+          </Container>
+        </div>
       </StyledMain>
-
+      {/* <GeneralInfoTest /> */}
       {/* <Footer /> */}
     </>
   );

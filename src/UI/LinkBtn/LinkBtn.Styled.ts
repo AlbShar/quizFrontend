@@ -10,17 +10,19 @@ const StyledButton = styled.button`
   font: var(--font-button);
   text-transform: uppercase;
   cursor: pointer;
-  color: white;
+  color: var(--color-black);
   text-decoration: none;
   border-radius: 3px;
-  background-color: #585aff;
+  background-color: var(--color-white);
   width: 100%;
   max-width: 380px;
   height: 54px;
 
   &:disabled {
-    background-color: rgba(88, 90, 255, 0.49);
+    background-color: transparent;
+    border: 2px solid var(--color-purple);
     cursor: not-allowed;
+    color: var(--color-white);
   }
 
   @media screen and (min-width: 767.8px) {

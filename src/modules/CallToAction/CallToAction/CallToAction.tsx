@@ -1,8 +1,6 @@
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import InfoTest from '../components/InfoTest/InfoTest';
@@ -43,8 +41,8 @@ const CallToAction = ({
 
   return (
     <Box>
-      <Grid container>
-        <Grid item xs={12} md={8} lg={8} xl={6}>
+      <Grid container columns={{xs: 2, md: 12}}>
+        <Grid item xs={2} md={8} lg={8} xl={6}>
           <StyledCallToAction id='CallToAction'>
             <StyledH1>{t('Тест_для')}</StyledH1>
             <InfoTest
@@ -63,7 +61,7 @@ const CallToAction = ({
             </StyledDiv>
           </StyledCallToAction>
         </Grid>
-        <Grid item xs={12} md={4} lg={4} xl={6}>
+        <Grid item xs={2} md={4} lg={4} xl={6}>
           <StyledImg src={require('../icons/img1.png')} alt='img' />
         </Grid>
       </Grid>
