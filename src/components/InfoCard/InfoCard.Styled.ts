@@ -4,7 +4,7 @@ const StyledArticle = styled.article`
   background-color: var(--color-light-gray);
   border-radius: 3px;
   padding: 40px 10px 30px 10px;
-  margin: 0 0  15px 0;
+  margin: 0 0 15px 0;
 `;
 
 const StyledSpanNumber = styled.span`
@@ -32,6 +32,7 @@ const StyledPText = styled.p`
 
   @media screen and (min-width: 767.8px) {
     margin: 0;
+    font: var(--font-text5);
   }
 `;
 

@@ -21,13 +21,13 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
         container
         spacing={1}
         direction='row'
-        columns={{ xs: 2, md: 12 }}
+        columns={{ xs: 2, md: 12, lg: 12 }}
         alignItems='center'
       >
-        <Grid item lg={2}>
+        <Grid item md={1} lg={0.7}>
           <StyledSpanNumber>{fullNumb}</StyledSpanNumber>
         </Grid>
-        <Grid item md={4} lg={3}>
+        <Grid item md={4} lg={4.6}>
           <StyledH4Title>{title}</StyledH4Title>
         </Grid>
         <Grid item xs={2} md={6} lg={5}>

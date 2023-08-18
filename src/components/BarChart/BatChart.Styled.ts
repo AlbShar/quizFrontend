@@ -12,7 +12,7 @@ const StyledArticle = styled.article`
   height: 100%;
   padding: 16px 8px 9px 8px;
 
-  &:not(list-child) {
+  &:not(:last-child) {
     margin: 0 0 24px 0;
   }
 
