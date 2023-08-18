@@ -12,10 +12,10 @@ const StyledH3 = styled.h3`
   max-width: 403px;
   color: var(--color-black);
   text-align: center;
-  margin: 0;
 
   @media screen and (min-width: 767.8px) {
     text-align: left;
+    margin: 0;
   }
 `;
 
@@ -33,7 +33,7 @@ const StyledImg = styled.img`
 `;
 const StyledSection = styled.section`
   position: relative;
-  padding: 0 0 50px 0;
+  // padding: 0 0 50px 0;
 
   @media screen and (min-width: 767.8px) {
     padding: 30px 0 35px 0;

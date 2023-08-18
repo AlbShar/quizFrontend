@@ -16,7 +16,7 @@ const AboutUs = () => {
         <Grid item md={5} lg={5.35}>
           <StyledH3>{t('О_тесте')}</StyledH3>
         </Grid>
-        <Grid item md={7} lg={5}>
+        <Grid item md={7} lg={6}>
           <StyledP>{t('Приветствуем_на_сайте')} </StyledP>
           <StyledP>{t('По_завершению')} </StyledP>
           <StyledP>
