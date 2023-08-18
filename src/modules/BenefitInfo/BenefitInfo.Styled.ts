@@ -17,9 +17,10 @@ const StyledImg = styled.img`
   top: 0px;
   width: 61px;
   height: 152px;
+  z-index: 1;
 
   @media screen and (min-width: 767.8px) {
-    top: 40%;
+    top: 30%;
   }
 
   @media screen and (min-width: 1299.8px) {
@@ -29,10 +30,19 @@ const StyledImg = styled.img`
   }
 `;
 
-const StyledSection = styled.section`
-//   @media screen and (min-width: 1023.8px) {
-//     position: relative;
-//   }
+const StyledImgCurveLine = styled.img`
+  position: absolute;
+  right: -5px;
+  top: 61%;
+
+  @media screen and (min-width: 1299.8px) {
+    transform: scale(2.2);
+    top: 36%;
+  }
 `;
 
-export { StyledH3, StyledSection, StyledImg };
+const StyledSection = styled.section`
+  position: relative;
+`;
+
+export { StyledH3, StyledSection, StyledImg, StyledImgCurveLine };

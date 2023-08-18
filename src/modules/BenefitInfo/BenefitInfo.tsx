@@ -1,29 +1,37 @@
 import Grid from '@mui/material/Grid';
+import { useTranslation } from 'react-i18next';
 
 import InfoCard from '../../components/InfoCard/InfoCard';
-import { StyledH3, StyledSection, StyledImg } from './BenefitInfo.Styled';
+import {
+  StyledH3,
+  StyledSection,
+  StyledImg,
+  StyledImgCurveLine,
+} from './BenefitInfo.Styled';
 import img from "./images/img.svg"
+import curve_line from "./images/curve_line.svg";
 
 const BenefitInfo = () => {
+  const { t } = useTranslation();
+
   const data = [
     {
-      title: 'Оценку своих знаний',
-      text: 'Благодаря специальным вопросам, вы сможете по новому взглянуть на освоенный вами материал ',
+      title: t('Оценка_знаний'),
+      text: t('Благодаря_вопросам'),
     },
     {
-      title: 'Выявление слабых мест',
-      text: 'Вы сможете оценить свои знания по каждой из них, и увидеть, какой теме требуется еще уделить внимание',
+      title: t('Выявление_слабых_мест'),
+      text: t('Cможете_оценить_знания'),
     },
     {
-      title: 'Отчёт о результатах',
-      text: 'В финальном отчёте, вы сможете явно видеть, где у вас пробелы в знаниях или навыках, и сфокусироваться именно на них',
+      title: t('Отчет'),
+      text: t('В_финальном_отчёте'),
     },
   ];
   return (
     <Grid container columns={{ xs: 2, md: 12 }}>
+      <StyledImg src={img} alt='image' />
       <StyledSection>
-        <StyledImg src={img} alt='image' />
-
         <StyledH3>Что вы получите?</StyledH3>
         {data.map((item, index) => {
           const { title, text } = item;
@@ -36,6 +44,7 @@ const BenefitInfo = () => {
             />
           );
         })}
+        <StyledImgCurveLine src={curve_line} alt='curve_line' />
       </StyledSection>
     </Grid>
   );

@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import { StyledMain } from '../../styles/Main.Styled';
 import GeneralInfoTest from '../../components/GeneralInfoTest/GeneralInfoTest';
 import BenefitInfo from '../../modules/BenefitInfo';
+import AboutUs from '../../components/AboutUs/AboutUs';
 
 type HomepageProps = {
   isChooseProfession: boolean;
@@ -18,18 +19,20 @@ const Homepage = ({
     <>
       <StyledMain>
         <div style={{ backgroundColor: 'var(--color-dark)' }}>
-          <Container style={{ flex: '1 1 auto' }}>
+          <Container>
             <CallToAction
               isChooseProfession={isChooseProfession}
               setChooseProfession={setChooseProfession}
             />
           </Container>
         </div>
-        <div style={{ backgroundColor: 'var(--color-white)', position: 'relative' }}>
-          <Container style={{ flex: '1 1 auto' }}>
+        <div style={{ position: 'relative' }}>
+          <Container>
             <BenefitInfo />
+            <AboutUs />
           </Container>
         </div>
+        
       </StyledMain>
       {/* <GeneralInfoTest /> */}
       {/* <Footer /> */}
