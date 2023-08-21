@@ -41,7 +41,9 @@ body {
     --color-dark: #1C1C1C;
     --color-purple: #5557FF;
     --color-gray: #3C3C3C;
+    --color-dark-gray: #4F4F4F;
     --color-light-gray: #F5F5F5; 
+    --color-light-gray2: #ECECEC; 
 
     --font-text1: 700 50px/22px var(--font-family-default);
     --font-text2: 600 32px/32px var(--font-family-default);

@@ -2,9 +2,9 @@ import Container from '../../components/Container/Container';
 import CallToAction from '../../modules/CallToAction/index';
 import Footer from '../../components/Footer/Footer';
 import { StyledMain } from '../../styles/Main.Styled';
-import GeneralInfoTest from '../../components/GeneralInfoTest/GeneralInfoTest';
-import BenefitInfo from '../../modules/BenefitInfo';
 import AboutUs from '../../components/AboutUs/AboutUs';
+import BenefitInfo from '../../components/BenefitInfo/BenefitInfo';
+import TestRules from '../../components/TestRules/TestRules';
 
 type HomepageProps = {
   isChooseProfession: boolean;
@@ -32,9 +32,12 @@ const Homepage = ({
             <AboutUs />
           </Container>
         </div>
-        
+        <div style={{ backgroundColor: 'var(--color-light-gray2)' }}>
+          <Container>
+            <TestRules />
+          </Container>
+        </div>
       </StyledMain>
-      {/* <GeneralInfoTest /> */}
       {/* <Footer /> */}
     </>
   );

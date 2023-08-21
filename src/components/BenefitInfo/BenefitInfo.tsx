@@ -1,15 +1,18 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
 
-import InfoCard from '../../components/InfoCard/InfoCard';
 import {
   StyledH3,
   StyledSection,
   StyledImg,
   StyledImgCurveLine,
+  StyledArticle,
+  StyledSpanNumber,
+  StyledH4Title,
+  StyledPText,
 } from './BenefitInfo.Styled';
-import img from "./images/img.svg"
-import curve_line from "./images/curve_line.svg";
+import img from '../../assets/images/img.svg';
+import curve_line from '../../assets/images/curve_line.svg';
 
 const BenefitInfo = () => {
   const { t } = useTranslation();
@@ -47,6 +50,37 @@ const BenefitInfo = () => {
         <StyledImgCurveLine src={curve_line} alt='curve_line' />
       </StyledSection>
     </Grid>
+  );
+};
+
+type InfoCardProps = {
+  numberCard: number;
+  title: string;
+  text: string;
+};
+
+const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
+  const fullNumb = numberCard < 10 ? `0${numberCard}` : numberCard;
+  return (
+    <StyledArticle>
+      <Grid
+        container
+        spacing={1}
+        direction='row'
+        columns={{ xs: 2, md: 12, lg: 12 }}
+        alignItems='center'
+      >
+        <Grid item md={1} lg={0.7}>
+          <StyledSpanNumber>{fullNumb}</StyledSpanNumber>
+        </Grid>
+        <Grid item md={4} lg={4.6}>
+          <StyledH4Title>{title}</StyledH4Title>
+        </Grid>
+        <Grid item xs={2} md={6} lg={5}>
+          <StyledPText>{text}</StyledPText>
+        </Grid>
+      </Grid>
+    </StyledArticle>
   );
 };
 
