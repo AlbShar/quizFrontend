@@ -5,6 +5,10 @@ const StyledP = styled.p`
   color: var(--color-black);
   text-align: left;
   margin-top: 0;
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text4);
+  }
 `;
 
 const StyledH3 = styled.h3`
@@ -17,11 +21,16 @@ const StyledH3 = styled.h3`
     text-align: left;
     margin: 0;
   }
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text2);
+  }
 `;
 
 const StyledImg = styled.img`
   @media screen and (min-width: 767.8px) {
     position: absolute;
+    z-index: 2;
     bottom: -60px;
   }
 

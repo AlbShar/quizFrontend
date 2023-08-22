@@ -36,11 +36,11 @@ const TestRules = () => {
   ];
   return (
     <StyledSection>
-      <Grid container columns={{ xs: 2, md: 12, xl: 12 }}>
-        <Grid item xs={2} xl={6}>
+      <Grid container columns={{ xs: 2, md: 12, xl: 12 }} spacing={{md:3}}>
+        <Grid item xs={2} md={6} xl={6}>
           <StyledH3>Правила прохождения теста</StyledH3>
         </Grid>
-        <Grid item xs={2} xl={6}>
+        <Grid item xs={2} md={6} xl={6}>
           <StyledH4>
             Ознакомьтесь с правилами прохождения теста, выберите направление, а
             затем пройдите тестирование.

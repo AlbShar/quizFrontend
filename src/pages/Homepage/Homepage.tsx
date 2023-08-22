@@ -5,6 +5,7 @@ import { StyledMain } from '../../styles/Main.Styled';
 import AboutUs from '../../components/AboutUs/AboutUs';
 import BenefitInfo from '../../components/BenefitInfo/BenefitInfo';
 import TestRules from '../../components/TestRules/TestRules';
+import ResultsInfo from '../../components/ResultsInfo/ResultsInfo';
 
 type HomepageProps = {
   isChooseProfession: boolean;
@@ -32,9 +33,15 @@ const Homepage = ({
             <AboutUs />
           </Container>
         </div>
-        <div style={{ backgroundColor: 'var(--color-light-gray2)' }}>
+        <div
+          style={{
+            backgroundColor: 'var(--color-light-gray2)',
+            position: 'relative',
+          }}
+        >
           <Container>
             <TestRules />
+            <ResultsInfo />
           </Container>
         </div>
       </StyledMain>

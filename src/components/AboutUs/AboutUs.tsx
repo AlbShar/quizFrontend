@@ -13,10 +13,10 @@ const AboutUs = () => {
   return (
     <StyledSection>
       <Grid container columns={{ xs: 2, md: 12, lg: 12 }}>
-        <Grid item md={5} lg={5.35}>
+        <Grid item md={6.2} lg={6.2}>
           <StyledH3>{t('О_тесте')}</StyledH3>
         </Grid>
-        <Grid item md={7} lg={6}>
+        <Grid item md={5.8} lg={5.8}>
           <StyledP>{t('Приветствуем_на_сайте')} </StyledP>
           <StyledP>{t('По_завершению')} </StyledP>
           <StyledP>

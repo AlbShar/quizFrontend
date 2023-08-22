@@ -73,10 +73,10 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
         <Grid item md={1} lg={0.7}>
           <StyledSpanNumber>{fullNumb}</StyledSpanNumber>
         </Grid>
-        <Grid item md={4} lg={4.6}>
+        <Grid item md={5.15} lg={5.45}>
           <StyledH4Title>{title}</StyledH4Title>
         </Grid>
-        <Grid item xs={2} md={6} lg={5}>
+        <Grid item xs={2} md={5.5} lg={5}>
           <StyledPText>{text}</StyledPText>
         </Grid>
       </Grid>

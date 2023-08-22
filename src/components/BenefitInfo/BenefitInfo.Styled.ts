@@ -9,6 +9,12 @@ const StyledH3 = styled.h3`
   @media screen and (min-width: 767.8px) {
     text-align: left;
   }
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text2);
+  }
+
+ 
 `;
 
 const StyledImg = styled.img`
@@ -67,6 +73,7 @@ const StyledH4Title = styled.h4`
 
   @media screen and (min-width: 1023.8px) {
     max-width: 100%;
+    font: var(--font-text3);
   }
 `;
 

@@ -6,7 +6,9 @@ const StyledH3 = styled.h3`
   font: var(--font-text10);
   text-align: left;
 
-  
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text2);
+  }
 `;
 
 const StyledH4 = styled.h4`
@@ -15,8 +17,12 @@ const StyledH4 = styled.h4`
   color: var(--color-black);
   margin: 40px 0 24px 0;
 
-  @media screen and (min-width: 1299.8px) {
+  @media screen and (min-width: 767.8px) {
     margin: 0 0 64px 0;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text4);
   }
 `;
 
@@ -29,6 +35,10 @@ const StyledP = styled.p`
   font: var(--font-text6-regular);
   color: var(--color-dark-gray);
   margin-top: 35px;
+
+  @media screen and (min-width: 1023.8px) {
+    font: var(--font-text5);
+  }
 `;
 
 const StyleImg = styled.img`
