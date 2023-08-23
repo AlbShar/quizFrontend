@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
-  background-color: var(--color-footer);
+  background-color: var(--color-dark);
   padding: 16px;
   margin: 10px 0 0 0;
 

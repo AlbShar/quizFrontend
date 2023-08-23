@@ -47,7 +47,12 @@ const StyledImgCurveLine = styled.img`
   }
 `;
 
+const StyledArticleWrapper = styled.article`
+  position: relative;
+`;
+
 const StyledSection = styled.section`
+  background-color: var(--color-white);
   position: relative;
 `;
 
@@ -90,11 +95,12 @@ const StyledPText = styled.p`
 
 export {
   StyledH3,
-  StyledSection,
+  StyledArticleWrapper,
   StyledImg,
   StyledImgCurveLine,
   StyledArticle,
   StyledSpanNumber,
   StyledH4Title,
   StyledPText,
+  StyledSection,
 };

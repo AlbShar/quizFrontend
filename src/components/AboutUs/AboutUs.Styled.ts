@@ -28,21 +28,24 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledImg = styled.img`
+  position: relative;
+  z-index: 2;
+  transform: translateY(32px);
+
   @media screen and (min-width: 767.8px) {
     position: absolute;
-    z-index: 2;
-    bottom: -60px;
+    transform: translateY(0);
+    bottom: -35px;
   }
 
   @media screen and (min-width: 1299.8px) {
     width: 257px;
     height: 389px;
-    bottom: -90px;
+    bottom: -60px;
   }
 `;
-const StyledSection = styled.section`
+const StyledArticle = styled.article`
   position: relative;
-  // padding: 0 0 50px 0;
 
   @media screen and (min-width: 767.8px) {
     padding: 30px 0 35px 0;
@@ -53,4 +56,9 @@ const StyledSection = styled.section`
   }
 `;
 
-export { StyledP, StyledH3, StyledImg, StyledSection };
+const StyledSection = styled.section`
+  position: relative;
+  background-color: var(--color-white);
+`;
+
+export { StyledP, StyledH3, StyledImg, StyledArticle, StyledSection };

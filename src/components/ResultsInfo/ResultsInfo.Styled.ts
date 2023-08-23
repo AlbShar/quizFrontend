@@ -11,6 +11,11 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledSection = styled.section`
+  background-color: var(--color-light-gray2);
+  position: relative;
+`;
+
+const StyledArticleWrapper = styled.article`
   padding: 0 0 134px 0;
 `;
 
@@ -84,4 +89,5 @@ export {
   StyledArticle,
   StyledSection,
   StyledImg,
+  StyledArticleWrapper,
 };

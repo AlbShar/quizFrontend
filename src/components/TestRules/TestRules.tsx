@@ -1,4 +1,5 @@
 import Grid from '@mui/material/Grid';
+import Container from '../Container/Container';
 import { useTranslation } from 'react-i18next';
 
 import testRule1 from '../../assets/images/testRule1.svg';
@@ -9,10 +10,11 @@ import testRule4 from '../../assets/images/testRule4.svg';
 import {
   StyledH3,
   StyledH4,
-  StyledSection,
+  StyledArticleWrapper,
   StyledArticle,
   StyledP,
   StyleImg,
+  StyledSection,
 } from './TestRules.Styled';
 
 const TestRules = () => {
@@ -36,30 +38,34 @@ const TestRules = () => {
   ];
   return (
     <StyledSection>
-      <Grid container columns={{ xs: 2, md: 12, xl: 12 }} spacing={{md:3}}>
-        <Grid item xs={2} md={6} xl={6}>
-          <StyledH3>Правила прохождения теста</StyledH3>
+      <Container>
+      <StyledArticleWrapper>
+        <Grid container columns={{ xs: 2, md: 12, xl: 12 }} spacing={{ md: 3 }}>
+          <Grid item xs={2} md={6} xl={6}>
+            <StyledH3>Правила прохождения теста</StyledH3>
+          </Grid>
+          <Grid item xs={2} md={6} xl={6}>
+            <StyledH4>
+              Ознакомьтесь с правилами прохождения теста, выберите направление,
+              а затем пройдите тестирование.
+            </StyledH4>
+          </Grid>
         </Grid>
-        <Grid item xs={2} md={6} xl={6}>
-          <StyledH4>
-            Ознакомьтесь с правилами прохождения теста, выберите направление, а
-            затем пройдите тестирование.
-          </StyledH4>
+        <Grid
+          container
+          columns={{ xs: 2, md: 12, xl: 12 }}
+          spacing={3}
+          alignItems='center'
+        >
+          {data.map((info, index) => {
+            const { text, img } = info;
+            return <Rule text={text} img={img} key={index} />;
+          })}
         </Grid>
-      </Grid>
-
-      <Grid
-        container
-        columns={{ xs: 2, md: 12, xl: 12 }}
-        spacing={3}
-        alignItems='center'
-      >
-        {data.map((info, index) => {
-          const { text, img } = info;
-          return <Rule text={text} img={img} key={index} />;
-        })}
-      </Grid>
+      </StyledArticleWrapper>
+    </Container>
     </StyledSection>
+    
   );
 };
 

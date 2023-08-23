@@ -1,18 +1,21 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
 
+import Container from '../Container/Container';
+import img from '../../assets/images/img.svg';
+import curve_line from '../../assets/images/curve_line.svg';
+
 import {
   StyledH3,
-  StyledSection,
+  StyledArticleWrapper,
   StyledImg,
   StyledImgCurveLine,
   StyledArticle,
   StyledSpanNumber,
   StyledH4Title,
   StyledPText,
+  StyledSection,
 } from './BenefitInfo.Styled';
-import img from '../../assets/images/img.svg';
-import curve_line from '../../assets/images/curve_line.svg';
 
 const BenefitInfo = () => {
   const { t } = useTranslation();
@@ -32,24 +35,28 @@ const BenefitInfo = () => {
     },
   ];
   return (
-    <Grid container columns={{ xs: 2, md: 12 }}>
-      <StyledImg src={img} alt='image' />
-      <StyledSection>
-        <StyledH3>Что вы получите?</StyledH3>
-        {data.map((item, index) => {
-          const { title, text } = item;
-          return (
-            <InfoCard
-              title={title}
-              text={text}
-              numberCard={index + 1}
-              key={index + 1}
-            />
-          );
-        })}
-        <StyledImgCurveLine src={curve_line} alt='curve_line' />
-      </StyledSection>
-    </Grid>
+    <StyledSection>
+      <Container>
+        <Grid container columns={{ xs: 2, md: 12 }}>
+          <StyledImg src={img} alt='image' />
+          <StyledArticleWrapper>
+            <StyledH3>Что вы получите?</StyledH3>
+            {data.map((item, index) => {
+              const { title, text } = item;
+              return (
+                <InfoCard
+                  title={title}
+                  text={text}
+                  numberCard={index + 1}
+                  key={index + 1}
+                />
+              );
+            })}
+            <StyledImgCurveLine src={curve_line} alt='curve_line' />
+          </StyledArticleWrapper>
+        </Grid>
+      </Container>
+    </StyledSection>
   );
 };
 

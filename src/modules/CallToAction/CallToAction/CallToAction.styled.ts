@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledCallToAction = styled.section`
+const StyledCallToAction = styled.article`
   max-width: 100%;
   background-color: transparent;
   padding: 0;
@@ -12,6 +12,10 @@ const StyledCallToAction = styled.section`
     margin: 0 0 32px 0;
   }
 
+`;
+
+const StyledSection = styled.section`
+  background-color: var(--color-dark);
 `;
 
 
@@ -71,4 +75,5 @@ export {
   StyledH2,
   StyledDiv,
   StyledImg,
+  StyledSection,
 };

@@ -25,9 +25,13 @@ const StyledH4 = styled.h4`
     font: var(--font-text4);
   }
 `;
-
-
 const StyledSection = styled.section`
+  background-color: var(--color-light-gray2);
+  position: relative;
+
+`;
+
+const StyledArticleWrapper = styled.article`
   padding: 80px 0;
 `;
 
@@ -65,4 +69,12 @@ const StyledArticle = styled.article`
 `;
 
 
-export { StyledH3, StyledH4, StyledSection, StyledArticle, StyledP, StyleImg };
+export {
+  StyledH3,
+  StyledH4,
+  StyledArticleWrapper,
+  StyledArticle,
+  StyledP,
+  StyleImg,
+  StyledSection,
+};

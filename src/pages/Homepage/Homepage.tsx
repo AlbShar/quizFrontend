@@ -1,4 +1,3 @@
-import Container from '../../components/Container/Container';
 import CallToAction from '../../modules/CallToAction/index';
 import Footer from '../../components/Footer/Footer';
 import { StyledMain } from '../../styles/Main.Styled';
@@ -16,36 +15,20 @@ const Homepage = ({
   isChooseProfession,
   setChooseProfession,
 }: HomepageProps) => {
+  
   return (
     <>
       <StyledMain>
-        <div style={{ backgroundColor: 'var(--color-dark)' }}>
-          <Container>
-            <CallToAction
-              isChooseProfession={isChooseProfession}
-              setChooseProfession={setChooseProfession}
-            />
-          </Container>
-        </div>
-        <div style={{ position: 'relative' }}>
-          <Container>
-            <BenefitInfo />
-            <AboutUs />
-          </Container>
-        </div>
-        <div
-          style={{
-            backgroundColor: 'var(--color-light-gray2)',
-            position: 'relative',
-          }}
-        >
-          <Container>
-            <TestRules />
-            <ResultsInfo />
-          </Container>
-        </div>
+          <CallToAction
+            isChooseProfession={isChooseProfession}
+            setChooseProfession={setChooseProfession}
+          />
+          <BenefitInfo />
+          <AboutUs />
+          <TestRules />
+          <ResultsInfo />
       </StyledMain>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
