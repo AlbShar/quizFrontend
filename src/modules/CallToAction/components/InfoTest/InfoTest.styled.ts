@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledUl = styled.ul`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -11,13 +12,18 @@ const StyledUl = styled.ul`
   padding: 8px 12px;
   border-radius: 3px;
   background-color: var(--color-gray);
+  min-height: 48px;
 
-  @media screen and (min-width: 1023.8px) {
-    max-width: 577px;
-    padding: 24px;
+  @media screen and (min-width: 767.8px) {
+    max-width: 512px;
+    padding: 10px 15px;
     flex-direction: row;
     max-height: 58px;
     align-items: center;
+  }
+
+  @media screen and (min-width: 1299.8px) {
+    padding: 10px 36px;
   }
 `;
 
@@ -38,18 +44,30 @@ const StyledLi = styled.li`
     margin-bottom: 5px;
   }
 
-  @media screen and (min-width: 1023.8px) {
+  @media screen and (min-width: 767.8px) {
     font: var(--font-text-bold);
 
     &:not(:last-child) {
-      margin: 0 40px 0 0;
+      margin: 0 0 0 0;
     }
 
     &:not(:last-child):after {
       color: var(--color-white);
       position: relative;
       content: '/';
-      left: 30px;
+      left: 15px;
+    }
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    &:not(:last-child):after {
+      left: 35px;
+    }
+  }
+
+  @media screen and (min-width: 1299.8px) {
+    &:not(:last-child):after {
+      left: 20px;
     }
   }
 `;

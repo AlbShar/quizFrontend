@@ -5,7 +5,7 @@ const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 280px;
 
   @media screen and (min-width: 1023.8px) {
     width: auto;
@@ -28,11 +28,7 @@ const StyledButton = styled.button`
   color: #fff;
 
   @media screen and (min-width: 767.8px) {
-    width: 228px;
-  }
-
-  @media screen and (min-width: 1023.8px) {
-    width: 248px;
+    width: 280px;
   }
 `;
 

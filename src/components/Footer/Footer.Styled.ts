@@ -9,10 +9,10 @@ const StyledFooter = styled.footer`
   @media screen and (min-width: 1023.8px) {
     margin: 30px 0 0 0;
   }
-`;
 
-const StyledSection = styled.section`
-  @media screen and (min-width: 767.8px) margin-right: 10px;
+  @media screen and (min-width: 1299.8px) {
+    padding: 34px 0 100px 0;
+  }
 `;
 
 
@@ -48,32 +48,27 @@ const StyledDivName = styled.div`
   }
 `;
 
-const StyledFlexWrapper = styled.div`
-  @media screen and (min-width: 767.8px) {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 30px;
-  }
-
-  @media screen and (min-width: 1023.8px) {
-    gap: 50px;
-  }
-`;
 
 const StyledLink = styled.a`
-  color: var(--color-white);
   text-decoration: none;
-
-  &:hover {
-    color: var(--color-purple);
-  }
 
   &:visited {
     color: var(--color-white);
   }
+
+  &:hover {
+    color: var(--color-purple);
+  }
 `;
 
+const StyledNav = styled.nav`
+  margin: 20px 0 0 0;
+  width: 100%;
+
+  @media screen and (min-width: 1299.8px) {
+    margin: 0;
+  }
+`;
 
 const StyledLi = styled.li`
   text-align: left;
@@ -83,11 +78,8 @@ const StyledLi = styled.li`
   }
 
   @media screen and (min-width: 767.8px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     padding: 0px;
+    text-align: center;
 
     &:not(:last-child) {
       margin: 0;
@@ -98,17 +90,18 @@ const StyledLi = styled.li`
         margin: 0;
       }
     }
+    @media screen and (min-width: 1299.8px) {
+      text-align: left;
+    }
   }
 `;
 
-
 export {
   StyledFooter,
-  StyledSection,
   StyledLi,
   StyledUl,
   StyledDivProfession,
   StyledDivName,
   StyledLink,
-  StyledFlexWrapper,
+  StyledNav,
 };

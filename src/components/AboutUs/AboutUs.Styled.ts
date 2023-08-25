@@ -4,7 +4,11 @@ const StyledP = styled.p`
   font: var(--font-text5);
   color: var(--color-black);
   text-align: left;
-  margin-top: 0;
+  margin: 0 0 18px 0;
+
+  &:last-child {
+    margin: 0;
+  }
 
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text4);
@@ -28,10 +32,8 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledImg = styled.img`
-  position: relative;
-  z-index: 2;
   transform: translateY(32px);
-
+  z-index: 3;
   @media screen and (min-width: 767.8px) {
     position: absolute;
     transform: translateY(0);
@@ -59,6 +61,7 @@ const StyledArticle = styled.article`
 const StyledSection = styled.section`
   position: relative;
   background-color: var(--color-white);
+  
 `;
 
 export { StyledP, StyledH3, StyledImg, StyledArticle, StyledSection };

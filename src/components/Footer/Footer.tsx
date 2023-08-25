@@ -9,13 +9,12 @@ import Logo from '../Logo/Logo';
 
 import {
   StyledFooter,
-  StyledSection,
   StyledLi,
   StyledUl,
   StyledDivProfession,
   StyledDivName,
   StyledLink,
-  StyledFlexWrapper,
+  StyledNav,
 } from './Footer.Styled';
 
 import type { FooterInfo } from '../../types/types';
@@ -48,7 +47,7 @@ const Footer = () => {
 
   const elementsInfoMiddleFooter = team.map((item, index) => {
     return (
-      <Grid item xs={1} md={3} lg={1.5}>
+      <Grid item xs={1} md={3} lg={2} xl='auto'>
         <StyledLi key={index + 1}>
           <StyledLink href={item.link} target='_blank'>
             <StyledDivProfession> {item.profession}</StyledDivProfession>
@@ -62,14 +61,21 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <Grid container columns={{ xs: 2, md: 12, lg: 12 }}>
-          <Grid container columns={{ xs: 2, md: 12, lg: 6 }}>
-            <Grid item xs={1} md={6}>
-              <Logo location='footer' />
-            </Grid>
-            <Grid item xs={1} md={5}>
-              <StyledFlexWrapper>
+        <Grid
+          container
+          columns={{ xs: 2, md: 12, xl: 12 }}
+          alignItems='center'
+          direction='row'
+        >
+          <Grid item xs={1} md={3} xl={2}>
+            <Logo location='footer' />
+          </Grid>
+          <Grid item xs={1} md={6} xl={4}>
+            <Grid container flexDirection='row' columns={{ xs: 1, md: 6 }}>
+              <Grid item xs={1} md={3}>
                 <Feedback />
+              </Grid>
+              <Grid item xs={1} md={3}>
                 <div
                   style={{
                     color: 'white',
@@ -78,64 +84,31 @@ const Footer = () => {
                 >
                   Начать тест
                 </div>
-              </StyledFlexWrapper>
+              </Grid>
             </Grid>
           </Grid>
-
-          <Grid
-            container
-            columns={{ xs: 2, md: 12, lg: 6 }}
-            justifyContent='center'
-          >
-            <nav style={{ margin: '20px 0 0 0', width: '100%' }}>
-              <StyledUl>
-                <Grid
-                  container
-                  columns={{ xs: 2, md: 12, lg: 6 }}
-                  columnSpacing={{ md: 0 }}
-                  spacing={{ xs: 3, md: 0 }}
-                >
-                  {elementsInfoMiddleFooter}
-                </Grid>
-              </StyledUl>
-            </nav>
-          </Grid>
-        </Grid>
-
-        {/* <Grid
-          container
-          columns={{ xs: 2, md: 12, lg: 4 }}
-          columnSpacing={{ xs: 3, lg: 0 }}
-          alignItems={'center'}
-        >
-          <Grid item xs={1} md={4} lg={1}>
-            <Logo location='footer' />
-          </Grid>
-          <Grid item xs={1} md={6} lg={2}>
-            <StyledFlexWrapper>
-              <Feedback />
-              <div
-                style={{
-                  color: 'white',
-                  font: 'var(--font-text7)',
-                }}
-              >
-                Начать тест
-              </div>
-            </StyledFlexWrapper>
-          </Grid>
-        </Grid>
-        <nav style={{ margin: '40px 0 0 0' }}>
-          <StyledUl>
+          <Grid item md={12} xl={6}>
             <Grid
               container
-              columns={{ xs: 2, md: 12, lg: 6 }}
-              spacing={{ xs: 4, lg: 1 }}
+              columns={{ xs: 2, md: 12, xl: 6 }}
+              justifyContent='center'
+              alignItems='center'
             >
-              {elementsInfoMiddleFooter}
+              <StyledNav id="team">
+                <StyledUl>
+                  <Grid
+                    container
+                    columns={{ xs: 2, md: 12, xl: 6 }}
+                    columnSpacing={{ xs: 3, xl: 5 }}
+                    rowSpacing={{ xs: 3 }}
+                  >
+                    {elementsInfoMiddleFooter}
+                  </Grid>
+                </StyledUl>
+              </StyledNav>
             </Grid>
-          </StyledUl>
-        </nav> */}
+          </Grid>
+        </Grid>
       </Container>
     </StyledFooter>
   );

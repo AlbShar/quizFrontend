@@ -1,19 +1,23 @@
-import Feedback from "../../../../UI/Feedback/Feedback";
+import Feedback from '../../../../UI/Feedback/Feedback';
 
-import { StyledLi, StyledUl } from "./List.Styled";
+import { StyledLi, StyledUl, StyledLink } from './List.Styled';
 
 type ListProps = {
   onClickCloseBtn?: () => void;
 };
 
-const List = ({onClickCloseBtn}: ListProps) => {
+const List = ({ onClickCloseBtn }: ListProps) => {
   return (
     <StyledUl>
       <StyledLi>
         <Feedback onClickCloseBtn={onClickCloseBtn} />
       </StyledLi>
-      <StyledLi>Команда</StyledLi>
-      <StyledLi>Правила</StyledLi>
+      <StyledLi>
+        <StyledLink href='#team'> Команда</StyledLink>
+      </StyledLi>
+      <StyledLi>
+        <StyledLink href='#rules'>Правила</StyledLink>
+      </StyledLi>
     </StyledUl>
   );
 };

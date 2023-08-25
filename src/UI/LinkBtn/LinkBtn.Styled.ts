@@ -15,7 +15,6 @@ const StyledButton = styled.button`
   border-radius: 3px;
   background-color: var(--color-white);
   width: 100%;
-  max-width: 380px;
   height: 54px;
 
   &:disabled {
@@ -27,7 +26,7 @@ const StyledButton = styled.button`
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 18px;
-    width: 150px;
+    width: 280px;
   }
 
   @media screen and (min-width: 1023.8px) {

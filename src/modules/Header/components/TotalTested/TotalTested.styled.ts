@@ -14,7 +14,7 @@ const StyledDivWrapper = styled.div`
   width: 100%;
   max-width: 200px;
   height: 40px;
-  padding: 10px 10px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

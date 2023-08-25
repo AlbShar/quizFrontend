@@ -41,7 +41,7 @@ const CallToAction = ({
   return (
     <StyledSection>
       <Container>
-        <Grid container columns={{ xs: 2, md: 12 }}>
+        <Grid container columns={{ xs: 2, md: 12 }} alignItems='center'>
           <Grid item xs={2} md={8} lg={8} xl={6}>
             <StyledCallToAction id='CallToAction'>
               <StyledH1>{t('Тест_для')}</StyledH1>

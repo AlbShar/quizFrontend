@@ -42,6 +42,7 @@ const StyledH2 = styled.h2`
   font: var(--font-text5);
   color: white;
   text-align: left;
+  margin: 24px 0 20px 0;
 
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text4);
@@ -60,12 +61,14 @@ const StyledDiv = styled.div`
   align-items: flex-start;
   flex-direction: column;
 
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 1023.8px) {
     flex-direction: row;
     justify-content: flex-start;
-    gap: 45px;
+    gap: 30px;
     align-items: center;
   }
+
+  
 `;
 
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledH3 = styled.h3`
   color: var(--color-black);
   font: var(--font-text10);
+  margin: 0;
 
 
   @media screen and (min-width: 1023.8px) {
@@ -22,7 +23,11 @@ const StyledArticleWrapper = styled.article`
 const StyledH4 = styled.h4`
   color: var(--color-black);
   font: var(--font-text5);
+  margin: 40px 0 24px 0;
 
+  @media screen and (min-width: 767.8px) {
+    margin: 0 0 24px 0;
+  }
 
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text4);
@@ -43,12 +48,17 @@ const StyledH5 = styled.h5`
 
 const StyledImg = styled.img`
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   left: 0px;
   z-index: 0;
   overflow: visible;
   max-height: 240px;
   width: 100%;
+
+  @media screen and (min-width: 767.8px) {
+    bottom: 30px;
+    transform: scaleY(0.8);
+  }
 
   @media screen and (min-width: 1299.8px) {
     left: -20px;

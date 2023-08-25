@@ -37,7 +37,7 @@ const TestRules = () => {
     },
   ];
   return (
-    <StyledSection>
+    <StyledSection id="rules">
       <Container>
       <StyledArticleWrapper>
         <Grid container columns={{ xs: 2, md: 12, xl: 12 }} spacing={{ md: 3 }}>

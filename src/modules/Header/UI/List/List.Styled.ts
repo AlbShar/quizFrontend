@@ -12,25 +12,43 @@ const StyledUl = styled.ul`
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      font: var(--font-text6);
   }
 
   @media screen and (min-width: 1023.8px) {
-    gap: 54px;
+    gap: 24px;
   }
 }`;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+  color: var(--color-white);
+
+  &:visited {
+    color: var(--color-white);
+  }
+
+  &:hover {
+    color: var(--color-purple);
+  }
+`;
+
 const StyledLi = styled.li`
   cursor: pointer;
-  color: var(--color-white);
   margin: 0 0 13px 0;
 
   @media screen and (min-width: 767.8px) {
     margin: 0;
+    width: 85px;
+    text-align: center;
   }
 
-  &:hover {
-    color: var(--color-purple)
+  @media screen and (min-width: 1023.8px) {
+    margin: 0;
+    width: auto;
   }
+
+ 
 }`;
 
-export { StyledUl, StyledLi };
+export { StyledUl, StyledLi, StyledLink };
