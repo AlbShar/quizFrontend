@@ -64,6 +64,25 @@
   "Напишите": "and write to us about it",
   "Обратная_связь": "Feedback",
   "Команда": "Team",
-  "Правила": "Rules"
+  "Правила": "Rules",
+  "Правила_прохождения": "Test rules",
+  "Ознакомьтесь": "Read the rules for passing the test, choose a direction, and then take the test.",
+  "Вы_можете_вернуться": "You can only go back one question and change your answer.",
+  "На_каждый_вопрос": "There is only one correct answer for each question, multiple choices cannot be selected.",
+  "Тест_состоит": "The test consists of several sections (blocks) with questions of various topics.",
+  "Вы_можете_приостановить": "You can pause time by pressing the 'Pause' button and return to the test at any time.",
+  "Количество_баллов": "Number of points scored",
+  "Время_тест": "Time spent on the test",
+  "Верные_неверные_ответы": "Your correct and incorrect answers",
+  "Пояснения": "Explanations for each answer",
+  "Результаты": "Results",
+  "После_прохождения_тестирования": "After passing the test, information about the test results will be available to you.",
+  "Frontend-разработчик": "Frontend-developer",
+  "Дизайнер": "Designer",
+  "Тестировщик": "QA engineer",
+  "Альберт": "Albert",
+  "Алиса": "Alisa",
+  "Наталья": "Natalia",
+  "Настя": "Anastasia"
 }
   

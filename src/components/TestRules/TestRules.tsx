@@ -18,54 +18,56 @@ import {
 } from './TestRules.Styled';
 
 const TestRules = () => {
+  const { t } = useTranslation();
+
   const data = [
     {
       img: testRule1,
-      text: 'Вы можете вернуться только на один вопрос назад и изменить свой ответ.',
+      text: t('Вы_можете_вернуться'),
     },
     {
       img: testRule2,
-      text: 'На каждый вопрос есть только один правильный ответ, несколько вариантов выбрать нельзя.',
+      text: t('На_каждый_вопрос'),
     },
     {
       img: testRule3,
-      text: 'Тест состоит из нескольких разделов (блоков) с вопросами различной тематики.',
+      text: t('Тест_состоит'),
     },
     {
       img: testRule4,
-      text: 'Вы можете приостановить время, нажав кнопку "Пауза", и в любой момент вернуться к тесту.',
+      text: t('Вы_можете_приостановить'),
     },
   ];
   return (
-    <StyledSection id="rules">
+    <StyledSection id='rules'>
       <Container>
-      <StyledArticleWrapper>
-        <Grid container columns={{ xs: 2, md: 12, xl: 12 }} spacing={{ md: 3 }}>
-          <Grid item xs={2} md={6} xl={6}>
-            <StyledH3>Правила прохождения теста</StyledH3>
+        <StyledArticleWrapper>
+          <Grid
+            container
+            columns={{ xs: 2, md: 12, xl: 12 }}
+            spacing={{ md: 3 }}
+          >
+            <Grid item xs={2} md={6} xl={6}>
+              <StyledH3>{t('Правила_прохождения')}</StyledH3>
+            </Grid>
+            <Grid item xs={2} md={6} xl={6}>
+              <StyledH4>{t('Ознакомьтесь')} </StyledH4>
+            </Grid>
           </Grid>
-          <Grid item xs={2} md={6} xl={6}>
-            <StyledH4>
-              Ознакомьтесь с правилами прохождения теста, выберите направление,
-              а затем пройдите тестирование.
-            </StyledH4>
+          <Grid
+            container
+            columns={{ xs: 2, md: 12, xl: 12 }}
+            spacing={3}
+            alignItems='center'
+          >
+            {data.map((info, index) => {
+              const { text, img } = info;
+              return <Rule text={text} img={img} key={index} />;
+            })}
           </Grid>
-        </Grid>
-        <Grid
-          container
-          columns={{ xs: 2, md: 12, xl: 12 }}
-          spacing={3}
-          alignItems='center'
-        >
-          {data.map((info, index) => {
-            const { text, img } = info;
-            return <Rule text={text} img={img} key={index} />;
-          })}
-        </Grid>
-      </StyledArticleWrapper>
-    </Container>
+        </StyledArticleWrapper>
+      </Container>
     </StyledSection>
-    
   );
 };
 
