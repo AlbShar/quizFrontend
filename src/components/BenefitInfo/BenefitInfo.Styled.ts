@@ -26,7 +26,7 @@ const StyledImg = styled.img`
   z-index: 1;
 
   @media screen and (min-width: 767.8px) {
-    top: 30%;
+    transform: scale(1.25);
   }
 
   @media screen and (min-width: 1299.8px) {
@@ -59,8 +59,12 @@ const StyledSection = styled.section`
 const StyledArticle = styled.article`
   background-color: var(--color-light-gray);
   border-radius: 3px;
-  padding: 40px 10px 30px 10px;
+  padding: 40px 29px 45px 21px;
   margin: 0 0 15px 0;
+
+  @media screen and (min-width: 1023.8px) {
+    padding: 44px 20px 44px 20px;
+  }
 `;
 
 const StyledSpanNumber = styled.span`
@@ -74,7 +78,6 @@ const StyledH4Title = styled.h4`
   color: var(--color-black);
   margin: 0;
   word-wrap: break-word;
-  max-width: 212px;
 
   @media screen and (min-width: 1023.8px) {
     max-width: 100%;
@@ -90,6 +93,11 @@ const StyledPText = styled.p`
   @media screen and (min-width: 767.8px) {
     margin: 0;
     font: var(--font-text5);
+    margin: 40px 0 0 0;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    margin: 0;
   }
 `;
 

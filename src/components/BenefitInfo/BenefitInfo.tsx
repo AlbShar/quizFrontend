@@ -37,7 +37,7 @@ const BenefitInfo = () => {
   return (
     <StyledSection>
       <Container>
-        <Grid container columns={{ xs: 2, md: 12 }}>
+        <Grid container columns={{ xs: 2, md: 6, lg: 12 }}>
           <StyledImg src={img} alt='image' />
           <StyledArticleWrapper>
             <StyledH3>Что вы получите?</StyledH3>
@@ -74,13 +74,13 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
         container
         spacing={1}
         direction='row'
-        columns={{ xs: 2, md: 12, lg: 12 }}
+        columns={{ xs: 2, md: 6, lg: 12 }}
         alignItems='center'
       >
-        <Grid item md={1} lg={0.7}>
+        <Grid item  md={0.7} lg={0.7}>
           <StyledSpanNumber>{fullNumb}</StyledSpanNumber>
         </Grid>
-        <Grid item md={5.15} lg={5.45}>
+        <Grid item xs md lg={5.45}>
           <StyledH4Title>{title}</StyledH4Title>
         </Grid>
         <Grid item xs={2} md={5.5} lg={5}>

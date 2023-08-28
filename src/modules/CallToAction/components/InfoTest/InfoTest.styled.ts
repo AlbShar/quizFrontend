@@ -28,8 +28,8 @@ const StyledUl = styled.ul`
 `;
 
 const StyledImg = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   margin: 0 8px 0 0;
 `;
 

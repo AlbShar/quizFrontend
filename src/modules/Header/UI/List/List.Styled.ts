@@ -10,14 +10,17 @@ const StyledUl = styled.ul`
 
   @media screen and (min-width: 767.8px) {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
       font: var(--font-text6);
   }
 
   @media screen and (min-width: 1023.8px) {
     gap: 24px;
+    flex-direction: row;
   }
+
 }`;
 
 const StyledLink = styled.a`
@@ -39,8 +42,9 @@ const StyledLi = styled.li`
 
   @media screen and (min-width: 767.8px) {
     margin: 0;
-    width: 85px;
-    text-align: center;
+    width: 100%;
+    text-align: left;
+
   }
 
   @media screen and (min-width: 1023.8px) {

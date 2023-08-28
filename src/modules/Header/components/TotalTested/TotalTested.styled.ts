@@ -12,7 +12,7 @@ const StyledSpanNumber = styled.span`
 const StyledDivWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
-  max-width: 200px;
+  width: 200px;
   height: 40px;
   padding: 5px;
   display: flex;
@@ -23,6 +23,10 @@ const StyledDivWrapper = styled.div`
   gap: 8px;
   background-color: var(--color-dark);
   color: #000000;
+
+  @media screen and (min-width: 767.8px) {
+    width: 268px;
+  }
 `;
 
 export { StyledSpanText, StyledSpanNumber, StyledDivWrapper };

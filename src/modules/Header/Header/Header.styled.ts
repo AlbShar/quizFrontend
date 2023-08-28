@@ -6,6 +6,7 @@ type FlexWrapper = {
 
 const StyledFlexTopHeader = styled.article<FlexWrapper>`
   display: flex;
+
   align-items: center;
   justify-content: space-between;
   gap: ${({ gap }) => (gap ? gap + 'px' : '')};
@@ -27,6 +28,7 @@ const StyledFlexBottomHeader = styled.article<FlexWrapper>`
   align-items: center;
   justify-content: space-between;
   gap: ${({ gap }) => (gap ? gap + 'px' : '')};
+  margin-top: 13px;
 
   &:not(: last-child) {
     margin: 0 0 13px 0;
@@ -34,18 +36,20 @@ const StyledFlexBottomHeader = styled.article<FlexWrapper>`
 
   @media screen and (min-width: 767.8px) {
     align-items: stretch;
-  }
-
-  @media screen and (min-width: 1023.8px) {
+    margin: 0;
     gap: 27px;
   }
+
 `;
 
 const StyledFlexSection = styled.section<FlexWrapper>`
+  position: relative;
+
   @media screen and (min-width: 767.8px) {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 62px;
   }
 `;
 
@@ -53,7 +57,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   background: var(--color-dark);
   width: 100%;
-  padding: 30px 0;
+  padding: 30px 0 0 0 ;
 }
 
 `;
@@ -66,9 +70,10 @@ const StyledListWrapper = styled.div`
   }
 }`;
 
-
-
 const StyledImg = styled.img`
+  position: absolute;
+  top: 12px;
+  right: 0;
   width: 24px;
   height: 24px;
   cursor: pointer;

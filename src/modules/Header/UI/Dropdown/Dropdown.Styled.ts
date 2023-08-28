@@ -12,7 +12,7 @@ const StyledButton = styled.button<TProps>`
   gap: 3px;
   cursor: pointer;
   border: none;
-  border-radius: 7px;
+  border-radius: 3px;
   padding: 8px 5px;
   text-align: center;
   height: 100%;
@@ -20,9 +20,10 @@ const StyledButton = styled.button<TProps>`
   background-color: ${({ isClickButton }) =>
     isClickButton ? 'var(--color-purple)' : 'var(--color-white)'};
 
-  @media screen and (min-width: 1023.8px) {
+  @media screen and (min-width: 767.8px) {
     width: 91px;
   }
+
 `;
 
 const StyledSpan = styled.span<TProps>`

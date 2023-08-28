@@ -27,7 +27,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   const [isShowBurger, setShowBurger] = useState(true);
   const [isShowMenu, setShowMenu] = useState(false);
   const handleResize = () => {
-    if (window.innerWidth > 767.8) {
+    if (window.innerWidth > 1023.8) {
       setShowBurger(false);
     } else {
       setShowBurger(true);
@@ -44,7 +44,6 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   }, []);
 
   const onClickBurgerMenu = () => {
-    setShowBurger(false);
     setShowMenu(true);
   };
 
@@ -58,7 +57,6 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
       <StyledHeader>
         <Container>
           <StyledFlexSection>
-            <StyledFlexTopHeader>
               <Logo location='header' />
               {isShowBurger ? (
                 <StyledImg
@@ -72,7 +70,6 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
                   <Menu onClickCloseBtn={onClickCloseBtn} />
                 </Portal>
               )}
-            </StyledFlexTopHeader>
             <StyledFlexBottomHeader>
               <TotalTested isChooseProfession={isChooseProfession} />
               <DropdownLanguages />

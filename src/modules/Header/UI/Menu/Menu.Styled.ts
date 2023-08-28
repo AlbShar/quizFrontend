@@ -6,10 +6,16 @@ const StyledArticle = styled.article`
   box-sizing: border-box;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
-  background-color: var(--color-dark);
+  background-color: var(--color-purple);
   padding: 31px 20px 34px 25px;
+
+   @media screen and (min-width: 767.8px) {
+    width: 200px;
+    right: 0;
+    top: 30px;
+  }
 }`;
 
 export {  StyledArticle };

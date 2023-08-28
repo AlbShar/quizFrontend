@@ -26,11 +26,11 @@ const StyledButton = styled.button`
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 18px;
-    width: 280px;
+    // width: 280px;
   }
 
   @media screen and (min-width: 1023.8px) {
-    width: 197px;
+    // width: 197px;
   }
 `;
 

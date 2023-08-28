@@ -25,11 +25,11 @@ const StyledH1 = styled.h1`
   color: var(--color-white);
   padding: 0;
   margin: 0;
-  text-align: center;
-  padding: 30px 0 0 0;
+  text-align: left;
+  padding: 81px 0 0 0;
 
   @media screen and (min-width: 767.8px) {
-    text-align: left;
+    padding: 87px 0 0 0;
   }
 
   @media screen and (min-width: 1023.8px) {
@@ -44,14 +44,26 @@ const StyledH2 = styled.h2`
   text-align: left;
   margin: 24px 0 20px 0;
 
+  @media screen and (min-width: 767.8px) {
+    margin: 40px 0 54px 0;
+  }
+
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text4);
   }
 `;
 
 const StyledImg = styled.img`
+  width: 100%;
+  height: auto;
+
+  @media screen and (min-width: 767.8px) {
+    width: 578px;
+  }
+
+  @media screen and (min-width: 1023.8px) {
     width: 100%;
-    height: auto;
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -61,10 +73,10 @@ const StyledDiv = styled.div`
   align-items: flex-start;
   flex-direction: column;
 
-  @media screen and (min-width: 1023.8px) {
+  @media screen and (min-width: 767.8px) {
     flex-direction: row;
     justify-content: flex-start;
-    gap: 30px;
+    gap: 35px;
     align-items: center;
   }
 
