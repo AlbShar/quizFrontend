@@ -40,6 +40,7 @@ const StyledH5 = styled.h5`
   font: var(--font-text6-regular);
   text-align: center;
   margin: 0;
+  padding: 0;
 
   @media screen and (min-width: 1024.8px) {
     font: var(--font-text6-regular);
@@ -69,22 +70,24 @@ const StyledImg = styled.img`
 
 
 const StyledArticle = styled.article`
+  box-sizing: border-box;
   position: relative;
   z-index: 1;
-  box-sizing: border-box;
+  width: 290px;
   border-radius: 80px;
   border: 2px solid var(--color-purple);
   background: var(--color-white);
   text-align: center;
-  padding: 19px 17px;
+  padding: 19px 13px;
   height: 60px;
   margin: 0;
 
   &:not(:last-child) {
     margin: 0 0 6px 0;
   }
+
   &#result3 {
-    padding: 19px 5px;
+    padding: 19px 2px;
   }
 
   @media screen and (min-width: 1023.8px) {

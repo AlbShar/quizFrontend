@@ -20,6 +20,7 @@ const StyledH3 = styled.h3`
   max-width: 403px;
   color: var(--color-black);
   text-align: left;
+  margin: 74px 0 40px 0;
 
   @media screen and (min-width: 767.8px) {
     text-align: left;

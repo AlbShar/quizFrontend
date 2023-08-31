@@ -33,9 +33,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledSpan = styled.span<{ customStyle?: string }>`
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 700;
+  font:var(--font-text6);
   display: inline-block;
   ${(props) => props.customStyle || ''};
 

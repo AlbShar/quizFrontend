@@ -72,12 +72,12 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
     <StyledArticle>
       <Grid
         container
-        spacing={1}
         direction='row'
         columns={{ xs: 2, md: 6, lg: 12 }}
         alignItems='center'
+        columnSpacing={{xs:2}}
       >
-        <Grid item  md={0.7} lg={0.7}>
+        <Grid item md={0.7} lg={0.7}>
           <StyledSpanNumber>{fullNumb}</StyledSpanNumber>
         </Grid>
         <Grid item xs md lg={5.45}>

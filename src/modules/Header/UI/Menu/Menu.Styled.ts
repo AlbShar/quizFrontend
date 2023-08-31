@@ -8,7 +8,7 @@ const StyledArticle = styled.article`
   top: 0;
   right: 0;
   width: 100%;
-  background-color: var(--color-purple);
+  background-color: var(--color-dark);
   padding: 31px 20px 34px 25px;
 
    @media screen and (min-width: 767.8px) {

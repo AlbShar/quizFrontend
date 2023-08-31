@@ -56,6 +56,8 @@ const StyledH2 = styled.h2`
 const StyledImg = styled.img`
   width: 100%;
   height: auto;
+  transform: translateY(4px);
+  margin: 36px 0 0 0;
 
   @media screen and (min-width: 767.8px) {
     width: 578px;

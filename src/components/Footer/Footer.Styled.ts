@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledFooter = styled.footer`
   box-sizing: border-box;
   background-color: var(--color-dark);
-  padding: 16px;
+  padding: 28px 0 170px;
   margin: 10px 0 0 0;
 
   @media screen and (min-width: 1023.8px) {
@@ -51,6 +51,7 @@ const StyledDivName = styled.div`
 
 const StyledLink = styled.a`
   text-decoration: none;
+  font: var(--font-text7);
 
   &:visited {
     color: var(--color-white);
@@ -95,6 +96,7 @@ const StyledLi = styled.li`
     }
   }
 `;
+
 
 export {
   StyledFooter,

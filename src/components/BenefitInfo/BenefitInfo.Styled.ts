@@ -13,8 +13,6 @@ const StyledH3 = styled.h3`
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text2);
   }
-
- 
 `;
 
 const StyledImg = styled.img`
@@ -59,8 +57,11 @@ const StyledSection = styled.section`
 const StyledArticle = styled.article`
   background-color: var(--color-light-gray);
   border-radius: 3px;
-  padding: 40px 29px 45px 21px;
-  margin: 0 0 15px 0;
+  padding: 40px 0 32px 16px;
+
+  &:not(:nth-child(4)) {
+    margin: 0 0 15px 0;
+  }
 
   @media screen and (min-width: 1023.8px) {
     padding: 44px 20px 44px 20px;

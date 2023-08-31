@@ -9,7 +9,7 @@ const StyledUl = styled.ul`
   box-sizing: border-box;
   list-style-type: none;
   margin: 26px 0 0 0;
-  padding: 8px 12px;
+  padding: 14px 27px;
   border-radius: 3px;
   background-color: var(--color-gray);
   min-height: 48px;
@@ -41,7 +41,7 @@ const StyledLi = styled.li`
   align-items: center;
 
   &:not(:last-child) {
-    margin-bottom: 5px;
+    margin: 0 0 16px 0;
   }
 
   @media screen and (min-width: 767.8px) {

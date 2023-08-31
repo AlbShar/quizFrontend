@@ -47,10 +47,7 @@ const StyledP = styled.p`
 
 const StyleImg = styled.img`
   display: block;
-  margin: 0 auto;
-  width: 184px;
-  height: 97px;
-  
+  margin: 0 auto;  
 `;
 
 const StyledArticle = styled.article`

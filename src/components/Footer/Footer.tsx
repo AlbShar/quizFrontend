@@ -38,16 +38,17 @@ const Footer = () => {
       name: t('Наталья'),
       link: 'https://t.me/Nattalia_nat',
     },
-    {
-      profession: t('Тестировщик'),
-      name: t('Настя'),
-      link: 'https://t.me/nastya_botsul',
-    },
   ];
 
   const elementsInfoMiddleFooter = team.map((item, index) => {
     return (
-      <Grid item xs={(index === 0 || index === 2) ? 1.2 : 0.8 } md={3} lg={2} xl='auto'>
+      <Grid
+        item
+        xs={index === 0 || index === 2 ? 1.2 : 0.8}
+        md={3}
+        lg={2}
+        xl='auto'
+      >
         <StyledLi key={index + 1}>
           <StyledLink href={item.link} target='_blank'>
             <StyledDivProfession> {item.profession}</StyledDivProfession>
@@ -67,23 +68,23 @@ const Footer = () => {
           alignItems='center'
           direction='row'
         >
-          <Grid item xs={1.3} md={3} xl={2}>
+          <Grid item xs={1} md={3} xl={2}>
             <Logo location='footer' />
           </Grid>
           <Grid item xs md={6} xl={4}>
-            <Grid container flexDirection='row' columns={{ xs: 1, md: 6 }}>
+            <Grid
+              container
+              flexDirection='row'
+              columns={{ xs: 1, md: 6 }}
+              rowSpacing={2}
+            >
               <Grid item xs={1} md={3}>
                 <Feedback />
               </Grid>
               <Grid item xs={1} md={3}>
-                <div
-                  style={{
-                    color: 'white',
-                    font: 'var(--font-text7)',
-                  }}
-                >
+                <StyledLink href='#startTest' >
                   Начать тест
-                </div>
+                </StyledLink>
               </Grid>
             </Grid>
           </Grid>
@@ -94,7 +95,7 @@ const Footer = () => {
               justifyContent='center'
               alignItems='center'
             >
-              <StyledNav id="team">
+              <StyledNav id='team'>
                 <StyledUl>
                   <Grid
                     container
