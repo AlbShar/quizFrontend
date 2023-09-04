@@ -57,7 +57,7 @@ const TestRules = () => {
           <Grid
             container
             columns={{ xs: 2, md: 12, xl: 12 }}
-            spacing={3}
+            spacing={1.875}
             alignItems='center'
           >
             {data.map((info, index) => {

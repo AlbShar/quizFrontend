@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledH3 = styled.h3`
   color: var(--color-black);
-  margin: 0;
+  margin: 10px 0 0 0;
   font: var(--font-text10);
   text-align: left;
 
@@ -15,7 +15,7 @@ const StyledH4 = styled.h4`
   text-align: left;
   font: var(--font-text5);
   color: var(--color-black);
-  margin: 40px 0 24px 0;
+  margin: 45px 0 24px 0;
 
   @media screen and (min-width: 767.8px) {
     margin: 0 0 64px 0;
@@ -54,7 +54,7 @@ const StyledArticle = styled.article`
   box-sizing: border-box;  
   background-color: var(--color-white);
   padding: 25px 20px;
-  height: 276px
+  height: 276px;
 
   &:not(:last-child) {
     margin: 0 0 15px 0;

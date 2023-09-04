@@ -3,8 +3,7 @@ import styled from 'styled-components';
 const StyledH3 = styled.h3`
   color: var(--color-black);
   font: var(--font-text10);
-  margin: 0;
-
+  margin: 5px 0 0 0;
 
   @media screen and (min-width: 1023.8px) {
     font: var(--font-text2);
@@ -88,6 +87,10 @@ const StyledArticle = styled.article`
 
   &#result3 {
     padding: 19px 2px;
+  }
+
+  @media screen and (min-width: 459.8px) {
+    width: 100%;
   }
 
   @media screen and (min-width: 1023.8px) {

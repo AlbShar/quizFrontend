@@ -39,7 +39,7 @@ const ResultsInfo = () => {
           <Grid
             container
             columns={{ xs: 2, md: 12 }}
-            rowSpacing={1}
+            rowSpacing={0.75}
             columnSpacing={{ md: 1 }}
           >
             {texts.map((text, index) => {

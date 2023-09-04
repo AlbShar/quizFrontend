@@ -4,9 +4,9 @@ const StyledH3 = styled.h3`
   color: var(--color-black);
   font: var(--font-text10);
   text-align: center;
-  margin: 60px 0 30px 0;
+  margin: 65px 0 30px 0;
 
-  @media screen and (min-width: 767.8px) {
+  @media screen and (min-width: 459.8px) {
     text-align: left;
   }
 

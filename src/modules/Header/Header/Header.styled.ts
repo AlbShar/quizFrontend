@@ -57,7 +57,8 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   background: var(--color-dark);
   width: 100%;
-  padding: 30px 0 0 0 ;
+  padding: 19px 0 0 0 ;
+
 }
 
 `;

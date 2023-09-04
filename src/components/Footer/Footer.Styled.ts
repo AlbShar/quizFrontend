@@ -3,12 +3,7 @@ import styled from 'styled-components';
 const StyledFooter = styled.footer`
   box-sizing: border-box;
   background-color: var(--color-dark);
-  padding: 28px 0 170px;
-  margin: 10px 0 0 0;
-
-  @media screen and (min-width: 1023.8px) {
-    margin: 30px 0 0 0;
-  }
+  padding: 20px 0 170px;
 
   @media screen and (min-width: 1299.8px) {
     padding: 34px 0 100px 0;
@@ -52,6 +47,7 @@ const StyledDivName = styled.div`
 const StyledLink = styled.a`
   text-decoration: none;
   font: var(--font-text7);
+  
 
   &:visited {
     color: var(--color-white);
@@ -63,7 +59,7 @@ const StyledLink = styled.a`
 `;
 
 const StyledNav = styled.nav`
-  margin: 20px 0 0 0;
+  margin: 35px 0 0 0;
   width: 100%;
 
   @media screen and (min-width: 1299.8px) {

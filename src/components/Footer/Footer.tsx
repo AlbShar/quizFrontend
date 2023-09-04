@@ -44,7 +44,7 @@ const Footer = () => {
     return (
       <Grid
         item
-        xs={index === 0 || index === 2 ? 1.2 : 0.8}
+        xs={index === 0 || index === 2 ? 1.4 : 0.6}
         md={3}
         lg={2}
         xl='auto'
@@ -68,7 +68,7 @@ const Footer = () => {
           alignItems='center'
           direction='row'
         >
-          <Grid item xs={1} md={3} xl={2}>
+          <Grid item xs={1.18} md={3} xl={2}>
             <Logo location='footer' />
           </Grid>
           <Grid item xs md={6} xl={4}>
@@ -76,7 +76,7 @@ const Footer = () => {
               container
               flexDirection='row'
               columns={{ xs: 1, md: 6 }}
-              rowSpacing={2}
+              rowSpacing={2.5}
             >
               <Grid item xs={1} md={3}>
                 <Feedback />
@@ -101,7 +101,7 @@ const Footer = () => {
                     container
                     columns={{ xs: 2, md: 12, xl: 6 }}
                     columnSpacing={{ xs: 3, xl: 5 }}
-                    rowSpacing={{ xs: 3 }}
+                    rowSpacing={4}
                   >
                     {elementsInfoMiddleFooter}
                   </Grid>

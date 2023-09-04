@@ -4,7 +4,7 @@ const StyledP = styled.p`
   font: var(--font-text5);
   color: var(--color-black);
   text-align: left;
-  margin: 0 0 18px 0;
+  margin: 0 0 10px 0;
 
   &:last-child {
     margin: 0;
@@ -20,7 +20,7 @@ const StyledH3 = styled.h3`
   max-width: 403px;
   color: var(--color-black);
   text-align: left;
-  margin: 74px 0 40px 0;
+  margin: 60px 0 40px 0;
 
   @media screen and (min-width: 767.8px) {
     text-align: left;
@@ -33,7 +33,9 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledImg = styled.img`
-  transform: translateY(32px);
+  position: absolute;
+  bottom: -40px;
+  left: 20px;
   z-index: 3;
   @media screen and (min-width: 767.8px) {
     position: absolute;
@@ -48,8 +50,6 @@ const StyledImg = styled.img`
   }
 `;
 const StyledArticle = styled.article`
-  position: relative;
-
   @media screen and (min-width: 767.8px) {
     padding: 30px 0 35px 0;
   }
@@ -62,6 +62,7 @@ const StyledArticle = styled.article`
 const StyledSection = styled.section`
   position: relative;
   background-color: var(--color-white);
+  padding: 0 0 183px 0;
   
 `;
 

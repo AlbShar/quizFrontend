@@ -5,11 +5,11 @@ const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
   width: 100%;
-  max-width: 280px;
 
-  @media screen and (min-width: 1023.8px) {
-    width: auto;
+  @media screen and (min-width: 767.8px) {
+    width: 248px;
   }
+
 `;
 
 

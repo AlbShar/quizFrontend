@@ -9,7 +9,7 @@ const StyledUl = styled.ul`
   box-sizing: border-box;
   list-style-type: none;
   margin: 26px 0 0 0;
-  padding: 14px 27px;
+  padding: 20px 27px;
   border-radius: 3px;
   background-color: var(--color-gray);
   min-height: 48px;

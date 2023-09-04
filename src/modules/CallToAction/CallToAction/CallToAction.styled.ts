@@ -26,7 +26,8 @@ const StyledH1 = styled.h1`
   padding: 0;
   margin: 0;
   text-align: left;
-  padding: 81px 0 0 0;
+  padding: 75px 0 0 0;
+  line-height: 36px;
 
   @media screen and (min-width: 767.8px) {
     padding: 87px 0 0 0;
@@ -54,10 +55,10 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledImg = styled.img`
-  width: 100%;
-  height: auto;
   transform: translateY(4px);
-  margin: 36px 0 0 0;
+  margin: 10px 0 0 0;
+  width: 285px;
+  height: 249px;
 
   @media screen and (min-width: 767.8px) {
     width: 578px;
