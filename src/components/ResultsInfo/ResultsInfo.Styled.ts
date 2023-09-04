@@ -41,7 +41,7 @@ const StyledH5 = styled.h5`
   margin: 0;
   padding: 0;
 
-  @media screen and (min-width: 1024.8px) {
+  @media screen and (min-width: 1023.8px) {
     font: var(--font-text6-regular);
   }
 `;

@@ -43,10 +43,10 @@ const CallToAction = ({
       <Container>
         <Grid
           container
-          columns={{ xs: 2, md: 6, lg: 12, xl: 12 }}
+          columns={{ xs: 2, md: 12, lg: 12, xl: 12 }}
           alignItems='center'
         >
-          <Grid item xs={2} md={6} lg={8} xl={6}>
+          <Grid item xs={2} md={12} lg={8} xl={8}>
             <StyledCallToAction id='CallToAction'>
               <StyledH1>{t('Тест_для')}</StyledH1>
               <InfoTest
@@ -65,7 +65,7 @@ const CallToAction = ({
               </StyledDiv>
             </StyledCallToAction>
           </Grid>
-          <Grid item xs={2} md={6} lg={4} xl={6}>
+          <Grid item xs={2} md={12}>
             <StyledImg src={require('../icons/img1.png')} alt='img' />
           </Grid>
         </Grid>

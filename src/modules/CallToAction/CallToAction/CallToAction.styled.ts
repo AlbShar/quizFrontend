@@ -16,6 +16,14 @@ const StyledCallToAction = styled.article`
 
 const StyledSection = styled.section`
   background-color: var(--color-dark);
+
+  @media screen and (min-width: 1023.8px) {
+    position: relative;
+  }
+
+  @media screen and (min-width: 1023.8px) {
+    position: relative;
+  }
 `;
 
 
@@ -31,11 +39,13 @@ const StyledH1 = styled.h1`
 
   @media screen and (min-width: 767.8px) {
     padding: 87px 0 0 0;
+    font: var(--font-text1);
+    line-height: 37.5px;
   }
 
   @media screen and (min-width: 1023.8px) {
-    font: var(--font-text1);
     line-height: 40px;
+    padding: 146px 0 0 0;
   }
 `;
 
@@ -62,10 +72,21 @@ const StyledImg = styled.img`
 
   @media screen and (min-width: 767.8px) {
     width: 578px;
+    height: 505px;
   }
 
   @media screen and (min-width: 1023.8px) {
-    width: 100%;
+    position: absolute;
+    transform: scale(0.7);
+    bottom: -80px;
+    right: -80px;
+  }
+
+  @media screen and (min-width: 1299.8px) {
+    transform: scale(1);
+    width: 578px;
+    height: 505px;
+    bottom:  0px;
   }
 `;
 
@@ -83,7 +104,13 @@ const StyledDiv = styled.div`
     align-items: center;
   }
 
-  
+  @media screen and (min-width: 1023.8px) {
+    margin: 0 0 70px 0;
+  }
+
+  @media screen and (min-width: 1299.8px) {
+    margin: 0 0 149px 0;
+  }
 `;
 
 

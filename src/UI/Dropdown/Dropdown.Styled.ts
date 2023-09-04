@@ -5,10 +5,8 @@ const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
   width: 100%;
-
-  @media screen and (min-width: 767.8px) {
-    width: 248px;
-  }
+  max-width: 300px;
+  
 
 `;
 
@@ -27,9 +25,7 @@ const StyledButton = styled.button`
   width: 100%;
   color: #fff;
 
-  @media screen and (min-width: 767.8px) {
-    width: 280px;
-  }
+
 `;
 
 const StyledSpan = styled.span<{ customStyle?: string }>`

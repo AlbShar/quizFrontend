@@ -11,15 +11,16 @@ const StyledUl = styled.ul`
   @media screen and (min-width: 767.8px) {
       display: flex;
       justify-content: center;
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
       font: var(--font-text6);
   }
 
   @media screen and (min-width: 1023.8px) {
-    gap: 24px;
+    gap: 35px;
     flex-direction: row;
   }
+
 
 }`;
 
@@ -43,7 +44,7 @@ const StyledLi = styled.li`
   @media screen and (min-width: 767.8px) {
     margin: 0;
     width: 100%;
-    text-align: left;
+    text-align: center;
 
   }
 

@@ -41,9 +41,10 @@ const StyledImg = styled.img`
     position: absolute;
     transform: translateY(0);
     bottom: -35px;
+    left: 50px;
   }
 
-  @media screen and (min-width: 1299.8px) {
+  @media screen and (min-width: 1023.8px) {
     width: 257px;
     height: 389px;
     bottom: -60px;
@@ -54,8 +55,8 @@ const StyledArticle = styled.article`
     padding: 30px 0 35px 0;
   }
 
-  @media screen and (min-width: 1299.8px) {
-    padding: 90px 0 150px 0;
+  @media screen and (min-width: 1023.8px) {
+    padding: 90px 0 0 0;
   }
 `;
 
@@ -63,7 +64,10 @@ const StyledSection = styled.section`
   position: relative;
   background-color: var(--color-white);
   padding: 0 0 183px 0;
-  
+
+  @media screen and (min-width: 767.8px) {
+    padding: 0 0 148px 0;
+  }
 `;
 
 export { StyledP, StyledH3, StyledImg, StyledArticle, StyledSection };

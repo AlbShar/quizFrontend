@@ -51,6 +51,14 @@ const StyledFlexSection = styled.section<FlexWrapper>`
     align-items: center;
     gap: 62px;
   }
+
+  @media screen and (min-width: 1023.8px) {
+    gap: 150px;
+  }
+
+  @media screen and (min-width: 1299.8px) {
+    gap: 130px;
+  }
 `;
 
 const StyledHeader = styled.header`
@@ -79,7 +87,7 @@ const StyledImg = styled.img`
   height: 24px;
   cursor: pointer;
 
-  @media screen and (min-width: 1023.8px) {
+  @media screen and (min-width: 1299.8px) {
     display: none;
   }
 }`;

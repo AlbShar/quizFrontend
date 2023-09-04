@@ -27,7 +27,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   const [isShowBurger, setShowBurger] = useState(true);
   const [isShowMenu, setShowMenu] = useState(false);
   const handleResize = () => {
-    if (window.innerWidth > 1023.8) {
+    if (window.innerWidth > 1299.8) {
       setShowBurger(false);
     } else {
       setShowBurger(true);

@@ -11,7 +11,7 @@ const StyledArticle = styled.article`
   background-color: var(--color-dark);
   padding: 31px 20px 34px 25px;
 
-   @media screen and (min-width: 767.8px) {
+   @media screen and (min-width: 1299.8px) {
     width: 200px;
     right: 0;
     top: 30px;
