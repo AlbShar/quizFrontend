@@ -45,7 +45,7 @@ const StyledH1 = styled.h1`
 
   @media screen and (min-width: 1023.8px) {
     line-height: 40px;
-    padding: 146px 0 0 0;
+    padding: 137px 0 0 0;
   }
 `;
 

@@ -44,7 +44,7 @@ const Footer = () => {
     return (
       <Grid
         item
-        xs={index === 0 || index === 2 ? 1.4 : 0.6}
+        xs={index === 0 || index === 2 ? 1.35 : 0.3}
         md={3}
         lg={2}
         xl='auto'
