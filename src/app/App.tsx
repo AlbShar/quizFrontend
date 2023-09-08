@@ -1,6 +1,4 @@
-import MyRoutes from './router/router';
+import { Routes } from './router';
 import { withProviders } from './providers';
 
-const app2 = withProviders(MyRoutes);
-
-export default app2;
+export const App = withProviders(Routes);

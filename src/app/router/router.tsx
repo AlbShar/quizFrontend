@@ -15,7 +15,7 @@ const Results = lazy(() => import('../../pages/Results/Results'));
 const Page404 = lazy(() => import('../../pages/Page404/Page404'));
 
 
-const MyRoutes = () => {
+export const MyRoutes = () => {
     const [isChooseProfession, setChooseProfession] = useState<boolean>(false);
 
 
@@ -61,4 +61,3 @@ const MyRoutes = () => {
   );
 };
 
-export default MyRoutes;

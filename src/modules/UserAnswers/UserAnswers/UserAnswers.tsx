@@ -15,6 +15,7 @@ import filterByThemes from '../helpers/filterByThemes';
 import getThemes from '../helpers/getThemes';
 import getPointsByThemes from '../helpers/getPointsByThemes';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
+import { transformQuestionsAndAnswersDB } from '../helpers/transformQuestionsAndAnswersDB';
 
 import {
   StyledLi,
@@ -38,7 +39,7 @@ import type { TPointsByThemes } from '../../../types/types';
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
-const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
+const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
@@ -82,8 +83,6 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
                 borderRadius: 10,
                 border: `1px solid ${color}`,
               };
-              console.log(descr.startsWith('http'))
-
               return (
                 <StyledListAnswers style={className} key={id}>
                   <StyledUl>
@@ -144,56 +143,6 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
   };
   const content = !(isLoading || isError) ? view() : null;
 
-  const transformUserAnswers = (res: TAnswersDB) => {
-    const updateUserAnswers = Object.fromEntries(
-      Object.entries(res).map(([key, value]) => [
-        getNumberFromKey(key),
-        { point: value.point, userAnswer: value.userAnswer },
-      ]),
-    );
-    return updateUserAnswers;
-  };
-
-  const transformData = (
-    res: TAnswerOptionsLangDB | TInfoQuiestionsDB,
-    lang: string,
-  ) => {
-    const updateAnswerOptions = Object.fromEntries(
-      Object.entries(res).map(([key, value]) => [
-        getNumberFromKey(key),
-        value[`${lang}`],
-      ]),
-    );
-    return updateAnswerOptions;
-  };
-
-  const transformQuestionsAndAnswersDB = (
-    res: (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[],
-  ) => {
-    const [userAnswers, answerOptions, infoQuestions] = res;
-
-
-    const data = {
-      userAnswers: transformUserAnswers(userAnswers as TAnswersDB),
-      answerOptions: transformData(answerOptions as TAnswerOptionsLangDB, lang),
-      infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB, lang),
-    };
-
-
-
-    const generalInfo = {};
-
-    for (const key in data.infoQuestions) {
-      generalInfo[key] = {
-        ...data.infoQuestions[key],
-        userAnswer: data.userAnswers[key],
-        answerOptions: data.answerOptions[key],
-      };
-    }
-
-    setInfoQuestionsAndAnswers(generalInfo);
-    setIsLoading(false);
-  };
 
   const onError = (error: any): never => {
     setIsError(true);
@@ -215,11 +164,14 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
       getAnswerOptions(),
       getInfoQuestions(),
     ])
-      .then((value) =>
-        transformQuestionsAndAnswersDB(
-          value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[],
-        ),
+      .then((value) =>  transformQuestionsAndAnswersDB(
+          value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[], lang
+        )
       )
+      .then((generalInfo) => {
+        setInfoQuestionsAndAnswers(generalInfo as TInfoQuestionsAndAnswers);
+        setIsLoading(false);
+      })
       .catch(onError);
   }, [lang]);
 
