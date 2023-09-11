@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../../app/store/index';
 
 import Container from '../../../components/Container/Container';
 import FilterByRight from '../components/FilterByRight/FilterByRight';
@@ -16,6 +18,7 @@ import getThemes from '../helpers/getThemes';
 import getPointsByThemes from '../helpers/getPointsByThemes';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 import { transformQuestionsAndAnswersDB } from '../helpers/transformQuestionsAndAnswersDB';
+import {fetchUserAnswer} from "../userAnswersSlice";
 
 import {
   StyledLi,
@@ -33,13 +36,24 @@ import type {
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
   TQuestionAndAnswer,
+  TInitialState
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
 
 type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
-const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
+
+
+export const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
+  
+  const { userAnswersLoadingStatus, userAnswers } = useSelector(
+    (state: RootState) => state.userAnswersReducer,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+
+
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
@@ -159,20 +173,7 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
   };
 
   useEffect(() => {
-    Promise.all([
-      getUserAnswers(idUser),
-      getAnswerOptions(),
-      getInfoQuestions(),
-    ])
-      .then((value) =>  transformQuestionsAndAnswersDB(
-          value as (TAnswersDB | TAnswerOptionsLangDB | TInfoQuiestionsDB)[], lang
-        )
-      )
-      .then((generalInfo) => {
-        setInfoQuestionsAndAnswers(generalInfo as TInfoQuestionsAndAnswers);
-        setIsLoading(false);
-      })
-      .catch(onError);
+    dispatch(fetchUserAnswer());
   }, [lang]);
 
   useEffect(() => {
@@ -200,4 +201,3 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
   );
 };
 
-export default UserAnswers;

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { StyledMain } from '../../styles/Main.Styled';
-import UserAnswers from '../../modules/UserAnswers';
+import {UserAnswers} from '../../modules/UserAnswers';
 import Container from '../../components/Container/Container';
 import DoughuntChart from '../../components/DoughuntChart/DoughuntChart';
 import Score from '../../modules/Score/index';

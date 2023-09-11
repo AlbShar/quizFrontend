@@ -1,19 +1,23 @@
 import {
   createSlice,
   createAsyncThunk,
-  createEntityAdapter,
 } from '@reduxjs/toolkit';
+
+import { getValueFromLocalStorage } from '../../helpers/getValueFromLocalStorage';
+
+import { transformQuestionsAndAnswersDB } from './helpers/transformQuestionsAndAnswersDB';
 import { getAnswerOptions } from './api/getAnswerOptions';
 import { getUserAnswers } from './api/getUserAnswers';
 import { getInfoQuestions } from './api/getInfoQuestions';
-import { getValueFromLocalStorage } from '../../helpers/getValueFromLocalStorage';
-import { transformQuestionsAndAnswersDB } from './helpers/transformQuestionsAndAnswersDB';
 
-const userAnswersAdapter = createEntityAdapter();
+import type {  TInitialState } from './types/types';
 
-const initialState = userAnswersAdapter.getInitialState({
+
+
+const initialState: TInitialState = {
   userAnswersLoadingStatus: 'idle',
-});
+  userAnswers: [],
+};
 
 export const fetchUserAnswer = createAsyncThunk(
   'userAnswers/fetchUserAnswers',
@@ -25,7 +29,7 @@ export const fetchUserAnswer = createAsyncThunk(
     ]).then((value) =>
       transformQuestionsAndAnswersDB(
         value as any,
-        getValueFromLocalStorage('language'),
+        getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2)
       ),
     );
   },
@@ -38,8 +42,8 @@ const userAnswersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserAnswer.fulfilled, (state, action) => {
-        state.userAnswersLoadingStatus = 'idle';
-        userAnswersAdapter.setAll(state, action.payload);
+        state.userAnswersLoadingStatus = 'success';
+        state.userAnswers = action.payload;
       })
       .addCase(fetchUserAnswer.pending, (state) => {
         state.userAnswersLoadingStatus = 'loading';
@@ -51,3 +55,5 @@ const userAnswersSlice = createSlice({
       .addDefaultCase(() => {});
   },
 });
+
+export const { reducer } = userAnswersSlice;

@@ -42,6 +42,7 @@ export const transformQuestionsAndAnswersDB = (
     infoQuestions: transformData(infoQuestions as TInfoQuiestionsDB, lang),
   };
 
+
   const generalInfo = {};
 
   for (const key in data.infoQuestions) {
