@@ -15,7 +15,6 @@ const FilterByThemes = (): JSX.Element => {
   const { themes, filterByTheme, themesStatusLoading } = useSelector(
     (state: RootState) => state.filtersReducer,
   );
-  console.log(themes)
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const onClickFilter = (filter: string) => {

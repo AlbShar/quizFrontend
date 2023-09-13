@@ -21,10 +21,10 @@ import {
   StyledSection,
 } from './UserAnswers.Styled';
 
-import type { AppDispatch, RootState } from '../../../app/store/index';
 import type {
   TQuestionAndAnswer,
 } from '../types/types';
+import type { AppDispatch, RootState } from '../../../app/store/index';
 
 
 export const UserAnswers = () => {
