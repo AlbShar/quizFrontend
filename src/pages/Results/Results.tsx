@@ -41,7 +41,7 @@ const Results = () => {
               <DoughuntChart rightAnswers={rightAnswers} />
             </StyledSection>
           </Container>
-          <UserAnswers setPointsByTheme={setPointsByTheme} />
+          <UserAnswers/>
         </div>
       </StyledMain>
     </>

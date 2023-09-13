@@ -1,34 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from '../../../../assets/images/chevrondown.svg';
 import { StyledWrapperDropdown } from '../Filters.Styled';
 import { fetchFilters } from '../filtersSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../../../app/store/index';
 import { changeFilterByTheme } from '../filtersSlice';
 
-type FilterByThemesProps = {
-  themesNames: string[];
-  setFilterByTheme?: (item: string) => void;
-};
+import type { AppDispatch, RootState } from '../../../../app/store/index';
 
-const FilterByThemes = ({
-  themesNames,
-  setFilterByTheme,
-}: FilterByThemesProps): JSX.Element => {
-    const { themes, filterByTheme, themesStatusLoading } = useSelector(
-      (state: RootState) => state.filtersReducer,
-    );
-    const dispatch = useDispatch<AppDispatch>();
 
-    useEffect(() => {
-      dispatch(fetchFilters());
-    }, [])
+const FilterByThemes = (): JSX.Element => {
+  const { themes, filterByTheme, themesStatusLoading } = useSelector(
+    (state: RootState) => state.filtersReducer,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const onClickFilter = (filter: string) => {
+    dispatch(changeFilterByTheme(filter));
+  };
 
-    const onClickFilter = (filter: string) => {
-      dispatch(changeFilterByTheme(filter));
-    };
+  useEffect(() => {
+    dispatch(fetchFilters());
+  }, []);
 
   return (
     <StyledWrapperDropdown>
