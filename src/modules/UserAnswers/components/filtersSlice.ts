@@ -17,8 +17,8 @@ type TinitialState = {
 
 
 const initialState: TinitialState = {
-  filterByTheme: '',
-  filterByRight: '',
+  filterByTheme: 'Все тематики',
+  filterByRight: 'Все вопросы',
   themesStatusLoading: 'idle',
   themes: [],
 };
@@ -36,7 +36,6 @@ export const fetchFilters = createAsyncThunk(
         getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
       ),
     ).then(data => {
-        console.log(getThemes(data));
         return getThemes(data);
     });
   },

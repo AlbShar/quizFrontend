@@ -6,19 +6,13 @@ import type { AppDispatch, RootState } from '../../../app/store/index';
 import Container from '../../../components/Container/Container';
 import FilterByRight from '../components/FilterByRight/FilterByRight';
 import FilterByThemes from '../components/FilterByThemes/FilterByThemes';
-import { getAnswerOptions } from '../api/getAnswerOptions';
-import { getUserAnswers } from '../api/getUserAnswers';
-import { getInfoQuestions } from '../api/getInfoQuestions';
 import Spinner from '../../../UI/Spinner/Spinner';
-import { getNumberFromKey } from '../helpers/getNumberFromKey';
 import { ContextLanguage, ContextIdUser } from '../../../components/Context';
-import filterByRightAnswer from '../helpers/filterByRightAnswer';
-import filterByThemes from '../helpers/filterByThemes';
 import getThemes from '../helpers/getThemes';
 import getPointsByThemes from '../helpers/getPointsByThemes';
 import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
-import { transformQuestionsAndAnswersDB } from '../helpers/transformQuestionsAndAnswersDB';
-import {fetchUserAnswer} from "../userAnswersSlice";
+import { fetchUserAnswer } from '../userAnswersSlice';
+import { createSelector } from '@reduxjs/toolkit';
 
 import {
   StyledLi,
@@ -36,7 +30,7 @@ import type {
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
   TQuestionAndAnswer,
-  TInitialState
+  TInitialState,
 } from '../types/types';
 import type { TPointsByThemes } from '../../../types/types';
 
@@ -44,43 +38,64 @@ type UserAnwersProps = {
   setPointsByTheme: (themes: TPointsByThemes) => void;
 };
 
-
 export const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
-  
   const { userAnswersLoadingStatus, userAnswers } = useSelector(
     (state: RootState) => state.userAnswersReducer,
   );
-  const dispatch = useDispatch<AppDispatch>();
 
+  const filteredUserAnswers = createSelector(
+    (state: RootState) => state.filtersReducer.filterByRight,
+    (state: RootState) => state.filtersReducer.filterByTheme,
+    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (filterByRight, filterByTheme, userAnswers) => {
+      const arrayUserAnswers = Object.values(userAnswers);
+      if (filterByRight === 'Все вопросы' && filterByTheme === 'Все тематики') {
+        return arrayUserAnswers;
+      } else if (filterByRight !== 'Все вопросы' && filterByTheme !== 'Все тематики') {
+        return arrayUserAnswers
+          .filter((userAnswer) => userAnswer.userAnswer.point === 0)
+          .filter((userAnswer) => userAnswer.theme === filterByTheme);
+      } else if (filterByRight !== 'Все вопросы') {
+        return arrayUserAnswers.filter(
+          (userAnswer) => userAnswer.theme === filterByRight,
+        );
+      } else if (filterByTheme !== 'Все тематики') {
+        return arrayUserAnswers.filter(
+          (userAnswer) => userAnswer.theme === filterByTheme,
+        );
+      }
+    },
+  );
+  const filteredAnswers = useSelector(filteredUserAnswers);
 
+  console.log(filteredAnswers);
 
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
-  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
-
+  const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
+  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [filterTheme, setFilterTheme] = useState<string>('');
-  const [filterRight, setFilterRight] = useState<string>('');
 
-  const loading = isLoading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
-  ) : (
-    false
-  );
-  const error = isError ? <ErrorMessage /> : false;
-  const view = () => {
-    if (infoQuestionsAndAnswers) {
-      const visibleData: TInfoQuestionsAndAnswers = filterByRightAnswer(
-        filterByThemes(infoQuestionsAndAnswers, filterTheme),
-        filterRight,
-      );
-      return (
+  useEffect(() => {
+    dispatch(fetchUserAnswer());
+  }, [lang]);
+
+  return (
+    <Container>
+      <details open>
+        <StyledSum>{t('Ответы')}</StyledSum>
+        <StyledSection>
+          <FilterByThemes
+            themesNames={getThemes(
+              infoQuestionsAndAnswers as TInfoQuestionsAndAnswers,
+            )}
+          />
+          <FilterByRight />
+        </StyledSection>
         <StyledUl>
-          {Object.values(visibleData as TQuestionAndAnswer[]).map(
-            (userAnswerArr) => {
+          {filteredAnswers ? (
+            filteredAnswers.map((userAnswerArr) => {
               const {
                 descr,
                 img,
@@ -149,55 +164,12 @@ export const UserAnswers = ({ setPointsByTheme }: UserAnwersProps) => {
                   </StyledUl>
                 </StyledListAnswers>
               );
-            },
+            })
+          ) : (
+            <p>filteredAnswers is undefined</p>
           )}
         </StyledUl>
-      );
-    }
-  };
-  const content = !(isLoading || isError) ? view() : null;
-
-
-  const onError = (error: any): never => {
-    setIsError(true);
-    setIsLoading(false);
-    throw new Error(error);
-  };
-
-  const setFilterByTheme = (newFilter: string): void => {
-    setFilterTheme(newFilter);
-  };
-
-  const setFilterByRightAnswer = (newFilter: string): void => {
-    setFilterRight(newFilter);
-  };
-
-  useEffect(() => {
-    dispatch(fetchUserAnswer());
-  }, [lang]);
-
-  useEffect(() => {
-    if (infoQuestionsAndAnswers) {
-      setPointsByTheme(getPointsByThemes(infoQuestionsAndAnswers));
-    }
-  }, [infoQuestionsAndAnswers]);
-
-  return (
-    <Container>
-      <details open>
-        <StyledSum>{t('Ответы')}</StyledSum>
-        <StyledSection>
-          <FilterByThemes
-            themesNames={getThemes(
-              infoQuestionsAndAnswers as TInfoQuestionsAndAnswers,
-            )}
-            setFilterByTheme={setFilterByTheme}
-          />
-          <FilterByRight setFilterByRightAnswer={setFilterByRightAnswer} />
-        </StyledSection>
-        {loading} {error} {content}
       </details>
     </Container>
   );
 };
-
