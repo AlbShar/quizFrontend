@@ -26,6 +26,7 @@ const initialState: TinitialState = {
 export const fetchFilters = createAsyncThunk(
   'filters/fetchFilters',
   async () => {
+    
     return await Promise.all([
       getUserAnswers(getValueFromLocalStorage('idUser')),
       getAnswerOptions(),
@@ -35,9 +36,8 @@ export const fetchFilters = createAsyncThunk(
         value as any,
         getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
       ),
-    ).then(data => {
-        return getThemes(data);
-    });
+    ).then(data => getThemes(data))
+
   },
 );
 

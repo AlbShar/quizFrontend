@@ -24,7 +24,7 @@ type TInfoQuestionsAndAnswers = {
 const getThemesNames = (
   infoQuestionsAndAnswers: TInfoQuestionsAndAnswers,
 ): [string, ...string[]] => {
-  const themesNames = new Set(['Все тематики']);
+  const themesNames = new Set();
   const allThemes = Object.values(infoQuestionsAndAnswers).map(
     (infoQuestion) => infoQuestion.theme,
   );

@@ -1,5 +1,6 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from '../../../../assets/images/chevrondown.svg';
@@ -14,6 +15,8 @@ const FilterByThemes = (): JSX.Element => {
   const { themes, filterByTheme, themesStatusLoading } = useSelector(
     (state: RootState) => state.filtersReducer,
   );
+  console.log(themes)
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const onClickFilter = (filter: string) => {
     dispatch(changeFilterByTheme(filter));
@@ -26,8 +29,8 @@ const FilterByThemes = (): JSX.Element => {
   return (
     <StyledWrapperDropdown>
       <Dropdown
-        data={themes}
-        selected={filterByTheme}
+        data={[t('Все тематики'), ...themes]}
+        selected={t(filterByTheme)}
         onClickElement={onClickFilter}
         srcArrowDown={chevrondown}
       />

@@ -42,14 +42,14 @@ export const UserAnswers = () => {
     (filterByRight, filterByTheme, userAnswers) => {
       let result: TQuestionAndAnswer[] = Object.values(userAnswers);
 
-      if (filterByRight !== 'Все вопросы') {
-        switch (filterByRight) {
-          case 'Верно':
+      if (t(filterByRight) !== t('Все вопросы')) {
+        switch (t(filterByRight)) {
+          case t('Верно'):
             result = result.filter(
               (userAnswer) => userAnswer.userAnswer.point === 1,
             );
             break;
-          case 'Неверно':
+          case t('Неверно'):
             result = result.filter(
               (userAnswer) => userAnswer?.userAnswer?.point === 0,
             );
@@ -57,11 +57,15 @@ export const UserAnswers = () => {
         }
       }
 
-      if (filterByTheme !== 'Все тематики') {
+      if (
+        filterByTheme !== 'Все тематики' &&
+        filterByTheme !== 'All thems'
+      ) {
         result = result.filter(
           (userAnswer) => userAnswer.theme === filterByTheme,
         );
       }
+      
 
       return result;
     },
@@ -70,6 +74,10 @@ export const UserAnswers = () => {
 
   
   // const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+
+  useEffect(() => {
+    dispatch(fetchUserAnswer());
+  }, []);
 
   useEffect(() => {
     dispatch(fetchUserAnswer());
