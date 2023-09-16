@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
@@ -7,11 +7,12 @@ import {
   Legend,
   LinearScale,
 } from 'chart.js';
+import { createSelector } from '@reduxjs/toolkit';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
-import { getTotalQuestionsNumb } from '../../api/getTotalQuestionsNumb';
-import Spinner from '../../UI/Spinner/Spinner';
-import { ContextProfession } from '../Context';
+import LoadingStatusComponent from '../LoadingStatusComponent';
+import useDataLoaded from '../../hooks/useDataLoaded';
 
 import {
   StyledArticle,
@@ -20,27 +21,34 @@ import {
   StyledDoughuntWrapper,
 } from './DoughuntChart.Styled';
 
+import type { RootState } from '../../app/store/index';
+
+
 ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
 
-type DoughnutProps = {
-  rightAnswers: number;
-};
-
-const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
+const DoughnutChart = (): JSX.Element => {
   const { t } = useTranslation();
+  const percentAnswersSelector = createSelector(
+    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (userAnswers) => {
+      const points = Object.values(userAnswers).map(
+        (userAnswer) => userAnswer.userAnswer.point,
+      );
+      const quantityQuestions = points.length;
+      const quantityRightAnswers = points.reduce((acc, val) => acc + val, 0);
+      const percentRightQuestions: number = +(
+        (quantityRightAnswers / quantityQuestions) *
+        100
+      ).toFixed(1);
+      const percentWrongQuestions: number = 100 - percentRightQuestions;
 
-  const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [profession, ]: [string, (lang: string) => void] =
-      useContext(ContextProfession);
-
-  
-
-  const percentRightQuestions = +(
-    (100 * rightAnswers) /
-    totalQuestionNumbers
-  ).toFixed(1);
-  const percentWrongQuestions = +(100 - percentRightQuestions).toFixed(1);
+      return [percentRightQuestions, percentWrongQuestions];
+    },
+  );
+  const isDataLoaded = useDataLoaded();
+  const [percentRightQuestions, percentWrongQuestions] = useSelector(
+    percentAnswersSelector,
+  );
 
   const data = {
     labels: ['Верно', 'Неверно'],
@@ -56,38 +64,19 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
     ],
   };
 
-  const spinner = isLoading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
-  ) : null;
-  
-  const view = () => {
-    return (
-      <StyledArticle>
-        <StyledDoughuntWrapper>
-          <Doughnut data={data}></Doughnut>
-          <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
-        </StyledDoughuntWrapper>
-        <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
-      </StyledArticle>
-    );
-  };
-  const content = !isLoading ? view() : null;
-
-  const setQuestionsNumber = async () => {
-    const url = `${profession}/questions`;
-    const questionsNumber = await getTotalQuestionsNumb(url);
-    setTotalQuestionNumbers(questionsNumber as number);
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    setQuestionsNumber();
-  }, []);
-
   return (
-    <>
-      {spinner} {content}
-    </>
+      <StyledArticle>
+        <LoadingStatusComponent />
+        {isDataLoaded ? (
+          <>
+            <StyledDoughuntWrapper>
+              <Doughnut data={data}></Doughnut>
+              <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
+            </StyledDoughuntWrapper>
+            <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
+          </>
+        ) : null}
+      </StyledArticle>
   );
 };
 

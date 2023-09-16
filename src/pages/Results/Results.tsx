@@ -12,11 +12,6 @@ import { StyledSection, StyledSectionResults } from './Results.Styled';
 
 
 const Results = () => {
-  const [rightAnswers, setRightAnswers] = useState<number>(0);
-
-  const setRightUserAnswers = useCallback((points: number) => {
-    setRightAnswers(points);
-  }, []);
 
   return (
     <>
@@ -24,12 +19,12 @@ const Results = () => {
         <div>
           <Container>
             <StyledSectionResults>
-              <Score setRightAnswers={setRightUserAnswers} />
+              <Score/>
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
               <BarChart />
-              <DoughuntChart rightAnswers={rightAnswers} />
+              <DoughuntChart/>
             </StyledSection>
           </Container>
           <UserAnswers />
