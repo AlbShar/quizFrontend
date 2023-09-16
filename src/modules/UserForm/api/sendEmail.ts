@@ -1,5 +1,6 @@
 import emailjs from '@emailjs/browser';
 
+
 const YOUR_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const YOUR_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const YOUR_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
@@ -26,7 +27,9 @@ const sendEmailApi = async (values: TValues): Promise<boolean> => {
       if (response.text === 'OK') {
         return true;
       } else {
-        throw new Error(`EmailJSResponse has status - ${response.status} and text - ${response.text}`);
+        throw new Error(
+          `EmailJSResponse has status - ${response.status} and text - ${response.text}`,
+        );
       }
     } else {
       throw new Error(`Check values of API KEYS in EMAILJS`);

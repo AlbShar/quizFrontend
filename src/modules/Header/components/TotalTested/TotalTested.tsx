@@ -19,7 +19,10 @@ type TotalTestedProps = {
 };
 
 const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.header.components.totalTested',
+  });
+
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -34,7 +37,7 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   const view = () => {
     return (
       <StyledDivWrapper>
-        <StyledSpanText>{`${t('Прошли_тест')}:`}</StyledSpanText>
+        <StyledSpanText>{`${t('totalTested')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
           {isChooseProfession ? allTestedUsers : '-'}
         </StyledSpanNumber>
