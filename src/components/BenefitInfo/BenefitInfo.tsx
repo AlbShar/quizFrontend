@@ -18,29 +18,31 @@ import {
 } from './BenefitInfo.Styled';
 
 const BenefitInfo = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'components.benefitInfo',
+  });
 
   const data = [
     {
-      title: t('Оценка_знаний'),
-      text: t('Благодаря_вопросам'),
+      title: t('subTitle1'),
+      text: t('text1'),
     },
     {
-      title: t('Выявление_слабых_мест'),
-      text: t('Cможете_оценить_знания'),
+      title: t('subTitle2'),
+      text: t('text2'),
     },
     {
-      title: t('Отчет'),
-      text: t('В_финальном_отчёте'),
+      title: t('subTitle3'),
+      text: t('text3'),
     },
   ];
   return (
     <StyledSection>
+      <StyledImg src={img} alt='image' />
       <Container>
         <Grid container columns={{ xs: 2, md: 6, lg: 12 }}>
-          <StyledImg src={img} alt='image' />
           <StyledArticleWrapper>
-            <StyledH3>Что вы получите?</StyledH3>
+            <StyledH3>{t('mainTitle')}</StyledH3>
             {data.map((item, index) => {
               const { title, text } = item;
               return (
@@ -75,7 +77,7 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
         direction='row'
         columns={{ xs: 2, md: 6, lg: 12 }}
         alignItems='center'
-        columnSpacing={{xs:2}}
+        columnSpacing={{ xs: 2 }}
       >
         <Grid item md={0.7} lg={0.7}>
           <StyledSpanNumber>{fullNumb}</StyledSpanNumber>

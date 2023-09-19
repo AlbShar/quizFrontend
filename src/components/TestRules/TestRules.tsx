@@ -18,24 +18,26 @@ import {
 } from './TestRules.Styled';
 
 const TestRules = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'components.testRules'
+  });
 
   const data = [
     {
       img: testRule1,
-      text: t('Вы_можете_вернуться'),
+      text: t('rule1'),
     },
     {
       img: testRule2,
-      text: t('На_каждый_вопрос'),
+      text: t('rule2'),
     },
     {
       img: testRule3,
-      text: t('Тест_состоит'),
+      text: t('rule3'),
     },
     {
       img: testRule4,
-      text: t('Вы_можете_приостановить'),
+      text: t('rule4'),
     },
   ];
   return (
@@ -48,10 +50,10 @@ const TestRules = () => {
             spacing={{ md: 3 }}
           >
             <Grid item xs={2} md={6} xl={6}>
-              <StyledH3>{t('Правила_прохождения')}</StyledH3>
+              <StyledH3>{t('mainTitle')}</StyledH3>
             </Grid>
             <Grid item xs={2} md={6} xl={6}>
-              <StyledH4>{t('Ознакомьтесь')} </StyledH4>
+              <StyledH4>{t('subTitle')} </StyledH4>
             </Grid>
           </Grid>
           <Grid

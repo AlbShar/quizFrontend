@@ -79,15 +79,18 @@ const StyledImg = styled.img`
     position: absolute;
     transform: scale(0.7);
     bottom: -80px;
-    right: -80px;
+    right: -150px;
   }
 
   @media screen and (min-width: 1299.8px) {
     transform: scale(1);
     width: 578px;
     height: 505px;
-    bottom:  0px;
+    bottom: 0px;
+    right: -100px;
   }
+
+  
 `;
 
 const StyledDiv = styled.div`

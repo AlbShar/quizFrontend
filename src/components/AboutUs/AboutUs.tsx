@@ -16,7 +16,9 @@ import {
 import './link.css';
 
 const AboutUs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: "components.aboutUs"
+  });
   const customStyleFeedback = {color: 'var(--color-purple)', font: 'var(--font-text5)', fontWeight: 700};
 
   return (
@@ -24,16 +26,16 @@ const AboutUs = () => {
       <Container>
         <StyledArticle>
           <Grid container columns={{ xs: 2, md: 12, lg: 12 }}>
-            <Grid item md={6.2} lg={6.2}>
-              <StyledH3>{t('О_тесте')}</StyledH3>
+            <Grid item xs={2} md={6.2} lg={6.2}>
+              <StyledH3>{t('mainTitle')}</StyledH3>
             </Grid>
-            <Grid item md={5.8} lg={5.8}>
-              <StyledP>{t('Приветствуем_на_сайте')} </StyledP>
-              <StyledP>{t('По_завершению')} </StyledP>
+            <Grid item xs={2} md={5.8} lg={5.8}>
+              <StyledP>{t('text1')} </StyledP>
+              <StyledP>{t('text2')} </StyledP>
               <StyledP>
-                {t('Сообщить_об_ошибке')}
+                {t('text3')}
                 <Feedback style={customStyleFeedback} />
-                {t('Напишите')}
+                {t('text4')}
               </StyledP>
             </Grid>
             <StyledImg src={person_sitting} alt='person_sitting' />

@@ -17,7 +17,9 @@ const DropdownProfession = ({
 }: DropdownProfessionProps) => {
   const [, setProfession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.callToAction.UI.dropdownProfession',
+  });
 
   const [selected, setSelected] = useState<string>('');
 
@@ -30,7 +32,7 @@ const DropdownProfession = ({
         }`;
 
   const dataProfessions = {
-    [t('Frontend_разработчик')]: 'Frontend',
+    [t('Frontend')]: 'Frontend',
     "Project Manager": 'Manager',
   };
   const listProfessions = Object.keys(dataProfessions);
@@ -43,13 +45,13 @@ const DropdownProfession = ({
   };
 
   return (
-      <Dropdown
-        selected={selected || t('направление_теста')}
-        data={listProfessions}
-        onClickElement={onClickProfession}
-        customStyle={customStyleButton}
-        srcArrowDown={arrowDownLarge}
-      />
+    <Dropdown
+      selected={selected || t('textBtn')}
+      data={listProfessions}
+      onClickElement={onClickProfession}
+      customStyle={customStyleButton}
+      srcArrowDown={arrowDownLarge}
+    />
   );
 };
 

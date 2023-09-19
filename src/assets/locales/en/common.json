@@ -5,9 +5,20 @@
     "callToAction": {
       "mainTitle": "Test for IT specialists",
       "subTitle": "A site for testing IT specialists, where you can test your skills and knowledge.",
-      "min": "min",
-      "questions": "question(s)",
-      "block": "block"
+      "textStartBtn": "start test",
+      "components": {
+        "infoTest": {
+          "min": "min",
+          "questions": "questions",
+          "block": "blocks"
+        }
+      },
+      "UI": {
+        "dropdownProfession": {
+          "textBtn": "direction",
+          "Frontend": "Frontend developer"
+        }
+      }
     },
     "header": {
       "components": {
@@ -25,7 +36,8 @@
       "mainTitle": "About the test, about the site, about us!",
       "text1": "Welcome to the site for testing IT specialists, where you can test your skills and knowledge.",
       "text2": "Upon completion, results statistics will be available.",
-      "text3": "If you want to report a bug or change the questions for the test, go to the 'Feedback' page and write to us about it."
+      "text3": "If you want to report a bug or change the questions for the test, go to ",
+      "text4": " and write to us about it."
     },
     "barChart": {},
     "benefitInfo": {
@@ -33,27 +45,43 @@
       "subTitle1": "Assess your knowledge",
       "subTitle2": "Identifying weak points",
       "subTitle3": "Results Report",
-      "textBenefit1": "Thanks to special questions, you will be able to take a fresh look at the material you have mastered",
-      "textBenefit2": "You will be able to evaluate your knowledge of each of them, and see which topic needs more attention",
-      "textBenefit3": "In the final report, you will be able to clearly see where your knowledge or skill gaps are and focus specifically on them"
+      "text1": "Thanks to special questions, you will be able to take a fresh look at the material you have mastered",
+      "text2": "You will be able to evaluate your knowledge of each of them, and see which topic needs more attention",
+      "text3": "In the final report, you will be able to clearly see where your knowledge or skill gaps are and focus specifically on them"
     },
     "doughuntChart": {},
-    "footer": {},
+    "footer": {
+      "Frontend": "Frontend developer",
+      "Designer": "Designer",
+      "firstNameFrontend": "Albert",
+      "firstNameDesigner": "Alisa",
+      "firstNamePM": "Natalia",
+      "textLink": "Start test"
+    },
     "resultsInfo": {
       "mainTitle": "Results",
       "subTitle": "After passing the test, information about the test results will be available to you.",
-      "result1": "You can only go back one question and change your answer.",
-      "result2": "There is only one correct answer for each question; you cannot select multiple options.",
-      "result3": "The test consists of several sections (blocks) with questions on various topics.",
-      "result4": "The test consists of several sections (blocks) with questions on various topics."
+      "result1": "Number of points scored",
+      "result2": "Time spent on test",
+      "result3": "Сorrect and incorrect answers",
+      "result4": "Explanations for each answer"
     },
     "testRules": {
       "mainTitle": "Rules for taking the test",
       "subTitle": "Read the rules for taking the test, choose a direction, and then take the test.",
       "rule1": "You can only go back one question and change your answer.",
       "rule2": "There is only one correct answer for each question; you cannot select multiple options.",
-      "rule3": "The test consists of several sections (blocks) with questions on various topics."
+      "rule3": "The test consists of several sections (blocks) with questions on various topics.",
+      "rule4": "You can pause time by pressing the 'Pause' button and return to the test at any time."
     }
   },
-  "UI": {}
+  "UI": {
+    "feedback": {
+      "text": "Feedback"
+    },
+    "list": {
+      "team": "Team",
+      "rules": "Rules"
+    }
+  }
 }

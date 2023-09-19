@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Feedback from '../../../../UI/Feedback/Feedback';
 
 import { StyledLi, StyledUl, StyledLink } from './List.Styled';
@@ -7,16 +9,21 @@ type ListProps = {
 };
 
 const List = ({ onClickCloseBtn }: ListProps) => {
+
+  const { t } = useTranslation('', {
+    keyPrefix: 'UI.list',
+  });
+  
   return (
     <StyledUl>
       <StyledLi>
         <Feedback onClickCloseBtn={onClickCloseBtn} />
       </StyledLi>
       <StyledLi>
-        <StyledLink href='#team'> Команда</StyledLink>
+        <StyledLink href='#team'> {t('team')}</StyledLink>
       </StyledLi>
       <StyledLi>
-        <StyledLink href='#rules'>Правила</StyledLink>
+        <StyledLink href='#rules'>{t('rules')}</StyledLink>
       </StyledLi>
     </StyledUl>
   );

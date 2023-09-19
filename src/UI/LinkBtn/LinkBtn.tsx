@@ -23,7 +23,7 @@ const LinkBtn = ({
 
   return (
     <Link className='btn__link' to={pageTo} onClick={onClick} id={id}>
-      <StyledButton disabled={isDisabledBtn}>{t(text)}</StyledButton>
+      <StyledButton disabled={isDisabledBtn}>{text}</StyledButton>
     </Link>
   );
 };

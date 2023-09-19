@@ -45,7 +45,9 @@ const InfoTest = ({
     setChooseProfession(false);
   }, []);
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.callToAction.components.infoTest',
+  });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
@@ -53,18 +55,18 @@ const InfoTest = ({
   const infoTestBlock: InfoTestBlock[] = [
     {
       text: ` ${isChooseProfession ? '~' + quantityQuestions : '0'} ${t(
-        'Время',
+        'min',
       )}`,
       srcIcon: clock,
       alt: 'icon of clock',
     },
     {
-      text: `${isChooseProfession ? quantityQuestions : '0'} ${t('Вопросов')}`,
+      text: `${isChooseProfession ? quantityQuestions : '0'} ${t('questions')}`,
       srcIcon: helpCircle,
       alt: 'icon of question in circle',
     },
     {
-      text: `${isChooseProfession ? quantityThemes : '0'} ${t('Блока')}`,
+      text: `${isChooseProfession ? quantityThemes : '0'} ${t('block')}`,
       srcIcon: barChart,
       alt: ' icon of bar chart ',
     },

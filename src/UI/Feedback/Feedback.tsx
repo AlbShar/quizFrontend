@@ -10,11 +10,13 @@ type FeedbackProps = {
 };
 
 const Feedback = ({ onClickCloseBtn, style }: FeedbackProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: "UI.feedback"
+  });
 
   return (
     <Link to='/feedback' className='link' onClick={onClickCloseBtn} style={style}>
-      {t('Обратная_связь')}
+      {t('text')}
     </Link>
   );
 };

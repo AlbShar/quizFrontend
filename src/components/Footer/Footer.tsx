@@ -20,22 +20,24 @@ import {
 import type { FooterInfo } from '../../types/types';
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: "components.footer"
+  });
 
   const team: FooterInfo[] = [
     {
-      profession: t('Frontend-разработчик'),
-      name: t('Альберт'),
+      profession: t('Frontend'),
+      name: t('firstNameFrontend'),
       link: 'https://t.me/Albert_Sharipov',
     },
     {
-      profession: t('Дизайнер'),
-      name: t('Алиса'),
+      profession: t('Designer'),
+      name: t('firstNameDesigner'),
       link: 'https://t.me/lisa_vetta14',
     },
     {
       profession: 'Project manager',
-      name: t('Наталья'),
+      name: t('firstNamePM'),
       link: 'https://t.me/Nattalia_nat',
     },
   ];
@@ -82,9 +84,7 @@ const Footer = () => {
                 <Feedback />
               </Grid>
               <Grid item xs={1} md={3}>
-                <StyledLink href='#startTest' >
-                  Начать тест
-                </StyledLink>
+                <StyledLink href='#startTest' className='link'>{t('textLink')}</StyledLink>
               </Grid>
             </Grid>
           </Grid>

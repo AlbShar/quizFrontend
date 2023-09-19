@@ -57,7 +57,7 @@ const StyledFlexSection = styled.section<FlexWrapper>`
   }
 
   @media screen and (min-width: 1299.8px) {
-    gap: 130px;
+    justify-content: space-between;
   }
 `;
 

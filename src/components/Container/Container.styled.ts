@@ -7,8 +7,8 @@ const ContainerStyled = styled.div`
   margin: 0 auto;
   padding: 0;
   background-color: transparent;
-  
-  
+  position: relative;
+
   @media screen and (min-width: 1299.8px) {
     width: 1194px;
   }

@@ -15,24 +15,21 @@ import {
 } from './ResultsInfo.Styled';
 
 const ResultsInfo = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'components.resultsInfo'
+  });
 
-  const texts = [
-    t('Количество_баллов'),
-    t('Время_тест'),
-    t('Верные_неверные_ответы'),
-    t('Пояснения'),
-  ];
+  const texts = [t('result1'), t('result2'), t('result3'), t('result4')];
   return (
     <StyledSection>
       <Container>
         <StyledArticleWrapper>
           <Grid container columns={{ xs: 2, md: 12 }}>
             <Grid item xs={2} md={6.2}>
-              <StyledH3>{t('Результаты')}</StyledH3>
+              <StyledH3>{t('mainTitle')}</StyledH3>
             </Grid>
             <Grid item xs={2} md={5.5}>
-              <StyledH4>{t('После_прохождения_тестирования')}</StyledH4>
+              <StyledH4>{t('subTitle')}</StyledH4>
             </Grid>
           </Grid>
 

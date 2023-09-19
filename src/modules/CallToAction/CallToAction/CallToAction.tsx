@@ -28,7 +28,9 @@ const CallToAction = ({
   isChooseProfession,
   setChooseProfession,
 }: CallToActionProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.callToAction',
+  });
   const [idUser, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
 
@@ -48,18 +50,18 @@ const CallToAction = ({
         >
           <Grid item xs={2} md={12} lg={8} xl={8}>
             <StyledCallToAction id='CallToAction'>
-              <StyledH1>{t('Тест_для')}</StyledH1>
+              <StyledH1>{t('mainTitle')}</StyledH1>
               <InfoTest
                 isChooseProfession={isChooseProfession}
                 setChooseProfession={setChooseProfession}
               />
-              <StyledH2>{t('Сайт_по_тестированию')}</StyledH2>
+              <StyledH2>{t('subTitle')}</StyledH2>
               <StyledDiv>
                 <DropdownProfession setChooseProfession={setChooseProfession} />
                 <LinkBtn
                   pageTo='quiz'
                   onClick={startTest}
-                  text='Начать тест'
+                  text={t('textStartBtn')}
                   isDisabledBtn={!isChooseProfession}
                 />
               </StyledDiv>
