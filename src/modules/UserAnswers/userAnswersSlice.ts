@@ -9,6 +9,7 @@ import { transformQuestionsAndAnswersDB } from './helpers/transformQuestionsAndA
 import { getAnswerOptions } from './api/getAnswerOptions';
 import { getUserAnswers } from './api/getUserAnswers';
 import { getInfoQuestions } from './api/getInfoQuestions';
+import getThemes from './helpers/getThemes';
 
 import type {  TInitialState } from './types/types';
 
@@ -17,6 +18,7 @@ import type {  TInitialState } from './types/types';
 const initialState: TInitialState = {
   userAnswersLoadingStatus: 'idle',
   userAnswers: [],
+  themes: [],
 };
 
 export const fetchUserAnswer = createAsyncThunk(
@@ -44,6 +46,7 @@ const userAnswersSlice = createSlice({
       .addCase(fetchUserAnswer.fulfilled, (state, action) => {
         state.userAnswersLoadingStatus = 'success';
         state.userAnswers = action.payload;
+        state.themes = getThemes(action.payload);
       })
       .addCase(fetchUserAnswer.pending, (state) => {
         state.userAnswersLoadingStatus = 'loading';

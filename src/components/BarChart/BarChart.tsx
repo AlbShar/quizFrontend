@@ -45,7 +45,7 @@ const BarChart = (): JSX.Element => {
   const isDataLoaded: boolean = useDataLoaded();
   const selectorDatasets = createSelector(
     (state: RootState) => state.userAnswersReducer.userAnswers,
-    (state: RootState) => state.filtersReducer.themes,
+    (state: RootState) => state.userAnswersReducer.themes,
     (userAnswers, themes) => {
       const arrayUserAnswers = Object.values(userAnswers);
       const data: TData = themes.reduce(

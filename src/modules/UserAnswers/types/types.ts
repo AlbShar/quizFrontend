@@ -56,6 +56,7 @@ type TInfoQuestionsAndAnswers = {
 type TInitialState = {
   userAnswersLoadingStatus: string;
   userAnswers: TInfoQuestionsAndAnswers;
+  themes: string[];
 };
 
 export type {
