@@ -20,7 +20,9 @@ type FinalResultProps = {
 };
 
 const Score = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.score',
+  });
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
         useContext(ContextProfession);
@@ -85,8 +87,8 @@ const Score = ({ setRightAnswers }: FinalResultProps): JSX.Element => {
   const view = () => {
     return (
       <StyledArticle>
-        <StyledH3>{t('Ваш_результат')}</StyledH3>
-        <StyledH2>{`${points} ${t('из')} ${totalQuestionNumbers}`}</StyledH2>
+        <StyledH3>{t('title')}</StyledH3>
+        <StyledH2>{`${points} ${t('from')} ${totalQuestionNumbers}`}</StyledH2>
       </StyledArticle>
     );
   };

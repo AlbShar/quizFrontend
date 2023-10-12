@@ -27,7 +27,8 @@ const highlightPreviousAnswer = ({
             .forEach((answerItem) => {
               userAnswerDb = snapshot.val().userAnswer;
               if (answerItem.textContent === userAnswerDb) {
-                answerItem.style.backgroundColor = '#B7B7FF';
+                
+                answerItem.style.border = '3px solid #5557FF';
                 answerItem.setAttribute('data-useranswer', 'true');
               }
             });

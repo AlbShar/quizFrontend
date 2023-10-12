@@ -53,9 +53,9 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
             <StyledSpanQuestionQuantity id='totalQuestionQuantity' tabIndex={0}>
               {`/ ${totalQuestionNumber}`}
             </StyledSpanQuestionQuantity>
-            {/* <StyledSpanThemeQuestion id='themeQuestion'>
+            <StyledSpanThemeQuestion id='themeQuestion'>
               {theme}
-            </StyledSpanThemeQuestion> */}
+            </StyledSpanThemeQuestion>
           </div>
           <Timer />
         </StyledArticle>

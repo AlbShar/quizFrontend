@@ -16,7 +16,9 @@ import { transformSecondsToMinutes } from '../helpers/transformSecondsToMinutes'
 
 
 const ResultTime = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.resultTime',
+  });
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   type TState = {
     loading: boolean;
@@ -53,9 +55,9 @@ const ResultTime = (): JSX.Element => {
   const view = () => {
     return (
       <StyledArticle>
-        <StyledH3>{t('Затраченное_время')}</StyledH3>
+        <StyledH3>{t('title')}</StyledH3>
         <StyledH2>
-          {transformSecondsToMinutes(time, t('сек'), t('мин'))}
+          {transformSecondsToMinutes(time, t('sec'), t('min'))}
         </StyledH2>
       </StyledArticle>
     );

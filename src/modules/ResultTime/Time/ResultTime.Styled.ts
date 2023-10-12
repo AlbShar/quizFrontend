@@ -11,14 +11,14 @@ const StyledArticle = styled.article`
 
 const StyledH3 = styled.h3`
   color: #29313c;
-  font: var(--font-title5);
-  margin: 0;
+  font: var(--font-text4);
+  margin: 0 0 20px 0;
   padding: 0;
 `;
 
 const StyledH2 = styled.h2`
   color: #6768d7;
-  font: var(--font-title2);
+  font: var(--font-text1);
   margin: 0;
   padding: 0;
 `;

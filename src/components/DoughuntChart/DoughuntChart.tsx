@@ -27,7 +27,9 @@ type DoughnutProps = {
 };
 
 const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'components.doughuntChart',
+  });
 
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -43,7 +45,7 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
   const percentWrongQuestions = +(100 - percentRightQuestions).toFixed(1);
 
   const data = {
-    labels: ['Верно', 'Неверно'],
+    labels: [t('right'), t('wrong')],
     datasets: [
       {
         label: '%',
@@ -67,7 +69,7 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
           <Doughnut data={data}></Doughnut>
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
-        <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
+        <StyledP>{t('text')}</StyledP>
       </StyledArticle>
     );
   };

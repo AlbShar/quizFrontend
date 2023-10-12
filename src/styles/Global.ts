@@ -45,7 +45,7 @@ body {
     --color-light-gray: #F5F5F5; 
     --color-light-gray2: #ECECEC; 
 
-    --font-text1: 700 50px/22px var(--font-family-default);
+    --font-text1: 700 50px/40px var(--font-family-default);
     --font-text2: 600 32px/32px var(--font-family-default);
     --font-text3: 600 22px/22px var(--font-family-default);
     --font-text4: 400 22px/26px var(--font-family-default);

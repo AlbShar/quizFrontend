@@ -79,17 +79,12 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
               const isRight = userAnswer?.point ? true : false;
               const color = isRight ? 'green' : 'red';
               const className = {
-                borderRadius: 10,
                 border: `1px solid ${color}`,
               };
-              console.log(descr.startsWith('http'))
 
               return (
                 <StyledListAnswers style={className} key={id}>
                   <StyledUl>
-                    <StyledSpanResult isRight={isRight}>
-                      {isRight ? '\u2714' : '\u2718'}
-                    </StyledSpanResult>
                     <StyledLi>
                       <StyledSpan>{`Вопрос № ${id}: `}</StyledSpan>
                       {`${name} (${theme})`}

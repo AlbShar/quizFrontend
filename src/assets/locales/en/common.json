@@ -31,6 +31,7 @@
       "rules": "Rules"
     },
     "testButtons": {
+      "textBtn": "Finish test",
       "UI": {
         "btnBack": {
           "text": "Back"
@@ -39,6 +40,15 @@
           "text": "Next"
         }
       }
+    },
+    "resultTime": {
+      "title": "Spent time ",
+      "sec": "sec",
+      "min": "min"
+    },
+    "score": {
+      "title": "Your score",
+      "from": "from"
     }
   },
   "components": {
@@ -49,7 +59,9 @@
       "text3": "If you want to report a bug or change the questions for the test, go to ",
       "text4": " and write to us about it."
     },
-    "barChart": {},
+    "barChart": {
+      "text": "The graph displays the percentage of correct answers for each thematic section of the test. The indicator is calculated as the ratio of the number of questions to which the correct answer was given to the total number of questions on this topic. If the indicator is less than 50%, then this section needs to be studied further "
+    },
     "benefitInfo": {
       "mainTitle": "What will you get?",
       "subTitle1": "Assess your knowledge",
@@ -59,7 +71,11 @@
       "text2": "You will be able to evaluate your knowledge of each of them, and see which topic needs more attention",
       "text3": "In the final report, you will be able to clearly see where your knowledge or skill gaps are and focus specifically on them"
     },
-    "doughuntChart": {},
+    "doughuntChart": {
+      "text": "The graph displays the percentage of questions answered correctly",
+      "right": "right",
+      "wrong": "wrong"
+    },
     "footer": {
       "Frontend": "Frontend developer",
       "Designer": "Designer",

@@ -28,9 +28,8 @@ const Results = () => {
   }, []);
 
   return (
-    <>
       <StyledMain>
-        <div>
+        <div style={{ backgroundColor: '#1C1C1C', padding: "0 0 70px 0" }}>
           <Container>
             <StyledSectionResults>
               <Score setRightAnswers={setRightUserAnswers} />
@@ -41,10 +40,9 @@ const Results = () => {
               <DoughuntChart rightAnswers={rightAnswers} />
             </StyledSection>
           </Container>
-          <UserAnswers setPointsByTheme={setPointsByTheme} />
-        </div>
+        </div>          
+        <UserAnswers setPointsByTheme={setPointsByTheme} />
       </StyledMain>
-    </>
   );
 };
 

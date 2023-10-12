@@ -39,8 +39,9 @@ const TestButtons = ({
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
         useContext(ContextProfession);
-  const { t } = useTranslation();
-
+const { t } = useTranslation('', {
+  keyPrefix: 'modules.testButtons',
+});
 
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
@@ -81,7 +82,7 @@ const TestButtons = ({
       />
       {totalQuestionsNumbers === currentQuestionNumb ? (
         <LinkBtn
-          text={t('Закончить_тест')}
+          text={t('textBtn')}
           pageTo='/results'
           onClick={onClickButtonHandler}
           id='btnFinish'

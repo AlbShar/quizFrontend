@@ -10,15 +10,7 @@ const StyledArticle = styled.article`
   padding: 16px 8px 9px 8px;
   max-height: 520px;
 
-  &:not(list-child) {
-    margin: 0 0 24px 0;
-  }
-
-  @media screen and (min-width: 767.8px) {
-    &:not(list-child) {
-      margin: 0;
-    }
-  }
+  
 `;
 
 const StyledP = styled.article`

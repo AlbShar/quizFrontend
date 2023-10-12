@@ -16,7 +16,7 @@ const StyledLi = styled.li`
     font: var(--font-text-regular);
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
   }
 `;
@@ -26,6 +26,8 @@ const StyledListAnswers = styled.li`
   list-style-type: none;
   font: var(--font-little-text-regular);
   padding: 0 10px;
+  border-radius: 3px;
+  background-color: var(--color-light-gray);
 
   &:not(:last-child) {
     margin-bottom: 10px;
@@ -34,7 +36,7 @@ const StyledListAnswers = styled.li`
     font: var(--font-text-regular);
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
 `;
@@ -50,9 +52,9 @@ const StyledUl = styled.ul`
 const StyledSum = styled.summary`
   box-sizing: border-box;
   width: 100%;
-  background-color: var(--color-title-background);
+  background-color: transparent;
   font: var(--font-little-text-regular);
-  color: #fff;
+  color: var(--color-black);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +64,7 @@ const StyledSum = styled.summary`
   @media screen and (min-width: 459.8px) {
     font: var(--font-title4);
     justify-content: flex-start;
-    padding: 10px 0 10px 40px;
+    padding: 66px 0 0 0 ;
   }
 `;
 

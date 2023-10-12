@@ -38,7 +38,9 @@ const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const colors = ['black', 'red', 'blue'];
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'components.barChart',
+  });
 
 
   const options = {
@@ -88,7 +90,7 @@ const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
         <StyledBarChartWrapper>
           <Bar options={options} data={data} />
         </StyledBarChartWrapper>
-        <StyledP>{t('Подпись_столбчатая_диаграмма')}</StyledP>
+        <StyledP>{t('text')}</StyledP>
       </StyledArticle>
     );
   };
