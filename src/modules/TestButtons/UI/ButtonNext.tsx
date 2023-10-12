@@ -22,6 +22,7 @@ const ButtonNext = ({
         style={{ justifyContent: 'flex-end' }}
         onClick={onClickButtonHandler}
         disabled={isBtnNextDisabled}
+        data-testid='btn-next'
       >
         <StyledSpan>{t('Принять')}</StyledSpan>
         <img src={rightArrow} alt='rightArrow' />

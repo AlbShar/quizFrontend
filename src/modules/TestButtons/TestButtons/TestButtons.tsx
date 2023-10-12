@@ -88,7 +88,7 @@ const TestButtons = ({
           isDisabledBtn={isBtnNextDisabled}
         />
       ) : (
-        <ButtonNext
+        <ButtonNext 
           isBtnNextDisabled={isBtnNextDisabled}
           onClickButtonHandler={onClickButtonHandler}
         />

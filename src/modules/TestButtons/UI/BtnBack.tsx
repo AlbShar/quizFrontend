@@ -46,6 +46,7 @@ const BtnBack = ({
           id='btnBack'
           onClick={onClickBackBtn}
           disabled={isBtnBackDisabled}
+          data-testid='btn-back'
         >
           <img src={leftArrow} alt='Кнопка назад' />
           <StyledSpan>{t('назад')}</StyledSpan>
