@@ -29,6 +29,16 @@
       "feedback": "Обратная связь",
       "team": "Команда",
       "rules": "Правила "
+    },
+    "testButtons": {
+      "UI": {
+        "btnBack": {
+          "text": "Назад"
+        },
+        "btnNext": {
+          "text": "Далее"
+        }
+      }
     }
   },
   "components": {

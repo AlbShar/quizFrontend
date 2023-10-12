@@ -29,6 +29,16 @@
       "feedback": "Feedback",
       "team": "Team",
       "rules": "Rules"
+    },
+    "testButtons": {
+      "UI": {
+        "btnBack": {
+          "text": "Back"
+        },
+        "btnNext": {
+          "text": "Next"
+        }
+      }
     }
   },
   "components": {

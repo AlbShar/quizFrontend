@@ -4,11 +4,10 @@ import Container from '../../components/Container/Container';
 import AnswerOptions from '../../modules/TestAnswerOptions/index';
 import TestTask from '../../modules/TestTask/index';
 import TestInfo from '../../modules/TestInfo/index';
-import { StyledMain } from '../../styles/Main.Styled';
 import { ContextCurrentQuestionNumb } from '../../components/Context';
 import TestButtons from '../../modules/TestButtons/index';
 
-import { StyledSection } from './Quiz.Styled';
+import { StyledSection, StyledMain } from './Quiz.Styled';
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);

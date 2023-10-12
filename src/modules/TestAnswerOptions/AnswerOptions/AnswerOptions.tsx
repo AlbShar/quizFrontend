@@ -26,8 +26,8 @@ const AnswerOptions = ({
   setUserAnswer,
 }: AnswerOptionsProps): JSX.Element => {
   const [answers, setAnsewrs] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
     const [profession]: [string, (lang: string) => void] =
       useContext(ContextProfession);
 
@@ -43,7 +43,7 @@ const AnswerOptions = ({
   };
 
   const onClickAnswer = (id: number, e: MouseEvent) => {
-    const style = 'background-color: #B7B7FF';
+    const style = 'border: 3px solid #5557FF;';
 
     if (e.target) {
       const targetElement = e.target as HTMLElement;

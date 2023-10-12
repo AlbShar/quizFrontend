@@ -1,23 +1,36 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+
+type TypeButton = {
+  typeBtn: 'back' | 'next';
+};
+
+const StyledButton = styled.button<TypeButton>`
   box-sizing: border-box;
   display: flex;
+  justify-content: ${({ typeBtn }) =>
+    typeBtn === 'back' ? 'flex-start' : 'flex-end'};
   align-items: center;
   padding: 8px 18px;
-  border: none;
+  border: ${({ typeBtn }) =>
+    typeBtn === 'back' ? '1px solid #000;' : 'none'};
   gap: 8px;
   cursor: pointer;
-  border-radius: 7px;
-  background-color: #585aff;
+  border-radius: 3px;
+  background-color: ${({ typeBtn }) =>
+    typeBtn === 'back' ? 'transparent' : 'var(--color-purple)'};
+  color: ${({ typeBtn }) =>
+    typeBtn === 'back' ? '#000' : 'var(--color-white)'};
+  font: var(--font-bold);
+  text-transform: uppercase;
   width: 100%;
   max-width: 120px;
   max-height: 56px;
 
   &:disabled {
-    background-color: #b7b7ff;
+    opacity: 0.3;
     cursor: not-allowed;
-}
+  }
 
   @media screen and (min-width: 768.8px) {
     padding: 16px 18px;
@@ -27,10 +40,5 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledSpan = styled.span`
-  color: #fff;
-  font: var(--font-bold);
-  text-transform: uppercase;
-`;
 
-export { StyledButton, StyledSpan };
+export { StyledButton };
