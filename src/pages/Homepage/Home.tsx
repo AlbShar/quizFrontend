@@ -11,7 +11,7 @@ type HomepageProps = {
   setChooseProfession: (item: boolean) => void;
 };
 
-const Homepage = ({
+const Home = ({
   isChooseProfession,
   setChooseProfession,
 }: HomepageProps) => {
@@ -33,4 +33,4 @@ const Homepage = ({
   );
 };
 
-export default Homepage;
+export default Home;

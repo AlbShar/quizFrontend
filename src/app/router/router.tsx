@@ -6,12 +6,11 @@ import { GlobalStyles } from '../../styles/Global';
 
 const Header = lazy(() => import('../../modules/Header/index'));
 const Footer = lazy(() => import('../../components/Footer/Footer'));
-const Homepage = lazy(() => import('../../pages/Homepage/Homepage'));
-const Quiz = lazy(() => import('../../pages/Quiz/Quiz'));
-const Feedback = lazy(() => import('../../pages/Feedback/Feedback'));
-const Contact = lazy(() => import('../../pages/Contact/Contact'));
-const Results = lazy(() => import('../../pages/Results/Results'));
-const Page404 = lazy(() => import('../../pages/Page404/Page404'));
+const Homepage = lazy(() => import('../../pages/Homepage'));
+const Quiz = lazy(() => import('../../pages/Quiz'));
+const Feedback = lazy(() => import('../../pages/Feedback'));
+const Results = lazy(() => import('../../pages/Results'));
+const Page404 = lazy(() => import('../../pages/Page404'));
 
 
 export const MyRoutes = () => {
@@ -49,7 +48,6 @@ export const MyRoutes = () => {
               <Route index element={<Footer />} />
               <Route path='feedback' element={<Feedback />} />
               <Route path='quiz' element={<Quiz />} />
-              <Route path='contact' element={<Contact />} />
               <Route path='results' element={<Results />} />
             </Route>
             <Route path='*' element={<Page404 />} />
