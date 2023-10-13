@@ -53,8 +53,15 @@ type TInfoQuestionsAndAnswers = {
   [key: number]: TQuestionAndAnswer;
 };
 
+type TInitialState = {
+  userAnswersLoadingStatus: string;
+  userAnswers: TInfoQuestionsAndAnswers;
+  themes: string[];
+};
+
 export type {
   TUserAnswer,
+  TInitialState,
   TAnswerOption,
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,

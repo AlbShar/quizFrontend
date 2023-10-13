@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState, RefObject } from 'react';
+import { useEffect, useContext, useState, RefObject, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -20,11 +20,11 @@ import {
   StyledArticle,
 } from './TestInfo.Styled';
 
-type TestInfoProps = {
-  quizRef: RefObject<HTMLTableSectionElement>;
-};
+// type TestInfoProps = {
+//   quizRef?: RefObject<HTMLTableSectionElement>;
+// };
 
-const TestInfo = ({ quizRef }: TestInfoProps) => {
+export const TestInfo: FC = () => {
   const { t } = useTranslation();
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
@@ -43,7 +43,7 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
     return (
       <section>
         <article style={{ backgroundColor: '#EEEEFF' }}>
-          <ScrollBar quizRef={quizRef} />
+          <ScrollBar />
         </article>
         <StyledArticle>
           <div>
@@ -120,4 +120,3 @@ const TestInfo = ({ quizRef }: TestInfoProps) => {
   );
 };
 
-export default TestInfo;

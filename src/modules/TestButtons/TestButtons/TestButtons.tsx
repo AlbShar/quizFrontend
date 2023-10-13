@@ -89,7 +89,7 @@ const { t } = useTranslation('', {
           isDisabledBtn={isBtnNextDisabled}
         />
       ) : (
-        <ButtonNext
+        <ButtonNext 
           isBtnNextDisabled={isBtnNextDisabled}
           onClickButtonHandler={onClickButtonHandler}
         />

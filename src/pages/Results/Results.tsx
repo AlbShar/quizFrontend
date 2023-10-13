@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { StyledMain } from '../../styles/Main.Styled';
-import UserAnswers from '../../modules/UserAnswers';
+import { UserAnswers } from '../../modules/UserAnswers';
 import Container from '../../components/Container/Container';
 import DoughuntChart from '../../components/DoughuntChart/DoughuntChart';
 import Score from '../../modules/Score/index';
@@ -11,17 +11,8 @@ import Footer from '../../components/Footer/Footer';
 
 import { StyledSection, StyledSectionResults } from './Results.Styled';
 
-import type { TPointsByThemes } from '../../types/types';
 
 const Results = () => {
-  const [rightAnswers, setRightAnswers] = useState<number>(0);
-  const [pointsByTheme, setPointsByTheme] = useState<TPointsByThemes | null>(
-    null,
-  );
-
-  const setRightUserAnswers = useCallback((points: number) => {
-    setRightAnswers(points);
-  }, []);
 
   return (
     <>
@@ -29,16 +20,16 @@ const Results = () => {
         <div style={{ backgroundColor: '#1C1C1C', padding: '0 0 70px 0' }}>
           <Container>
             <StyledSectionResults>
-              <Score setRightAnswers={setRightUserAnswers} />
+              <Score/>
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
-              <BarChart pointsByTheme={pointsByTheme} />
-              <DoughuntChart rightAnswers={rightAnswers} />
+              <BarChart />
+              <DoughuntChart/>
             </StyledSection>
           </Container>
         </div>
-        <UserAnswers setPointsByTheme={setPointsByTheme} />
+        <UserAnswers/>
       </StyledMain>
       <Footer />
     </>

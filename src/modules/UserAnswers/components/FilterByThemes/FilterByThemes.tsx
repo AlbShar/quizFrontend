@@ -1,35 +1,36 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
 import chevrondown from '../../../../assets/images/chevrondown.svg';
 import { StyledWrapperDropdown } from '../Filters.Styled';
+import { changeFilterByTheme } from '../filtersSlice';
 
-type FilterByThemesProps = {
-  themesNames: string[];
-  setFilterByTheme: (item: string) => void;
-};
+import type { AppDispatch, RootState } from '../../../../app/store/index';
 
-const FilterByThemes = ({
-  themesNames,
-  setFilterByTheme,
-}: FilterByThemesProps): JSX.Element => {
-  const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
 
-  const themeHasChoosen = (item: string) => {
-    setSelectedTheme(item);
-    setFilterByTheme(item);
+const FilterByThemes = (): JSX.Element => {
+  const filterByTheme  = useSelector(
+    (state: RootState) => state.filtersReducer.filterByTheme,
+  );
+  const themes = useSelector(
+    (state: RootState) => state.userAnswersReducer.themes,
+  );
+  const { t } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
+  const onClickFilter = (filter: string) => {
+    dispatch(changeFilterByTheme(filter));
   };
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
-      data={themesNames}
-      selected={selectedTheme}
-      onClickElement={themeHasChoosen}
-      srcArrowDown={chevrondown}
-    />
+        data={[t('Все тематики'), ...themes]}
+        selected={t(filterByTheme)}
+        onClickElement={onClickFilter}
+        srcArrowDown={chevrondown}
+      />
     </StyledWrapperDropdown>
-    
   );
 };
 

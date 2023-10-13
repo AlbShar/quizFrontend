@@ -1,33 +1,30 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from "../../../../assets/images/chevrondown.svg";
-import {StyledWrapperDropdown} from "../Filters.Styled";
+import chevrondown from '../../../../assets/images/chevrondown.svg';
+import { StyledWrapperDropdown } from '../Filters.Styled';
+import { changeFilterByRight } from '../filtersSlice';
 
-type FilterByRightProps = {
-  setFilterByRightAnswer: (newFilter: string) => void;
-};
+import type { AppDispatch, RootState } from '../../../../app/store/index';
 
-const FilterByRight = ({
-  setFilterByRightAnswer,
-}: FilterByRightProps): JSX.Element => {
-  const data: string[] = ['Все вопросы', 'Верно', 'Неверно'];
-
-  const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);
-
-
-  const themeHasChoosen = (item: string) => {
-    setTypeAnswer(item);
-    setFilterByRightAnswer(item);
+const FilterByRight = (): JSX.Element => {
+  const { t } = useTranslation();
+  const data: string[] = [t('Все вопросы'), t('Верно'), t('Неверно')];
+  const filterByRight = useSelector(
+    (state: RootState) => state.filtersReducer.filterByRight,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const onClickFilterItem = (filter: string) => {
+    dispatch(changeFilterByRight(filter));
   };
-
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
         data={data}
-        selected={typeAnswer}
-        onClickElement={themeHasChoosen}
+        selected={t(filterByRight)}
+        onClickElement={onClickFilterItem}
         srcArrowDown={chevrondown}
       />
     </StyledWrapperDropdown>

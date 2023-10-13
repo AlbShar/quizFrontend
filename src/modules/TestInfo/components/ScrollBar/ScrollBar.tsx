@@ -9,10 +9,10 @@ import {
 import { StyledDivScrollBar } from './SrollBar.Styled';
 
 type ScrollBarProps = {
-  quizRef: RefObject<HTMLTableSectionElement>;
+  quizRef?: RefObject<HTMLTableSectionElement>;
 };
 
-const ScrollBar = ({ quizRef }: ScrollBarProps): JSX.Element => {
+const ScrollBar = (): JSX.Element => {
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
@@ -23,7 +23,7 @@ const ScrollBar = ({ quizRef }: ScrollBarProps): JSX.Element => {
 
   useEffect(() => {
     const url = `${profession}/questions`;
-    setWidthScrollBar({ currentQuestionNumb, quizRef, scrollBarElementRef, url });
+    setWidthScrollBar({ currentQuestionNumb, scrollBarElementRef, url });
   });
 
   return <StyledDivScrollBar ref={scrollBarElementRef}></StyledDivScrollBar>;

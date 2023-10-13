@@ -68,7 +68,7 @@ const Timer = () => {
 
   return (
     <StyledDivTimer ref={timerRef}>
-      <StyledButtonPause onClick={stopTimer}>
+      <StyledButtonPause onClick={stopTimer} data-testid='btn-pause'>
         <StyledImg src={pause} alt='pause' />
         {t('Пауза')}
       </StyledButtonPause>

@@ -1,5 +1,6 @@
-import { useState, useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,15 +12,16 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import Spinner from '../../UI/Spinner/Spinner';
-import ErrorMessage from '../../UI/ErrorMessage/ErroMessage';
+import LoadingStatusComponent from '../LoadingStatusComponent';
+
 import {
   StyledArticle,
   StyledP,
   StyledBarChartWrapper,
 } from './BatChart.Styled';
 
-import type { TPointsByThemes } from '../../types/types';
+import type { RootState } from '../../app/store/index';
+import useDataLoaded from '../../hooks/useDataLoaded';
 
 ChartJS.register(
   CategoryScale,
@@ -30,18 +32,60 @@ ChartJS.register(
   Legend,
 );
 
-type BarChartProps = {
-  pointsByTheme: TPointsByThemes | null;
+type TData = {
+  [key in string]: {
+    totalQuantity: number;
+    points: number;
+  };
 };
 
-const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+const BarChart = (): JSX.Element => {
   const colors = ['black', 'red', 'blue'];
   const { t } = useTranslation('', {
     keyPrefix: 'components.barChart',
   });
+  const isDataLoaded: boolean = useDataLoaded();
+  const selectorDatasets = createSelector(
+    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (state: RootState) => state.userAnswersReducer.themes,
+    (userAnswers, themes) => {
+      const arrayUserAnswers = Object.values(userAnswers);
+      const data: TData = themes.reduce(
+        (acc, value) => ({
+          ...acc,
+          [value]: { totalQuantity: 0, points: 0 },
+        }),
+        {},
+      );
 
+      arrayUserAnswers.forEach((userAnswer, index) => {
+        for (const theme of themes) {
+          if (userAnswer.theme === theme) {
+            data[theme].totalQuantity++;
+            data[theme].points += userAnswer.userAnswer.point;
+          }
+        }
+      });
+
+      const datasets = Object.entries(data).map((item, index) => {
+        const percentOfTheme = +(
+          (item[1].points / item[1].totalQuantity) *
+          100
+        ).toFixed();
+        const shortNameTheme =
+          item[0].length > 25 ? `${item[0].slice(0, 25)}...` : item[0];
+
+        return {
+          label: `${percentOfTheme} % - ${shortNameTheme}`,
+          data: [percentOfTheme],
+          backgroundColor: colors[index],
+        };
+      });
+
+      return datasets;
+    },
+  );
+  const datasets = useSelector(selectorDatasets);
 
   const options = {
     maintainAspectRatio: false,
@@ -66,52 +110,22 @@ const BarChart = ({ pointsByTheme }: BarChartProps): JSX.Element => {
 
   const data = {
     labels: [''],
-    datasets: pointsByTheme
-      ? Object.entries(pointsByTheme).map((item, index) => {
-          const percentOfTheme = +(
-            (item[1].totalPoints / item[1].totalQuantityQuestions) *
-            100
-          ).toFixed();
-          const shortNameTheme =
-            item[0].length > 25 ? `${item[0].slice(0, 25)}...` : item[0];
-
-          return {
-            label: `${percentOfTheme} % - ${shortNameTheme}`,
-            data: [percentOfTheme],
-            backgroundColor: colors[index],
-          };
-        })
-      : [],
+    datasets: datasets,
   };
-
-  const view = () => {
-    return (
-      <StyledArticle>
-        <StyledBarChartWrapper>
-          <Bar options={options} data={data} />
-        </StyledBarChartWrapper>
-        <StyledP>{t('text')}</StyledP>
-      </StyledArticle>
-    );
-  };
-
-  const spinner = isLoading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
-  ) : null;
-  const content = !(isLoading || isError) ? view() : null;
-  const error = isError ? <ErrorMessage/> : null;
-
-  useEffect(() => {
-    if (pointsByTheme) {
-      setIsLoading(false);
-    } 
-  }, [pointsByTheme]);
 
   return (
-    <>
-      {content} {spinner} {error}
-    </>
+    <StyledArticle>
+      <LoadingStatusComponent />
+      {isDataLoaded ? (
+        <>
+          <StyledBarChartWrapper>
+            <Bar options={options} data={data} />
+          </StyledBarChartWrapper>
+          <StyledP>{t('Подпись_столбчатая_диаграмма')}</StyledP>
+        </>
+      ) : null}
+    </StyledArticle>
   );
 };
 
-export default memo(BarChart);
+export default BarChart;
