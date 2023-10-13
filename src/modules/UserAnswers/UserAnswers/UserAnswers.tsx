@@ -98,7 +98,7 @@ export const UserAnswers = () => {
        return (
          <Container>
            <details open>
-             <StyledSum>{t('Ответы')}</StyledSum>
+             <StyledSum>{t('text')}</StyledSum>
              <StyledSection>
                <FilterByThemes />
                <FilterByRight />
@@ -144,24 +144,20 @@ export const UserAnswers = () => {
                            </StyledLi>
                          )}
                          <StyledLi>
-                           <StyledSpan>{`${t(
-                             'answerOptions',
-                           )}: `}</StyledSpan>
+                           <StyledSpan>{`${t('answerOptions')}: `}</StyledSpan>
                            {Object.entries(answerOptions)
                              .map(([key, value]) => `${key}: ${value}`)
                              .join(', ')}
                          </StyledLi>
                          <StyledLi>
-                           <StyledSpan>{`${t('yourAnswer')}: `}</StyledSpan>{' '}
+                           <StyledSpan>{`${t('userAnswer')}: `}</StyledSpan>{' '}
                            {userAnswer.userAnswer}
                          </StyledLi>
                          {isRight ? (
                            false
                          ) : (
                            <StyledLi>
-                             <StyledSpan>{`${t(
-                               'rightAnswer',
-                             )}: `}</StyledSpan>
+                             <StyledSpan>{`${t('rightAnswer')}: `}</StyledSpan>
                              {rightAnswer}
                            </StyledLi>
                          )}

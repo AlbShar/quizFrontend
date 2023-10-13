@@ -39,7 +39,11 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   };
 
   const displayBurgerAndListDependsOnPage = () => {
-    if (pathname.includes('quiz') || pathname.includes('results')) {
+    if (
+      pathname.includes('quiz') ||
+      pathname.includes('results') ||
+      pathname.includes('feedback')
+    ) {
       setShowList(false);
       setShowBurger(false);
     } else {

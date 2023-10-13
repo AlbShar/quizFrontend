@@ -11,43 +11,22 @@
   outline: none;
 }
 
-.input:focus {
-  border: 1px solid #6768d7;
-  transition: all ease 0.3s;
-}
-
-.success {
-  color: green;
-  margin: 10px 0;
-  font: var(--font-text-bold);
-}
-
-.error {
-  font: var(--font-little-text-regular);
-  color: red;
-}
-
-.label {
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  z-index: 2;
-  background-color: white;
-  color: #81868c;
-}
-
-
-.article {
-  position: relative;
-  margin: 0 0 30px 0;
-}
-
 .input::placeholder {
   color: #81868c;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
   text-align: left;
+}
+
+.input:focus {
+  border: 1px solid #6768d7;
+  transition: all ease 0.3s;
+}
+
+.error {
+  font: var(--font-little-text-regular);
+  color: red;
 }
 
 @media screen and (min-width: 459.8px) {

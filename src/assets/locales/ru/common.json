@@ -1,6 +1,11 @@
 {
   "appName": "TestOne",
-  "pages": {},
+  "pages": {
+    "feedback": {
+      "title": "Обратная связь",
+      "text": "Если вы нашли ошибку в нашем приложении или хотите добавить/изменить вопросы по тестированию, то заполните поля и напишите нам на электронную почту"
+    }
+  },
   "modules": {
     "callToAction": {
       "mainTitle": "Тест для IT-специалистов",
@@ -58,6 +63,14 @@
       "rightAnswer": "Правильный ответ",
       "explanation": "Объяснение",
       "link": "Ссылка"
+    },
+    "userForm": {
+      "name": "Имя",
+      "message": "Сообщение",
+      "btnText": "Отправить письмо",
+      "placeholderName": "Введите имя",
+      "placeholderEmail": "Введите почту",
+      "placeholderMessage": "Введите сообщение"
     }
   },
   "components": {

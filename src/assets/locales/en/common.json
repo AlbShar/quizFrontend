@@ -1,6 +1,11 @@
 {
   "appName": "TestOne",
-  "pages": {},
+  "pages": {
+    "feedback": {
+      "title": "Feedback",
+      "text": "If you find a bug in our application or want to add/change testing questions, fill out the fields and write to us by email"
+    }
+  },
   "modules": {
     "callToAction": {
       "mainTitle": "Test for IT specialists",
@@ -57,6 +62,14 @@
       "rightAnswer": "Right answer",
       "explanation": "Explanation",
       "link": "Link"
+    },
+    "userForm": {
+      "name": "Name",
+      "message": "Message",
+      "btnText": "Send Email",
+      "placeholderName": "Enter a name",
+      "placeholderEmail": "Enter your email",
+      "placeholderMessage": "Enter a message"
     }
   },
   "components": {

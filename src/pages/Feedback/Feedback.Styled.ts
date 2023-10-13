@@ -24,7 +24,7 @@ const StyledP = styled.p`
   font: var(--font-little-text-regular);
   color: black;
   padding: 0;
-  margin: 0;
+  margin: 0 0 20px 0;
   text-align: left;
 
   @media screen and (min-width: 459.8px) {

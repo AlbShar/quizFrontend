@@ -121,7 +121,7 @@ const BarChart = (): JSX.Element => {
           <StyledBarChartWrapper>
             <Bar options={options} data={data} />
           </StyledBarChartWrapper>
-          <StyledP>{t('Подпись_столбчатая_диаграмма')}</StyledP>
+          <StyledP>{t('text')}</StyledP>
         </>
       ) : null}
     </StyledArticle>

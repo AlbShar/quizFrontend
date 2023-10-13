@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
 import Spinner from '../../UI/Spinner/Spinner';
 import { GlobalStyles } from '../../styles/Global';
 

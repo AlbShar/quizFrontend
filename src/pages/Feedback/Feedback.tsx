@@ -6,16 +6,17 @@ import UserForm from '../../modules/UserForm';
 
 import { StyledH1, StyledSection, StyledP } from './Feedback.Styled';
 
-const ReportBugPage = () => {
-  const { t } = useTranslation();
-
+const Feedback = () => {
+  const { t } = useTranslation('', {
+    keyPrefix: 'pages.feedback',
+  });
   return (
     <StyledMain>
       <Container>
         <StyledSection>
           <article>
-            <StyledH1>{t('Обратная_связь')}</StyledH1>
-            <StyledP>{t('Учли_ваши_результаты')}</StyledP>
+            <StyledH1>{t('title')}</StyledH1>
+            <StyledP>{t('text')}</StyledP>
           </article>
           <article>
             <UserForm />
@@ -26,4 +27,4 @@ const ReportBugPage = () => {
   );
 };
 
-export default ReportBugPage;
+export default Feedback;

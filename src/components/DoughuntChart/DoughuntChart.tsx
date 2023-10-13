@@ -77,7 +77,7 @@ const DoughnutChart = (): JSX.Element => {
               <Doughnut data={data}></Doughnut>
               <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
             </StyledDoughuntWrapper>
-            <StyledP>{t('Подпись_круговая_диаграмма')}</StyledP>
+            <StyledP>{t('text')}</StyledP>
           </>
         ) : null}
       </StyledArticle>
