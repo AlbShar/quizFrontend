@@ -7,14 +7,12 @@ const StyledArticle = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px 8px 9px 8px;
-  max-height: 520px;
-
-  
+  padding: 16px 8px 30px 8px;
+  border-radius: 7px;
 `;
 
 const StyledP = styled.article`
-  font: var(--font-little-text-regular);
+  font: var(--font-text6-regular);
   color: #29313c;
   text-align: justify;
   margin: 12px 0 0 0;
@@ -36,11 +34,6 @@ const StyledDoughuntWrapper = styled.div`
   position: relative;
   width: 265px;
   height: 265px;
-
-  @media screen and (min-width: 767.8px) {
-    // width: 200px;
-    // height: 200px;
-  }
 `;
 
 const StyledSpan = styled.span`

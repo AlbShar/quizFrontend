@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const StyledSection = styled.section`
   box-sizing: border-box;
-  margin: 18px 0 24px 0;
+  margin: 10px 0 24px 0;
 
   @media screen and (min-width: 767.8px) {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: space-between;
     gap: 20px;
   }
@@ -18,18 +18,19 @@ const StyledSectionResults = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px 3px 20px;
+  padding: 28px 20px ;
   position: relative;
+  border-radius: 7px;
 
   &:after {
     position: absolute;
     content: '';
-    height: 1px;
-    color: #dfe4e9;
-    background-color: #dfe4e9;
-    width: 256px;
+    height: 0.5px;
+    color: var(--color-purple);
+    background-color: var(--color-purple);
+    width: 118px;
     transform: translateX(-50%) translateY(-50%);
-    top: 50%;
+    top: 46%;
     left: 50%;
   }
 
@@ -47,7 +48,7 @@ const StyledSectionResults = styled.section`
 
   @media screen and (min-width: 1439.8px) {
     &:after {
-      left: 45.5%;
+      left: 46.5%;
     }
   }
 `;

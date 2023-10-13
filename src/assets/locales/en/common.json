@@ -49,6 +49,14 @@
     "score": {
       "title": "Your score",
       "from": "from"
+    },
+    "userAnswers": {
+      "text": "Your answers",
+      "answerOptions": "Answer options",
+      "userAnswer": "Your answer",
+      "rightAnswer": "Right answer",
+      "explanation": "Explanation",
+      "link": "Link"
     }
   },
   "components": {
@@ -81,8 +89,7 @@
       "Designer": "Designer",
       "firstNameFrontend": "Albert",
       "firstNameDesigner": "Alisa",
-      "firstNamePM": "Natalia",
-      "textLink": "Start test"
+      "firstNamePM": "Natalia"
     },
     "resultsInfo": {
       "mainTitle": "Results",

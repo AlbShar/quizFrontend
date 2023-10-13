@@ -1,6 +1,5 @@
 import './footer.css';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid/Grid';
 
 import Feedback from '../../UI/Feedback/Feedback';
@@ -83,9 +82,7 @@ const Footer = () => {
               <Grid item xs={1} md={3}>
                 <Feedback />
               </Grid>
-              <Grid item xs={1} md={3}>
-                <StyledLink href='#startTest' className='link'>{t('textLink')}</StyledLink>
-              </Grid>
+              
             </Grid>
           </Grid>
           <Grid item md={12} xl={6}>

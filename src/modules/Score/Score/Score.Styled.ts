@@ -9,18 +9,6 @@ const StyledSection = styled.section`
   padding: 0 20px 3px 20px;
   position: relative;
 
-  &:after {
-    position: absolute;
-    content: '';
-    height: 1px;
-    color: #dfe4e9;
-    background-color: #dfe4e9;
-    width: 256px;
-    transform: translateX(-50%) translateY(-50%);
-    top: 50%;
-    left: 50%;
-  }
-
   @media screen and (min-width: 767.8px) {
     flex-direction: row;
     justify-content: space-between;

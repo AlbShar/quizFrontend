@@ -50,6 +50,14 @@
     "score": {
       "title": "Ваши результаты",
       "from": "из"
+    },
+    "userAnswers": {
+      "text": "Ваши ответы",
+      "answerOptions": "Варианты ответов",
+      "userAnswer": "Ваш ответ",
+      "rightAnswer": "Правильный ответ",
+      "explanation": "Объяснение",
+      "link": "Ссылка"
     }
   },
   "components": {
@@ -82,8 +90,7 @@
       "Designer": "Дизайнер",
       "firstNameFrontend": "Альберт",
       "firstNameDesigner": "Алиса",
-      "firstNamePM": "Наталья",
-      "textLink": "Начать тест"
+      "firstNamePM": "Наталья"
     },
     "resultsInfo": {
       "mainTitle": "Результаты",

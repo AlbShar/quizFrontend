@@ -6,6 +6,7 @@ import {
   Tooltip,
   Legend,
   LinearScale,
+  ChartOptions,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -33,10 +34,8 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
 
   const [totalQuestionNumbers, setTotalQuestionNumbers] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [profession, ]: [string, (lang: string) => void] =
-      useContext(ContextProfession);
-
-  
+  const [profession]: [string, (lang: string) => void] =
+    useContext(ContextProfession);
 
   const percentRightQuestions = +(
     (100 * rightAnswers) /
@@ -50,23 +49,26 @@ const DoughnutChart = ({ rightAnswers }: DoughnutProps): JSX.Element => {
       {
         label: '%',
         data: [percentRightQuestions, percentWrongQuestions],
-        backgroundColor: ['green', 'red'],
-        borderColor: ['green', 'red'],
+        backgroundColor: ['#3BA268', '#D61A31'],
+        borderColor: ['#3BA268', '#D61A31'],
         cutout: '75%',
         borderWidth: 1,
+        spacing: 2,
       },
     ],
   };
 
+
+
   const spinner = isLoading ? (
     <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
   ) : null;
-  
+
   const view = () => {
     return (
       <StyledArticle>
         <StyledDoughuntWrapper>
-          <Doughnut data={data}></Doughnut>
+          <Doughnut data={data} ></Doughnut>
           <StyledSpan>{`${percentRightQuestions} %`}</StyledSpan>
         </StyledDoughuntWrapper>
         <StyledP>{t('text')}</StyledP>

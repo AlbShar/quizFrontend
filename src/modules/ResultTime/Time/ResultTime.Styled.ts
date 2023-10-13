@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledArticle = styled.article`
   text-align: center;
-  padding: 16px 0;
+  padding: 44px 0;
 
   @media screen and (min-width: 767.8px) {
     flex-basis: 50%;

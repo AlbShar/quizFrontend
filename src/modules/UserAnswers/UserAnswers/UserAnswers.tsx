@@ -22,6 +22,7 @@ import {
   StyledUl,
   StyledSpan,
   StyledSpanResult,
+  StyledDetails,
   StyledSum,
   StyledSection,
 } from './UserAnswers.Styled';
@@ -42,7 +43,9 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.userAnswers',
+  });
   const [infoQuestionsAndAnswers, setInfoQuestionsAndAnswers] =
     useState<null | TInfoQuestionsAndAnswers>(null);
   const [isError, setIsError] = useState<boolean>(false);
@@ -101,28 +104,28 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
                       </StyledLi>
                     )}
                     <StyledLi>
-                      <StyledSpan>{`${t('Варианты_ответов')}: `}</StyledSpan>
+                      <StyledSpan>{`${t('answerOptions')}: `}</StyledSpan>
                       {Object.entries(answerOptions)
                         .map(([key, value]) => `${key}: ${value}`)
                         .join(', ')}
                     </StyledLi>
                     <StyledLi>
-                      <StyledSpan>{`${t('Ваш_ответ')}: `}</StyledSpan>{' '}
+                      <StyledSpan>{`${t('userAnswer')}: `}</StyledSpan>{' '}
                       {userAnswer.userAnswer}
                     </StyledLi>
                     {isRight ? (
                       false
                     ) : (
                       <StyledLi>
-                        <StyledSpan>{`${t('Правильный_ответ')}: `}</StyledSpan>
+                        <StyledSpan>{`${t('rightAnswer')}: `}</StyledSpan>
                         {rightAnswer}
                       </StyledLi>
                     )}
                     <StyledLi>
-                      <StyledSpan>{`${t('Объяснение')}: `} </StyledSpan>
+                      <StyledSpan>{`${t('explanation')}: `} </StyledSpan>
                       {descr.startsWith('http') ? (
                         <a href={descr} target='_blank' rel='noreferrer'>
-                          {t('Ссылка')}
+                          {t('link')}
                         </a>
                       ) : (
                         descr
@@ -226,8 +229,8 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
 
   return (
     <Container>
-      <details open>
-        <StyledSum>{t('Ответы')}</StyledSum>
+      <StyledDetails open>
+        <StyledSum>{t('text')}</StyledSum>
         <StyledSection>
           <FilterByThemes
             themesNames={getThemes(
@@ -238,7 +241,7 @@ const UserAnswers = ({ setPointsByTheme }: UserAnwersProps): JSX.Element => {
           <FilterByRight setFilterByRightAnswer={setFilterByRightAnswer} />
         </StyledSection>
         {loading} {error} {content}
-      </details>
+      </StyledDetails>
     </Container>
   );
 };

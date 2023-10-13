@@ -57,6 +57,7 @@ body {
     --font-text8: 400 10px/22px var(--font-family-default);
     --font-text9: 700 37px/22px var(--font-family-default);
     --font-text10: 600 24px/22px var(--font-family-default);
+    --font-text11: 600 26px/28px var(--font-family-default);
 
 
 
