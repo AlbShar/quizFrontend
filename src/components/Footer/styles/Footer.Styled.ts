@@ -46,7 +46,8 @@ const StyledDivName = styled.div`
 
 const StyledLink = styled.a`
   text-decoration: none;
-  font: var(--font-text7);
+  font: var(--font-text6);
+  color: var(--color-white);
   
 
   &:visited {

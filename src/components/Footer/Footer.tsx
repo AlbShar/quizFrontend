@@ -1,4 +1,4 @@
-import './footer.css';
+import './styles/footer.css';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid/Grid';
 
@@ -14,7 +14,7 @@ import {
   StyledDivName,
   StyledLink,
   StyledNav,
-} from './Footer.Styled';
+} from './styles/Footer.Styled';
 
 import type { FooterInfo } from '../../types/types';
 
@@ -41,7 +41,7 @@ const Footer = () => {
     },
   ];
 
-  const elementsInfoMiddleFooter = team.map((item, index) => {
+  const teamOfProject = team.map((item, index) => {
     return (
       <Grid
         item
@@ -69,20 +69,22 @@ const Footer = () => {
           alignItems='center'
           direction='row'
         >
-          <Grid item xs={1.18} md={3} xl={2}>
+          <Grid item xs={0.7} md={3} xl={2}>
             <Logo location='footer' />
           </Grid>
-          <Grid item xs md={6} xl={4}>
+          <Grid item xs={1.3} md={6} xl={4}>
             <Grid
               container
               flexDirection='row'
-              columns={{ xs: 1, md: 6 }}
+              columns={{ xs: 1.3, md: 6 }}
               rowSpacing={2.5}
             >
-              <Grid item xs={1} md={3}>
+              <Grid item xs={0.9} md={3}>
                 <Feedback />
               </Grid>
-              
+              <Grid item xs={0.3} md={3}>
+                <StyledLink href='#header'>{t('textUpLink')}</StyledLink>
+              </Grid>
             </Grid>
           </Grid>
           <Grid item md={12} xl={6}>
@@ -100,7 +102,7 @@ const Footer = () => {
                     columnSpacing={{ xs: 3, xl: 5 }}
                     rowSpacing={4}
                   >
-                    {elementsInfoMiddleFooter}
+                    {teamOfProject}
                   </Grid>
                 </StyledUl>
               </StyledNav>

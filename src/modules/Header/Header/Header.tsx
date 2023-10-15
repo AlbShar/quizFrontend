@@ -77,7 +77,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
 
   return (
     <>
-      <StyledHeader>
+      <StyledHeader id="header">
         <Container>
           <StyledFlexSection>
             <Logo location='header' />

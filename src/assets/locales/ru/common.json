@@ -103,7 +103,8 @@
       "Designer": "Дизайнер",
       "firstNameFrontend": "Альберт",
       "firstNameDesigner": "Алиса",
-      "firstNamePM": "Наталья"
+      "firstNamePM": "Наталья",
+      "textUpLink": "Наверх"
     },
     "resultsInfo": {
       "mainTitle": "Результаты",
