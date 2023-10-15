@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import './style.css';
+import './styles/style.css';
 
 import {
   StyledButton,
@@ -12,7 +12,7 @@ import {
   StyledSpanFullLang,
   StyledImg,
   StyledDivWrapperLanguages,
-} from './Dropdown.Styled';
+} from './styles/Dropdown.Styled';
 
 type TLanguages = {
   [key: string]: string;
@@ -26,7 +26,7 @@ type DropdownProps = {
   srcArrowDown: string;
 };
 
-const Dropdown = ({
+export const Dropdown = ({
   data,
   selected,
   customStyle,
@@ -115,4 +115,3 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;

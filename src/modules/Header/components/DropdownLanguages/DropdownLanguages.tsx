@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
+import { ContextLanguage } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
-import { setValueToLocalStorage } from '../../../../helpers/setValueToLocalStorage';
-import { ContextLanguage } from '../../../../components/Context';
-import Dropdown from '../../UI/Dropdown/Dropdown';
+import {Dropdown} from '../../UI/Dropdown';
 import arrowDown from '../../icons/arrowDown.svg';
 
 const DropdownLanguages = () => {

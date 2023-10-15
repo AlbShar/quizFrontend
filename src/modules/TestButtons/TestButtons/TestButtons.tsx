@@ -12,7 +12,7 @@ import {
   ContextIdUser,
   ContextProfession,
 } from 'components/Context';
-import {LinkBtn} from 'UI/LinkBtn/LinkBtn';
+import { LinkBtn } from 'UI/LinkBtn/LinkBtn';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 
 import BtnBack from '../UI/BtnBack';
@@ -38,11 +38,10 @@ const TestButtons = ({
   const [lang] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
-        useContext(ContextProfession);
-const { t } = useTranslation('', {
-  keyPrefix: 'modules.testButtons',
-});
-
+    useContext(ContextProfession);
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.testButtons',
+  });
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
@@ -89,7 +88,7 @@ const { t } = useTranslation('', {
           isDisabledBtn={isBtnNextDisabled}
         />
       ) : (
-        <ButtonNext 
+        <ButtonNext
           isBtnNextDisabled={isBtnNextDisabled}
           onClickButtonHandler={onClickButtonHandler}
         />

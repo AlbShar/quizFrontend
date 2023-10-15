@@ -7,7 +7,7 @@ type ListProps = {
   onClickCloseBtn?: () => void;
 };
 
-const List = ({ onClickCloseBtn }: ListProps) => {
+export const List = ({ onClickCloseBtn }: ListProps) => {
 
   const { t } = useTranslation('', {
     keyPrefix: 'UI.list',
@@ -28,4 +28,3 @@ const List = ({ onClickCloseBtn }: ListProps) => {
   );
 };
 
-export default List;

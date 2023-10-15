@@ -1,5 +1,6 @@
-import close_btn from "../../../../assets/images/close_btn.svg"
-import List from '../List/List';
+import close_btn from "assets/images/close_btn.svg"
+
+import {List} from '../List';
 
 import { StyledArticle } from './Menu.Styled';
 
@@ -7,7 +8,7 @@ type MenuProps = {
   onClickCloseBtn: () => void;
 };
 
-const Menu = ({ onClickCloseBtn }: MenuProps) => {
+export const Menu = ({ onClickCloseBtn }: MenuProps) => {
 
   return (
     <StyledArticle>
@@ -19,4 +20,3 @@ const Menu = ({ onClickCloseBtn }: MenuProps) => {
   );
 };
 
-export default Menu;
