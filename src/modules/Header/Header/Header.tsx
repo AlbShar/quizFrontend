@@ -26,15 +26,17 @@ type HeaderProps = {
 
 const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
   const [isShowBurger, setShowBurger] = useState(true);
-  const [isShowList, setShowList] = useState(true);
+  const [isShowList, setShowList] = useState(false);
   const [isShowMenu, setShowMenu] = useState(false);
   const { pathname } = useLocation();
 
   const displayBurgerDependsOnScreenSize = () => {
     if (window.innerWidth > 1299.8) {
       setShowBurger(false);
+      setShowList(true);
     } else {
       setShowBurger(true);
+      setShowList(false);
     }
   };
 
@@ -46,10 +48,7 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
     ) {
       setShowList(false);
       setShowBurger(false);
-    } else {
-      setShowList(true);
-      setShowBurger(true);
-    }
+    } 
   };
 
   useEffect(() => {
