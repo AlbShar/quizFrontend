@@ -2,14 +2,14 @@ import { useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
+import {Container} from 'components/Container/Container';
+import {Spinner} from 'UI/Spinner/Spinner';
+import { ContextLanguage } from 'components/Context';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 
-import Container from '../../../components/Container/Container';
+import { fetchUserAnswer } from '../userAnswersSlice';
 import FilterByRight from '../components/FilterByRight/FilterByRight';
 import FilterByThemes from '../components/FilterByThemes/FilterByThemes';
-import Spinner from '../../../UI/Spinner/Spinner';
-import { ContextLanguage, ContextIdUser } from '../../../components/Context';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
-import { fetchUserAnswer } from '../userAnswersSlice';
 
 import {
   StyledLi,
@@ -30,7 +30,6 @@ import type { AppDispatch, RootState } from '../../../app/store/index';
 
 export const UserAnswers = () => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
-  const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
@@ -78,8 +77,6 @@ export const UserAnswers = () => {
   const filteredAnswers = useSelector(filteredUserAnswers);
 
   
-  // const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
-
   useEffect(() => {
     dispatch(fetchUserAnswer());
   }, []);

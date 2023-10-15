@@ -1,10 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
-
-import Container from '../Container/Container';
-import Feedback from '../../UI/Feedback/Feedback';
-import person_sitting from '../../assets/images/person_sitting.svg';
+import {Container} from 'components/Container';
+import {Feedback} from 'UI/Feedback/Feedback';
+import person_sitting from 'assets/images/person_sitting.svg';
 
 import {
   StyledP,
@@ -12,10 +10,10 @@ import {
   StyledImg,
   StyledArticle,
   StyledSection,
-} from './AboutUs.Styled';
-import './link.css';
+} from './styles/AboutUs.Styled';
+import './styles/link.css';
 
-const AboutUs = () => {
+export const AboutUs = () => {
   const { t } = useTranslation('', {
     keyPrefix: "components.aboutUs"
   });

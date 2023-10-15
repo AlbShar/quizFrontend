@@ -6,18 +6,18 @@ import {
   useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import BtnBack from '../UI/BtnBack';
-import ButtonNext from '../UI/ButtonNext';
 import {
   ContextCurrentQuestionNumb,
   ContextLanguage,
   ContextIdUser,
   ContextProfession,
-} from '../../../components/Context';
+} from 'components/Context';
+import {LinkBtn} from 'UI/LinkBtn/LinkBtn';
+import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
+
+import BtnBack from '../UI/BtnBack';
+import ButtonNext from '../UI/ButtonNext';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
-import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
-import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 import { StyledArticle } from './TestButtons.Styled';
 

@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
+import {Container} from 'components/Container';
+import {LinkBtn} from 'UI/LinkBtn';
+import { ContextIdUser } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
-import Container from '../../../components/Container/Container';
-import InfoTest from '../components/InfoTest/InfoTest';
-import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
+import InfoTest  from '../components/InfoTest/InfoTest';
 import { createIdUser } from '../helpers/createIdUser';
-import { ContextIdUser } from '../../../components/Context';
-import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import DropdownProfession from '../UI/DropdownProfession';
 
 import {

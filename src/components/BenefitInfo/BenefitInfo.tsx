@@ -1,9 +1,8 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
-
-import Container from '../Container/Container';
-import img from '../../assets/images/img.svg';
-import curve_line from '../../assets/images/curve_line.svg';
+import {Container} from 'components/Container';
+import img from 'assets/images/img.svg';
+import curve_line from 'assets/images/curve_line.svg';
 
 import {
   StyledH3,
@@ -17,7 +16,7 @@ import {
   StyledSection,
 } from './BenefitInfo.Styled';
 
-const BenefitInfo = () => {
+export const BenefitInfo = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.benefitInfo',
   });
@@ -93,4 +92,3 @@ const InfoCard = ({ numberCard, title, text }: InfoCardProps) => {
   );
 };
 
-export default BenefitInfo;

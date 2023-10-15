@@ -1,10 +1,9 @@
-import './styles/footer.css';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid/Grid';
-
-import Feedback from '../../UI/Feedback/Feedback';
-import Container from '../Container/Container';
-import Logo from '../Logo/Logo';
+import {Feedback} from 'UI/Feedback';
+import {Container} from 'components/Container';
+import {Logo} from 'components/Logo';
+import './styles/footer.css';
 
 import {
   StyledFooter,
@@ -18,7 +17,7 @@ import {
 
 import type { FooterInfo } from '../../types/types';
 
-const Footer = () => {
+export const Footer = () => {
   const { t } = useTranslation('', {
     keyPrefix: "components.footer"
   });
@@ -114,4 +113,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;

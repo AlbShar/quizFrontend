@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import {Container} from 'components/Container/Container';
+import UserForm from 'modules/UserForm';
 
-import Container from '../../components/Container/Container';
 import { StyledMain } from '../../styles/Main.Styled';
-import UserForm from '../../modules/UserForm';
 
 import { StyledH1, StyledSection, StyledP } from './Feedback.Styled';
 

@@ -2,7 +2,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 
 import { StyledSpan, StyledDiv } from './ErrorMessage.Styled';
 
-const ErrorMessage = () => {
+export const ErrorMessage = () => {
   return (
     <StyledDiv>
       <StyledSpan>Error!</StyledSpan>
@@ -11,4 +11,3 @@ const ErrorMessage = () => {
   );
 };
 
-export default ErrorMessage;

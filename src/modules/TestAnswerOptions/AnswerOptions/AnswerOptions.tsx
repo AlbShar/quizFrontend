@@ -1,16 +1,15 @@
 import { useEffect, useState, useContext } from 'react';
-
-import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
-import SkeletonAnswers from '../UI/SkeletonAnswers';
-import { getAnswersOptions } from '../api/getAnswersOptions';
-import Answer from '../components/Answer/Answer';
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
-} from '../../../components/Context';
-import { ContextLanguage } from '../../../components/Context';
+} from 'components/Context';
+import { ContextLanguage } from 'components/Context';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+
+import Answer from '../components/Answer/Answer';
+import SkeletonAnswers from '../UI/SkeletonAnswers';
+import { getAnswersOptions } from '../api/getAnswersOptions';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 import { StyledArticle, StyledUl } from './AnswerOptions.Styled';
 

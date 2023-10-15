@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import Spinner from '../UI/Spinner/Spinner';
-import ErrorMessage from '../UI/ErrorMessage/ErroMessage';
+import {Spinner} from 'UI/Spinner/Spinner';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 
 import { RootState } from '../app/store';
 

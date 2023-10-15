@@ -1,12 +1,9 @@
 import { useState, useContext } from 'react';
-
-import Dropdown from '../../../UI/Dropdown/Dropdown';
-import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
-import { ContextProfession } from '../../../components/Context';
-import { StyledDropdownWrapper } from './DropdownProfession.Styled';
 import { useTranslation } from 'react-i18next';
-
-import arrowDownLarge from '../../../assets/images/arrowDownLarge.svg';
+import {Dropdown} from 'UI/Dropdown/Dropdown';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
+import { ContextProfession } from 'components/Context';
+import arrowDownLarge from 'assets/images/arrowDownLarge.svg';
 
 type DropdownProfessionProps = {
   setChooseProfession: (item: boolean) => void;

@@ -10,7 +10,7 @@ import { getThemeQuestion } from 'modules/TestInfo/api/getThemeQuestion';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 import ScrollBar from 'modules/TestInfo/components/ScrollBar/ScrollBar';
 import Timer from 'modules/TestInfo/components/Timer/Timer';
-import ErrorMessage from 'UI/ErrorMessage/ErroMessage';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 
 import {
   StyledH1,

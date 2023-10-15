@@ -39,7 +39,7 @@ type TData = {
   };
 };
 
-const BarChart = (): JSX.Element => {
+export const BarChart = () => {
   const colors = ['black', 'red', 'blue'];
   const { t } = useTranslation('', {
     keyPrefix: 'components.barChart',
@@ -128,4 +128,3 @@ const BarChart = (): JSX.Element => {
   );
 };
 
-export default BarChart;

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import {Portal} from 'components/Portal/Portal';
+import {Logo} from 'components/Logo/Logo';
+import {Container} from 'components/Container/Container';
+import burger_menu from 'assets/images/burger_menu.svg';
 
-import Container from '../../../components/Container/Container';
 import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';
-import Logo from '../../../components/Logo/Logo';
 import TotalTested from '../components/TotalTested/TotalTested';
-import burger_menu from '../../../assets/images/burger_menu.svg';
 import Menu from '../UI/Menu/Menu';
-import Portal from '../../../components/Portal/Portal';
 import List from '../UI/List/List';
 
 import {

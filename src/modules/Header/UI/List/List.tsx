@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
-import Feedback from '../../../../UI/Feedback/Feedback';
+import {Feedback} from 'UI/Feedback/Feedback';
 
 import { StyledLi, StyledUl, StyledLink } from './List.Styled';
 

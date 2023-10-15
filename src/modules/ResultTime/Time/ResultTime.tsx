@@ -1,18 +1,17 @@
 import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import {Spinner} from 'UI/Spinner/Spinner';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import { ContextIdUser, ContextProfession } from 'components/Context';
+
+import { getUserInfo } from '../api/getUserInfo';
+import { transformSecondsToMinutes } from '../helpers/transformSecondsToMinutes';
 
 import {
   StyledH2,
   StyledH3,
   StyledArticle,
 } from './ResultTime.Styled';
-
-import Spinner from '../../../UI/Spinner/Spinner';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
-import { ContextIdUser, ContextProfession } from '../../../components/Context';
-
-import { getUserInfo } from '../api/getUserInfo';
-import { transformSecondsToMinutes } from '../helpers/transformSecondsToMinutes';
 
 
 const ResultTime = (): JSX.Element => {

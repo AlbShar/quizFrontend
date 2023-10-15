@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import {Dropdown} from 'UI/Dropdown/Dropdown';
+import chevrondown from 'assets/images/chevrondown.svg';
 
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from '../../../../assets/images/chevrondown.svg';
 import { StyledWrapperDropdown } from '../Filters.Styled';
 import { changeFilterByRight } from '../filtersSlice';
 
-import type { AppDispatch, RootState } from '../../../../app/store/index';
+import type { AppDispatch, RootState } from 'app/store/index';
 
 const FilterByRight = (): JSX.Element => {
   const { t } = useTranslation();

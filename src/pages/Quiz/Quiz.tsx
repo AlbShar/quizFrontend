@@ -1,19 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
-
-import Container from '../../components/Container/Container';
-import AnswerOptions from '../../modules/TestAnswerOptions/index';
-import TestTask from '../../modules/TestTask/index';
-import TestInfo from '../../modules/TestInfo/index';
-import { ContextCurrentQuestionNumb } from '../../components/Context';
-import TestButtons from '../../modules/TestButtons/index';
+import {Container} from 'components/Container';
+import AnswerOptions from 'modules/TestAnswerOptions';
+import TestTask from 'modules/TestTask';
+import TestInfo from 'modules/TestInfo';
+import { ContextCurrentQuestionNumb } from 'components/Context';
+import TestButtons from 'modules/TestButtons';
 
 import { StyledSection, StyledMain } from './Quiz.Styled';
 
 const Quiz = () => {
-  const [currentQuestionNumb, setCurrentQuestionNumb] = useState<number>(1);
+  const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
   const quizRef = useRef<HTMLTableSectionElement>(null);
-  const [userAnswer, setUserAnswer] = useState<string>('');
-  const [isBtnNextDisabled, setIsBtnNextDisabled] = useState<boolean>(true);
+  const [userAnswer, setUserAnswer] = useState('');
+  const [isBtnNextDisabled, setIsBtnNextDisabled] = useState(true);
 
   useEffect(() => {
     const showWarningWindow = (event: BeforeUnloadEvent) => {

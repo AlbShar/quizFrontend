@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
@@ -6,14 +5,13 @@ import {
   Tooltip,
   Legend,
   LinearScale,
-  ChartOptions,
 } from 'chart.js';
 import { createSelector } from '@reduxjs/toolkit';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
+import useDataLoaded from 'hooks/useDataLoaded';
 
 import LoadingStatusComponent from '../LoadingStatusComponent';
-import useDataLoaded from '../../hooks/useDataLoaded';
 
 import {
   StyledArticle,
@@ -22,12 +20,12 @@ import {
   StyledDoughuntWrapper,
 } from './DoughuntChart.Styled';
 
-import type { RootState } from '../../app/store/index';
+import type { RootState } from 'app/store/index';
 
 
 ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
 
-const DoughnutChart = (): JSX.Element => {
+export const DoughnutChart = (): JSX.Element => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.doughuntChart',
   });
@@ -84,4 +82,3 @@ const DoughnutChart = (): JSX.Element => {
   );
 };
 
-export default DoughnutChart;

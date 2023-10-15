@@ -1,11 +1,10 @@
-import Grid from '@mui/material/Grid';
-import Container from '../Container/Container';
 import { useTranslation } from 'react-i18next';
-
-import testRule1 from '../../assets/images/testRule1.svg';
-import testRule2 from '../../assets/images/testRule2.svg';
-import testRule3 from '../../assets/images/testRule3.svg';
-import testRule4 from '../../assets/images/testRule4.svg';
+import Grid from '@mui/material/Grid';
+import {Container} from 'components/Container';
+import testRule1 from 'assets/images/testRule1.svg';
+import testRule2 from 'assets/images/testRule2.svg';
+import testRule3 from 'assets/images/testRule3.svg';
+import testRule4 from 'assets/images/testRule4.svg';
 
 import {
   StyledH3,
@@ -17,7 +16,7 @@ import {
   StyledSection,
 } from './TestRules.Styled';
 
-const TestRules = () => {
+export const TestRules = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.testRules'
   });
@@ -89,4 +88,3 @@ const Rule = ({ text, img }: TRules) => {
   );
 };
 
-export default TestRules;

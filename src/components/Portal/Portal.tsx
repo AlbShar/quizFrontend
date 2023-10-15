@@ -5,7 +5,7 @@ type PortalProps = {
   children: ReactNode;
 };
 
-const Portal = ({ children }: PortalProps): JSX.Element => {
+export const Portal = ({ children }: PortalProps): JSX.Element => {
   const container = document.createElement('article');
   const root = document.querySelector('#root');
   root?.append(container);
@@ -19,4 +19,3 @@ const Portal = ({ children }: PortalProps): JSX.Element => {
   return ReactDOM.createPortal(children, container);
 };
 
-export default Portal;

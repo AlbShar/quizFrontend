@@ -1,21 +1,21 @@
 import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { getQuantityThemes } from '../../api/getInfoQuestions';
-import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
-import Spinner from '../../../../UI/Spinner/Spinner';
-import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
-
-import type { InfoTestBlock } from '../../../../types/types';
+import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
+import {Spinner} from 'UI/Spinner/Spinner';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 import {
   ContextLanguage,
   ContextProfession,
-} from '../../../../components/Context';
+} from 'components/Context';
 
+import { getQuantityThemes } from '../../api/getInfoQuestions';
 import clock from "../../icons/clock.svg";
 import barChart from "../../icons/bar-chart.svg";
 import helpCircle from "../../icons/help-circle.svg";
+
+import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
+
+import type { InfoTestBlock } from 'types/types';
 
 type InfoTestProps = {
   isChooseProfession: boolean;

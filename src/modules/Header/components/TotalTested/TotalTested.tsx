@@ -1,9 +1,10 @@
 import { useRef, useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ContextProfession } from 'components/Context';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import {Spinner} from 'UI/Spinner/Spinner';
 
-import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import Spinner from '../../../../UI/Spinner/Spinner';
 import { getAllTestedUsers } from '../../api/getAllTestedUsers';
 
 import {
@@ -11,7 +12,6 @@ import {
   StyledSpanNumber,
   StyledDivWrapper,
 } from './TotalTested.styled';
-import { ContextProfession } from '../../../../components/Context';
 
 
 type TotalTestedProps = {

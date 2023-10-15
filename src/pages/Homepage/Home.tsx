@@ -1,10 +1,11 @@
-import CallToAction from '../../modules/CallToAction/index';
-import Footer from '../../components/Footer/Footer';
+import CallToAction from 'modules/CallToAction';
+import {Footer} from 'components/Footer';
+import AboutUs from 'components/AboutUs/AboutUs';
+import {BenefitInfo} from 'components/BenefitInfo';
+import {TestRules} from 'components/TestRules';
+import {ResultsInfo} from 'components/ResultsInfo';
+
 import { StyledMain } from '../../styles/Main.Styled';
-import AboutUs from '../../components/AboutUs/AboutUs';
-import BenefitInfo from '../../components/BenefitInfo/BenefitInfo';
-import TestRules from '../../components/TestRules/TestRules';
-import ResultsInfo from '../../components/ResultsInfo/ResultsInfo';
 
 type HomepageProps = {
   isChooseProfession: boolean;

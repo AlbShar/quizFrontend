@@ -6,7 +6,7 @@ type ButtonProps = {
   text: string;
   disabled: boolean
 };
-const Button = ({ text, disabled }: ButtonProps): JSX.Element => {
+export const Button = ({ text, disabled }: ButtonProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (
@@ -16,4 +16,3 @@ const Button = ({ text, disabled }: ButtonProps): JSX.Element => {
   );
 };
 
-export default Button;

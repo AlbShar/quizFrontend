@@ -9,7 +9,7 @@ type FeedbackProps = {
   style?: CSSProperties;
 };
 
-const Feedback = ({ onClickCloseBtn, style }: FeedbackProps) => {
+export const Feedback = ({ onClickCloseBtn, style }: FeedbackProps) => {
   const { t } = useTranslation('', {
     keyPrefix: "UI.feedback"
   });
@@ -21,4 +21,3 @@ const Feedback = ({ onClickCloseBtn, style }: FeedbackProps) => {
   );
 };
 
-export default Feedback;

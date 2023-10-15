@@ -1,8 +1,7 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
-
-import Container from '../Container/Container';
-import curver_line2 from '../../assets/images/curve_line2.svg';
+import {Container} from 'components/Container';
+import curver_line2 from 'assets/images/curve_line2.svg';
 
 import {
   StyledH3,
@@ -14,7 +13,7 @@ import {
   StyledSection,
 } from './ResultsInfo.Styled';
 
-const ResultsInfo = () => {
+export const ResultsInfo = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.resultsInfo'
   });
@@ -62,4 +61,3 @@ const Result = ({ text, id }) => {
   );
 };
 
-export default ResultsInfo;
