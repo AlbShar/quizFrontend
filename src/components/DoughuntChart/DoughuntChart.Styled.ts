@@ -9,6 +9,10 @@ const StyledArticle = styled.article`
   align-items: center;
   padding: 16px 8px 30px 8px;
   border-radius: 7px;
+
+  @media screen and (min-width: 767.8px) {
+    flex-basis: 50%;
+  }
 `;
 
 const StyledP = styled.article`

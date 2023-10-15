@@ -50,6 +50,7 @@ const StyledUl = styled.ul`
 
 const StyledSum = styled.summary`
   box-sizing: border-box;
+  cursor: pointer;
   width: 100%;
   background-color: transparent;
   font: var(--font-text11);
@@ -64,7 +65,6 @@ const StyledSum = styled.summary`
 `;
 
 const StyledDetails = styled.details`
-  cursor: pointer;
   @media screen and (min-width: 767.8px) {
     margin: 0 0 30px 0;
   }

@@ -32,11 +32,11 @@ const Quiz = () => {
   return (
     <StyledMain>
       <Container>
-        <StyledSection ref={quizRef}>
+        <StyledSection ref={quizRef} id='quiz'>
           <ContextCurrentQuestionNumb.Provider
             value={[currentQuestionNumb, setCurrentQuestionNumb]}
           >
-            <TestInfo />
+            <TestInfo quizRef={quizRef} />
             <TestTask />
             <AnswerOptions
               setIsBtnNextDisabled={setIsBtnNextDisabled}

@@ -3,9 +3,11 @@ import styled from 'styled-components';
 const StyledSection = styled.section`
   box-sizing: border-box;
   margin: 10px 0 24px 0;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 767.8px) {
-    display: flex;
+    flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
     gap: 20px;
