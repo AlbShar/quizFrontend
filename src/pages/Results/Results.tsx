@@ -5,6 +5,7 @@ import Score from 'modules/Score/index';
 import ResultTime from 'modules/ResultTime';
 import {BarChart} from 'components/BarChart';
 import {Footer} from 'components/Footer';
+import { Chart } from 'modules/Chart';
 
 import { StyledMain } from '../../styles/Main.Styled';
 
@@ -24,8 +25,9 @@ const Results = () => {
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
-              <BarChart />
-              <DoughnutChart />
+              {/* <BarChart /> */}
+              <Chart typeChart='bar'/>
+              <Chart typeChart='doughunt' />
             </StyledSection>
           </Container>
         </div>
