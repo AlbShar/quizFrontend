@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+type TButtonsProps = {
+  pageName: 'results' | 'quiz' | 'home';
+};
+
+const StyledButton = styled.button<TButtonsProps>`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -10,27 +14,26 @@ const StyledButton = styled.button`
   font: var(--font-button);
   text-transform: uppercase;
   cursor: pointer;
-  color: var(--color-black);
+  color: ${({ pageName }) =>
+    pageName === 'home' ? 'var(--color-black)' : 'var(--color-white)'};
   text-decoration: none;
   border-radius: 3px;
-  background-color: var(--color-white);
+  background-color: ${({ pageName }) =>
+    pageName === 'home' ? 'var(--color-white)' : 'var(--color-purple)'};
   width: 100%;
   height: 54px;
 
   &:disabled {
-    background-color: transparent;
+    background-color: ${({ pageName }) =>
+      pageName === 'home' ? 'transparent' : 'var(--color-purple)'};
     border: 2px solid var(--color-purple);
     cursor: not-allowed;
     color: var(--color-white);
+    opacity: ${({ pageName }) => (pageName === 'home' ? '1' : '0.3')};
   }
 
   @media screen and (min-width: 767.8px) {
     padding: 16px 18px;
-    // width: 280px;
-  }
-
-  @media screen and (min-width: 1023.8px) {
-    // width: 197px;
   }
 `;
 

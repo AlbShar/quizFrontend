@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { MouseEvent } from 'react';
 import './styles/link.css';
 
@@ -20,11 +19,18 @@ export const LinkBtn = ({
   id,
   isDisabledBtn,
 }: LinkBtnProps): JSX.Element => {
-  const { t } = useTranslation();
+  const matchResult = pageTo.match(/\/(\w+)/);
+  let pageName: 'results' | 'quiz' | 'home' = 'home';
+
+   if (matchResult && matchResult[1]) {
+      pageName = matchResult[1] as 'results' | 'quiz';
+   }  
 
   return (
     <Link className='btn__link' to={pageTo} onClick={onClick} id={id}>
-      <StyledButton disabled={isDisabledBtn}>{text}</StyledButton>
+      <StyledButton disabled={isDisabledBtn} pageName={pageName}>
+        {text}
+      </StyledButton>
     </Link>
   );
 };
