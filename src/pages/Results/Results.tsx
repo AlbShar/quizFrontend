@@ -1,19 +1,18 @@
 import { UserAnswers } from 'modules/UserAnswers';
-import {Container} from 'components/Container';
-import { DoughnutChart } from 'components/DoughuntChart';
-import Score from 'modules/Score/index';
-import ResultTime from 'modules/ResultTime';
-import {BarChart} from 'components/BarChart';
-import {Footer} from 'components/Footer';
-import { Chart } from 'modules/Chart';
+import { Container } from 'components/Container';
+import { Footer } from 'components/Footer';
+import { withChart } from 'modules/Chart';
+import { withResult } from 'modules/result';
 
 import { StyledMain } from '../../styles/Main.Styled';
 
 import { StyledSection, StyledSectionResults } from './Results.Styled';
 
-
-
 const Results = () => {
+  const ResultScores = withResult('scores');
+  const ResultTime = withResult('time');
+  const ChartBar = withChart('bar');
+  const ChartDoughunt = withChart('doughunt');
 
   return (
     <>
@@ -21,13 +20,12 @@ const Results = () => {
         <div style={{ backgroundColor: '#1C1C1C', padding: '0 0 70px 0' }}>
           <Container>
             <StyledSectionResults>
-              <Score />
+              <ResultScores />
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
-              {/* <BarChart /> */}
-              <Chart typeChart='bar'/>
-              <Chart typeChart='doughunt' />
+              <ChartBar />
+              <ChartDoughunt />
             </StyledSection>
           </Container>
         </div>

@@ -1,4 +1,4 @@
-const transformSecondsToMinutes = (seconds: unknown, sec: string, min: string): string | false | null => {
+export const transformSecondsToMinutes = (seconds: unknown, sec: string, min: string): string | false | null => {
 
   let result = '';
 
@@ -20,4 +20,3 @@ const transformSecondsToMinutes = (seconds: unknown, sec: string, min: string): 
   }
 };
 
-export { transformSecondsToMinutes };

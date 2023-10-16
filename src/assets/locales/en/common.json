@@ -55,6 +55,17 @@
       "title": "Your score",
       "from": "from"
     },
+    "result": {
+      "scores": {
+        "title": "Your results",
+        "from": "from"
+      },
+      "time": {
+        "title": "Spent time",
+        "min": "min",
+        "sec": "sec"
+      }
+    },
     "userAnswers": {
       "text": "Your answers",
       "answerOptions": "Answer options",

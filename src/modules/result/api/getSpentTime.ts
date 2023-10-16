@@ -1,8 +1,7 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-import db from '../../../config/firebase/firebaseConfig';
-
+import db from 'config/firebase/firebaseConfig';
 
 type TUserInfoDB = {
   name: string;
@@ -11,7 +10,7 @@ type TUserInfoDB = {
   time: number;
 };
 
-const getUserInfo = (url: string) => {
+export const getSpentTime = (url: string) => {
   return new Promise<TUserInfoDB>(function (resolve, reject) {
     onValue(ref(db, url), (snapshot) => {
       resolve(snapshot.val());
@@ -19,4 +18,3 @@ const getUserInfo = (url: string) => {
   });
 };
 
-export { getUserInfo };

@@ -1,0 +1,1 @@
+export { withResult } from './withResult';

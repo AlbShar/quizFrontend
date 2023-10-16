@@ -1,1 +1,1 @@
-export {Chart} from "./chart"
+export {withChart} from "./withChart"
