@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-type StyledSpanResultProps = {
-  isRight: boolean;
-}
-
 const StyledLi = styled.li`
   box-sizing: border-box;
   list-style-type: none;
@@ -60,15 +56,10 @@ const StyledSum = styled.summary`
 
   @media screen and (min-width: 767.8px) {
     justify-content: flex-start;
-    padding: 66px 0 30px 0;
+    padding: 30px 0;
   }
 `;
 
-const StyledDetails = styled.details`
-  @media screen and (min-width: 767.8px) {
-    margin: 0 0 30px 0;
-  }
-`;
 
 const StyledSpan = styled.span`
   font: var(--font-text5-bold);
@@ -92,19 +83,6 @@ const StyledSection = styled.section`
   }
 `;
 
-const StyledSpanResult = styled.span<StyledSpanResultProps>`
-  position: absolute;
-  color: ${({ isRight }) => (isRight ? 'green' : 'red')};
-  top: 5px;
-  right: 0;
-
-  font: var(--font-little-text-bold);
-
-  @media screen and (min-width: 767.8px) {
-    font: var(--font-text-bold);
-  }
-`;
-
 
 
 export {
@@ -112,8 +90,6 @@ export {
   StyledUl,
   StyledSpan,
   StyledListAnswers,
-  StyledSpanResult,
   StyledSum,
   StyledSection,
-  StyledDetails,
 };

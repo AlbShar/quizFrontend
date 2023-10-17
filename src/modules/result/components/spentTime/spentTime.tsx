@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { Spinner } from 'UI/Spinner';
 import { transformSecondsToMinutes } from 'modules/result/helpers/transformSecondsToMinutes';
+import { Spinner } from 'UI/Spinner';
+import { ErrorMessage } from 'UI/ErrorMessage';
+import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
 
 import { useGetTime } from '../../hooks/useGetTime';
 import { StyledArticle, StyledH3, StyledH2 } from '../../styles/result.Styled';
@@ -11,6 +13,18 @@ export const SpentTime = () => {
   const { t } = useTranslation('', {
     keyPrefix: `modules.result.time`,
   });
+  const statusLoading = useGetStatusLoading();
+
+
+    if (statusLoading === 'loading') {
+      return (
+        <Spinner width={50} height={50} color={'#1f2ce0'} margin={'0 auto'} />
+      );
+    }
+
+    if (statusLoading === 'error') {
+      return <ErrorMessage />;
+    }
   
   return (
     <StyledArticle>

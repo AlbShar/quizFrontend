@@ -44,13 +44,14 @@ export const Footer = () => {
   const teamOfProject = team.map((item, index) => {
     return (
       <Grid
+        key={index + 1}
         item
         xs={index === 0 || index === 2 ? 1.35 : 0.3}
         md={3}
         lg={2}
         xl='auto'
       >
-        <StyledLi key={index + 1}>
+        <StyledLi >
           <StyledLink href={item.link} target='_blank'>
             <StyledDivProfession> {item.profession}</StyledDivProfession>
             <StyledDivName> {item.name}</StyledDivName>

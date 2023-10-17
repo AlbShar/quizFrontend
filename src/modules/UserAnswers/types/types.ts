@@ -54,7 +54,7 @@ type TInfoQuestionsAndAnswers = {
 };
 
 type TInitialState = {
-  userAnswersLoadingStatus: string;
+  userAnswersLoadingStatus: 'error' | 'success' | 'idle' | 'loading';
   userAnswers: TInfoQuestionsAndAnswers;
   themes: string[];
 };

@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import LoadingStatusComponent from 'components/LoadingStatusComponent';
-import useDataLoaded from 'hooks/useDataLoaded';
+import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
+import { Spinner } from 'UI/Spinner';
+import { ErrorMessage } from 'UI/ErrorMessage';
 
 import { DoughnutChart } from './components/doughuntChart/doughuntChart';
 import { BarChart } from './components/barChart/barChart';
@@ -12,17 +13,22 @@ export const Chart = ({ typeChart }: TChart) => {
   const { t } = useTranslation('', {
     keyPrefix: `modules.chart.${typeChart}`,
   });
-  const isDataLoaded = useDataLoaded();
+  const statusLoading = useGetStatusLoading();
+
+  if (statusLoading === 'loading') {
+    return (
+      <Spinner width={50} height={50} color={'#fcfdff'} margin={'0 auto'} />
+    );
+  }
+
+  if (statusLoading === 'error') {
+    return <ErrorMessage />;
+  }
 
   return (
     <StyledArticle typeChart={typeChart}>
-      <LoadingStatusComponent />
-      {isDataLoaded ? (
-        <>
-          {typeChart === 'doughunt' ? <DoughnutChart /> : <BarChart />}
-          <StyledP>{t('text')}</StyledP>
-        </>
-      ) : null}
+      {typeChart === 'doughunt' ? <DoughnutChart /> : <BarChart />}
+      <StyledP>{t('text')}</StyledP>
     </StyledArticle>
   );
 };
