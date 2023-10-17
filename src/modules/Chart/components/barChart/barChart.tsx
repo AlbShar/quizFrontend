@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,6 +9,10 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+
+import { useTematicsStats } from 'modules/Chart/hooks/useTematicsStats';
+
+import { StyledBarWrapper } from './barChart.Styled';
 
 
 ChartJS.register(
@@ -20,17 +25,15 @@ ChartJS.register(
 );
 
 type TData = {
-    label: string;
-    data: number[];
-    backgroundColor: string
+  label: string;
+  data: number[];
+  backgroundColor: string;
 };
 
-type TBarChartProps = {
-  thematicsStats: TData[];
-};
 
-export const BarChart = ({ thematicsStats }: TBarChartProps) => {
-
+export const BarChart = () => {
+  const thematicsStats = useTematicsStats();
+  
   const options = {
     maintainAspectRatio: false,
     plugins: {
@@ -57,6 +60,9 @@ export const BarChart = ({ thematicsStats }: TBarChartProps) => {
     datasets: thematicsStats,
   };
 
-  return <Bar options={options} data={data} />;
+  return (
+    <StyledBarWrapper>
+      <Bar options={options} data={data} />
+    </StyledBarWrapper>
+  );
 };
-

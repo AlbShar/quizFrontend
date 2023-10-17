@@ -19,4 +19,4 @@ const StyledSpan = styled.span`
   color: #6768d7;
 `;
 
-export {  StyledSpan, StyledDoughuntWrapper };
+export { StyledSpan, StyledDoughuntWrapper };

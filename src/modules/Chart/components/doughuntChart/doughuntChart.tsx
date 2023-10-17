@@ -8,21 +8,19 @@ import {
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import {
-  StyledSpan,
-  StyledDoughuntWrapper,
-} from './DoughuntChart.Styled';
+import { useUserAnswersStats } from 'modules/Chart/hooks/useUserAnswersStats';
+
+import { StyledSpan, StyledDoughuntWrapper } from './doughuntChart.Styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
 
-type TDoughnutChartProps = {
-  userAnswersStats: number[]
-}
 
-export const DoughnutChart = ({ userAnswersStats }: TDoughnutChartProps) => {
+export const DoughnutChart = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.doughuntChart',
   });
+  const userAnswersStats = useUserAnswersStats();
+
 
   const data = {
     labels: [t('right'), t('wrong')],
@@ -41,9 +39,8 @@ export const DoughnutChart = ({ userAnswersStats }: TDoughnutChartProps) => {
 
   return (
     <StyledDoughuntWrapper>
-      <Doughnut data={data}/>
+      <Doughnut data={data} />
       <StyledSpan>{`${userAnswersStats[0]} %`}</StyledSpan>
     </StyledDoughuntWrapper>
-  )
+  );
 };
-

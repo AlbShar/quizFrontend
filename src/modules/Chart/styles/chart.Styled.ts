@@ -33,13 +33,6 @@ export const StyledP = styled.article`
   margin: 12px 0 0 0;
 `;
 
-export const StyledChartWrapper = styled.div<TChart>`
-  position: relative;
-  width: ${({ typeChart }) => (typeChart === 'doughunt' ? '265px' : '100%')};
-  height: ${({ typeChart }) => (typeChart === 'doughunt' ? '265px' : '220px')};
-  max-width: ${({ typeChart }) =>
-    typeChart === 'doughunt' ? '265px' : '100%'};
-`;
 
 export const StyledSpan = styled.span`
   position: absolute;
