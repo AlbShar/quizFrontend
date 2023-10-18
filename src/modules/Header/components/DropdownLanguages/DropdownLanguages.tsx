@@ -1,15 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
+
 import { ContextLanguage } from 'components/Context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
+
 import {Dropdown} from '../../UI/Dropdown';
 import arrowDown from '../../icons/arrowDown.svg';
+
+
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
   const [lang, setLang]: [string, (lang: string) => void] =
     useContext(ContextLanguage);
+
 
   type tMapLanguage = {
     [key: string]: string;

@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+
 import { Portal } from 'components/Portal/Portal';
 import { Logo } from 'components/Logo/Logo';
 import { Container } from 'components/Container/Container';
@@ -33,6 +34,8 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
     setShowBurger(true);
     setShowMenu(false);
   };
+
+
 
   return (
     <>

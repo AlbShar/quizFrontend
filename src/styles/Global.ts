@@ -13,6 +13,7 @@ html {
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight,
     )}px;
+    background-color: var(--color-white);
   }
   
   div#root {

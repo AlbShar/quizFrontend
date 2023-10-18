@@ -28,12 +28,7 @@ export const fetchUserAnswer = createAsyncThunk(
       getUserAnswers(getValueFromLocalStorage('idUser')),
       getAnswerOptions(),
       getInfoQuestions(),
-    ]).then((value) =>
-      transformQuestionsAndAnswersDB(
-        value as any,
-        getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2)
-      ),
-    );
+    ])
   },
 );
 
@@ -45,8 +40,17 @@ const userAnswersSlice = createSlice({
     builder
       .addCase(fetchUserAnswer.fulfilled, (state, action) => {
         state.userAnswersLoadingStatus = 'success';
-        state.userAnswers = action.payload;
-        state.themes = getThemes(action.payload);
+        console.log(action.payload)
+        state.userAnswers = transformQuestionsAndAnswersDB(
+          action.payload as any,
+          getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
+        );
+        state.themes = getThemes(
+          transformQuestionsAndAnswersDB(
+            action.payload as any,
+            getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
+          ),
+        );
       })
       .addCase(fetchUserAnswer.pending, (state) => {
         state.userAnswersLoadingStatus = 'loading';

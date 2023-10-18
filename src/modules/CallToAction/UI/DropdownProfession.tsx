@@ -18,7 +18,7 @@ const DropdownProfession = ({
     keyPrefix: 'modules.callToAction.UI.dropdownProfession',
   });
 
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState('');
 
   const customStyleButton = `
       gap: 10px; 
@@ -29,7 +29,7 @@ const DropdownProfession = ({
         }`;
 
   const dataProfessions = {
-    [t('Frontend')]: 'Frontend',
+    'Frontend developer': 'Frontend',
     "Project Manager": 'Manager',
   };
   const listProfessions = Object.keys(dataProfessions);
