@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+
 import {Dropdown} from 'UI/Dropdown/Dropdown';
 import chevrondown from 'assets/images/chevrondown.svg';
 
@@ -10,13 +11,25 @@ import type { AppDispatch, RootState } from 'app/store/index';
 
 
 const FilterByThemes = (): JSX.Element => {
+    const { t } = useTranslation('', {
+      keyPrefix: 'modules.userAnswers',
+    });
+
   const filterByTheme  = useSelector(
-    (state: RootState) => state.filtersReducer.filterByTheme,
+    (state: RootState) => {
+      const filter = state.filtersReducer.filterByTheme;
+      if (filter === 'All thematics' || filter === 'Все тематики') {
+        return t(filter);
+      } else {
+        return filter;
+      }
+    }
   );
+
   const themes = useSelector(
     (state: RootState) => state.userAnswersReducer.themes,
   );
-  const { t } = useTranslation();
+
   const dispatch = useDispatch<AppDispatch>();
   const onClickFilter = (filter: string) => {
     dispatch(changeFilterByTheme(filter));
@@ -26,7 +39,7 @@ const FilterByThemes = (): JSX.Element => {
     <StyledWrapperDropdown>
       <Dropdown
         data={[t('Все тематики'), ...themes]}
-        selected={t(filterByTheme)}
+        selected={filterByTheme}
         onClickElement={onClickFilter}
         srcArrowDown={chevrondown}
       />

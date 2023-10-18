@@ -72,7 +72,25 @@
       "userAnswer": "Your answer",
       "rightAnswer": "Right answer",
       "explanation": "Explanation",
-      "link": "Link"
+      "link": "Link",
+      "defaultFilterTheme": "All themes",
+      "defaultFilterRight": "All questions",
+      "right": "right",
+      "wrong": "wrong",
+      "All questions": "All questions",
+      "Верно": "right",
+      "Неверно": "wrong",
+      "Все вопросы": "All questions",
+      "Все тематики": "All thematics",
+      "All thematics": "All thematics"
+    },
+    "chart": {
+      "bar": {
+        "text": "The graph displays the percentage of correct answers for each thematic section of the test. The indicator is calculated as the ratio of the number of questions to which the correct answer was given to the total number of questions on this topic. If the indicator is less than 50%, then this section needs to be studied further "
+      },
+      "doughunt": {
+        "text": "The graph displays the percentage of questions answered correctly"
+      }
     },
     "userForm": {
       "name": "Name",

@@ -13,7 +13,7 @@ type TData = {
 export const useTematicsStats = () => {
  const colorsColumnsChart = ['black', 'red', 'blue'];
 
-  const selectorDatasets = createSelector(
+  const selectorTematicsStats = createSelector(
     (state: RootState) => state.userAnswersReducer.userAnswers,
     (state: RootState) => state.userAnswersReducer.themes,
     (userAnswers, themes) => {
@@ -35,7 +35,7 @@ export const useTematicsStats = () => {
         }
       });
 
-      const datasets = Object.entries(data).map((item, index) => {
+      const thematicsStats = Object.entries(data).map((item, index) => {
         const percentOfTheme = +(
           (item[1].points / item[1].totalQuantity) *
           100
@@ -50,10 +50,10 @@ export const useTematicsStats = () => {
         };
       });
 
-      return datasets;
+      return thematicsStats;
     },
   );
-  const thematicsStats = useSelector(selectorDatasets);
+  const thematicsStats = useSelector(selectorTematicsStats);
 
   return thematicsStats;
 };

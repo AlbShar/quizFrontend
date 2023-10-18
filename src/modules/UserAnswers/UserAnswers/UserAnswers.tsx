@@ -54,15 +54,16 @@ export const UserAnswers = () => {
 
   return (
     <Container>
-      <details style={{ padding: '30px 0' }}>
+      <details style={{ padding: '30px 0' }} open>
         <StyledSum>{t('text')}</StyledSum>
         <StyledSection>
           <FilterByThemes />
           <FilterByRight />
         </StyledSection>
-        {filteredAnswers.map((userAnswerData) => (
-          <ViewUserAnswer {...userAnswerData} />
-        ))}
+        {filteredAnswers.map((userAnswerData) => {
+          const {id} = userAnswerData;
+          return <ViewUserAnswer {...userAnswerData} key={id}/>
+        })}
       </details>
     </Container>
   );
