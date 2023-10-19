@@ -5,7 +5,7 @@ import {Dropdown} from 'UI/Dropdown/Dropdown';
 import chevrondown from 'assets/images/chevrondown.svg';
 
 import { StyledWrapperDropdown } from '../Filters.Styled';
-import { changeFilterByRight } from '../filtersSlice';
+import { changeFilterByRight } from '../../userAnswersSlice';
 
 import type { AppDispatch, RootState } from 'app/store/index';
 
@@ -14,9 +14,9 @@ const FilterByRight = (): JSX.Element => {
     keyPrefix: 'modules.userAnswers'
   });
   const data: string[] = [t('Все вопросы'), t('Верно'), t('Неверно')];
-  const filterByRight = useSelector((state: RootState) => t(state.filtersReducer.filterByRight));
+  const filterByRight = useSelector((state: RootState) => t(state.filterByRight));
   const dispatch = useDispatch<AppDispatch>();
-  const onClickFilterItem = (filter: string) => {
+  const onClickFilterItem = (filter) => {
     dispatch(changeFilterByRight(filter));
   };
 

@@ -1,7 +1,4 @@
-type TUserAnswer = {
-  point: number;
-  userAnswer: string;
-};
+
 
 type TAnswerOption = {
   [key: string]: string;
@@ -14,12 +11,14 @@ type TAnswerOptionsLangDB = {
 };
 
 type TQuestion = {
-  descr: string;
-  name: string;
-  rightAnswer: string;
-  theme: string;
-  img: string;
-  id: number;
+  [key: string]: {
+    descr: string;
+    name: string;
+    rightAnswer: string;
+    theme: string;
+    img: string;
+    id: number;
+  };
 };
 
 type TInfoQuiestionsDB = {
@@ -38,25 +37,49 @@ type TAnswersDB = {
   };
 };
 
-type TQuestionAndAnswer = {
+
+type TUserAnswer = {
+  point: number;
+  userAnswer: string;
+};
+
+type UserAnswerData = {
+  userAnswer: { point: number; userAnswer: string };
+};
+
+type AnswerItem = "A" | "B" | "C" | "D" | "E";
+
+type QuestionData = {
   descr: string;
   name: string;
   rightAnswer: string;
   theme: string;
   img: string;
-  answerOptions: TAnswerOption;
-  userAnswer: TUserAnswer;
   id: number;
+  answerOptions: Record<AnswerItem, string>;
 };
 
-type TInfoQuestionsAndAnswers = {
-  [key: number]: TQuestionAndAnswer;
+export type DataQuestionAndUserAnswer = QuestionData & UserAnswerData;
+
+type TInfoQuestionsAndAnswers = Record<number, DataQuestionAndUserAnswer>;
+
+type Languages = 'ru' | 'en';
+
+type StatusLoading = 'error' | 'success' | 'idle' | 'loading';
+
+type DataTheme = {
+  [key: string]: string;
+  defaultValue: string;
 };
+
+type Topics = Record<Languages, DataTheme>;
 
 type TInitialState = {
-  userAnswersLoadingStatus: 'error' | 'success' | 'idle' | 'loading';
+  userAnswersLoadingStatus: StatusLoading;
   userAnswers: TInfoQuestionsAndAnswers;
-  themes: string[];
+  themes: Topics;
+  filterByTheme: string;
+  filterByRight: string;
 };
 
 export type {
@@ -66,6 +89,7 @@ export type {
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
   TAnswersDB,
-  TQuestionAndAnswer,
+  QuestionData,
   TInfoQuestionsAndAnswers,
+  TQuestion,
 };

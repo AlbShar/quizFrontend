@@ -20,7 +20,7 @@ type DropdownProps = {
   customStyle?: string;
   selected: string;
   data: TLanguages | string[];
-  onClickElement: (item: string) => void;
+  onClickElement: <T>(item: T) => void;
   srcImg?: string;
   srcArrowDown: string;
 };
@@ -51,7 +51,6 @@ export const Dropdown = ({
             key={index + 1}
             tabIndex={0}
             onClick={() => {
-              console.log(index);
               onClickElement(item);
               toggleList();
             }}

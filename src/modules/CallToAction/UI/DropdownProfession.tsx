@@ -34,7 +34,7 @@ const DropdownProfession = ({
   };
   const listProfessions = Object.keys(dataProfessions);
 
-  const onClickProfession = (item: string) => {
+  const onClickProfession = (item) => {
     setValueToLocalStorage('profession', dataProfessions[item]);
     setProfession(dataProfessions[item]);
     setSelected(item);

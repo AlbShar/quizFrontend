@@ -11,21 +11,6 @@ const initialState: TinitialState = {
   filterByRight: 'Все вопросы',
 };
 
-  const themes = {
-    en: {
-      theme1: 'JS theory',
-      theme2: 'Theory Web',
-      theme3: 'Paradigma',
-      defaultValue: 'All thematics',
-    },
-    ru: {
-      theme1: 'Теория JS',
-      theme2: 'Теория Веба',
-      theme3: 'Парадигма',
-      defaultValue: 'Все тематики',
-    },
-  };
-
 
 
 const filtersSlice = createSlice({
@@ -44,6 +29,6 @@ const filtersSlice = createSlice({
 
 const {actions, reducer} = filtersSlice;
 
-export const { changeFilterByTheme, changeFilterByRight } = actions;
-export {reducer};
+// export const { changeFilterByTheme, changeFilterByRight } = actions;
+// export {reducer};
 

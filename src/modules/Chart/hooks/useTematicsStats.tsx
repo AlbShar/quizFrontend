@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 
+import { ContextLanguage } from 'components/Context';
 import { RootState } from 'app/store';
 
 type TData = {
@@ -12,22 +14,24 @@ type TData = {
 
 export const useTematicsStats = () => {
  const colorsColumnsChart = ['black', 'red', 'blue'];
+ const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const selectorTematicsStats = createSelector(
-    (state: RootState) => state.userAnswersReducer.userAnswers,
-    (state: RootState) => state.userAnswersReducer.themes,
+    (state: RootState) => state.userAnswers,
+    (state: RootState) => state.themes,
     (userAnswers, themes) => {
+      const [, ...updateThemes] = Object.values(themes[lang]);
       const arrayUserAnswers = Object.values(userAnswers);
-      const data: TData = themes.reduce(
+      const data = updateThemes.reduce<TData>(
         (acc, value) => ({
           ...acc,
-          [value]: { totalQuantity: 0, points: 0 },
+          [value as string]: { totalQuantity: 0, points: 0 },
         }),
         {},
       );
 
       arrayUserAnswers.forEach((userAnswer, index) => {
-        for (const theme of themes) {
+        for (const theme of updateThemes) {
           if (userAnswer.theme === theme) {
             data[theme].totalQuantity++;
             data[theme].points += userAnswer.userAnswer.point;
@@ -49,7 +53,6 @@ export const useTematicsStats = () => {
           backgroundColor: colorsColumnsChart[index],
         };
       });
-
       return thematicsStats;
     },
   );

@@ -6,46 +6,68 @@ const StyleArticleDropdown = styled.article`
 `;
 
 const StyledButton = styled.button`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
   cursor: pointer;
-  border: 1px solid black;
+  border: none;
+  background-color: #5557ff;
+  border-radius: 3px;
+  padding: 0 15px;
+  text-align: center;
+  height: 54px;
+  width: 100%;
+  color: #fff;
 `;
 
 const StyledSpan = styled.span`
-  color: black;
-  font: var(--font-little-text-regular);
+  font:var(--font-text6);
+  display: inline-block;
+ 
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-regular);
+    font-size: 16px;
   }
 `;
 
 const StyledUl = styled.ul`
-  z-index: 2;
-  left: 0px;
-  top: 30px;
+  box-sizing: border-box;
   background-color: white;
-  position: absolute;
   list-style-type: none;
-  font: var(--font-text-bold);
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 5px 10px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px 0px #0000003d;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  
 `;
 
-const StyledImg = styled.img`
-  filter: invert(100);
-  margin-left: 4px;
-`;
+
 
 const StyledLi = styled.li`
-  font: var(--font-text-regular);
+  font-family: Inter;
+  padding: 3px 0;
+  width: 300px;
+
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+
+  @media screen and (min-width: 767.8px) {
+   padding: 5px 0;
+  }
+`;
+
+const StyledImgLeft = styled.img`
+  position: absolute;
+  left: 10px;
+  top: 26%;
+`;
+
+const StyledImgRight = styled.img`
+  margin: 0 0 0 19px;
 `;
 
 export {
@@ -53,6 +75,7 @@ export {
   StyledButton,
   StyledUl,
   StyledLi,
-  StyledImg,
+  StyledImgLeft,
   StyledSpan,
+  StyledImgRight,
 };

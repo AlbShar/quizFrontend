@@ -1,21 +1,26 @@
+import { useContext } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { ContextLanguage } from 'components/Context';
 
-import type { TQuestionAndAnswer } from '../types/types';
+import type { DataQuestionAndUserAnswer } from '../types/types';
 import type { RootState } from 'app/store/index';
 
 export const useGetFilteredUserAnswers = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
+    const [lang]: [string, (lang: string) => void] =
+      useContext(ContextLanguage);
+
 
   const filteredUserAnswers = createSelector(
-    (state: RootState) => state.filtersReducer.filterByRight,
-    (state: RootState) => state.filtersReducer.filterByTheme,
-    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (state: RootState) => state.filterByRight,
+    (state: RootState) => state.filterByTheme,
+    (state: RootState) => state.userAnswers,
     (filterByRight, filterByTheme, userAnswers) => {
-      let result: TQuestionAndAnswer[] = Object.values(userAnswers);
+      let result: DataQuestionAndUserAnswer[] = Object.values(userAnswers);
 
       if (t(filterByRight) !== t('Все вопросы')) {
         switch (t(filterByRight)) {
@@ -32,7 +37,7 @@ export const useGetFilteredUserAnswers = () => {
         }
       }
 
-      if (filterByTheme !== 'Все тематики' && filterByTheme !== 'All thems') {
+      if (filterByTheme !== 'Все тематики' && filterByTheme !== 'All thematics') {
         result = result.filter(
           (userAnswer) => userAnswer.theme === filterByTheme,
         );

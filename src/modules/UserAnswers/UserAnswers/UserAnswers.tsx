@@ -23,6 +23,7 @@ import {
 } from './UserAnswers.Styled';
 
 import type { AppDispatch } from 'app/store/index';
+import type { DataQuestionAndUserAnswer } from '../types/types';
 
 export const UserAnswers = () => {
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
@@ -30,7 +31,7 @@ export const UserAnswers = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
-  const filteredAnswers = useGetFilteredUserAnswers();
+  const filteredDataQuestionAndAnswers = useGetFilteredUserAnswers();
   const statusLoading = useGetStatusLoading();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -60,9 +61,9 @@ export const UserAnswers = () => {
           <FilterByThemes />
           <FilterByRight />
         </StyledSection>
-        {filteredAnswers.map((userAnswerData) => {
-          const {id} = userAnswerData;
-          return <ViewUserAnswer {...userAnswerData} key={id}/>
+        {filteredDataQuestionAndAnswers.map((dataQuestionAndAnswer) => {
+          const { id } = dataQuestionAndAnswer;
+          return <ViewUserAnswer {...dataQuestionAndAnswer} key={id} />;
         })}
       </details>
     </Container>
@@ -78,7 +79,7 @@ export const ViewUserAnswer = ({
   theme,
   answerOptions,
   userAnswer,
-}) => {
+}: DataQuestionAndUserAnswer) => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
@@ -120,7 +121,7 @@ export const ViewUserAnswer = ({
           </StyledLi>
           <StyledLi>
             <StyledSpan>{`${t('userAnswer')}: `}</StyledSpan>{' '}
-            {userAnswer.userAnswer}
+            {userAnswer.userAnswer.slice(0, 3)}
           </StyledLi>
           {isRight ? (
             false

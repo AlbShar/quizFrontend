@@ -5,7 +5,7 @@ import { RootState } from 'app/store';
 
 export const useUserAnswersStats = () => {
   const percentAnswersSelector = createSelector(
-    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (state: RootState) => state.userAnswers,
     (userAnswers) => {
       const points = Object.values(userAnswers).map(
         (userAnswer) => userAnswer.userAnswer.point,

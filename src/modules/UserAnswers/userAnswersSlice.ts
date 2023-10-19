@@ -11,14 +11,23 @@ import { getUserAnswers } from './api/getUserAnswers';
 import { getInfoQuestions } from './api/getInfoQuestions';
 import getThemes from './helpers/getThemes';
 
-import type {  TInitialState } from './types/types';
+import type { TInitialState, TQuestion } from './types/types';
 
+type TInfoQuestions = {
+  [question: string]: TQuestion;
+};
 
+const lang = getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2);
 
 const initialState: TInitialState = {
   userAnswersLoadingStatus: 'idle',
   userAnswers: [],
-  themes: [],
+  themes: {
+    en: { defaultValue: 'All thematics' },
+    ru: { defaultValue: 'Все тематики' },
+  },
+  filterByTheme: '',
+  filterByRight: 'Все вопросы',
 };
 
 export const fetchUserAnswer = createAsyncThunk(
@@ -32,25 +41,31 @@ export const fetchUserAnswer = createAsyncThunk(
   },
 );
 
+
+
 const userAnswersSlice = createSlice({
   name: 'userAnswers',
   initialState,
-  reducers: {},
+  reducers: {
+    changeFilterByTheme: (state, action) => {
+      state.filterByTheme = action.payload;
+    },
+    changeFilterByRight: (state, action) => {
+      state.filterByRight = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserAnswer.fulfilled, (state, action) => {
         state.userAnswersLoadingStatus = 'success';
-        console.log(action.payload)
+        const infoQuestions = action.payload[2];
+
         state.userAnswers = transformQuestionsAndAnswersDB(
           action.payload as any,
           getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
         );
-        state.themes = getThemes(
-          transformQuestionsAndAnswersDB(
-            action.payload as any,
-            getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
-          ),
-        );
+        state.themes = getThemes(infoQuestions as TInfoQuestions);
+        state.filterByTheme = state.themes[lang]['defaultValue'];
       })
       .addCase(fetchUserAnswer.pending, (state) => {
         state.userAnswersLoadingStatus = 'loading';
@@ -63,4 +78,8 @@ const userAnswersSlice = createSlice({
   },
 });
 
-export const { reducer } = userAnswersSlice;
+const { actions, reducer } = userAnswersSlice;
+
+export const { changeFilterByTheme, changeFilterByRight } = actions;
+export {reducer};
+

@@ -5,7 +5,7 @@ import type { RootState } from 'app/store';
 
 export const useGetScores = () => {
   const scoreSelector = createSelector(
-    (state: RootState) => state.userAnswersReducer.userAnswers,
+    (state: RootState) => state.userAnswers,
     (userAnswers) => {
       const points = Object.values(userAnswers).map(
         (userAnswer) => userAnswer.userAnswer.point,
