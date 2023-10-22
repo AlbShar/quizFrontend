@@ -27,7 +27,7 @@ export const Footer = () => {
     {
       profession: t('Frontend'),
       name: t('firstNameFrontend'),
-      link: 'https://t.me/Albert_Sharipov',
+      link: 'https://t.me/AlbertS1',
     },
     {
       profession: t('Designer'),
