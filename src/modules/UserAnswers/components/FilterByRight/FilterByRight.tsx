@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import chevrondown from 'assets/images/chevrondown.svg';
 
-import { Dropdown } from '../../UI/Dropdown/Dropdown';
+import { Dropdown } from 'UI/dropdown';
 import { StyledWrapperDropdown } from '../Filters.Styled';
 import { useGetFilterByCorrectness } from '../../hooks/useGetFilterByCorrectness';
 

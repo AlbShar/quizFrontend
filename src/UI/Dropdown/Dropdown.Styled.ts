@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
+type StyledButtonProps = {
+  typeFilter: 'topics' | 'correctness' | 'profession';
+};
 const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<StyledButtonProps>`
   box-sizing: border-box;
   display: block;
   position: relative;
@@ -16,6 +19,10 @@ const StyledButton = styled.button`
   padding: 0 15px;
   text-align: center;
   height: 54px;
+
+  min-width: ${({ typeFilter }) =>
+    typeFilter === 'profession' ? '294px' : 'none'};
+
   width: 100%;
   color: #fff;
 `;

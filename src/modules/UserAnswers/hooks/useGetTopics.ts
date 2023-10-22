@@ -25,7 +25,7 @@ export const useGetTopics = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const keyTheme = getValueFromLocalStorage('keyTheme');
+    const keyTheme = getValueFromLocalStorage('keyTheme') || 'defaultValue';
     updateTopic(topics[lang][keyTheme]);
   }, [lang]);
 

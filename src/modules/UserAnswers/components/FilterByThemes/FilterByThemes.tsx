@@ -4,8 +4,8 @@ import chevrondown from 'assets/images/chevrondown.svg';
 import { ContextLanguage } from 'components/Context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { useGetTopics } from 'modules/UserAnswers/hooks/useGetTopics';
+import { Dropdown } from 'UI/dropdown';
 
-import { Dropdown } from '../../UI/Dropdown/Dropdown';
 import { StyledWrapperDropdown } from '../Filters.Styled';
 
 const FilterByThemes = (): JSX.Element => {

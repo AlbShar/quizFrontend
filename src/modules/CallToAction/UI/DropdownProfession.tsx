@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import {Dropdown} from 'UI/Dropdown/Dropdown';
+
+// import {Dropdown} from 'UI/Dropdown/Dropdown';
+import { Dropdown } from 'UI/dropdown/Dropdown';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { ContextProfession } from 'components/Context';
 import arrowDownLarge from 'assets/images/arrowDownLarge.svg';
@@ -34,7 +36,7 @@ const DropdownProfession = ({
   };
   const listProfessions = Object.keys(dataProfessions);
 
-  const onClickProfession = (item) => {
+  const onClickProfession = (item: string) => {
     setValueToLocalStorage('profession', dataProfessions[item]);
     setProfession(dataProfessions[item]);
     setSelected(item);
@@ -43,10 +45,10 @@ const DropdownProfession = ({
 
   return (
     <Dropdown
-      selected={selected || t('textBtn')}
-      data={listProfessions}
-      onClickElement={onClickProfession}
-      customStyle={customStyleButton}
+      typeFilter='profession'
+      selectedFilter={selected || t('textBtn')}
+      nameListItems={listProfessions}
+      setFilter={onClickProfession}
       srcArrowDown={arrowDownLarge}
     />
   );
