@@ -82,7 +82,8 @@
       "Неверно": "wrong",
       "Все вопросы": "All questions",
       "Все тематики": "All thematics",
-      "All thematics": "All thematics"
+      "All thematics": "All thematics",
+      "notResult": "There are no results for the specified filters"
     },
     "chart": {
       "bar": {

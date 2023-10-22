@@ -20,6 +20,7 @@ import {
   StyledSpan,
   StyledSum,
   StyledSection,
+  StyledP,
 } from './UserAnswers.Styled';
 
 import type { AppDispatch } from 'app/store/index';
@@ -61,10 +62,14 @@ export const UserAnswers = () => {
           <FilterByThemes />
           <FilterByRight />
         </StyledSection>
-        {filteredDataQuestionAndAnswers.map((dataQuestionAndAnswer) => {
-          const { id } = dataQuestionAndAnswer;
-          return <ViewUserAnswer {...dataQuestionAndAnswer} key={id} />;
-        })}
+        {filteredDataQuestionAndAnswers.length ? (
+          filteredDataQuestionAndAnswers.map((dataQuestionAndAnswer) => {
+            const { id } = dataQuestionAndAnswer;
+            return <ViewUserAnswer {...dataQuestionAndAnswer} key={id} />;
+          })
+        ) : (
+          <StyledP>{t('notResult')}</StyledP>
+        )}
       </details>
     </Container>
   );

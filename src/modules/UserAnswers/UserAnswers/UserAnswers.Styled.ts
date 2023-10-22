@@ -83,6 +83,14 @@ const StyledSection = styled.section`
   }
 `;
 
+const StyledP = styled.p`
+  font: var(--font-text5-bold);
+  color: red;
+
+  @media screen and (min-width: 767.8px) {
+    font: var(--font-text3);
+  }
+`;
 
 
 export {
@@ -92,4 +100,5 @@ export {
   StyledListAnswers,
   StyledSum,
   StyledSection,
+  StyledP,
 };

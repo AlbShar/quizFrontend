@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 
 export const useDisplayListDropdown = () => {
   const [isActive, setActive] = useState<boolean>(false);
+
+  const toggleList = () => {
+    setActive((isActive) => !isActive);
+  };
+
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -18,6 +23,6 @@ export const useDisplayListDropdown = () => {
     };
   }, []);
 
-  return { isActive, setActive };
+  return { isActive, setActive, toggleList };
 };
 
