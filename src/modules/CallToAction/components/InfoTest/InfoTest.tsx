@@ -1,21 +1,21 @@
 import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { getQuantityThemes } from '../../api/getInfoQuestions';
-import { getTotalQuestionsNumb } from '../../../../api/getTotalQuestionsNumb';
-import Spinner from '../../../../UI/Spinner/Spinner';
-import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
-
-import type { InfoTestBlock } from '../../../../types/types';
+import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
+import {Spinner} from 'UI/Spinner/Spinner';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 import {
   ContextLanguage,
   ContextProfession,
-} from '../../../../components/Context';
+} from 'components/Context';
 
+import { getQuantityThemes } from '../../api/getInfoQuestions';
 import clock from "../../icons/clock.svg";
 import barChart from "../../icons/bar-chart.svg";
 import helpCircle from "../../icons/help-circle.svg";
+
+import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
+
+import type { InfoTestBlock } from 'types/types';
 
 type InfoTestProps = {
   isChooseProfession: boolean;
@@ -45,26 +45,28 @@ const InfoTest = ({
     setChooseProfession(false);
   }, []);
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.callToAction.components.infoTest',
+  });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [quantityQuestions, setQuantityQuestions] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
 
   const infoTestBlock: InfoTestBlock[] = [
     {
-      text: ` ${isChooseProfession ? '~' + quantityQuestions : '_'} ${t(
-        'Время',
+      text: ` ${isChooseProfession ? '~' + quantityQuestions : '0'} ${t(
+        'min',
       )}`,
       srcIcon: clock,
       alt: 'icon of clock',
     },
     {
-      text: `${isChooseProfession ? quantityQuestions : '_'} ${t('Вопросов')}`,
+      text: `${isChooseProfession ? quantityQuestions : '0'} ${t('questions')}`,
       srcIcon: helpCircle,
       alt: 'icon of question in circle',
     },
     {
-      text: `${isChooseProfession ? quantityThemes : '_'} ${t('Блока')}`,
+      text: `${isChooseProfession ? quantityThemes : '0'} ${t('block')}`,
       srcIcon: barChart,
       alt: ' icon of bar chart ',
     },
@@ -74,7 +76,7 @@ const InfoTest = ({
     return (
       <StyledLi key={index + 1}>
         <StyledImg src={item.srcIcon} alt={item.alt} />
-        <span style={{color: 'black'}}>{item.text}</span>
+        <span style={{color: 'var(--color-white)'}}>{item.text}</span>
       </StyledLi>
     );
   });

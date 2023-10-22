@@ -1,49 +1,37 @@
-import { useState, useCallback } from 'react';
+import { UserAnswers } from 'modules/UserAnswers';
+import { Container } from 'components/Container';
+import { Footer } from 'components/Footer';
+import { withChart } from 'modules/Chart';
+import { withResult } from 'modules/result';
 
 import { StyledMain } from '../../styles/Main.Styled';
-import UserAnswers from '../../modules/UserAnswers';
-import Container from '../../components/Container/Container';
-import DoughuntChart from '../../components/DoughuntChart/DoughuntChart';
-import Score from '../../modules/Score/index';
-import ResultTime from '../../modules/ResultTime/index';
-import BarChart from '../../components/BarChart/BarChart';
 
-import {
-  StyledSection,
-  StyledSectionResults,
-} from './Results.Styled';
-
-import type { TPointsByThemes } from '../../types/types';
-
-
+import { StyledSection, StyledSectionResults } from './Results.Styled';
 
 const Results = () => {
-  const [rightAnswers, setRightAnswers] = useState<number>(0);
-  const [pointsByTheme, setPointsByTheme] = useState<TPointsByThemes | null>(
-    null,
-  );
-
-    const setRightUserAnswers = useCallback((points: number) => {
-    setRightAnswers(points);
-  }, []);
+  const ResultScores = withResult('scores');
+  const ResultTime = withResult('time');
+  const ChartBar = withChart('bar');
+  const ChartDoughunt = withChart('doughunt');
 
   return (
     <>
       <StyledMain>
-        <div>
+        <div style={{ backgroundColor: '#1C1C1C', padding: '0 0 70px 0' }}>
           <Container>
             <StyledSectionResults>
-              <Score setRightAnswers={setRightUserAnswers} />
+              <ResultScores />
               <ResultTime />
             </StyledSectionResults>
             <StyledSection>
-              <BarChart pointsByTheme={pointsByTheme} />
-              <DoughuntChart rightAnswers={rightAnswers} />
+              <ChartBar />
+              <ChartDoughunt />
             </StyledSection>
           </Container>
-          <UserAnswers setPointsByTheme={setPointsByTheme} />
         </div>
+        <UserAnswers />
       </StyledMain>
+      <Footer />
     </>
   );
 };

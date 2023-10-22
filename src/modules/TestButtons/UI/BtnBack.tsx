@@ -8,19 +8,22 @@ import {
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 import leftArrow from '../../../assets/images/leftArrow.svg';
 
-import { StyledButton, StyledSpan } from './Buttons.Styled';
+import { StyledButton } from './Buttons.Styled';
 
 type BtnBackProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
   setIsBtnBackDisabled: (item: boolean) => void;
   isBtnBackDisabled: boolean;
 };
+
 const BtnBack = ({
   setIsBtnNextDisabled,
   isBtnBackDisabled,
   setIsBtnBackDisabled,
 }: BtnBackProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.testButtons.UI.btnBack',
+  });
   //eslint-disable-next-line
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
@@ -39,19 +42,15 @@ const BtnBack = ({
   };
 
   return (
-    <>
-      {
-        <StyledButton
-          style={{ justifyContent: 'flex-start' }}
-          id='btnBack'
-          onClick={onClickBackBtn}
-          disabled={isBtnBackDisabled}
-        >
-          <img src={leftArrow} alt='Кнопка назад' />
-          <StyledSpan>{t('назад')}</StyledSpan>
-        </StyledButton>
-      }
-    </>
+    <StyledButton
+      id='btnBack'
+      onClick={onClickBackBtn}
+      disabled={isBtnBackDisabled}
+      typeBtn='back'
+    >
+      <img src={leftArrow} alt='Кнопка назад' style={{color: 'red'}}/>
+      {t('text')}
+    </StyledButton>
   );
 };
 

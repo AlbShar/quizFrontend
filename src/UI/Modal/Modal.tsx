@@ -12,13 +12,14 @@ type ModalProps = {
   subTitle: string;
   onClickHandler?: () => void;
 };
-const Modal = ({
+
+export const Modal = ({
   title,
   subTitle,
   onClickHandler,
 }: ModalProps): JSX.Element => {
   return (
-    <StyleDivModal id='notification'>
+    <StyleDivModal>
       <StyledDivWrapper>
         <StyledH1 className='notification__title'>{title}</StyledH1>
         <StyledSpanClose
@@ -28,7 +29,7 @@ const Modal = ({
           ✖
         </StyledSpanClose>
         <StyledSpan className='notification__text'>{subTitle}</StyledSpan>
-        <StyledButtonModal onClick={onClickHandler}>
+        <StyledButtonModal onClick={onClickHandler} data-testid='btn-continue'>
           Продолжить
         </StyledButtonModal>
       </StyledDivWrapper>
@@ -36,4 +37,3 @@ const Modal = ({
   );
 };
 
-export default Modal;

@@ -1,33 +1,28 @@
-import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from "../../../../assets/images/chevrondown.svg";
-import {StyledWrapperDropdown} from "../Filters.Styled";
+import chevrondown from 'assets/images/chevrondown.svg';
 
-type FilterByRightProps = {
-  setFilterByRightAnswer: (newFilter: string) => void;
-};
-
-const FilterByRight = ({
-  setFilterByRightAnswer,
-}: FilterByRightProps): JSX.Element => {
-  const data: string[] = ['Все вопросы', 'Верно', 'Неверно'];
-
-  const [typeAnswer, setTypeAnswer] = useState<string>(data[0]);
+import { Dropdown } from 'UI/dropdown';
+import { StyledWrapperDropdown } from '../Filters.Styled';
+import { useGetFilterByCorrectness } from '../../hooks/useGetFilterByCorrectness';
 
 
-  const themeHasChoosen = (item: string) => {
-    setTypeAnswer(item);
-    setFilterByRightAnswer(item);
-  };
-
+const FilterByRight = (): JSX.Element => {
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.userAnswers'
+  });
+  const data: string[] = [t('Все вопросы'), t('Верно'), t('Неверно')];
+  const {
+    filterByCorrectness, setFilterByCorrectness
+  } = useGetFilterByCorrectness();
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
-        data={data}
-        selected={typeAnswer}
-        onClickElement={themeHasChoosen}
+        typeFilter='correctness'
+        nameListItems={data}
+        selectedFilter={t(filterByCorrectness)}
+        setFilter={setFilterByCorrectness}
         srcArrowDown={chevrondown}
       />
     </StyledWrapperDropdown>

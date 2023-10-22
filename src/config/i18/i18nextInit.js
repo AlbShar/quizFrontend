@@ -3,8 +3,8 @@ import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-import translationRU from "../../assets/locales/ru/translation.json";
-import translationEN from "../../assets/locales/en/translation.json";
+import translationRU from "../../assets/locales/ru/common.json";
+import translationEN from '../../assets/locales/en/common.json';
 
 const fallbackLng = ["ru"];
 const availableLanguages = ["ru", "en", "deu"];
@@ -38,3 +38,5 @@ i18n
       escapeValue: false,
     },
   });
+
+  export default i18n;

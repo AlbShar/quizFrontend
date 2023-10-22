@@ -13,6 +13,7 @@ html {
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight,
     )}px;
+    background-color: var(--color-white);
   }
   
   div#root {
@@ -35,6 +36,36 @@ body {
   )}px;
 
     background-color: var(--color-main-background); 
+    --font-family-default: "Montserrat", "Arial", sans-serif;
+    --color-white: #FFF;
+    --color-black: #000;
+    --color-dark: #1C1C1C;
+    --color-purple: #5557FF;
+    --color-gray: #3C3C3C;
+    --color-dark-gray: #4F4F4F;
+    --color-light-gray: #F5F5F5; 
+    --color-light-gray2: #ECECEC; 
+
+    --font-text1: 700 50px/40px var(--font-family-default);
+    --font-text2: 600 32px/32px var(--font-family-default);
+    --font-text3: 600 22px/22px var(--font-family-default);
+    --font-text4: 400 22px/26px var(--font-family-default);
+    --font-text5: 400 18px/22px var(--font-family-default);
+    --font-text5-bold: 600 18px/22px var(--font-family-default);
+    --font-text6: 600 16px/22px var(--font-family-default);
+    --font-text6-regular: 400 16px/22px var(--font-family-default);
+    --font-text7: 600 14px/22px var(--font-family-default);
+    --font-text8: 400 10px/22px var(--font-family-default);
+    --font-text9: 700 37px/22px var(--font-family-default);
+    --font-text10: 600 24px/22px var(--font-family-default);
+    --font-text11: 600 26px/28px var(--font-family-default);
+
+
+
+
+
+
+
     --color-footer: #1C232E;
     --color-back-btn: #81868C;
     --color-quantity-questions: #81868C;
@@ -48,7 +79,6 @@ body {
     --color-call-action: #29316D;
     --color-call-action-info: #3E457B;
     --color-header: #252B58;
-    --font-family-default: "Inter", "Arial", sans-serif;
     --line-height-text: 24px;
     --line-height-little-text: 22px;
     --font-text-regular: 400 16px/var(--line-height-text) var(--font-family-default);

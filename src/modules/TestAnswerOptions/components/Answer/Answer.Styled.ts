@@ -8,7 +8,7 @@ const StyledLi = styled.li`
   padding: 7px;
   font: var(--font-little-text-regular);
   cursor: pointer;
-  background-color: #EEEEFF;
+  background-color: var(--color-light-gray);
   border-radius: 7px;
   border: none;
 
@@ -18,9 +18,7 @@ const StyledLi = styled.li`
   @media screen and (min-width: 767.8px) {
     font: var(--font-regular);
     padding: 15px 20px;
-
   }
-  
 `;
 
 export { StyledLi };

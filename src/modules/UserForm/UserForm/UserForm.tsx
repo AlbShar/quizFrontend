@@ -1,184 +1,84 @@
-import {
-  useState,
-  ChangeEvent,
-  useEffect,
-  FocusEvent,
-  KeyboardEvent,
-} from 'react';
 import { useTranslation } from 'react-i18next';
+import { Formik, Form } from 'formik';
+import {Button} from 'UI/Button/Button';
 
-import InputField from '../UI/InputField/InputField';
-import Button from '../UI/Button/Button';
-import useValidateName from '../hooks/useValidateName';
-import useValidateEmail from '../hooks/useValidateEmail';
+import sendEmailApi from '../api/sendEmail';
+import Input from '../UI/input';
+import useHandleInputs from '../hooks/useHandleInputs';
+import { validate } from '../helpers/validate';
 
 import {
-  StyledSpan,
-  StyledPForm,
-  StyledFieldset,
-  StyledSpanWarning,
-} from './UserForm.Styled';
+  StyledArticle,
+  StyledDivSuccess,
+  StyledDivError,
+} from './userForm.Styled';
 
-type TDataInputs = {
-  htmlFor: 'username' | 'email';
-  placeholder: 'Ваше_имя' | 'E-mail';
-  type: 'text' | 'email';
-  id: 'username' | 'email';
-  name: 'userName' | 'userEmail';
-  nameField: string;
-  value: string;
-  isValidation: boolean;
-  isFirstRender: boolean;
-  onError: (
-    e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-  ) => void;
-  onValidateInput: (
-    e: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-  ) => void;
-  warningMessage: string;
-  isValueValidate: boolean;
-  keyHint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
-};
+import type { TDataInput } from '../types';
 
 const UserForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.userForm',
+  });
+  const { isSuccessSendingEmail, setSuccessSendingEmail, setRef } =
+    useHandleInputs();
 
-  const {
-    valueUserName,
-    isFirstRenderName,
-    isNameValidation,
-    setValueUserName,
-    hideErrorInputName,
-    onValidateInputName,
-    warningMessageName,
-  } = useValidateName();
-  const {
-    valueEmail,
-    isFirstRenderEmail,
-    isEmailValidation,
-    setValueEmail,
-    hideErrorInputEmail,
-    onValidateInputEmail,
-    warningMessageEmail,
-  } = useValidateEmail();
-
-  const [isDisabledBtn, setIsDisabledBtn] = useState<boolean>(true);
-
-  const refsInputs: HTMLInputElement[] = [];
-  const dataInputs: TDataInputs[] = [
+  const dataInputs: TDataInput[] = [
     {
-      htmlFor: 'username',
-      placeholder: 'Ваше_имя',
-      type: 'text',
-      id: 'username',
-      name: 'userName',
-      nameField: t('Ваше_имя'),
-      value: valueUserName,
-      isValidation: isNameValidation,
-      isFirstRender: isFirstRenderName,
-      onError: hideErrorInputName,
-      onValidateInput: onValidateInputName,
-      warningMessage: warningMessageName,
-      isValueValidate: isNameValidation,
-      keyHint: 'next',
+      text: t('name'),
+      type: 'name',
+      placeholder: t('placeholderName') || 'placeholder',
+      name: 'name',
     },
     {
-      htmlFor: 'email',
-      placeholder: 'E-mail',
+      text: 'Email',
       type: 'email',
-      id: 'email',
-      name: 'userEmail',
-      nameField: 'Email',
-      value: valueEmail,
-      isValidation: isEmailValidation,
-      isFirstRender: isFirstRenderEmail,
-      onError: hideErrorInputEmail,
-      onValidateInput: onValidateInputEmail,
-      warningMessage: warningMessageEmail,
-      isValueValidate: isEmailValidation,
-      keyHint: 'send',
+      placeholder: t('placeholderName') || 'placeholder',
+      name: 'email',
+    },
+    {
+      text: t('message'),
+      type: 'textarea',
+      placeholder: t('placeholderMessage') || 'placeholder',
+      name: 'text',
     },
   ];
 
-  const onValueInput = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const target = e.target;
-    const newValue = target.value;
-    const type = target.type;
-    type === 'text'
-      ? setValueUserName((_) => newValue)
-      : setValueEmail((_) => newValue);
-  };
-
-  useEffect(() => {
-    const onFocusNameField = () => {
-      refsInputs[0]?.focus();
-    };
-    onFocusNameField();
-  }, []);
-
-  useEffect(() => {
-    setIsDisabledBtn(!(isEmailValidation && isNameValidation));
-  }, [isEmailValidation, isNameValidation]);
-
-  const setRefs = (elem: HTMLInputElement) => {
-    refsInputs.push(elem);
-  };
-
-  const inputsCallback = (dataInput: TDataInputs, index: number) => {
-    const {
-      htmlFor,
-      placeholder,
-      nameField,
-      type,
-      id,
-      name,
-      isValidation,
-      value,
-      isFirstRender,
-      onError,
-      onValidateInput,
-      warningMessage,
-      isValueValidate,
-      keyHint,
-    } = dataInput;
-
-    return (
-      <StyledPForm key={index + 1}>
-        <label htmlFor={htmlFor}>
-          <StyledSpan>{nameField}</StyledSpan>
-          <InputField
-            setRefs={setRefs}
-            placeholder={placeholder}
-            type={type}
-            id={id}
-            name={name}
-            value={value}
-            onChange={onValueInput}
-            onError={onError}
-            onValidateInput={onValidateInput}
-            isValueValidate={isValueValidate}
-            isFirstRender={isFirstRender}
-            keyHint={keyHint}
-          />
-          {isFirstRender ? null : isValidation ? null : (
-            <StyledSpanWarning>{warningMessage}</StyledSpanWarning>
-          )}
-        </label>
-      </StyledPForm>
-    );
-  };
-
   return (
-    <form>
-      <StyledFieldset>{dataInputs.map(inputsCallback)}</StyledFieldset>
-      <Button
-        userName={valueUserName}
-        userEmail={valueEmail}
-        isDisabledBtn={isDisabledBtn}
-      />
-    </form>
+    <Formik
+      initialValues={{ name: '', email: '', text: '' }}
+      validate={validate}
+      onSubmit={async (values, { resetForm, setSubmitting }) => {
+        const isDataSent: boolean = await sendEmailApi(values);
+
+        if (isDataSent) {
+          resetForm();
+          setSubmitting(false);
+          setSuccessSendingEmail(true);
+        } else {
+          setSuccessSendingEmail(false);
+        }
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          {dataInputs.map((input, index) => (
+            <Input {...input} key={index} setRef={setRef} />
+          ))}
+          <StyledArticle>
+            {isSuccessSendingEmail === true ? (
+              <StyledDivSuccess>
+                Поздравляю, письмо отправлено!
+              </StyledDivSuccess>
+            ) : isSuccessSendingEmail === false ? (
+              <StyledDivError>
+                Письмо не удалось отправить! Повторите попытку чуть позже
+              </StyledDivError>
+            ) : null}
+          </StyledArticle>
+          <Button text={t('btnText')} disabled={isSubmitting} />
+        </Form>
+      )}
+    </Formik>
   );
 };
 

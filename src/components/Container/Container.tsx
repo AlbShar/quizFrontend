@@ -7,8 +7,7 @@ type ContainerProps = {
   style?: CSSProperties
 };
 
-const Container = ({ children, style }: ContainerProps): JSX.Element => {
+export const Container = ({ children, style }: ContainerProps): JSX.Element => {
   return <ContainerStyled style={style}>{children}</ContainerStyled>;
 };
 
-export default Container;

@@ -1,35 +1,41 @@
-import { useState } from 'react';
+import { useContext, useCallback} from 'react';
 
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from '../../../../assets/images/chevrondown.svg';
+import chevrondown from 'assets/images/chevrondown.svg';
+import { ContextLanguage } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
+import { useGetTopics } from 'modules/UserAnswers/hooks/useGetTopics';
+import { Dropdown } from 'UI/dropdown';
+
 import { StyledWrapperDropdown } from '../Filters.Styled';
 
-type FilterByThemesProps = {
-  themesNames: string[];
-  setFilterByTheme: (item: string) => void;
-};
+const FilterByThemes = (): JSX.Element => {
+  const { topic, topics, shortNameTopics, updateTopic } = useGetTopics();
+    const [lang]: [string, (lang: string) => void] =
+      useContext(ContextLanguage);
 
-const FilterByThemes = ({
-  themesNames,
-  setFilterByTheme,
-}: FilterByThemesProps): JSX.Element => {
-  const [selectedTheme, setSelectedTheme] = useState<string>(themesNames[0]);
 
-  const themeHasChoosen = (item: string) => {
-    setSelectedTheme(item);
-    setFilterByTheme(item);
-  };
+  const setTopic = useCallback((index = 0) => {
+      const topic =
+        index === 0
+          ? topics[lang]['defaultValue']
+          : topics[lang][`theme${index}`];
+      setValueToLocalStorage(
+        'keyTheme',
+        index === 0 ? 'defaultValue' : `theme${index}`,
+      );
+      updateTopic(topic);
+  }, []);
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
-      data={themesNames}
-      selected={selectedTheme}
-      onClickElement={themeHasChoosen}
-      srcArrowDown={chevrondown}
-    />
+        typeFilter='topics'
+        nameListItems={shortNameTopics}
+        selectedFilter={topic}
+        setFilter={setTopic}
+        srcArrowDown={chevrondown}
+      />
     </StyledWrapperDropdown>
-    
   );
 };
 

@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
+import { ContextIdUser } from 'components/Context';
+import {Modal} from 'UI/Modal/Modal';
+import {Portal} from 'components/Portal/Portal';
+import pause from 'assets/images/pause.svg';
 
-import { getValueFromLocalStorage } from '../../../../helpers/getValueFromLocalStorage';
-import { ContextIdUser } from '../../../../components/Context';
-import { sendTimeToDB } from '../../api/sendTimeToDB';
-import Modal from '../../../../UI/Modal/Modal';
 import getFullNumb from '../../helpers/getFullNumb';
-import Portal from '../../../../components/Portal/Portal';
-import pause from '../../../../assets/images/pause.svg';
+import { sendTimeToDB } from '../../api/sendTimeToDB';
 
 import {
   StyledDivTimer,
@@ -18,9 +18,9 @@ import {
 
 const Timer = () => {
   const { t } = useTranslation();
-  const [isCounting, setIsCounting] = useState<boolean>(true);
-  const [isModal, setIsModal] = useState<boolean>(false);
-  const [time, setTime] = useState<number>(0);
+  const [isCounting, setIsCounting] = useState(true);
+  const [isModal, setIsModal] = useState(false);
+  const [time, setTime] = useState(0);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const timerRef = useRef<HTMLDivElement>(null);
@@ -68,7 +68,7 @@ const Timer = () => {
 
   return (
     <StyledDivTimer ref={timerRef}>
-      <StyledButtonPause onClick={stopTimer}>
+      <StyledButtonPause onClick={stopTimer} data-testid='btn-pause'>
         <StyledImg src={pause} alt='pause' />
         {t('Пауза')}
       </StyledButtonPause>

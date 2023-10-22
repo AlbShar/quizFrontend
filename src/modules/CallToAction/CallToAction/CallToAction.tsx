@@ -1,19 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import Grid from '@mui/material/Grid';
+import {Container} from 'components/Container';
+import {LinkBtn} from 'UI/LinkBtn';
+import { ContextIdUser } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
-import InfoTest from '../components/InfoTest/InfoTest';
-import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
+import InfoTest  from '../components/InfoTest/InfoTest';
 import { createIdUser } from '../helpers/createIdUser';
-import { ContextIdUser } from '../../../components/Context';
-import { setValueToLocalStorage } from '../../../helpers/setValueToLocalStorage';
 import DropdownProfession from '../UI/DropdownProfession';
+
 import {
   StyledCallToAction,
   StyledH1,
   StyledH2,
   StyledDiv,
-  StyledDivWrapper,
-  StyledDropdownProfessionWrapper,
+  StyledImg,
+  StyledSection,
 } from './CallToAction.styled';
 
 type CallToActionProps = {
@@ -25,7 +28,9 @@ const CallToAction = ({
   isChooseProfession,
   setChooseProfession,
 }: CallToActionProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.callToAction',
+  });
   const [idUser, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
 
@@ -36,28 +41,38 @@ const CallToAction = ({
   };
 
   return (
-    <StyledCallToAction id='CallToAction'>
-      <StyledH1>{t('Тест_для')}</StyledH1>
-      <InfoTest
-        isChooseProfession={isChooseProfession}
-        setChooseProfession={setChooseProfession}
-      />
-      <StyledH2>{t('Добро_пожаловать')}</StyledH2>
-      <StyledH2>{t('Тест_будет')}</StyledH2>
-      <StyledDiv>
-        <StyledDropdownProfessionWrapper>
-          <DropdownProfession setChooseProfession={setChooseProfession} />
-        </StyledDropdownProfessionWrapper>
-        <StyledDivWrapper>
-          <LinkBtn
-            pageTo='quiz'
-            onClick={startTest}
-            text='Начать тест'
-            isDisabledBtn={!isChooseProfession}
-          ></LinkBtn>
-        </StyledDivWrapper>
-      </StyledDiv>
-    </StyledCallToAction>
+    <StyledSection id='startTest'>
+      <Container>
+        <Grid
+          container
+          columns={{ xs: 2, md: 12, lg: 12, xl: 12 }}
+          alignItems='center'
+        >
+          <Grid item xs={2} md={12} lg={8} xl={8}>
+            <StyledCallToAction id='CallToAction'>
+              <StyledH1>{t('mainTitle')}</StyledH1>
+              <InfoTest
+                isChooseProfession={isChooseProfession}
+                setChooseProfession={setChooseProfession}
+              />
+              <StyledH2>{t('subTitle')}</StyledH2>
+              <StyledDiv>
+                <DropdownProfession setChooseProfession={setChooseProfession} />
+                <LinkBtn
+                  pageTo='quiz'
+                  onClick={startTest}
+                  text={t('textStartBtn')}
+                  isDisabledBtn={!isChooseProfession}
+                />
+              </StyledDiv>
+            </StyledCallToAction>
+          </Grid>
+          <Grid item xs={2} md={12}>
+            <StyledImg src={require('../icons/img1.png')} alt='img' />
+          </Grid>
+        </Grid>
+      </Container>
+    </StyledSection>
   );
 };
 

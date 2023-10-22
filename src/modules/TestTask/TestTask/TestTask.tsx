@@ -1,10 +1,11 @@
 import { useEffect, useContext, useState } from 'react';
-
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 import {
   ContextLanguage,
   ContextProfession,
   ContextCurrentQuestionNumb,
-} from '../../../components/Context';
+} from 'components/Context';
+
 import SkeletonQuestion from '../UI/SkeletonQuestion';
 import { getDataFromDB } from '../../../api/getDataFromDB';
 
@@ -14,7 +15,6 @@ import {
   StyledPicture,
   StyledImg,
 } from './TestTask.Styled';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
 
 const TestTask = () => {
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(

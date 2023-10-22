@@ -1,65 +1,40 @@
 import styled from 'styled-components';
 
-
+type StyledButtonProps = {
+  typeFilter: 'topics' | 'correctness' | 'profession';
+};
 const StyleArticleDropdown = styled.article`
   cursor: pointer;
   position: relative;
-  width: 100%;
 `;
 
-
-const StyledButton = styled.button`
+const StyledButton = styled.button<StyledButtonProps>`
   box-sizing: border-box;
   display: block;
   position: relative;
   cursor: pointer;
   border: none;
   background-color: #5557ff;
-  border-radius: 7px;
+  border-radius: 3px;
   padding: 0 15px;
   text-align: center;
-  min-height: 45px;
+  height: 54px;
+
+  min-width: ${({ typeFilter }) =>
+    typeFilter === 'profession' ? '294px' : 'none'};
+
   width: 100%;
   color: #fff;
-
-  @media screen and (min-width: 767.8px) {
-    min-height: 56px;
-  }
 `;
 
-const StyledSpan = styled.span<{ customStyle?: string }>`
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 700;
+const StyledSpan = styled.span`
+  font:var(--font-text6);
   display: inline-block;
-  ${(props) => props.customStyle || ''};
+ 
 
   @media screen and (min-width: 767.8px) {
     font-size: 16px;
   }
-`;
-
-const StyledSpanList = styled.span`
-  color: #000;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 700;
-
-  @media screen and (min-width: 767.8px) {
-    font-size: 16px;
-  }
-`;
-
-const StyledImgLeft = styled.img`
-  position: absolute;
-  left: 10px;
-  top: 26%;
-`;
-
-const StyledImgRight = styled.img`
-  position: absolute;
-  right: 10px;
-  top: 40%;
 `;
 
 const StyledUl = styled.ul`
@@ -76,6 +51,8 @@ const StyledUl = styled.ul`
   
 `;
 
+
+
 const StyledLi = styled.li`
   font-family: Inter;
   padding: 3px 0;
@@ -90,13 +67,22 @@ const StyledLi = styled.li`
   }
 `;
 
+const StyledImgLeft = styled.img`
+  position: absolute;
+  left: 10px;
+  top: 26%;
+`;
+
+const StyledImgRight = styled.img`
+  margin: 0 0 0 19px;
+`;
+
 export {
   StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,
-  StyledSpan,
   StyledImgLeft,
+  StyledSpan,
   StyledImgRight,
-  StyledSpanList,
 };

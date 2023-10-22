@@ -1,9 +1,10 @@
 import { useRef, useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ContextProfession } from 'components/Context';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import {Spinner} from 'UI/Spinner/Spinner';
 
-import ErrorMessage from '../../../../UI/ErrorMessage/ErroMessage';
-import Spinner from '../../../../UI/Spinner/Spinner';
 import { getAllTestedUsers } from '../../api/getAllTestedUsers';
 
 import {
@@ -11,7 +12,6 @@ import {
   StyledSpanNumber,
   StyledDivWrapper,
 } from './TotalTested.styled';
-import { ContextProfession } from '../../../../components/Context';
 
 
 type TotalTestedProps = {
@@ -19,7 +19,10 @@ type TotalTestedProps = {
 };
 
 const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.header.components.totalTested',
+  });
+
   const totalUsersRef = useRef<HTMLSpanElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -29,12 +32,12 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
 
   const error = isError ? <ErrorMessage /> : null;
   const spinner = loading ? (
-    <Spinner width={50} height={50} color={'#1f2ce0'} margin='0 auto' />
+    <Spinner width={50} height={50} color={'#fcfdff'} margin='0 auto' />
   ) : null;
   const view = () => {
     return (
       <StyledDivWrapper>
-        <StyledSpanText>{`${t('Прошли_тест')}:`}</StyledSpanText>
+        <StyledSpanText>{`${t('totalTested')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
           {isChooseProfession ? allTestedUsers : '-'}
         </StyledSpanNumber>
