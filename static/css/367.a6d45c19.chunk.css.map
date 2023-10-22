@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/367.a6d45c19.chunk.css","mappings":"AAAA,WACE,UAAY,CACZ,oBACF","sources":["UI/LinkBtn/link.css"],"sourcesContent":[".btn__link {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}
