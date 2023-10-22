@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/quizFrontend/static/css/main.59b0aa92.css",
-    "main.js": "/quizFrontend/static/js/main.ecaff153.js",
+    "main.js": "/quizFrontend/static/js/main.79447318.js",
     "static/css/418.bdde2c46.chunk.css": "/quizFrontend/static/css/418.bdde2c46.chunk.css",
     "static/js/418.c98d964f.chunk.js": "/quizFrontend/static/js/418.c98d964f.chunk.js",
-    "static/css/125.9a52c554.chunk.css": "/quizFrontend/static/css/125.9a52c554.chunk.css",
-    "static/js/125.7ef4aa26.chunk.js": "/quizFrontend/static/js/125.7ef4aa26.chunk.js",
+    "static/css/125.7a6a1721.chunk.css": "/quizFrontend/static/css/125.7a6a1721.chunk.css",
+    "static/js/125.591e0646.chunk.js": "/quizFrontend/static/js/125.591e0646.chunk.js",
     "static/css/598.b0f970bf.chunk.css": "/quizFrontend/static/css/598.b0f970bf.chunk.css",
     "static/js/598.bf3a2314.chunk.js": "/quizFrontend/static/js/598.bf3a2314.chunk.js",
     "static/css/854.f2345aa3.chunk.css": "/quizFrontend/static/css/854.f2345aa3.chunk.css",
     "static/js/854.478e2b5f.chunk.js": "/quizFrontend/static/js/854.478e2b5f.chunk.js",
     "static/css/40.e3cc4ce4.chunk.css": "/quizFrontend/static/css/40.e3cc4ce4.chunk.css",
-    "static/js/40.76f3f5b9.chunk.js": "/quizFrontend/static/js/40.76f3f5b9.chunk.js",
+    "static/js/40.56173106.chunk.js": "/quizFrontend/static/js/40.56173106.chunk.js",
     "static/js/220.ffbcd972.chunk.js": "/quizFrontend/static/js/220.ffbcd972.chunk.js",
     "static/js/66.4f8696df.chunk.js": "/quizFrontend/static/js/66.4f8696df.chunk.js",
     "static/js/897.e5d47670.chunk.js": "/quizFrontend/static/js/897.e5d47670.chunk.js",
@@ -40,17 +40,17 @@
     "static/media/arrowDownLarge.svg": "/quizFrontend/static/media/arrowDownLarge.5cb9226dd89f16c2e62eb8a7b2afc8b7.svg",
     "static/media/leftArrow.svg": "/quizFrontend/static/media/leftArrow.d24a277ed37233dbe9c0bbd8451938c6.svg",
     "static/media/burger_menu.svg": "/quizFrontend/static/media/burger_menu.b941d05b3c392f58816f667c00c6a091.svg",
-    "main.ecaff153.js.map": "/quizFrontend/static/js/main.ecaff153.js.map",
+    "main.79447318.js.map": "/quizFrontend/static/js/main.79447318.js.map",
     "418.bdde2c46.chunk.css.map": "/quizFrontend/static/css/418.bdde2c46.chunk.css.map",
     "418.c98d964f.chunk.js.map": "/quizFrontend/static/js/418.c98d964f.chunk.js.map",
-    "125.9a52c554.chunk.css.map": "/quizFrontend/static/css/125.9a52c554.chunk.css.map",
-    "125.7ef4aa26.chunk.js.map": "/quizFrontend/static/js/125.7ef4aa26.chunk.js.map",
+    "125.7a6a1721.chunk.css.map": "/quizFrontend/static/css/125.7a6a1721.chunk.css.map",
+    "125.591e0646.chunk.js.map": "/quizFrontend/static/js/125.591e0646.chunk.js.map",
     "598.b0f970bf.chunk.css.map": "/quizFrontend/static/css/598.b0f970bf.chunk.css.map",
     "598.bf3a2314.chunk.js.map": "/quizFrontend/static/js/598.bf3a2314.chunk.js.map",
     "854.f2345aa3.chunk.css.map": "/quizFrontend/static/css/854.f2345aa3.chunk.css.map",
     "854.478e2b5f.chunk.js.map": "/quizFrontend/static/js/854.478e2b5f.chunk.js.map",
     "40.e3cc4ce4.chunk.css.map": "/quizFrontend/static/css/40.e3cc4ce4.chunk.css.map",
-    "40.76f3f5b9.chunk.js.map": "/quizFrontend/static/js/40.76f3f5b9.chunk.js.map",
+    "40.56173106.chunk.js.map": "/quizFrontend/static/js/40.56173106.chunk.js.map",
     "220.ffbcd972.chunk.js.map": "/quizFrontend/static/js/220.ffbcd972.chunk.js.map",
     "66.4f8696df.chunk.js.map": "/quizFrontend/static/js/66.4f8696df.chunk.js.map",
     "897.e5d47670.chunk.js.map": "/quizFrontend/static/js/897.e5d47670.chunk.js.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.59b0aa92.css",
-    "static/js/main.ecaff153.js"
+    "static/js/main.79447318.js"
   ]
 }
