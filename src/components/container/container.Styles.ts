@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
+export const ContainerStyled = styled.div`
   box-sizing: border-box;
   max-width: 85%;
   min-width: 294px;
@@ -13,5 +13,3 @@ const ContainerStyled = styled.div`
     width: 1194px;
   }
 `;
-
-export { ContainerStyled };

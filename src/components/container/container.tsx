@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { ContainerStyled } from './container.Styled';
+import { ContainerStyled } from './container.Styles';
 
 type ContainerProps = {
   children: React.ReactNode;
