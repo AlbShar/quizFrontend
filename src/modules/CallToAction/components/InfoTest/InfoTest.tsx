@@ -6,7 +6,7 @@ import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 import {
   ContextLanguage,
   ContextProfession,
-} from 'components/Context';
+} from 'components/context';
 
 import { getQuantityThemes } from '../../api/getInfoQuestions';
 import clock from "../../icons/clock.svg";

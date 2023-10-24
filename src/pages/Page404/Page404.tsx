@@ -1,6 +1,6 @@
 import { Box, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import {Container} from 'components/Container/Container';
+import {Container} from 'components/container';
 
 const Page404 = () => {
   return (

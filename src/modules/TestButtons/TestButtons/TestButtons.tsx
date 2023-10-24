@@ -11,7 +11,7 @@ import {
   ContextLanguage,
   ContextIdUser,
   ContextProfession,
-} from 'components/Context';
+} from 'components/context';
 import { LinkBtn } from 'UI/LinkBtn/LinkBtn';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 

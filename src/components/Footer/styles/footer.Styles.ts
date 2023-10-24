@@ -10,7 +10,6 @@ const StyledFooter = styled.footer`
   }
 `;
 
-
 const StyledUl = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -43,12 +42,10 @@ const StyledDivName = styled.div`
   }
 `;
 
-
 const StyledLink = styled.a`
   text-decoration: none;
   font: var(--font-text6);
   color: var(--color-white);
-  
 
   &:visited {
     color: var(--color-white);
@@ -93,7 +90,6 @@ const StyledLi = styled.li`
     }
   }
 `;
-
 
 export {
   StyledFooter,

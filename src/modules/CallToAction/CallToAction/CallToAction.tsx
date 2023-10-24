@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
-import {Container} from 'components/Container';
+import {Container} from 'components/container';
 import {LinkBtn} from 'UI/LinkBtn';
-import { ContextIdUser } from 'components/Context';
+import { ContextIdUser } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
 import InfoTest  from '../components/InfoTest/InfoTest';

@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
-import { Portal } from 'components/Portal/Portal';
-import { Logo } from 'components/Logo/Logo';
-import { Container } from 'components/Container/Container';
+import { Portal } from 'components/portal';
+import { Logo } from 'components/logo';
+import { Container } from 'components/container';
 import burger_menu from 'assets/images/burger_menu.svg';
 
 import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';

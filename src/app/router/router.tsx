@@ -5,7 +5,7 @@ import {Spinner} from 'UI/Spinner/Spinner';
 import { GlobalStyles } from '../../styles/Global';
 
 const Header = lazy(() => import('modules/Header'));
-// const Footer = lazy(() => import('components/Footer'));
+// const Footer = lazy(() => import('components/footer'));
 const Homepage = lazy(() => import('pages/Homepage'));
 const Quiz = lazy(() => import('pages/Quiz'));
 const Feedback = lazy(() => import('pages/Feedback'));

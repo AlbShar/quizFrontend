@@ -4,7 +4,7 @@ import { setWidthScrollBar } from '../../helpers/setWidthScrollBar';
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
-} from '../../../../components/Context';
+} from 'components/context';
 
 import { StyledDivScrollBar } from './SrollBar.Styled';
 

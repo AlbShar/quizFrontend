@@ -1,7 +1,7 @@
 import { useContext, useCallback} from 'react';
 
 import chevrondown from 'assets/images/chevrondown.svg';
-import { ContextLanguage } from 'components/Context';
+import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { useGetTopics } from 'modules/UserAnswers/hooks/useGetTopics';
 import { Dropdown } from 'UI/dropdown';

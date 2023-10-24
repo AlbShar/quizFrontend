@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
-} from 'components/Context';
-import { ContextLanguage } from 'components/Context';
+} from 'components/context';
+import { ContextLanguage } from 'components/context';
 import SkeletonTheme from 'modules/TestInfo/UI/SkeletonTheme';
 import { getThemeQuestion } from 'modules/TestInfo/api/getThemeQuestion';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';

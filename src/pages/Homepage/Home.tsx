@@ -1,9 +1,9 @@
 import CallToAction from 'modules/CallToAction';
-import {Footer} from 'components/Footer';
-import AboutUs from 'components/AboutUs/AboutUs';
-import {BenefitInfo} from 'components/BenefitInfo';
-import {TestRules} from 'components/TestRules';
-import {ResultsInfo} from 'components/ResultsInfo';
+import {Footer} from 'components/footer';
+import {AboutUs} from 'components/aboutUs';
+import { BenefitsSite } from 'components/benefitsSite';
+import {TestRulesInfo} from 'components/testRulesInfo';
+import {ResultsTestInfo} from 'components/resultsTestInfo';
 
 import { StyledMain } from '../../styles/Main.Styled';
 
@@ -20,14 +20,14 @@ const Home = ({
   return (
     <>
       <StyledMain>
-          <CallToAction
-            isChooseProfession={isChooseProfession}
-            setChooseProfession={setChooseProfession}
-          />
-          <BenefitInfo />
-          <AboutUs />
-          <TestRules />
-          <ResultsInfo />
+        <CallToAction
+          isChooseProfession={isChooseProfession}
+          setChooseProfession={setChooseProfession}
+        />
+        <BenefitsSite />
+        <AboutUs />
+        <TestRulesInfo />
+        <ResultsTestInfo />
       </StyledMain>
       <Footer />
     </>

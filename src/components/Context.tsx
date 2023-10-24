@@ -20,8 +20,6 @@ const ContextProfession = createContext<[string, (item: string) => void]>(
   ['', () => {}],
 );
 
-
-
 export {
   ContextCurrentQuestionNumb,
   ContextLanguage,

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
-import {Container} from 'components/Container';
-import {Feedback} from 'UI/Feedback/Feedback';
+import { Container } from 'components/container';
+import { Feedback } from 'UI/Feedback/Feedback';
 import person_sitting from 'assets/images/person_sitting.svg';
 
 import {
@@ -10,14 +10,18 @@ import {
   StyledImg,
   StyledArticle,
   StyledSection,
-} from './styles/AboutUs.Styled';
+} from './styles/aboutUs.Styled';
 import './styles/link.css';
 
 export const AboutUs = () => {
   const { t } = useTranslation('', {
-    keyPrefix: "components.aboutUs"
+    keyPrefix: 'components.aboutUs',
   });
-  const customStyleFeedback = {color: 'var(--color-purple)', font: 'var(--font-text5)', fontWeight: 700};
+  const customStyleFeedback = {
+    color: 'var(--color-purple)',
+    font: 'var(--font-text5)',
+    fontWeight: 700,
+  };
 
   return (
     <StyledSection>

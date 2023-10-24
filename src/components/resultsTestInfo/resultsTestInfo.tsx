@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
-import {Container} from 'components/Container';
+import { Container } from 'components/container';
 import curver_line2 from 'assets/images/curve_line2.svg';
 
 import {
@@ -11,11 +11,11 @@ import {
   StyledArticleWrapper,
   StyledImg,
   StyledSection,
-} from './ResultsInfo.Styled';
+} from './resultsTest.Styled';
 
-export const ResultsInfo = () => {
+export const ResultsTestInfo = () => {
   const { t } = useTranslation('', {
-    keyPrefix: 'components.resultsInfo'
+    keyPrefix: 'components.resultsInfo',
   });
 
   const texts = [t('result1'), t('result2'), t('result3'), t('result4')];
@@ -60,4 +60,3 @@ const Result = ({ text, id }) => {
     </Grid>
   );
 };
-

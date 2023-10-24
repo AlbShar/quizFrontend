@@ -2,8 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
-} from 'components/Context';
-import { ContextLanguage } from 'components/Context';
+} from 'components/context';
+import { ContextLanguage } from 'components/context';
 import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 
 import Answer from '../components/Answer/Answer';

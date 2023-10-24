@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
-import { ContextIdUser } from 'components/Context';
+import { ContextIdUser } from 'components/context';
 import {Modal} from 'UI/Modal/Modal';
-import {Portal} from 'components/Portal/Portal';
+import {Portal} from 'components/portal';
 import pause from 'assets/images/pause.svg';
 
 import getFullNumb from '../../helpers/getFullNumb';

@@ -2,9 +2,9 @@ import { useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
-import { Container } from 'components/Container/Container';
+import { Container } from 'components/container';
 import { Spinner } from 'UI/Spinner/Spinner';
-import { ContextLanguage } from 'components/Context';
+import { ContextLanguage } from 'components/context';
 import { ErrorMessage } from 'UI/ErrorMessage/ErrorMessage';
 import { useGetStatusLoading } from 'hooks/useGetStatusLoading';
 

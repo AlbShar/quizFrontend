@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import {Container} from 'components/Container/Container';
+import {Container} from 'components/container';
 import UserForm from 'modules/UserForm';
 
 import { StyledMain } from '../../styles/Main.Styled';

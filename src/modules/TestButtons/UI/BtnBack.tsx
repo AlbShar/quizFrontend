@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import {
   ContextCurrentQuestionNumb,
   ContextIdUser,
-} from '../../../components/Context';
+} from 'components/context';
+
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 import leftArrow from '../../../assets/images/leftArrow.svg';
 

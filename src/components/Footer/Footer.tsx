@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid/Grid';
 
-import {Feedback} from 'UI/Feedback';
-import {Container} from 'components/Container';
-import {Logo} from 'components/Logo';
+import { Feedback } from 'UI/Feedback';
+import { Container } from 'components/container';
+import { Logo } from 'components/logo';
 import './styles/footer.css';
 
 import {
@@ -14,13 +14,13 @@ import {
   StyledDivName,
   StyledLink,
   StyledNav,
-} from './styles/Footer.Styled';
+} from "components/footer/styles/footer.Styles";
 
 import type { FooterInfo } from '../../types/types';
 
 export const Footer = () => {
   const { t } = useTranslation('', {
-    keyPrefix: "components.footer"
+    keyPrefix: 'components.footer',
   });
 
   const team: FooterInfo[] = [
@@ -51,7 +51,7 @@ export const Footer = () => {
         lg={2}
         xl='auto'
       >
-        <StyledLi >
+        <StyledLi>
           <StyledLink href={item.link} target='_blank'>
             <StyledDivProfession> {item.profession}</StyledDivProfession>
             <StyledDivName> {item.name}</StyledDivName>
@@ -114,4 +114,3 @@ export const Footer = () => {
     </StyledFooter>
   );
 };
-

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ContextLanguage } from 'components/Context';
+import { ContextLanguage } from 'components/context';
 
 import type { DataQuestionAndUserAnswer } from '../types/types';
 import type { RootState } from 'app/store/index';

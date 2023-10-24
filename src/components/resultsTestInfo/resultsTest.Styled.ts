@@ -66,8 +66,6 @@ const StyledImg = styled.img`
   }
 `;
 
-
-
 const StyledArticle = styled.article`
   box-sizing: border-box;
   position: relative;

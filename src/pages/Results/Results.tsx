@@ -1,6 +1,6 @@
 import { UserAnswers } from 'modules/UserAnswers';
-import { Container } from 'components/Container';
-import { Footer } from 'components/Footer';
+import { Container } from 'components/container';
+import { Footer } from 'components/footer';
 import { withChart } from 'modules/Chart';
 import { withResult } from 'modules/result';
 

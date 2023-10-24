@@ -5,7 +5,7 @@ import {
   ContextLanguage,
   ContextIdUser,
   ContextProfession,
-} from '../../components/Context';
+} from 'components/context';
 
 
 export const withContext =

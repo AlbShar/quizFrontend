@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 
-import { ContextIdUser, ContextProfession } from 'components/Context';
+import { ContextIdUser, ContextProfession } from 'components/context';
 
 import { getSpentTime } from '../api/getSpentTime';
 

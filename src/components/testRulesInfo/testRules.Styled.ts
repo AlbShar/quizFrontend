@@ -28,7 +28,6 @@ const StyledH4 = styled.h4`
 const StyledSection = styled.section`
   background-color: var(--color-light-gray2);
   position: relative;
-
 `;
 
 const StyledArticleWrapper = styled.article`
@@ -47,11 +46,11 @@ const StyledP = styled.p`
 
 const StyleImg = styled.img`
   display: block;
-  margin: 0 auto;  
+  margin: 0 auto;
 `;
 
 const StyledArticle = styled.article`
-  box-sizing: border-box;  
+  box-sizing: border-box;
   background-color: var(--color-white);
   padding: 25px 20px;
   height: 276px;
@@ -61,10 +60,9 @@ const StyledArticle = styled.article`
   }
 
   @media screen and (min-width: 767.8px) {
-      height: 289px
+    height: 289px;
   }
 `;
-
 
 export {
   StyledH3,

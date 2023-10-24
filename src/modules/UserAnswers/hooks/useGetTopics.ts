@@ -1,7 +1,7 @@
 import { useContext, useMemo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ContextLanguage } from 'components/Context';
+import { ContextLanguage } from 'components/context';
 import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
 
 import { changeFilterByTheme } from '../userAnswersSlice';

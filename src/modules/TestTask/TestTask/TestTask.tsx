@@ -4,7 +4,7 @@ import {
   ContextLanguage,
   ContextProfession,
   ContextCurrentQuestionNumb,
-} from 'components/Context';
+} from 'components/context';
 
 import SkeletonQuestion from '../UI/SkeletonQuestion';
 import { getDataFromDB } from '../../../api/getDataFromDB';

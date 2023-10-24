@@ -62,7 +62,6 @@ const StyledArticle = styled.article`
 
 const StyledSection = styled.section`
   background-color: var(--color-white);
-
 `;
 
 export { StyledP, StyledH3, StyledImg, StyledArticle, StyledSection };

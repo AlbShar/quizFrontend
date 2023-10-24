@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 
-import { ContextLanguage } from 'components/Context';
+import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
 

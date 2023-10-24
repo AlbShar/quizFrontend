@@ -18,4 +18,3 @@ export const Portal = ({ children }: PortalProps): JSX.Element => {
 
   return ReactDOM.createPortal(children, container);
 };
-

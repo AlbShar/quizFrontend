@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 // import {Dropdown} from 'UI/Dropdown/Dropdown';
 import { Dropdown } from 'UI/dropdown/Dropdown';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
-import { ContextProfession } from 'components/Context';
+import { ContextProfession } from 'components/context';
 import arrowDownLarge from 'assets/images/arrowDownLarge.svg';
 
 type DropdownProfessionProps = {
