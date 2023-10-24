@@ -1,0 +1,11 @@
+.btn__link {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+
+@media screen and (min-width: 767.8px) {
+  .btn__link {
+    max-width: 200px;
+  }
+}

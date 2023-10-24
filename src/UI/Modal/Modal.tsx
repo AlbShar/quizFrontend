@@ -12,7 +12,8 @@ type ModalProps = {
   subTitle: string;
   onClickHandler?: () => void;
 };
-const Modal = ({
+
+export const Modal = ({
   title,
   subTitle,
   onClickHandler,
@@ -36,4 +37,3 @@ const Modal = ({
   );
 };
 
-export default Modal;

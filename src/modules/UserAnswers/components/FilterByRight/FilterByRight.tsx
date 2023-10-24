@@ -1,30 +1,28 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from '../../../../assets/images/chevrondown.svg';
-import { StyledWrapperDropdown } from '../Filters.Styled';
-import { changeFilterByRight } from '../filtersSlice';
+import chevrondown from 'assets/images/chevrondown.svg';
 
-import type { AppDispatch, RootState } from '../../../../app/store/index';
+import { Dropdown } from 'UI/dropdown';
+import { StyledWrapperDropdown } from '../Filters.Styled';
+import { useGetFilterByCorrectness } from '../../hooks/useGetFilterByCorrectness';
+
 
 const FilterByRight = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.userAnswers'
+  });
   const data: string[] = [t('Все вопросы'), t('Верно'), t('Неверно')];
-  const filterByRight = useSelector(
-    (state: RootState) => state.filtersReducer.filterByRight,
-  );
-  const dispatch = useDispatch<AppDispatch>();
-  const onClickFilterItem = (filter: string) => {
-    dispatch(changeFilterByRight(filter));
-  };
+  const {
+    filterByCorrectness, setFilterByCorrectness
+  } = useGetFilterByCorrectness();
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
-        data={data}
-        selected={t(filterByRight)}
-        onClickElement={onClickFilterItem}
+        typeFilter='correctness'
+        nameListItems={data}
+        selectedFilter={t(filterByCorrectness)}
+        setFilter={setFilterByCorrectness}
         srcArrowDown={chevrondown}
       />
     </StyledWrapperDropdown>

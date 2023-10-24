@@ -1,9 +1,9 @@
 import type {
-  TInfoQuestionsAndAnswers,
+  
   TAnswersDB,
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
-  TQuestionAndAnswer,
+  
 } from '../types/types';
 
 import { getNumberFromKey } from './getNumberFromKey';

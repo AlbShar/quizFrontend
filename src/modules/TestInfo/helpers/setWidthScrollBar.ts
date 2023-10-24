@@ -4,7 +4,7 @@ import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 type WidthScrollBarProps = {
   currentQuestionNumb: number;
-  quizRef?: RefObject<HTMLTableSectionElement>;
+  quizRef: RefObject<HTMLTableSectionElement>;
   scrollBarElementRef: RefObject<HTMLDivElement>;
   url: string
 }
@@ -19,7 +19,7 @@ async function setWidthScrollBar({
       url,
     );
 
-    const quizElement = quizRef?.current;
+    const quizElement = quizRef.current;
     const scrollBarElement = scrollBarElementRef.current;
     if (quizElement && totalQuestionsNumb && scrollBarElement) {
       const widthContainer =

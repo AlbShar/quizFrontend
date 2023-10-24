@@ -6,18 +6,18 @@ import {
   useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import BtnBack from '../UI/BtnBack';
-import ButtonNext from '../UI/ButtonNext';
 import {
   ContextCurrentQuestionNumb,
   ContextLanguage,
   ContextIdUser,
   ContextProfession,
-} from '../../../components/Context';
+} from 'components/Context';
+import { LinkBtn } from 'UI/LinkBtn/LinkBtn';
+import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
+
+import BtnBack from '../UI/BtnBack';
+import ButtonNext from '../UI/ButtonNext';
 import { sendUserAnswerDB } from '../api/sendUserAnswerDB';
-import LinkBtn from '../../../UI/LinkBtn/LinkBtn';
-import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
 
 import { StyledArticle } from './TestButtons.Styled';
 
@@ -38,10 +38,10 @@ const TestButtons = ({
   const [lang] = useContext(ContextLanguage);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
-        useContext(ContextProfession);
-  const { t } = useTranslation();
-
-
+    useContext(ContextProfession);
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.testButtons',
+  });
 
   const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
   const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
@@ -81,14 +81,14 @@ const TestButtons = ({
       />
       {totalQuestionsNumbers === currentQuestionNumb ? (
         <LinkBtn
-          text={t('Закончить_тест')}
+          text={t('textBtn')}
           pageTo='/results'
           onClick={onClickButtonHandler}
           id='btnFinish'
           isDisabledBtn={isBtnNextDisabled}
         />
       ) : (
-        <ButtonNext 
+        <ButtonNext
           isBtnNextDisabled={isBtnNextDisabled}
           onClickButtonHandler={onClickButtonHandler}
         />

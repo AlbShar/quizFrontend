@@ -8,12 +8,11 @@ type LogoProps = {
   location: string;
   style?: React.CSSProperties;
 };
-const Logo = ({ location, style }: LogoProps): JSX.Element => {
+export const Logo = ({ style }: LogoProps): JSX.Element => {
   return (
     <Link to='/'>
-      <StyledImg src={logo} alt='logo' location={location} style={style} />
+      <StyledImg src={logo} alt='logo' style={style} />
     </Link>
   );
 };
 
-export default Logo;

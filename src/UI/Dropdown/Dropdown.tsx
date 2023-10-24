@@ -1,157 +1,79 @@
-import { useEffect, useState } from 'react';
+import { memo, CSSProperties } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import './style.css';
+
+import { useDisplayListDropdown } from './hooks/useDisplayListDropdown';
 
 import {
   StyleArticleDropdown,
   StyledButton,
   StyledUl,
   StyledLi,
+  StyledImgRight,
   StyledSpan,
   StyledImgLeft,
-  StyledImgRight,
-  StyledSpanList,
 } from './Dropdown.Styled';
 
-type TLanguages = {
-  [key: string]: string;
-};
-type DropdownProps = {
-  customStyle?: string;
-  selected: string;
-  data: TLanguages | string[];
-  onClickElement?: (item: string) => void;
-  srcImg?: string;
+type TypeOfFilter = 'topics' | 'correctness' | 'profession';
+
+type DropdownProps<T extends TypeOfFilter> = {
+  typeFilter: T;
+  selectedFilter: string;
+  nameListItems: string[];
   srcArrowDown: string;
+  setFilter: T extends 'topics'
+    ? (index: number) => void
+    : (filter: string) => void;
 };
 
-const Dropdown = ({
-  data,
-  selected,
-  customStyle,
-  onClickElement,
-  srcImg = '',
-  srcArrowDown,
-}: DropdownProps) => {
-  const [isActive, setActive] = useState<boolean>(false);
+export const Dropdown = memo(
+  <T extends TypeOfFilter>({
+    nameListItems,
+    typeFilter,
+    selectedFilter,
+    setFilter,
+    srcArrowDown,
+  }: DropdownProps<T>) => {
+    const { isActive, toggleList } = useDisplayListDropdown();
 
-  const toggleList = () => {
-    setActive((isActive) => !isActive);
-  };
-
-  const onClickButton = () => {
-    toggleList();
-  };
-
-  const transformData = (data: unknown) => {
-    if (Array.isArray(data)) {
-      return data.map((item: string, index: number) => {
-        return (
-          <StyledLi
-            key={index + 1}
-            tabIndex={0}
-            onClick={() => {
-              onClickElement && onClickElement(item);
-              toggleList();
-            }}
-          >
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'baseline',
-                gap: 2,
-                justifyContent: 'center',
-              }}
-            >
-              <StyledSpanList>
-                {item}
-              </StyledSpanList>
-            </div>
-          </StyledLi>
-        );
-      });
-    } else {
-      return Object.entries(data as TLanguages).map(
-        (item: string[], index: number) => {
-          const shotLang = item[1];
-          const fullLang = item[0];
-          return (
-            <StyledLi
-              key={index + 1}
-              tabIndex={0}
-              onClick={() => {
-                onClickElement && onClickElement(shotLang);
-                toggleList();
-              }}
-            >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'baseline',
-                  gap: 2,
-                  justifyContent: 'center',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                  }}
-                >
-                  {shotLang.toUpperCase()}
-                </span>
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 400,
-                  }}
-                >
-                  {fullLang}
-                </span>
-              </div>
-            </StyledLi>
-          );
-        },
-      );
-    }
-  };
-
-  const dropdownElements = transformData(data);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      if (!target.closest('ul') && !target.closest('button')) {
-        setActive(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <StyleArticleDropdown>
-      <StyledButton onClick={onClickButton}>
-        {srcImg ? <StyledImgLeft src={srcImg} alt='img' /> : null}
-        <StyledSpan
-          className='dropdown-btn-text'
-          customStyle={customStyle || ''}
+    const listItems = nameListItems.map((item: string, index: number) => {
+      return (
+        <StyledLi
+          key={index + 1}
+          tabIndex={0}
+          onClick={() => {
+            if (typeFilter === 'topics') {
+              (setFilter as (index: number) => void)(index);
+            } else {
+              (setFilter as (filter: string) => void)(item);
+            }
+            toggleList();
+          }}
         >
-          {selected.toUpperCase() || ''}
-        </StyledSpan>
+          {item}
+        </StyledLi>
+      );
+    });
+      const customStyleButton = `
+      gap: 10px; 
+      justify-content: flex-end; 
 
-        <StyledImgRight src={srcArrowDown} alt='Кнопка вниз' />
-      </StyledButton>
-      <CSSTransition in={isActive} timeout={300} classNames='list'>
-        {<>{isActive && <StyledUl>{dropdownElements}</StyledUl>}</>}
-      </CSSTransition>
-    </StyleArticleDropdown>
-  );
-};
+      @media screen and (min-width: 767.8px) {
+        gap: 39px; 
+        }`;
 
-export default Dropdown;
+    return (
+      <StyleArticleDropdown>
+        <StyledButton onClick={toggleList} typeFilter={typeFilter}>
+          <StyledSpan className='dropdown-btn-text'>
+            {selectedFilter && selectedFilter.toUpperCase()}
+          </StyledSpan>
+
+          <StyledImgRight src={srcArrowDown} alt='Кнопка вниз' />
+        </StyledButton>
+        <CSSTransition in={isActive} timeout={300} classNames='list'>
+          {<>{isActive && <StyledUl>{listItems}</StyledUl>}</>}
+        </CSSTransition>
+      </StyleArticleDropdown>
+    );
+  },
+);

@@ -1,0 +1,19 @@
+.link {
+  text-decoration: none;
+  color: var(--color-white);
+  font: var(--font-text7);
+}
+
+.link:hover {
+  color: var(--color-purple);
+}
+
+.link:visited {
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 767.8px) {
+  .link {
+    font: var(--font-text6);
+  }
+}

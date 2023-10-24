@@ -1,33 +1,38 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useContext, useCallback} from 'react';
 
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import chevrondown from '../../../../assets/images/chevrondown.svg';
+import chevrondown from 'assets/images/chevrondown.svg';
+import { ContextLanguage } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
+import { useGetTopics } from 'modules/UserAnswers/hooks/useGetTopics';
+import { Dropdown } from 'UI/dropdown';
+
 import { StyledWrapperDropdown } from '../Filters.Styled';
-import { changeFilterByTheme } from '../filtersSlice';
-
-import type { AppDispatch, RootState } from '../../../../app/store/index';
-
 
 const FilterByThemes = (): JSX.Element => {
-  const filterByTheme  = useSelector(
-    (state: RootState) => state.filtersReducer.filterByTheme,
-  );
-  const themes = useSelector(
-    (state: RootState) => state.userAnswersReducer.themes,
-  );
-  const { t } = useTranslation();
-  const dispatch = useDispatch<AppDispatch>();
-  const onClickFilter = (filter: string) => {
-    dispatch(changeFilterByTheme(filter));
-  };
+  const { topic, topics, shortNameTopics, updateTopic } = useGetTopics();
+    const [lang]: [string, (lang: string) => void] =
+      useContext(ContextLanguage);
+
+
+  const setTopic = useCallback((index = 0) => {
+      const topic =
+        index === 0
+          ? topics[lang]['defaultValue']
+          : topics[lang][`theme${index}`];
+      setValueToLocalStorage(
+        'keyTheme',
+        index === 0 ? 'defaultValue' : `theme${index}`,
+      );
+      updateTopic(topic);
+  }, []);
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
-        data={[t('Все тематики'), ...themes]}
-        selected={t(filterByTheme)}
-        onClickElement={onClickFilter}
+        typeFilter='topics'
+        nameListItems={shortNameTopics}
+        selectedFilter={topic}
+        setFilter={setTopic}
         srcArrowDown={chevrondown}
       />
     </StyledWrapperDropdown>

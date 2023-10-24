@@ -1,17 +1,16 @@
 import { useEffect, useContext, useState, RefObject, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
-} from '../../../components/Context';
-import { ContextLanguage } from '../../../components/Context';
-import SkeletonTheme from '../UI/SkeletonTheme';
-import { getThemeQuestion } from '../api/getThemeQuestion';
-import { getTotalQuestionsNumb } from '../../../api/getTotalQuestionsNumb';
-import ScrollBar from '../components/ScrollBar/ScrollBar';
-import Timer from '../components/Timer/Timer';
-import ErrorMessage from '../../../UI/ErrorMessage/ErroMessage';
+} from 'components/Context';
+import { ContextLanguage } from 'components/Context';
+import SkeletonTheme from 'modules/TestInfo/UI/SkeletonTheme';
+import { getThemeQuestion } from 'modules/TestInfo/api/getThemeQuestion';
+import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
+import ScrollBar from 'modules/TestInfo/components/ScrollBar/ScrollBar';
+import Timer from 'modules/TestInfo/components/Timer/Timer';
+import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
 
 import {
   StyledH1,
@@ -20,13 +19,12 @@ import {
   StyledArticle,
 } from './TestInfo.Styled';
 
-// type TestInfoProps = {
-//   quizRef?: RefObject<HTMLTableSectionElement>;
-// };
+type TestInfoProps = {
+  quizRef: RefObject<HTMLTableSectionElement>;
+};
 
-export const TestInfo: FC = () => {
+export const TestInfo: FC<TestInfoProps> = ({ quizRef }) => {
   const { t } = useTranslation();
-
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
@@ -34,16 +32,16 @@ export const TestInfo: FC = () => {
     useContext(ContextProfession);
 
   const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>('');
-  const [totalQuestionNumber, setTotalQuestionNumber] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [theme, setTheme] = useState('');
+  const [totalQuestionNumber, setTotalQuestionNumber] = useState(0);
 
-  const view = () => {
+  const getTestInfoView = () => {
     return (
       <section>
         <article style={{ backgroundColor: '#EEEEFF' }}>
-          <ScrollBar />
+          <ScrollBar quizRef={ quizRef } />
         </article>
         <StyledArticle>
           <div>
@@ -63,7 +61,7 @@ export const TestInfo: FC = () => {
     );
   };
   const skeleton = isLoading ? <SkeletonTheme /> : null;
-  const content = !(isLoading || isError) ? view() : null;
+  const content = !(isLoading || isError) ? getTestInfoView() : null;
   const error = isError ? <ErrorMessage /> : null;
 
   const dataLoaded = (res) => {

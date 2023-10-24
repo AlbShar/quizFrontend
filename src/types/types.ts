@@ -24,8 +24,9 @@ type JSONText = {
 };
 
 type FooterInfo = {
-  text: string;
-  link: '/reportbug' | '/reestablish' | '/politics';
+  profession: string;
+  name: string
+  link: string;
 }
 
 export type {

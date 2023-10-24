@@ -1,0 +1,9 @@
+.link {
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+.link:hover {
+    color: var(--color-purple);
+}

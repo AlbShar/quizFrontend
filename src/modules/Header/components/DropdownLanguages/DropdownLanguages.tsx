@@ -1,17 +1,20 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 
-import { setValueToLocalStorage } from '../../../../helpers/setValueToLocalStorage';
-import { ContextLanguage } from '../../../../components/Context';
-import Dropdown from '../../../../UI/Dropdown/Dropdown';
-import globe from '../../../../assets/images/globe.svg';
+import { ContextLanguage } from 'components/Context';
+import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
-import arrowDownSmall from '../../icons/arrowDownSmall.svg';
+
+import {Dropdown} from '../../UI/Dropdown';
+import arrowDown from '../../icons/arrowDown.svg';
+
+
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
   const [lang, setLang]: [string, (lang: string) => void] =
     useContext(ContextLanguage);
+
 
   type tMapLanguage = {
     [key: string]: string;
@@ -29,7 +32,6 @@ const DropdownLanguages = () => {
   }, []);
 
   const [selected, setSelected] = useState<string>(mapLanguage['Русский']);
-  const refWrapperLanguage = useRef<HTMLDivElement>(null);
 
   const onClickElement = (item: string) => {
     const language = item === 'ru' ? 'Русский' : 'English';
@@ -44,16 +46,13 @@ const DropdownLanguages = () => {
   };
 
   return (
-    <div style={{ width: 88, height: 44 }}>
       <Dropdown
         data={mapLanguage}
         selected={lang}
         onClickElement={(item: string) => onClickElement(item)}
-        srcImg={globe}
-        srcArrowDown={arrowDownSmall}
-        customStyle={'margin: 0 0 0 13px'}
+        srcImg={require('../../icons/globe.png')}
+        srcArrowDown={arrowDown}
       />
-    </div>
   );
 };
 

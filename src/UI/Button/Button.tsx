@@ -4,20 +4,15 @@ import { StyledButton } from './Button.Styled';
 
 type ButtonProps = {
   text: string;
-  action: () => void;
-}
-const Button = ({ text, action }: ButtonProps): JSX.Element => {
+  disabled: boolean
+};
+export const Button = ({ text, disabled }: ButtonProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <StyledButton
-      onClick={() => {
-        action();
-      }}
-    >
+    <StyledButton type='submit' disabled={disabled}>
       {t(text)}
     </StyledButton>
   );
 };
 
-export default Button;

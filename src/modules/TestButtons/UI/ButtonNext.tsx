@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import rightArrow from '../../../assets/images/rightArrow.svg';
 
-import { StyledButton, StyledSpan } from './Buttons.Styled';
+import { StyledButton } from './Buttons.Styled';
 
 type ButtonNextProps = {
   onClickButtonHandler: (e: MouseEvent) => void;
@@ -13,21 +13,22 @@ type ButtonNextProps = {
 const ButtonNext = ({
   onClickButtonHandler,
   isBtnNextDisabled,
-}: ButtonNextProps) : JSX.Element => {
-  const { t } = useTranslation();
+}: ButtonNextProps): JSX.Element => {
+
+  const { t } = useTranslation('', {
+    keyPrefix: 'modules.testButtons.UI.btnNext',
+  });
+  
 
   return (
-    <>
-      <StyledButton
-        style={{ justifyContent: 'flex-end' }}
-        onClick={onClickButtonHandler}
-        disabled={isBtnNextDisabled}
-        data-testid='btn-next'
-      >
-        <StyledSpan>{t('Принять')}</StyledSpan>
-        <img src={rightArrow} alt='rightArrow' />
-      </StyledButton>
-    </>
+    <StyledButton
+      onClick={onClickButtonHandler}
+      disabled={isBtnNextDisabled}
+      typeBtn='next'
+    >
+      {t('text')}
+      <img src={rightArrow} alt='rightArrow' />
+    </StyledButton>
   );
 };
 

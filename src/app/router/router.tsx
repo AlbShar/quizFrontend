@@ -1,18 +1,16 @@
 import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Spinner from '../../UI/Spinner/Spinner';
+
+import {Spinner} from 'UI/Spinner/Spinner';
 import { GlobalStyles } from '../../styles/Global';
 
-const Header = lazy(() => import('../../modules/Header/index'));
-const Footer = lazy(() => import('../../components/Footer/Footer'));
-const ReportBugPage = lazy(
-  () => import('../../pages/ReportBugPage/ReportBugPage'),
-);
-const Homepage = lazy(() => import('../../pages/Homepage/Homepage'));
-const Quiz = lazy(() => import('../../pages/Quiz/Quiz'));
-const Contact = lazy(() => import('../../pages/Contact/Contact'));
-const Results = lazy(() => import('../../pages/Results/Results'));
-const Page404 = lazy(() => import('../../pages/Page404/Page404'));
+const Header = lazy(() => import('modules/Header'));
+// const Footer = lazy(() => import('components/Footer'));
+const Homepage = lazy(() => import('pages/Homepage'));
+const Quiz = lazy(() => import('pages/Quiz'));
+const Feedback = lazy(() => import('pages/Feedback'));
+const Results = lazy(() => import('pages/Results'));
+const Page404 = lazy(() => import('pages/Page404'));
 
 
 export const MyRoutes = () => {
@@ -47,10 +45,8 @@ export const MyRoutes = () => {
                   />
                 }
               />
-              <Route index element={<Footer />} />
-              <Route path='reportbug' element={<ReportBugPage />} />
+              <Route path='feedback' element={<Feedback />} />
               <Route path='quiz' element={<Quiz />} />
-              <Route path='contact' element={<Contact />} />
               <Route path='results' element={<Results />} />
             </Route>
             <Route path='*' element={<Page404 />} />

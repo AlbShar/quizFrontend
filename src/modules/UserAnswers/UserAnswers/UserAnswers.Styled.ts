@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 
-type StyledSpanResultProps = {
-  isRight: boolean;
-}
-
 const StyledLi = styled.li`
   box-sizing: border-box;
   list-style-type: none;
-  font: var(--font-little-text-regular);
+  font: var(--font-text5);
 
   &:not(:last-child) {
     margin-bottom: 10px;
   }
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-regular);
+    font: var(--font-text3);
+    font-weight: 400;
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
   }
 `;
@@ -24,17 +21,17 @@ const StyledListAnswers = styled.li`
   box-sizing: border-box;
   word-wrap: break-word;
   list-style-type: none;
-  font: var(--font-little-text-regular);
+  font: var(--font-text5);
   padding: 0 10px;
+  border-radius: 3px;
+  background-color: var(--color-light-gray);
 
   &:not(:last-child) {
     margin-bottom: 10px;
   }
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-regular);
-
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
 `;
@@ -49,33 +46,31 @@ const StyledUl = styled.ul`
 
 const StyledSum = styled.summary`
   box-sizing: border-box;
+  cursor: pointer;
   width: 100%;
-  background-color: var(--color-title-background);
-  font: var(--font-little-text-regular);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  margin: 0 0 10px 0;
+  background-color: transparent;
+  font: var(--font-text11);
+  color: var(--color-black);
+  text-align: left;
+  padding: 48px 0;
 
-  @media screen and (min-width: 459.8px) {
-    font: var(--font-title4);
+  @media screen and (min-width: 767.8px) {
     justify-content: flex-start;
-    padding: 10px 0 10px 40px;
+    padding: 30px 0;
   }
 `;
 
+
 const StyledSpan = styled.span`
-  font: var(--font-little-text-bold);
+  font: var(--font-text5-bold);
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-bold);
+    font: var(--font-text3);
   }
 `;
 
 const StyledSection = styled.section`
-  margin: 24px 0 18px 0;
+  margin: 19px 0;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -88,19 +83,14 @@ const StyledSection = styled.section`
   }
 `;
 
-const StyledSpanResult = styled.span<StyledSpanResultProps>`
-  position: absolute;
-  color: ${({ isRight }) => (isRight ? 'green' : 'red')};
-  top: 5px;
-  right: 0;
-
-  font: var(--font-little-text-bold);
+const StyledP = styled.p`
+  font: var(--font-text5-bold);
+  color: red;
 
   @media screen and (min-width: 767.8px) {
-    font: var(--font-text-bold);
+    font: var(--font-text3);
   }
 `;
-
 
 
 export {
@@ -108,7 +98,7 @@ export {
   StyledUl,
   StyledSpan,
   StyledListAnswers,
-  StyledSpanResult,
   StyledSum,
   StyledSection,
+  StyledP,
 };

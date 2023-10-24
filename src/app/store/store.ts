@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userAnswersReducer, filtersReducer } from '../../modules/UserAnswers';
+import { userAnswersReducer } from 'modules/UserAnswers';
 
 export const store = configureStore({
-  reducer: { userAnswersReducer, filtersReducer },
+  reducer: userAnswersReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',
 });
