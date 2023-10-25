@@ -11,7 +11,7 @@ import {
   StyledImgRight,
   StyledSpan,
   StyledImgLeft,
-} from './Dropdown.Styled';
+} from './dropdown.Styled';
 
 type TypeOfFilter = 'topics' | 'correctness' | 'profession';
 

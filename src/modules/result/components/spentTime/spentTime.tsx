@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { transformSecondsToMinutes } from 'modules/result/helpers/transformSecondsToMinutes';
-import { Spinner } from 'UI/Spinner';
-import { ErrorMessage } from 'UI/ErrorMessage';
+import { Spinner } from 'UI/spinner';
+import { ErrorMessage } from 'UI/errorMessage';
 import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
 
 import { useGetTime } from '../../hooks/useGetTime';

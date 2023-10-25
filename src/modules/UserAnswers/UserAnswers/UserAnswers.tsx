@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 import { Container } from 'components/container';
-import { Spinner } from 'UI/Spinner/Spinner';
+import { Spinner } from 'UI/spinner';
 import { ContextLanguage } from 'components/context';
-import { ErrorMessage } from 'UI/ErrorMessage/ErrorMessage';
+import { ErrorMessage } from 'UI/errorMessage';
 import { useGetStatusLoading } from 'hooks/useGetStatusLoading';
 
 import { useGetFilteredUserAnswers } from '../hooks/useGetFilteredUserAnswers';

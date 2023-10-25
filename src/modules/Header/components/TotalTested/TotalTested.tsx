@@ -2,8 +2,8 @@ import { useRef, useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ContextProfession } from 'components/context';
-import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
-import {Spinner} from 'UI/Spinner/Spinner';
+import {ErrorMessage} from 'UI/errorMessage';
+import {Spinner} from 'UI/spinner';
 
 import { getAllTestedUsers } from '../../api/getAllTestedUsers';
 

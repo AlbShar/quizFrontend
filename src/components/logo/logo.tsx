@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { StyledImg } from 'components/logo/logo.Styled';
 import logo from 'assets/images/logo.svg';
 
+import { StyledImg } from './logo.Styled';
 
 type LogoProps = {
   location: string;

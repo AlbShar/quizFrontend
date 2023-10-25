@@ -1,8 +1,7 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// import {Dropdown} from 'UI/Dropdown/Dropdown';
-import { Dropdown } from 'UI/dropdown/Dropdown';
+import { Dropdown } from 'UI/dropdown';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { ContextProfession } from 'components/context';
 import arrowDownLarge from 'assets/images/arrowDownLarge.svg';

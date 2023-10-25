@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
 import { useGetScores } from 'modules/result/hooks/useGetScores';
-import { Spinner } from 'UI/Spinner';
-import { ErrorMessage } from 'UI/ErrorMessage';
+import { Spinner } from 'UI/spinner';
+import { ErrorMessage } from 'UI/errorMessage';
 
 import { StyledArticle, StyledH3, StyledH2 } from '../../styles/result.Styled';
 

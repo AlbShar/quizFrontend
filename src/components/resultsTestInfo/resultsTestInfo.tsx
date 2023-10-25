@@ -1,5 +1,6 @@
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
+
 import { Container } from 'components/container';
 import curver_line2 from 'assets/images/curve_line2.svg';
 

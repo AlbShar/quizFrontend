@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from 'react';
-import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import {ErrorMessage} from 'UI/errorMessage';
 import {
   ContextLanguage,
   ContextProfession,

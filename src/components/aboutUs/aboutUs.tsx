@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
+
 import { Container } from 'components/container';
-import { Feedback } from 'UI/Feedback/Feedback';
+import { FeedbackLink } from 'UI/feedbackLink';
 import person_sitting from 'assets/images/person_sitting.svg';
 
 import {
@@ -36,7 +37,7 @@ export const AboutUs = () => {
               <StyledP>{t('text2')} </StyledP>
               <StyledP>
                 {t('text3')}
-                <Feedback style={customStyleFeedback} />
+                <FeedbackLink style={customStyleFeedback} />
                 {t('text4')}
               </StyledP>
             </Grid>

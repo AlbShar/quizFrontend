@@ -6,13 +6,14 @@ import {
   useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import {
   ContextCurrentQuestionNumb,
   ContextLanguage,
   ContextIdUser,
   ContextProfession,
 } from 'components/context';
-import { LinkBtn } from 'UI/LinkBtn/LinkBtn';
+import { NextPageButton } from 'UI/nextPageButton';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 
 import BtnBack from '../UI/BtnBack';
@@ -80,7 +81,7 @@ const TestButtons = ({
         setIsBtnBackDisabled={setIsBtnBackDisabled}
       />
       {totalQuestionsNumbers === currentQuestionNumb ? (
-        <LinkBtn
+        <NextPageButton
           text={t('textBtn')}
           pageTo='/results'
           onClick={onClickButtonHandler}

@@ -4,7 +4,7 @@ import {
   ContextProfession,
 } from 'components/context';
 import { ContextLanguage } from 'components/context';
-import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import {ErrorMessage} from 'UI/errorMessage';
 
 import Answer from '../components/Answer/Answer';
 import SkeletonAnswers from '../UI/SkeletonAnswers';

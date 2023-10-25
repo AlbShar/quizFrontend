@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
 import { ContextIdUser } from 'components/context';
-import {Modal} from 'UI/Modal/Modal';
+import {ModalPause} from 'UI/modalPause';
 import {Portal} from 'components/portal';
 import pause from 'assets/images/pause.svg';
 
@@ -75,7 +75,7 @@ const Timer = () => {
       <StyledSpanTimer>{elementNumbersTimer}</StyledSpanTimer>
       {isModal && (
         <Portal>
-          <Modal
+          <ModalPause
             title={titleModal}
             subTitle={subtitleModal}
             onClickHandler={restoreTimer}

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
-import { Spinner } from 'UI/Spinner';
-import { ErrorMessage } from 'UI/ErrorMessage';
+import { Spinner } from 'UI/spinner';
+import { ErrorMessage } from 'UI/errorMessage';
 
 import { DoughnutChart } from './components/doughuntChart/doughuntChart';
 import { BarChart } from './components/barChart/barChart';

@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
-import {Spinner} from 'UI/Spinner/Spinner';
-import {ErrorMessage} from 'UI/ErrorMessage/ErrorMessage';
+import {Spinner} from 'UI/spinner';
+import {ErrorMessage} from 'UI/errorMessage';
 import {
   ContextLanguage,
   ContextProfession,

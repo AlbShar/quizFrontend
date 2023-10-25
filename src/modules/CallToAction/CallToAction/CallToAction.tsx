@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 import {Container} from 'components/container';
-import {LinkBtn} from 'UI/LinkBtn';
+import {NextPageButton} from 'UI/nextPageButton';
 import { ContextIdUser } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
@@ -58,7 +58,7 @@ const CallToAction = ({
               <StyledH2>{t('subTitle')}</StyledH2>
               <StyledDiv>
                 <DropdownProfession setChooseProfession={setChooseProfession} />
-                <LinkBtn
+                <NextPageButton
                   pageTo='quiz'
                   onClick={startTest}
                   text={t('textStartBtn')}

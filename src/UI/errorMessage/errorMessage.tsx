@@ -1,6 +1,6 @@
 import ErrorIcon from '@mui/icons-material/Error';
 
-import { StyledSpan, StyledDiv } from './ErrorMessage.Styled';
+import { StyledSpan, StyledDiv } from './errorMessage.Styled';
 
 export const ErrorMessage = () => {
   return (

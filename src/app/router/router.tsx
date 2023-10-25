@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import {Spinner} from 'UI/Spinner/Spinner';
+import {Spinner} from 'UI/spinner';
 import { GlobalStyles } from '../../styles/Global';
 
 const Header = lazy(() => import('modules/Header'));

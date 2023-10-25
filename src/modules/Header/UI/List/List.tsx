@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import {Feedback} from 'UI/Feedback/Feedback';
+import {FeedbackLink} from 'UI/feedbackLink';
 
 import { StyledLi, StyledUl, StyledLink } from './List.Styled';
 
@@ -16,7 +16,7 @@ export const List = ({ onClickCloseBtn }: ListProps) => {
   return (
     <StyledUl>
       <StyledLi>
-        <Feedback onClickCloseBtn={onClickCloseBtn} />
+        <FeedbackLink onClickCloseBtn={onClickCloseBtn} />
       </StyledLi>
       <StyledLi>
         <StyledLink href='#team'> {t('team')}</StyledLink>

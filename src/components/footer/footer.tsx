@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid/Grid';
 
-import { Feedback } from 'UI/Feedback';
+import { FeedbackLink } from 'UI/feedbackLink';
 import { Container } from 'components/container';
 import { Logo } from 'components/logo';
 import './styles/footer.css';
@@ -14,7 +14,7 @@ import {
   StyledDivName,
   StyledLink,
   StyledNav,
-} from "components/footer/styles/footer.Styles";
+} from "./styles/footer.Styles";
 
 import type { FooterInfo } from '../../types/types';
 
@@ -81,7 +81,7 @@ export const Footer = () => {
               rowSpacing={2.5}
             >
               <Grid item xs={0.9} md={3}>
-                <Feedback />
+                <FeedbackLink />
               </Grid>
               <Grid item xs={0.3} md={3}>
                 <StyledLink href='#header'>{t('textUpLink')}</StyledLink>

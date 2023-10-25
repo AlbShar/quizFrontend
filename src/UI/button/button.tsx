@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { StyledButton } from './Button.Styled';
+import { StyledButton } from 'UI/button/button.Styled';
 
 type ButtonProps = {
   text: string;
