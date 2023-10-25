@@ -1,4 +1,4 @@
-import CallToAction from 'modules/CallToAction';
+import {CallToAction} from 'modules/callToAction';
 import {Footer} from 'components/footer';
 import {AboutUs} from 'components/aboutUs';
 import { BenefitsSite } from 'components/benefitsSite';

@@ -1,4 +1,4 @@
-import { getDataFromDB } from "../../../api/getDataFromDB";
+import { getDataFromDB } from "api/getDataFromDB";
 
 type Questions = {
   [key in string]: object;

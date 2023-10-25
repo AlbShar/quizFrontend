@@ -9,11 +9,15 @@ import {
 } from 'components/context';
 
 import { getQuantityThemes } from '../../api/getInfoQuestions';
-import clock from "../../icons/clock.svg";
-import barChart from "../../icons/bar-chart.svg";
-import helpCircle from "../../icons/help-circle.svg";
+import clock from 'assets/images/modules/callToAction/clock.svg';
+import barChart from 'assets/images/modules/callToAction/bar-chart.svg';
+import helpCircle from 'assets/images/modules/callToAction/help-circle.svg';
 
-import { StyledUl, StyledImg, StyledLi } from './InfoTest.styled';
+import {
+  StyledUl,
+  StyledImg,
+  StyledLi,
+} from 'modules/callToAction/components/infoTest/infoTest.styled';
 
 import type { InfoTestBlock } from 'types/types';
 
