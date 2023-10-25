@@ -5,7 +5,7 @@ import {
   StyledSpan,
   StyledSpanClose,
   StyledButtonModal,
-} from './Modal.Styled';
+} from './modalPause.Styled';
 
 type ModalProps = {
   title: string;
@@ -13,7 +13,7 @@ type ModalProps = {
   onClickHandler?: () => void;
 };
 
-export const Modal = ({
+export const ModalPause = ({
   title,
   subTitle,
   onClickHandler,

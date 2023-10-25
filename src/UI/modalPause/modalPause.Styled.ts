@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledButton } from '../Button/Button.Styled';
+import { StyledButton } from '../button/button.Styled';
 
 const StyleDivModal = styled.div`
   position: fixed;

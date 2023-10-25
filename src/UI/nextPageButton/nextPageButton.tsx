@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { MouseEvent } from 'react';
 import './styles/link.css';
 
-import { StyledButton } from './styles/LinkBtn.Styled';
+import { StyledButton } from './styles/nextPageButton.Styled';
 
 type LinkBtnProps = {
   text: string;
@@ -12,7 +12,7 @@ type LinkBtnProps = {
   isDisabledBtn?: boolean;
 };
 
-export const LinkBtn = ({
+export const NextPageButton = ({
   text,
   pageTo,
   onClick,
@@ -22,9 +22,9 @@ export const LinkBtn = ({
   const matchResult = pageTo.match(/\/(\w+)/);
   let pageName: 'results' | 'quiz' | 'home' = 'home';
 
-   if (matchResult && matchResult[1]) {
-      pageName = matchResult[1] as 'results' | 'quiz';
-   }  
+  if (matchResult && matchResult[1]) {
+    pageName = matchResult[1] as 'results' | 'quiz';
+  }
 
   return (
     <Link className='btn__link' to={pageTo} onClick={onClick} id={id}>
