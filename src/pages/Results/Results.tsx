@@ -1,7 +1,7 @@
 import { UserAnswers } from 'modules/UserAnswers';
 import { Container } from 'components/container';
 import { Footer } from 'components/footer';
-import { withChart } from 'modules/Chart';
+import { withChart } from 'modules/chart';
 import { withResult } from 'modules/result';
 
 import { StyledMain } from '../../styles/Main.Styled';

@@ -4,7 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import {Spinner} from 'UI/spinner';
 import { GlobalStyles } from '../../styles/Global';
 
-const Header = lazy(() => import('modules/Header'));
+const Header = lazy(() => import('modules/header'));
 // const Footer = lazy(() => import('components/footer'));
 const Homepage = lazy(() => import('pages/Homepage'));
 const Quiz = lazy(() => import('pages/Quiz'));

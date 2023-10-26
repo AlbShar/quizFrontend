@@ -1,8 +1,8 @@
 import close_btn from "assets/images/close_btn.svg"
 
-import {List} from '../List';
+import { List } from 'modules/header/UI/list';
 
-import { StyledArticle } from './Menu.Styled';
+import { StyledArticle } from './menu.Styled';
 
 type MenuProps = {
   onClickCloseBtn: () => void;

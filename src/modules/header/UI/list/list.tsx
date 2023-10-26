@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import {FeedbackLink} from 'UI/feedbackLink';
 
-import { StyledLi, StyledUl, StyledLink } from './List.Styled';
+import { StyledLi, StyledUl, StyledLink } from 'modules/header/UI/list/list.Styled';
 
 type ListProps = {
   onClickCloseBtn?: () => void;

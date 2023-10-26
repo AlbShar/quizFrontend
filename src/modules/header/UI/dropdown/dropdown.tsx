@@ -12,7 +12,7 @@ import {
   StyledSpanFullLang,
   StyledImg,
   StyledDivWrapperLanguages,
-} from './styles/Dropdown.Styled';
+} from 'modules/header/UI/dropdown/styles/dropdown.Styled';
 
 type TLanguages = {
   [key: string]: string;

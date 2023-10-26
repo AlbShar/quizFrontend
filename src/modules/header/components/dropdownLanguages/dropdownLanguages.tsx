@@ -3,10 +3,8 @@ import i18next from 'i18next';
 
 import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
-
-
-import {Dropdown} from '../../UI/Dropdown';
-import arrowDown from '../../icons/arrowDown.svg';
+import {Dropdown} from 'modules/header/UI/dropdown/dropdown';
+import arrowDown from 'assets/images/modules/header/arrowDown.svg';
 
 
 
@@ -46,13 +44,13 @@ const DropdownLanguages = () => {
   };
 
   return (
-      <Dropdown
-        data={mapLanguage}
-        selected={lang}
-        onClickElement={(item: string) => onClickElement(item)}
-        srcImg={require('../../icons/globe.png')}
-        srcArrowDown={arrowDown}
-      />
+    <Dropdown
+      data={mapLanguage}
+      selected={lang}
+      onClickElement={(item: string) => onClickElement(item)}
+      srcImg={require('assets/images/modules/header/globe.png')}
+      srcArrowDown={arrowDown}
+    />
   );
 };
 

@@ -5,18 +5,18 @@ import { Logo } from 'components/logo';
 import { Container } from 'components/container';
 import burger_menu from 'assets/images/burger_menu.svg';
 
-import DropdownLanguages from '../components/DropdownLanguages/DropdownLanguages';
-import TotalTested from '../components/TotalTested/TotalTested';
-import {Menu} from '../UI/Menu';
-import {List} from '../UI/List';
-import { useDisplayItemsHeader } from '../hooks/useDisplayItemsHeader';
+import DropdownLanguages from 'modules/header/components/dropdownLanguages/dropdownLanguages';
+import TotalTested from 'modules/header/components/totalTested/totalTested';
+import {Menu} from '../UI/menu';
+import {List} from '../UI/list';
+import { useDisplayItemsHeader } from 'modules/header/hooks/useDisplayItemsHeader';
 
 import {
   StyledFlexBottomHeader,
   StyledHeader,
   StyledFlexSection,
   StyledImg,
-} from './Header.styled';
+} from 'modules/header/header/header.styled';
 
 type HeaderProps = {
   isChooseProfession: boolean;

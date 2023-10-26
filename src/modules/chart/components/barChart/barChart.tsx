@@ -10,9 +10,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import { useTematicsStats } from 'modules/Chart/hooks/useTematicsStats';
-
-import { StyledBarWrapper } from './barChart.Styled';
+import { useTematicsStats } from 'modules/chart/hooks/useTematicsStats';
+import { StyledBarWrapper } from 'modules/chart/components/barChart/barChart.Styled';
 
 
 ChartJS.register(

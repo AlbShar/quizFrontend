@@ -5,13 +5,13 @@ import { ContextProfession } from 'components/context';
 import {ErrorMessage} from 'UI/errorMessage';
 import {Spinner} from 'UI/spinner';
 
-import { getAllTestedUsers } from '../../api/getAllTestedUsers';
+import { getAllTestedUsers } from 'modules/header/api/getAllTestedUsers';
 
 import {
   StyledSpanText,
   StyledSpanNumber,
   StyledDivWrapper,
-} from './TotalTested.styled';
+} from 'modules/header/components/totalTested/totalTested.styled';
 
 
 type TotalTestedProps = {
