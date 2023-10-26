@@ -1,4 +1,4 @@
-import { UserAnswers } from 'modules/UserAnswers';
+import { UserAnswers } from 'modules/userAnswers';
 import { Container } from 'components/container';
 import { Footer } from 'components/footer';
 import { withChart } from 'modules/chart';

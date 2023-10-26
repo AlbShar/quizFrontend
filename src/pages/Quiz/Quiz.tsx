@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+
 import {Container} from 'components/container';
-import AnswerOptions from 'modules/TestAnswerOptions';
-import TestTask from 'modules/TestTask';
-import TestInfo from 'modules/TestInfo';
+import AnswerOptions from 'modules/testAnswerOptions';
+import TestTask from 'modules/testTask';
+import TestInfo from 'modules/testInfo';
 import { ContextCurrentQuestionNumb } from 'components/context';
-import TestButtons from 'modules/TestButtons';
+import TestButtons from 'modules/testButtons';
 
 import { StyledSection, StyledMain } from './Quiz.Styled';
 
