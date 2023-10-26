@@ -1,10 +1,15 @@
 import { useTranslation } from 'react-i18next';
+
 import {Container} from 'components/container';
 import UserForm from 'modules/userForm';
 
 import { StyledMain } from '../../styles/Main.Styled';
 
-import { StyledH1, StyledSection, StyledP } from './Feedback.Styled';
+import {
+  StyledH1,
+  StyledSection,
+  StyledP,
+} from './feedback.Styled';
 
 const Feedback = () => {
   const { t } = useTranslation('', {

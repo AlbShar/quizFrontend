@@ -6,7 +6,7 @@ import { withResult } from 'modules/result';
 
 import { StyledMain } from '../../styles/Main.Styled';
 
-import { StyledSection, StyledSectionResults } from './Results.Styled';
+import { StyledSection, StyledSectionResults } from './results.Styled';
 
 const Results = () => {
   const ResultScores = withResult('scores');

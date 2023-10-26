@@ -6,11 +6,11 @@ import { GlobalStyles } from '../../styles/Global';
 
 const Header = lazy(() => import('modules/header'));
 // const Footer = lazy(() => import('components/footer'));
-const Homepage = lazy(() => import('pages/Homepage'));
-const Quiz = lazy(() => import('pages/Quiz'));
-const Feedback = lazy(() => import('pages/Feedback'));
-const Results = lazy(() => import('pages/Results'));
-const Page404 = lazy(() => import('pages/Page404'));
+const Homepage = lazy(() => import('pages/home'));
+const Quiz = lazy(() => import('pages/quiz'));
+const Feedback = lazy(() => import('pages/feedback'));
+const Results = lazy(() => import('pages/results'));
+const Page404 = lazy(() => import('pages/page404'));
 
 
 export const MyRoutes = () => {

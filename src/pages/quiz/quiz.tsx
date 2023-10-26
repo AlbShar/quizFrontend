@@ -7,7 +7,7 @@ import TestInfo from 'modules/testInfo';
 import { ContextCurrentQuestionNumb } from 'components/context';
 import TestButtons from 'modules/testButtons';
 
-import { StyledSection, StyledMain } from './Quiz.Styled';
+import { StyledSection, StyledMain } from './quiz.Styled';
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
