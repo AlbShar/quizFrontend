@@ -1,6 +1,6 @@
-import close_btn from "assets/images/close_btn.svg"
 
 import { List } from 'modules/header/UI/list';
+import close_btn from "assets/images/modules/header/close_btn.svg"
 
 import { StyledArticle } from './menu.Styled';
 

@@ -2,8 +2,8 @@ import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
 
 import { Container } from 'components/container';
-import img from 'assets/images/img.svg';
-import curve_line from 'assets/images/curve_line.svg';
+import img from 'assets/images/components/benefitsSite/img.svg';
+import curve_line from 'assets/images/components/benefitsSite/curve_line.svg';
 
 import {
   StyledH3,

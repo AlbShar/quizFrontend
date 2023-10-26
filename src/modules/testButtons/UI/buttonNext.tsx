@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import rightArrow from 'assets/images/rightArrow.svg';
+import rightArrow from 'assets/images/modules/testButtons/rightArrow.svg';
 
 import { StyledButton } from './buttons.Styled';
 

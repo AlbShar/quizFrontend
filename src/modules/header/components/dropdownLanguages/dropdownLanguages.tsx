@@ -27,6 +27,7 @@ const DropdownLanguages = () => {
       'lang',
       lang || 'ru',
     );
+    // eslint-disable-next-line
   }, []);
 
   const [selected, setSelected] = useState<string>(mapLanguage['Русский']);

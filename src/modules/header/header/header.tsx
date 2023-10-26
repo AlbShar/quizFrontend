@@ -3,20 +3,19 @@ import { Outlet } from 'react-router-dom';
 import { Portal } from 'components/portal';
 import { Logo } from 'components/logo';
 import { Container } from 'components/container';
-import burger_menu from 'assets/images/burger_menu.svg';
+import burger_menu from 'assets/images/modules/header/burger_menu.svg';
 
-import DropdownLanguages from 'modules/header/components/dropdownLanguages/dropdownLanguages';
-import TotalTested from 'modules/header/components/totalTested/totalTested';
+import DropdownLanguages from '../components/dropdownLanguages/dropdownLanguages';
+import TotalTested from '../components/totalTested/totalTested';
 import {Menu} from '../UI/menu';
 import {List} from '../UI/list';
-import { useDisplayItemsHeader } from 'modules/header/hooks/useDisplayItemsHeader';
-
+import { useDisplayItemsHeader } from '../hooks/useDisplayItemsHeader';
 import {
   StyledFlexBottomHeader,
   StyledHeader,
   StyledFlexSection,
   StyledImg,
-} from 'modules/header/header/header.styled';
+} from '../header/header.styled';
 
 type HeaderProps = {
   isChooseProfession: boolean;

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'UI/dropdown';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { ContextProfession } from 'components/context';
-import arrowDownLarge from 'assets/images/arrowDownLarge.svg';
+import arrowDownLarge from 'assets/images/modules/callToAction/arrowDownLarge.svg';
 
 type DropdownProfessionProps = {
   setChooseProfession: (item: boolean) => void;
@@ -20,14 +20,6 @@ const DropdownProfession = ({
   });
 
   const [selected, setSelected] = useState('');
-
-  const customStyleButton = `
-      gap: 10px; 
-      justify-content: flex-end; 
-
-      @media screen and (min-width: 767.8px) {
-        gap: 39px; 
-        }`;
 
   const dataProfessions = {
     'Frontend developer': 'Frontend',

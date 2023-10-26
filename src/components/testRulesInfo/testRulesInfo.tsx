@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
+
 import { Container } from 'components/container';
-import testRule1 from 'assets/images/testRule1.svg';
-import testRule2 from 'assets/images/testRule2.svg';
-import testRule3 from 'assets/images/testRule3.svg';
-import testRule4 from 'assets/images/testRule4.svg';
+import testRule1 from 'assets/images/components/testRulesInfo/testRule1.svg';
+import testRule2 from 'assets/images/components/testRulesInfo/testRule2.svg';
+import testRule3 from 'assets/images/components/testRulesInfo/testRule3.svg';
+import testRule4 from 'assets/images/components/testRulesInfo/testRule4.svg';
 
 import {
   StyledH3,

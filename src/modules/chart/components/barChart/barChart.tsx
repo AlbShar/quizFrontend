@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,13 +21,6 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
-
-type TData = {
-  label: string;
-  data: number[];
-  backgroundColor: string;
-};
-
 
 export const BarChart = () => {
   const thematicsStats = useTematicsStats();

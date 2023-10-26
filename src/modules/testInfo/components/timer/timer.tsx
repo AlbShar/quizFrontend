@@ -5,7 +5,7 @@ import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
 import { ContextIdUser } from 'components/context';
 import {ModalPause} from 'UI/modalPause';
 import {Portal} from 'components/portal';
-import pause from 'assets/images/pause.svg';
+import pause from 'assets/images/modules/testInfo/pause.svg';
 
 import getFullNumb from '../../helpers/getFullNumb';
 import { sendTimeToDB } from '../../api/sendTimeToDB';

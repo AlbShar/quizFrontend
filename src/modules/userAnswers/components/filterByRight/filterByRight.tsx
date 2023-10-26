@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import chevrondown from 'assets/images/chevrondown.svg';
-
 import { Dropdown } from 'UI/dropdown';
+import chevrondown from 'assets/images/modules/userAnswers/chevrondown.svg';
+
 import { StyledWrapperDropdown } from '../filters.Styled';
 import { useGetFilterByCorrectness } from '../../hooks/useGetFilterByCorrectness';
+
 
 
 const FilterByRight = (): JSX.Element => {

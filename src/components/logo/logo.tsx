@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import logo from 'assets/images/logo.svg';
+import logo from 'assets/images/modules/header/logo.svg';
 
 import { StyledImg } from './logo.Styled';
 

@@ -1,10 +1,10 @@
 import { useContext, useCallback} from 'react';
 
-import chevrondown from 'assets/images/chevrondown.svg';
 import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { useGetTopics } from 'modules/userAnswers/hooks/useGetTopics';
 import { Dropdown } from 'UI/dropdown';
+import chevrondown from 'assets/images/modules/userAnswers/chevrondown.svg';
 
 import { StyledWrapperDropdown } from '../filters.Styled';
 
