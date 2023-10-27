@@ -1,19 +1,17 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
+
 import {
   ContextCurrentQuestionNumb,
-  ContextProfession,
 } from 'components/context';
-import { ContextLanguage } from 'components/context';
 import {ErrorMessage} from 'UI/errorMessage';
 
 import Answer from '../components/answer/answer';
 import SkeletonAnswers from '../UI/skeletonAnswers';
-import { getAnswersOptions } from '../api/getAnswersOptions';
 import { removeAllAttributes } from '../helpers/removeAllAttributes';
+import useFetchAnswersOptions from '../hooks/useFetchAnswersOptions';
 
 import { StyledArticle, StyledUl } from './answerOptions.Styled';
 
-import type { AnswersType } from '../type';
 
 type AnswerOptionsProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
@@ -24,17 +22,12 @@ const AnswerOptions = ({
   setIsBtnNextDisabled,
   setUserAnswer,
 }: AnswerOptionsProps): JSX.Element => {
-  const [answers, setAnsewrs] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-    const [profession]: [string, (lang: string) => void] =
-      useContext(ContextProfession);
+  const { isError, isLoading, answers } = useFetchAnswersOptions();
 
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
   );
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const refAnswers: HTMLLIElement[] = [];
   const setRefAnswer = (elem: HTMLLIElement) => {
@@ -56,13 +49,7 @@ const AnswerOptions = ({
     setIsBtnNextDisabled(false);
   };
 
-  const answersHasLoaded = (response: AnswersType) => {
-    const answers = Object.entries(response).map((item) => item.join('. '));
-    if (Array.isArray(answers)) {
-      setAnsewrs(answers);
-      setIsLoading(false);
-    }
-  };
+
 
   const answersItems = answers.map((answer, index) => (
     <Answer
@@ -83,18 +70,6 @@ const AnswerOptions = ({
       <StyledUl>{answersItems}</StyledUl>
     </StyledArticle>
   ) : null;
-
-  const onErrorHandler = (error) => {
-    setIsLoading(false);
-    setIsError(true);
-    throw new Error(`${error.message}`);
-  };
-
-  useEffect(() => {
-    const url = `${profession}/answers/answers${currentQuestionNumb}/${lang}`;
-
-    getAnswersOptions(url).then(answersHasLoaded).catch(onErrorHandler);
-  }, [currentQuestionNumb, lang, profession]);
 
   useEffect(() => {
     removeAllAttributes(refAnswers);

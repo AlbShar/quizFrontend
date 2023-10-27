@@ -1,8 +1,10 @@
 import { ref, set } from 'firebase/database';
 
-import db from '../../../config/firebase/firebaseConfig';
-import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
+import db from 'config/firebase/firebaseConfig';
+import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
+
 import { getRightAnswerDB } from './getRightAnswerDB';
+import { fetchQuestionInfo } from './fetchQuestionInfo';
 
 type UserAnswerProps = {
   userAnswer: string;
@@ -17,24 +19,24 @@ const sendUserAnswerDB = async ({
   currentQuestionNumb,
   lang,
 }: UserAnswerProps): Promise<void> => {
-  const questionName =
-    document.querySelector<HTMLHeadingElement>('#questionTitle')?.textContent;
-  const themeName =
-    document.querySelector<HTMLHeadingElement>('#themeQuestion')?.textContent;
-  const profession = getValueFromLocalStorage('profession');
-  const url = `${profession}/users/user${idUser}/answers/answer${currentQuestionNumb}`;
-
   try {
+    const profession = getValueFromLocalStorage('profession');
+    const { name, theme } = await fetchQuestionInfo(
+      `${profession}/questions/question${currentQuestionNumb}/${lang}`,
+    );
+    const url = `${profession}/users/user${idUser}/answers/answer${currentQuestionNumb}`;
+
     const rightAnswer = await getRightAnswerDB(
-      profession, currentQuestionNumb,
+      profession,
+      currentQuestionNumb,
       lang,
     );
     const isRigthAnswer = rightAnswer === userAnswer ? 1 : 0;
     set(ref(db, url), {
-      question: questionName,
+      question: name,
       userAnswer: userAnswer,
       point: isRigthAnswer,
-      theme: themeName,
+      theme: theme,
     });
   } catch (e) {
     console.error(e);
