@@ -10,7 +10,6 @@ import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import InfoTest  from './components/infoTest/infoTest';
 import { createIdUser } from './helpers/createIdUser';
 import DropdownProfession from './UI/dropdownProfession';
-
 import {
   StyledCallToAction,
   StyledH1,
@@ -18,7 +17,7 @@ import {
   StyledDiv,
   StyledImg,
   StyledSection,
-} from 'modules/callToAction/styles/callToAction.styled';
+} from './styles/callToAction.styled';
 
 type CallToActionProps = {
   isChooseProfession: boolean;

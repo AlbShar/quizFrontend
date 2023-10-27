@@ -1,4 +1,4 @@
-import { getDataFromDB } from '../../../api/getDataFromDB';
+import { fetchData } from '../../../api/fetchData';
 
 const getRightAnswerDB = async (
   profession: string, 
@@ -8,7 +8,7 @@ const getRightAnswerDB = async (
   const url = `${profession}/questions/question${currentQuestionNumb}/${lang}/rightAnswer`;
 
   try {
-    const response = await getDataFromDB<string>(url);
+    const response = await fetchData<string>(url);
     return response as string;
   } catch (e) {
     console.error(e);

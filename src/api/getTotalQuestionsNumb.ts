@@ -1,4 +1,4 @@
-import { getDataFromDB } from './getDataFromDB';
+import { fetchData } from './fetchData';
 
 type TotalQuestions = {
   [key: string]: string;
@@ -10,7 +10,7 @@ const transformData = (data: TotalQuestions): number => {
 
 const getTotalQuestionsNumb = async (url: string): Promise<number> => {
   try {
-    const response = await getDataFromDB<TotalQuestions>(url);
+    const response = await fetchData<TotalQuestions>(url);
     const data = transformData(response as TotalQuestions);
     return data;
 

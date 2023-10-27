@@ -1,8 +1,8 @@
-import { getDataFromDB } from '../../../api/getDataFromDB';
+import { fetchData } from '../../../api/fetchData';
 
 const getThemeQuestion = async (url: string) => {
   try {
-    const response = await getDataFromDB<string>(url);
+    const response = await fetchData<string>(url);
 
     return response;
   } catch (e) {

@@ -7,7 +7,7 @@ import {
 } from 'components/context';
 
 import SkeletonQuestion from '../UI/skeletonQuestion';
-import { getDataFromDB } from '../../../api/getDataFromDB';
+import { fetchData } from '../../../api/fetchData';
 
 import {
   StyledH2,
@@ -122,7 +122,7 @@ const TestTask = () => {
   };
 
   useEffect(() => {
-    Promise.allSettled(urls.map((url) => getDataFromDB(url)))
+    Promise.allSettled(urls.map((url) => fetchData(url)))
       .then(dataLoaded)
       .catch(onErrorHandler);
   }, [currentQuestionNumb, lang]);

@@ -1,17 +1,12 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
 
-
 import db from '../config/firebase/firebaseConfig';
 
-
-
-const getDataFromDB = async <TData>(url: string) => {
-
-  return await new Promise(function (resolve, reject) {
-    onValue(
-      ref(db, url),
-      (snapshot) => {
+export const fetchData = async <TData>(url: string) => {
+  try {
+    const response = new Promise((resolve, reject) => {
+      onValue(ref(db, url), (snapshot) => {
         const value: TData = snapshot.val();
 
         if (value) {
@@ -23,9 +18,14 @@ const getDataFromDB = async <TData>(url: string) => {
             ),
           );
         }
-      },
-    );
-  });
+      });
+    })
+
+    return response;
+
+  } catch(e) {
+    console.error(e)
+  }
+
 };
 
-export { getDataFromDB };
