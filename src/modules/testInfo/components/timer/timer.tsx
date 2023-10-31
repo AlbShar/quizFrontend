@@ -17,7 +17,9 @@ import {
 } from './timer.Styled';
 
 const Timer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', {
+    keyPrefix: ''
+  });
   const [isCounting, setIsCounting] = useState(true);
   const [isModal, setIsModal] = useState(false);
   const [time, setTime] = useState(0);
