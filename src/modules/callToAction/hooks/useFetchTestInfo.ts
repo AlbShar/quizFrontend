@@ -16,7 +16,6 @@ export const useFetchTestInfo = () => {
   const [quantityThemes, setQuantityThemes] = useState(0);
   const [isError, setIsError] = useState(false);
 
-
   const dataHasLoaded = (dataTest: [number, number]) => {
     const [quantityQuestions, quantityThemes] = dataTest;
     setIsLoading(false);
@@ -36,9 +35,8 @@ export const useFetchTestInfo = () => {
       Promise.all([getTotalQuestionsNumb(url), getQuantityThemes(url, lang)])
         .then(dataHasLoaded)
         .catch(onError);
-    } 
-  }, [profession])
+    }
+  }, [profession]);
 
-  return { isLoading, isError, quantityQuestions, quantityThemes  };
+  return { isLoading, isError, quantityQuestions, quantityThemes };
 };
-

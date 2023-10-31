@@ -10,4 +10,3 @@ export const ErrorMessage = () => {
     </StyledDiv>
   );
 };
-

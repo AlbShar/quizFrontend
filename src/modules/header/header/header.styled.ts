@@ -39,7 +39,6 @@ const StyledFlexBottomHeader = styled.article<FlexWrapper>`
     margin: 0;
     gap: 27px;
   }
-
 `;
 
 const StyledFlexSection = styled.section<FlexWrapper>`

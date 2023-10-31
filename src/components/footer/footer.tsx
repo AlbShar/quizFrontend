@@ -14,7 +14,7 @@ import {
   StyledDivName,
   StyledLink,
   StyledNav,
-} from "./styles/footer.Styles";
+} from './styles/footer.Styles';
 
 import type { FooterInfo } from '../../types/types';
 

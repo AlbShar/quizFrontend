@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import {useGetStatusLoading} from 'hooks/useGetStatusLoading';
+import { useGetStatusLoading } from 'hooks/useGetStatusLoading';
 import { Spinner } from 'UI/spinner';
 import { ErrorMessage } from 'UI/errorMessage';
 

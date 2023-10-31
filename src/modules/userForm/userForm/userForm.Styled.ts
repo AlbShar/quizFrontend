@@ -6,7 +6,6 @@ export const StyledDivSuccess = styled.div`
   font: var(--font-text7);
 `;
 
-
 export const StyledDivError = styled.div`
   font: var(--font-text7);
   color: red;

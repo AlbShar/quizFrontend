@@ -8,7 +8,6 @@ import {
   ContextProfession,
 } from 'components/context';
 
-
 import { highlightPreviousAnswer } from '../helpers/highlightPreviousAnswer';
 
 import { StyledButton } from './buttons.Styled';

@@ -15,7 +15,8 @@ const InfoTest = ({
   isChooseProfession,
   setChooseProfession,
 }: InfoTestProps) => {
-  const { isLoading, isError, quantityQuestions, quantityThemes } =  useFetchTestInfo();
+  const { isLoading, isError, quantityQuestions, quantityThemes } =
+    useFetchTestInfo();
 
   const content = !(isLoading || isError) ? (
     <ViewInfoTest

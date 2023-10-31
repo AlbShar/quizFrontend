@@ -11,9 +11,7 @@ export const useGetFilteredUserAnswers = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
-    const [lang]: [string, (lang: string) => void] =
-      useContext(ContextLanguage);
-
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const filteredUserAnswers = createSelector(
     (state: RootState) => state.filterByRight,
@@ -37,7 +35,10 @@ export const useGetFilteredUserAnswers = () => {
         }
       }
 
-      if (filterByTheme !== 'Все тематики' && filterByTheme !== 'All thematics') {
+      if (
+        filterByTheme !== 'Все тематики' &&
+        filterByTheme !== 'All thematics'
+      ) {
         result = result.filter(
           (userAnswer) => userAnswer.theme === filterByTheme,
         );
@@ -50,4 +51,3 @@ export const useGetFilteredUserAnswers = () => {
 
   return filteredAnswers;
 };
-

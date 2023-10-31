@@ -12,7 +12,6 @@ import { Bar } from 'react-chartjs-2';
 import { useTematicsStats } from 'modules/chart/hooks/useTematicsStats';
 import { StyledBarWrapper } from 'modules/chart/components/barChart/barChart.Styled';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,7 +23,7 @@ ChartJS.register(
 
 export const BarChart = () => {
   const thematicsStats = useTematicsStats();
-  
+
   const options = {
     maintainAspectRatio: false,
     plugins: {

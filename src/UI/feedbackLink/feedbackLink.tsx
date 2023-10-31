@@ -11,13 +11,17 @@ type FeedbackProps = {
 
 export const FeedbackLink = ({ onClickCloseBtn, style }: FeedbackProps) => {
   const { t } = useTranslation('', {
-    keyPrefix: "UI.feedback"
+    keyPrefix: 'UI.feedback',
   });
 
   return (
-    <Link to='/feedback' className='link' onClick={onClickCloseBtn} style={style}>
+    <Link
+      to='/feedback'
+      className='link'
+      onClick={onClickCloseBtn}
+      style={style}
+    >
       {t('text')}
     </Link>
   );
 };
-

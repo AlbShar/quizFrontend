@@ -28,9 +28,8 @@ const StyledButton = styled.button<StyledButtonProps>`
 `;
 
 const StyledSpan = styled.span`
-  font:var(--font-text6);
+  font: var(--font-text6);
   display: inline-block;
- 
 
   @media screen and (min-width: 767.8px) {
     font-size: 16px;
@@ -48,10 +47,7 @@ const StyledUl = styled.ul`
   width: 100%;
   position: absolute;
   z-index: 2;
-  
 `;
-
-
 
 const StyledLi = styled.li`
   font-family: Inter;
@@ -63,7 +59,7 @@ const StyledLi = styled.li`
   }
 
   @media screen and (min-width: 767.8px) {
-   padding: 5px 0;
+    padding: 5px 0;
   }
 `;
 

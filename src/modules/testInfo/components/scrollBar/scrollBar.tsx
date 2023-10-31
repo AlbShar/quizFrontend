@@ -24,7 +24,12 @@ const ScrollBar: FC<ScrollBarProps> = ({ quizRef }) => {
 
   useEffect(() => {
     const url = `${profession}/questions`;
-    setWidthScrollBar({ currentQuestionNumb, scrollBarElementRef, quizRef, url });
+    setWidthScrollBar({
+      currentQuestionNumb,
+      scrollBarElementRef,
+      quizRef,
+      url,
+    });
   }, [currentQuestionNumb]);
 
   return <StyledDivScrollBar ref={scrollBarElementRef}></StyledDivScrollBar>;

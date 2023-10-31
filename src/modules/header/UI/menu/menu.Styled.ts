@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 const StyledArticle = styled.article`
   box-sizing: border-box;
   position: absolute;
@@ -18,4 +16,4 @@ const StyledArticle = styled.article`
   }
 }`;
 
-export {  StyledArticle };
+export { StyledArticle };

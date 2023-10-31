@@ -12,6 +12,4 @@ const StyledSection = styled.section`
   }
 `;
 
-
-
 export { StyledSection };

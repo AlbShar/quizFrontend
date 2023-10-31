@@ -1,9 +1,7 @@
 import { useEffect, useContext } from 'react';
 
-import {
-  ContextCurrentQuestionNumb,
-} from 'components/context';
-import {ErrorMessage} from 'UI/errorMessage';
+import { ContextCurrentQuestionNumb } from 'components/context';
+import { ErrorMessage } from 'UI/errorMessage';
 
 import Answer from '../components/answer/answer';
 import SkeletonAnswers from '../UI/skeletonAnswers';
@@ -11,7 +9,6 @@ import { removeAllAttributes } from '../helpers/removeAllAttributes';
 import useFetchAnswersOptions from '../hooks/useFetchAnswersOptions';
 
 import { StyledArticle, StyledUl } from './answerOptions.Styled';
-
 
 type AnswerOptionsProps = {
   setIsBtnNextDisabled: (item: boolean) => void;
@@ -23,7 +20,6 @@ const AnswerOptions = ({
   setUserAnswer,
 }: AnswerOptionsProps): JSX.Element => {
   const { isError, isLoading, answers } = useFetchAnswersOptions();
-
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,
@@ -48,8 +44,6 @@ const AnswerOptions = ({
     refAnswers[id].focus();
     setIsBtnNextDisabled(false);
   };
-
-
 
   const answersItems = answers.map((answer, index) => (
     <Answer

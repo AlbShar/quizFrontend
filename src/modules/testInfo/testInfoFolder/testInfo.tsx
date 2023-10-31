@@ -10,7 +10,7 @@ import { getThemeQuestion } from 'modules/testInfo/api/getThemeQuestion';
 import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 import ScrollBar from 'modules/testInfo/components/scrollBar/scrollBar';
 import Timer from 'modules/testInfo/components/timer/timer';
-import {ErrorMessage} from 'UI/errorMessage';
+import { ErrorMessage } from 'UI/errorMessage';
 
 import {
   StyledH1,
@@ -41,7 +41,7 @@ export const TestInfo: FC<TestInfoProps> = ({ quizRef }) => {
     return (
       <section>
         <article style={{ backgroundColor: '#EEEEFF' }}>
-          <ScrollBar quizRef={ quizRef } />
+          <ScrollBar quizRef={quizRef} />
         </article>
         <StyledArticle>
           <div>
@@ -117,4 +117,3 @@ export const TestInfo: FC<TestInfoProps> = ({ quizRef }) => {
     </>
   );
 };
-

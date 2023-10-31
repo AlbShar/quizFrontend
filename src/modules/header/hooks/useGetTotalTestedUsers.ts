@@ -6,31 +6,30 @@ import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
 import { getAllTestedUsers } from '../api/getAllTestedUsers';
 
 export const useGetTotalTestedUsers = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-    const [totalTestedUsers, setTotalTestedUsers] = useState(0);
-    const profession = getValueFromLocalStorage('profession');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [totalTestedUsers, setTotalTestedUsers] = useState(0);
+  const profession = getValueFromLocalStorage('profession');
 
+  const dataHasLoaded = (res: number) => {
+    setIsLoading(false);
+    setTotalTestedUsers(res);
+  };
 
-    const dataHasLoaded = (res: number) => {
-        setIsLoading(false);
-        setTotalTestedUsers(res);
-    };
+  const onErrorHandler = (error) => {
+    setIsLoading(false);
+    setIsError(true);
+    throw new Error(error.message);
+  };
 
-    const onErrorHandler = (error) => {
-        setIsLoading(false);
-        setIsError(true);
-        throw new Error(error.message);
-    };
+  useEffect(() => {
+    if (profession) {
+      const url = `${profession}/users`;
+      getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
+    } else {
+      setIsLoading(false);
+    }
+  }, [profession]);
 
-    useEffect(() => {
-        if (profession) {
-            const url = `${profession}/users`;
-            getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
-        } else {
-            setIsLoading(false);
-        }
-    }, [profession]);
-
-    return { isError, isLoading, totalTestedUsers };
+  return { isError, isLoading, totalTestedUsers };
 };

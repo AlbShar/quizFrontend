@@ -35,7 +35,7 @@ const StyledPicture = styled.picture`
 
 type StyledImgProps = {
   currentQuestionNumb?: number;
-}
+};
 
 const StyledImg = styled.img<StyledImgProps>`
   width: 100%;

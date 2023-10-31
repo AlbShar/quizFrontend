@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Formik, Form } from 'formik';
 
-import {Button} from 'UI/button';
+import { Button } from 'UI/button';
 
 import sendEmailApi from '../api/sendEmail';
 import Input from '../UI/input';

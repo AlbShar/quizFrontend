@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import {Spinner} from 'UI/spinner';
+import { Spinner } from 'UI/spinner';
 
 import { GlobalStyles } from '../../styles/Global';
 
@@ -12,10 +12,8 @@ const Feedback = lazy(() => import('pages/feedback'));
 const Results = lazy(() => import('pages/results'));
 const Page404 = lazy(() => import('pages/page404'));
 
-
 export const MyRoutes = () => {
   const [isChooseProfession, setChooseProfession] = useState<boolean>(false);
-
 
   return (
     <>
@@ -56,4 +54,3 @@ export const MyRoutes = () => {
     </>
   );
 };
-

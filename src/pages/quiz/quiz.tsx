@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import {Container} from 'components/container';
+import { Container } from 'components/container';
 import AnswerOptions from 'modules/testAnswerOptions';
 import TestTask from 'modules/testTask';
 import TestInfo from 'modules/testInfo';

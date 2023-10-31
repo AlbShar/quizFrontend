@@ -25,4 +25,3 @@ export const useDisplayListDropdown = () => {
 
   return { isActive, setActive, toggleList };
 };
-

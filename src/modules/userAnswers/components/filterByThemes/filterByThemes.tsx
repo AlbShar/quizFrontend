@@ -1,4 +1,4 @@
-import { useContext, useCallback} from 'react';
+import { useContext, useCallback } from 'react';
 
 import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
@@ -10,20 +10,18 @@ import { StyledWrapperDropdown } from '../filters.Styled';
 
 const FilterByThemes = (): JSX.Element => {
   const { topic, topics, shortNameTopics, updateTopic } = useGetTopics();
-    const [lang]: [string, (lang: string) => void] =
-      useContext(ContextLanguage);
-
+  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
 
   const setTopic = useCallback((index = 0) => {
-      const topic =
-        index === 0
-          ? topics[lang]['defaultValue']
-          : topics[lang][`theme${index}`];
-      setValueToLocalStorage(
-        'keyTheme',
-        index === 0 ? 'defaultValue' : `theme${index}`,
-      );
-      updateTopic(topic);
+    const topic =
+      index === 0
+        ? topics[lang]['defaultValue']
+        : topics[lang][`theme${index}`];
+    setValueToLocalStorage(
+      'keyTheme',
+      index === 0 ? 'defaultValue' : `theme${index}`,
+    );
+    updateTopic(topic);
   }, []);
 
   return (

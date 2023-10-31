@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 type TypeButton = {
   typeBtn: 'back' | 'next';
 };
@@ -12,8 +11,7 @@ const StyledButton = styled.button<TypeButton>`
     typeBtn === 'back' ? 'flex-start' : 'flex-end'};
   align-items: center;
   padding: 8px 18px;
-  border: ${({ typeBtn }) =>
-    typeBtn === 'back' ? '1px solid #000;' : 'none'};
+  border: ${({ typeBtn }) => (typeBtn === 'back' ? '1px solid #000;' : 'none')};
   gap: 8px;
   cursor: pointer;
   border-radius: 3px;
@@ -39,6 +37,5 @@ const StyledButton = styled.button<TypeButton>`
     gap: 30px;
   }
 `;
-
 
 export { StyledButton };

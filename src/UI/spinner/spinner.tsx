@@ -227,4 +227,3 @@ export const Spinner = ({ width, height, color, margin }: ISpinner) => {
     </svg>
   );
 };
-

@@ -5,7 +5,9 @@ const useHandleInputs = () => {
   const setRef = (elem: HTMLInputElement) => {
     refsInputs.push(elem as HTMLInputElement);
   };
-  const [isSuccessSendingEmail, setSuccessSendingEmail] = useState<boolean | null>(null);
+  const [isSuccessSendingEmail, setSuccessSendingEmail] = useState<
+    boolean | null
+  >(null);
 
   const onFocusFirstInput = () => {
     refsInputs[0].focus();
@@ -23,7 +25,7 @@ const useHandleInputs = () => {
     };
   }, [isSuccessSendingEmail]);
 
-  return {isSuccessSendingEmail, setSuccessSendingEmail, setRef}
+  return { isSuccessSendingEmail, setSuccessSendingEmail, setRef };
 };
 
 export default useHandleInputs;

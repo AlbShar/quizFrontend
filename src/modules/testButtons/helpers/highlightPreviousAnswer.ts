@@ -6,8 +6,8 @@ type highlightPreviousAnswerProps = {
   idUser: string;
   currentQuestionNumb: number;
   selectorAnswers: string;
-  profession: string
-}
+  profession: string;
+};
 const highlightPreviousAnswer = ({
   idUser,
   currentQuestionNumb,

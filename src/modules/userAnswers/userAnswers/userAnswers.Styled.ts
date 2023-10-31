@@ -60,7 +60,6 @@ const StyledSum = styled.summary`
   }
 `;
 
-
 const StyledSpan = styled.span`
   font: var(--font-text5-bold);
 
@@ -91,7 +90,6 @@ const StyledP = styled.p`
     font: var(--font-text3);
   }
 `;
-
 
 export {
   StyledLi,

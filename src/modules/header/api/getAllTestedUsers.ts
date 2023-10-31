@@ -1,7 +1,7 @@
 import { fetchData } from '../../../api/fetchData';
 
 type Users = {
-  [key in string]: object
+  [key in string]: object;
 };
 
 const transformData = (res: Users): number => {
@@ -9,17 +9,15 @@ const transformData = (res: Users): number => {
 };
 
 const getAllTestedUsers = async (url: string) => {
+  try {
+    const response = await fetchData<Users>(url);
+    const data = transformData(response as Users);
 
-    try {
-      const response = await fetchData<Users>(url);
-      const data = transformData(response as Users);
-
-      return data;
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
-  
+    return data;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 };
 
 export { getAllTestedUsers };

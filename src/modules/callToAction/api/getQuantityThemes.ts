@@ -4,7 +4,6 @@ import { transformData } from './mappers/transformData';
 
 import type { Questions } from './types';
 
-
 const getQuantityThemes = async (url: string, lang: string) => {
   try {
     const response = await fetchData<Questions>(url);

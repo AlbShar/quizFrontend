@@ -23,7 +23,7 @@ const DropdownProfession = ({
 
   const dataProfessions = {
     'Frontend developer': 'Frontend',
-    "Project Manager": 'Manager',
+    'Project Manager': 'Manager',
   };
   const listProfessions = Object.keys(dataProfessions);
 
@@ -31,7 +31,7 @@ const DropdownProfession = ({
     setValueToLocalStorage('profession', dataProfessions[item]);
     setProfession(dataProfessions[item]);
     setSelected(item);
-    setChooseProfession(true)
+    setChooseProfession(true);
   };
 
   return (

@@ -2,12 +2,12 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 
-import {Container} from 'components/container';
-import {NextPageButton} from 'UI/nextPageButton';
+import { Container } from 'components/container';
+import { NextPageButton } from 'UI/nextPageButton';
 import { ContextIdUser } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 
-import InfoTest  from './components/infoTest/infoTest';
+import InfoTest from './components/infoTest/infoTest';
 import { createIdUser } from './helpers/createIdUser';
 import DropdownProfession from './UI/dropdownProfession';
 import {
@@ -68,7 +68,10 @@ export const CallToAction = ({
             </StyledCallToAction>
           </Grid>
           <Grid item xs={2} md={12}>
-            <StyledImg src={require('assets/images/modules/callToAction/img1.png')} alt='img' />
+            <StyledImg
+              src={require('assets/images/modules/callToAction/img1.png')}
+              alt='img'
+            />
           </Grid>
         </Grid>
       </Container>

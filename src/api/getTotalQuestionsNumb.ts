@@ -13,7 +13,6 @@ const getTotalQuestionsNumb = async (url: string): Promise<number> => {
     const response = await fetchData<TotalQuestions>(url);
     const data = transformData(response as TotalQuestions);
     return data;
-
   } catch (e) {
     console.error(e);
     throw e;

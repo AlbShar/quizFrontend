@@ -9,17 +9,18 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 
 import { useUserAnswersStats } from 'modules/chart/hooks/useUserAnswersStats';
-import { StyledSpan, StyledDoughuntWrapper } from 'modules/chart/components/doughuntChart/doughuntChart.Styled';
+import {
+  StyledSpan,
+  StyledDoughuntWrapper,
+} from 'modules/chart/components/doughuntChart/doughuntChart.Styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
-
 
 export const DoughnutChart = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.doughuntChart',
   });
   const userAnswersStats = useUserAnswersStats();
-
 
   const data = {
     labels: [t('right'), t('wrong')],

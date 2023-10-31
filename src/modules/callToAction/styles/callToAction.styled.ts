@@ -11,7 +11,6 @@ const StyledCallToAction = styled.article`
   @media screen and (min-width: 459.8px) {
     margin: 0 0 32px 0;
   }
-
 `;
 
 const StyledSection = styled.section`
@@ -25,8 +24,6 @@ const StyledSection = styled.section`
     position: relative;
   }
 `;
-
-
 
 const StyledH1 = styled.h1`
   font: var(--font-text2);
@@ -89,8 +86,6 @@ const StyledImg = styled.img`
     bottom: 0px;
     right: -100px;
   }
-
-  
 `;
 
 const StyledDiv = styled.div`
@@ -115,7 +110,6 @@ const StyledDiv = styled.div`
     margin: 0 0 149px 0;
   }
 `;
-
 
 export {
   StyledCallToAction,

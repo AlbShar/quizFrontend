@@ -19,13 +19,10 @@ export const fetchData = async <TData>(url: string) => {
           );
         }
       });
-    })
+    });
 
     return response;
-
-  } catch(e) {
-    console.error(e)
+  } catch (e) {
+    console.error(e);
   }
-
 };
-

@@ -15,7 +15,6 @@ const Answer = ({
   setRef,
   onClickAnswer,
 }: AnswerProps): JSX.Element => {
-
   const handleKeyboardClick: KeyboardEventHandler<HTMLLIElement> = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();

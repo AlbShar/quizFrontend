@@ -20,7 +20,7 @@ const StyledSectionResults = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 28px 20px ;
+  padding: 28px 20px;
   position: relative;
   border-radius: 7px;
 

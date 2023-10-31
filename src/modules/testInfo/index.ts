@@ -1,3 +1,3 @@
-import {TestInfo} from './testInfoFolder/testInfo';
+import { TestInfo } from './testInfoFolder/testInfo';
 
 export default TestInfo;

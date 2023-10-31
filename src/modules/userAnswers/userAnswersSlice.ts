@@ -1,7 +1,4 @@
-import {
-  createSlice,
-  createAsyncThunk,
-} from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getValueFromLocalStorage } from '../../helpers/getValueFromLocalStorage';
 
@@ -37,11 +34,9 @@ export const fetchUserAnswer = createAsyncThunk(
       getUserAnswers(getValueFromLocalStorage('idUser')),
       getAnswerOptions(),
       getInfoQuestions(),
-    ])
+    ]);
   },
 );
-
-
 
 const userAnswersSlice = createSlice({
   name: 'userAnswers',
@@ -81,5 +76,4 @@ const userAnswersSlice = createSlice({
 const { actions, reducer } = userAnswersSlice;
 
 export const { changeFilterByTheme, changeFilterByRight } = actions;
-export {reducer};
-
+export { reducer };

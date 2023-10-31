@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ContextIdUser, ContextProfession } from 'components/context';
-import {ModalPause} from 'UI/modalPause';
-import {Portal} from 'components/portal';
+import { ModalPause } from 'UI/modalPause';
+import { Portal } from 'components/portal';
 import pause from 'assets/images/modules/testInfo/pause.svg';
 
 import getFullNumb from '../../helpers/getFullNumb';
@@ -18,7 +18,7 @@ import {
 
 const Timer = () => {
   const { t } = useTranslation('', {
-    keyPrefix: 'modules.testInfo.components.timer'
+    keyPrefix: 'modules.testInfo.components.timer',
   });
   const [isCounting, setIsCounting] = useState(true);
   const [isModal, setIsModal] = useState(false);
@@ -66,7 +66,6 @@ const Timer = () => {
       }
     };
   }, [time, isCounting]);
-
 
   return (
     <StyledDivTimer ref={timerRef}>

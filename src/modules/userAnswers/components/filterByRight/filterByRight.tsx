@@ -6,16 +6,13 @@ import chevrondown from 'assets/images/modules/userAnswers/chevrondown.svg';
 import { StyledWrapperDropdown } from '../filters.Styled';
 import { useGetFilterByCorrectness } from '../../hooks/useGetFilterByCorrectness';
 
-
-
 const FilterByRight = (): JSX.Element => {
   const { t } = useTranslation('', {
-    keyPrefix: 'modules.userAnswers'
+    keyPrefix: 'modules.userAnswers',
   });
   const data: string[] = [t('Все вопросы'), t('Верно'), t('Неверно')];
-  const {
-    filterByCorrectness, setFilterByCorrectness
-  } = useGetFilterByCorrectness();
+  const { filterByCorrectness, setFilterByCorrectness } =
+    useGetFilterByCorrectness();
 
   return (
     <StyledWrapperDropdown>

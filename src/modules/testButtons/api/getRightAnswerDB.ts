@@ -1,7 +1,7 @@
 import { fetchData } from '../../../api/fetchData';
 
 const getRightAnswerDB = async (
-  profession: string, 
+  profession: string,
   currentQuestionNumb: number,
   lang: string,
 ) => {

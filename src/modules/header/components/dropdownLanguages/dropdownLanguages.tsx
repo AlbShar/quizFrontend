@@ -3,16 +3,13 @@ import i18next from 'i18next';
 
 import { ContextLanguage } from 'components/context';
 import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
-import {Dropdown} from 'modules/header/UI/dropdown/dropdown';
+import { Dropdown } from 'modules/header/UI/dropdown/dropdown';
 import arrowDown from 'assets/images/modules/header/arrowDown.svg';
-
-
 
 const DropdownLanguages = () => {
   // eslint-disable-next-line
   const [lang, setLang]: [string, (lang: string) => void] =
     useContext(ContextLanguage);
-
 
   type tMapLanguage = {
     [key: string]: string;

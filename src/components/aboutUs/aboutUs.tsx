@@ -5,7 +5,6 @@ import { Container } from 'components/container';
 import { FeedbackLink } from 'UI/feedbackLink';
 import person_sitting from 'assets/images/components/aboutUs/person_sitting.svg';
 
-
 import {
   StyledP,
   StyledH3,

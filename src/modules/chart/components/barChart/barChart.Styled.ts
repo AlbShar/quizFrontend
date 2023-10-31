@@ -6,4 +6,3 @@ export const StyledBarWrapper = styled.div`
   height: 220px;
   max-width: 100%;
 `;
-

@@ -6,8 +6,8 @@ type WidthScrollBarProps = {
   currentQuestionNumb: number;
   quizRef: RefObject<HTMLTableSectionElement>;
   scrollBarElementRef: RefObject<HTMLDivElement>;
-  url: string
-}
+  url: string;
+};
 async function setWidthScrollBar({
   currentQuestionNumb,
   quizRef,

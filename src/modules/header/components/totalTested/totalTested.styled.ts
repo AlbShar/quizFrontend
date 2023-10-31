@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledSpanText = styled.span`
   color: var(--color-white);
-  font: var(--font-text7)
+  font: var(--font-text7);
 `;
 const StyledSpanNumber = styled.span`
   color: var(--color-white);

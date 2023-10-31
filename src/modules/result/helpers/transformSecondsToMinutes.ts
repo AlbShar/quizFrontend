@@ -1,5 +1,8 @@
-export const transformSecondsToMinutes = (seconds: unknown, sec: string, min: string): string | false | null => {
-
+export const transformSecondsToMinutes = (
+  seconds: unknown,
+  sec: string,
+  min: string,
+): string | false | null => {
   let result = '';
 
   if (typeof seconds === 'number') {
@@ -19,4 +22,3 @@ export const transformSecondsToMinutes = (seconds: unknown, sec: string, min: st
     return null;
   }
 };
-

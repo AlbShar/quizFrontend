@@ -23,7 +23,6 @@ const StyledButton = styled.button<TProps>`
   @media screen and (min-width: 767.8px) {
     width: 91px;
   }
-
 `;
 
 const StyledSpan = styled.span<TProps>`

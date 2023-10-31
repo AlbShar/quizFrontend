@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   padding: 8px 33px;
-  background-color: #585AFF;
+  background-color: #585aff;
   border: none;
   font: var(--font-button);
   text-transform: uppercase;
@@ -20,5 +20,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export {
-  StyledButton};
+export { StyledButton };

@@ -58,16 +58,11 @@ export const Dropdown = ({
               toggleList();
             }}
           >
-            <StyledDivWrapperLanguages
-            >
-              <StyledSpanShortLang
-              >
+            <StyledDivWrapperLanguages>
+              <StyledSpanShortLang>
                 {shotLang.toUpperCase()}
               </StyledSpanShortLang>
-              <StyledSpanFullLang
-              >
-                {fullLang}
-              </StyledSpanFullLang>
+              <StyledSpanFullLang>{fullLang}</StyledSpanFullLang>
             </StyledDivWrapperLanguages>
           </StyledLi>
         );
@@ -94,7 +89,7 @@ export const Dropdown = ({
   }, []);
 
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{ position: 'relative' }}>
       <StyledButton onClick={onClickButton} isClickButton={isClickButton}>
         <StyledImg src={srcImg} alt='img' isClickButton={isClickButton} />
 
@@ -114,4 +109,3 @@ export const Dropdown = ({
     </div>
   );
 };
-

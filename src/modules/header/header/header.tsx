@@ -7,8 +7,8 @@ import burger_menu from 'assets/images/modules/header/burger_menu.svg';
 
 import DropdownLanguages from '../components/dropdownLanguages/dropdownLanguages';
 import TotalTested from '../components/totalTested/totalTested';
-import {Menu} from '../UI/menu';
-import {List} from '../UI/list';
+import { Menu } from '../UI/menu';
+import { List } from '../UI/list';
 import { useDisplayItemsHeader } from '../hooks/useDisplayItemsHeader';
 import {
   StyledFlexBottomHeader,
@@ -33,8 +33,6 @@ const Header = ({ isChooseProfession }: HeaderProps): JSX.Element => {
     setShowBurger(true);
     setShowMenu(false);
   };
-
-
 
   return (
     <>

@@ -1,9 +1,9 @@
-import {CallToAction} from 'modules/callToAction';
-import {Footer} from 'components/footer';
-import {AboutUs} from 'components/aboutUs';
+import { CallToAction } from 'modules/callToAction';
+import { Footer } from 'components/footer';
+import { AboutUs } from 'components/aboutUs';
 import { BenefitsSite } from 'components/benefitsSite';
-import {TestRulesInfo} from 'components/testRulesInfo';
-import {ResultsTestInfo} from 'components/resultsTestInfo';
+import { TestRulesInfo } from 'components/testRulesInfo';
+import { ResultsTestInfo } from 'components/resultsTestInfo';
 import { Main } from 'components/main';
 
 type HomepageProps = {
@@ -11,11 +11,7 @@ type HomepageProps = {
   setChooseProfession: (item: boolean) => void;
 };
 
-const Home = ({
-  isChooseProfession,
-  setChooseProfession,
-}: HomepageProps) => {
-  
+const Home = ({ isChooseProfession, setChooseProfession }: HomepageProps) => {
   return (
     <>
       <Main>

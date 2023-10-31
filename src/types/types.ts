@@ -1,5 +1,3 @@
-
-
 export type InfoBlocks = {
   title: string;
   img?: string;
@@ -8,12 +6,11 @@ export type InfoBlocks = {
   text: string;
 };
 
-
 export type FooterInfo = {
   profession: string;
-  name: string
+  name: string;
   link: string;
-}
+};
 
 export type TQuestion = {
   descr: string;
@@ -25,5 +22,3 @@ export type TQuestion = {
 };
 
 export type Languages = 'en' | 'ru';
-
-

@@ -25,7 +25,6 @@ const getThemes = (infoQuestions: TInfoQuestions) => {
     result['ru'][`theme${index + 1}`] = themeRu;
   });
 
-
   return result;
 };
 

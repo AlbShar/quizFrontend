@@ -1,7 +1,7 @@
 import { Box, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import {Container} from 'components/container';
+import { Container } from 'components/container';
 
 const Page404 = () => {
   return (
@@ -13,7 +13,7 @@ const Page404 = () => {
           justifyContent: 'flex-start',
           alignItems: 'center',
           backgroundColor: 'inherit',
-          marginTop: '30px'
+          marginTop: '30px',
         }}
       >
         <Typography variant='h1' style={{ color: 'black' }}>

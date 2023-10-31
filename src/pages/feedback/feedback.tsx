@@ -1,14 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import {Container} from 'components/container';
+import { Container } from 'components/container';
 import UserForm from 'modules/userForm';
 import { Main } from 'components/main';
 
-import {
-  StyledH1,
-  StyledSection,
-  StyledP,
-} from './feedback.Styled';
+import { StyledH1, StyledSection, StyledP } from './feedback.Styled';
 
 const Feedback = () => {
   const { t } = useTranslation('', {
@@ -32,4 +28,3 @@ const Feedback = () => {
 };
 
 export default Feedback;
-

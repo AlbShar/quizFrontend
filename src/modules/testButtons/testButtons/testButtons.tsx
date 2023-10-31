@@ -65,7 +65,7 @@ const TestButtons = ({
       idUser,
       currentQuestionNumb,
       lang,
-      profession
+      profession,
     });
   };
 

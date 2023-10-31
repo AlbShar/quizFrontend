@@ -1,3 +1,1 @@
-export {CallToAction} from 'modules/callToAction/callToAction';
-
-
+export { CallToAction } from 'modules/callToAction/callToAction';

@@ -9,7 +9,7 @@ const StyledH1 = styled.h1`
   @media screen and (min-width: 459.8px) {
     font: var(--font-title2);
   }
-`
+`;
 
 const StyledSection = styled.section`
   background-color: white;

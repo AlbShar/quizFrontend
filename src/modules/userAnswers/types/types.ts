@@ -1,5 +1,3 @@
-
-
 type TAnswerOption = {
   [key: string]: string;
 };
@@ -37,7 +35,6 @@ type TAnswersDB = {
   };
 };
 
-
 type TUserAnswer = {
   point: number;
   userAnswer: string;
@@ -47,7 +44,7 @@ type UserAnswerData = {
   userAnswer: { point: number; userAnswer: string };
 };
 
-type AnswerItem = "A" | "B" | "C" | "D" | "E";
+type AnswerItem = 'A' | 'B' | 'C' | 'D' | 'E';
 
 type QuestionData = {
   descr: string;

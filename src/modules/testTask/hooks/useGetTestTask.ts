@@ -7,7 +7,6 @@ import {
 } from 'components/context';
 import { fetchData } from 'api/fetchData';
 
-
 export const useGetTestTask = () => {
   const [questionName, setQuestionName] = useState('');
   const [isLoading, setIsLoading] = useState(true);

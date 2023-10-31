@@ -10,7 +10,7 @@ type UserAnswerProps = {
   idUser: string;
   currentQuestionNumb: number;
   lang: string;
-  profession: string
+  profession: string;
 };
 
 const sendUserAnswerDB = async ({

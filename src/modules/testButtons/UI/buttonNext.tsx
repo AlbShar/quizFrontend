@@ -14,11 +14,9 @@ const ButtonNext = ({
   onClickButtonHandler,
   isBtnNextDisabled,
 }: ButtonNextProps): JSX.Element => {
-
   const { t } = useTranslation('', {
     keyPrefix: 'modules.testButtons.UI.btnNext',
   });
-  
 
   return (
     <StyledButton

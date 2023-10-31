@@ -1,4 +1,4 @@
-import type { TErrors } from "../types";
+import type { TErrors } from '../types';
 
 export const validate = ({ name, email, text }) => {
   const errors: TErrors = {};

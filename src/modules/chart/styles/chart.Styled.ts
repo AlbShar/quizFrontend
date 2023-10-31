@@ -33,7 +33,6 @@ export const StyledP = styled.article`
   margin: 12px 0 0 0;
 `;
 
-
 export const StyledSpan = styled.span`
   position: absolute;
   left: 50%;
