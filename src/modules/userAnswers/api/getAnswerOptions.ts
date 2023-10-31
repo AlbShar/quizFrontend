@@ -1,7 +1,8 @@
 import { ref } from 'firebase/database';
 import { onValue } from 'firebase/database';
-import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
-import db from '../../../config/firebase/firebaseConfig';
+
+import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
+import db from 'config/firebase/firebaseConfig';
 
 const getAnswerOptions = async () => {
   const profession = getValueFromLocalStorage('profession');

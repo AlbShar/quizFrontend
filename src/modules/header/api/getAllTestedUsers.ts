@@ -1,5 +1,4 @@
 import { fetchData } from '../../../api/fetchData';
-import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
 
 type Users = {
   [key in string]: object

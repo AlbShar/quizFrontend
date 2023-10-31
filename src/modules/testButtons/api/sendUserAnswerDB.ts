@@ -1,7 +1,6 @@
 import { ref, set } from 'firebase/database';
 
 import db from 'config/firebase/firebaseConfig';
-import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
 
 import { getRightAnswerDB } from './getRightAnswerDB';
 import { fetchQuestionInfo } from './fetchQuestionInfo';
@@ -11,6 +10,7 @@ type UserAnswerProps = {
   idUser: string;
   currentQuestionNumb: number;
   lang: string;
+  profession: string
 };
 
 const sendUserAnswerDB = async ({
@@ -18,9 +18,9 @@ const sendUserAnswerDB = async ({
   idUser,
   currentQuestionNumb,
   lang,
+  profession,
 }: UserAnswerProps): Promise<void> => {
   try {
-    const profession = getValueFromLocalStorage('profession');
     const { name, theme } = await fetchQuestionInfo(
       `${profession}/questions/question${currentQuestionNumb}/${lang}`,
     );

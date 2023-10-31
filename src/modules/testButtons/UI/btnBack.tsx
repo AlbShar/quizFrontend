@@ -5,6 +5,7 @@ import arrowleft from 'assets/images/modules/testButtons/arrowleft.svg';
 import {
   ContextCurrentQuestionNumb,
   ContextIdUser,
+  ContextProfession,
 } from 'components/context';
 
 
@@ -30,6 +31,7 @@ const BtnBack = ({
   let [currentQuestionNumb, setCurrentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
+  const [profession] = useContext(ContextProfession);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
 
   const onClickBackBtn = (e: MouseEvent<HTMLButtonElement>) => {
@@ -40,6 +42,7 @@ const BtnBack = ({
       idUser: idUser,
       currentQuestionNumb,
       selectorAnswers: '#answersAll ul li',
+      profession,
     });
   };
 

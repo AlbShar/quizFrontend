@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
-import { ContextIdUser } from 'components/context';
+import { ContextIdUser, ContextProfession } from 'components/context';
 import {ModalPause} from 'UI/modalPause';
 import {Portal} from 'components/portal';
 import pause from 'assets/images/modules/testInfo/pause.svg';
@@ -23,6 +22,7 @@ const Timer = () => {
   const [isModal, setIsModal] = useState(false);
   const [time, setTime] = useState(0);
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
+  const [profession] = useContext(ContextProfession);
 
   const timerRef = useRef<HTMLDivElement>(null);
   const hours: string = getFullNumb(Math.floor(time / 3600) % 60);
@@ -47,7 +47,6 @@ const Timer = () => {
   };
 
   useEffect(() => {
-    const profession = getValueFromLocalStorage('profession');
     const url = `${profession}/users/user${idUser}/userInfo`;
 
     const startTimer = () => {

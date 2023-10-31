@@ -1,18 +1,19 @@
 import { ref, onValue } from 'firebase/database';
-import { getValueFromLocalStorage } from '../../../helpers/getValueFromLocalStorage';
-import db from '../../../config/firebase/firebaseConfig';
+
+import db from 'config/firebase/firebaseConfig';
 
 type highlightPreviousAnswerProps = {
   idUser: string;
   currentQuestionNumb: number;
   selectorAnswers: string;
+  profession: string
 }
 const highlightPreviousAnswer = ({
   idUser,
   currentQuestionNumb,
   selectorAnswers,
+  profession,
 }: highlightPreviousAnswerProps): void => {
-  const profession = getValueFromLocalStorage('profession');
   const refer = `${profession}/users/user${idUser}/answers/answer${
     currentQuestionNumb - 1
   }`;
@@ -27,7 +28,6 @@ const highlightPreviousAnswer = ({
             .forEach((answerItem) => {
               userAnswerDb = snapshot.val().userAnswer;
               if (answerItem.textContent === userAnswerDb) {
-                
                 answerItem.style.border = '3px solid #5557FF';
                 answerItem.setAttribute('data-useranswer', 'true');
               }

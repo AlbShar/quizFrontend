@@ -40,12 +40,13 @@ const TestButtons = ({
   const [idUser]: [string, (lang: string) => void] = useContext(ContextIdUser);
   const [profession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
+
   const { t } = useTranslation('', {
     keyPrefix: 'modules.testButtons',
   });
 
-  const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState<number>(0);
-  const [isBtnBackDisabled, setIsBtnBackDisabled] = useState<boolean>(true);
+  const [totalQuestionsNumbers, setTotalQuestionsNumbers] = useState(0);
+  const [isBtnBackDisabled, setIsBtnBackDisabled] = useState(true);
 
   const setQuestionsNumber = useCallback(async () => {
     const url = `${profession}/questions`;
@@ -64,6 +65,7 @@ const TestButtons = ({
       idUser,
       currentQuestionNumb,
       lang,
+      profession
     });
   };
 
