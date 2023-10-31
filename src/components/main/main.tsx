@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 import { StyledMain } from './main.Styled';
 
 type MainProps = {
   children: ReactNode;
+  customStyle?: CSSProperties
 };
 
-export const Main = ({ children }: MainProps) => {
-  return <StyledMain>{children}</StyledMain>;
+export const Main = ({ children, customStyle }: MainProps) => {
+  return <StyledMain style={customStyle}>{children}</StyledMain>;
 };

@@ -31,7 +31,7 @@ const Quiz = () => {
   }, []);
 
   return (
-    <Main>
+    <Main customStyle={{ backgroundColor: '#1C1C1C' }}>
       <Container>
         <StyledSection ref={quizRef} id='quiz'>
           <ContextCurrentQuestionNumb.Provider
