@@ -85,6 +85,15 @@
       "All thematics": "All thematics",
       "notResult": "There are no results for the specified filters"
     },
+    "testInfo": {
+      "components": {
+        "timer": {
+          "title": "Test execution paused",
+          "pause": "Pause",
+          "subTitle": "You can pause briefly and continue the test later. Your progress will be saved"
+        }
+      }
+    },
     "chart": {
       "bar": {
         "text": "The graph displays the percentage of correct answers for each thematic section of the test. The indicator is calculated as the ratio of the number of questions to which the correct answer was given to the total number of questions on this topic. If the indicator is less than 50%, then this section needs to be studied further "

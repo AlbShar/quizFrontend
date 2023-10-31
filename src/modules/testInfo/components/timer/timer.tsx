@@ -18,7 +18,7 @@ import {
 
 const Timer = () => {
   const { t } = useTranslation('', {
-    keyPrefix: ''
+    keyPrefix: 'modules.testInfo.components.timer'
   });
   const [isCounting, setIsCounting] = useState(true);
   const [isModal, setIsModal] = useState(false);
@@ -35,8 +35,8 @@ const Timer = () => {
   const elementNumbersTimer = timer.map((time, index) => (
     <span key={index + 1}>{time}</span>
   ));
-  const titleModal = t('Заголовок1_пауза');
-  const subtitleModal = t('Заголовок2_пауза');
+  const titleModal = t('title');
+  const subtitleModal = t('subTitle');
 
   const stopTimer = () => {
     setIsCounting(false);
@@ -72,7 +72,7 @@ const Timer = () => {
     <StyledDivTimer ref={timerRef}>
       <StyledButtonPause onClick={stopTimer} data-testid='btn-pause'>
         <StyledImg src={pause} alt='pause' />
-        {t('Пауза')}
+        {t('pause')}
       </StyledButtonPause>
       <StyledSpanTimer>{elementNumbersTimer}</StyledSpanTimer>
       {isModal && (
