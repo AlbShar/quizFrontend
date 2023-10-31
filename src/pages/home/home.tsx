@@ -4,8 +4,7 @@ import {AboutUs} from 'components/aboutUs';
 import { BenefitsSite } from 'components/benefitsSite';
 import {TestRulesInfo} from 'components/testRulesInfo';
 import {ResultsTestInfo} from 'components/resultsTestInfo';
-
-import { StyledMain } from '../../styles/Main.Styled';
+import { Main } from 'components/main';
 
 type HomepageProps = {
   isChooseProfession: boolean;
@@ -19,16 +18,18 @@ const Home = ({
   
   return (
     <>
-      <StyledMain>
-        <CallToAction
-          isChooseProfession={isChooseProfession}
-          setChooseProfession={setChooseProfession}
-        />
-        <BenefitsSite />
-        <AboutUs />
-        <TestRulesInfo />
-        <ResultsTestInfo />
-      </StyledMain>
+      <Main>
+        <>
+          <CallToAction
+            isChooseProfession={isChooseProfession}
+            setChooseProfession={setChooseProfession}
+          />
+          <BenefitsSite />
+          <AboutUs />
+          <TestRulesInfo />
+          <ResultsTestInfo />
+        </>
+      </Main>
       <Footer />
     </>
   );

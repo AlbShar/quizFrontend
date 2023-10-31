@@ -3,8 +3,7 @@ import { Container } from 'components/container';
 import { Footer } from 'components/footer';
 import { withChart } from 'modules/chart';
 import { withResult } from 'modules/result';
-
-import { StyledMain } from '../../styles/Main.Styled';
+import { Main } from 'components/main';
 
 import { StyledSection, StyledSectionResults } from './results.Styled';
 
@@ -16,7 +15,7 @@ const Results = () => {
 
   return (
     <>
-      <StyledMain>
+      <Main>
         <div style={{ backgroundColor: '#1C1C1C', padding: '0 0 70px 0' }}>
           <Container>
             <StyledSectionResults>
@@ -30,7 +29,7 @@ const Results = () => {
           </Container>
         </div>
         <UserAnswers />
-      </StyledMain>
+      </Main>
       <Footer />
     </>
   );

@@ -6,8 +6,9 @@ import TestTask from 'modules/testTask';
 import TestInfo from 'modules/testInfo';
 import { ContextCurrentQuestionNumb } from 'components/context';
 import TestButtons from 'modules/testButtons';
+import { Main } from 'components/main';
 
-import { StyledSection, StyledMain } from './quiz.Styled';
+import { StyledSection } from './quiz.Styled';
 
 const Quiz = () => {
   const [currentQuestionNumb, setCurrentQuestionNumb] = useState(1);
@@ -30,7 +31,7 @@ const Quiz = () => {
   }, []);
 
   return (
-    <StyledMain>
+    <Main>
       <Container>
         <StyledSection ref={quizRef} id='quiz'>
           <ContextCurrentQuestionNumb.Provider
@@ -50,7 +51,7 @@ const Quiz = () => {
           </ContextCurrentQuestionNumb.Provider>
         </StyledSection>
       </Container>
-    </StyledMain>
+    </Main>
   );
 };
 

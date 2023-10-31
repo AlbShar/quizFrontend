@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import {Container} from 'components/container';
 import UserForm from 'modules/userForm';
-
-import { StyledMain } from '../../styles/Main.Styled';
+import { Main } from 'components/main';
 
 import {
   StyledH1,
@@ -16,7 +15,7 @@ const Feedback = () => {
     keyPrefix: 'pages.feedback',
   });
   return (
-    <StyledMain>
+    <Main>
       <Container>
         <StyledSection>
           <article>
@@ -28,7 +27,7 @@ const Feedback = () => {
           </article>
         </StyledSection>
       </Container>
-    </StyledMain>
+    </Main>
   );
 };
 
