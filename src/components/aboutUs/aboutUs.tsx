@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
+import { useContext } from 'react';
 
 import { Container } from 'components/container';
 import { FeedbackLink } from 'UI/feedbackLink';
 import person_sitting from 'assets/images/components/aboutUs/person_sitting.svg';
+import { ContextLanguage } from 'components/context';
 
 import {
   StyledP,
@@ -14,10 +16,14 @@ import {
 } from './styles/aboutUs.Styled';
 import './styles/link.css';
 
+import type { Languages } from 'types/types';
+
 export const AboutUs = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.aboutUs',
   });
+  const [lang] = useContext(ContextLanguage);
+  console.log(lang)
   const customStyleFeedback = {
     color: 'var(--color-purple)',
     font: 'var(--font-text5)',
@@ -27,7 +33,7 @@ export const AboutUs = () => {
   return (
     <StyledSection>
       <Container>
-        <StyledArticle>
+        <StyledArticle lang={lang}>
           <Grid container columns={{ xs: 2, md: 12, lg: 12 }}>
             <Grid item xs={2} md={6.2} lg={6.2}>
               <StyledH3>{t('mainTitle')}</StyledH3>

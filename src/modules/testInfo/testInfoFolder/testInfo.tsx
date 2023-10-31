@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState, RefObject, FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import {
   ContextCurrentQuestionNumb,
   ContextProfession,
@@ -25,13 +26,13 @@ type TestInfoProps = {
 
 export const TestInfo: FC<TestInfoProps> = ({ quizRef }) => {
   const { t } = useTranslation();
-  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
+  const [currentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
-  const [profession]: [string, (lang: string) => void] =
+  const [profession]=
     useContext(ContextProfession);
 
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [theme, setTheme] = useState('');

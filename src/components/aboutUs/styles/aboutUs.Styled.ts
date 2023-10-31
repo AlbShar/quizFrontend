@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+import type { Languages } from 'types/types';
+
+type StyledArticleProps = {
+  lang: 'ru' | 'en';
+};
+
 const StyledP = styled.p`
   font: var(--font-text5);
   color: var(--color-black);
@@ -50,7 +56,7 @@ const StyledImg = styled.img`
     bottom: -20px;
   }
 `;
-const StyledArticle = styled.article`
+const StyledArticle = styled.article<StyledArticleProps>`
   @media screen and (min-width: 767.8px) {
     padding: 30px 0 85px 0;
   }

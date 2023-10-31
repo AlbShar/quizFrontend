@@ -14,7 +14,7 @@ type TData = {
 
 export const useTematicsStats = () => {
   const colorsColumnsChart = ['black', 'red', 'blue'];
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
 
   const selectorTematicsStats = createSelector(
     (state: RootState) => state.userAnswers,

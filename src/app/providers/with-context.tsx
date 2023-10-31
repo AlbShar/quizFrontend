@@ -7,13 +7,15 @@ import {
   ContextProfession,
 } from 'components/context';
 
+import type { Languages } from 'types/types';
+
 export const withContext = (Component: () => JSX.Element) => () => {
   const [profession, setProfession] = useState<string>(
     getValueFromLocalStorage('profession'),
   );
 
-  const [lang, setLang] = useState<string>(
-    getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
+  const [lang, setLang] = useState<Languages>(
+    getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2) as Languages
   );
   const [idUser, setIdUser] = useState<string>(
     getValueFromLocalStorage('idUser'),

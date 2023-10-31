@@ -1,11 +1,13 @@
 import { createContext } from 'react';
 
+import type { Languages } from 'types/types';
+
 const ContextCurrentQuestionNumb = createContext<
   [number, (item: number) => void]
   // eslint-disable-next-line
 >([1, () => {}]);
 
-const ContextLanguage = createContext<[string, (item: string) => void]>(
+const ContextLanguage = createContext<[Languages, (item: Languages) => void]>(
   // eslint-disable-next-line
   ['ru', () => {}],
 );

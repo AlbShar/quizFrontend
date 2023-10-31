@@ -12,9 +12,9 @@ export const useGetTestTask = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [srcImg, setSrcImg] = useState('');
   const [isError, setIsError] = useState(false);
-  const [profession]: [string, (lang: string) => void] =
+  const [profession] =
     useContext(ContextProfession);
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
 
   const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
     ContextCurrentQuestionNumb,

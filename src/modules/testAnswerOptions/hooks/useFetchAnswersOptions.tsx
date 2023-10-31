@@ -13,12 +13,12 @@ const useFetchAnswersOptions = () => {
   const [answers, setAnsewrs] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [profession]: [string, (lang: string) => void] =
+  const [profession] =
     useContext(ContextProfession);
-  const [currentQuestionNumb]: [number, (numb: number) => void] = useContext(
+  const [currentQuestionNumb] = useContext(
     ContextCurrentQuestionNumb,
   );
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
   const answersHasLoaded = (response: AnswersType) => {
     const answers = Object.entries(response).map((item) => item.join('. '));
     if (Array.isArray(answers)) {

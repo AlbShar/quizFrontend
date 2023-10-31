@@ -11,7 +11,7 @@ export const useGetFilteredUserAnswers = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
 
   const filteredUserAnswers = createSelector(
     (state: RootState) => state.filterByRight,

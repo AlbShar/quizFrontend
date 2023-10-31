@@ -1,4 +1,5 @@
-export const getValueFromLocalStorage = <T extends string>(
+
+export const getValueFromLocalStorage = <T extends string >(
   key: T,
   defaultValue = '',
 ) => {

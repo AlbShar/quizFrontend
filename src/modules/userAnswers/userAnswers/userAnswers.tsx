@@ -27,7 +27,7 @@ import type { AppDispatch } from 'app/store/index';
 import type { DataQuestionAndUserAnswer } from '../types/types';
 
 export const UserAnswers = () => {
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
 
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',

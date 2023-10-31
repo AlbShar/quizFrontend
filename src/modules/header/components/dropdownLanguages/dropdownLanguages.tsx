@@ -6,9 +6,11 @@ import { setValueToLocalStorage } from 'helpers/setValueToLocalStorage';
 import { Dropdown } from 'modules/header/UI/dropdown/dropdown';
 import arrowDown from 'assets/images/modules/header/arrowDown.svg';
 
+import type { Languages } from 'types/types';
+
 const DropdownLanguages = () => {
   // eslint-disable-next-line
-  const [lang, setLang]: [string, (lang: string) => void] =
+  const [lang, setLang] =
     useContext(ContextLanguage);
 
   type tMapLanguage = {
@@ -32,7 +34,7 @@ const DropdownLanguages = () => {
   const onClickElement = (item: string) => {
     const language = item === 'ru' ? 'Русский' : 'English';
     setSelected(item);
-    setLang(item);
+    setLang(item as Languages);
     i18next.changeLanguage(item);
     setValueToLocalStorage('language', language);
     (document.querySelector('html') as HTMLHtmlElement).setAttribute(

@@ -11,7 +11,7 @@ import { getShortListTopics } from '../helpers/getShortListTopics';
 import type { AppDispatch, RootState } from 'app/store/index';
 
 export const useGetTopics = () => {
-  const [lang]: [string, (lang: string) => void] = useContext(ContextLanguage);
+  const [lang] = useContext(ContextLanguage);
 
   const topics = useSelector((state: RootState) => state.themes);
   const topic = getShortFilterName(
@@ -19,7 +19,7 @@ export const useGetTopics = () => {
   );
 
   const shortNameTopics: string[] = useMemo(
-    () => getShortListTopics(Object.values(topics[lang] as string[])),
+    () => getShortListTopics(Object.values(topics[lang] )),
     [],
   );
   const dispatch = useDispatch<AppDispatch>();
