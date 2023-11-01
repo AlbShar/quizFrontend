@@ -23,7 +23,6 @@ export const AboutUs = () => {
     keyPrefix: 'components.aboutUs',
   });
   const [lang] = useContext(ContextLanguage);
-  console.log(lang)
   const customStyleFeedback = {
     color: 'var(--color-purple)',
     font: 'var(--font-text5)',

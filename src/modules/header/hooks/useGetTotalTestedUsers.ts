@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
-
-import { getValueFromLocalStorage } from 'helpers/getValueFromLocalStorage';
+import { useLocation } from 'react-router-dom';
 
 import { getAllTestedUsers } from '../api/getAllTestedUsers';
+import { ContextProfession } from 'components/context';
 
 export const useGetTotalTestedUsers = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [totalTestedUsers, setTotalTestedUsers] = useState(0);
-  const profession = getValueFromLocalStorage('profession');
+  const location = useLocation();
+  const [isHomePage, setIsHomePage] = useState(
+    location.pathname === '/' ? true : false,
+  );
+  const [profession] = useContext(ContextProfession);
 
   const dataHasLoaded = (res: number) => {
     setIsLoading(false);
@@ -23,13 +27,13 @@ export const useGetTotalTestedUsers = () => {
   };
 
   useEffect(() => {
-    if (profession) {
+    if (profession && !isHomePage) {
       const url = `${profession}/users`;
       getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
     } else {
       setIsLoading(false);
     }
-  }, [profession]);
+  }, [profession, isHomePage]);
 
   return { isError, isLoading, totalTestedUsers };
 };
