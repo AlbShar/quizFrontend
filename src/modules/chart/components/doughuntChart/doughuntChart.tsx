@@ -18,7 +18,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, LinearScale);
 
 export const DoughnutChart = () => {
   const { t } = useTranslation('', {
-    keyPrefix: 'components.doughuntChart',
+    keyPrefix: 'modules.chart.doughunt',
   });
   const userAnswersStats = useUserAnswersStats();
 

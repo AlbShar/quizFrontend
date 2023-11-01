@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   StyleDivModal,
   StyledDivWrapper,
@@ -18,6 +20,10 @@ export const ModalPause = ({
   subTitle,
   onClickHandler,
 }: ModalProps): JSX.Element => {
+  const { t } = useTranslation('', {
+    keyPrefix: 'UI.modalPause',
+  });
+
   return (
     <StyleDivModal>
       <StyledDivWrapper>
@@ -30,7 +36,7 @@ export const ModalPause = ({
         </StyledSpanClose>
         <StyledSpan className='notification__text'>{subTitle}</StyledSpan>
         <StyledButtonModal onClick={onClickHandler} data-testid='btn-continue'>
-          Продолжить
+          {t('textBtn')}
         </StyledButtonModal>
       </StyledDivWrapper>
     </StyleDivModal>

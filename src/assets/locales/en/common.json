@@ -99,7 +99,9 @@
         "text": "The graph displays the percentage of correct answers for each thematic section of the test. The indicator is calculated as the ratio of the number of questions to which the correct answer was given to the total number of questions on this topic. If the indicator is less than 50%, then this section needs to be studied further "
       },
       "doughunt": {
-        "text": "The graph displays the percentage of questions answered correctly"
+        "text": "The graph displays the percentage of questions answered correctly",
+        "right": "Right",
+        "wrong": "Wrong"
       }
     },
     "userForm": {
@@ -131,10 +133,7 @@
       "text2": "You will be able to evaluate your knowledge of each of them, and see which topic needs more attention",
       "text3": "In the final report, you will be able to clearly see where your knowledge or skill gaps are and focus specifically on them"
     },
-    "doughuntChart": {
-      "right": "right",
-      "wrong": "wrong"
-    },
+    
     "footer": {
       "Frontend": "Frontend developer",
       "Designer": "Designer",
@@ -167,6 +166,9 @@
     "list": {
       "team": "Team",
       "rules": "Rules"
+    },
+    "modalPause": {
+      "textBtn": "сontinue"
     }
   }
 }

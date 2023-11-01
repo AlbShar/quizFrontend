@@ -22,8 +22,8 @@ const DropdownProfession = ({
   const [selected, setSelected] = useState('');
 
   const dataProfessions = {
-    'Frontend developer': 'Frontend',
-    'Project Manager': 'Manager',
+    'Frontend development': 'Frontend',
+    'Project management': 'Manager',
   };
   const listProfessions = Object.keys(dataProfessions);
 
