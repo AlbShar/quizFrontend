@@ -6,7 +6,7 @@ const setValueToLocalStorage = <T extends string>(key: T, value: T): void => {
       throw new Error(
         `Don't block your cookies. Turn on it in setting of your browser.`,
       );
-    }  else {
+    } else {
       throw new Error(`Unknown error caught: ${e}`);
     }
   }

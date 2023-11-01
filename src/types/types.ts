@@ -1,38 +1,24 @@
-type TInfoTheme = {
-  totalPoints: number;
-  totalQuantityQuestions: number;
-};
-type TPointsByThemes = {
-  [key: string]: TInfoTheme;
-};
-type InfoTestBlock = {
-  alt: string;
-  text: string;
-  srcIcon: string;
-};
-
-type InfoBlocks = {
+export type InfoBlocks = {
   title: string;
   img?: string;
   id?: string;
   alt?: string;
   text: string;
 };
-type JSONText = {
-  selector: string;
-  json: string;
-};
 
-type FooterInfo = {
+export type FooterInfo = {
   profession: string;
-  name: string
+  name: string;
   link: string;
-}
-
-export type {
-  TPointsByThemes,
-  InfoTestBlock,
-  InfoBlocks,
-  JSONText,
-  FooterInfo,
 };
+
+export type TQuestion = {
+  descr: string;
+  name: string;
+  rightAnswer: string;
+  theme: string;
+  img: string;
+  id: number;
+};
+
+export type Languages = 'en' | 'ru';

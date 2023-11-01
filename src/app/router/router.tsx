@@ -1,21 +1,19 @@
 import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import {Spinner} from 'UI/Spinner/Spinner';
+import { Spinner } from 'UI/spinner';
+
 import { GlobalStyles } from '../../styles/Global';
 
-const Header = lazy(() => import('modules/Header'));
-// const Footer = lazy(() => import('components/Footer'));
-const Homepage = lazy(() => import('pages/Homepage'));
-const Quiz = lazy(() => import('pages/Quiz'));
-const Feedback = lazy(() => import('pages/Feedback'));
-const Results = lazy(() => import('pages/Results'));
-const Page404 = lazy(() => import('pages/Page404'));
-
+const Header = lazy(() => import('modules/header'));
+const Homepage = lazy(() => import('pages/home'));
+const Quiz = lazy(() => import('pages/quiz'));
+const Feedback = lazy(() => import('pages/feedback'));
+const Results = lazy(() => import('pages/results'));
+const Page404 = lazy(() => import('pages/page404'));
 
 export const MyRoutes = () => {
-    const [isChooseProfession, setChooseProfession] = useState<boolean>(false);
-
+  const [isChooseProfession, setChooseProfession] = useState<boolean>(false);
 
   return (
     <>
@@ -56,4 +54,3 @@ export const MyRoutes = () => {
     </>
   );
 };
-

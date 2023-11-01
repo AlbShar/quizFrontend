@@ -1,1 +1,0 @@
-export { TestRules } from './TestRules';

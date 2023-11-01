@@ -1,1 +1,0 @@
-export {withChart} from "./withChart"

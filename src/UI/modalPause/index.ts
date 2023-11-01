@@ -1,0 +1,1 @@
+export { ModalPause } from './modalPause';

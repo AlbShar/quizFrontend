@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userAnswersReducer } from 'modules/UserAnswers';
+
+import { userAnswersReducer } from 'modules/userAnswers';
 
 export const store = configureStore({
   reducer: userAnswersReducer,
