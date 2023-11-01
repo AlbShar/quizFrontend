@@ -1,18 +1,17 @@
-import { useContext, useState } from 'react';
-import { useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { getAllTestedUsers } from '../api/getAllTestedUsers';
 import { ContextProfession } from 'components/context';
+
+import { getAllTestedUsers } from '../api/getAllTestedUsers';
 
 export const useGetTotalTestedUsers = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [totalTestedUsers, setTotalTestedUsers] = useState(0);
-  const location = useLocation();
-  const [isHomePage, setIsHomePage] = useState(
-    location.pathname === '/' ? true : false,
-  );
+    const location = useLocation();
+    const [isHomePage, setIsHomePage] = useState(location.pathname !== '/');
+
   const [profession] = useContext(ContextProfession);
 
   const dataHasLoaded = (res: number) => {
@@ -27,13 +26,18 @@ export const useGetTotalTestedUsers = () => {
   };
 
   useEffect(() => {
-    if (profession && !isHomePage) {
+    if (profession) {
       const url = `${profession}/users`;
       getAllTestedUsers(url).then(dataHasLoaded).catch(onErrorHandler);
     } else {
       setIsLoading(false);
     }
-  }, [profession, isHomePage]);
+  }, [profession]);
 
-  return { isError, isLoading, totalTestedUsers };
+    useEffect(() => {
+      setIsHomePage(location.pathname !== '/');
+    }, [location.pathname]);
+
+
+  return { isError, isLoading, totalTestedUsers, isHomePage };
 };

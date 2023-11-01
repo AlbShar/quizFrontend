@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 
 import { ErrorMessage } from 'UI/errorMessage';
 import { Spinner } from 'UI/spinner';
@@ -19,16 +18,9 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.header.components.totalTested',
   });
-  const location = useLocation();
   const totalUsersRef = useRef<HTMLSpanElement>(null);
-  const { isError, isLoading, totalTestedUsers } = useGetTotalTestedUsers();
-  const getTotalTestedUsers = () => {
-    if (location.pathname === '/') {
-      return isChooseProfession ? totalTestedUsers : '-';
-    } else {
-      return totalTestedUsers;
-    }
-  };
+  const { isError, isLoading, totalTestedUsers, isHomePage } =
+    useGetTotalTestedUsers();
 
   const error = isError ? <ErrorMessage /> : null;
   const spinner = isLoading ? (
@@ -40,7 +32,11 @@ const TotalTested = ({ isChooseProfession }: TotalTestedProps): JSX.Element => {
       <StyledDivWrapper>
         <StyledSpanText>{`${t('totalTested')}:`}</StyledSpanText>
         <StyledSpanNumber ref={totalUsersRef}>
-          {getTotalTestedUsers()}
+          {isHomePage
+            ? totalTestedUsers
+            : isChooseProfession
+            ? totalTestedUsers
+            : '-'}
         </StyledSpanNumber>
       </StyledDivWrapper>
     );
