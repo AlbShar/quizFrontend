@@ -24,9 +24,11 @@ export const Footer = () => {
   });
 
   const team: FooterInfo[] = [
-    {profession: t('Frontend'),
+    {
+      profession: t('Frontend'),
       name: t('firstNameFrontend'),
-      link: 'https://t.me/AlbertS1',},
+      link: 'https://t.me/AlbertS1',
+    },
     {
       profession: t('Designer'),
       name: t('firstNameDesigner'),
