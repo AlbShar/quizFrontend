@@ -51,13 +51,7 @@ export const Dropdown = memo(
         </StyledLi>
       );
     });
-    const customStyleButton = `
-      gap: 10px; 
-      justify-content: flex-end; 
 
-      @media screen and (min-width: 767.8px) {
-        gap: 39px; 
-        }`;
 
     return (
       <StyleArticleDropdown>
