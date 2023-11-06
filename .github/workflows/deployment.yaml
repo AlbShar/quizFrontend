@@ -1,0 +1,26 @@
+name: Deployment
+on: 
+  push:
+  pull_request:
+    types: [closed, auto_merge_enabled]
+    branches:
+      - 'master'
+jobs: 
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project code
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: npm ci
+      - name: Prettier code
+        run: npm run lint
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project code
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: npm ci
+      - name: Deploy the code
+        run: npm run deploy
