@@ -31,6 +31,7 @@ export const Dropdown = memo(
     setFilter,
     srcArrowDown,
   }: DropdownProps<T>) => {
+    
     const { isActive, toggleList } = useDisplayListDropdown();
 
     const listItems = nameListItems.map((item: string, index: number) => {
