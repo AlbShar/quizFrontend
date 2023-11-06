@@ -22,6 +22,7 @@ const FilterByThemes = (): JSX.Element => {
       index === 0 ? 'defaultValue' : `theme${index}`,
     );
     updateTopic(topic);
+    // eslint-disable-next-line
   }, []);
 
   return (

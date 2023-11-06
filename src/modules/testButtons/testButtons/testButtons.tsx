@@ -52,10 +52,12 @@ const TestButtons = ({
     const url = `${profession}/questions`;
     const questionsNumber = await getTotalQuestionsNumb(url);
     setTotalQuestionsNumbers(questionsNumber as number);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     setQuestionsNumber();
+    // eslint-disable-next-line
   }, []);
 
   const sendAnswersToDb = () => {

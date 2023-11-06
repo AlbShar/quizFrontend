@@ -19,7 +19,8 @@ export const useGetTopics = () => {
   );
 
   const shortNameTopics: string[] = useMemo(
-    () => getShortListTopics(Object.values(topics[lang] )),
+    () => getShortListTopics(Object.values(topics[lang])),
+    // eslint-disable-next-line
     [],
   );
   const dispatch = useDispatch<AppDispatch>();
@@ -27,6 +28,7 @@ export const useGetTopics = () => {
   useEffect(() => {
     const keyTheme = getValueFromLocalStorage('keyTheme') || 'defaultValue';
     updateTopic(topics[lang][keyTheme]);
+    // eslint-disable-next-line
   }, [lang]);
 
   const updateTopic = (topic: string) => {

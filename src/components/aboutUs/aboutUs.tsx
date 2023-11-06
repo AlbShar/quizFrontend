@@ -16,8 +16,6 @@ import {
 } from './styles/aboutUs.Styled';
 import './styles/link.css';
 
-import type { Languages } from 'types/types';
-
 export const AboutUs = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'components.aboutUs',

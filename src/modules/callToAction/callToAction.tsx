@@ -31,7 +31,7 @@ export const CallToAction = ({
   const { t } = useTranslation('', {
     keyPrefix: 'modules.callToAction',
   });
-  const [idUser, setIdUser]: [string, (lang: string) => void] =
+  const [, setIdUser]: [string, (lang: string) => void] =
     useContext(ContextIdUser);
 
   const startTest = () => {

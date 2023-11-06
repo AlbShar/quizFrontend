@@ -33,7 +33,7 @@ const sendEmailApi = async (values: TValues): Promise<boolean> => {
     } else {
       throw new Error(`Check values of API KEYS in EMAILJS`);
     }
-  } catch (e: any) {
+  } catch (e) {
     if (e instanceof Error) {
       console.error(`There is an error in sendEmailApi file - ${e}`);
     } else {

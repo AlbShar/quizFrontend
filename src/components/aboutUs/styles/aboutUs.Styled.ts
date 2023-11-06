@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import type { Languages } from 'types/types';
 
 type StyledArticleProps = {
   lang: 'ru' | 'en';

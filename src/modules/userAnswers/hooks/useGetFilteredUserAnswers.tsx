@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ContextLanguage } from 'components/context';
+
 
 import type { DataQuestionAndUserAnswer } from '../types/types';
 import type { RootState } from 'app/store/index';
@@ -11,7 +10,6 @@ export const useGetFilteredUserAnswers = () => {
   const { t } = useTranslation('', {
     keyPrefix: 'modules.userAnswers',
   });
-  const [lang] = useContext(ContextLanguage);
 
   const filteredUserAnswers = createSelector(
     (state: RootState) => state.filterByRight,

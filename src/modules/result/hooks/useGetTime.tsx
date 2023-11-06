@@ -30,6 +30,7 @@ export const useGetTime = () => {
   useEffect(() => {
     const url = `${profession}/users/user${idUser}/userInfo`;
     getSpentTime(url).then(timeHasLoaded).catch(onError);
+    // eslint-disable-next-line
   }, []);
 
   return { isError, isLoading, time };

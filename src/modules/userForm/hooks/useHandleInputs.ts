@@ -15,6 +15,7 @@ const useHandleInputs = () => {
 
   useEffect(() => {
     onFocusFirstInput();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

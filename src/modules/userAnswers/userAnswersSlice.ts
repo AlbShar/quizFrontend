@@ -8,7 +8,13 @@ import { getUserAnswers } from './api/getUserAnswers';
 import { getInfoQuestions } from './api/getInfoQuestions';
 import getThemes from './helpers/getThemes';
 
-import type { TInitialState, TQuestion } from './types/types';
+import type {
+  TInitialState,
+  TQuestion,
+  TAnswersDB,
+  TAnswerOptionsLangDB,
+  TInfoQuiestionsDB,
+} from './types/types';
 
 type TInfoQuestions = {
   [question: string]: TQuestion;
@@ -56,7 +62,11 @@ const userAnswersSlice = createSlice({
         const infoQuestions = action.payload[2];
 
         state.userAnswers = transformQuestionsAndAnswersDB(
-          action.payload as any,
+          action.payload as (
+            | TAnswersDB
+            | TAnswerOptionsLangDB
+            | TInfoQuiestionsDB
+          )[],
           getValueFromLocalStorage('i18nextLng', 'ru').slice(0, 2),
         );
         state.themes = getThemes(infoQuestions as TInfoQuestions);

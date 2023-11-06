@@ -8,7 +8,7 @@ import { getQuantityThemes } from '../api/getQuantityThemes';
 export const useFetchTestInfo = () => {
   const [profession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
-  const [lang, setLang] =
+  const [lang, ] =
     useContext(ContextLanguage);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,7 @@ export const useFetchTestInfo = () => {
         .then(dataHasLoaded)
         .catch(onError);
     }
-  }, [profession]);
+  }, [profession, lang]);
 
   return { isLoading, isError, quantityQuestions, quantityThemes };
 };

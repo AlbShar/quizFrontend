@@ -1,8 +1,7 @@
-import { memo, CSSProperties } from 'react';
+import { memo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { useDisplayListDropdown } from './hooks/useDisplayListDropdown';
-
 import {
   StyleArticleDropdown,
   StyledButton,
@@ -10,7 +9,6 @@ import {
   StyledLi,
   StyledImgRight,
   StyledSpan,
-  StyledImgLeft,
 } from './dropdown.Styled';
 
 type TypeOfFilter = 'topics' | 'correctness' | 'profession';

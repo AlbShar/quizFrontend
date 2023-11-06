@@ -66,6 +66,8 @@ export const useGetTestTask = () => {
     Promise.allSettled(urls.map((url) => fetchData(url)))
       .then(dataLoaded)
       .catch(onErrorHandler);
+
+    // eslint-disable-next-line
   }, [currentQuestionNumb, lang]);
 
   return { isLoading, isError, questionName, srcImg };

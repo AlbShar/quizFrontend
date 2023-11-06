@@ -7,7 +7,6 @@ import {
   StyledUl,
   StyledLi,
   StyledSpan,
-  StyledSpanList,
   StyledSpanShortLang,
   StyledSpanFullLang,
   StyledImg,

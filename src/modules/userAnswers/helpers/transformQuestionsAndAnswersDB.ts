@@ -1,10 +1,11 @@
+import { getNumberFromKey } from './getNumberFromKey';
+
 import type {
   TAnswersDB,
   TAnswerOptionsLangDB,
   TInfoQuiestionsDB,
 } from '../types/types';
 
-import { getNumberFromKey } from './getNumberFromKey';
 
 const transformUserAnswers = (res: TAnswersDB) => {
   const updateUserAnswers = Object.fromEntries(

@@ -30,6 +30,7 @@ const ScrollBar: FC<ScrollBarProps> = ({ quizRef }) => {
       quizRef,
       url,
     });
+    // eslint-disable-next-line
   }, [currentQuestionNumb]);
 
   return <StyledDivScrollBar ref={scrollBarElementRef}></StyledDivScrollBar>;

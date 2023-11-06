@@ -4,7 +4,7 @@ import { StyledLi } from './answer.Styled';
 
 type AnswerProps = {
   children: ReactNode;
-  setRef: (elem: any) => void;
+  setRef: (elem: HTMLLIElement) => void;
   onClickAnswer: (id: number, e) => void;
   index: number;
 };

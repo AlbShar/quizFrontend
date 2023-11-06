@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import i18next from 'i18next';
 
 import { ContextLanguage } from 'components/context';
@@ -29,11 +29,9 @@ const DropdownLanguages = () => {
     // eslint-disable-next-line
   }, []);
 
-  const [selected, setSelected] = useState<string>(mapLanguage['Русский']);
 
   const onClickElement = (item: string) => {
     const language = item === 'ru' ? 'Русский' : 'English';
-    setSelected(item);
     setLang(item as Languages);
     i18next.changeLanguage(item);
     setValueToLocalStorage('language', language);

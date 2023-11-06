@@ -7,12 +7,10 @@ import { Spinner } from 'UI/spinner';
 import { ContextLanguage } from 'components/context';
 import { ErrorMessage } from 'UI/errorMessage';
 import { useGetStatusLoading } from 'hooks/useGetStatusLoading';
-
 import { useGetFilteredUserAnswers } from 'modules/userAnswers/hooks/useGetFilteredUserAnswers';
 import { fetchUserAnswer } from 'modules/userAnswers/userAnswersSlice';
 import FilterByRight from 'modules/userAnswers/components/filterByRight/filterByRight';
 import FilterByThemes from 'modules/userAnswers/components/filterByThemes/filterByThemes';
-
 import {
   StyledLi,
   StyledListAnswers,
@@ -38,10 +36,12 @@ export const UserAnswers = () => {
 
   useEffect(() => {
     dispatch(fetchUserAnswer());
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     dispatch(fetchUserAnswer());
+    // eslint-disable-next-line
   }, [lang]);
 
   if (statusLoading === 'loading') {

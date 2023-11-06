@@ -61,10 +61,12 @@ const Timer = () => {
 
     return () => {
       clearTimeout(timerId);
+      // eslint-disable-next-line
       if (!timerRef.current) {
         sendTimeToDB(time, url);
       }
     };
+    // eslint-disable-next-line
   }, [time, isCounting]);
 
   return (

@@ -95,7 +95,7 @@ export const TestInfo: FC<TestInfoProps> = ({ quizRef }) => {
     }
   };
 
-  const onError = (error: any): never => {
+  const onError = (error): never => {
     setIsError(true);
     setIsLoading(false);
     throw new Error(error);
