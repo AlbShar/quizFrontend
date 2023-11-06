@@ -18,10 +18,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git
-        run: |
-          git config --global user.name "AlbShar"
-          git config --global user.email "sharipov.albert1991@gmail.com"
       - name: Get project code
         uses: actions/checkout@v4
       - name: install dependencies
