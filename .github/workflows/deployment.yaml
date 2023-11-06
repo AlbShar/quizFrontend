@@ -9,7 +9,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git
+      - name: set up Git
         run: |
           git config --global user.email "sharipov.albert1991@gmail.com"
           git config --global user.name "AlbShar"
@@ -22,7 +22,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git
+      - name: set up Git
         run: |
           git config --global user.email "sharipov.albert1991@gmail.com"
           git config --global user.name "AlbShar"
