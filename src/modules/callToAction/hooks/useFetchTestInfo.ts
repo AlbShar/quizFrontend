@@ -6,7 +6,7 @@ import { getTotalQuestionsNumb } from 'api/getTotalQuestionsNumb';
 import { getQuantityThemes } from '../api/getQuantityThemes';
 
 export const useFetchTestInfo = () => {
-  const [profession]: [string, (lang: string) => void] =
+  let [profession]: [string, (lang: string) => void] =
     useContext(ContextProfession);
   const [lang, ] =
     useContext(ContextLanguage);
