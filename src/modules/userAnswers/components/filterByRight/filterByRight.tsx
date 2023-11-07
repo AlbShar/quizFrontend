@@ -18,7 +18,7 @@ const FilterByRight = (): JSX.Element => {
     <StyledWrapperDropdown>
       <Dropdown
         typeFilter='correctness'
-        nameListItems={data}
+        fullNameListItems={data}
         selectedFilter={t(filterByCorrectness)}
         setFilter={setFilterByCorrectness}
         srcArrowDown={chevrondown}

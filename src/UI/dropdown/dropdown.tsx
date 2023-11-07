@@ -16,7 +16,8 @@ type TypeOfFilter = 'topics' | 'correctness' | 'profession';
 type DropdownProps<T extends TypeOfFilter> = {
   typeFilter: T;
   selectedFilter: string;
-  nameListItems: string[];
+  shortNameListItems?: string[];
+  fullNameListItems: string[];
   srcArrowDown: string;
   setFilter: T extends 'topics'
     ? (index: number) => void
@@ -25,20 +26,23 @@ type DropdownProps<T extends TypeOfFilter> = {
 
 export const Dropdown = memo(
   <T extends TypeOfFilter>({
-    nameListItems,
+    fullNameListItems,
+    shortNameListItems,
     typeFilter,
     selectedFilter,
     setFilter,
     srcArrowDown,
   }: DropdownProps<T>) => {
-    
     const { isActive, toggleList } = useDisplayListDropdown();
+    const items = shortNameListItems ? shortNameListItems : fullNameListItems;
 
-    const listItems = nameListItems.map((item: string, index: number) => {
+    const listItems = items.map((item: string, index: number) => {
       return (
         <StyledLi
+          isShortNameListItems={!!shortNameListItems}
           key={index + 1}
           tabIndex={0}
+          data-title={shortNameListItems && fullNameListItems[index]}
           onClick={() => {
             if (typeFilter === 'topics') {
               (setFilter as (index: number) => void)(index);
@@ -52,7 +56,6 @@ export const Dropdown = memo(
         </StyledLi>
       );
     });
-
 
     return (
       <StyleArticleDropdown>
