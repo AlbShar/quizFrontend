@@ -38,7 +38,7 @@ const DropdownProfession = ({
     <Dropdown
       typeFilter='profession'
       selectedFilter={selected || t('textBtn')}
-      nameListItems={listProfessions}
+      fullNameListItems={listProfessions}
       setFilter={onClickProfession}
       srcArrowDown={arrowDownLarge}
     />

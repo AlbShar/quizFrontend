@@ -9,7 +9,8 @@ import chevrondown from 'assets/images/modules/userAnswers/chevrondown.svg';
 import { StyledWrapperDropdown } from '../filters.Styled';
 
 const FilterByThemes = (): JSX.Element => {
-  const { topic, topics, shortNameTopics, updateTopic } = useGetTopics();
+  const { topic, topics, shortNameTopics, fullNameTopics, updateTopic } =
+    useGetTopics();
   const [lang] = useContext(ContextLanguage);
 
   const setTopic = useCallback((index = 0) => {
@@ -24,12 +25,14 @@ const FilterByThemes = (): JSX.Element => {
     updateTopic(topic);
     // eslint-disable-next-line
   }, []);
+  console.log(shortNameTopics);
 
   return (
     <StyledWrapperDropdown>
       <Dropdown
         typeFilter='topics'
-        nameListItems={shortNameTopics}
+        shortNameListItems={shortNameTopics}
+        fullNameListItems={fullNameTopics}
         selectedFilter={topic}
         setFilter={setTopic}
         srcArrowDown={chevrondown}
