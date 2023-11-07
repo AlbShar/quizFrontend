@@ -35,6 +35,8 @@ export const useFetchTestInfo = () => {
       Promise.all([getTotalQuestionsNumb(url), getQuantityThemes(url, lang)])
         .then(dataHasLoaded)
         .catch(onError);
+    } else {
+      setIsLoading(false)
     }
   }, [profession, lang]);
 
