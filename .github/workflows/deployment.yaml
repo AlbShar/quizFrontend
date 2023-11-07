@@ -3,10 +3,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    types: [closed, auto_merge_enabled]
-    branches:
-      - master
 jobs: 
   prettier:
     runs-on: ubuntu-latest
