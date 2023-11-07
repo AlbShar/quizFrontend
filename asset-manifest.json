@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/quizFrontend/static/css/main.59b0aa92.css",
-    "main.js": "/quizFrontend/static/js/main.96090b98.js",
+    "main.js": "/quizFrontend/static/js/main.612585d9.js",
     "static/css/907.12cd28c0.chunk.css": "/quizFrontend/static/css/907.12cd28c0.chunk.css",
     "static/js/907.b882f483.chunk.js": "/quizFrontend/static/js/907.b882f483.chunk.js",
     "static/css/896.8e93c5fc.chunk.css": "/quizFrontend/static/css/896.8e93c5fc.chunk.css",
-    "static/js/896.c67906a3.chunk.js": "/quizFrontend/static/js/896.c67906a3.chunk.js",
+    "static/js/896.021508f9.chunk.js": "/quizFrontend/static/js/896.021508f9.chunk.js",
     "static/css/530.e7531bf1.chunk.css": "/quizFrontend/static/css/530.e7531bf1.chunk.css",
     "static/js/530.521cf948.chunk.js": "/quizFrontend/static/js/530.521cf948.chunk.js",
     "static/css/111.a19447f8.chunk.css": "/quizFrontend/static/css/111.a19447f8.chunk.css",
@@ -40,11 +40,11 @@
     "static/media/arrowDownLarge.svg": "/quizFrontend/static/media/arrowDownLarge.bedd3cd493247ef7aeccfe326547265d.svg",
     "static/media/arrowleft.svg": "/quizFrontend/static/media/arrowleft.8cdee819e06b593b3c13c4f64420ac7e.svg",
     "static/media/burger_menu.svg": "/quizFrontend/static/media/burger_menu.b00b86c338f4c187fcb69f4fcb2597ce.svg",
-    "main.96090b98.js.map": "/quizFrontend/static/js/main.96090b98.js.map",
+    "main.612585d9.js.map": "/quizFrontend/static/js/main.612585d9.js.map",
     "907.12cd28c0.chunk.css.map": "/quizFrontend/static/css/907.12cd28c0.chunk.css.map",
     "907.b882f483.chunk.js.map": "/quizFrontend/static/js/907.b882f483.chunk.js.map",
     "896.8e93c5fc.chunk.css.map": "/quizFrontend/static/css/896.8e93c5fc.chunk.css.map",
-    "896.c67906a3.chunk.js.map": "/quizFrontend/static/js/896.c67906a3.chunk.js.map",
+    "896.021508f9.chunk.js.map": "/quizFrontend/static/js/896.021508f9.chunk.js.map",
     "530.e7531bf1.chunk.css.map": "/quizFrontend/static/css/530.e7531bf1.chunk.css.map",
     "530.521cf948.chunk.js.map": "/quizFrontend/static/js/530.521cf948.chunk.js.map",
     "111.a19447f8.chunk.css.map": "/quizFrontend/static/css/111.a19447f8.chunk.css.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.59b0aa92.css",
-    "static/js/main.96090b98.js"
+    "static/js/main.612585d9.js"
   ]
 }
