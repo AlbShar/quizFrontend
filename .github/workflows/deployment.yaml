@@ -9,26 +9,23 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - name: set up Git
-        run: |
-          git config --global user.email "sharipov.albert1991@gmail.com"
-          git config --global user.name "AlbShar"
       - name: Get project code
         uses: actions/checkout@v4
       - name: install dependencies
         run: npm ci
       - name: Prettier code
         run: npm run lint
-  deploy:
+  build-and-deploy:
+    needs: [prettier]
     runs-on: ubuntu-latest
     steps:
-      - name: set up Git
-        run: |
-          git config --global user.email "sharipov.albert1991@gmail.com"
-          git config --global user.name "AlbShar"
       - name: Get project code
         uses: actions/checkout@v4
-      - name: install dependencies
-        run: npm ci
-      - name: Deploy the code
-        run: npm run deploy
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy 
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build 
