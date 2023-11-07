@@ -49,10 +49,29 @@ const StyledUl = styled.ul`
   z-index: 2;
 `;
 
-const StyledLi = styled.li`
+type StyledLiProps = {
+  isShortNameListItems: boolean;
+};
+
+const StyledLi = styled.li<StyledLiProps>`
   font-family: Inter;
   padding: 3px 0;
   width: 300px;
+  position: relative;
+
+  ${({ isShortNameListItems }) =>
+    isShortNameListItems ? `&:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    z-index: 1;
+    background: rgba(255, 255, 230, 0.9);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+  }` : ''};
 
   &:not(:last-child) {
     margin-bottom: 10px;

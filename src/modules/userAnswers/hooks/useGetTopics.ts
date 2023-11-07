@@ -17,12 +17,9 @@ export const useGetTopics = () => {
   const topic = getShortFilterName(
     useSelector((state: RootState) => state.filterByTheme),
   );
-
-  const shortNameTopics: string[] = useMemo(
-    () => getShortListTopics(Object.values(topics[lang])),
-    // eslint-disable-next-line
-    [],
-  );
+  const fullNameTopics: string[] = Object.values(topics[lang]);
+  const shortNameTopics: string[] = getShortListTopics(fullNameTopics);
+   
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -35,5 +32,5 @@ export const useGetTopics = () => {
     dispatch(changeFilterByTheme(topic));
   };
 
-  return { topic, topics, shortNameTopics, updateTopic };
+  return { topic, topics, shortNameTopics, fullNameTopics, updateTopic };
 };
